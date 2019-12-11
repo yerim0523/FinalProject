@@ -19,6 +19,7 @@
 
 </style>
  -->
+ <link rel="stylesheet" type="text/css" href="<%=cp%>/css/Test.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -31,12 +32,12 @@
 </head>
 <body>
 
-<div class="container">
+<div>
 
    <header class="row navbar navbar-expand-lg navbar-light bg-light">
       <div class="col-md-4">
          <img alt="로고입니다." src="images/mainlogo.jpg"
-            style="width: 150px; height: 150px;">
+            style="width: 80px; height: 80px;">
          <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,15 +53,12 @@
          </form>
       </div>
 
-      <div class="collapse navbar-collapse col-md-4 col-md-offset-4" id="navbarSupportedContent">
-         <!-- <img alt="모임개설입니다." src="images/open.jpg" width="70px">&nbsp; -->
-         <button type="button" class="btn"><img src="images/open.jpg" alt="" width="70px"></button>
-         <!-- <img alt="로그인입니다." src="images/login.jpg" width="70px">&nbsp; -->
-         <button type="button" class="btn"><img src="images/login.jpg" alt="" width="70px"></button>
-         <!-- <img alt="고객센터입니다." src="images/custom.jpg" width="70px">&nbsp; -->
-         <button type="button" class="btn"><img src="images/custom.jpg" alt="" width="70px"></button>
-         
-      </div>
+      <div class="form-group">    <!--  form-group margin 조절하여 일렬로 정렬 -->
+               <input type="submit" value="회원가입" style="margin-right: 40px;"class="btn float-right subbtn"> 
+               <input type="submit" value="ID찾기" style="margin-right: 40px;"class="btn float-right subbtn"> 
+               <input type="submit" value="PW찾기" style="margin-right: 40px;"class="btn float-right subbtn">
+               <input type="submit" value="PW찾기" style="margin-right: 40px;"class="btn float-right subbtn">
+            </div>
    </header>
 
 </div>
