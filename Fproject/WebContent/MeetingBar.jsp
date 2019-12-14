@@ -157,7 +157,7 @@ clear:left;
 					<li><a href="#">인기호스트</a></li>
 				</ul>
 			</li>
-			<li><a href="#">내주변</a></li>
+			<li><a href="Map.jsp">내주변</a></li>
 			<li><a href="#" id="current">전체 게시판</a>
 		</ul>
 	</div>

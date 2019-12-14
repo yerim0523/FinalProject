@@ -1,0 +1,205 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hprofile.jsp</title>
+
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script type="js/bootstrap.min.js"></script>
+<script type="js/bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<!-- jquery plugins here-->
+    <!-- jquery -->
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+
+<style type="text/css">
+
+	.page
+	{
+	   font-weight: bold;
+	   font-size: 30px;
+	   text-align: center;
+	}
+	
+	.starR
+	{
+		background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+		background-size: auto 100%;
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		text-indent: -9999px;
+		cursor: pointer;
+		/* float: right; */
+		box-sizing: border-box;
+	}
+
+   div.host
+   {
+        width: 50%;
+        float: left;
+        box-sizing: border-box;
+        
+    }
+
+	.starR.on{background-position:0 0;}
+	
+	img{max-width: 100%; height: auto;}
+
+</style>
+
+</head>
+<body>
+
+<div>
+	<c:import url="bar.jsp"></c:import>
+</div>
+
+
+<section class="course_details_area section_padding" style="padding-bottom: 0;">
+<div>
+	<c:import url="MeetingBar.jsp"></c:import>
+</div>
+</section>
+
+<br><br><br>
+
+<div class="container">
+<div class="row">
+      <div class="col-md-2" align="left">
+         <span class="page">프로필</span>
+      </div>
+      <div class="col-md-10">
+         <div class="container">
+         <br><br>
+      <div class="d-flex justify-content-center h-100 left">
+         <div class="image_outer_container">
+            <div class="green_icon"></div>
+            <div class="image_inner_container">
+               <img src="images/me.png">
+            </div>
+         </div>
+         <div class="container right" style="width: 50%;">
+            <input type="text" class="form-control" value="닉네임">
+            <br><br>
+            <textarea rows="3" cols="10" class="form-control">자기소개</textarea>
+         </div>
+      </div>
+   </div>
+         
+      </div>
+      
+   </div>
+</div>
+<hr>
+
+<div class="container">
+	<div>
+		<div>
+			<div class="host">
+				<h4>호스트후기</h4><br>
+			</div>
+			<div class="starRev" align="right">
+				<h6>평점 : 9.6</h6>
+				<span class="starR on"></span>
+				<span class="starR"></span>
+				<span class="starR"></span>
+				<span class="starR"></span>
+				<span class="starR"></span>
+			</div>
+		</div>
+	<br>
+		<div>
+			<textarea rows="10" cols="160" style="width: 100%;">호스트 후기</textarea>
+			<button type="button" style="width: 100%;">더보기</button>
+		</div>
+	</div>
+	<br>
+	<hr>
+	<br>
+	<div>
+		<div align="left">
+			<h4>모임히스토리</h4>
+		</div>
+		<div align="right">
+			<button type="button">더보기</button>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/iu.jpg" alt="썸네일" style="width: 100%;">
+			<div class="caption">
+				<h3>모임</h3>
+				<p>호스트이름</p>
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/gd.jpg" alt="썸네일" style="width: 100%; height: 200px;">
+			<div class="caption">
+				<h3>모임</h3>
+				<p>호스트이름</p>
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/iu2.jpg" alt="썸네일" style="width: 100%;">
+			<div class="caption">
+				<h3>모임</h3>
+				<p>호스트이름</p>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
+
+</body>
+</html>
