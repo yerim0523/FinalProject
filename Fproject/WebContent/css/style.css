@@ -2,7 +2,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:300,400,500,600,700,800|Roboto:300,400,500");
 /* line 2, E:/172 Etrain Education/172_Etrain_Education_html/sass/_extends.scss */
 .btn_1, .btn_2:hover, .main_menu .navbar-toggler:after, .banner_part .banner_text .btn_1, .feature_part .single_feature:hover span {
-  background-image: linear-gradient(to left, #ee390f 0%, #f9b700 51%, #ee390f 100%);
+  /* background-image: linear-gradient(to left, #ee390f 0%, #f9b700 51%, #ee390f 100%); */
+  background-color: #5cb196;
 }
 
 /* line 6, E:/172 Etrain Education/172_Etrain_Education_html/sass/_extends.scss */
