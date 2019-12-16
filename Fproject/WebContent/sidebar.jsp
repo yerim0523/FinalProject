@@ -15,6 +15,7 @@
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 </head>
@@ -28,7 +29,6 @@
 			<h3 class="panel-title" align="center">My page</h3>
 		</div>
 		<!-- 사이드바 메뉴목록1 -->
-	
 		<ul class="list-group">
 			<li class="list-group-item"><a href="#">개인정보수정</a></li>
 			<li class="list-group-item"><a href="#">비밀번호 재설정</a></li>
@@ -36,9 +36,7 @@
 			<li class="list-group-item"><a href="#">참여중인 모임</a></li>
 			<li class="list-group-item"><a href="#">일정 관리</a></li>
 			<li class="list-group-item"><a href="#">모임 관리</a></li>
-			<li class="list-group-item"><a href="#">결제 내역</a></li>
 		</ul>
-		
 	</div>
 	
 </div>

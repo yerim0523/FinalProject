@@ -27,6 +27,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 <!-- jquery plugins here-->
@@ -134,7 +135,7 @@
 		</table>
 
 		<hr>
-		<button type="button" class="btn btn-primary btn-lg"
+		<button type="button" class="btn4"
 			style="float: right;">글쓰기</button>
 
 

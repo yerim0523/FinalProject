@@ -22,6 +22,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
@@ -101,8 +102,8 @@
 		</tr>
 		<tr >
 			<td colspan="2" style="padding: 10px; text-align: center;">
-				<button type="button" class="btn btn-primary">결제하기</button>&nbsp;&nbsp;
-				<button type="button" class="btn btn-danger">취소하기</button>
+				<button type="button" class="btn4">결제하기</button>&nbsp;&nbsp;
+				<button type="button" class="btn4">취소하기</button>
 			</td>
 			
 				

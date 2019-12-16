@@ -15,6 +15,7 @@
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 <body>
@@ -56,9 +57,13 @@
 			</tr>
 			<tr>
 				<td>
-				<button type="button" class="btn btn-primary">등록</button>
+				
 				</td>
-				<td></td>
+				<td colspan="2">
+					<div align="right">
+						<button type="button" class="btn4" >등록</button>
+					</div>
+				</td>
 			</tr>
 			
 		</table>

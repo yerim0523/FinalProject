@@ -21,6 +21,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
@@ -151,7 +152,7 @@
 	<br>
 		<div>
 			<textarea rows="10" cols="160" style="width: 100%;">호스트 후기</textarea>
-			<button type="button" style="width: 100%;">더보기</button>
+			<button type="button" class="btn4" style="width: 100%;">더보기</button>
 		</div>
 	</div>
 	<br>
@@ -162,7 +163,7 @@
 			<h4>모임히스토리</h4>
 		</div>
 		<div align="right">
-			<button type="button">더보기</button>
+			<button type="button" class="btn4">더보기</button>
 		</div>
 	</div>
 	<br>

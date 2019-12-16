@@ -23,6 +23,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
@@ -85,7 +86,7 @@
 	      <span><i class="fas fa-mobile-alt fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="PhonePay.jsp" class="btn btn-primary" role="button">휴대폰결제</a></p>
+	        <p><a href="PhonePay.jsp" class="btn4" role="button">휴대폰결제</a></p>
 	      </div>
 	    </div>
 	  </div>
@@ -94,7 +95,7 @@
 	      <span><i class="fas fa-credit-card fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="CardPay.jsp" class="btn btn-primary" role="button">카드결제</a></p>
+	        <p><a href="CardPay.jsp" class="btn4" role="button">카드결제</a></p>
 	      </div>
 	    </div>
 	  </div>
@@ -103,7 +104,7 @@
 	      <span><i class="fas fa-dollar-sign fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="BankPay.jsp" class="btn btn-primary" role="button">가상계좌결제</a></p>
+	        <p><a href="BankPay.jsp" class="btn4" role="button">가상계좌결제</a></p>
 	      </div>
 	    </div>
 	  </div>

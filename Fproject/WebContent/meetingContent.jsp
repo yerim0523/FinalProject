@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/member.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
@@ -428,13 +429,14 @@ textarea.form-control {
 .d-block {
 	display: block !important;
 }
-
+/* 
 .btn_1, .btn_2:hover, .main_menu .navbar-toggler::after, .banner_part .banner_text .btn_1,
 	.feature_part .single_feature:hover span {
 	background-image: linear-gradient(to left, rgb(238, 57, 15) 0%,
 		rgb(249, 183, 0) 51%, rgb(238, 57, 15) 100%);
 }
-
+ */
+ /* 
 .btn_1 {
 	display: inline-block;
 	padding: 13.5px 45px;
@@ -447,13 +449,13 @@ textarea.form-control {
 	text-transform: capitalize;
 	background-size: 200% auto;
 	border: 1px solid transparent;
-	box-shadow: 0px 12px 20px 0px rgba(255, 126, 95, 0.15);
 }
 
 .feedeback .btn_1 {
 	padding: 5px 19px;
 	margin-top: 20px;
 }
+ */
 /* @media all and (min-width:992px) */
 .col-lg-12 {
 	-ms-flex: 0 0 100%;
@@ -485,12 +487,12 @@ ul {
 	margin: 0;
 	padding: 0;
 }
-
+/* 
 .right-contents .sidebar_top .btn_1 {
 	text-align: center;
 	margin-top: 20px;
 }
-
+ */
 .right-contents .sidebar_top ul li {
 	list-style: none;
 	padding: 10px 0px;
@@ -593,6 +595,7 @@ img {
 	height: auto;
 }
 </style>
+
 </head>
 <body>
 
@@ -704,7 +707,7 @@ img {
 							in voluptate velit esse cillum.
 						</div>
 						<div align="right">
-							<a class="btn_1" href="#"> 더보기</a>
+							<a class="btn4" href="#"> 더보기</a>
 						</div>
 
 						<div>
@@ -730,7 +733,7 @@ img {
 							in voluptate velit esse cillum.
 						</div>
 						<div align="right">
-							<a class="btn_1" href="#"> 더보기</a>
+							<a class="btn4" href="#"> 더보기</a>
 						</div>
 
 						<div>
@@ -756,7 +759,7 @@ img {
 							in voluptate velit esse cillum.
 						</div>
 						<div align="right">
-							<a class="btn_1" href="#"> 더보기</a>
+							<a class="btn4" href="#"> 더보기</a>
 						</div>
 
 					</div>
@@ -783,7 +786,7 @@ img {
 							</a></li>
 
 						</ul>
-						<a class="btn_1 d-block" href="Pay.jsp">모임신청하기(결제)</a>
+						<a class="btn4" href="Pay.jsp">모임신청하기(결제)</a>
 					</div>
 
 					<br>
