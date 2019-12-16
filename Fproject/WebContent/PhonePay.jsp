@@ -28,6 +28,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/button.css" >
 
 <!-- jquery plugins here-->
     <!-- jquery -->
@@ -95,7 +96,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" style="padding: 10px; text-align: center;"> 
-				<button type="button" class="btn btn-info" style="width: 100%;">인증번호 발송</button>
+				<button type="button" class="btn4" style="width: 100%;">인증번호 발송</button>
 			</td>
 		</tr>
 		<tr>
@@ -106,8 +107,8 @@
 		</tr>
 		<tr>
 			<td colspan="2" style="padding: 10px; text-align: center;">
-				<button type="button" class="btn btn-primary">결제하기</button>&nbsp;&nbsp;
-				<button type="button" class="btn btn-danger">취소하기</button>
+				<button type="button" class="btn4">결제하기</button>&nbsp;&nbsp;
+				<button type="button" class="btn4">취소하기</button>
 			</td>
 			
 		</tr>

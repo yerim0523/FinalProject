@@ -20,6 +20,7 @@
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 </head>
@@ -163,8 +164,8 @@
 					
 			
 					<div class="form-group text-center">
-						<button type="submit" id="join-submit" class="btn btn-primary">
-							수정<i class="fa fa-check spaceLeft"></i>
+						<button type="submit" id="join-submit" class="btn4">
+							수정&nbsp;&nbsp;<i class="fa fa-check spaceLeft"></i>
 						</button>
 					</div>
 				</form>

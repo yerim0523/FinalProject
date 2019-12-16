@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/member.css" >
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
@@ -85,7 +86,7 @@
 	
 	</table>
 	
-	<input type="button" value="확인" class="btn btn-primary">
+	<input type="button" value="확인" class="btn4">
 	<br><br><br>
 </div>
 
