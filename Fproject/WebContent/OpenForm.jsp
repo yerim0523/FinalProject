@@ -138,18 +138,16 @@
 		
 		<div class="form-inline">
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">* 우편번호</label>
-			<input type="text" name="" class="postcodify_postcode5" value="" />
-			<button id="postcodify_search_button">검색</button>
+			<input type="text" name="" class="postcodify_postcode5 form-control" value="" />
+			<button id="postcodify_search_button btn">검색</button>
 		</div>
-		<br>
 		<div class="form-inline">
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">도로명주소</label>
-			<input type="text" name="" class="postcodify_address" value="" />
+			<input type="text" name="" class="postcodify_address form-control" value="" />
 		</div>
-		<br>
 		<div class="form-inline">
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">상세주소</label>
-			<input type="text" name="" class="postcodify_details" value="" />
+			<input type="text" name="" class="postcodify_details form-control" value="" />
 		</div>
 		
 		<br>
