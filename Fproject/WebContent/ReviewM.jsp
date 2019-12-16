@@ -47,8 +47,6 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
     
 <style type="text/css">
 
@@ -116,28 +114,37 @@
 	<div class="container">
 		<br><br>
 		
-		<p>|모임후기</p>
-		
-		<div class="starRev" align="right">
-			<span class="starR2"></span>
-			<span class="starR1"></span>
-			<span class="starR2"></span>
-			<span class="starR1"></span>
-			<span class="starR2"></span>
-			<span class="starR1"></span>
-			<span class="starR2"></span>
-			<span class="starR1"></span>
-			<span class="starR2"></span>
-			<span class="starR1 on"></span>
-			<div style="float: right;">
-				4.74 / 56 명
-			</div>
+		<div class="col-2">
+			<p style="font-weight: bold; font-size: 18pt; color:#000000;">| 모임후기</p>
 		</div>
+		
+		<div class="col-12 d-flex">
+        <div class="col-11 p-0 d-flex align-items-center justify-content-end">
+           <div class="starRev">
+              <span class="starR2"></span>
+              <span class="starR1"></span>
+              <span class="starR2"></span>
+              <span class="starR1"></span>
+              <span class="starR2"></span>
+              <span class="starR1"></span>
+              <span class="starR2"></span>
+              <span class="starR1"></span>
+              <span class="starR2"></span>
+              <span class="starR1 on"></span>
+            </div>
+        </div>
+        <div class="col-2 p-0 d-flex align-items-center justify-content-start">&nbsp;&nbsp;<span style="font-weight: bold;">4.74 / 56 명</span></div>
+    	</div>
+    	
+    	<br>    
 		
 		<div align="right">
 			<input type="button" class="btn4" value="후기 작성하기" style="width: 200px;">
 		</div>
 		
+		<div>
+		
+		</div>
 		
 	</div>
 
