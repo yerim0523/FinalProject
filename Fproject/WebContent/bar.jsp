@@ -29,6 +29,7 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/button.css" >
     
     
 </head>
@@ -49,6 +50,7 @@
                         <div class="collapse navbar-collapse main-menu-item justify-content-end"
                             id="navbarSupportedContent">
                             <ul class="navbar-nav align-items-center">
+                            <li class="nav-item" style="margin-right: 30px; margin-top: 15px;">
                                  <form action="#">
                             <div class="form-group">
                                 <div class="input-group mb-3 nav-item">
@@ -56,12 +58,12 @@
                                         onfocus="this.placeholder = ''"
                                         onblur="this.placeholder = '검색하세요'">
                                     <div class="input-group-append">
-                                        <button class="btn btn_1" type="button" style="margin-left: 0px;"><i class="fas fa-search"></i></button>
+                                        <button class="btn btn_1" type="button" style="margin-left: 0px;"><span style="color: black;"><i class="fas fa-search"></i></span></button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                                
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<%=cp%>/OpenForm.jsp">모임개설</a>
                                 </li>
@@ -81,7 +83,7 @@
                                     <a class="nav-link" href="<%=cp%>/center.jsp">고객센터</a>
                                 </li>
                                 <li class="d-none d-lg-block">
-                                    <a class="btn_1" href="<%=cp%>/LoginForm2.jsp">로그인</a>
+                                    <a class="btn_1" href="<%=cp%>/LoginForm2.jsp" style="color: black;">로그인</a>
                                 </li>
                             </ul>
                         </div>

@@ -20,6 +20,7 @@
 <script type="js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/button.css">
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
@@ -56,7 +57,7 @@
 	    background-size: auto 100%;
 	    width: 15px;
 	    height: 30px;
-	    float:left;
+	    float: right;
 	    text-indent: -9999px;
 	    cursor: pointer;
 	}
@@ -65,10 +66,11 @@
 	    background-size: auto 100%;
 	    width: 15px;
 	    height: 30px;
-	    float:left;
+	    float: right;
 	    text-indent: -9999px;
 	    cursor: pointer;
 	}
+	
 	.starR1.on{background-position:0 0;}
 	.starR2.on{background-position:-15px 0;}
 	
@@ -82,23 +84,8 @@
 	.right
 	{
 		width: 50%;
-		float: ri
+		float: right;
 	}
-	
-	div.name
-   {
-        width: 50%;
-        float: left;
-        box-sizing: border-box;
-        
-    }
-    div.heart
-    {
-    	width: 50%;
-    	float: right;
-    	box-sizing: border-box;
-    }
-
 
 </style>
 
@@ -128,20 +115,29 @@
 	
 	<div class="container">
 		<br><br>
-		<a style="font-weight: bold; font-size: 20pt;">|모임후기</a>
 		
-		<div class="starRev">
-			<span class="starR1 on">별1_왼쪽</span>
-			<span class="starR2">별1_오른쪽</span>
-			<span class="starR1">별2_왼쪽</span>
-			<span class="starR2">별2_오른쪽</span>
-			<span class="starR1">별3_왼쪽</span>
-			<span class="starR2">별3_오른쪽</span>
-			<span class="starR1">별4_왼쪽</span>
-			<span class="starR2">별4_오른쪽</span>
-			<span class="starR1">별5_왼쪽</span>
-			<span class="starR2">별5_오른쪽</span>
+		<p>|모임후기</p>
+		
+		<div class="starRev" align="right">
+			<span class="starR2"></span>
+			<span class="starR1"></span>
+			<span class="starR2"></span>
+			<span class="starR1"></span>
+			<span class="starR2"></span>
+			<span class="starR1"></span>
+			<span class="starR2"></span>
+			<span class="starR1"></span>
+			<span class="starR2"></span>
+			<span class="starR1 on"></span>
+			<div style="float: right;">
+				4.74 / 56 명
+			</div>
 		</div>
+		
+		<div align="right">
+			<input type="button" class="btn4" value="후기 작성하기" style="width: 200px;">
+		</div>
+		
 		
 	</div>
 
