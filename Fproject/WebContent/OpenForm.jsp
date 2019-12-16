@@ -17,6 +17,8 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="js/bootstrap.min.js"></script>
@@ -46,12 +48,12 @@
 <script src="js/waypoints.min.js"></script>
 <!-- custom js -->
 <script src="js/custom.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
 <script type="text/javascript">
 
-$(function() { $("#postcodify_search_button").postcodifyPopUp(); });
+	$(function(){
+		$("#postcodify_search_button").postcodifyPopUp(); 
+	});
 
 </script>
 
@@ -135,6 +137,24 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 		<br>
 		
 		<div class="form-inline">
+			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">* 우편번호</label>
+			<input type="text" name="" class="postcodify_postcode5" value="" />
+			<button id="postcodify_search_button">검색</button>
+		</div>
+		<br>
+		<div class="form-inline">
+			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">도로명주소</label>
+			<input type="text" name="" class="postcodify_address" value="" />
+		</div>
+		<br>
+		<div class="form-inline">
+			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">상세주소</label>
+			<input type="text" name="" class="postcodify_details" value="" />
+		</div>
+		
+		<br>
+		
+		<div class="form-inline">
 			<label for="inlineCheckbox1" class="col-sm-2 control-label" style="font-weight: bold;">* 카테고리</label>
 			<label class="checkbox-inline">
 			<input type="checkbox" id="inlineCheckbox1" value="option1">공연&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -193,6 +213,8 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 			<button type="button" class="btn btn-info">개설</button>
 			<button type="button" class="btn btn-info">취소</button>
 		</div>
+		
+		<br><br><br><br>
 		
 	</form>
 	
