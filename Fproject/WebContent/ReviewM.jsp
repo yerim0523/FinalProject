@@ -115,7 +115,14 @@
 		font-size: 13pt;
 		color: #333333;
 	}
-
+	
+	.groupCnt
+	{
+		font-weight: bold;
+		font-size: 11pt;
+		color: gray;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -181,18 +188,26 @@
 				<img src="images/me.png" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp;
 				<a class="name">백호진</a>
-				<div class="starRev">
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1 on"></span>
-            	</div>
+				<div style="float: right;">
+					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
+				</div>
+				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
+					<div class="d-flex align-items-center groupCnt">
+					3회차 참여 &nbsp;
+					</div>
+           			<div class="starRev">
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1 on"></span>
+            		</div>
+        		</div>
 				<br><br>
 				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
 				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
@@ -205,6 +220,9 @@
 				<img src="images/me.png" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 				<a class="name">백호진</a>
+				<div style="float: right;">
+					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
+				</div>
 				<br><br>
 				<p>
 				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용.
@@ -220,19 +238,26 @@
 				<img src="images/me.png" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 				<a class="name">백호진</a>
-				<img src="<%=cp%>/images/siren.png" style="width: 35px; height: 35px;">
-				<div class="starRev">
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1"></span>
-					<span class="starR2"></span>
-					<span class="starR1 on"></span>
-            	</div>
+				<div style="float: right;">
+					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
+				</div>
+				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
+					<div class="d-flex align-items-center groupCnt">
+					2회차 참여 &nbsp;
+					</div>
+           			<div class="starRev">
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1"></span>
+		            <span class="starR2"></span>
+		            <span class="starR1 on"></span>
+            		</div>
+        		</div>
 				<br><br>
 				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
 				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
@@ -245,6 +270,9 @@
 				<img src="images/me.png" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 				<a class="name">백호진</a>
+				<div style="float: right;">
+					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
+				</div>
 				<br><br>
 				<p>
 				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 
@@ -255,6 +283,12 @@
 	</div>
 
 </section>
+
+<br><br><br><br><br>
+
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
 
 </body>
 </html>
