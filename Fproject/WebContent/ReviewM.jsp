@@ -181,6 +181,18 @@
 				<img src="images/me.png" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp;
 				<a class="name">백호진</a>
+				<div class="starRev">
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1 on"></span>
+            	</div>
 				<br><br>
 				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
 				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
@@ -208,6 +220,19 @@
 				<img src="images/me.png" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 				<a class="name">백호진</a>
+				<img src="<%=cp%>/images/siren.png" style="width: 35px; height: 35px;">
+				<div class="starRev">
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1"></span>
+					<span class="starR2"></span>
+					<span class="starR1 on"></span>
+            	</div>
 				<br><br>
 				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
 				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
