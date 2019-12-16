@@ -223,7 +223,7 @@ _:-ms-lang(x), .findid_hp_input {
 				</div>
 				<div class="login_container" data-v-3eb3c17e="">
 					<input class="findid_id_input" type="text" placeholder="이름" data-v-3eb3c17e=""> 
-					<input class="findid_hp_input" style="ime-mode: disabled; width: 475px;" type="email" placeholder="비밀번호 입력"> 
+					<input class="findid_hp_input" style="ime-mode: disabled; width: 475px;" type="email" placeholder="이메일 입력"> 
 						<button type="button" class="findid">인증번호</button>
 						<span class="findid_txt" data-v-3eb3c17e="" style="font-size: 12px;">가입 시 입력하신 이메일과 동일하게 입력하셔야 인증번호를 받을 수 있습니다.</span> 
 						<input class="findid_id_input" style="ime-mode: disabled;" type="tel" readonly="readonly" placeholder="인증번호 숫자 6자리" data-v-3eb3c17e=""> 
