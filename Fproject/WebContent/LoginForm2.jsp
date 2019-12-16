@@ -506,7 +506,7 @@ label {
 								<button
 									class="sc-jTzLTM flMyeK sc-ckVGcZ fhPrqq LoginPage__LoginButton-co2bls-2 eLfQiK"
 									type="submit" color="orange" fill="true">
-									<span class="sc-fjdhpX kCztpU">로그인이야</span>
+									<span class="sc-fjdhpX kCztpU">로그인</span>
 								</button>
 							</form>
 							
