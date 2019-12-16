@@ -49,6 +49,7 @@
                         <div class="collapse navbar-collapse main-menu-item justify-content-end"
                             id="navbarSupportedContent">
                             <ul class="navbar-nav align-items-center">
+                            <li class="nav-item" style="margin-right: 30px; margin-top: 15px;">
                                  <form action="#">
                             <div class="form-group">
                                 <div class="input-group mb-3 nav-item">
@@ -61,7 +62,7 @@
                                 </div>
                             </div>
                         </form>
-                                
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<%=cp%>/OpenForm.jsp">모임개설</a>
                                 </li>
