@@ -72,17 +72,48 @@
 	.starR1.on{background-position:0 0;}
 	.starR2.on{background-position:-15px 0;}
 	
-	img { max-width: auto; height: auto; }
-	
-	.left
-	{
-		width: 50%;
-		float: left;
+	.balloon {  
+		 position:relative; 
+		 padding: 20px;
+		 margin: 20px;
+		 width: 800px; 
+		 background: #eec4c4; 
+		 border-radius: 10px;
 	}
-	.right
+	
+	.balloon:after { 
+		 border-top:0px solid transparent; 
+		 border-left: 10px solid transparent; 
+		 border-right: 10px solid transparent; 
+		 border-bottom: 10px solid 	#eec4c4; 
+		 content:""; 
+		 position: absolute;
+		 top:-10px;
+		 left: 100px;  
+	}
+	
+	.review
 	{
-		width: 50%;
-		float: right;
+	  border: 1px solid gray;
+	  border-radius: 30px;
+	  padding: 20px;
+	  margin: 10px;
+	  align-self: center;
+	  width: 800px;
+	}
+	
+	.review p, .balloon p
+	{
+		font-weight: bold;
+		font-size: 11pt;
+		color: #333333;
+	}
+	
+	.review a, .balloon a
+	{
+		font-weight: bold;
+		font-size: 13pt;
+		color: #333333;
 	}
 
 </style>
@@ -142,8 +173,58 @@
 			<input type="button" class="btn4" value="후기 작성하기" style="width: 200px;">
 		</div>
 		
-		<div>
+		<br>
 		
+		<div align="center">
+			<div class="review" align="left">
+			<div align="left">
+				<img src="images/me.png" class="rounded-circle"
+						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp;
+				<a class="name">백호진</a>
+				<br><br>
+				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
+				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
+				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.</p>
+			</div>
+			</div>
+			
+			
+			<div class="balloon" align="left">
+				<img src="images/me.png" class="rounded-circle"
+						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
+				<a class="name">백호진</a>
+				<br><br>
+				<p>
+				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용.
+				</p> 
+			</div>
+		</div>
+		
+		<br>
+		
+		<div align="center">
+			<div class="review" align="left">
+			<div align="left">
+				<img src="images/me.png" class="rounded-circle"
+						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
+				<a class="name">백호진</a>
+				<br><br>
+				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
+				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
+				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.</p>
+			</div>
+			</div>
+			
+			
+			<div class="balloon" align="left">
+				<img src="images/me.png" class="rounded-circle"
+						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
+				<a class="name">백호진</a>
+				<br><br>
+				<p>
+				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 
+				</p>
+			</div>
 		</div>
 		
 	</div>
