@@ -45,7 +45,7 @@
 	<div class="row">
 		<c:import url="sidebar.jsp"></c:import>
 		<div class="col-md-9">
-			<div class="container">
+			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
 						<h3>찜 목록</h3>
@@ -102,7 +102,7 @@
 			</div>
 		</div>
 	</div>
-	
+</section>
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
