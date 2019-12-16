@@ -62,7 +62,7 @@
 		<c:import url="sidebar.jsp"></c:import>
 		
 		<div class="col-md-9">
-			<div class="container">
+			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
 						<h3>내 모임 리스트</h3>
