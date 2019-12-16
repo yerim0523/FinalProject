@@ -75,10 +75,10 @@
                                     </div>
                                 </li> -->
                                  <li class="nav-item">
-                                    <a class="nav-link" href="blog.html">회원가입</a>
+                                    <a class="nav-link" href="<%=cp%>/LoginForm2.jsp">회원가입</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">고객센터</a>
+                                    <a class="nav-link" href="<%=cp%>/LoginForm2.jsp">고객센터</a>
                                 </li>
                                 <li class="d-none d-lg-block">
                                     <a class="btn_1" href="#">로그인</a>
