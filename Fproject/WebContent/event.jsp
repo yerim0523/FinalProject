@@ -208,7 +208,7 @@
 		</table>
 
 		<hr>
-		<button type="button" class="btn btn-primary btn-lg"
+		<button type="button" class="btn4"
 			style="float: right;">글쓰기</button>
 
 
