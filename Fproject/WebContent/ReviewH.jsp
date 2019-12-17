@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>모임후기(메이트)</title>
+<title>모임후기(호스트)</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -123,6 +123,20 @@
 		color: gray;
 	}
 	
+	.purple-border textarea {
+    border: 1px solid #ba68c8;
+	}
+	
+	.purple-border .form-control:focus {
+	    border: 1px solid #ba68c8;
+	    box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
+	}
+	
+	.green-border-focus .form-control:focus {
+	    border: 1px solid #8bc34a;
+	    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -223,10 +237,10 @@
 				<div style="float: right;">
 					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
 				</div>
-				<br><br>
+				<br>
 				<p>
-				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용.
-				</p> 
+				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 
+				</p>
 			</div>
 		</div>
 		
@@ -274,12 +288,14 @@
 					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
 				</div>
 				<br><br>
-				<p>
-				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 
-				</p>
+				<div class="form-group green-border-focus">
+				<textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+					<div style="float: right;">
+					<button type="button" class="btn btn-info">버튼</button>
+					</div>
+				</div>
 			</div>
 		</div>
-		
 	</div>
 
 </section>
