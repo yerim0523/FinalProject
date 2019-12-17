@@ -827,5 +827,10 @@ img {
 			</div>
 		</div>
 	</section>
+	
+	<div>
+		<c:import url="footer.jsp"></c:import>
+	</div>
+	
 </body>
 </html>
