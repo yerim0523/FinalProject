@@ -47,7 +47,7 @@ public class MemberListController implements Controller
 			System.out.println(e.toString());
 		}
 		
-		mav.setViewName("/WEB-INF/views/MemberList.jsp");
+		mav.setViewName("/WEB-INF/views/Test.jsp");
 		mav.addObject("count", count);
 		mav.addObject("memberList", memberList);
 		
