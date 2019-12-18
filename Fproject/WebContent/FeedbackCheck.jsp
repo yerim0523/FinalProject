@@ -15,6 +15,9 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css"  />
+<script type="js/bootstrap-select.min.js" ></script>
+<script type="js/bootstrap-select.js" ></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/button.css" >
@@ -36,13 +39,14 @@
     <script src="js/masonry.pkgd.js"></script>
     <!-- particles js -->
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- <script src="js/jquery.nice-select.min.js"></script> -->
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    
     
 <style type="text/css">
 
@@ -53,6 +57,21 @@
 
 .ex{
 	font-size: 13px;
+}
+
+.select-arrow-image {
+    width: 100px;
+    border: none;
+    box-shadow: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /* font-size: 1.2em; */
+    background-color: transparent;
+    background-image: url(images/arrow.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: 20px 15px;
 }
 
 </style>
@@ -111,21 +130,39 @@
 							
 							<tr>
 								<td>맥주 모임</td>
-								<td>1회차</td>
+								<td>
+									<select name="" class="select-arrow-image">
+									    <option value="테스트">1회차</option>
+									    <option value="테스트">2회차</option>
+									    <option value="테스트">3회차</option>
+									</select>
+									</td>
 								<td>YES(90%)<br><span class="no">NO(10%)</span></td>
 								<td>YES(80%)<br><span class="no">NO(20%)</span></td>
 							</tr>
 							
 							<tr>
 								<td>맥주 모임</td>
-								<td>1회차</td>
+								<td>
+									<select name="" class="select-arrow-image">
+									    <option value="테스트">1회차</option>
+									    <option value="테스트">2회차</option>
+									    <option value="테스트">3회차</option>
+									</select>
+								</td>
 								<td>YES(90%)<br><span class="no">NO(10%)</span></td>
 								<td>YES(80%)<br><span class="no">NO(20%)</span></td>
 							</tr>
 							
 							<tr>
 								<td>맥주 모임</td>
-								<td>1회차</td>
+								<td>
+									<select name="" class="select-arrow-image">
+									    <option value="테스트">1회차</option>
+									    <option value="테스트">2회차</option>
+									    <option value="테스트">3회차</option>
+									</select>
+								</td>
 								<td>YES(90%)<br><span class="no">NO(10%)</span></td>
 								<td>YES(80%)<br><span class="no">NO(20%)</span></td>
 							</tr>
@@ -133,7 +170,13 @@
 							
 							<tr>
 								<td>맥주 모임</td>
-								<td>1회차</td>
+								<td>
+									<select name="" class="select-arrow-image">
+									    <option value="테스트">1회차</option>
+									    <option value="테스트">2회차</option>
+									    <option value="테스트">3회차</option>
+									</select>
+								</td>
 								<td>YES(90%)<br><span class="no">NO(10%)</span></td>
 								<td>YES(80%)<br><span class="no">NO(20%)</span></td>
 							</tr>
