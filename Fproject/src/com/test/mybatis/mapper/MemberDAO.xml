@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN">
+<mapper namespace="com.test.mybatis.IMemberDAO">
+	<insert id="add">
+		INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL) VALUES(#{memId}, #{memPw}, #{memName}, #{memTel})
+	</insert>
+</mapper>
