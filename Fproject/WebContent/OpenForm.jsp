@@ -131,7 +131,7 @@
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 모임명</label>
 				<input type="text" class="form-control" id="name" style="width: 700px;" placeholder="모임명을 입력해주세요.">
 		</div>
-		
+		ㅇㅁㄴㅇ
 		<br>
 		
 		<div class="form-inline">
