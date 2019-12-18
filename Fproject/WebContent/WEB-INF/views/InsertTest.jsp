@@ -12,27 +12,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-
-	$(function()
-	{
-		
-		$(".btnCancel").on("click", function()
-		{
-			$("#title").text("회원 정보 입력");
-			$("#mid").val("");
-			$("#name").val("");
-			$("#telephone").val("");
-			
-			$("#memberForm").attr("action", "memberinsert.action");
-			$("#name").focus();
-		});
-		
-	});
-	
-
-
-</script>
 </head>
 <body>
 
@@ -52,17 +31,31 @@
 				<form action="memberinsert.action" method="post" role="form" id="memberForm">
 				<input type="hidden" id="mid" name="mid" >
 					<div class="form-group">
-						<label for="name">
-							NAME : 
+						<label for="memId">
+							ID 입력 : 
 						</label>
-						<input type="text" id="name" name="name" class="form-control">
+						<input type="text" id="memId" name="memId" class="form-control">
 					</div>
 					
 					<div class="form-group">
-						<label for="telephone">
-							TELEPHONE : 
+						<label for="memPw">
+							PW 입력 : 
 						</label>
-						<input type="tel" id="telephone" name="telephone" class="form-control">
+						<input type="password" id="memPw" name="memPw" class="form-control">
+					</div>
+					
+					<div class="form-group">
+						<label for="memName">
+							이름 입력 : 
+						</label>
+						<input type="text" id="memName" name="memName" class="form-control">
+					</div>
+					
+					<div class="form-group">
+						<label for="memTel">
+							TEL 입력 : 
+						</label>
+						<input type="tel" id="memTel" name="memTel" class="form-control">
 					</div>
 					
 					<button type="submit" class="btn btn-default btn-sm">SUBMIT</button>
@@ -78,54 +71,17 @@
 			
 			<div class="panel-body">
 				<table class="table">
-					<thead>
-						<tr>
-							<th>MID</th>
-							<th>NAME</th>
-							<th>TELEPHONE</th>
-							<th>삭제 / 수정</th>
-						</tr>
-					</thead>
 					<tbody>
-					    <!-- 
-						<tr>
-							<td>1</td>
-							<td>박지혜</td>
-							<td>010-1234-2345</td>
-							<td>
-								<button type="button" class="btn btn-default btn-xs btnDelete">삭제</button>
-								<button type="button" class="btn btn-default btn-xs btnUpdate">수정</button>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>이현지</td>
-							<td>010-3456-4567</td>
-							<td>
-								<button type="button" class="btn btn-default btn-xs btnDelete">삭제</button>
-								<button type="button" class="btn btn-default btn-xs btnUpdate">수정</button>
-							</td>
-						</tr>
-						-->
 						<c:forEach var="member" items="${list }">
 						<tr>
-							<td>${member.mid }</td>
-							<td>${member.name }</td>
-							<td>${member.telephone }</td>
-							<td>
-								<%-- <button type="button" class="btn btn-default btn-xs btnDelete" id="edit" onclick="location.href='memberupdateform.action?mid=${member.mid}'">수정</button> --%>
-								<%-- <button type="button" class="btn btn-default btn-xs btnUpdate" id="del" onclick="location.href='memberdelete.action?mid=${member.mid }'">삭제</button> --%>
-								<button type="button" class="btn btn-default btn-xs btnDelete">삭제</button>
-								<button type="button" class="btn btn-default btn-xs btnUpdate" value="${member.mid }">수정</button>
-							</td>
+							<td>${member.memId }</td>
+							<td>${member.memPw }</td>
+							<td>${member.memName }</td>
+							<td>${member.memTel }</td>
 						</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				
-				<button type="button" class="btn btn-default btn-sm" disabled="disabled">
-					Count <span class="badge">${count }</span>
-				</button>
 				
 			</div>
 		</div><!-- end .panel .panel-default -->
