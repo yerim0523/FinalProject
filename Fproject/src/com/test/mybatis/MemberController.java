@@ -13,7 +13,7 @@ public class MemberController
 	@Autowired
 	private SqlSession sqlsession;
 	
-	@RequestMapping(value = "/memberlist.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberlist.action", method = RequestMethod.GET)
 	public String memberList(Model model)
 	{
 		String view = "WEB-INF/views/InsertTest.jsp";
@@ -25,7 +25,7 @@ public class MemberController
 		return view;
 	}
 	
-	@RequestMapping(value="/memberinser.action", method=RequestMethod.POST)
+	@RequestMapping(value="/memberinsert.action", method=RequestMethod.POST)
 	public String memberInsert(MemberDTO m)
 	{
 		String view = "redirect:memberlist.action";
