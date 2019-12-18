@@ -13,19 +13,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	function cateCheck()
+
+	$(function()
 	{
-		alert(document.getElementById("memCate").value);
-		/* var cate = document.getElementById("memCate");
-		
-		for(i=0; i<cate.length; i++)
+		$("#submit").click(function()
 		{
-			if(cate[i].checked == true)
+			var cate = document.getElementsByName("memCate");
+			var count = 0;
+			var result = Array();
+			for (var i = 0; i < cate.length; i++)
 			{
-				alert(cate[i].value);
+				if(cate[i].checked==true)
+				{
+					alert(cate[i].value);
+					result[count] = cate[i].value;
+					count++;
+				}
 			}
-		} */
-	}
+			
+			$("#memCate1").val(result[0]);
+			$("#memCate2").val(result[1]);
+			alert($("#memCate1").val());
+		});
+	});
+		
 </script>
 </head>
 <body>
@@ -92,17 +103,17 @@
 						<label for="memCate">
 							카테고리 선택 : 
 						</label>
-						<input type="checkbox" id="memCate" name="memCate" value="1" onclick="cateCheck()">전시 &nbsp;
-						<input type="checkbox" id="memCate" name="memCate" value="2" onclick="cateCheck()">연극 &nbsp;
-						<input type="checkbox" id="memCate" name="memCate" value="3" onclick="cateCheck()">공연 &nbsp;
-						<input type="checkbox" id="memCate" name="memCate" value="4" onclick="cateCheck()">식당 &nbsp;
-						<input type="checkbox" id="memCate" name="memCate" value="5" onclick="cateCheck()">카페 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="1">전시 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="2">연극 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="3">공연 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="4">식당 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="5">카페 &nbsp;
 					</div>
 					
 					<input type="hidden" id="memCate1" name="memCate1">
 					<input type="hidden" id="memCate2" name="memCate2">
 					
-					<button type="submit" class="btn btn-default btn-sm" onclick="">SUBMIT</button>
+					<button type="submit" id="submit" class="btn btn-default btn-sm">SUBMIT</button>
 					<button type="button" class="btn btn-default btn-sm btnCanCel">CANCEL</button>
 				</form>
 			</div>
