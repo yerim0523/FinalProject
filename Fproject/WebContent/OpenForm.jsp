@@ -128,30 +128,30 @@
 			* 은 필수항목입니다.
 		</div>
 		<div class="form-inline">
-			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">* 모임명</label>
+			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 모임명</label>
 				<input type="text" class="form-control" id="name" style="width: 700px;" placeholder="모임명을 입력해주세요.">
 		</div>
 		
 		<br>
 		
 		<div class="form-inline">
-		    <label for="inputMax" class="col-sm-2 control-label"  style="font-weight: bold;">* 모집인원수</label>
+		    <label for="inputMax" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p> 모집인원수</label>
     		<input type="text" class="form-control" id="inputMax" style="width: 250px;" placeholder="모집인원수를 입력해주세요.">
-    		<label for="inputMin" class="col-sm-2 control-label"  style="font-weight: bold;">* 최소인원수</label>
+    		<label for="inputMin" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p>최소인원수</label>
     		<input type="text" class="form-control" id="inputMin" style="width: 250px;" placeholder="모집인원수를 입력해주세요.">
 		</div>
 		
 		<br>
 		
 		<div class="form-inline">
-			<label for="money" class="col-sm-2 control-label" style="font-weight: bold;">* 예상활동비</label>
+			<label for="money" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 예상활동비</label>
 				<input type="text" class="form-control" id="money" style="width: 700px;" placeholder="예상 활동 금액을 입력해주세요.(한회차)">
 		</div>
 		
 		<br>
 		
 		<div class="form-inline">
-			<label for="startDate" class="col-sm-2 control-label" style="font-weight: bold;">* 시작날짜</label>
+			<label for="startDate" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 시작날짜</label>
 			<input type="date" class="form-control" id="startDate" style="width: 250px;">
 			<select class="form-control" style="width: 200px;">
 				<option>10:00</option>
@@ -171,7 +171,7 @@
 		<br>
 		
 		<div class="form-inline">
-			<label for="endDate" class="col-sm-2 control-label" style="font-weight: bold;">* 종료날짜</label>
+			<label for="endDate" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 종료날짜</label>
 			<input type="date" class="form-control" id="endDate" style="width: 250px;">
 			<select class="form-control" style="width: 200px;">
 				<option>10:00</option>
@@ -191,7 +191,7 @@
 		<br>		
 		
 		<div class="form-inline">
-			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">* 우편번호</label>
+			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 우편번호</label>
 			<input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호">
 			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 		</div>
@@ -212,7 +212,7 @@
 		<br>
 		
 		<div class="form-inline">
-			<label for="inlineCheckbox1" class="col-sm-2 control-label" style="font-weight: bold;">* 카테고리</label>
+			<label for="inlineCheckbox1" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 카테고리</label>
 			<label class="checkbox-inline">
 			<input type="checkbox" id="inlineCheckbox1" value="option1">공연&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
@@ -228,7 +228,7 @@
 		<br>
 		
 		<div class="form-inline">
-			<label for="titleImg" class="col-sm-2 control-label" style="font-weight: bold;">* 대표이미지</label>
+			<label for="titleImg" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 대표이미지</label>
 				<input type="file" class="form-control" id="titleImg">
 		</div>
 		
