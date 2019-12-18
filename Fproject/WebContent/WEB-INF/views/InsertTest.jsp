@@ -12,6 +12,21 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function cateCheck()
+	{
+		alert(document.getElementById("memCate").value);
+		/* var cate = document.getElementById("memCate");
+		
+		for(i=0; i<cate.length; i++)
+		{
+			if(cate[i].checked == true)
+			{
+				alert(cate[i].value);
+			}
+		} */
+	}
+</script>
 </head>
 <body>
 
@@ -29,7 +44,6 @@
 			
 			<div class="panel-body">
 				<form action="memberinsert.action" method="post" role="form" id="memberForm">
-				<input type="hidden" id="mid" name="mid" >
 					<div class="form-group">
 						<label for="memId">
 							ID 입력 : 
@@ -58,7 +72,37 @@
 						<input type="tel" id="memTel" name="memTel" class="form-control">
 					</div>
 					
-					<button type="submit" class="btn btn-default btn-sm">SUBMIT</button>
+					<div class="form-group">
+						<label for="memGen">
+							성별 선택 : 
+						</label>
+						<input type="radio" id="memGen" name="memGen" value="1">남성 &nbsp;
+						<input type="radio" id="memGen" name="memGen" value="2">여성 &nbsp;
+						<input type="radio" id="memGen" name="memGen" value="3">선택안함 &nbsp;
+					</div>
+					
+					<div class="form-group">
+						<label for="memComp">
+							직장 입력 : 
+						</label>
+						<input type="text" id="memComp" name="memComp" class="form-control">
+					</div>
+					
+					<div class="form-group">
+						<label for="memCate">
+							카테고리 선택 : 
+						</label>
+						<input type="checkbox" id="memCate" name="memCate" value="1" onclick="cateCheck()">전시 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="2" onclick="cateCheck()">연극 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="3" onclick="cateCheck()">공연 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="4" onclick="cateCheck()">식당 &nbsp;
+						<input type="checkbox" id="memCate" name="memCate" value="5" onclick="cateCheck()">카페 &nbsp;
+					</div>
+					
+					<input type="hidden" id="memCate1" name="memCate1">
+					<input type="hidden" id="memCate2" name="memCate2">
+					
+					<button type="submit" class="btn btn-default btn-sm" onclick="">SUBMIT</button>
 					<button type="button" class="btn btn-default btn-sm btnCanCel">CANCEL</button>
 				</form>
 			</div>

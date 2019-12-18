@@ -7,7 +7,8 @@
 	</select>
 	
 	<insert id="add">
-		INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL) VALUES(#{memId}, #{memPw}, #{memName}, #{memTel})
+		INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL, GEN_CODE, MEM_COMP, CATE_CODE1, CATE_CODE2)
+		VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen}, #{memComp}, #{memCate1}, #{memCate2})
 	</insert>
 	
 </mapper>

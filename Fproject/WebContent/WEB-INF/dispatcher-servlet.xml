@@ -33,21 +33,6 @@
 		<property name="username" value="FINAL_4"></property>
 		<property name="password" value="java006$"></property>
 	</bean>
-
-	<!-- MemberDAO : 안에서 식별해야 할 때는 id 로 지정 -->
-	<bean class="com.test.mvc.TestDAO" id="testDAO">
-		<property name="dataSource">
-			<ref bean="localDataSource" />
-		</property>
-	</bean>
-
-	<!-- MemberListController : 사용자가 요청하는 주소일 때는 name 으로 -->
-	<bean class="com.test.mvc.MemberListController"
-		name="/memberlist.action">
-		<property name="dao">
-			<ref bean="testDAO" />
-		</property>
-	</bean>
 	
 	<!-- ② mybatis 등록 과정에서 생겨나는 추가 코드-->
 	<!-- ※ mybatis 를 사용하기 위한 환경 설정 추가 1 -->
