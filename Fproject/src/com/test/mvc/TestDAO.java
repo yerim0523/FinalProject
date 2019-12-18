@@ -1,6 +1,15 @@
-package com.test;
+package com.test.mvc;
 
-public class TestDAO
+import javax.sql.DataSource;
+
+public class TestDAO implements
 {
+	private DataSource dataSource;
 
+	public void setDataSource(DataSource dataSource)
+	{
+		this.dataSource = dataSource;
+	}
+	
+	
 }

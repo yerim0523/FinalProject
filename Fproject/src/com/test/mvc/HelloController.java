@@ -2,7 +2,7 @@
 	테스트 컨트롤러
 =========================*/
 
-package com.test;
+package com.test.mvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
