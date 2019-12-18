@@ -35,7 +35,6 @@ public class MemberListController implements Controller
 		// 액션 코드
 		ModelAndView mav = new ModelAndView();
 		
-		int count = 0;
 		ArrayList<TestDTO> memberList = new ArrayList<TestDTO>();
 		
 		try
@@ -48,7 +47,6 @@ public class MemberListController implements Controller
 		}
 		
 		mav.setViewName("/WEB-INF/views/Test.jsp");
-		mav.addObject("count", count);
 		mav.addObject("memberList", memberList);
 		
 		return mav;
