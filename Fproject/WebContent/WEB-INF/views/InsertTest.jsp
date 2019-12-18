@@ -74,7 +74,7 @@
 					
 					<div class="form-group">
 						<label for="memGen">
-							성별 선택하세요 : 
+							성별 선택 : 
 						</label>
 						<input type="radio" id="memGen" name="memGen" value="1">남성 &nbsp;
 						<input type="radio" id="memGen" name="memGen" value="2">여성 &nbsp;
