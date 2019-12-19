@@ -86,26 +86,6 @@ public class GroupDTO
 	{
 		this.grCate2 = grCate2;
 	}
-<<<<<<< HEAD
-	public String getGrCate1Name()
-	{
-		return grCate1Name;
-	}
-	public void setGrCate1Name(String grCate1Name)
-	{
-		this.grCate1Name = grCate1Name;
-	}
-	public String getGrCate2Name()
-	{
-		return grCate2Name;
-	}
-	public void setGrCate2Name(String grCate2Name)
-	{
-		this.grCate2Name = grCate2Name;
-	}
-	
-	
-=======
 
 	public String getGrCate1Name()
 	{
@@ -127,7 +107,7 @@ public class GroupDTO
 		this.grCate2Name = grCate2Name;
 	}
 
->>>>>>> branch 'master' of https://github.com/lee0528kr/FinalProject.git
+
 	// setter / getter 구성 (NOW_GROUP 테이블)
 	public int getNgCode()
 	{
