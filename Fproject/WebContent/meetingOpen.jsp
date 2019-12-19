@@ -10,14 +10,29 @@
 <meta charset="UTF-8">
 <title>meetingOpen.jsp</title>
 
-<style type="text/css">
+<!-- jquery plugins here-->
+    <!-- jquery -->
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
 
-	td
-	{
-		
-	}
-	
-</style>
 
 </head>
 <body>
@@ -80,6 +95,12 @@
 		</tr>
 	</table>
 	</div>
+	<br><br>
+	<div align="center">
+		<button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<button type="button" class="btn4" value="선택">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn4" value="취소">취소</button>
+	</div> 
 </div>
 
 <br><br><br>
