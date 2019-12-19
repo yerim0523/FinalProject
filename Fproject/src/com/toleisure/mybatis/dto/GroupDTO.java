@@ -8,6 +8,9 @@ public class GroupDTO
 	private int ngCode, ngMax, ngMin, ngCost;
 	private String ngPic, ngStart, ngEnd, ngLocation, ngIntro;
 	
+	private int grCount, grStarCount;
+	private double grStarAvg;
+	
 	// setter / getter 구성 (TBL_GROUP 테이블)
 	public String getMemId()
 	{
@@ -140,5 +143,30 @@ public class GroupDTO
 	{
 		this.ngIntro = ngIntro;
 	}
+	public int getGrCount()
+	{
+		return grCount;
+	}
+	public void setGrCount(int grCount)
+	{
+		this.grCount = grCount;
+	}
+	public int getGrStarCount()
+	{
+		return grStarCount;
+	}
+	public void setGrStarCount(int grStarCount)
+	{
+		this.grStarCount = grStarCount;
+	}
+	public double getGrStarAvg()
+	{
+		return grStarAvg;
+	}
+	public void setGrStarAvg(double grStarAvg)
+	{
+		this.grStarAvg = grStarAvg;
+	}
+	
 	
 }
