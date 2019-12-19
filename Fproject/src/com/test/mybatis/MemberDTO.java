@@ -3,7 +3,7 @@ package com.test.mybatis;
 public class MemberDTO
 {
 	private String memId, memPw, memName, memTel;
-	private String memGen, memComp, memCate1, memCate2;
+	private String memGen, memComp, memIntro, memCate1, memCate2, memDate;
 	
 	// getter/setter 
 	public String getMemId()
@@ -84,6 +84,26 @@ public class MemberDTO
 	public void setMemCate2(String memCate2)
 	{
 		this.memCate2 = memCate2;
+	}
+
+	public String getMemIntro()
+	{
+		return memIntro;
+	}
+
+	public void setMemIntro(String memIntro)
+	{
+		this.memIntro = memIntro;
+	}
+
+	public String getMemDate()
+	{
+		return memDate;
+	}
+
+	public void setMemDate(String memDate)
+	{
+		this.memDate = memDate;
 	}
 	
 	
