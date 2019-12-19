@@ -2,8 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IGroupDAO">
 
-	<insert parameterType="com.toleisure.mybatis.dto.GroupDTO"
-		id="addGroup">
+	<insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
 		{CALL
 			DECLARE
 				grCodeSeq INT;
@@ -24,5 +23,39 @@
 		END
 		}
 	</insert>
+	
+	<select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_NAME
+		FROM NOW_GROUP
+		WHERE GR_NAME LIKE %#{검색값}%
+	</select>
+	
+	<select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_NAME
+		FROM NOW_GROUP
+		WHERE GR_NAME LIKE %#{검색값}%
+	</select>
+	
+	
+	<select id="searchGroup" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_NAME
+		FROM NOW_GROUP
+		WHERE GR_NAME LIKE %#{검색값}%
+	</select>
+	
+	<select id="searchHost" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_NAME
+		FROM NOW_GROUP
+		WHERE GR_NAME LIKE %#{검색값}%
+	</select>
+	
+	<select id="searchMood" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_NAME
+		FROM NOW_GROUP
+		WHERE GR_NAME LIKE %#{검색값}%
+	</select>
+	
+	
+	
 
 </mapper>

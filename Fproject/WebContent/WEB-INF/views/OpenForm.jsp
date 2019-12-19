@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>OpenForm.jsp</title>
+<title>모임 정보 입력</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -52,7 +52,29 @@
 
 	$(function(){
 		$("#postcodify_search_button").postcodifyPopUp(); 
-	});
+		
+		
+		$("#submit").click(function()
+				{
+					var cate = document.getElementsByName("#inlineCheckbox");
+					var count = 0;
+					var result = Array();
+					for (var i = 0; i < cate.length; i++)
+					{
+						if(cate[i].checked==true)
+						{
+							alert(cate[i].value);
+							result[count] = cate[i].value;
+							count++;
+						}
+					} // end for
+					
+					$("#grCate1").val(result[0]);
+					$("#grCate2").val(result[1]);
+					alert($("#grCate1").val());
+				}); // end submit.click
+				
+	}); // end function()
 	
 	function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -108,6 +130,16 @@
             }
         }).open();
     }
+	
+	
+	
+		
+		
+		
+		
+		
+				
+			
 
 </script>
 
@@ -123,71 +155,72 @@
 	<section class="course_details_area section_padding" style="padding-bottom: 0;">
 	<div class="container">
 	
-	<form class="form-horizontal">
+	<form action="groupInsert.action" method="post" class="form-horizontal">
 		<div align="right">
 			* 은 필수항목입니다.
 		</div>
 		<div class="form-inline">
-			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 모임명</label>
-				<input type="text" class="form-control" id="name" style="width: 700px;" placeholder="모임명을 입력해주세요.">
+			<label for="grName" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 모임명</label>
+				<input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요.">
 		</div>
-		ㅇㅁㄴㅇ
 		<br>
 		
 		<div class="form-inline">
-		    <label for="inputMax" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p> 모집인원수</label>
-    		<input type="text" class="form-control" id="inputMax" style="width: 250px;" placeholder="모집인원수를 입력해주세요.">
-    		<label for="inputMin" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p>최소인원수</label>
-    		<input type="text" class="form-control" id="inputMin" style="width: 250px;" placeholder="모집인원수를 입력해주세요.">
-		</div>
-		
-		<br>
-		
-		<div class="form-inline">
-			<label for="money" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 예상활동비</label>
-				<input type="text" class="form-control" id="money" style="width: 700px;" placeholder="예상 활동 금액을 입력해주세요.(한회차)">
+		    <label for="ngMax" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p> 모집인원수</label>
+    		<input type="text" class="form-control" name="ngMax" id="ngMax" style="width: 250px;" placeholder="모집인원수를 입력해주세요.">
+    		<label for="ngMin" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p>최소인원수</label>
+    		<input type="text" class="form-control" name="ngMin" id="ngMin" style="width: 250px;" placeholder="최소인원수를 입력해주세요.">
 		</div>
 		
 		<br>
 		
 		<div class="form-inline">
-			<label for="startDate" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 시작날짜</label>
-			<input type="date" class="form-control" id="startDate" style="width: 250px;">
-			<select class="form-control" style="width: 200px;">
-				<option>10:00</option>
-				<option>11:00</option>
-				<option>12:00</option>
-				<option>13:00</option>
-				<option>14:00</option>
-				<option>15:00</option>
-				<option>16:00</option>
-				<option>17:00</option>
-				<option>18:00</option>
-				<option>19:00</option>
-				<option>20:00</option>
+			<label for="ngCost" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 예상활동비</label>
+				<input type="text" class="form-control" name="ngCost" id="ngCost" style="width: 700px;" placeholder="예상 활동 금액을 입력해주세요.(한회차)">
+		</div>
+		
+		<br>
+		
+		<div class="form-inline">
+			<label for="ngStart1" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 시작날짜</label>
+			<input type="date" class="form-control" name="ngStart1" id="ngStart1" style="width: 250px;">
+			<select name="ngStart2" class="form-control" style="width: 200px;">
+				<option id="ngStart2" value="100000">10:00</option>
+				<option id="ngStart2" value="110000">11:00</option>
+				<option id="ngStart2" value="120000">12:00</option>
+				<option id="ngStart2" value="130000">13:00</option>
+				<option id="ngStart2" value="140000">14:00</option>
+				<option id="ngStart2" value="150000">15:00</option>
+				<option id="ngStart2" value="160000">16:00</option>
+				<option id="ngStart2" value="170000">17:00</option>
+				<option id="ngStart2" value="180000">18:00</option>
+				<option id="ngStart2" value="190000">19:00</option>
+				<option id="ngStart2" value="200000">20:00</option>
 			</select>
+			<input type="hidden" name="ngStart" id="ngStart">
 		</div>
 		
 		<br>
 		
 		<div class="form-inline">
-			<label for="endDate" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 종료날짜</label>
-			<input type="date" class="form-control" id="endDate" style="width: 250px;">
-			<select class="form-control" style="width: 200px;">
-				<option>10:00</option>
-				<option>11:00</option>
-				<option>12:00</option>
-				<option>13:00</option>
-				<option>14:00</option>
-				<option>15:00</option>
-				<option>16:00</option>
-				<option>17:00</option>
-				<option>18:00</option>
-				<option>19:00</option>
-				<option>20:00</option>
-				<option>21:00</option>
-				<option>22:00</option>
+			<label for="ngEnd1" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 종료날짜</label>
+			<input type="date" class="form-control" name="ngEnd1" id="ngEnd1" style="width: 250px;">
+			<select name="ngEnd2" class="form-control" style="width: 200px;">
+				<option id="ngEnd2" value="100000">10:00</option>
+				<option id="ngEnd2" value="110000">11:00</option>
+				<option id="ngEnd2" value="120000">12:00</option>
+				<option id="ngEnd2" value="130000">13:00</option>
+				<option id="ngEnd2" value="140000">14:00</option>
+				<option id="ngEnd2" value="150000">15:00</option>
+				<option id="ngEnd2" value="160000">16:00</option>
+				<option id="ngEnd2" value="170000">17:00</option>
+				<option id="ngEnd2" value="180000">18:00</option>
+				<option id="ngEnd2" value="190000">19:00</option>
+				<option id="ngEnd2" value="200000">20:00</option>
+				<option id="ngEnd2" value="210000">21:00</option>
+				<option id="ngEnd2" value="220000">22:00</option>
 			</select>
+			<input type="hidden" name="ngEnd" id="ngEnd">
 		</div>
 		
 		<br>		
@@ -199,7 +232,7 @@
 		</div>
 		<div class="form-inline">
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">도로명주소</label>
-			<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소" style="width: 700px;">
+			<input type="text" id="sample4_roadAddress " class="form-control" placeholder="도로명주소" style="width: 700px;">
 		</div>
 		<div class="form-inline">
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">지번주소</label>
@@ -216,16 +249,20 @@
 		<div class="form-inline">
 			<label for="inlineCheckbox1" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 카테고리</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox1" value="option1">공연&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" id="inlineCheckbox" value="option1">공연&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox1" value="option1">전시&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" id="inlineCheckbox" value="option1">전시&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox1" value="option1">연극&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" id="inlineCheckbox" value="option1">연극&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox1" value="option1">식당&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" id="inlineCheckbox" value="option1">식당&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox1" value="option1">카페&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" id="inlineCheckbox" value="option1">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
 		</div>
+		
+		<input type="hidden" id="grCate1" name="grCate1">
+		<input type="hidden" id="grCate2" name="grCate2">
+		
 		
 		<br>
 		
@@ -269,8 +306,8 @@
 		<br>
 
 		<div class="container" align="center">
-			<button type="button" class="btn btn-info">개설</button>
-			<button type="button" class="btn btn-info">취소</button>
+			<button type="submit" id="submit" class="btn btn-info">개설</button>
+			<button type="reset" class="btn btn-info">취소</button>
 		</div>
 		
 		<br><br><br><br>

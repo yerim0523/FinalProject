@@ -10,7 +10,7 @@ public interface IGroupDAO
 	public int addGroup(GroupDTO g);
 	
 	// 호스트ID 에 따른 모임 정보 모두 출력 (모임개설 시 리스트 표시)
-	public ArrayList<GroupDTO> grSearch(String memId);
+	public ArrayList<GroupDTO> grSearch(String hostId);
 	
 	// grCode 에 따른 모임의 가장 최근 정보 가져오기
 	public GroupDTO groupList(int grCode);
