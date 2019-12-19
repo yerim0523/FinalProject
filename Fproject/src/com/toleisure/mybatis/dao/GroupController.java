@@ -29,8 +29,9 @@ public class GroupController
 	{
 		String view = "redirect:groupInsertForm.action";
 		
-		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class); 
 		dao.addGroup(g);
+		
 		
 		return view;
 	}

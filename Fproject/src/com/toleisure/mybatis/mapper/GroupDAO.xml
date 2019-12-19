@@ -10,19 +10,32 @@
 				grCodeSeq := GROUPINGSEQ.NEXTVAL;
 				
 				INSERT INTO TBL_GROUP(GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2)
-				VALUES(grCodeSeq, ${memId}, ${grName}, ${grPre}, ${grNotice}, ${grCate1}, ${grCate2});
+				VALUES(grCodeSeq, '${memId}', '${grName}', '${grPre}', '${grNotice}', ${grCate1}, ${grCate2});
 
 				INSERT INTO NOW_GROUP(NG_CODE, GR_CODE, NG_PIC, NG_MAX, NG_MIN,
 				NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO, NG_DATE)
-				VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, ${ngPic}, ${ngMax}, ${ngMin}
-				, TO_DATE(${ngStart}, 'YY-MM-DD HH24:MI:SS'),
-				TO_DATE(${ngEnd}, 'YY-MM-DD HH24:MI:SS')
-				, ${ngCost}, ${ngLocation}
-				, ${ngIntro}, ${ngMyIntro}
+				VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, '${ngPic}', ${ngMax}, ${ngMin}
+				, TO_DATE('${ngStart1}'||'${ngStart2}', 'YY-MM-DD HH24:MI:SS'),
+				TO_DATE('${ngEnd1}'||'${ngEnd2}', 'YY-MM-DD HH24:MI:SS')
+				, '${ngCost}', '${ngLocation}'
+				, '${ngIntro}', '${ngMyIntro}'
 				, TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS'));
 		END
 		}
 	</insert>
+	
+	<select id="">
+		{CALL
+		DECLARE
+			grCodeSeq INT;
+		BEGIN
+			grCodeSeq := GROUPINGSEQ.NEXTVAL;
+				
+			
+		END
+		}
+	</select>
+	
 	<!-- 
 	<select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT GR_NAME
