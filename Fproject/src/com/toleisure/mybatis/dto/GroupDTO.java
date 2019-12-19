@@ -2,7 +2,8 @@ package com.toleisure.mybatis.dto;
 
 public class GroupDTO
 {
-	private String memId, grName, grPre, grNotice;
+	private String memId, grName, grPre, grNotice , grCate1Name, grCate2Name;
+	
 	private int grCode, grCate1, grCate2;
 	
 	private int ngCode, ngMax, ngMin, ngCost;
@@ -67,6 +68,22 @@ public class GroupDTO
 	public void setGrCate2(int grCate2)
 	{
 		this.grCate2 = grCate2;
+	}
+	public String getGrCate1Name()
+	{
+		return grCate1Name;
+	}
+	public void setGrCate1Name(String grCate1Name)
+	{
+		this.grCate1Name = grCate1Name;
+	}
+	public String getGrCate2Name()
+	{
+		return grCate2Name;
+	}
+	public void setGrCate2Name(String grCate2Name)
+	{
+		this.grCate2Name = grCate2Name;
 	}
 	
 	
