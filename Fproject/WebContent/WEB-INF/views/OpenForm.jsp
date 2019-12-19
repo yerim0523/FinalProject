@@ -130,16 +130,8 @@
             }
         }).open();
     }
-	
-	
-	
-		
-		
-		
-		
-		
 				
-			
+	
 
 </script>
 
@@ -231,8 +223,8 @@
 			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 		</div>
 		<div class="form-inline">
-			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">도로명주소</label>
-			<input type="text" id="sample4_roadAddress " class="form-control" placeholder="도로명주소" style="width: 700px;">
+			<label for="ngLocation1" class="col-sm-2 control-label" style="font-weight: bold;">도로명주소</label>
+			<input type="text" id="sample4_roadAddress" name="ngLocation1" class="form-control" placeholder="도로명주소" style="width: 700px;">
 		</div>
 		<div class="form-inline">
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">지번주소</label>
@@ -240,8 +232,8 @@
 		</div>
 		<span id="guide" style="color:#999;display:none"></span>
 		<div class="form-inline">
-			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">상세주소</label>
-			<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소" style="width: 700px;">
+			<label for="ngLocation2" class="col-sm-2 control-label" style="font-weight: bold;">상세주소</label>
+			<input type="text" id="sample4_detailAddress" name="ngLocation2" class="form-control" placeholder="상세주소" style="width: 700px;">
 		</div>
 		
 		<br>
@@ -267,15 +259,15 @@
 		<br>
 		
 		<div class="form-inline">
-			<label for="titleImg" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 대표이미지</label>
-				<input type="file" class="form-control" id="titleImg">
+			<label for="ngPic" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 대표이미지</label>
+				<input type="file" name="ngPic" class="form-control" id="titleImg">
 		</div>
 		
 		<br>
 		
 		<div class="form-inline">
-			<label for="groupInfo" class="col-sm-2 control-label" style="font-weight: bold;">소개글</label>
-			<textarea class="form-control col-sm-5" rows="5"
+			<label for="ngIntro" class="col-sm-2 control-label" style="font-weight: bold;">소개글</label>
+			<textarea class="form-control col-sm-5" name="ngIntro" rows="5"
 						placeholder="모임에 대한 소개글입니다!" id="groupInfo"></textarea>
 		</div>
 		
@@ -290,16 +282,16 @@
 		<br>
 
 		<div class="form-inline">
-			<label for="prev" class="col-sm-2 control-label" style="font-weight: bold;">준비물</label>
-			<textarea class="form-control col-sm-5" rows="5"
+			<label for="grPre" class="col-sm-2 control-label" style="font-weight: bold;">준비물</label>
+			<textarea class="form-control col-sm-5" rows="5" name="grPre"
 						placeholder="모임에 대한 준비물입니다!" id="prev"></textarea>
 		</div>
 		
 		<br>
 
 		<div class="form-inline">
-			<label for="please" class="col-sm-2 control-label" style="font-weight: bold;">유의사항</label>
-			<textarea class="form-control col-sm-5" rows="5"
+			<label for="grNotice" class="col-sm-2 control-label" style="font-weight: bold;">유의사항</label>
+			<textarea class="form-control col-sm-5" rows="5" name="grNotice"
 						placeholder="모임에 대한 유의사항입니다!" id="please"></textarea>
 		</div>
 		

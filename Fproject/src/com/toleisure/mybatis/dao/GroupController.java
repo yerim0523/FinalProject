@@ -1,6 +1,5 @@
 package com.toleisure.mybatis.dao;
 
-import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.test.mybatis.IMemberDAO;
 import com.toleisure.mybatis.dto.GroupDTO;
 
 @Controller
@@ -22,10 +20,6 @@ public class GroupController
 	public String memberList(Model model)
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
-		
-		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		
-		model.addAttribute("list", dao.list());
 		
 		return view;
 	}

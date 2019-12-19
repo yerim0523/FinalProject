@@ -6,7 +6,7 @@ public class GroupDTO
 	private int grCode, grCate1, grCate2;
 	
 	private int ngCode, ngMax, ngMin, ngCost;
-	private String ngPic, ngStart, ngEnd, ngLocation, ngIntro;
+	private String ngPic, ngStart, ngEnd, ngLocation, ngIntro, nyMyIntro;
 	
 	private int grCount, grStarCount;
 	private double grStarAvg;
@@ -166,6 +166,14 @@ public class GroupDTO
 	public void setGrStarAvg(double grStarAvg)
 	{
 		this.grStarAvg = grStarAvg;
+	}
+	public String getNyMyIntro()
+	{
+		return nyMyIntro;
+	}
+	public void setNyMyIntro(String nyMyIntro)
+	{
+		this.nyMyIntro = nyMyIntro;
 	}
 	
 	

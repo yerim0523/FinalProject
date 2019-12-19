@@ -13,17 +13,17 @@
 				VALUES(grCodeSeq, ${memId}, ${grName}, ${grPre}, ${grNotice}, ${grCate1}, ${grCate2});
 
 				INSERT INTO NOW_GROUP(NG_CODE, GR_CODE, NG_PIC, NG_MAX, NG_MIN,
-				NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_DATE)
+				NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO, NG_DATE)
 				VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, ${ngPic}, ${ngMax}, ${ngMin}
 				, TO_DATE(${ngStart}, 'YY-MM-DD HH24:MI:SS'),
 				TO_DATE(${ngEnd}, 'YY-MM-DD HH24:MI:SS')
 				, ${ngCost}, ${ngLocation}
-				, ${ngIntro}
+				, ${ngIntro}, ${ngMyIntro}
 				, TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS'));
 		END
 		}
 	</insert>
-	
+	<!-- 
 	<select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT GR_NAME
 		FROM NOW_GROUP
@@ -54,7 +54,7 @@
 		FROM NOW_GROUP
 		WHERE GR_NAME LIKE %#{검색값}%
 	</select>
-	
+	 -->
 	
 	
 
