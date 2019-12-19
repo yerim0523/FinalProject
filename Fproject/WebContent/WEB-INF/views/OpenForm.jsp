@@ -51,29 +51,9 @@
 <script type="text/javascript">
 
 	$(function(){
+		
 		$("#postcodify_search_button").postcodifyPopUp(); 
 		
-		
-		$("#submit").click(function()
-				{
-					var cate = document.getElementsByName("#inlineCheckbox");
-					var count = 0;
-					var result = Array();
-					for (var i = 0; i < cate.length; i++)
-					{
-						if(cate[i].checked==true)
-						{
-							alert(cate[i].value);
-							result[count] = cate[i].value;
-							count++;
-						}
-					} // end for
-					
-					$("#grCate1").val(result[0]);
-					$("#grCate2").val(result[1]);
-					alert($("#grCate1").val());
-				}); // end submit.click
-				
 	}); // end function()
 	
 	function sample4_execDaumPostcode() {
@@ -130,9 +110,33 @@
             }
         }).open();
     }
-				
 	
-
+	function submitCheck()
+	{
+		//alert(document.getElementById("ngStart1").value);
+		var form = document.getElementById("groupForm");
+		var check = document.getElementsByName("inlineCheckbox");
+		
+		var count = 0;
+		
+		var cate[] = Array();
+		
+		for (var i = 0; i < check.length; i++)
+		{
+			if(check[i].checked==true)
+			{
+				alert(check[i].value);
+				cate[count] = check[i].value;
+				count++;
+			}
+		}
+		
+		document.getElementById("grCate1").value = cate[0]; 
+		document.getElementById("grCate2").value = cate[1]; 
+		
+		form.submit();
+	}
+	
 </script>
 
 </head>
@@ -147,12 +151,13 @@
 	<section class="course_details_area section_padding" style="padding-bottom: 0;">
 	<div class="container">
 	
-	<form action="groupInsert.action" method="post" class="form-horizontal">
+	<form action="groupInsert.action" method="post" id="groupForm" class="form-horizontal">
 		<div align="right">
 			* 은 필수항목입니다.
 		</div>
 		<div class="form-inline">
 			<label for="grName" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 모임명</label>
+				<!-- <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요." value="ㅁㄴㅇㄹㄴㄹㄴㅁ"> -->
 				<input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요.">
 		</div>
 		<br>
@@ -161,6 +166,7 @@
 		    <label for="ngMax" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p> 모집인원수</label>
     		<input type="text" class="form-control" name="ngMax" id="ngMax" style="width: 250px;" placeholder="모집인원수를 입력해주세요.">
     		<label for="ngMin" class="col-sm-2 control-label"  style="font-weight: bold;"><p style="color:red;">*</p>최소인원수</label>
+    		<!-- <input type="text" class="form-control" name="ngMin" id="ngMin" style="width: 250px;" placeholder="최소인원수를 입력해주세요." value="9"> -->
     		<input type="text" class="form-control" name="ngMin" id="ngMin" style="width: 250px;" placeholder="최소인원수를 입력해주세요.">
 		</div>
 		
@@ -168,6 +174,7 @@
 		
 		<div class="form-inline">
 			<label for="ngCost" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 예상활동비</label>
+				<!-- <input type="text" class="form-control" name="ngCost" id="ngCost" style="width: 700px;" placeholder="예상 활동 금액을 입력해주세요.(한회차)" value="24242"> -->
 				<input type="text" class="form-control" name="ngCost" id="ngCost" style="width: 700px;" placeholder="예상 활동 금액을 입력해주세요.(한회차)">
 		</div>
 		
@@ -189,6 +196,7 @@
 				<option id="ngStart2" value="190000">19:00</option>
 				<option id="ngStart2" value="200000">20:00</option>
 			</select>
+			<!-- <input type="hidden" name="ngStart" id="ngStart" value="20191230100000"> -->
 			<input type="hidden" name="ngStart" id="ngStart">
 		</div>
 		
@@ -212,6 +220,7 @@
 				<option id="ngEnd2" value="210000">21:00</option>
 				<option id="ngEnd2" value="220000">22:00</option>
 			</select>
+			<!-- <input type="hidden" name="ngEnd" id="ngEnd" value="20191230120000"> -->
 			<input type="hidden" name="ngEnd" id="ngEnd">
 		</div>
 		
@@ -236,31 +245,40 @@
 			<input type="text" id="sample4_detailAddress" name="ngLocation2" class="form-control" placeholder="상세주소" style="width: 700px;">
 		</div>
 		
+		<!-- <input type="hidden" name="ngLocation" value="인천 서구 원적로"> -->
+		<input type="hidden" name="ngLocation">
+		
 		<br>
 		
 		<div class="form-inline">
-			<label for="inlineCheckbox1" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 카테고리</label>
+			<label for="inlineCheckbox" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 카테고리</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox" value="option1">공연&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" name="inlineCheckbox" value="1">공연&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox" value="option1">전시&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" name="inlineCheckbox" value="2">전시&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox" value="option1">연극&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" name="inlineCheckbox" value="3">연극&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox" value="option1">식당&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="checkbox" name="inlineCheckbox" value="4">식당&nbsp;&nbsp;&nbsp;&nbsp;</label>
 			<label class="checkbox-inline">
-			<input type="checkbox" id="inlineCheckbox" value="option1">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
+			<input type="checkbox" name="inlineCheckbox" value="5">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
 		</div>
 		
 		<input type="hidden" id="grCate1" name="grCate1">
 		<input type="hidden" id="grCate2" name="grCate2">
+		<input type="hidden" id="memId" name="memId">
+		
+<!-- 		<input type="hidden" id="grCate1" name="grCate1" value="1"> -->
+<!-- 		<input type="hidden" id="grCate2" name="grCate2" value="2"> -->
+<!-- 		<input type="hidden" id="memId" name="memId" value="aa123@naver.com"> -->
 		
 		
 		<br>
 		
 		<div class="form-inline">
 			<label for="ngPic" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 대표이미지</label>
-				<input type="file" name="ngPic" class="form-control" id="titleImg">
+				<!-- <input type="file" name="ngPic" class="form-control" id="titleImg" value="title.img"> -->
+				<input type="file" name="ngPic" class="form-control" id="ngPic">
 		</div>
 		
 		<br>
@@ -268,15 +286,15 @@
 		<div class="form-inline">
 			<label for="ngIntro" class="col-sm-2 control-label" style="font-weight: bold;">소개글</label>
 			<textarea class="form-control col-sm-5" name="ngIntro" rows="5"
-						placeholder="모임에 대한 소개글입니다!" id="groupInfo"></textarea>
+						placeholder="모임에 대한 소개글입니다!" id="ngIntro">ㅁㄴㅇㄹ</textarea>
 		</div>
 		
 		<br>
 
 		<div class="form-inline">
-			<label for="hostInfo" class="col-sm-2 control-label" style="font-weight: bold;">본인소개</label>
-			<textarea class="form-control col-sm-5" rows="5"
-						placeholder="호스트님의 소개를 입력해주세요!" id="hostInfo"></textarea>
+			<label for="ngMyInfo" class="col-sm-2 control-label" style="font-weight: bold;">본인소개</label>
+			<textarea class="form-control col-sm-5" name="ngMyInfo" rows="5"
+						placeholder="호스트님의 소개를 입력해주세요!" id="ngMyInfo">ㅁㄴㅇㄹ</textarea>
 		</div>
 		
 		<br>
@@ -284,7 +302,7 @@
 		<div class="form-inline">
 			<label for="grPre" class="col-sm-2 control-label" style="font-weight: bold;">준비물</label>
 			<textarea class="form-control col-sm-5" rows="5" name="grPre"
-						placeholder="모임에 대한 준비물입니다!" id="prev"></textarea>
+						placeholder="모임에 대한 준비물입니다!" id="grPre">ㄴㅇㄹ</textarea>
 		</div>
 		
 		<br>
@@ -292,13 +310,13 @@
 		<div class="form-inline">
 			<label for="grNotice" class="col-sm-2 control-label" style="font-weight: bold;">유의사항</label>
 			<textarea class="form-control col-sm-5" rows="5" name="grNotice"
-						placeholder="모임에 대한 유의사항입니다!" id="please"></textarea>
+						placeholder="모임에 대한 유의사항입니다!" id="grNotice">ㅁㄴㅇㄹ</textarea>
 		</div>
 		
 		<br>
 
 		<div class="container" align="center">
-			<button type="submit" id="submit" class="btn btn-info">개설</button>
+			<button type="submit" class="btn btn-info" onclick="submitCheck()">개설</button>
 			<button type="reset" class="btn btn-info">취소</button>
 		</div>
 		
