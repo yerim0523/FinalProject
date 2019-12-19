@@ -8,10 +8,11 @@ public interface IMainDAO
 {
 	public ArrayList<GroupDTO> HotGroupList();
 	
-	/*
-	 * public ArrayList<GroupDTO> NewGroupList(); public ArrayList<GroupDTO>
-	 * HotHostList(); public ArrayList<GroupDTO> EndGroupList(); public
-	 * ArrayList<GroupDTO> SugGroupList();
-	 */
+	
+	 public ArrayList<GroupDTO> NewGroupList(); 
+	 public ArrayList<GroupDTO> HotHostList(); 
+	 public ArrayList<GroupDTO> ClosingGroupList(); 
+	 public ArrayList<GroupDTO> RecommendGroupList();
+	
 	
 }

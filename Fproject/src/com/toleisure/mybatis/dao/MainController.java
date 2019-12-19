@@ -1,5 +1,7 @@
 package com.toleisure.mybatis.dao;
 
+import java.sql.PreparedStatement;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,11 @@ public class MainController
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 		
 		model.addAttribute("HotGroupList", dao.HotGroupList());		
+		model.addAttribute("NewGroupList", dao.NewGroupList());	
+		model.addAttribute("HotHostList", dao.HotHostList());	
+		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());	
+		model.addAttribute("RecommendGroupList", dao.RecommendGroupList());
+		
 		
 		return view;
 	}

@@ -99,9 +99,11 @@
 		<c:forEach var="HotGroup" items="${HotGroupList }">
 		    <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${HotGroup.ngPic}" alt="썸네일" style="width: 100%;"> 
-		    ${HotGroup.grName } <br> ㄴㄴ
+		    <img src="${HotGroup.ngPic}" alt="썸네일" style="width: 100%;">
 			</a>
+			${HotGroup.grName } <br>
+			${HotGroup.memId } <br>
+			${HotGroup.ngMax } <br>
 			</div>
 		 </c:forEach>
 	</div>
@@ -109,25 +111,27 @@
 	<button type="button" class="btn btn-outline-primary btn-sm" style="float: right;">더보기</button>
 	<br><br>
 	<div class="row" align="center">
-		<%-- <c:forEach var="NewGroup" items="${NewGroupList }">
+		 <c:forEach var="NewGroup" items="${NewGroupList }">
 		    <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${NewGroup.NG_PIC}" alt="썸네일" style="width: 100%;"> 
+		    <img src="${NewGroup.ngPic}" alt="썸네일" style="width: 100%;"> 
+		    ${NewGroup.grName }
 			</a>
 			</div>
-		 </c:forEach> --%>
+		 </c:forEach>
 	</div>
 	<br> <br> <br> <br> <a href="">인기호스트</a> <br>
 	<button type="button" class="btn btn-outline-primary btn-sm" style="float: right;">더보기</button>
 	<br><br>
 	<div class="row" align="center">
-		<%-- <c:forEach var="HotHost" items="${HotHostList }">
+		<c:forEach var="HotHost" items="${HotHostList }">
 		    <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${HotHost.NG_PIC}" alt="썸네일" style="width: 100%;"> 
+		    <img src="${HotHost.ngPic}" alt="썸네일" style="width: 100%;"> 
+		    ${HotHost.grName }
 			</a>
 			</div>
-		 </c:forEach> --%>
+		 </c:forEach> 
 	</div>
 					
 	
@@ -137,25 +141,27 @@
 	<button type="button" class="btn btn-outline-primary btn-sm" style="float: right;">더보기</button>
 	<br><br>
 	<div class="row" align="center">
-		<%-- <c:forEach var="EndGroup" items="${EndGroupList }">
+		 <c:forEach var="ClosingGroup" items="${ClosingGroupList }">
 		    <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${EndGroup.NG_PIC}" alt="썸네일" style="width: 100%;"> 
+		    <img src="${ClosingGroup.ngPic}" alt="썸네일" style="width: 100%;"> 
+		    ${ClosingGroup.grName }
 			</a>
 			</div>
-		 </c:forEach> --%>
+		 </c:forEach> 
 	</div>
 	<br> <br> <br> <br> <a href="">추천모임</a> <br>
 	<button type="button" class="btn btn-outline-primary btn-sm" style="float: right;">더보기</button>
 	<br><br>
 	<div class="row" align="center">
-<%-- 		<c:forEach var="Suggest" items="${SugGroupList }">
+  		<c:forEach var="RecommendGroup" items="${RecommendGroupList }">
 		    <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${Suggest.NG_PIC}" alt="썸네일" style="width: 100%;"> 
+		    <img src="${RecommendGroup.ngPic}" alt="썸네일" style="width: 100%;"> 
+		    ${RecommendGroup.grName }
 			</a>
 			</div>
-		 </c:forEach> --%>
+		 </c:forEach>
 	</div>
 
 </div>

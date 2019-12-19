@@ -19,7 +19,7 @@ public class GroupDTO
 	}
 	public void setMemId(String memId)
 	{
-		this.memId = memId;ㅇ
+		this.memId = memId;
 	}
 	public String getGrName()
 	{
