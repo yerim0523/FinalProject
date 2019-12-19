@@ -1,6 +1,6 @@
 package com.toleisure.mybatis.dto;
 
-public class GroupingDTO
+public class GroupDTO
 {
 	private String memId, grName, grPre, grNotice;
 	private int grCode, cateCode1, cateCode2;

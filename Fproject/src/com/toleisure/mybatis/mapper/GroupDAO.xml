@@ -1,1 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toleisure.mybatis.dao.IGroupDAO">
+	
+	<insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
+		INSERT INTO TBL_GROUP(GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
+		VALUES(GROUPINGSEQ.NEXTVAL, ${memId}, ${grName}, '가벼운 마음', ' 가급적 대중교통을 이용해주세요.', 4)
+		
+		INSERT INTO NOW_GROUP(NG_CODE, GR_CODE, NG_PIC, NG_MAX, NG_MIN, NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_DATE)
+		VALUES(NOW_GROUPSEQ.NEXTVAL, 47, 'art.jpg', 15, 7
+     	, TO_DATE('20191228180000', 'YY-MM-DD HH24:MI:SS'), TO_DATE('20191228200000', 'YY-MM-DD HH24:MI:SS')
+     	, 35000, '서울 마포구 홍대입구역 9번출구'
+     	, '미술을 좋아하시는 분들이라면 누구든지 환영해요~!'
+     	, TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS'));
+	</insert>
+	
+</mapper>
