@@ -18,5 +18,12 @@ public interface IGroupDAO
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);
 	
-	// 
+	// 모임명으로 검색 
+	public ArrayList<GroupingDTO> searchGroup(String gName);
+	
+	// 호스트명으로 검색
+	public ArrayList<GroupingDTO> searchHost(String hName);
+	
+	// 분위기명으로 검색
+	public ArrayList<GroupingDTO> searchMood(String mName);
 }
