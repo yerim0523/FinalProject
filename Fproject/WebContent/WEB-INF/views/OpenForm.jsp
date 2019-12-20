@@ -129,7 +129,13 @@
 		//alert("함수 호출 확인");
 		var f = document.groupForm;
 		//alert(f);
+		var max,min;
+		var start1,start2,start3;
+		var end1,end2,end3;
+	
+		var today = new Date();
 		
+		today = today+7;
 		var str = f.grName.value;
 		str = str.trim();
 		if(!str)
@@ -138,25 +144,57 @@
 			f.grName.focus();
 			return;
 		}
+		if(6>str.length)
+		{
+			alert("모임명을 6자 이상 입력해주세요.");
+			f.grName.focus();
+			return;
+		}
 		
-		str = f.ngMax.value;
-		str = str.trim();
-		if(!str)
+		if(50<str.length)
+		{
+			alert("50자 이하로 입력해주세요.");
+			f.grName.focus();
+			return;
+		}
+			
+		max = f.ngMax.value;
+		max = max.trim();
+		if(!max)
 		{
 			alert("모집 인원 수를 입력하세요.");
 			f.ngMax.focus();
 			return;
 		}
+		if(4>max)
+		{
+			alert("모집 인원 수를 4명 이상으로 설정해주세요.");
+			f.ngMax.focus();
+			return;
+		}
+		if(max>20)
+		{
+			alert("모집 인원 수를 20명 이하로 설정해주세요.");
+			f.ngMax.focus();
+			return;
+		}
 		
-		str = f.ngMin.value;
-		str = str.trim();
-		if(!str)
+		min = f.ngMin.value;
+		min = min.trim();
+		if(!min)
 		{
 			alert("모집 최소 인원 수를 입력하세요.");
 			f.ngMin.focus();
 			return;
 		}
 		
+		if(min>max)
+		{
+			alert("최소 인원 수를 모집 인원보다 적게 입력해주세요.");
+			f.ngMin.focus();
+			return;
+		}
+
 		str = f.ngCost.value;
 		str = str.trim();
 		if(!str)
@@ -165,27 +203,54 @@
 			f.ngCost.focus();
 			return;
 		}
-		
-		str = f.ngStart1.value;
-		var str2 = f.ngStart2.value;
-		
-		str = str.trim();
-		str2 = str2.trim();
-		if(!str || !str2)
+		if(9999999999999999999<str)
 		{
-			alert("시작날짜와 시작시간을 입력하세요.");
+			alert("활동비를 적게 입력해주세요");
+			f.ngCost.focus();
 			return;
 		}
 		
-		str = f.ngEnd1.value;
-		str2 = f.ngEnd2.value;
+		start1 = f.ngStart1.value;
+	    start2 = f.ngStart2.value;
+	    start3 = (start1||start2);
+	    
+	    start1 = start1.trim();
+	    start2 = start2.trim();
+	   
+		if(!start1 || !start2)
+		{
+			alert("시작날짜와 시작시간을 입력하세요.");
+			f.ngStart1.focus();
+			return;
+		}
 		
-		str = str.trim();
-		str2 = str2.trim();
-		if(!str || !str2)
+		if(start3!=today)
+		{
+			alert("오늘날짜를");
+			f.ngStart1.focus();
+			return;
+		}
+		
+	    
+		end1 = f.ngEnd1.value;
+		end2 = f.ngEnd2.value;
+		end3 = (end1||end2);
+		
+		end1 = end1.trim();
+		end2 = end2.trim();
+		
+		if(!end1 || !end2)
 		{
 			alert("종료날짜와 종료시간을 입력하세요.");
+			f.ngEnd1.focus();
 			return;
+		}
+		
+		if(end3<today)
+		{
+			alert("시작날짜보다 늦게 입력해주세요");
+			f.ngEnd1.focus();
+			return;		
 		}
 		
 		str = f.ngLocation1.value;
@@ -211,7 +276,7 @@
 		}
 		
 		str = f.ngPic.value;
-		str = f.upload.value();
+		str = f.upload.value;
 		if(!str)
 		{
 			alert("대표사진을 선택해주세요.");
