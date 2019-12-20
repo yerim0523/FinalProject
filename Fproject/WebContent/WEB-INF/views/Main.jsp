@@ -48,13 +48,11 @@
     <script src="js/custom.js"></script>
 
 <style type="text/css">
-
 .img-responsive
 {
    height: 200px;
    width: 500px;
 }
-
 button.more
 {
    float: right;
@@ -135,7 +133,7 @@ button.more
    <br><br><br>
    <div class="row">
       <c:set var="n" value="0"/>
-      <c:forEach var="HostGroup" items="${HotGroupList }">
+      <c:forEach var="HotGroup" items="${HotGroupList }">
          <%-- 
          <c:if test="${n==0 }">
             <div>
@@ -173,12 +171,10 @@ button.more
             </div>
             <h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
          </div>
-         
          </div>
          </div>
       </div>
-      </c:forEach>
-   
+      </c:forEach> 
    </div>
    
    <br> <br> <br>
@@ -190,10 +186,10 @@ button.more
    </div>
    <br><br><br>
    <div class="row">
-      <c:forEach var="HostGroup" items="${HotGroupList }">
+      <c:forEach var="NewGroup" items="${NewGroupList }">
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${NewGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
          <div>
             <div class="starRev">
@@ -206,17 +202,17 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">1회차|${NewGroup.grCate1Name } ${NewGroup.grCate2Name }</span>
             <div>
                <div class="name">
-               <h5>${HotGroup.grName }</h5>
+               <h5>${NewGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
                   <i class="far fa-heart"></i>
                </div>
                <br>
             </div>
-            <h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
+            <h6 style="text-align: right; font-size: 10px;">${NewGroup.memName}</h6>
          </div>
          
          </div>
@@ -234,15 +230,15 @@ button.more
    </div>
    <br><br><br>
    <div class="row">
-      <c:forEach var="HostGroup" items="${HotGroupList }">
+      <c:forEach var="HotHost" items="${HotHostList }">
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${HotHost.memPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
          <div>
             <div class="starRev">
-               
             </div>
+            
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
                <span> 9.5</span>
@@ -250,25 +246,25 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">소개글		${HotHost.memIntro }</span>
             <div>
                <div class="name">
-               <h5>${HotGroup.grName }</h5>
+               <h5>${HotHost.memName }</h5>
                </div>
                <div class="heart" align="right">
                   <i class="far fa-heart"></i>
                </div>
                <br>
             </div>
-            <h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
+     
          </div>
          
          </div>
          </div>
       </div>
       </c:forEach>
-   
    </div>
+   
    <br> <br> <br>
    <div class="left">
    <a href="">마감임박</a> <br>
@@ -278,10 +274,10 @@ button.more
    </div>
    <br><br><br>
    <div class="row">
-      <c:forEach var="HostGroup" items="${HotGroupList }">
+      <c:forEach var="ClosingGroup" items="${ClosingGroupList }">
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${ClosingGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
          <div>
             <div class="starRev">
@@ -294,17 +290,17 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">1회차|${ClosingGroup.grCate1Name } ${ClosingGroup.grCate2Name }</span>
             <div>
                <div class="name">
-               <h5>${HotGroup.grName }</h5>
+               <h5>${ClosingGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
                   <i class="far fa-heart"></i>
                </div>
                <br>
             </div>
-            <h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
+            <h6 style="text-align: right; font-size: 10px;">${ClosingGroup.memName}</h6>
          </div>
          
          </div>
@@ -322,10 +318,10 @@ button.more
    </div>
    <br><br><br>
    <div class="row">
-      <c:forEach var="HostGroup" items="${HotGroupList }">
+      <c:forEach var="RecommendGroup" items="${RecommendGroupList }">
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${RecommendGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
          <div>
             <div class="starRev">
@@ -338,17 +334,17 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">1회차|${RecommendGroup.grCate1Name } ${RecommendGroup.grCate2Name }</span>
             <div>
                <div class="name">
-               <h5>${HotGroup.grName }</h5>
+               <h5>${RecommendGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
                   <i class="far fa-heart"></i>
                </div>
                <br>
             </div>
-            <h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
+            <h6 style="text-align: right; font-size: 10px;">${RecommendGroup.memName}</h6>
          </div>
          
          </div>
