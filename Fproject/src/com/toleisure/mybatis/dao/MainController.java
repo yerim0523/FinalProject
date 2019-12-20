@@ -33,7 +33,6 @@ public class MainController
 		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());	
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
 		
-		
 		return view;
 	}
 	

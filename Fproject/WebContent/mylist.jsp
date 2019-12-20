@@ -8,8 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>mylist.jsp</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -44,6 +43,14 @@
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    
+<style type="text/css">
+	.image
+	{
+		width: 570px;
+		height: 150px;
+	}
+</style>
 
 
 </head>
@@ -65,112 +72,53 @@
 			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
-						<h3>내 모임 리스트</h3>
+						<h3>내 모임 </h3>
 					</div>
 				</div>
 				<br>
 				
 					<div class="page-header">
-						<h5>참여중인 모임</h5>
+						<h5>참여 모임</h5>
 					</div>
 					<br>
 					<div class="row" >
 						<div class="thumbnail " style="width: 30%; padding: 30px;">
-							<img src="images/me.png" style="width: 100%;">
+							<img class="image" src="images/iu.jpg">
 							<br><br>
 							<div class="caption">
 								<span class="title">맥주모임</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
-									<button type="button" class="btn btn-info btn-sm">피드백</button>
+									<button type="button" class="btn4">피드백</button>
 								</div>
 							</div>
 						</div>
 						
 						<div class="thumbnail" style="width: 30%; padding: 30px;">
-							<img src="images/me.png" style="width: 100%;">
+							<img class="image" src="images/me.png">
 							<br><br>
 							<div class="caption">
 								<span class="title">맥주모임</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
-									<button type="button" class="btn btn-info btn-sm">피드백</button>
+									<button type="button" class="btn4">피드백</button>
 								</div>
 							</div>
 						</div>
 						
 						<div class="thumbnail" style="width: 30%; padding: 30px;">
-							<img src="images/me.png" style="width: 100%;">
+							<img class="image" src="images/me.png">
 							<br><br>
 							<div class="caption">
 								<span class="title">맥주모임</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
-									<button type="button" class="btn btn-info btn-sm">피드백</button>
+									<button type="button" class="btn4">피드백</button>
 								</div>
 							</div>
 						</div>
 					</div>
 					<br><br>
-					<div class="page-header">
-						<h5>종료예정 모임</h5>
-					</div>
-					<br>
-					<div class="row">
-						<div class="thumbnail" style="width: 30%; padding: 30px;">
-							<img src="images/me.png" style="width: 100%;">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="right">
-									
-									<button type="button" class="btn btn-success btn-sm">후기작성</button>
-								</div>
-							</div>
-						</div>
-						
-						<div class="thumbnail" style="width: 30%; padding: 30px;">
-							<img src="images/me.png" style="width: 100%;">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="right">
-									<button type="button" class="btn btn-success btn-sm">후기작성</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br><br>
-					<div class="page-header">
-						<h5>종료 모임</h5>
-					</div>
-					<br>
-					<div class="row">
-						<div class="thumbnail" style="width: 30%;">
-							<img src="images/me.png" style="width: 100%;">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								
-							</div>
-						</div>
-						
-						<div class="thumbnail" style="width: 30%;">
-							<img src="images/me.png" style="width: 100%;">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								
-							</div>
-						</div>
-					</div>
-				
-				
-				
 				
 			</div>
 		</div>

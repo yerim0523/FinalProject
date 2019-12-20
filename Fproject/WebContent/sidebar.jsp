@@ -36,6 +36,16 @@
   padding-top: 16px;
 }
 
+li{
+	list-style: none;
+}
+
+ul ul{
+	display: none;
+}
+
+ul li:hover > ul {display: block;}
+
 /* Style sidebar links */
 .sidebar a {
   padding: 6px 8px 6px 16px;
@@ -52,6 +62,23 @@
   color: #eec4c4;
 }
 
+#nav{
+	list-style: none;
+	padding: 5px 1px;
+	margin: 0;
+}
+
+#nav ul{
+margin: 0;
+padding-left: 20px;
+left: 0;
+top: 40px;
+width: 150px;
+text-align: center;
+}
+
+
+
 /* Style the main content */
 .main {
   margin-left: 160px; /* Same as the width of the sidenav */
@@ -67,18 +94,22 @@
 </style>
 
 </head>
-<body>
-
 <div class="col-md-2" align="left">
- <div class="sidebar">
-  <a href="#home"><i class="fa fa-fw fa-user"></i> 개인정보수정</a>
-  <a href="#services"><i class="fa fa-fw fa-lock"></i> 비밀번호 재설정</a>
-  <a href="#clients"><i class="fa fa-fw fa-heart"></i> 찜목록</a>
-  <a href="#contact"><i class="fa fa-fw fa-users"></i> 참여중인 모임</a>
-  <a href="#contact"><i class="fa fa-fw fa-calendar-alt"></i> 일정관리</a>
-  <a href="#contact"><i class="fa fa-fw fa-users-cog"></i> 모임관리</a>
-  <a href="#contact"><i class="fa fa-fw fa-receipt"></i> 결제내역</a>
+	<div class="sidebar">
+	<ul id="nav">
+		<li><a href="#home"><i class="fa fa-fw fa-user"></i> 개인정보수정</a></li>
+		<li><a href="#services"><i class="fa fa-fw fa-lock"></i> 비밀번호 재설정</a></li> 
+		<li><a href="#clients"><i class="fa fa-fw fa-heart"></i> 찜목록</a></li>
+		<li><a href="#contact"><i class="fa fa-fw fa-users"></i> 내 모임</a>
+			<ul>
+				<li><a href="#home"> 참여 모임</a></li>
+				<li><a href="#home"> 종료 모임</a></li>
+			</ul>
+		</li>
+		<li><a href="#contact"><i class="fa fa-fw fa-calendar-alt"></i>	일정관리</a></li>
+		<li><a href="#contact"><i class="fa fa-fw fa-users-cog"></i> 모임관리</a></li>
+		<li><a href="#contact"><i class="fa fa-fw fa-receipt"></i> 결제내역</a></li>
+	</ul>
+	</div>
 </div>
-</div>
-</body>
 </html>

@@ -12,31 +12,25 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/themify-icons.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/slick.css">
-<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+   
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
@@ -54,29 +48,12 @@
     <script src="js/custom.js"></script>
 
 <style type="text/css">
-
-	.starR1{
-	    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
-	    background-size: auto 100%;
-	    width: 15px;
-	    height: 30px;
-	    float:left;
-	    text-indent: -9999px;
-	    cursor: pointer;
-	}
-	.starR2{
-	    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
-	    background-size: auto 100%;
-	    width: 15px;
-	    height: 30px;
-	    float:left;
-	    text-indent: -9999px;
-	    cursor: pointer;
-	}
-	.starR1.on{background-position:0 0;}
-	.starR2.on{background-position:-15px 0;}
 	
-	img { max-width: auto; height: auto; }
+	.img-responsive
+	{
+		height: 200px;
+		width: 500px;
+	}
 	
 	.left
 	{
@@ -135,6 +112,7 @@
 		</div>
 	</div>
 	<div align="right">
+
 	    <div class="btn-group" role="group">
 		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		      정렬 기준
@@ -149,26 +127,18 @@
   	<br><br><br>
   	
 	<div class="row">
-		<c:forEach : var="AllGroup" items="${AllGroupList}">
+		<c:forEach var="AllGroup" items="${AllGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
 				<img src="${AllGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
 				<div class="starRev">
-					<span class="starR1 on">별1_왼쪽</span>
-					<span class="starR2">별1_오른쪽</span>
-					<span class="starR1">별2_왼쪽</span>
-					<span class="starR2">별2_오른쪽</span>
-					<span class="starR1">별3_왼쪽</span>
-					<span class="starR2">별3_오른쪽</span>
-					<span class="starR1">별4_왼쪽</span>
-					<span class="starR2">별4_오른쪽</span>
-					<span class="starR1">별5_왼쪽</span>
-					<span class="starR2">별5_오른쪽</span>
+					
 				</div>
 				<div>
-					<span style="margin: 20px; margin-top: 40px;">평점 : 9.5</span>
+					<img alt="" src="images/star.png" style="width: 20px;">
+					<span> 9.5</span>
 				</div>
 			</div>
 			<br>
@@ -190,6 +160,166 @@
 			</div>
 		</div>
 		</c:forEach>	
+		
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
+			<div class="caption">
+			<div>
+				<div class="starRev">
+					
+				</div>
+				<div>
+					<img alt="" src="images/star.png" style="width: 20px;">
+					<span> 9.5</span>
+				</div>
+			</div>
+			<br>
+			<div>
+				<span style="font-size: 12px;">1회차|맛집</span>
+				<div>
+					<div class="name">
+					<h5>맥주모임</h5>
+					</div>
+					<div class="heart" align="right">
+						<i class="far fa-heart"></i>
+					</div>
+					<br>
+				</div>
+				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
+			</div>
+			
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/gd.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
+			<div class="caption">
+			<div>
+				<div class="starRev">
+					
+				</div>
+				<div>
+					<img alt="" src="images/star.png" style="width: 20px;">
+					<span> 9.5</span>
+				</div>
+			</div>
+			<br>
+			<div>
+				<span style="font-size: 12px;">1회차|맛집</span>
+				<div>
+					<div class="name">
+					<h5>맥주모임</h5>
+					</div>
+					<div class="heart" align="right">
+						<i class="far fa-heart"></i>
+					</div>
+					<br>
+				</div>
+				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
+			</div>
+			
+			</div>
+			</div>
+		</div>
+	
+	<br>
+	<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
+			<div class="caption">
+			<div>
+				<div class="starRev">
+					
+				</div>
+				<div>
+					<img alt="" src="images/star.png" style="width: 20px;">
+					<span> 9.5</span>
+				</div>
+			</div>
+			<br>
+			<div>
+				<span style="font-size: 12px;">1회차|맛집</span>
+				<div>
+					<div class="name">
+					<h5>맥주모임</h5>
+					</div>
+					<div class="heart" align="right">
+						<i class="far fa-heart"></i>
+					</div>
+					<br>
+				</div>
+				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
+			</div>
+			
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
+			<div class="caption">
+			<div>
+				<div class="starRev">
+					
+				</div>
+				<div>
+					<img alt="" src="images/star.png" style="width: 20px;">
+					<span> 9.5</span>
+				</div>
+			</div>
+			<br>
+			<div>
+				<span style="font-size: 12px;">1회차|맛집</span>
+				<div>
+					<div class="name">
+					<h5>맥주모임</h5>
+					</div>
+					<div class="heart" align="right">
+						<i class="far fa-heart"></i>
+					</div>
+					<br>
+				</div>
+				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
+			</div>
+			
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
+			<div class="caption">
+			<div>
+				<div class="starRev">
+					
+				</div>
+				<div>
+					<img alt="" src="images/star.png" style="width: 20px;">
+					<span> 9.5</span>
+				</div>
+			</div>
+			<br>
+			<div>
+				<span style="font-size: 12px;">1회차|맛집</span>
+				<div>
+					<div class="name">
+					<h5>맥주모임</h5>
+					</div>
+					<div class="heart" align="right">
+						<i class="far fa-heart"></i>
+					</div>
+					<br>
+				</div>
+				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
+			</div>
+			
+			</div>
+			</div>
+		</div>
+  	
+>>>>>>> branch 'master' of https://github.com/lee0528kr/FinalProject.git
 </div>
 </div>
 

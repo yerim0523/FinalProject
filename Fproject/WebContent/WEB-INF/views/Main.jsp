@@ -133,7 +133,7 @@ button.more
    <br><br><br>
    <div class="row">
       <c:set var="n" value="0"/>
-      <c:forEach var="HotGroup" items="${HotGroupList }">
+      <c:forEach var="HotGroup" items="${HotGroupList}">
          <%-- 
          <c:if test="${n==0 }">
             <div>
