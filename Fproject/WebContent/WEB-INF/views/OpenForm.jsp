@@ -54,6 +54,15 @@
 		
 		$("#postcodify_search_button").postcodifyPopUp(); 
 		
+		$("#submit").click(function()
+		{
+			alert("확인");
+			
+			
+			
+			return;
+		});
+		
 	}); // end function()
 	
 	function sample4_execDaumPostcode() {
@@ -114,12 +123,13 @@
 	function submitCheck()
 	{
 		//alert(document.getElementById("ngStart1").value);
+		alert("확인");
 		var form = document.getElementById("groupForm");
 		var check = document.getElementsByName("inlineCheckbox");
 		
 		var count = 0;
 		
-		var cate[] = Array();
+		var cate = Array();
 		
 		for (var i = 0; i < check.length; i++)
 		{
@@ -131,8 +141,9 @@
 			}
 		}
 		
-		document.getElementById("grCate1").value = cate[0]; 
-		document.getElementById("grCate2").value = cate[1]; 
+		$("#grCate1").val(cate[0]);
+		$("#grCate2").val(cate[1]);
+		
 		
 		form.submit();
 	}
@@ -316,7 +327,7 @@
 		<br>
 
 		<div class="container" align="center">
-			<button type="submit" class="btn btn-info" onclick="submitCheck()">개설</button>
+			<button type="submit" class="btn btn-info submit" id="submit">개설</button>
 			<button type="reset" class="btn btn-info">취소</button>
 		</div>
 		
