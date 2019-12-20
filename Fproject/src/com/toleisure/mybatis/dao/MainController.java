@@ -1,7 +1,5 @@
 package com.toleisure.mybatis.dao;
 
-import java.sql.PreparedStatement;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

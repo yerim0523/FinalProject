@@ -87,12 +87,12 @@
 <body>
 
 <div>
-	<c:import url="bar.jsp"></c:import>
+	<jsp:include page="bar.jsp"></jsp:include>
 </div>
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div>
-	<c:import url="<%=cp%>/MeetingBar.jsp"></c:import>
+	<jsp:include page="MeetingBar.jsp"></jsp:include>
 </div>
 </section>
 
@@ -323,7 +323,7 @@
 </div>
 
 <div>
-   <c:import url="footer.jsp"></c:import>
+	<jsp:include page="footer.jsp"></jsp:include>
 </div>
 
 </body>

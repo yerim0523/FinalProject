@@ -71,7 +71,7 @@
 			<div class="row align-items-center">
 				<div class="col-lg-12">
 					<nav class="navbar navbar-expand-lg navbar-light navigationBar">
-						<a class="navbar-brand" href="main.jsp"> <img
+						<a class="navbar-brand" href="main.action"> <img
 							src="images/reallogo.jpg" alt="logo" class="logoBox">
 						</a>
 						<button class="navbar-toggler" type="button"
