@@ -160,6 +160,7 @@
 			</div>
 		 </c:forEach>
 	</div>
+	"${RecommendGroup.ngPic}"
 	<br> <br> <br> <br> <a href="">추천모임</a> <br>
 	<button type="button" class="btn btn-outline-primary btn-sm" style="float: right;">더보기</button>
 	<br><br>
@@ -167,7 +168,7 @@
   		<c:forEach var="RecommendGroup" items="${RecommendGroupList }">
 		     <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${RecommendGroup.ngPic}" alt="썸네일" style="width: 100%;">
+		    <img src="images/about.png" alt="썸네일" style="width: 100%;">
 			</a>
 			${RecommendGroup.grName } <br>
 			${RecommendGroup.memName} <br>

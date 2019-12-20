@@ -9,9 +9,6 @@ public class GroupDTO
 	private int ngCode, ngMax, ngMin, ngCost;
 	private String memPic,memIntro,ngPic, ngStart, ngEnd, ngLocation, ngIntro, ngMyIntro;
 
-	
-
-
 	private String ngStart1, ngStart2, ngEnd1, ngEnd2;
 
 	private int grCount, grStarCount;
