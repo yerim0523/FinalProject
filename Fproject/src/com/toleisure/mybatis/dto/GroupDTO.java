@@ -7,10 +7,9 @@ public class GroupDTO
 	private int grCode, grCate1, grCate2;
 
 	private int ngCode, ngMax, ngMin, ngCost;
-	private String memPic,memIntro,ngPic, ngStart, ngEnd, ngLocation, ngIntro, ngMyIntro;
+	private String memPic,memIntro,ngPic, ngIntro, ngMyIntro;
 
-	
-
+	private String ngLocation1, ngLocation2;
 
 	private String ngStart1, ngStart2, ngEnd1, ngEnd2;
 
@@ -160,36 +159,6 @@ public class GroupDTO
 		this.ngPic = ngPic;
 	}
 
-	public String getNgStart()
-	{
-		return ngStart;
-	}
-
-	public void setNgStart(String ngStart)
-	{
-		this.ngStart = ngStart;
-	}
-
-	public String getNgEnd()
-	{
-		return ngEnd;
-	}
-
-	public void setNgEnd(String ngEnd)
-	{
-		this.ngEnd = ngEnd;
-	}
-
-	public String getNgLocation()
-	{
-		return ngLocation;
-	}
-
-	public void setNgLocation(String ngLocation)
-	{
-		this.ngLocation = ngLocation;
-	}
-
 	public String getNgIntro()
 	{
 		return ngIntro;
@@ -311,5 +280,27 @@ public class GroupDTO
 	{
 		this.memIntro = memIntro;
 	}
+
+	public String getNgLocation1()
+	{
+		return ngLocation1;
+	}
+
+	public void setNgLocation1(String ngLocation1)
+	{
+		this.ngLocation1 = ngLocation1;
+	}
+
+	public String getNgLocation2()
+	{
+		return ngLocation2;
+	}
+
+	public void setNgLocation2(String ngLocation2)
+	{
+		this.ngLocation2 = ngLocation2;
+	}
+	
+	
 
 }
