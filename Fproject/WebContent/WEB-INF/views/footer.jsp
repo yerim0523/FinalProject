@@ -17,15 +17,84 @@
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/Footer.css">
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
+<style type="text/css">
 
+footer {
+    background-color: #f9f9f9;
+    padding: 58px 0 71px;
+    height: 299px;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#containerDiv {
+    width: 656px;
+    height: 213px;
+    position: relative;
+}
+
+footer .sc-bold, footer .sc-normal {
+    font-family: Nanum Square,sans-serif;
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: -.3px;
+    text-align: left;
+    color: #707070;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+footer .sc-bold {
+    font-weight: 700;
+}
+
+#secondContentDiv {
+    width: 656px;
+    height: 88px;
+    position: absolute;
+}
+
+#firstCol {
+    display: inline;
+    float: left;
+    width: 40%;
+    height: 100%;
+}
+
+#secondCol {
+    display: inline;
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+
+#lastContentDiv {
+    width: 656px;
+    height: 42px;
+    position: absolute;
+    bottom: 0;
+}
+
+#lastContentDiv p {
+    text-align: center;
+}
+
+
+</style>
 
 </head>
 <body>
-
+	<br><br>
 	<footer style="bottom: 0px; left: 0px; right: 0px;">
 		<div class="sc-container" id="container">
 			<div id="containerDiv">
@@ -66,7 +135,7 @@
 				<div id="lastContentDiv">
 					<!-- <p class="sc-normal">상품에 대하여 배송 교환 반품 민원 AS등 은 2교시에서 처리하여 모든
 						책임은 2교시에 있습니다.</p> -->
-					<p class="sc-normal">Copyright © 2019 LEE All rights
+					<p class="sc-normal">Copyright © 2019 2gyosi All rights
 						reserved</p>
 				</div>
 			</div>

@@ -74,7 +74,7 @@
 						<h5>참여중인 모임</h5>
 					</div>
 					<br>
-					<div class="row" style="padding-left: 100px;">
+					<div class="row" >
 						<div class="thumbnail " style="width: 30%; padding: 30px;">
 							<img src="images/me.png" style="width: 100%;">
 							<br><br>
@@ -82,7 +82,6 @@
 								<span class="title">맥주모임</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
-									<button type="button" class="btn btn-primary btn-sm">결제</button>
 									<button type="button" class="btn btn-info btn-sm">피드백</button>
 								</div>
 							</div>
@@ -95,7 +94,6 @@
 								<span class="title">맥주모임</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
-									<button type="button" class="btn btn-primary btn-sm">결제</button>
 									<button type="button" class="btn btn-info btn-sm">피드백</button>
 								</div>
 							</div>
@@ -108,7 +106,6 @@
 								<span class="title">맥주모임</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
-									<button type="button" class="btn btn-primary btn-sm">결제</button>
 									<button type="button" class="btn btn-info btn-sm">피드백</button>
 								</div>
 							</div>

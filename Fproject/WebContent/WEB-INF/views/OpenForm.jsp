@@ -327,7 +327,7 @@
 		<br>
 
 		<div class="container" align="center">
-			<button type="submit" class="btn btn-info submit" id="submit">개설</button>
+			<button type="button" class="btn btn-info submit" id="submit">개설</button>
 			<button type="reset" class="btn btn-info">취소</button>
 		</div>
 		

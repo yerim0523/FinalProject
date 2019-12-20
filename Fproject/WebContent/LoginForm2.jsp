@@ -43,9 +43,11 @@
 								</div>
 								<div>
 									<a class="LoginPage__ResetPasswordButton-co2bls-4 cgoDOa"
-										href="/reset-password">비밀번호를 잊으셨나요?</a><a
+										href="memberfindform.action">아이디를 잊으셨나요?</a><a
 										class="LoginPage__SignUpButton-co2bls-3 keyGVD"
 										href="/register?redirect=%2Flogin">회원가입하기</a>
+									<a class="LoginPage__ResetPasswordButton-co2bls-4 cgoDOa"
+										href="/reset-password">비밀번호를 잊으셨나요?</a>
 								</div>
 								<button
 									class="sc-jTzLTM flMyeK sc-ckVGcZ fhPrqq LoginPage__LoginButton-co2bls-2 eLfQiK"
