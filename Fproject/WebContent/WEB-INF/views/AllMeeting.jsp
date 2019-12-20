@@ -92,7 +92,7 @@
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div>
-	<c:import url="MeetingBar.jsp"></c:import>
+	<c:import url="<%=cp%>/MeetingBar.jsp"></c:import>
 </div>
 </section>
 
@@ -319,7 +319,6 @@
 			</div>
 		</div>
   	
->>>>>>> branch 'master' of https://github.com/lee0528kr/FinalProject.git
 </div>
 </div>
 
