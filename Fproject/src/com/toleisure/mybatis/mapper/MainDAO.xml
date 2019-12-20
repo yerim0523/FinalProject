@@ -2,7 +2,13 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IMainDAO">
 
-
+	
+	<select id="AllGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM NEWEST_ALLVIEW
+	</select>
+	
+	
 	<select id ="HotGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM HOT_GROUP_VIEW
@@ -46,6 +52,9 @@
 		)E
 		WHERE 3>=ROWNUM
 	</select>
+	
+	
+	
 	
 	<select id ="AvgStar" resultType="com.toleisure.mybatis.dto.GroupDTO">	
 	SELECT AVG(R.REVIEW_STAR) AS REVIEW_STAR_AVG

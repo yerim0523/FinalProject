@@ -135,16 +135,6 @@
 		</div>
 	</div>
 	<div align="right">
-		<div class="btn-group" role="group">
-		    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      지역 선택
-		    </button>
-		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-		      <a class="dropdown-item" href="#">서울</a>
-		      <a class="dropdown-item" href="#">경기</a>
-		      <a class="dropdown-item" href="#">인천</a>
-		    </div>
-	    </div>
 	    <div class="btn-group" role="group">
 		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		      정렬 기준
@@ -159,6 +149,7 @@
   	<br><br><br>
   	
 	<div class="row">
+		<c:forEach : var="AllGroup" items="${AllGroupList }">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
 				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
@@ -182,7 +173,7 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
+				<span style="font-size: 12px;">1회차|{}</span>
 				<div>
 					<div class="name">
 					<h5>맥주모임</h5>
@@ -198,204 +189,7 @@
 			</div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					<span class="starR1 on">별1_왼쪽</span>
-					<span class="starR2">별1_오른쪽</span>
-					<span class="starR1">별2_왼쪽</span>
-					<span class="starR2">별2_오른쪽</span>
-					<span class="starR1">별3_왼쪽</span>
-					<span class="starR2">별3_오른쪽</span>
-					<span class="starR1">별4_왼쪽</span>
-					<span class="starR2">별4_오른쪽</span>
-					<span class="starR1">별5_왼쪽</span>
-					<span class="starR2">별5_오른쪽</span>
-				</div>
-				<div>
-					<span style="margin: 20px; margin-top: 40px;">평점 : 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					<span class="starR1 on">별1_왼쪽</span>
-					<span class="starR2">별1_오른쪽</span>
-					<span class="starR1">별2_왼쪽</span>
-					<span class="starR2">별2_오른쪽</span>
-					<span class="starR1">별3_왼쪽</span>
-					<span class="starR2">별3_오른쪽</span>
-					<span class="starR1">별4_왼쪽</span>
-					<span class="starR2">별4_오른쪽</span>
-					<span class="starR1">별5_왼쪽</span>
-					<span class="starR2">별5_오른쪽</span>
-				</div>
-				<div>
-					<span style="margin: 20px; margin-top: 40px;">평점 : 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-	
-	<br>
-	<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					<span class="starR1 on">별1_왼쪽</span>
-					<span class="starR2">별1_오른쪽</span>
-					<span class="starR1">별2_왼쪽</span>
-					<span class="starR2">별2_오른쪽</span>
-					<span class="starR1">별3_왼쪽</span>
-					<span class="starR2">별3_오른쪽</span>
-					<span class="starR1">별4_왼쪽</span>
-					<span class="starR2">별4_오른쪽</span>
-					<span class="starR1">별5_왼쪽</span>
-					<span class="starR2">별5_오른쪽</span>
-				</div>
-				<div>
-					<span style="margin: 20px; margin-top: 40px;">평점 : 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					<span class="starR1 on">별1_왼쪽</span>
-					<span class="starR2">별1_오른쪽</span>
-					<span class="starR1">별2_왼쪽</span>
-					<span class="starR2">별2_오른쪽</span>
-					<span class="starR1">별3_왼쪽</span>
-					<span class="starR2">별3_오른쪽</span>
-					<span class="starR1">별4_왼쪽</span>
-					<span class="starR2">별4_오른쪽</span>
-					<span class="starR1">별5_왼쪽</span>
-					<span class="starR2">별5_오른쪽</span>
-				</div>
-				<div>
-					<span style="margin: 20px; margin-top: 40px;">평점 : 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					<span class="starR1 on">별1_왼쪽</span>
-					<span class="starR2">별1_오른쪽</span>
-					<span class="starR1">별2_왼쪽</span>
-					<span class="starR2">별2_오른쪽</span>
-					<span class="starR1">별3_왼쪽</span>
-					<span class="starR2">별3_오른쪽</span>
-					<span class="starR1">별4_왼쪽</span>
-					<span class="starR2">별4_오른쪽</span>
-					<span class="starR1">별5_왼쪽</span>
-					<span class="starR2">별5_오른쪽</span>
-				</div>
-				<div>
-					<span style="margin: 20px; margin-top: 40px;">평점 : 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-  	
+		</c:forEach>	
 </div>
 </div>
 

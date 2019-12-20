@@ -43,13 +43,8 @@ public class MainController
 		String view = "WEB-INF/views/AllMeeting.jsp";
 		
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-		
-		GroupDTO dto = new GroupDTO();
-		
-		model.addAttribute("HotGroupList", dao.HotGroupList());		
-		model.addAttribute("NewGroupList", dao.NewGroupList());	
-		model.addAttribute("HotHostList", dao.HotHostList());	
-		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());	
+	
+		model.addAttribute("AllGroupList", dao.AllGroupList());		
 		
 		
 		return view;
