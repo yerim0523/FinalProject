@@ -24,14 +24,29 @@
 		FROM CLOSING_VIEW
 	</select>
 	
-	<select id ="RecommendGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM CLOSING_VIEW
+	<select id ="RecommendGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">	
+		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CLOSING_VIEW -->
 		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX AS ngMax
 		FROM RECOMMEND_VIEW
-		WHERE MEM_ID = #{mem_id}
-	 -->
+		WHERE MEM_ID = 'lee0528kr@naver.com' -->
+		SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name
+		FROM
+		(
+		SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name
+		FROM MEMBER M JOIN TBL_GROUP G
+		     ON M.CATE_CODE1=G.CATE_CODE1 OR  M.CATE_CODE1=G.CATE_CODE2 OR  M.CATE_CODE2=G.CATE_CODE1 OR  M.CATE_CODE2=G.CATE_CODE2
+		     JOIN CATEGORY C1 
+		     ON C1.CATE_CODE=G.CATE_CODE1
+		     JOIN CATEGORY C2
+		     ON C2.CATE_CODE=G.CATE_CODE2
+		     JOIN NOW_GROUP NG
+		     ON NG.GR_CODE = G.GR_CODE
+		WHERE M.MEM_ID=#{memId}
+		)E
+		WHERE 3>=ROWNUM
+		
+
 	</select>
 	
 </mapper>

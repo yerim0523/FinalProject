@@ -136,6 +136,7 @@ clear:left;
 	<div class="dropmenu">
 		<ul class="dmenu">
 			<li><a href="AllMeeting.jsp">전체</a></li>
+			<li><a href="redirect:allMeeting.action">전체</a></li>
 			<li><a href="Culture.jsp" id="current">문화생활</a>
 				<ul>
 					<li><a href="#">공연</a></li>
