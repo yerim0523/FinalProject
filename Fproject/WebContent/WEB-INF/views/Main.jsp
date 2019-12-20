@@ -193,7 +193,7 @@ button.more
          <div class="caption">
          <div>
             <div class="starRev">
-               
+                
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
