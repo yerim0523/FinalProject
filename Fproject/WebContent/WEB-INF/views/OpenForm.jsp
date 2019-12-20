@@ -10,31 +10,29 @@
 <meta charset="UTF-8">
 <title>모임 정보 입력</title>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- css -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.min.js"></script>
-<script type="js/bootstrap.js"></script>
-<link href="css/bootstrap-select.min.css" rel="stylesheet"
-	type="text/css" />
-<script src="js/bootstrap-select.min.js"></script>
+<link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 
-<!-- jquery plugins here-->
+
 <!-- jquery -->
 <script src="js/jquery-1.12.1.min.js"></script>
-<!-- popper js -->
-<script src="js/popper.min.js"></script>
-<!-- bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+
+<!-- 주소 검색 -->
+<!-- jQuery와 Postcodify를 로딩한다 -->
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+<!-- jquery plugins here-->
 <!-- easing js -->
-<script src="js/jquery.magnific-popup.js"></script>
+<script src="<%=cp %>/js/jquery.magnific-popup.js"></script>
 <!-- swiper js -->
 <script src="js/swiper.min.js"></script>
 <!-- swiper js -->
@@ -45,108 +43,186 @@
 <script src="js/slick.min.js"></script>
 <script src="js/jquery.counterup.min.js"></script>
 <script src="js/waypoints.min.js"></script>
-<!-- custom js -->
-<script src="js/custom.js"></script>
+
+
 
 <script type="text/javascript">
 
-	$(function(){
-		
-		$("#postcodify_search_button").postcodifyPopUp(); 
-		
-		$("#submit").click(function()
-		{
-			alert("확인");
-			
-			
-			
-			return;
-		});
-		
-	}); // end function()
 	
-	function sample4_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var roadAddr = data.roadAddress; // 도로명 주소 변수
-                var extraRoadAddr = ''; // 참고 항목 변수
-
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraRoadAddr += data.bname;
-                }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraRoadAddr !== ''){
-                    extraRoadAddr = ' (' + extraRoadAddr + ')';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("sample4_roadAddress").value = roadAddr;
-                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-                
-                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                if(roadAddr !== ''){
-                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                } else {
-                    document.getElementById("sample4_extraAddress").value = '';
-                }
-
-                var guideTextBox = document.getElementById("guide");
-                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                if(data.autoRoadAddress) {
-                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                    guideTextBox.style.display = 'block';
-
-                } else if(data.autoJibunAddress) {
-                    var expJibunAddr = data.autoJibunAddress;
-                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                    guideTextBox.style.display = 'block';
-                } else {
-                    guideTextBox.innerHTML = '';
-                    guideTextBox.style.display = 'none';
-                }
-            }
-        }).open();
-    }
-	
-	function submitCheck()
+	$(document).ready(function()
 	{
-		//alert(document.getElementById("ngStart1").value);
-		alert("확인");
-		var form = document.getElementById("groupForm");
-		var check = document.getElementsByName("inlineCheckbox");
+		$("#postcodify_search_button").postcodifyPopUp();
+	});
+
+	function sample4_execDaumPostcode()
+	{
+		new daum.Postcode(
+				{
+					oncomplete : function(data)
+					{
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+						// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var roadAddr = data.roadAddress; // 도로명 주소 변수
+						var extraRoadAddr = ''; // 참고 항목 변수
+
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if (data.bname !== '' && /[동|로|가]$/g.test(data.bname))
+						{
+							extraRoadAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if (data.buildingName !== '' && data.apartment === 'Y')
+						{
+							extraRoadAddr += (extraRoadAddr !== '' ? ', '
+									+ data.buildingName : data.buildingName);
+						}
+						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if (extraRoadAddr !== '')
+						{
+							extraRoadAddr = ' (' + extraRoadAddr + ')';
+						}
+
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						document.getElementById('sample4_postcode').value = data.zonecode;
+						document.getElementById("sample4_roadAddress").value = roadAddr;
+						document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+
+						// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+						if (roadAddr !== '')
+						{
+							document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+						} else
+						{
+							document.getElementById("sample4_extraAddress").value = '';
+						}
+
+						var guideTextBox = document.getElementById("guide");
+						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+						if (data.autoRoadAddress)
+						{
+							var expRoadAddr = data.autoRoadAddress
+									+ extraRoadAddr;
+							guideTextBox.innerHTML = '(예상 도로명 주소 : '
+									+ expRoadAddr + ')';
+							guideTextBox.style.display = 'block';
+
+						} else if (data.autoJibunAddress)
+						{
+							var expJibunAddr = data.autoJibunAddress;
+							guideTextBox.innerHTML = '(예상 지번 주소 : '
+									+ expJibunAddr + ')';
+							guideTextBox.style.display = 'block';
+						} else
+						{
+							guideTextBox.innerHTML = '';
+							guideTextBox.style.display = 'none';
+						}
+					}
+				}).open();
+	}
+	
+	function formCheck()
+	{
+		//alert("함수 호출 확인");
+		var f = document.groupForm;
+		//alert(f);
 		
-		var count = 0;
-		
-		var cate = Array();
-		
-		for (var i = 0; i < check.length; i++)
+		var str = f.grName.value;
+		str = str.trim();
+		if(!str)
 		{
-			if(check[i].checked==true)
-			{
-				alert(check[i].value);
-				cate[count] = check[i].value;
-				count++;
-			}
+			alert("모임명을 입력하세요.");
+			f.grName.focus();
+			return;
 		}
 		
-		$("#grCate1").val(cate[0]);
-		$("#grCate2").val(cate[1]);
+		str = f.ngMax.value;
+		str = str.trim();
+		if(!str)
+		{
+			alert("모집 인원 수를 입력하세요.");
+			f.ngMax.focus();
+			return;
+		}
+		
+		str = f.ngMin.value;
+		str = str.trim();
+		if(!str)
+		{
+			alert("모집 최소 인원 수를 입력하세요.");
+			f.ngMin.focus();
+			return;
+		}
+		
+		str = f.ngCost.value;
+		str = str.trim();
+		if(!str)
+		{
+			alert("예상활동비를 입력하세요.");
+			f.ngCost.focus();
+			return;
+		}
+		
+		str = f.ngStart1.value;
+		var str2 = f.ngStart2.value;
+		
+		str = str.trim();
+		str2 = str2.trim();
+		if(!str || !str2)
+		{
+			alert("시작날짜와 시작시간을 입력하세요.");
+			return;
+		}
+		
+		str = f.ngEnd1.value;
+		str2 = f.ngEnd2.value;
+		
+		str = str.trim();
+		str2 = str2.trim();
+		if(!str || !str2)
+		{
+			alert("종료날짜와 종료시간을 입력하세요.");
+			return;
+		}
+		
+		str = f.ngLocation1.value;
+		str2 = f.ngLocation2.value;
+		
+		str = str.trim();
+		str2 = str2.trim();
+		if(!str || !str2)
+		{
+			alert("정확한 주소를 입력하세요.");
+			return;
+		}
+		
+		str = f.grCate1.value;
+		str2 = f.grCate2.value;
+		
+		str = str.trim();
+		str2 = str2.trim();
+		if(!str || !str2)
+		{
+			alert("카테고리를 선택해주세요.");
+			return;
+		}
+		
+		str = f.ngPic.value;
+		str = f.upload.value();
+		if(!str)
+		{
+			alert("대표사진을 선택해주세요.");
+			f.ngPic.focus();
+			return;
+		}
 		
 		
-		form.submit();
+		f.submit();
 	}
+	
 	
 </script>
 
@@ -162,7 +238,7 @@
 	<section class="course_details_area section_padding" style="padding-bottom: 0;">
 	<div class="container">
 	
-	<form action="groupInsert.action" method="post" id="groupForm" class="form-horizontal">
+	<form action="groupInsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
 		<div align="right">
 			* 은 필수항목입니다.
 		</div>
@@ -256,9 +332,6 @@
 			<input type="text" id="sample4_detailAddress" name="ngLocation2" class="form-control" placeholder="상세주소" style="width: 700px;">
 		</div>
 		
-		<!-- <input type="hidden" name="ngLocation" value="인천 서구 원적로"> -->
-		<input type="hidden" name="ngLocation">
-		
 		<br>
 		
 		<div class="form-inline">
@@ -275,13 +348,12 @@
 			<input type="checkbox" name="inlineCheckbox" value="5">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
 		</div>
 		
-		<input type="hidden" id="grCate1" name="grCate1">
-		<input type="hidden" id="grCate2" name="grCate2">
-		<input type="hidden" id="memId" name="memId">
+		<input type="hidden" id="grCate1" name="grCate1" value="2">
+		<input type="hidden" id="grCate2" name="grCate2" value="5">
 		
 <!-- 		<input type="hidden" id="grCate1" name="grCate1" value="1"> -->
 <!-- 		<input type="hidden" id="grCate2" name="grCate2" value="2"> -->
-<!-- 		<input type="hidden" id="memId" name="memId" value="aa123@naver.com"> -->
+ 		<input type="hidden" id="memId" name="memId" value="cc123@naver.com">
 		
 		
 		<br>
@@ -327,7 +399,9 @@
 		<br>
 
 		<div class="container" align="center">
-			<button type="button" class="btn btn-info submit" id="submit">개설</button>
+
+			<button type="button" class="btn btn-info submit" onclick="formCheck()">개설</button>
+
 			<button type="reset" class="btn btn-info">취소</button>
 		</div>
 		
