@@ -18,7 +18,7 @@ public class MemberController
 	private SqlSession sqlsession;
 	
 	@RequestMapping(value = "/memberfindform.action", method = RequestMethod.GET)
-	public String fineEmail(Model m)
+	public String findEmail(Model m)
 	{
 		String view = "/WEB-INF/views/FindEmail.jsp";
 		
