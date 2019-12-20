@@ -102,21 +102,27 @@
 		    <img src="${HotGroup.ngPic}" alt="썸네일" style="width: 100%;">
 			</a>
 			${HotGroup.grName } <br>
-			${HotGroup.memId } <br>
-			${HotGroup.ngMax } <br>
+			${HotGroup.memName} <br>
+			${HotGroup.grCate1Name } <br>
+			${HotGroup.grCate2Name } <br>
 			</div>
 		 </c:forEach>
 	</div>
+	
+	
 	<br> <br> <br> <br> <a href="">신규모임</a> <br>
 	<button type="button" class="btn btn-outline-primary btn-sm" style="float: right;">더보기</button>
 	<br><br>
 	<div class="row" align="center">
 		 <c:forEach var="NewGroup" items="${NewGroupList }">
-		    <div class="col-xs-6 col-md-3">
+		   <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${NewGroup.ngPic}" alt="썸네일" style="width: 100%;"> 
-		    ${NewGroup.grName }
+		    <img src="${NewGroup.ngPic}" alt="썸네일" style="width: 100%;">
 			</a>
+			${NewGroup.grName } <br>
+			${NewGroup.memName} <br>
+			${NewGroup.grCate1Name } <br>
+			${NewGroup.grCate2Name } <br>
 			</div>
 		 </c:forEach>
 	</div>
@@ -127,8 +133,9 @@
 		<c:forEach var="HotHost" items="${HotHostList }">
 		    <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${HotHost.ngPic}" alt="썸네일" style="width: 100%;"> 
-		    ${HotHost.grName }
+		    <img src="${HotHost.memPic}" alt="썸네일" style="width: 100%;"> 
+		    ${HotHost.memName }
+		    ${HotHost.memIntro }
 			</a>
 			</div>
 		 </c:forEach> 
@@ -144,22 +151,28 @@
 		 <c:forEach var="ClosingGroup" items="${ClosingGroupList }">
 		    <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${ClosingGroup.ngPic}" alt="썸네일" style="width: 100%;"> 
-		    ${ClosingGroup.grName }
+		    <img src="${ClosingGroup.ngPic}" alt="썸네일" style="width: 100%;">
 			</a>
+			${ClosingGroup.grName } <br>
+			${ClosingGroup.memName} <br>
+			${ClosingGroup.grCate1Name } <br>
+			${ClosingGroup.grCate2Name } <br>
 			</div>
-		 </c:forEach> 
+		 </c:forEach>
 	</div>
 	<br> <br> <br> <br> <a href="">추천모임</a> <br>
 	<button type="button" class="btn btn-outline-primary btn-sm" style="float: right;">더보기</button>
 	<br><br>
 	<div class="row" align="center">
   		<c:forEach var="RecommendGroup" items="${RecommendGroupList }">
-		    <div class="col-xs-6 col-md-3">
+		     <div class="col-xs-6 col-md-3">
 		    <a href="" class="thumbnail"> 
-		    <img src="${RecommendGroup.ngPic}" alt="썸네일" style="width: 100%;"> 
-		    ${RecommendGroup.grName }
+		    <img src="${RecommendGroup.ngPic}" alt="썸네일" style="width: 100%;">
 			</a>
+			${RecommendGroup.grName } <br>
+			${RecommendGroup.memName} <br>
+			${RecommendGroup.grCate1Name } <br>
+			${RecommendGroup.grCate2Name } <br>
 			</div>
 		 </c:forEach>
 	</div>

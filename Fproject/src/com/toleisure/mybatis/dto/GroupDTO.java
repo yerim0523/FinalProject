@@ -3,13 +3,14 @@ package com.toleisure.mybatis.dto;
 public class GroupDTO
 {
 
-	private String memId, grName, grPre, grNotice , grCate1Name, grCate2Name;
-	
-
+	private String memId,memName, grName, grPre, grNotice , grCate1Name, grCate2Name;
 	private int grCode, grCate1, grCate2;
 
 	private int ngCode, ngMax, ngMin, ngCost;
-	private String ngPic, ngStart, ngEnd, ngLocation, ngIntro, nyMyIntro;
+	private String memPic,memIntro,ngPic, ngStart, ngEnd, ngLocation, ngIntro, ngMyIntro;
+
+	
+
 
 	private String ngStart1, ngStart2, ngEnd1, ngEnd2;
 
@@ -31,7 +32,7 @@ public class GroupDTO
 	{
 		return grName;
 	}
-
+  
 	public void setGrName(String grName)
 	{
 		this.grName = grName;
@@ -229,14 +230,16 @@ public class GroupDTO
 		this.grStarAvg = grStarAvg;
 	}
 
-	public String getNyMyIntro()
+
+
+	public String getNgMyIntro()
 	{
-		return nyMyIntro;
+		return ngMyIntro;
 	}
 
-	public void setNyMyIntro(String nyMyIntro)
+	public void setNgMyIntro(String ngMyIntro)
 	{
-		this.nyMyIntro = nyMyIntro;
+		this.ngMyIntro = ngMyIntro;
 	}
 
 	public String getNgStart1()
@@ -277,6 +280,36 @@ public class GroupDTO
 	public void setNgEnd2(String ngEnd2)
 	{
 		this.ngEnd2 = ngEnd2;
+	}
+	
+	public String getMemName()
+	{
+		return memName;
+	}
+
+	public void setMemName(String memName)
+	{
+		this.memName = memName;
+	}
+	
+	public String getMemPic()
+	{
+		return memPic;
+	}
+
+	public void setMemPic(String memPic)
+	{
+		this.memPic = memPic;
+	}
+	
+	public String getMemIntro()
+	{
+		return memIntro;
+	}
+
+	public void setMemIntro(String memIntro)
+	{
+		this.memIntro = memIntro;
 	}
 
 }
