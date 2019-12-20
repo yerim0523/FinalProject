@@ -8,8 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>mylist.jsp0</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -112,43 +111,13 @@
 						</div>
 					</div>
 					<br><br>
-					<div class="page-header">
-						<h5>종료예정 모임</h5>
-					</div>
-					<br>
-					<div class="row">
-						<div class="thumbnail" style="width: 30%; padding: 30px;">
-							<img src="images/me.png" style="width: 100%;">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="right">
-									
-									<button type="button" class="btn btn-success btn-sm">후기작성</button>
-								</div>
-							</div>
-						</div>
-						
-						<div class="thumbnail" style="width: 30%; padding: 30px;">
-							<img src="images/me.png" style="width: 100%;">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="right">
-									<button type="button" class="btn btn-success btn-sm">후기작성</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br><br>
+					
 					<div class="page-header">
 						<h5>종료 모임</h5>
 					</div>
 					<br>
 					<div class="row">
-						<div class="thumbnail" style="width: 30%;">
+						<div class="thumbnail" style="width: 30%; padding: 30px;">
 							<img src="images/me.png" style="width: 100%;">
 							<br><br>
 							<div class="caption">
@@ -158,7 +127,7 @@
 							</div>
 						</div>
 						
-						<div class="thumbnail" style="width: 30%;">
+						<div class="thumbnail" style="width: 30%; padding: 30px;">
 							<img src="images/me.png" style="width: 100%;">
 							<br><br>
 							<div class="caption">

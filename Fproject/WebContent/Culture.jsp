@@ -31,12 +31,7 @@
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
 <!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
@@ -112,16 +107,7 @@
 	</div>
 	
 	<div align="right">
-		<div class="btn-group" role="group">
-		    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      지역 선택
-		    </button>
-		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-		      <a class="dropdown-item" href="#">서울</a>
-		      <a class="dropdown-item" href="#">경기</a>
-		      <a class="dropdown-item" href="#">인천</a>
-		    </div>
-	    </div>
+		
 	    <div class="btn-group" role="group">
 		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		      정렬 기준
