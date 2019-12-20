@@ -17,7 +17,7 @@
 				VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, '${ngPic}', ${ngMax}, ${ngMin}
 				, TO_DATE('${ngStart1}'||'${ngStart2}', 'YY-MM-DD HH24:MI:SS'),
 				TO_DATE('${ngEnd1}'||'${ngEnd2}', 'YY-MM-DD HH24:MI:SS')
-				, '${ngCost}', '${ngLocation}'
+				, ${ngCost}, '${ngLocation1}'||'${ngLocation2}'
 				, '${ngIntro}', '${ngMyIntro}'
 				, TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS'));
 		END

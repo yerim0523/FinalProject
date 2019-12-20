@@ -4,29 +4,29 @@
 
 
 	<select id ="HotGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memId, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM HOT_GROUP_VIEW
 	</select>
 		
 		
 	<select id ="NewGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX AS ngMax
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM NEWEST_VIEW
 	</select>
 	
 	<select id ="HotHostList" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT MEM_PIC AS ngPic, MEM_NAME AS grName, MEM_ID AS memId, NG_MAX AS ngMax
+		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
 		FROM HOT_HOST_VIEW
 	</select>
 	
 	<select id ="ClosingGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX AS ngMax
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM CLOSING_VIEW
 	</select>
 	
 	<select id ="RecommendGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX AS ngMax
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM CLOSING_VIEW
 		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX AS ngMax
 		FROM RECOMMEND_VIEW
