@@ -65,7 +65,7 @@
 		width: 50%;
 		float: ri
 	}
-	
+	/* 
 	div.name
    {
         width: 50%;
@@ -79,7 +79,7 @@
     	float: right;
     	box-sizing: border-box;
     }
-
+ */
 
 </style>
 

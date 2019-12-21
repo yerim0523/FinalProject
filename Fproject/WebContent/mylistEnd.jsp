@@ -49,10 +49,18 @@
 <script src="js/custom.js"></script>
 
 <style type="text/css">
-.image {
-	width: 570px;
-	height: 150px;
-}
+	.image
+	{
+		width: 170px;
+		height: 150px;
+	}
+	
+	button.btn4{
+	    width: 90px;
+    	height: 50px;
+    	padding-left: 0;
+    	padding-right: 0;
+	}
 </style>
 
 </head>
@@ -64,8 +72,7 @@
 	<br>
 	<br>
 
-	<section class="course_details_area section_padding"
-		style="padding-bottom: 0;">
+	<section class="course_details_area section_padding" style="padding-bottom: 0;">
 		<div class="container">
 			<div class="row">
 
@@ -84,7 +91,7 @@
 						</div>
 						<br>
 						<div class="row">
-							<div class="thumbnail" style="width: 30%; padding: 30px;">
+							<div class="thumbnail" style="padding: 10px;">
 								<img class="image" src="images/me.png"> <br> <br>
 								<div class="caption">
 									<span class="title">맥주모임</span>
@@ -93,7 +100,7 @@
 								</div>
 							</div>
 
-							<div class="thumbnail" style="width: 30%; padding: 30px;">
+							<div class="thumbnail" style="padding: 10px;">
 								<img class="image" src="images/me.png"> <br> <br>
 								<div class="caption">
 									<span class="title">맥주모임</span>
