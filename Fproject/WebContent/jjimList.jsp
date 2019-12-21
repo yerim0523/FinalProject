@@ -8,16 +8,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jjimList.jsp</title>
 
 <style type="text/css">
-
-.title
-{
-	font-size: 20px;
+	.image
+	{
+		width: 170px;
+		height: 150px;
+	}
 	
-}
-
+	button.btn4{
+	    width: 90px;
+    	height: 50px;
+    	padding-left: 0;
+    	padding-right: 0;
+	}
+	
+	.host{
+		padding: 5px; 
+		margin-bottom: 10px; 
+		text-align: center;
+		font-weight: bold;
+		font-size: 13pt;
+		
+	
+	}
+	
+	.rounded-circle
+	{
+		width: 150px; 
+		height: 150px; 
+		margin-bottom: 5px;
+	}
+	
 </style>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -40,68 +63,108 @@
 </div>
 <br><br>
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
-
-	<div class="container">
+<div class="container">
 	<div class="row">
+		
 		<c:import url="sidebar.jsp"></c:import>
+		
 		<div class="col-md-9">
 			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
-						<h3>찜 목록</h3>
+						<h3>찜한 목록 </h3>
 					</div>
 				</div>
-				<br><br>
-				<div>
-					<div class="row">
-							<div class="thumbnail" style="width: 30%;">
-								<img src="images/me.png" style="width: 100%;">
-									<div class="caption">
-										<span class="title">맥주모임</span>
-										<p>ㅁㄴㅇㄹ</p>
-									</div>
-								
+				<br>
+				
+					<div class="page-header">
+						<h5>찜한 모임</h5>
+					</div>
+					<br>
+					<div class="row" >
+						<div class="thumbnail " style="padding: 10px;">
+							<img class="image" src="images/iu.jpg">
+							<br><br>
+							<div class="caption">
+								<span class="title">맥주모임</span>
+								<p>ㅁㄴㅇㄹ</p>
 							</div>
-							
-							<div class="thumbnail" style="width: 30%;">
-								<img src="images/me.png" style="width: 100%;">
-									<div class="caption">
-										<span class="title">맥주모임</span>
-										<p>ㅁㄴㅇㄹ</p>
-									</div>
-								
+						</div>
+						
+						<div class="thumbnail" style="padding: 10px;">
+							<img class="image" src="images/me.png">
+							<br><br>
+							<div class="caption">
+								<span class="title">맥주모임</span>
+								<p>ㅁㄴㅇㄹ</p>
 							</div>
-							
-							<div class="thumbnail" style="width: 30%;">
-								<img src="images/me.png" style="width: 100%;">
-									<div class="caption">
-										<span class="title">맥주모임</span>
-										<p>ㅁㄴㅇㄹ</p>
-									</div>
-								
+						</div>
+						
+						<div class="thumbnail" style="padding: 10px;">
+							<img class="image" src="images/me.png">
+							<br><br>
+							<div class="caption">
+								<span class="title">맥주모임</span>
+								<p>ㅁㄴㅇㄹ</p>
 							</div>
-							
-							<div class="thumbnail" style="width: 30%;">
-								<img src="images/me.png" style="width: 100%;">
-									<div class="caption">
-										<span class="title">맥주모임</span>
-										<p>ㅁㄴㅇㄹ</p>
-									</div>
-								
+						</div>
+						
+						<div class="thumbnail" style="padding: 10px;">
+							<img class="image" src="images/me.png">
+							<br><br>
+							<div class="caption">
+								<span class="title">맥주모임</span>
+								<p>ㅁㄴㅇㄹ</p>
 							</div>
-							
-							
 						</div>
 					</div>
-				
-				</div>	
-			
-				
-				
+					<br><br>
+					<div class="page-header">
+					<div>
+						<h3>찜한 호스트 </h3>
+					</div>
+					<br>
+					</div>
+					<div class="row">
+					<div class="host">
+						<img src="images/gd.jpg" class="rounded-circle" ><br>
+						백호진
+					</div>
+					
+					<div class="host">
+						<img src="images/gd.jpg" class="rounded-circle" ><br>
+						백호진
+					</div>
+					
+					<div class="host">
+						<img src="images/gd.jpg" class="rounded-circle"><br>
+						백호진
+					</div>
+					
+					<div class="host">
+						<img src="images/gd.jpg" class="rounded-circle"><br>
+						백호진
+					</div>
+					
+					<div class="host">
+						<img src="images/gd.jpg" class="rounded-circle"><br>
+						백호진
+					</div>
+					
+					<div class="host">
+						<img src="images/gd.jpg" class="rounded-circle"><br>
+						백호진
+					</div>
+					
+					</div>
+					
+					<br><br><br>
 				
 			</div>
 		</div>
+	
 	</div>
+</div>
 </section>
 <div>
 	<c:import url="footer.jsp"></c:import>

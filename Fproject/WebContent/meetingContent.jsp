@@ -672,7 +672,7 @@ img {
 										<div class="image_outer_container">
 											<div class="green_icon"></div>
 											<div class="image_inner_container">
-												<img src="images/ma.jpg" class="rounded-circle" style="width: 70%; height: 70%;">
+												<img src="images/ma.jpg" class="rounded-circle" style="width: 150px; height: 200px; margin-right: 100px;">
 											</div>
 										</div>
 										<div>

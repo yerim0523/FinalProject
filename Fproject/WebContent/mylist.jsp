@@ -50,6 +50,13 @@
 		width: 170px;
 		height: 150px;
 	}
+	
+	button.btn4{
+	    width: 90px;
+    	height: 50px;
+    	padding-left: 0;
+    	padding-right: 0;
+	}
 </style>
 
 
