@@ -17,5 +17,21 @@ public interface IMainDAO
 	 
 	 //-- 전체 그룹 출력 리스트----------------
 	 public ArrayList<GroupDTO> AllGroupList();
+	 
+	 
+	 
+	 
+	 //-- 문화 전체 출력 리스트----------------
+	 public ArrayList<GroupDTO> CultureGroupList();
+	 
+	 
+	 //-- 맛집 전체 출력 리스트----------------
+	 public ArrayList<GroupDTO> FoodGroupList();
+	 
+	 
+	public ArrayList<GroupDTO> HotGroupListAll();
+	public ArrayList<GroupDTO> NewGroupListAll();
+	public ArrayList<GroupDTO> HotHostListAll();
+	public ArrayList<GroupDTO> ClosingGroupListAll();
 	
 }

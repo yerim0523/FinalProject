@@ -122,38 +122,10 @@
   	<br><br><br>
   	
 	<div class="row">
+		<c:forEach var="FoodGroup" items="${FoodGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${FoodGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
 				<div class="starRev">
@@ -166,148 +138,25 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
+				<span style="font-size: 12px;">1회차|</span>
 				<div>
 					<div class="name">
-					<h5>맥주모임</h5>
+					<h5>${FoodGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
+				<h6 style="text-align: right; font-size: 10px;">"${FoodGroup.memName }"</h6>
 			</div>
 			
 			</div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/gd.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-	
-	<br>
-	<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
+		</c:forEach>	
+		
+		
   	
 </div>
 

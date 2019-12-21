@@ -66,7 +66,7 @@
 		float: ri
 	}
 	
-	div.name
+	/* div.name
    {
         width: 50%;
         float: left;
@@ -78,21 +78,20 @@
     	width: 50%;
     	float: right;
     	box-sizing: border-box;
-    }
-
-
+    } */
+    
 </style>
 
 </head>
 <body>
 
 <div>
-	<jsp:include page="bar.jsp"></jsp:include>
+	<c:import url="bar.jsp"></c:import>
 </div>
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div>
-	<jsp:include page="MeetingBar.jsp"></jsp:include>
+	<c:import url="MeetingBar.jsp"></c:import>
 </div>
 </section>
 
@@ -102,6 +101,7 @@
 		<div align="left" class="left">
 			<button type="button" class="btn btn-default">전체모임목록</button>
 		</div>
+		
 		<div align="right" >
 			<label class="radio-inline">
 				<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="종료모임">종료 모임도 볼래요!
@@ -111,8 +111,8 @@
 			</label>
 		</div>
 	</div>
+	
 	<div align="right">
-
 	    <div class="btn-group" role="group">
 		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		      정렬 기준
@@ -146,14 +146,14 @@
 				<span style="font-size: 12px;">1회차|</span>
 				<div>
 					<div class="name">
-					<h5>맥주모임</h5>
+					<h5>${AllGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
+				<h6 style="text-align: right; font-size: 10px;">"${AllGroup.memName }"</h6>
 			</div>
 			
 			</div>
@@ -161,169 +161,14 @@
 		</div>
 		</c:forEach>	
 		
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/gd.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-	
-	<br>
-	<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
-				<div>
-					<div class="name">
-					<h5>맥주모임</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
-					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">호스트이름</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
+		
   	
 </div>
+
 </div>
 
 <div>
-	<jsp:include page="footer.jsp"></jsp:include>
+   <c:import url="footer.jsp"></c:import>
 </div>
 
 </body>

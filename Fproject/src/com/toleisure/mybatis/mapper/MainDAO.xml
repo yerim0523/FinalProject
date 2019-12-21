@@ -8,6 +8,16 @@
 		FROM NEWEST_ALLVIEW
 	</select>
 	
+	<select id="CultureGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM NEWEST_ALLVIEW
+	</select>
+	
+	<select id="FoodGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM NEWEST_ALLVIEW
+	</select>
+	
 	
 	<select id ="HotGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
@@ -20,12 +30,27 @@
 		FROM NEWEST_VIEW
 	</select>
 	
+	<select id ="NewGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM NEWEST_ALLVIEW
+	</select>
+	
 	<select id ="HotHostList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
 		FROM HOT_HOST_VIEW
 	</select>
 	
+	<select id ="HotHostListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+		FROM HOT_HOST_AllVIEW
+	</select>
+	
 	<select id ="ClosingGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CLOSING_VIEW
+	</select>
+	
+	<select id ="ClosingGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM CLOSING_VIEW
 	</select>

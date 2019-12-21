@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Culture.jsp</title>
+<title>Theme.jsp</title>
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
@@ -31,14 +31,7 @@
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
 <!-- jquery plugins here-->
-   <!--   안씀 
-    <script src="js/jquery-1.12.1.min.js"></script>
-    popper js
-    <script src="js/popper.min.js"></script>
-    bootstrap js
-    <script src="js/bootstrap.min.js"></script> -->
-    
-    
+    <!-- jquery -->
     
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
@@ -56,6 +49,8 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
 
+
+
 <style>
 
     div.left {
@@ -64,6 +59,14 @@
         box-sizing: border-box;
         
     }
+    /* 
+    div.center {
+        width: 60%;
+        float: center;
+        box-sizing: border-box;
+        
+    }
+     */
     div.right {
         width: 50%;
         float: right;
@@ -79,7 +82,6 @@
     
 </style>
 
-
 </head>
 <body>
 
@@ -93,18 +95,17 @@
 </div>
 </section>
 
-
 <div class="container">
 
 	<div>
-		<div class="left">
-			<button type="button" class="btn btn-default">문화생활</button>
+		<div class="left" >
+			<button type="button" class="btn btn-default">테마별</button>
 		</div>
-		<div class="right" align="right">
-			<a href="">공연</a> | <a href="">연극</a> | <a href="">전시</a> 
+		<div class="right" align="right"> 
+			<a href="culture.action">인기모임</a> | <a href="theme.action">신규모임</a> | <a href="">인기호스트</a> | <a href="">마감임박</a>
 		</div>
 	</div>
-	
+	<br>
 	<div align="right">
 		<label class="check-inline">
 			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" value="종료모임">종료 모임도 볼래요!
@@ -115,6 +116,7 @@
 	</div>
 	
 	<div align="right">
+		
 	    <div class="btn-group" role="group">
 		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		      정렬 기준
@@ -128,17 +130,14 @@
   	</div>
   	<br><br><br>
   	
-  	
 	<div class="row">
-		<c:forEach var="CultureGroup" items="${CultureGroupList}">
+		<c:forEach var="NewGroupAll" items="${NewGroupListAll}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${CultureGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${NewGroupAll.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
-				<div class="starRev">
-					
-				</div>
+				
 				<div>
 					<img alt="" src="images/star.png" style="width: 20px;">
 					<span> 9.5</span>
@@ -146,24 +145,23 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|</span>
+				<span style="font-size: 12px;">1회차|맛집</span>
 				<div>
 					<div class="name">
-					<h5>${CultureGroup.grName }</h5>
+					<h5>${NewGroupAll.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">"${CultureGroup.memName }"</h6>
+				<h6 style="text-align: right; font-size: 10px;">${NewGroupAll.memName }</h6>
 			</div>
 			
 			</div>
 			</div>
 		</div>
-		</c:forEach>	
-		
+		</c:forEach>
 		
   	
 </div>

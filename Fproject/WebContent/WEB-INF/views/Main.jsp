@@ -314,7 +314,10 @@ button.more
    <a href="">추천모임</a> <br>
    </div>
    <div class="right">
-   <button type="button" class="btn4 more" style="float: right;">더보기</button>
+   
+   <form action='culture.action'>
+   <input type="submit" name="action" value="더보기" class="btn4 more" style="float: right;">더보기</button>
+   </form>
    </div>
    <br><br><br>
    <div class="row">

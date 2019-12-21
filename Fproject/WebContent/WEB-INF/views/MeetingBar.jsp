@@ -139,20 +139,20 @@ clear:left;
 		<!-- 	<li><a href="AllMeeting.jsp">전체</a></li> -->
 			<li><a href="all.action">전체</a></li>
 
-			<li><a href="Culture.jsp" id="current">문화생활</a>
+			<li><a href="culture.action" id="current">문화생활</a>
 				<ul>
 					<li><a href="#">공연</a></li>
 					<li><a href="#">연극</a></li>
 					<li><a href="#">전시</a></li>
 				</ul>
 			</li>
-			<li><a href="Food.jsp" id="current">맛집</a>
+			<li><a href="food.action" id="current">맛집</a>
 				<ul>
 					<li><a href="#">식당</a></li>
 					<li><a href="#">카페</a></li>
 				</ul>
 			</li>
-			<li><a href="Theme.jsp" id="current">테마별</a>
+			<li><a href="theme.action" id="current">테마별</a>
 				<ul>
 					<li><a href="#">인기모임</a></li>
 					<li><a href="#">신규모임</a></li>
@@ -160,7 +160,7 @@ clear:left;
 					<li><a href="#">인기호스트</a></li>
 				</ul>
 			</li>
-			<li><a href="Map.jsp">내주변</a></li>
+			<li><a href="map.action">내주변</a></li>
 			<li><a href="#" id="current">전체 게시판</a>
 		</ul>
 	</div>
