@@ -132,70 +132,55 @@
 		var max,min;
 		var start1,start2,start3;
 		var end1,end2,end3;
-	
-		var today = new Date();
 		
-		today = today+7;
 		var str = f.grName.value;
 		str = str.trim();
-		if(!str)
+		if(!str || 6>str.length || 50<str.length)
 		{
-			alert("모임명을 입력하세요.");
-			f.grName.focus();
-			return;
-		}
-		if(6>str.length)
-		{
-			alert("모임명을 6자 이상 입력해주세요.");
-			f.grName.focus();
-			return;
-		}
-		
-		if(50<str.length)
-		{
-			alert("50자 이하로 입력해주세요.");
+			alert("모임명을 【6 ~ 50자】 내외로 입력해주세요.");
 			f.grName.focus();
 			return;
 		}
 			
 		max = f.ngMax.value;
-		max = max.trim();
-		if(!max)
+	
+		if(!max || 4>parseInt(max) || parseInt(max)>20)
 		{
-			alert("모집 인원 수를 입력하세요.");
-			f.ngMax.focus();
-			return;
-		}
-		if(4>max)
-		{
-			alert("모집 인원 수를 4명 이상으로 설정해주세요.");
-			f.ngMax.focus();
-			return;
-		}
-		if(max>20)
-		{
-			alert("모집 인원 수를 20명 이하로 설정해주세요.");
+			alert("모집 인원 수를 【4 ~ 20명】 내외로 입력해주세요.");
 			f.ngMax.focus();
 			return;
 		}
 		
+		
 		min = f.ngMin.value;
-		min = min.trim();
+		
 		if(!min)
 		{
 			alert("모집 최소 인원 수를 입력하세요.");
 			f.ngMin.focus();
 			return;
 		}
-		
-		if(min>max)
+		if(parseInt(min)>parseInt(max))
 		{
+			
 			alert("최소 인원 수를 모집 인원보다 적게 입력해주세요.");
 			f.ngMin.focus();
 			return;
 		}
+		
+		if(parseInt(min)<4)
+		{
+			
+			alert("모집 인원 수를 【4 ~ 20명】 내외로 입력해주세요. ");
+			f.ngMin.focus();
+			return;
+		}
+		
+		
 
+		
 		str = f.ngCost.value;
+		
 		str = str.trim();
 		if(!str)
 		{
@@ -203,7 +188,7 @@
 			f.ngCost.focus();
 			return;
 		}
-		if(9999999999999999999<str)
+		if(10000000000000000000<str)
 		{
 			alert("활동비를 적게 입력해주세요");
 			f.ngCost.focus();
@@ -212,10 +197,11 @@
 		
 		start1 = f.ngStart1.value;
 	    start2 = f.ngStart2.value;
+	    
 	    start3 = (start1||start2);
 	    
-	    start1 = start1.trim();
-	    start2 = start2.trim();
+		var today = new Date();
+		today.setDate(today.getDate() + 7);
 	   
 		if(!start1 || !start2)
 		{
@@ -224,20 +210,19 @@
 			return;
 		}
 		
-		if(start3!=today)
+		if(start3<today.getDate())
 		{
-			alert("오늘날짜를");
+			alert(today.getDate());
+			alert("모임 시작 날짜는 최소 7일 이후여야 합니다.");
 			f.ngStart1.focus();
 			return;
 		}
-		
 	    
 		end1 = f.ngEnd1.value;
 		end2 = f.ngEnd2.value;
-		end3 = (end1||end2);
 		
-		end1 = end1.trim();
-		end2 = end2.trim();
+		end3 = (end1||end2);
+
 		
 		if(!end1 || !end2)
 		{
@@ -246,9 +231,16 @@
 			return;
 		}
 		
-		if(end3<today)
+		if(end3<start3)
 		{
-			alert("시작날짜보다 늦게 입력해주세요");
+			alert("종료날짜는 시작날짜보다 늦게 입력해주세요.");
+			f.ngEnd1.focus();
+			return;		
+		}
+		
+		if(end3!=start3)
+		{
+			alert("모임날짜는 하루를 넘길 수 없습니다.");
 			f.ngEnd1.focus();
 			return;		
 		}
@@ -256,35 +248,68 @@
 		str = f.ngLocation1.value;
 		str2 = f.ngLocation2.value;
 		
-		str = str.trim();
-		str2 = str2.trim();
 		if(!str || !str2)
 		{
 			alert("정확한 주소를 입력하세요.");
 			return;
 		}
 		
-		str = f.grCate1.value;
-		str2 = f.grCate2.value;
+		var temp = new Array(); // 임시 배열 선언
+		count = 0;				// 배열 방 컨트롤 위한 변수
 		
-		str = str.trim();
-		str2 = str2.trim();
-		if(!str || !str2)
+		var str1 = document.getElementById("grCate1").value;	// grCate1(hidden)의 value(현재 비어있음)
+		var str2 = document.getElementById("grCate2").value;	// grCate2(hidden)의 value(현재 비어있음)
+		
+		cate = document.getElementsByName("inlineCheckbox");// 체크박스 값 가져오기 위한 도큐먼트
+		
+		for (var i = 0; i < cate.length; i++)
 		{
-			alert("카테고리를 선택해주세요.");
+			if(cate[i].checked==true)			// 체크 된 값만 
+			{
+				temp[count] = cate[i].value;	// value 를 임시 배열에 삽입(최소1개, 최대2개)
+				count++;
+				//alert(temp[i]);
+			}
+		}
+		
+		str1 = parseInt(temp[0]);	
+		str2 = parseInt(temp[1]);
+			
+		
+		if(!str1)
+		{
+			alert("카테고리를 최소 1개 선택해주세요.");
 			return;
 		}
 		
+		if(isNaN(str2))
+		{
+			alert("널");
+			str2=0;		
+			
+		} 
+		
 		str = f.ngPic.value;
-		str = f.upload.value;
 		if(!str)
 		{
 			alert("대표사진을 선택해주세요.");
 			f.ngPic.focus();
 			return;
 		}
+		var test1 =document.getElementById("grCate1").value;
+		var test2 = document.getElementById("grCate2").value;
+		alert(test1); // --===>>      공백
+		alert(test2); // --===.>       0
 		
+		 document.getElementById("grCate1").value=str1;
+		 document.getElementById("grCate2").value=str2;
+		 
+		test1 =document.getElementById("grCate1").value;
+		test2 = document.getElementById("grCate2").value;
 		
+		alert(test1); // --===>> 3
+		alert(test2); // --==>> 0 
+			
 		f.submit();
 	}
 	
@@ -385,11 +410,11 @@
 		</div>
 		<div class="form-inline">
 			<label for="ngLocation1" class="col-sm-2 control-label" style="font-weight: bold;">도로명주소</label>
-			<input type="text" id="sample4_roadAddress" name="ngLocation1" class="form-control" placeholder="도로명주소" style="width: 700px;">
+			<input type="text" id="sample4_roadAddress" name="ngLocation1" class="form-control" placeholder="도로명주소" style="width: 700px;"readonly>
 		</div>
 		<div class="form-inline">
 			<label for="name" class="col-sm-2 control-label" style="font-weight: bold;">지번주소</label>
-			<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소" style="width: 700px;">
+			<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소" style="width: 700px;" readonly>
 		</div>
 		<span id="guide" style="color:#999;display:none"></span>
 		<div class="form-inline">
@@ -413,11 +438,9 @@
 			<input type="checkbox" name="inlineCheckbox" value="5">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
 		</div>
 		
-		<input type="hidden" id="grCate1" name="grCate1" value="2">
-		<input type="hidden" id="grCate2" name="grCate2" value="5">
+		<input type="hidden" id="grCate1" name="grCate1" value="">
+		<input type="hidden" id="grCate2" name="grCate2" value="0"> 
 		
-<!-- 		<input type="hidden" id="grCate1" name="grCate1" value="1"> -->
-<!-- 		<input type="hidden" id="grCate2" name="grCate2" value="2"> -->
  		<input type="hidden" id="memId" name="memId" value="cc123@naver.com">
 		
 		
@@ -440,9 +463,9 @@
 		<br>
 
 		<div class="form-inline">
-			<label for="ngMyInfo" class="col-sm-2 control-label" style="font-weight: bold;">본인소개</label>
-			<textarea class="form-control col-sm-5" name="ngMyInfo" rows="5"
-						placeholder="호스트님의 소개를 입력해주세요!" id="ngMyInfo">ㅁㄴㅇㄹ</textarea>
+			<label for="ngMyIntro" class="col-sm-2 control-label" style="font-weight: bold;">본인소개</label>
+			<textarea class="form-control col-sm-5" name="ngMyIntro" rows="5"
+						placeholder="호스트님의 소개를 입력해주세요!" id="ngMyIntro">ㅁㄴㅇㄹ</textarea>
 		</div>
 		
 		<br>
