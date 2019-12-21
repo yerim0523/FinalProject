@@ -476,14 +476,14 @@ address, em {
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div class="container">
-	<div class="row">
+	<div class="row" style="padding: 0px 200px; height: 480px;">
 
 
 <div class="col-md-9">
 	<br><br><br>
 <div class="skin_main" id="mainBody">
 	<div id="wrap">
-		<div id="container" style="height: 817px;">
+		<div id="container">
 			<div id="content">
 				<div class="section_pwconfirm">
 					<div class="spc_header">
