@@ -86,7 +86,7 @@ public class MainController
 		
 		return view;
 	}
-	
+	 
 	//----------------------------------------------------신규모임
 	@RequestMapping(value="/newgroup.action", method=RequestMethod.GET)
 	public String Theme(Model model)

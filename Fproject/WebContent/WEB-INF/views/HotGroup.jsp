@@ -157,7 +157,7 @@
 				</div>
 				<h6 style="text-align: right; font-size: 10px;">${NewGroupAll.memName }</h6>
 			</div>
-			
+			  
 			</div>
 			</div>
 		</div>

@@ -128,7 +128,7 @@
   	</div>
   	<br><br><br>
   	
-  	
+  	 
 	<div class="row">
 		<c:forEach var="CultureGroup" items="${CultureGroupList}">
 		<div class="col-sm-6 col-md-4">
