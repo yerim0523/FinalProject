@@ -102,7 +102,7 @@
 			<button type="button" class="btn btn-default">테마별</button>
 		</div>
 		<div class="right" align="right"> 
-			<a href="">인기모임</a> | <a href="">신규모임</a> | <a href="">인기호스트</a> | <a href="">마감임박</a>
+			<a href="">인기모임</a> | <a href="">신규모임</a> | <a href="">인기호스트</a> | <a href="">마감임박</a> | <a href="">추천모임</a> 
 		</div>
 	</div>
 	<br>

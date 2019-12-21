@@ -153,8 +153,9 @@ clear:left;
 				<ul>
 					<li><a href="#">인기모임</a></li>
 					<li><a href="#">신규모임</a></li>
-					<li><a href="#">마감임박</a></li>
 					<li><a href="#">인기호스트</a></li>
+					<li><a href="#">마감임박</a></li>
+					<li><a href="#">추천모임</a></li>
 				</ul>
 			</li>
 			<li><a href="Map.jsp">내주변</a></li>
