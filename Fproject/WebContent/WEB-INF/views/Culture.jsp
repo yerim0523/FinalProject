@@ -101,7 +101,7 @@
 			<button type="button" class="btn btn-default">문화생활</button>
 		</div>
 		<div class="right" align="right">
-			<a href="">공연</a> | <a href="">연극</a> | <a href="">전시</a> 
+			<a href="exhibit.action">전시</a> | <a href="play.action">공연</a> | <a href="show.action">연극</a> 
 		</div>
 	</div>
 	

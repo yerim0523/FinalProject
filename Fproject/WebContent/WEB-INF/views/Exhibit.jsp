@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Theme.jsp</title>
+<title>Exhibit.jsp</title>
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
@@ -59,14 +59,6 @@
         box-sizing: border-box;
         
     }
-    /* 
-    div.center {
-        width: 60%;
-        float: center;
-        box-sizing: border-box;
-        
-    }
-     */
     div.right {
         width: 50%;
         float: right;
@@ -94,31 +86,46 @@
 	<c:import url="MeetingBar.jsp"></c:import>
 </div>
 </section>
- 
+
 <div class="container">
 
 	<div>
-		<div class="left" >
-			<button type="button" class="btn btn-default">테마별</button>
+		<div class="left">
+			<button type="button" class="btn btn-default">문화생활 > 공연</button>
 		</div>
-		<div class="right" align="right"> 
-			<a href="theme.action">인기모임</a> | <a href="newgroup.action">신규모임</a> | <a href="hothost.action">인기호스트</a> 
-			| <a href="closing.action">마감임박</a> | <a href="recommend.action">추천모임</a>
+		<div class="right" align="right">
+			<a href="exhibit.action">전시</a> | <a href="play.action">공연</a> | <a href="show.action">연극</a> 
 		</div>
-	</div>
-	<br>
-	<div align="right">
 	</div>
 	
 	<div align="right">
+		<label class="check-inline">
+			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" value="종료모임">종료 모임도 볼래요!
+		</label>
+		<label class="check-inline">
+		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" value="참여모임">참여 가능한 모임만 볼래요!
+		</label>
+	</div>
+	
+	<div align="right">
+	    <div class="btn-group" role="group">
+		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		      정렬 기준
+		    </button>
+		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+		      <a class="dropdown-item" href="#">최신순</a>
+		      <a class="dropdown-item" href="#">인기순</a>
+		      <a class="dropdown-item" href="#">평가순</a>
+		    </div>
+	  	</div>
   	</div>
   	<br><br><br>
   	
 	<div class="row">
-		<c:forEach var="ClosingGroupAll" items="${ClosingGroupListAll}">
+		<c:forEach var="ExhibitGroup" items="${ExhibitGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${ClosingGroupAll.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${ExhibitGroup.memPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
 				
@@ -129,17 +136,16 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|맛집</span>
+				<span style="font-size: 12px;">${ExhibitGroup.memIntro }</span>
 				<div>
 					<div class="name">
-					<h5>${ClosingGroupAll.grName }</h5>
+					<h5>${ExhibitGroup.memName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">${ClosingGroupAll.memName }</h6>
 			</div>
 			
 			</div>

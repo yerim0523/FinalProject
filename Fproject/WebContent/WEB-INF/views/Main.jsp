@@ -128,7 +128,9 @@ button.more
    <a href="" >인기모임</a>
    </div> 
    <div class="right">
-   <button type="button" class="btn4 more">더보기</button>
+   <form action='theme.action'>
+   <button type="submit" name="action" value="더보기" class="btn4 more" style="float: right;">더보기</button>
+   </form>
    </div>
    <br><br><br>
    <div class="row">
@@ -182,7 +184,11 @@ button.more
    <a href="">신규모임</a> <br>
    </div>
    <div class="right">
-   <button type="button" class="btn4 more" style="float: right;">더보기</button>
+   
+   <form action='newgroup.action'>
+   <button type="submit" name="action" value="더보기" class="btn4 more" style="float: right;">더보기</button>
+   </form>
+   
    </div>
    <br><br><br>
    <div class="row">
@@ -225,8 +231,13 @@ button.more
    <div class="left">
    <a href="">인기호스트</a> <br>
    </div>
+   
    <div class="right">
-   <button type="button" class="btn4 more" style="float: right;">더보기</button>
+   
+   <form action='hothost.action'>
+   <button type="submit" name="action" value="더보기" class="btn4 more" style="float: right;">더보기</button>
+   </form>
+   
    </div>
    <br><br><br>
    <div class="row">
@@ -270,7 +281,11 @@ button.more
    <a href="">마감임박</a> <br>
    </div>
    <div class="right">
-   <button type="button" class="btn4 more" style="float: right;">더보기</button>
+   
+   <form action='closing.action'>
+   <button type="submit" name="action" value="더보기" class="btn4 more" style="float: right;">더보기</button>
+   </form>
+   
    </div>
    <br><br><br>
    <div class="row">
@@ -315,8 +330,8 @@ button.more
    </div>
    <div class="right">
    
-   <form action='culture.action'>
-   <input type="submit" name="action" value="더보기" class="btn4 more" style="float: right;">더보기</button>
+   <form action='recommend.action'>
+   <button type="submit" name="action" value="더보기" class="btn4 more" style="float: right;">더보기</button>
    </form>
    </div>
    <br><br><br>

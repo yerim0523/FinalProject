@@ -34,6 +34,7 @@ public class MainController
 		return view;
 	}
 	
+	//-----------------------------------전체 모임 출력-------------------
 	@RequestMapping(value="/all.action", method=RequestMethod.GET)
 	public String AllMeeting(Model model)
 	{
@@ -47,7 +48,7 @@ public class MainController
 		return view;
 	}
 	
-	
+	//-----------------------------------문화생활 모임-------------------
 	@RequestMapping(value="/culture.action", method=RequestMethod.GET)
 	public String Culture(Model model)
 	{
@@ -60,7 +61,45 @@ public class MainController
 		return view;
 	}
 	
+	@RequestMapping(value="/exhibit.action", method=RequestMethod.GET)
+	public String Exhibit(Model model)
+	{
+		String view = "WEB-INF/views/Exhibit.jsp";
+		
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		  
+		model.addAttribute("ExhibitGroupList", dao.ExhibitGroupList());
+		
+		return view;
+	}
 	
+	@RequestMapping(value="/show.action", method=RequestMethod.GET)
+	public String Performance(Model model)
+	{
+		String view = "WEB-INF/views/Show.jsp";
+		
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		  
+		model.addAttribute("ShowGroupList", dao.ShowGroupList());
+		
+		return view;
+	}
+	
+	
+	@RequestMapping(value="/play.action", method=RequestMethod.GET)
+	public String Play(Model model)
+	{
+		String view = "WEB-INF/views/Play.jsp";
+		
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		  
+		model.addAttribute("PlayGroupList", dao.PlayGroupList());
+		
+		return view;
+	}
+	
+	
+	//-----------------------------------맛집모임-------------------
 	@RequestMapping(value="/food.action", method=RequestMethod.GET)
 	public String Food(Model model)
 	{
@@ -125,5 +164,22 @@ public class MainController
 		
 		return view;
 	}
+	
+	//--------------------------------------------------------추천모임
+		@RequestMapping(value="/recommend.action", method=RequestMethod.GET)
+		public String Recommend(Model model)
+		{
+			String view = "WEB-INF/views/RecommendGroup.jsp";
+			
+			IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+			GroupDTO dto = new GroupDTO();
+		    dto.setMemId("lee0528kr@naver.com");
+		    
+			model.addAttribute("ClosingGroupListAll", dao.ClosingGroupListAll());
+			
+			model.addAttribute("RecommendGroupListAll", dao.RecommendGroupListAll(dto.getMemId()));
+			
+			return view;
+		}
 	//----------------------------------------------------------테마별 모임 end
 }

@@ -5,34 +5,54 @@
 	
 	<select id="AllGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
    		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM NEWEST_ALLVIEW
+		FROM ALL_GROUP_VIEW
 	</select>
 	
 	<select id="CultureGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
    		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM NEWEST_ALLVIEW
+		FROM CULTURE_GROUP_VIEW
 	</select>
+	
+	<select id="ExhibitGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CUL_EXHIBITION_VIEW
+	</select>
+	
+	<select id="PlayGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CUL_PLAY_VIEW
+	</select>
+	
+	<select id="ShowGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CUL_SHOW_VIEW
+	</select>
+	
 	
 	<select id="FoodGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
    		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM NEWEST_ALLVIEW
+		FROM FOOD_GROUP_VIEW
 	</select>
-	 
 	
 	<select id ="HotGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM HOT_GROUP_VIEW
+	</select> 
+	
+	<select id ="HotGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM HOT_GROUP_ALLVIEW
 	</select>
 		
 		
 	<select id ="NewGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM NEWEST_VIEW
+		FROM NEWEST_GROUP_VIEW
 	</select>
 	
 	<select id ="NewGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM NEWEST_ALLVIEW
+		FROM NEWEST_GROUP_ALLVIEW
 	</select>
 	
 	<select id ="HotHostList" resultType="com.toleisure.mybatis.dto.GroupDTO">
@@ -52,7 +72,7 @@
 	
 	<select id ="ClosingGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM CLOSING_VIEW
+		FROM CLOSING_GROUP_ALLVIEW
 	</select>
 	
 	<select id ="RecommendGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">	
@@ -76,6 +96,29 @@
 		WHERE M.MEM_ID=#{memId}
 		)E
 		WHERE 3>=ROWNUM
+	</select>
+	
+	<select id ="RecommendGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">	
+		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CLOSING_VIEW -->
+		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX AS ngMax
+		FROM RECOMMEND_VIEW
+		WHERE MEM_ID = 'lee0528kr@naver.com' -->
+		SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name
+		FROM
+		(
+		SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name
+		FROM MEMBER M JOIN TBL_GROUP G
+		     ON M.CATE_CODE1=G.CATE_CODE1 OR  M.CATE_CODE1=G.CATE_CODE2 OR  M.CATE_CODE2=G.CATE_CODE1 OR  M.CATE_CODE2=G.CATE_CODE2
+		     JOIN CATEGORY C1 
+		     ON C1.CATE_CODE=G.CATE_CODE1
+		     JOIN CATEGORY C2
+		     ON C2.CATE_CODE=G.CATE_CODE2
+		     JOIN NOW_GROUP NG
+		     ON NG.GR_CODE = G.GR_CODE
+		WHERE M.MEM_ID=#{memId}
+		)E
+		WHERE 10>=ROWNUM
 	</select>
 	
 	

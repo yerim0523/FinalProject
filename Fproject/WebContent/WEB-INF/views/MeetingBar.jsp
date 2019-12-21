@@ -141,23 +141,24 @@ clear:left;
 
 			<li><a href="culture.action" id="current">문화생활</a>
 				<ul>
-					<li><a href="#">공연</a></li>
-					<li><a href="#">연극</a></li>
-					<li><a href="#">전시</a></li>
+					<li><a href="exhibit.action">전시</a></li>
+					<li><a href="play.action">연극</a></li>
+					<li><a href="show.action">공연</a></li>
 				</ul>
 			</li>
 			<li><a href="food.action" id="current">맛집</a>
 				<ul>
-					<li><a href="#">식당</a></li>
-					<li><a href="#">카페</a></li>
+					<li><a href="restaurant.action">식당</a></li>
+					<li><a href="cafe.action">카페</a></li>
 				</ul>
 			</li>
 			<li><a href="theme.action" id="current">테마별</a>
 				<ul>
-					<li><a href="#">인기모임</a></li>
-					<li><a href="#">신규모임</a></li>
-					<li><a href="#">마감임박</a></li>
-					<li><a href="#">인기호스트</a></li>
+					<li><a href="theme.action">인기모임</a></li>
+					<li><a href="newgroup.action">신규모임</a></li>
+					<li><a href="closing.action">마감임박</a></li>
+					<li><a href="hothost.action">인기호스트</a></li>
+					<li><a href="recommend.action">추천모임</a></li>
 				</ul>
 			</li>
 			<li><a href="map.action">내주변</a></li>

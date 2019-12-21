@@ -99,7 +99,7 @@
 
 	<div>
 		<div class="left" >
-			<button type="button" class="btn btn-default">테마별</button>
+			<button type="button" class="btn btn-default">테마별 > 추천모임</button>
 		</div>
 		<div class="right" align="right"> 
 			<a href="theme.action">인기모임</a> | <a href="newgroup.action">신규모임</a> | <a href="hothost.action">인기호스트</a> 
@@ -115,10 +115,10 @@
   	<br><br><br>
   	
 	<div class="row">
-		<c:forEach var="ClosingGroupAll" items="${ClosingGroupListAll}">
+		<c:forEach var="RecommendGroup" items="${RecommendGroupListAll}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${ClosingGroupAll.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${RecommendGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
 				
@@ -132,14 +132,14 @@
 				<span style="font-size: 12px;">1회차|맛집</span>
 				<div>
 					<div class="name">
-					<h5>${ClosingGroupAll.grName }</h5>
+					<h5>${RecommendGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">${ClosingGroupAll.memName }</h6>
+				<h6 style="text-align: right; font-size: 10px;">${RecommendGroup.memName }</h6>
 			</div>
 			
 			</div>

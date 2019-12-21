@@ -99,34 +99,18 @@
 
 	<div>
 		<div class="left" >
-			<button type="button" class="btn btn-default">테마별</button>
+			<button type="button" class="btn btn-default">테마별 > 인기모임</button>
 		</div>
 		<div class="right" align="right"> 
-			<a href="culture.action">인기모임</a> | <a href="theme.action">신규모임</a> | <a href="">인기호스트</a> | <a href="">마감임박</a>
+			<a href="theme.action">인기모임</a> | <a href="newgroup.action">신규모임</a> | <a href="hothost.action">인기호스트</a> 
+			| <a href="closing.action">마감임박</a> | <a href="recommend.action">추천모임</a>
 		</div>
 	</div>
 	<br>
 	<div align="right">
-		<label class="check-inline">
-			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" value="종료모임">종료 모임도 볼래요!
-		</label>
-		<label class="check-inline">
-		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" value="참여모임">참여 가능한 모임만 볼래요!
-		</label>
 	</div>
 	
 	<div align="right">
-		
-	    <div class="btn-group" role="group">
-		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      정렬 기준
-		    </button>
-		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-		      <a class="dropdown-item" href="#">최신순</a>
-		      <a class="dropdown-item" href="#">인기순</a>
-		      <a class="dropdown-item" href="#">평가순</a>
-		    </div>
-	  	</div>
   	</div>
   	<br><br><br>
   	
@@ -148,14 +132,14 @@
 				<span style="font-size: 12px;">1회차|맛집</span>
 				<div>
 					<div class="name">
-					<h5>${NewGroupAll.grName }</h5>
+					<h5>${HotGroupAll.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">${NewGroupAll.memName }</h6>
+				<h6 style="text-align: right; font-size: 10px;">${HotGroupAll.memName }</h6>
 			</div>
 			  
 			</div>
