@@ -28,12 +28,25 @@
 		FROM CUL_SHOW_VIEW
 	</select>
 	
-	
+	<!-- ============================================음식점 DAO================================================ -->
 	<select id="FoodGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
    		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM FOOD_GROUP_VIEW
 	</select>
 	
+	<select id="CafeGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM FOOD_CAFE_VIEW
+	</select>
+	
+	<select id="RestaurantGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM FOOD_RESTAURANT_VIEW
+	</select>
+	
+	<!-- ============================================음식점 DAO END================================================ -->
+	
+	<!-- ============================================테마별 DAO================================================ -->
 	<select id ="HotGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM HOT_GROUP_VIEW
@@ -121,7 +134,7 @@
 		WHERE 10>=ROWNUM
 	</select>
 	
-	
+	<!-- ============================================테마별 DAO END================================================ -->
 	
 	
 	<select id ="AvgStar" resultType="com.toleisure.mybatis.dto.GroupDTO">	

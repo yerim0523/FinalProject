@@ -112,6 +112,30 @@ public class MainController
 		return view;
 	}
 	
+	@RequestMapping(value="/restaurant.action", method=RequestMethod.GET)
+	public String restraunt(Model model)
+	{
+		String view = "WEB-INF/views/Restaurant.jsp";
+		
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		  
+		model.addAttribute("RestaurantGroupList", dao.RestaurantGroupList());
+		
+		return view;
+	}
+	
+	@RequestMapping(value="/cafe.action", method=RequestMethod.GET)
+	public String Cafe(Model model)
+	{
+		String view = "WEB-INF/views/Cafe.jsp";
+		
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		  
+		model.addAttribute("CafeGroupList", dao.CafeGroupList());
+		
+		return view;
+	}
+	
 	//-----------------------------------테마별모임-------------------
 	//-----------------------------------------------인기모임(default)
 	@RequestMapping(value="/theme.action", method=RequestMethod.GET)

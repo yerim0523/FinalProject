@@ -122,10 +122,10 @@
   	<br><br><br>
   	
 	<div class="row">
-		<c:forEach var="FoodGroup" items="${FoodGroupList}">
+		<c:forEach var="CafeGroup" items="${CafeGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${FoodGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${CafeGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
 				
@@ -136,17 +136,17 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|${FoodGroup.grCate1Name } ${FoodGroup.grCate2Name }</span>
+				<span style="font-size: 12px;">1회차|${CafeGroup.grCate1Name } ${CafeGroup.grCate2Name }</span>
 				<div>
 					<div class="name">
-					<h5>${FoodGroup.grName }</h5>
+					<h5>${CafeGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">${FoodGroup.memName }</h6>
+				<h6 style="text-align: right; font-size: 10px;">${CafeGroup.memName }</h6>
 			</div>
 			
 			</div>
