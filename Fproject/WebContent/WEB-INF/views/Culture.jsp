@@ -328,7 +328,7 @@
 </div>
 
 <div>
-   <c:import url="footer.jsp"></c:import>
+	<jsp:include page="footer.jsp"></jsp:include>
 </div>
 
 </body>
