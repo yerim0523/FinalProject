@@ -63,11 +63,12 @@ public class MemberController
 	@ResponseBody
 	public String selectEmp(MemberDTO dto, Model model)
 	{
-		//IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		//String isEmpYn = dao.selectEmp(dto);
-		System.out.println("NAME = "+ dto.getMemName());
-		System.out.println("TEL = "+ dto.getMemTel());
-		String isEmpYn = "Y";
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		String isEmpYn = dao.selectEmp(dto);
+		
+		System.out.println("################");
+		System.out.println("### isEmpYn = "+isEmpYn);
+		System.out.println("################");
 		
 		return isEmpYn;
 	}

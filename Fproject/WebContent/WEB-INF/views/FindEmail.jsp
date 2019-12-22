@@ -23,18 +23,18 @@
 			params.memName = $("#memName").val();
 			params.memTel = $("#memTel").val();
 			
-			alert( $("#memName").val());	
-			alert( $("#memTel").val());	
-			
 			$.ajax({
                 type : "POST"
-                , url : "/selectEmp.action"
+                , url : "selectEmp.action"
                 , data : params
                 , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
                  , success: function(data){
-                    var fileList = data;
-                    var htmlList = "";
-                    alert("ajax 성공!!!!");
+                    var isMember = data;
+                    if(isMember === "Y"){
+                    	alert("일치하는 정보가 있음!");
+                    }else{
+                    	alert("일치하는 정보가 없음!!");
+                    }
                  }
              });
 		});
