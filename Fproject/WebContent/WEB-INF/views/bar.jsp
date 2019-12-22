@@ -106,7 +106,7 @@
 									</form>
 								</li>
 								<li class="nav-item"><a class="nav-link"
-									href="main.action">모임개설</a></li>
+									href="groupInsertForm.action">모임개설</a></li>
 								<!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Pages
@@ -119,7 +119,7 @@
 								<li class="nav-item"><a class="nav-link"
 									href="join.action">회원가입</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="main.action">고객센터</a></li>
+									href="news.action">고객센터</a></li>
 								<li class="d-none d-lg-block"><a class="btn_1"
 									href="login.action" style="color: black;">로그인</a></li>
 							</ul>
