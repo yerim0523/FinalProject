@@ -6,13 +6,11 @@
       {CALL
          DECLARE
             grCodeSeq INT;
-            category2 INT;
          BEGIN
             grCodeSeq := GROUPINGSEQ.NEXTVAL;
-            category2 := #{grCate2};
             
             <choose>
-               <when test='category2 != 0'>
+               <when test='grCate2 != 0'>
                   INSERT INTO TBL_GROUP
                      (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2)
                   VALUES
