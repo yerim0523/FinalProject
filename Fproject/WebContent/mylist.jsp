@@ -96,7 +96,7 @@
 								<span class="title">맥주모임</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
-									<button type="button" class="btn4">피드백</button>
+									<button type="button" class="btn4" data-toggle="modal" data-target="#feedbackPopup" onclick="fn_">피드백</button>
 								</div>
 							</div>
 						</div>
@@ -150,4 +150,65 @@
 </div>
 
 </body>
+			
+<!-- 피드백 모달 --> 
+<div class="modal" id="feedbackPopup">
+    <div class="modal-dialog modal-lg shadow-sm mt-10p">
+      <div class="modal-content">
+        <div class="modal-header">
+          <b class="font-14">피드백</b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+			<section class="course_details_area section_padding" style="padding-bottom: 0;">
+				<div class="container">
+					<div align="center">
+						<h3>모임 평가</h3>
+					</div>
+					<br><br>
+					
+					<div align="center">
+					<i class="fas fa-clipboard-list fa-7x"></i>
+					</div>
+					<br><br><br><br>
+					<!-- 
+					<div style="width: 400px;" align="left">
+						<ul class="fb">
+							<li>모임 내용에 알맞게 모임이 진행되었다.</li>
+								<input type="radio" name="feed" class="yes"> 예
+								<input type="radio" name="feed" class="no"> 아니요
+							<li>이번회차 모임에 정산이 정상적으로 이루어졌다.</li>
+						</ul>
+					</div>
+					 -->
+					<div class="feed">
+						<span style="font-size: 19px;"><i class="fas fa-star"></i></span> &nbsp;
+						<span class="text">모임 내용에 알맞게 모임이 진행되었다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label for="yes" style="margin-left: 76px;"><input type="radio" name="feed" id="yes" value="예"> 예</label>&nbsp;&nbsp;
+							<label for="no"><input type="radio" name="feed" id="no"> 아니요</label>
+					</div>
+					<br>
+					<div class="feed">
+						<span style="font-size: 19px;"><i class="fas fa-star"></i></span> &nbsp;
+						<span class="text">이번 회차 모임에 정산이 정상적으로 이루어졌다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label for="yes"><input type="radio" name="feed" id="yes" value="예"> 예</label>&nbsp;&nbsp;
+							<label for="no"><input type="radio" name="feed" id="no"> 아니요</label>
+					</div>
+					<br><br>
+					<div align="center">
+						<button type="button" class="btn4" value="제출">제출</button>&nbsp;
+						<button type="button" class="btn4" value="취소">취소</button>
+					</div>
+					
+				</div>
+			</section>
+        </div>
+        <div class="modal-footer border-top-0">
+        	<button type="button" class="btn" data-dismiss="modal">닫기</button>
+        </div>
+       
+    </div>
+  </div>
+</div>
+
 </html>
