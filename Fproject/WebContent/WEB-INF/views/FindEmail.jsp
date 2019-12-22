@@ -19,7 +19,6 @@
 	{
 		$(".findInfo").click(function()
 		{
-			
 			var params = {};
 			params.memName = $("#memName").val();
 			params.memTel = $("#memTel").val();
