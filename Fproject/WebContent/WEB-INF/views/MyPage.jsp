@@ -55,6 +55,7 @@
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -158,16 +159,16 @@
 			<div class="a_layer">
 				<div class="a_layer_inner">
 					<div class="a_content">
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-user fa-7x"></i><br><br><p class="menu">개 인정보</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-lock fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-heart fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
+						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-user fa-7x"></i><br><br><p class="menu">개인정보수정</p></span></a></div>
+						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-lock fa-7x"></i><br><br><p class="menu">비밀번호 재설정</p></span></a></div>
+						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-heart fa-7x"></i><br><br><p class="menu">찜목록</p></span></a></div>
 					</div>
 					<br>
 					<div class="a_content">
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-receipt fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
+						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users fa-7x"></i><br><br><p class="menu">내 모임</p></span></a></div>
+						<div class="box"><a href=""><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">일정관리</p></span></a></div>
+						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">모임관리</p></span></a></div>
+						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-receipt fa-7x"></i><br><br><p class="menu">결제내역</p></span></a></div>
 					</div>
 				</div>
 			</div>
