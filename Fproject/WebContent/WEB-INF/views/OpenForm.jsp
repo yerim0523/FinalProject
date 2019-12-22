@@ -135,13 +135,13 @@
 		
 		var str = f.grName.value;
 		str = str.trim();
-		if(!str || 6>str.length || 50<str.length)
+		if(!str || 7>str.length || 50<str.length)
 		{
-			alert("모임명을 【6 ~ 50자】 내외로 입력해주세요.");
+			alert("모임명을 【7 ~ 50자】 내외로 입력해주세요.");
 			f.grName.focus();
 			return;
 		}
-			
+		
 		max = f.ngMax.value;
 	
 		if(!max || 4>parseInt(max) || parseInt(max)>20)
@@ -150,7 +150,6 @@
 			f.ngMax.focus();
 			return;
 		}
-		
 		
 		min = f.ngMin.value;
 		
