@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.MemberDTO;
 
@@ -59,9 +60,9 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/selectEmp.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
 	public String selectEmp(MemberDTO dto, Model model)
 	{
-		
 		//IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		//String isEmpYn = dao.selectEmp(dto);
 		System.out.println("NAME = "+ dto.getMemName());
