@@ -40,56 +40,83 @@
 		});
 	});
 	
-	/* 
 	function sms()
-	{
-		
-		result = Math.floor(Math.random() * 1000000) + 100000;
-		if (result > 1000000)
-		{
-			result = result - 100000;
-		}
-		
-		alert("인증번호를 전송하였습니다." + result);
-		//alert(result);
+	   {
+	      
+	      result = Math.floor(Math.random() * 1000000) + 100000;
+	      if (result > 1000000)
+	      {
+	         result = result - 100000;
+	      }
+	      
+	      alert("인증번호를 전송하였습니다." + result);
+	      //alert(result);
+	   
+	   }
 
-	}
- */
-	function sms_ok()
-	{
-		otp = $('#otp').val();
+	   $(function()
+	   {
+	      $(".findInfo").click(function()
+	      {
+	         var params = {};
+	         params.memName = $("#memName").val();
+	         params.memTel = $("#memTel").val();
+	         
+	         $.ajax({
+	                type : "POST"
+	                , url : "selectEmp.action"
+	                , data : params
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , success: function(data){
+	                    var isMember = data;
+	                    if(isMember === "Y"){
+	                       alert("일치하는 정보가 있음!");
+	                       sms();
+	                    }else{
+	                       alert("일치하는 정보가 없음!!");
+	                    }
+	                 }
+	             });
+	      });
+	   });
+	   
+	   
 
-		f = document.FindEmailForm;
+	   function sms_ok()
+	   {
+	      otp = $('#otp').val();
 
-		if (!f.memName.value)
-		{
-			alert("이름을 입력하세요.");
-			f.memName.focus();
-			return;
-		}
+	      f = document.FindEmailForm;
 
-		if (!f.memTel.value)
-		{
-			alert("전화번호를 입력하세요.");
-			f.memTel.focus();
-			return;
-		}
-		
-		if(result == otp)
-		{
-			f.submit();
-		}
-		
-		else
-		{
-			alert("인증번호가 일치하지 않습니다");
-		}
+	      if (!f.memName.value)
+	      {
+	         alert("이름을 입력하세요.");
+	         f.memName.focus();
+	         return;
+	      }
 
-		/* alert(result); */
+	      if (!f.memTel.value)
+	      {
+	         alert("전화번호를 입력하세요.");
+	         f.memTel.focus();
+	         return;
+	      }
+	      
+	      if(result == otp)
+	      {
+	         f.submit();
+	      }
+	      
+	      else
+	      {
+	         alert("인증번호가 일치하지 않습니다");
+	      }
 
-		/* alert(otp); */
+	      /* alert(result); */
 
-	}
+	      /* alert(otp); */
+
+	   }
  
 </script>
 
