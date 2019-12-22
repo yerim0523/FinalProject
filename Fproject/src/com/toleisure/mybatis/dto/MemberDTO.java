@@ -1,5 +1,6 @@
 package com.toleisure.mybatis.dto;
 
+
 public class MemberDTO
 {
 	private String memId, memName, memTel;

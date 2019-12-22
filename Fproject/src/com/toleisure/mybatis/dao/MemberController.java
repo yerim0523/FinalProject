@@ -16,6 +16,7 @@ public class MemberController
 	
 	@Autowired
 	private SqlSession sqlsession;
+
 	
 	@RequestMapping(value = "/memberfindform.action", method = RequestMethod.GET)
 	public String findEmail(Model m)
@@ -55,6 +56,19 @@ public class MemberController
 		
 		
 		return view;
+	}
+	
+	@RequestMapping(value = "/selectEmp.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String selectEmp(MemberDTO dto, Model model)
+	{
+		
+		//IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		//String isEmpYn = dao.selectEmp(dto);
+		System.out.println("NAME = "+ dto.getMemName());
+		System.out.println("TEL = "+ dto.getMemTel());
+		String isEmpYn = "Y";
+		
+		return isEmpYn;
 	}
 	
 }

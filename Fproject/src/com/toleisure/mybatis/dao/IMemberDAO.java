@@ -12,4 +12,6 @@ public interface IMemberDAO
 	public ArrayList<MemberDTO> list();
 	
 	public String efind(MemberDTO m);
+
+	public String selectEmp(MemberDTO dto);
 }

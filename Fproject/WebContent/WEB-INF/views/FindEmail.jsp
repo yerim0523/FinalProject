@@ -9,38 +9,41 @@
 <head>
 <title>FindEmail.jsp</title>
 
-<!-- <script type="text/javascript">
-
-	$(function()
-	{
-		$(".btn4").on("click", function()
-		{
-			$("#title").text("아이디 찾기");
-			$("#memName").val("");
-			$("#memTel").val("");
-			
-			$("#memberForm").attr("action", "efind.action");
-			$("#memName").focus();
-		});
-		
-	});
- 
-</script> -->
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet" href="css/FindEmail.css">
+<script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 
 <script type="text/javascript">
 
 	$(function()
 	{
-		
+		$(".findInfo").click(function()
+		{
+			var params = {};
+			params.memName = $("#memName").val();
+			params.memTel = $("#memTel").val();
+			
+			alert( $("#memName").val());	
+			alert( $("#memTel").val());	
+			
+			$.ajax({
+                type : "POST"
+                , url : "/selectEmp.action"
+                , data : params
+                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+                 , success: function(data){
+                    var fileList = data;
+                    var htmlList = "";
+                    alert("ajax 성공!!!!");
+                 }
+             });
+		});
 	});
-
+	
+	/* 
 	function sms()
 	{
-		
-		
 		
 		result = Math.floor(Math.random() * 1000000) + 100000;
 		if (result > 1000000)
@@ -52,7 +55,7 @@
 		//alert(result);
 
 	}
-
+ */
 	function sms_ok()
 	{
 		otp = $('#otp').val();
@@ -88,6 +91,7 @@
 		/* alert(otp); */
 
 	}
+ 
 </script>
 
 
@@ -110,7 +114,7 @@
 				<div class="login_container" data-v-3eb3c17e="">
 					<input class="findid_id_input" name="memName" id="memName" type="text" placeholder="이름" > 
 					<input class="findid_hp_input" name="memTel" id="memTel" style="ime-mode: disabled; width: 475px;" type="tel" placeholder="휴대폰 번호 입력"> 
-						<button type="button" class="findid" onclick="sms()">인증번호</button>
+						<button type="button" class="findid findInfo">인증번호</button>
 						<span class="findid_txt" data-v-3eb3c17e="" style="font-size: 12px;">가입 시 입력하신 휴대전화 번호와 동일하게 입력하셔야 인증번호를 받을 수 있습니다.</span> 
 						<input class="findid_id_input" id="otp" type="tel"  placeholder="인증번호 숫자 6자리" data-v-3eb3c17e=""> 
 						<br data-v-3eb3c17e="">

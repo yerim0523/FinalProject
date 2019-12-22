@@ -8,4 +8,12 @@
 		WHERE MEM_NAME = #{memName} AND MEM_TEL = #{memTel}
 	</select>
 	
+	
+   <select id="selectEmp" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="String">
+   		SELECT CASE WHEN COUNT(*) >= 1 THEN 'Y' ELSE 'N' END AS ISEMP
+		FROM MEMBER
+		WHERE MEM_NAME='이예림' AND MEM_TEL='010-2800-0894'
+   </select>
+   
+   
 </mapper>
