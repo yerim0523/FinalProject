@@ -41,14 +41,20 @@ public class MemberController
 	@RequestMapping(value = "/findemail.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String findEmail(MemberDTO dto, Model model)
 	{
-		String view = "/WEB-INF/views/email.jsp";
+		String view = "/WEB-INF/views/FindEmail.jsp";
 		
-		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		
-		model.addAttribute("memId", dao.efind(dto));
 		
 		return view;
 	}
 	
+	
+	@RequestMapping(value = "/findpassword.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String findPw(MemberDTO dto, Model model)
+	{
+		String view = "/WEB-INF/views/FindPassword.jsp";
+		
+		
+		return view;
+	}
 	
 }

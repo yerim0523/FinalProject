@@ -32,9 +32,13 @@
 
 <script type="text/javascript">
 
-	function sms()
+	$(function()
 	{
 		
+	});
+
+	function sms()
+	{
 		
 		
 		
@@ -45,7 +49,7 @@
 		}
 		
 		alert("인증번호를 전송하였습니다." + result);
-		/* alert(result); */
+		//alert(result);
 
 	}
 
