@@ -500,7 +500,7 @@ label {
 								</div>
 								<div>
 									<a class="LoginPage__ResetPasswordButton-co2bls-4 cgoDOa"
-										href="memberfindform.action">아이디를 잊으셨나요?</a><a
+										href="findemail.action">아이디를 잊으셨나요?</a><a
 										class="LoginPage__SignUpButton-co2bls-3 keyGVD"
 										href="join.action">회원가입하기</a>
 									<a class="LoginPage__ResetPasswordButton-co2bls-4 cgoDOa"

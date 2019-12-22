@@ -38,4 +38,17 @@ public class MemberController
 		return view;
 	}
 	
+	@RequestMapping(value = "/findemail.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String findEmail(MemberDTO dto, Model model)
+	{
+		String view = "/WEB-INF/views/email.jsp";
+		
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		model.addAttribute("memId", dao.efind(dto));
+		
+		return view;
+	}
+	
+	
 }
