@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toleisure.mybatis.dao.IBoardDAO">
+
+	<select id="news" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT NEWS_NUM AS newsNum, MEM_NAME AS memName
+			 , NEWS_TITLE AS newsTitle, NEWS_CONT AS newsCont, SUBSTR(NEWS_DATE, 1, 10) AS newsDate, NVL(NEWS_HITS, 0)AS newsHits
+		FROM NEWS_POST_VIEW
+	</select>
+	
+	<select id="event" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT EVENT_NUM AS eventNum, MEM_NAME AS memName
+			 , EVENT_TITLE AS eventTitle, EVENT_CONT AS eventCont, EVENT_DATE AS eventDate, NVL(EVENT_HITS, 0) AS eventHits
+		FROM EVENT_POST_VIEW
+	</select>
+	
+	<select id="faq" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
+		FROM FAQ_POST_VIEW
+	</select>
+
+</mapper>

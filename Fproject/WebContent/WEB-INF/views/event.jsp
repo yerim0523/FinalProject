@@ -185,7 +185,7 @@
 					<td>${event.eventHits }</td>
 				</tr>
 				</c:forEach>
-				<tr>
+				<!-- <tr>
 					<td style="color: red;">공지</td>
 					<td>사이트 폐지 안내</td>
 					<td>이성조</td>
@@ -205,7 +205,7 @@
 					<td>이성조</td>
 					<td>16.08.31</td>
 					<td>377</td>
-				</tr>
+				</tr> -->
 			</thead>
 		</table>
 
