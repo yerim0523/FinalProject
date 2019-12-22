@@ -2,70 +2,80 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IGroupDAO">
 
-	<insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
-		{CALL
-			DECLARE
-				grCodeSeq INT;
-				category2 INT;
-			BEGIN
-				grCodeSeq := GROUPINGSEQ.NEXTVAL;
-				category2 := #{grCate2};
-				
-				IF category2==0 THEN 
-				    INSERT INTO TBL_GROUP(GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
-				    VALUES(grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1});
-				ELSE
-					INSERT INTO TBL_GROUP(GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2)
-					VALUES(grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{grCate2});
-					
-				END IF;
-				
-
-				INSERT INTO NOW_GROUP(NG_CODE, GR_CODE, NG_PIC, NG_MAX, NG_MIN,
-				NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO, NG_DATE)
-				VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, #{ngPic}, #{ngMax}, #{ngMin}
-				, TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
-				TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
-				, #{ngCost}, #{ngLocation1}||#{ngLocation2}
-				, #{ngIntro}, #{ngMyIntro}
-				, TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS'));
-		END
-		}
-	</insert>
-	
-	<!-- 
-	<select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_NAME
-		FROM NOW_GROUP
-		WHERE GR_NAME LIKE %#{검색값}%
-	</select>
-	
-	<select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_NAME
-		FROM NOW_GROUP
-		WHERE GR_NAME LIKE %#{검색값}%
-	</select>
-	
-	
-	<select id="searchGroup" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_NAME
-		FROM NOW_GROUP
-		WHERE GR_NAME LIKE %#{검색값}%
-	</select>
-	
-	<select id="searchHost" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_NAME
-		FROM NOW_GROUP
-		WHERE GR_NAME LIKE %#{검색값}%
-	</select>
-	
-	<select id="searchMood" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_NAME
-		FROM NOW_GROUP
-		WHERE GR_NAME LIKE %#{검색값}%
-	</select>
-	 -->
-	
-	
+   <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
+      {CALL
+         DECLARE
+            grCodeSeq INT;
+            category2 INT;
+         BEGIN
+            grCodeSeq := GROUPINGSEQ.NEXTVAL;
+            category2 := #{grCate2};
+            
+            <choose>
+               <when test='category2 != 0'>
+                  INSERT INTO TBL_GROUP
+                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2)
+                  VALUES
+                     (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{grCate2});
+               </when>
+               <otherwise>
+                  INSERT INTO TBL_GROUP
+                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
+                   VALUES
+                      (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1});
+               </otherwise>
+            </choose>
+            
+            INSERT INTO NOW_GROUP
+               (NG_CODE
+               , GR_CODE
+               , NG_PIC
+               , NG_MAX
+               , NG_MIN,
+            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO, NG_DATE)
+            VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, #{ngPic}, #{ngMax}, #{ngMin}
+            , TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
+            TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
+            , #{ngCost}, #{ngLocation1}||#{ngLocation2}
+            , #{ngIntro}, #{ngMyIntro}
+            , TO_DATE(SYSDATE, 'YY-MM-DD HH24:MI:SS'));
+      END
+      }
+   </insert>
+   
+   <!-- 
+   <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT GR_NAME
+      FROM NOW_GROUP
+      WHERE GR_NAME LIKE %#{검색값}%
+   </select>
+   
+   <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT GR_NAME
+      FROM NOW_GROUP
+      WHERE GR_NAME LIKE %#{검색값}%
+   </select>
+   
+   
+   <select id="searchGroup" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT GR_NAME
+      FROM NOW_GROUP
+      WHERE GR_NAME LIKE %#{검색값}%
+   </select>
+   
+   <select id="searchHost" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT GR_NAME
+      FROM NOW_GROUP
+      WHERE GR_NAME LIKE %#{검색값}%
+   </select>
+   
+   <select id="searchMood" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT GR_NAME
+      FROM NOW_GROUP
+      WHERE GR_NAME LIKE %#{검색값}%
+   </select>
+    -->
+   
+   
 
 </mapper>
