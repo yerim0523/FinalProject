@@ -205,10 +205,20 @@ public class MainController
 	// ----------------------------------------------------------테마별 모임 end
 
 	
+	// ---------------------------------------------------------- 메인바 → 회원가입
 	@RequestMapping(value = "/join.action", method = RequestMethod.GET)
 	public String Join(Model model)
 	{
 		String view = "WEB-INF/views/join.jsp";
+
+		return view;
+	}
+	
+	// ---------------------------------------------------------- 메인바 → 로그인
+	@RequestMapping(value = "/login.action", method = RequestMethod.GET)
+	public String Login(Model model)
+	{
+		String view = "WEB-INF/views/login.jsp";
 
 		return view;
 	}
