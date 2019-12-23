@@ -306,28 +306,18 @@
          str2=0;         
       } 
       
-      str = f.ngPic.value;
-      if(!str)
-      {
-         alert("대표사진을 선택해주세요.");
-         f.ngPic.focus();
-         return;
-      }
-      var test1 =document.getElementById("grCate1").value;
-      var test2 = document.getElementById("grCate2").value;
-      alert(test1); // --===>>      공백
-      alert(test2); // --===.>       0
-      
        document.getElementById("grCate1").value=str1;
        document.getElementById("grCate2").value=str2;
        
-      test1 =document.getElementById("grCate1").value;
-      test2 = document.getElementById("grCate2").value;
-      
-      alert(test1); // --===>> 3
-      alert(test2); // --==>> 0 
+       str = f.ngPic.value;
+       if(!str)
+       {
+          alert("대표사진을 선택해주세요.");
+          f.ngPic.focus();
+          return;
+       }
          
-      f.submit();
+       f.submit();
    }
    
    
