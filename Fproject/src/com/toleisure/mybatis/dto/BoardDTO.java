@@ -2,23 +2,74 @@ package com.toleisure.mybatis.dto;
 
 
 public class BoardDTO {
-	private int newsNum, adminCode, newsHits;
-	private String newsTitle, newsCont, newsDate, newsMem,memPwd;
+	private int adminCode, newsHits;
+	private String newsNum,newsTitle, newsCont,newsMem, newsDate,memPwd;
 	
 	
 	private int eventHits;
 	private String eventNum,eventTitle, eventCont,eventMem, eventDate;
 	
+	private int boardHits;
+	private String boardNum,boardTitle, boardCont,boardMem, boardDate;
 	
+	public int getBoardHits()
+	{
+		return boardHits;
+	}
+	public void setBoardHits(int boardHits)
+	{
+		this.boardHits = boardHits;
+	}
+	public String getBoardNum()
+	{
+		return boardNum;
+	}
+	public void setBoardNum(String boardNum)
+	{
+		this.boardNum = boardNum;
+	}
+	public String getBoardTitle()
+	{
+		return boardTitle;
+	}
+	public void setBoardTitle(String boardTitle)
+	{
+		this.boardTitle = boardTitle;
+	}
+	public String getBoardCont()
+	{
+		return boardCont;
+	}
+	public void setBoardCont(String boardCont)
+	{
+		this.boardCont = boardCont;
+	}
+	public String getBoardMem()
+	{
+		return boardMem;
+	}
+	public void setBoardMem(String boardMem)
+	{
+		this.boardMem = boardMem;
+	}
+	public String getBoardDate()
+	{
+		return boardDate;
+	}
+	public void setBoardDate(String boardDate)
+	{
+		this.boardDate = boardDate;
+	}
 	private String faqNum,faqTitle, faqCont, faqDate, faqMem;
 	
 	 private int startIndex;
 	    private int cntPerPage;
-		public int getNewsNum()
+		
+		public String getNewsNum()
 		{
 			return newsNum;
 		}
-		public void setNewsNum(int newsNum)
+		public void setNewsNum(String newsNum)
 		{
 			this.newsNum = newsNum;
 		}

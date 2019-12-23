@@ -1,4 +1,4 @@
-0<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>news.jsp</title>
+<title>event.jsp</title>
 <style type="text/css">
 .pagination {
 	justify-content: center;
@@ -59,6 +59,20 @@
 		alert("확인");
 	}
 </script> -->
+<script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#notice_regi").on("click",function(){
+            location.href="/test/noticeRegi"
+        });
+    });
+    function fn_paging(curPage){
+        location.href="/test/noticeList?curPage="+curPage;
+    }
+    function notice_push(notice_id){
+        alert(notice_id);
+    }
+</script>
 </head>
 <body>
 
@@ -98,6 +112,7 @@
 			<thead>
 				<tr>
 					<th></th>
+					<th></th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>날짜</th>
@@ -107,12 +122,12 @@
 				<tr>
 					<td style="color: red;">이벤트</td>
 					<td>${status.index+1+(paging.curPage-1)*10}</td>
-					<td>${v.eventTitle}</td>
-					<td>${v.eventMem}</td>
-					<td>${v.eventDate}</td>
-					<td>${v.eventHits}</td>
+					<td onclick=location.href='/WEB-INF/views/noticeDetail/${v.eventNum}'">${v.boardTitle}</td>
+					<td>${v.boardMem}</td>
+					<td>${v.boardDate}</td>
+					<td>${v.boardHits}</td>
 			    </tr>
-			    <input type="button" onclick="notice_push(${v.eventMem})" value="전송">
+			  
 				</c:forEach>
 			
 			
@@ -175,7 +190,8 @@
         <div>
                     총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
         </div>
-
+			
+			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
 </div>
 </section>
 

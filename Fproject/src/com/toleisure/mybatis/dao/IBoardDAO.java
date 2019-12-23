@@ -8,12 +8,21 @@ import com.toleisure.mybatis.dto.NoticeVo;
 
 public interface IBoardDAO
 {
-	public ArrayList<BoardDTO> news();
+	
+	public List<BoardDTO> eventList(BoardDTO event);
+	
+	public List<BoardDTO> faqList(BoardDTO faq);
+	
+	public List<BoardDTO> newsList(BoardDTO news);
 	
 	 public int eventListCount();
+	 
+	 public int faqListCount();
+	 
+	 public int newsListCount();
 	
-	public ArrayList<BoardDTO> faq();
 	
+	/*
 	public int getfaqMaxNum();
 	
 	public int geteventMaxNum();
@@ -22,7 +31,7 @@ public interface IBoardDAO
 	
 	public BoardDTO getfaqReadData(int faqNum);
 	
-	public BoardDTO geteventReadData(int eventNum);
+	public BoardDTO geteventReadData(int eventNum);*/
 	
 	
 	 
@@ -31,7 +40,7 @@ public interface IBoardDAO
 	 public int NoticeUpdate(NoticeVo notice);
 	 public int NoticeDelete(String notice_id);
 
-	public List<BoardDTO> eventList(BoardDTO event);
+	
 	
 	
 }

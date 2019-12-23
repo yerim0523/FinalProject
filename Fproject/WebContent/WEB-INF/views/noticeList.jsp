@@ -15,7 +15,7 @@
         });
     });
     function fn_paging(curPage){
-        location.href="/test/noticeList?curPage="+curPage;
+        location.href="/WEB-INF/views/event?curPage="+curPage;
     }
     function notice_push(notice_id){
         alert(notice_id);
@@ -42,7 +42,7 @@
                         <div class="divTableCell"><input type="checkbox"></div>
                         <div class="divTableCell">${status.index+1+(paging.curPage-1)*10}</div>
                         <div class="divTableCell">
-                            <a href="/test/noticeDetail/${v.eventNum}">${v.eventTitle}</a>
+                            <a href="/WEB-INF/views/noticeDetail/${v.eventNum}">${v.eventTitle}</a>
                         </div>
                         <div class="divTableCell">"${v.eventNum}"</div>
                         <div class="divTableCell"><input type="button" onclick="notice_push(${v.eventMem})" value="전송"></div>

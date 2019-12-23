@@ -3,14 +3,24 @@
 <mapper namespace="com.toleisure.mybatis.dao.IBoardDAO">
 	 
  <resultMap id="BoardDTO" type="com.toleisure.mybatis.dto.BoardDTO">
-        <result property="eventNum" column="eventNum"/>
-        <result property="eventTitle" column="eventTitle"/>
-        <result property="eventCont" column="eventCont"/>
-        <result property="eventDate" column="eventDate"/>
-        <result property="eventMem" column="eventMem"/>
-        <result property="eventHits" column="eventHits"/>
+        <result property="boardNum" column="boardNum"/>
+        <result property="boardTitle" column="boardTitle"/>
+        <result property="boardCont" column="boardCont"/>
+        <result property="boardDate" column="boardDate"/>
+        <result property="boardMem" column="boardMem"/>
+        <result property="boardHits" column="boardHits"/>
     </resultMap> 
-	
+    
+  <!-- <resultMap id="BoardDTO" type="com.toleisure.mybatis.dto.BoardDTO">  resultMap id는 하나밖에못씀
+        <result property="faqNum" column="faqNum"/>
+        <result property="faqTitle" column="faqTitle"/>
+        <result property="faqCont" column="faqCont"/>
+        <result property="faqDate" column="faqDate"/>
+        <result property="faqMem" column="faqMem"/>
+    </resultMap> -->
+    
+
+	 
 <!-- 	
 	
 	<select id="news" resultType="com.toleisure.mybatis.dto.BoardDTO">
@@ -213,16 +223,35 @@
         </if>
     </if>    
     </sql>     -->
+     <select id="newsListCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM NEWS_POST_VIEW
+    </select>
     
+     <select id="newsList" resultMap = "BoardDTO">
+		SELECT  E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
+        		,E.NEWS_DATE AS boardDate,E.MEM_NAME AS boardMem
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT NEWS_NUM, MEM_NAME, NEWS_TITLE, NEWS_DATE, NEWS_CONT
+	      				FROM NEWS_POST_VIEW 
+	      				ORDER BY NEWS_NUM DESC 
+	      				) DATA 
+      				)E 
+      				WHERE RNUM >= #{startIndex} AND #{cntPerPage} >=RNUM
+      </select>
     
     <select id="eventListCount" resultType="Integer">
-        select count(*)
-        from EVENT_POST_VIEW
+        SELECT COUNT(*)
+        FROM EVENT_POST_VIEW
     </select>
     
      <select id="eventList" resultMap = "BoardDTO">
-		SELECT  E.EVENT_NUM AS eventNum, E.EVENT_TITLE AS eventTitle, E.EVENT_CONT AS eventCont
-        		,E.EVENT_DATE AS eventDate,E.MEM_NAME AS eventMem , E.EVENT_HITS AS eventHits
+		SELECT  E.EVENT_NUM AS boardNum, E.EVENT_TITLE AS boardTitle, E.EVENT_CONT AS boardCont
+        		,E.EVENT_DATE AS boardDate,E.MEM_NAME AS boardMem , E.EVENT_HITS AS boardHits
         			FROM
       				( 
       				  SELECT ROWNUM RNUM, DATA.* 
@@ -237,6 +266,26 @@
       </select>
 
    
+    <select id="faqListCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM FAQ_POST_VIEW
+    </select>
+    
+     <select id="faqList" resultMap = "BoardDTO">
+		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
+        		,E.FAQ_DATE AS boardDate,E.MEM_NAME AS boardMem
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT
+	      				FROM FAQ_POST_VIEW 
+	      				ORDER BY FAQ_NUM DESC 
+	      				) DATA 
+      				)E 
+      				WHERE RNUM >= #{startIndex} AND #{cntPerPage} >=RNUM
+      </select>
    <!--   <select id="eventSelect" parameterType="String" resultMap = "NoticeVo">
         select  notice_id,
                 notice_title,
