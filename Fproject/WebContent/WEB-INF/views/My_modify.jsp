@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <style type="text/css">
 p
 {
@@ -17,8 +18,6 @@ p
 	font-size: 18pt;
 }
 </style>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -27,6 +26,23 @@ p
 <link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
+
+<script type="text/javascript">
+	$(function()
+	{
+		//alert(${myInfo.memGender});
+		var gender = ${myInfo.memGender};
+		var temp = ${myInfo.mem};
+		
+		$("input[name='radio']:radio[value='"+ gender +"']").attr("checked","checked");
+		
+		for (var i = 0; i < array.length; i++)
+		{
+			
+		}
+	});
+</script>
+
 </head>
 <body>
 
@@ -57,29 +73,29 @@ p
 					</div>
 					
 					<div class="form-group">
-						<p>소개글</p> <textarea rows="3" cols="10" class="form-control"></textarea>
+						<p>소개글</p> <textarea rows="3" cols="10" class="form-control">${myInfo.memIntro }</textarea>
 					</div>
 					
 					<div class="form-group">
-						<p>이메일 주소</p> <input type="email"
-							class="form-control" id="InputEmail" >
+						<p>이메일 주소</p><input type="email"
+							class="form-control" id="InputEmail" value="${myInfo.memId }">
 					</div>
 					
 					<div class="form-group">
 						<p>휴대폰 번호</p><input type="tel"
-							class="form-control" id="inputMobile">
+							class="form-control" id="inputMobile" value="${myInfo.memTel }">
 					</div>
 					
 					<div class="form-group">
-						<p>성별</p><br>
+						<p>성별</p>
 						<label class="radio-inline">
-							<input type="radio" name="radio" id="inlineRadio1" value="male"> 남자
+							<input type="radio" name="radio" id="inlineRadio1" value="1" > 남자
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="radio" id="inlineRadio2" value="female"> 여자
+							<input type="radio" name="radio" id="inlineRadio2" value="2"> 여자
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="radio" id="inlineRadio3" value="none"> 선택안함
+							<input type="radio" name="radio" id="inlineRadio3" value="3"> 선택안함
 						</label>
 	
 					</div>

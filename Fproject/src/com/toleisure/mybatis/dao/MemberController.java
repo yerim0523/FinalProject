@@ -141,6 +141,7 @@ public class MemberController
 		
 		MemberDTO mine = dao.myInfo(dto.getMemId());
 		
+		session.getAttribute("member");
 		session.setAttribute("myInfo", mine);
 		
 		return "/WEB-INF/views/MyPage.jsp";
@@ -152,9 +153,10 @@ public class MemberController
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		HttpSession session = req.getSession(true);
 		
-		MemberDTO mine = dao.myInfo(dto.getMemId());
+		MemberDTO mine2 = dao.myInfo(dto.getMemId());
 		
-		session.setAttribute("myInfo", mine);
+		session.getAttribute("member");
+		session.setAttribute("myInfo", mine2);
 		
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
