@@ -128,8 +128,8 @@ public class MemberController
 	{
 		HttpSession session = req.getSession();
 		
-		session.setAttribute("mode", "logout");
 		session.invalidate();
+		session.setAttribute("mode", "logout");
 				
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
