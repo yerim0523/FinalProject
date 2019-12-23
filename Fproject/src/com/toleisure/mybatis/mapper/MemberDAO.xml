@@ -28,4 +28,10 @@
 		WHERE MEM_ID = #{memId} AND MEM_PW = #{memPw}
    </select>
    
+   <select id="myInfo" parameterType="String" resultType="com.toleisure.mybatis.dto.MemberDTO">
+   		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+		FROM MEMBER
+		WHERE MEM_ID = #{memId}
+   </select>
+   
 </mapper>

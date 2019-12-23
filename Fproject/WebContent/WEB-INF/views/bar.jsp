@@ -121,7 +121,7 @@
                         	<a class="nav-link" href="join.action">회원가입</a>
                         	</c:if>
                         	<c:if test="${!empty sessionScope.member}">
-                        	<a class="nav-link" href="mypage.action">MyPage</a>
+                        	<a class="nav-link" href="mypage.action?memId=${member.memId }">MyPage</a>
                         	</c:if>
                         </li>
                         <li class="nav-item"><a class="nav-link"

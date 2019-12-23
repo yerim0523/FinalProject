@@ -1,12 +1,6 @@
 package com.toleisure.mybatis.dao;
 
-import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.MemberDTO;
 
-import sun.print.resources.serviceui;
 
 
 @Controller
@@ -139,4 +132,19 @@ public class MemberController
 		
 		return "redirect:main.action";
 	}
+	
+	@RequestMapping(value = "/mypage.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String myPageMain(MemberDTO dto, Model model, HttpServletRequest req)
+	{
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		HttpSession session = req.getSession(true);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		session.setAttribute("myInfo", mine);
+		
+		return "/WEB-INF/views/MyPage.jsp";
+	}
+	
+	
 }

@@ -65,57 +65,6 @@
 </head>
 <body>
 
-<%-- <div>
-	
-	<div>
-		<c:import url="mainbar.jsp"></c:import>
-	</div>
-	
-	<div>
-	
-	</div>
-	
-	<br><br>
-	
-	<div class="container">
-		<div class="d-flex justify-content-center h-100 left">
-			<div class="image_outer_container">
-				<div class="green_icon"></div>
-				<div class="image_inner_container">
-					<img src="images/me.png">
-				</div>
-			</div>
-			<div class="container right" style="width: 50%;">
-				<input type="text" class="form-control" value="닉네임">
-				<br><br>
-				<textarea rows="3" cols="10" class="form-control">자기소개</textarea>
-			</div>
-		</div>
-	</div>
-	
-	<br><br>
-	
-	<div class="container" align="center">
-		<div class="a_layer">
-			<div class="a_layer_inner">
-				<div class="a_content">
-					<div class="box"><a href=""><span style="color: black;"><i class="fas fa-user fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-					<div class="box"><a href=""><span style="color: black;"><i class="fas fa-lock fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-					<div class="box"><a href=""><span style="color: black;"><i class="fas fa-heart fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-				</div>
-				<br>
-				<div class="a_content">
-					<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-					<div class="box"><a href=""><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-					<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-					<div class="box"><a href=""><span style="color: black;"><i class="fas fa-receipt fa-7x"></i><br><br><p class="menu">개인정보</p></span></a></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-</div> --%>
-
 <div>
 	<div>
 		<c:import url="bar.jsp"></c:import>
@@ -133,16 +82,19 @@
 				<div class="container">
 				<br><br>
 			<div class="d-flex justify-content-center h-100 left">
-				<div class="image_outer_container">
-					<div class="green_icon"></div>
+				<div class="image_outer_container d-flex align-items-center">
 					<div class="image_inner_container">
-						<img src="images/me.png">
+						<img class="img-rounded"" src="${myInfo.memPic }" width="200px" height="150px">
 					</div>
 				</div>
-				<div class="container right" style="width: 50%;">
-					<input type="text" class="form-control" value="닉네임">
-					<br><br>
-					<textarea rows="3" cols="10" class="form-control">자기소개</textarea>
+				<div class="container right" style="width: 70%;">
+					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니다.</p>
+					<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">
+						<br>
+						${myInfo.memIntro }
+						<br>
+						&nbsp;
+					</div>
 				</div>
 			</div>
 		</div>
