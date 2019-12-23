@@ -129,17 +129,17 @@
 	<br> <br> <br>
 	<div align="center">
 		
-		<c:forEach var="faq" items="${faq }">
+		<c:forEach var="faq" items="${faqList}">
 		<div class="toggler">
 			<div align="left" class="ui-widget-content ui-corner-all" style="width: 70%; border: 0px;">
 				<button id="btn_toggle" class="ui-state-default ui-corner-all">
-				${faq.faqTitle }
+				${faq.boardTitle }
 				</button>
 			</div> 
 			<div align="left" id="effect"
 				class="ui-widget-content ui-corner-all">
-				<h5 class="ui-widget-header ui-corner-all">${faq.faqTitle }</h5>
-				<p>${faq.faqCont }</p>
+				<h5 class="ui-widget-header ui-corner-all">${faq.boardTitle }</h5>
+				<p>${faq.boardCont }</p>
 			</div>
 		</div>
 		</c:forEach>

@@ -1,4 +1,4 @@
-0<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -59,6 +59,20 @@
 		alert("확인");
 	}
 </script> -->
+<script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#notice_regi").on("click",function(){
+            location.href="/test/noticeRegi"
+        });
+    });
+    function fn_paging(curPage){
+        location.href="/test/noticeList?curPage="+curPage;
+    }
+    function notice_push(notice_id){
+        alert(notice_id);
+    }
+</script>
 </head>
 <body>
 
@@ -81,14 +95,14 @@
 					<li class="nav-item"><a class="nav-link" href="center.action">투레저 소개</a>
 					</li>
 					<li class="nav-item"><a class="nav-link active">투레저 소식</a></li>
-					<li class="nav-item"><a class="nav-link" href="event.action">투레저 이벤트</a></li>
+					<li class="nav-item"><a class="nav-link"href="event.action">투레저 이벤트</a></li>
 					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-
+ 
 	<br>
 	<br>
 	<br>
@@ -98,50 +112,33 @@
 			<thead>
 				<tr>
 					<th></th>
+					<th></th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>날짜</th>
 					<th>조회수</th>
 				</tr>
-				<c:forEach var="news" items="${news }">
-				<tr onclick="board()">
-					<td style="color: red;">공지</td>
-					<td>${news.newsTitle }</td>
-					<td>${news.memName }</td>
-					<td>${news.newsDate }</td>
-					<td>${news.newsHits }</td>
-				</tr>
+				<c:forEach var="v" items="${newsList}" varStatus="status">
+				<tr>
+					<td style="color: red;">이벤트</td>
+					<td>${status.index+1+(paging.curPage-1)*10}</td>
+					 <a href="/test/noticeDetail/${v.eventNum}"><td>${v.boardTitle}</td></a>
+					<td>${v.boardMem}</td>
+					<td>${v.boardDate}</td>
+			    </tr>
+			  
 				</c:forEach>
-				<!-- <tr>
-					<td style="color: red;">공지</td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr> -->
+			
+			
+            
+            
+            
 			</thead>
 		</table>
 
 		<hr>
 		<button type="button" class="btn4"
 			style="float: right;">글쓰기</button>
-
-
-
 	</div>
 
 	<div class="container">
@@ -149,7 +146,7 @@
 			<li class="page-item"><a class="page-link" href="#"
 				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 			</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">${status.index+1+(paging.curPage-1)*10}</a></li>
 			<li class="page-item"><a class="page-link" href="#">2</a></li>
 			<li class="page-item"><a class="page-link" href="#">3</a></li>
 			<li class="page-item"><a class="page-link" href="#"
@@ -157,7 +154,43 @@
 			</a></li>
 		</ul>
 	</div>
-
+	
+	<div class="greenTable outerTableFooter">
+            <div class="tableFootStyle">
+                <div class="links">
+                        <a href="#" onClick="fn_paging(1)">[처음]</a> 
+                    <c:if test="${paging.curPage ne 1}">
+                        <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
+                    </c:if>
+                    <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
+                        <c:choose>
+                            <c:when test="${pageNum eq  paging.curPage}">
+                                <span style="font-weight: bold;">
+                                    <a href="#" onClick="fn_paging(${pageNum })" style="font-weight: bold; color:red;">
+                                        ${pageNum }
+                                    </a>
+                                </span> 
+                            </c:when>
+                            <c:otherwise>
+                                <a href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> 
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
+                    </c:if>
+                    <c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.pageCnt })">[끝]</a> 
+                    </c:if>
+                </div>
+            </div>
+        </div>
+         
+        <div>
+                    총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
+        </div>
+			
+			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
 </div>
 </section>
 

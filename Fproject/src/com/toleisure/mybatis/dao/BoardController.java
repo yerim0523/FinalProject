@@ -24,7 +24,7 @@ public class BoardController
 	private SqlSession sqlsession;
 	
 	
-	@RequestMapping(value="/center.action", method=RequestMethod.GET)
+   @RequestMapping(value="/center.action", method=RequestMethod.GET)
 	public String center(Model model)
 	{
 		String view = "/WEB-INF/views/center.jsp";
@@ -33,69 +33,51 @@ public class BoardController
 		
 		return view;
 	}
-	
-	
-	@RequestMapping(value="/news.action", method=RequestMethod.GET)
-	public String newsList(Model model)
-	{
-		String view = "/WEB-INF/views/news.jsp";
 		
-		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-		
-		model.addAttribute("news", dao.news());		
-		
-		return view;
-	}
-	
-	/*
-	 * @RequestMapping(value="/event.action", method = RequestMethod.GET) public
-	 * String eventList(Model model) { String view = "/WEB-INF/views/event.jsp";
-	 * 
-	 * IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-	 * 
-	 * model.addAttribute("event", dao.event(start,end));
-	 * 
-	 * return view;
-	 * 
-	 * }
-	 */
-	
-	@RequestMapping(value="/faq.action", method = RequestMethod.GET)
-	public String faqList(Model model)
-	{
-		String view = "/WEB-INF/views/faq.jsp";
-		
-		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-		
-		model.addAttribute("faq", dao.faq());
-		model.addAttribute(dao.getfaqMaxNum());
-		
-		return view;
-	}
-	
-	/*
-	 * @RequestMapping(value = "/noticelist.action",method = RequestMethod.GET)
-	 * public String noticeList(@ModelAttribute("Notice") NoticeVo notice,
-	 * 
-	 * @RequestParam(defaultValue="1") int curPage, Model model ) {
-	 * 
-	 * String view = "/WEB-INF/views/noticeList.jsp";
-	 * 
-	 * IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-	 * 
-	 * int listCnt = dao.eventListCount(); PagingDTO paging = new PagingDTO(listCnt,
-	 * curPage);
-	 * 
-	 * notice.setStartIndex(paging.getStartIndex());
-	 * notice.setCntPerPage(paging.getPageSize());
-	 * 
-	 * List<NoticeVo> noticeList=dao.eventList(notice);
-	 * 
-	 * model.addAttribute("noticeList", noticeList); model.addAttribute("listCnt",
-	 * listCnt); model.addAttribute("paging", paging); return view; }
-	 */
+	@RequestMapping(value = "/news.action")
+    public String newsList(@ModelAttribute("NEWS") BoardDTO news,
+                            @RequestParam(defaultValue="1") int curPage,
+                            Model model
+                                ) {
+	 String view = "/WEB-INF/views/news.jsp";
 	 
-	 @RequestMapping(value = "/eventlist.action")
+	 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+        int listCnt = dao.newsListCount();
+        PagingDTO paging = new PagingDTO(listCnt, curPage);
+        news.setStartIndex(paging.getStartIndex());
+        news.setCntPerPage(paging.getPageSize());
+             
+        List<BoardDTO> newsList=dao.newsList(news);
+        
+        model.addAttribute("newsList",newsList);
+        model.addAttribute("listCnt", listCnt);
+        model.addAttribute("paging", paging);
+        return view;
+    }
+
+	 @RequestMapping(value = "/faq.action")
+	    public String faqList(@ModelAttribute("FAQ") BoardDTO faq,
+	                            @RequestParam(defaultValue="1") int curPage,
+	                            Model model
+	                                ) {
+		 String view = "/WEB-INF/views/faq.jsp";
+		 
+		 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	        int listCnt = dao.faqListCount();
+	        PagingDTO paging = new PagingDTO(listCnt, curPage);
+	        faq.setStartIndex(paging.getStartIndex());
+	        faq.setCntPerPage(paging.getPageSize());
+	             
+	        List<BoardDTO> faqList=dao.faqList(faq);
+	        
+	        model.addAttribute("faqList",faqList);
+	        model.addAttribute("listCnt", listCnt);
+	        model.addAttribute("paging", paging);
+	        return view;
+	    }
+	 
+ 
+	 @RequestMapping(value = "/event.action")
 	    public String noticeList(@ModelAttribute("Notice") BoardDTO event,
 	                            @RequestParam(defaultValue="1") int curPage,
 	                            Model model
@@ -115,20 +97,24 @@ public class BoardController
 	        model.addAttribute("paging", paging);
 	        return view;
 	    }
-	/*
-	 * @RequestMapping(value = "/noticeRegi") public String noticeRegi() { return
-	 * "notice/noticeDetail"; }
-	 * 
-	 * @RequestMapping(value = "/noticeDetail/{notice_id}") public String
-	 * noticeEdit(@PathVariable String notice_id, Model model) { String view =
-	 * "/WEB-INF/views/noticeList.jsp"; IBoardDAO dao =
-	 * sqlsession.getMapper(IBoardDAO.class);
-	 * 
-	 * model.addAttribute("notice",dao.getNoticeOne(notice_id));
-	 * 
-	 * return "notice/noticeDetail"; }
-	 * 
-	 * @RequestMapping(value = "/noticeinsert.action", method=RequestMethod.POST)
+	
+	  @RequestMapping(value = "/noticeRegi") public String noticeRegi() 
+	  { 
+		  return "notice/noticeDetail"; 
+	  
+	  }
+	  
+	  @RequestMapping(value = "/noticeDetail/{notice_id}") public String
+	  noticeEdit(@PathVariable String notice_id, Model model) 
+	  { 
+		  String view ="/WEB-INF/views/noticeList.jsp"; 
+		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	      model.addAttribute("notice",dao.getNoticeOne(notice_id));
+	  
+	  return "notice/noticeDetail"; }
+	  
+	 /* @RequestMapping(value = "/noticeinsert.action", method=RequestMethod.POST)
 	 * public int noticeInsert(NoticeVo notice) {
 	 * 
 	 * IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);

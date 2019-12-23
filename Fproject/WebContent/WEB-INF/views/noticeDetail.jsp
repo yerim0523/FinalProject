@@ -11,8 +11,8 @@
     $(document).ready(function(){
          
         //공지사항 신규 등록
-        $("#notice_regist").on("click",function(){
-            var formData = $("#notice_form").serialize();
+        $("#event_regist").on("click",function(){
+            var formData = $("#event_form").serialize();
             $.ajax({
                 type : "post",
                 url : "/test/noticeInsert",
@@ -30,8 +30,8 @@
         });
          
         //공지사항 수정
-        $("#notice_edit").on("click",function(){
-            var formData = $("#notice_form").serialize();
+        $("#event_edit").on("click",function(){
+            var formData = $("#event_form").serialize();
             $.ajax({
                 type : "post",
                 url : "/test/noticeUpdate",
@@ -48,8 +48,8 @@
         });
          
         //공지사항 삭제
-        $("#notice_delete").on("click",function(){
-            var formData = $("#notice_form").serialize();
+        $("#event_delete").on("click",function(){
+            var formData = $("#event_form").serialize();
             alert(formData);
             $.ajax({
                 type : "post",
@@ -68,7 +68,8 @@
             });
         });
          
-        $("#notice_backPage").on("click",function(){
+        $("#event_backPage").on("click",function()
+        {
             location.href="/test/noticeList";
         });
     })
@@ -77,14 +78,15 @@
 <body>
     <div class="big_title">공지사항 수정/삭제/추가</div>
     <div class="big_contents">
-    <form id="notice_form">
-    <input type="hidden" id="notice_id" name="notice_id" value="${notice.notice_id }">
+    <form id="event_form">
+    <input type="hidden" id="event_num" name="event_num" value="${event.event_num }">
+    
         <div class="title">
             <div>
                 제목
             </div>
             <div>
-                <input type="text" id="notice_title" name="notice_title" value="${notice.notice_title}">
+                <input type="text" id="event_title" name="event_title" value="${event.event_title}">
             </div>
         </div>
          
@@ -93,21 +95,21 @@
                 내용
             </div>
             <div>
-                <textarea id="notice_coments" name="notice_coments">${notice.notice_coments}</textarea>
+                <textarea id="event_coments" name="event_coments">${event.event_coments}</textarea>
             </div>
         </div>
     </form>
          
         <div class="footer">
              
-            <c:if test="${null eq notice }">
-                <input type="button" id="notice_regist" value="등록">
+            <c:if test="${null eq event }">
+                <input type="button" id="event_regist" value="등록">
             </c:if>
-            <c:if test="${null ne notice }">
-                <input type="button" id="notice_edit" value="수정">
+            <c:if test="${null ne event }">
+                <input type="button" id="event_edit" value="수정">
             </c:if>       
-            <input type="button" id="notice_backPage" value="뒤로">
-            <input type="button" id="notice_delete" value="삭제">
+            <input type="button" id="event_backPage" value="뒤로">
+            <input type="button" id="event_delete" value="삭제">
         </div>
          
     </div>
