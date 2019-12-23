@@ -57,8 +57,8 @@
 </head>
 <body>
 
-<div>
-	<c:import url="bar.jsp"></c:import>
+<div class="header">
+	<jsp:include page="bar.jsp"></jsp:include>
 </div>
 
 

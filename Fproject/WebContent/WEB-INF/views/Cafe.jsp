@@ -75,8 +75,8 @@
 </head>
 <body>
 
-<div>
-	<c:import url="bar.jsp"></c:import>
+<div class="header">
+	<jsp:include page="bar.jsp"></jsp:include>
 </div>
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
