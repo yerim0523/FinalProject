@@ -337,15 +337,19 @@
 <body>
 
    <div class="header">
-      <div>
-         <c:import url="bar.jsp"></c:import>
-      </div>
-   </div>
+		<c:if test="${mode == 'logout' }">
+			<jsp:include page="bar.jsp"></jsp:include>
+		</c:if>
+		<c:if test="${mode == 'login' }">
+			<jsp:include page="bar_Log.jsp"></jsp:include>
+		</c:if>
+	</div>
    
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">
    
    <form action="groupInsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
+   ${member.memId }
       <div align="right">
          * 은 필수항목입니다.
       </div>
@@ -458,7 +462,7 @@
       <input type="hidden" id="grCate1" name="grCate1" value="">
       <input type="hidden" id="grCate2" name="grCate2" value="0"> 
       
-       <input type="hidden" id="memId" name="memId" value="cc123@naver.com">
+       <input type="hidden" id="memId" name="memId" value="${member.memId }">
       
       
       <br>

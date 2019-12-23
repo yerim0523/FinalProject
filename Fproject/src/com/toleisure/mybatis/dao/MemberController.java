@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.MemberDTO;
+
+import sun.print.resources.serviceui;
 
 
 @Controller
@@ -91,14 +94,32 @@ public class MemberController
 		System.out.println("==== dto.getMemPw = " + dto.getMemPw());
 		System.out.println("==================");
 		
-		if(isMemYn == "Y")
-		{
-			
-		}
-		
 		return isMemYn;
 	}
 	
-	
-	
+	@RequestMapping(value = "/login_success.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String loginSuccess(MemberDTO dto, HttpServletRequest req)
+	{
+		HttpSession session = req.getSession();
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO login = dao.login(dto);
+		
+		if(login!=null)
+		{
+			session.setAttribute("member", login);
+			session.setAttribute("mode", "login");
+		}
+		else
+		{
+			session.setAttribute("mode", "logout");
+		}
+				
+		System.out.println("==================");
+		System.out.println("==== dto.getMemId = " + dto.getMemId());
+		System.out.println("==== dto.getMemPw = " + dto.getMemPw());
+		System.out.println("==================");
+		
+		return "redirect:main.action";
+	}
 }

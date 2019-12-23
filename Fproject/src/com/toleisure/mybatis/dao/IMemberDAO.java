@@ -16,4 +16,6 @@ public interface IMemberDAO
 	public String selectMem(MemberDTO dto);		// 회원 정보 있는지 탐색하는 메소드
 	
 	public String searchMem(MemberDTO dto);		// 로그인 처리를 위한 메소드
+	
+	public MemberDTO login(MemberDTO dto);
 }

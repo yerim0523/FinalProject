@@ -111,7 +111,7 @@
 								</div>
 								<button
 									class="sc-jTzLTM flMyeK sc-ckVGcZ fhPrqq loginBtn LoginPage__LoginButton-co2bls-2 eLfQiK"
-									type="button" color="orange" fill="true">
+									type="submit" color="orange" fill="true">
 									<span class="sc-fjdhpX kCztpU">로그인</span>
 								</button>
 							</form>
