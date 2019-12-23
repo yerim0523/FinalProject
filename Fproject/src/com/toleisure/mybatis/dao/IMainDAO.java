@@ -7,10 +7,10 @@ import com.toleisure.mybatis.dto.GroupDTO;
 public interface IMainDAO
 {
 	 // ----------------메인화면 출력 리스트들 
-	 public ArrayList<GroupDTO> HotGroupList();
-	 public ArrayList<GroupDTO> NewGroupList(); 
+	 public ArrayList<GroupDTO> HotGroupList(int starCode);
+	 public ArrayList<GroupDTO> NewGroupList(int starCode); 
 	 public ArrayList<GroupDTO> HotHostList(); 
-	 public ArrayList<GroupDTO> ClosingGroupList(); 
+	 public ArrayList<GroupDTO> ClosingGroupList(int starCode); 
 	 public ArrayList<GroupDTO> RecommendGroupList(String memId);
 	 // ----------------메인화면 출력 리스트들 
 	 
@@ -35,5 +35,9 @@ public interface IMainDAO
 	 public ArrayList<GroupDTO> HotHostListAll();
 	 public ArrayList<GroupDTO> ClosingGroupListAll();
 	 public ArrayList<GroupDTO> RecommendGroupListAll(String memId);
+	 public ArrayList<GroupDTO> AvgStar(int starCode);
+	 
+	 
+	 
 	
 }

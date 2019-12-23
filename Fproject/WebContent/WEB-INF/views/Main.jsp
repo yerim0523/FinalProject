@@ -156,7 +156,7 @@ button.more
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
-               <span> 9.5</span>
+               <span>  ${HotGroup.grStarAvg}</span>
             </div>
          </div>
          <br>
@@ -203,7 +203,7 @@ button.more
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
-               <span> 9.5</span>
+               <span> ${NewGroup.grStarAvg}</span>
             </div>
          </div>
          <br>
@@ -300,7 +300,7 @@ button.more
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
-               <span> 9.5</span>
+               <span>  ${ClosingGroup.grStarAvg}</span>
             </div>
          </div>
          <br>
@@ -347,7 +347,7 @@ button.more
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
-               <span> 9.5</span>
+               <span>  ${RecommendGroup.grStarAvg}</span>
             </div>
          </div>
          <br>

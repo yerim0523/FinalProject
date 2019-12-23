@@ -25,12 +25,13 @@ public class MainController
 		GroupDTO dto = new GroupDTO();
 		dto.setMemId("lee0528kr@naver.com");
 
-		model.addAttribute("HotGroupList", dao.HotGroupList());
-		model.addAttribute("NewGroupList", dao.NewGroupList());
+		model.addAttribute("HotGroupList", dao.HotGroupList(dto.getGrCode()));
+		model.addAttribute("NewGroupList", dao.NewGroupList(dto.getGrCode()));
 		model.addAttribute("HotHostList", dao.HotHostList());
-		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());
+		model.addAttribute("ClosingGroupList", dao.ClosingGroupList(dto.getGrCode()));
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
-
+		model.addAttribute("AvgStar", dao.AvgStar(dto.getGrCode()));
+		
 		return view;
 	}
 
@@ -199,6 +200,8 @@ public class MainController
 		model.addAttribute("ClosingGroupListAll", dao.ClosingGroupListAll());
 
 		model.addAttribute("RecommendGroupListAll", dao.RecommendGroupListAll(dto.getMemId()));
+		
+		model.addAttribute("AvgStar", dao.AvgStar(dto.getGrCode()));
 
 		return view;
 	}

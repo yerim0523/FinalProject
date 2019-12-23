@@ -4,7 +4,7 @@ public class GroupDTO
 {
 
 	private String memId,memName, grName, grPre, grNotice , grCate1Name, grCate2Name;
-	private int grCode, grCate1, grCate2;
+	private int grCode, grCate1, grCate2,starCode;
 
 	private int ngCode, ngMax, ngMin, ngCost;
 	private String memPic,memIntro,ngPic, ngIntro, ngMyIntro;
@@ -301,6 +301,14 @@ public class GroupDTO
 		this.ngLocation2 = ngLocation2;
 	}
 	
-	
+	public int getStarCode()
+	{
+		return starCode;
+	}
+
+	public void setStarCode(int starCode)
+	{
+		this.starCode = starCode;
+	}
 
 }

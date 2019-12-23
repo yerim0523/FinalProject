@@ -220,7 +220,10 @@
       var enddate = new Date(EDateArr[0], EDateArr[1]-1,EDateArr[2],ERealHour,0,0); // - 월은 0에서부터 시작된다.
       
       alert(startdate);
+      
       var strange = new Date();
+      strange.setFullYear(startdate.getFullYear());
+      strange.setMonth(startdate.getMonth());
       strange.setDate(startdate.getDate()+1);
       strange.setHours(startdate.getHours());
       alert(strange);
