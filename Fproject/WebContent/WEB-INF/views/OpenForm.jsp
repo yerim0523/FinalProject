@@ -326,14 +326,9 @@
 </head>
 <body>
 
-   <div class="header">
-		<c:if test="${mode == 'logout' }">
-			<jsp:include page="bar.jsp"></jsp:include>
-		</c:if>
-		<c:if test="${mode == 'login' }">
-			<jsp:include page="bar_Log.jsp"></jsp:include>
-		</c:if>
-	</div>
+<div>
+	<c:import url="bar.jsp"></c:import>
+</div>
    
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">

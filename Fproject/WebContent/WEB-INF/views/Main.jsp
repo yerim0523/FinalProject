@@ -80,12 +80,7 @@ button.more
 <body>
 
 <div>
-	<c:if test="${mode == 'logout' }">
-		<jsp:include page="bar.jsp"></jsp:include>
-	</c:if>
-	<c:if test="${mode == 'login' }">
-		<jsp:include page="bar_Log.jsp"></jsp:include>
-	</c:if>
+	<jsp:include page="bar.jsp"></jsp:include>
 </div>
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div>
