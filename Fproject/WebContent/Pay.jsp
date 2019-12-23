@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>money.jsp</title>
+<title>Pay.jsp</title>
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
