@@ -3,7 +3,8 @@ package com.toleisure.mybatis.dto;
 public class BoardDTO
 {
 	private int newsNum, adminCode, newsHits;
-	private String newsTitle, newsCont, newsDate, memName;
+	private String newsTitle, newsCont, newsDate, memName,memPwd;
+	
 	
 	private int eventNum, eventHits;
 	private String eventTitle, eventCont, eventDate;
@@ -146,7 +147,14 @@ public class BoardDTO
 	{
 		this.faqDate = faqDate;
 	}
-	
+	public String getMemPwd()
+	{
+		return memPwd;
+	}
+	public void setMemPwd(String memPwd)
+	{
+		this.memPwd = memPwd;
+	}
 	
 	
 }

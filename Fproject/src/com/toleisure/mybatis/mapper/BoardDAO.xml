@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IBoardDAO">
-
+	
+	
+	
+	
 	<select id="news" resultType="com.toleisure.mybatis.dto.BoardDTO">
 		SELECT NEWS_NUM AS newsNum, MEM_NAME AS memName
 			 , NEWS_TITLE AS newsTitle, NEWS_CONT AS newsCont, SUBSTR(NEWS_DATE, 1, 10) AS newsDate, NVL(NEWS_HITS, 0)AS newsHits
@@ -18,5 +21,20 @@
 		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
 		FROM FAQ_POST_VIEW
 	</select>
+
+	<select id="getfaqMaxNum" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT NVL(MAX(NUM), 0) AS MAXNUM 
+		FROM FAQ_POST_VIEW
+	</select>
+	
+	<select id="getfaqReadData" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
+        FROM FAQ_POST_VIEW
+        WHERE FAQ_NUM=#{faqNum}
+	</select>
+	
+	
+
+
 
 </mapper>

@@ -58,6 +58,7 @@ public class BoardController
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		
 		model.addAttribute("faq", dao.faq());
+		model.addAttribute(dao.getfaqMaxNum());
 		
 		return view;
 	}

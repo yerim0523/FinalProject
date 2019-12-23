@@ -12,5 +12,7 @@ public interface IBoardDAO
 	
 	public ArrayList<BoardDTO> faq();
 	
+	public int getfaqMaxNum();
 	
+	public BoardDTO getfaqReadData(int faqNum);
 }
