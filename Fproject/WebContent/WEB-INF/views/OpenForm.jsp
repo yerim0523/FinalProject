@@ -449,7 +449,7 @@
          <input type="checkbox" name="inlineCheckbox" value="5">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
       </div>
       
-      <input type="hidden" id="grCate1" name="grCate1" value="">
+      <input type="hidden" id="grCate1" name="grCate1" value="0">
       <input type="hidden" id="grCate2" name="grCate2" value="0"> 
       
        <input type="hidden" id="memId" name="memId" value="${member.memId }">
