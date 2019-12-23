@@ -89,6 +89,15 @@
 
 </style>
 
+<script type="text/javascript">
+
+	function allHistory()
+	{
+		
+	}
+
+</script>
+
 
 
 </head>
@@ -107,7 +116,7 @@
 
 <br><br><br>
 
-<div class="container" onload="alert()">
+<div class="container">
 	<div class="row">
       <div class="col-md-2" align="left">
          <span class="page">프로필</span>
@@ -166,7 +175,7 @@
 			<h4>모임히스토리</h4>
 		</div>
 		<div align="right">
-			<button type="button" class="btn4">더보기</button>
+			<button type="button" class="btn4" onclick="allHistory()">더보기</button>
 		</div>
 	</div>
 	<br>

@@ -46,6 +46,29 @@ public class ProfileController
 		return view;
 	} 
 	
+	// 더보기 클릭 → 해당 회원의 전체 모임 히스토리 페이지로 이동
+	@RequestMapping(value = "/profile.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String allHistory(Model model, MemberDTO dto, GroupDTO gdto)
+	{
+		String view = "WEB-INF/views/Hprofile.jsp";
+		
+		IProfileDAO dao = sqlsession.getMapper(IProfileDAO.class); 
+		
+		// dto 정보에 아무것도 없기 때문에.. 직접 set 해줌 → 추후 수정 필요
+		dto.setMemId("wag2397@gmail.com");
+		gdto.setMemId("wag2397@gmail.com");
+		
+		// 프로필 - 회원 정보 
+		model.addAttribute("member", dao.memInfo(dto));
+		
+		// 프로필 - 모임 히스토리
+		ArrayList<GroupDTO> list = new ArrayList<GroupDTO>();
+		list.add(gdto);
+		model.addAttribute("group", dao.grHistory(gdto));
+		
+		return view;
+	} 
+	
 	// 호스트 후기 더보기
 	
 	// 모임 상세페이지 이동

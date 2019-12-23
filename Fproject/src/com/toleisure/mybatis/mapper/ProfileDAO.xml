@@ -21,5 +21,12 @@
 		WHERE 3>=ROWNUM
    </select>
    
+   <select id="grAllHistory" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC, GR_NAME, MEM_NAME, NG_DATE
+		FROM ALL_GROUP_VIEW
+		WHERE MEM_ID = #{memId}
+		ORDER BY NG_DATE DESC
+   </select>
+   
    
 </mapper>
