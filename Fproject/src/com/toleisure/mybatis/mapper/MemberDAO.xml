@@ -21,6 +21,5 @@
 		FROM MEMBER
 		WHERE MEM_ID = #{memId} AND MEM_PW = #{memPw}
    </select>
-      
    
 </mapper>

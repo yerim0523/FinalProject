@@ -61,16 +61,30 @@ public class MemberController
 	
 	@RequestMapping(value = "/selectEmp.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
+	public String selectMem(MemberDTO dto, Model model)
+	{
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		String isMemYn = dao.selectEmp(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMemYn = "+isMemYn);
+		System.out.println("==================");
+		
+		return isMemYn;
+	}
+	
+	@RequestMapping(value = "/login.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
 	public String selectEmp(MemberDTO dto, Model model)
 	{
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		String isEmpYn = dao.selectEmp(dto);
+		String isMemYn = dao.selectEmp(dto);
 		
-		System.out.println("################");
-		System.out.println("### isEmpYn = "+isEmpYn);
-		System.out.println("################");
+		System.out.println("==================");
+		System.out.println("==== isEmpYn = "+isMemYn);
+		System.out.println("==================");
 		
-		return isEmpYn;
+		return isMemYn;
 	}
 	
 }
