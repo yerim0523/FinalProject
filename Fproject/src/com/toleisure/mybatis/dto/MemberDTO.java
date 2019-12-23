@@ -3,7 +3,7 @@ package com.toleisure.mybatis.dto;
 
 public class MemberDTO
 {
-	private String memId, memPw, memName, memTel, memPic, memIntro;
+	private String memId, memPw, memName, memTel, memPic, memIntro, memGender;
 
 	public String getMemPw()
 	{
@@ -63,6 +63,16 @@ public class MemberDTO
 	public void setMemIntro(String memIntro)
 	{
 		this.memIntro = memIntro;
+	}
+
+	public String getMemGender()
+	{
+		return memGender;
+	}
+
+	public void setMemGender(String memGender)
+	{
+		this.memGender = memGender;
 	}
 	
 	

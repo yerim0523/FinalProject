@@ -97,7 +97,7 @@ text-align: center;
 <div class="col-md-2" align="left">
 	<div class="sidebar">
 	<ul id="nav">
-		<li><a href="#home"><i class="fa fa-fw fa-user"></i> 개인정보수정</a></li>
+		<li><a href="infomodify.action"><i class="fa fa-fw fa-user"></i> 개인정보수정</a></li>
 		<li><a href="#services"><i class="fa fa-fw fa-lock"></i> 비밀번호 재설정</a></li> 
 		<li><a href="#clients"><i class="fa fa-fw fa-heart"></i> 찜목록</a></li>
 		<li><a href="mylist.jsp"><i class="fa fa-fw fa-users"></i> 내 모임</a>

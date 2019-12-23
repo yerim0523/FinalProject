@@ -11,7 +11,11 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-
+p
+{
+	font-weight: bold;
+	font-size: 18pt;
+}
 </style>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -39,17 +43,17 @@
 			<!-- 9단길이의 첫번째 열 -->
 			<div class="col-md-9">
 				<div class="container">
-			<div class="page-header">
 				<div>
-					<h3>개인정보 수정</h3>
+					<h3 style="font-weight: bold;">개인정보 수정</h3>
+					<hr>
 				</div>
-			</div>
 			<div>
 				<form role="form">
 				<div class="col-lg-10">
 					<div class="form-group">
-						<p>이름</p><input type="text"
-							class="form-control" id="inputName">
+						<br>
+						<p>이름</p> <input type="text"
+							class="form-control" id="inputName" value="${myInfo.memName }">
 					</div>
 					
 					<div class="form-group">
@@ -57,17 +61,17 @@
 					</div>
 					
 					<div class="form-group">
-						<p>이메일주소</p> <input type="email"
+						<p>이메일 주소</p> <input type="email"
 							class="form-control" id="InputEmail" >
 					</div>
 					
 					<div class="form-group">
-						<p>휴대폰 번호</p> <input type="tel"
+						<p>휴대폰 번호</p><input type="tel"
 							class="form-control" id="inputMobile">
 					</div>
 					
 					<div class="form-group">
-						<p>성별</p>
+						<p>성별</p><br>
 						<label class="radio-inline">
 							<input type="radio" name="radio" id="inlineRadio1" value="male"> 남자
 						</label>

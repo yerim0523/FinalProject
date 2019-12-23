@@ -149,6 +149,17 @@ public class MemberController
 	@RequestMapping(value = "/infomodify.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String myPageModify(MemberDTO dto, Model model, HttpServletRequest req)
 	{
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		HttpSession session = req.getSession(true);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		session.setAttribute("myInfo", mine);
+		
+		System.out.println("==================");
+		System.out.println("==== dto.getMemId = " + dto.getMemId());
+		System.out.println("==================");
+		
 		return "/WEB-INF/views/My_modify.jsp";
 	}
 	

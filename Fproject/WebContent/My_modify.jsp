@@ -40,7 +40,7 @@
 			<div class="col-md-9">
 				<div class="container">
 				<div>
-					<h3>개인정보 수정</h3>
+					<h3 style="font-weight: bold;">개인정보 수정</h3>
 					<hr>
 				</div>
 			<br><br><br>
