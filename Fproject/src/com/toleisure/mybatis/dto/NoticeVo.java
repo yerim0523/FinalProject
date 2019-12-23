@@ -1,12 +1,12 @@
 package com.toleisure.mybatis.dto;
 
 
-public class BoardDTO {
+public class NoticeVo {
 	private int newsNum, adminCode, newsHits;
 	private String newsTitle, newsCont, newsDate, newsMem,memPwd;
 	
 	
-	private int eventHits;
+	private int  eventHits;
 	private String eventNum,eventTitle, eventCont,eventMem, eventDate;
 	
 	

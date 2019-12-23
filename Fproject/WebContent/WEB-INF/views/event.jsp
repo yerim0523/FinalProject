@@ -103,45 +103,28 @@
 					<th>날짜</th>
 					<th>조회수</th>
 				</tr>
-				<c:forEach var="event" items="${event }">
-				<tr onclick="board()">
+				<c:forEach var="v" items="${eventList}" varStatus="status">
+				<tr>
 					<td style="color: red;">이벤트</td>
-					<td>${event.eventTitle }</td>
-					<td>${event.memName }</td>
-					<td>${event.eventDate }</td>
-					<td>${event.eventHits }</td>
-				</tr>
+					<td>${status.index+1+(paging.curPage-1)*10}</td>
+					<td>${v.eventTitle}</td>
+					<td>${v.eventMem}</td>
+					<td>${v.eventDate}</td>
+					<td>${v.eventHits}</td>
+			    </tr>
+			    <input type="button" onclick="notice_push(${v.eventMem})" value="전송">
 				</c:forEach>
-				<!-- <tr>
-					<td style="color: red;">공지</td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr> -->
+			
+			
+            
+            
+            
 			</thead>
 		</table>
 
 		<hr>
 		<button type="button" class="btn4"
 			style="float: right;">글쓰기</button>
-
-
-
 	</div>
 
 	<div class="container">
@@ -149,7 +132,7 @@
 			<li class="page-item"><a class="page-link" href="#"
 				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 			</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">${status.index+1+(paging.curPage-1)*10}</a></li>
 			<li class="page-item"><a class="page-link" href="#">2</a></li>
 			<li class="page-item"><a class="page-link" href="#">3</a></li>
 			<li class="page-item"><a class="page-link" href="#"
@@ -157,6 +140,41 @@
 			</a></li>
 		</ul>
 	</div>
+	
+	<div class="greenTable outerTableFooter">
+            <div class="tableFootStyle">
+                <div class="links">
+                        <a href="#" onClick="fn_paging(1)">[처음]</a> 
+                    <c:if test="${paging.curPage ne 1}">
+                        <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
+                    </c:if>
+                    <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
+                        <c:choose>
+                            <c:when test="${pageNum eq  paging.curPage}">
+                                <span style="font-weight: bold;">
+                                    <a href="#" onClick="fn_paging(${pageNum })" style="font-weight: bold; color:red;">
+                                        ${pageNum }
+                                    </a>
+                                </span> 
+                            </c:when>
+                            <c:otherwise>
+                                <a href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> 
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
+                    </c:if>
+                    <c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.pageCnt })">[끝]</a> 
+                    </c:if>
+                </div>
+            </div>
+        </div>
+         
+        <div>
+                    총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
+        </div>
 
 </div>
 </section>

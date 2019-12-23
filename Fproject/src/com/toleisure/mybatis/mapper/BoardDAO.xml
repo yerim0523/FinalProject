@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IBoardDAO">
+	 
+ <resultMap id="BoardDTO" type="com.toleisure.mybatis.dto.BoardDTO">
+        <result property="eventNum" column="eventNum"/>
+        <result property="eventTitle" column="eventTitle"/>
+        <result property="eventCont" column="eventCont"/>
+        <result property="eventDate" column="eventDate"/>
+        <result property="eventMem" column="eventMem"/>
+        <result property="eventHits" column="eventHits"/>
+    </resultMap> 
 	
-	
-	
+<!-- 	
 	
 	<select id="news" resultType="com.toleisure.mybatis.dto.BoardDTO">
 		SELECT NEWS_NUM AS newsNum, MEM_NAME AS memName
@@ -11,18 +19,14 @@
 		FROM NEWS_POST_VIEW
 	</select>
 	
-	<select id="event" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT EVENT_NUM AS eventNum, MEM_NAME AS memName
-			 , EVENT_TITLE AS eventTitle, EVENT_CONT AS eventCont, EVENT_DATE AS eventDate, NVL(EVENT_HITS, 0) AS eventHits
-		FROM EVENT_POST_VIEW
-	</select>
+	
 	
 	<select id="faq" resultType="com.toleisure.mybatis.dto.BoardDTO">
 		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
 		FROM FAQ_POST_VIEW
-	</select>
+	</select> -->
 
-	<select id="getfaqMaxNum" resultType="com.toleisure.mybatis.dto.BoardDTO">
+<!-- 	<select id="getfaqMaxNum" resultType="com.toleisure.mybatis.dto.BoardDTO">
 		SELECT NVL(MAX(NUM), 0) AS MAXNUM 
 		FROM FAQ_POST_VIEW
 	</select>
@@ -34,7 +38,237 @@
 	</select>
 	
 	
+	<select id="comMaxNum" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT NVL(MAX(NUM), 0) AS MAXNUM 
+		FROM FAQ_POST_VIEW
+	</select>
+	
+	<select id="getcomReadData" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
+        FROM FAQ_POST_VIEW
+        WHERE FAQ_NUM=#{faqNum}
+	</select> -->
+<!-- 	<select id="noticeList" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT EVENT_NUM AS eventNum, MEM_NAME AS memName, EVENT_TITLE AS eventTitle,
+			   EVENT_CONT AS eventCont, EVENT_DATE AS eventDate, NVL(EVENT_HITS, 0) AS eventHits
+      				( SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT EVENT_NUM, MEM_NAME, EVENT_TITLE, EVENT_HITS, EVENT_DATE, EVENT_CONT
+	      				FROM EVENT_POST_VIEW 
+	      				ORDER BY EVENT_NUM DESC 
+	      				) DATA 
+      				) WHERE RNUM >= #{start} AND #{end} >=RNUM
+		
+	</select> -->
+<!-- 	
+	<select id="getNoticeListCount" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT NVL(MAX(EVENT_NUM), 0) AS MAXNUM 
+		FROM EVENT_POST_VIEW
+	</select>
+	
+	
+	
+	<select id="geteventReadData" resultType="com.toleisure.mybatis.dto.BoardDTO">
+		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
+        FROM EVENT_POST_VIEW
+        WHERE EVENT_NUM=#{eventNum}
+	</select>
+	
+	<select id="geteventDateCount" resultType="java.lang.Integer">
+	 SELECT COUNT(*) AS COUNT 
+	 FROM EVENT_POST_VIEW
+	</select>
+	
+	<select id="geteventBeforeNum" resultType="java.lang.Integer">
+		SELECT NVL(MAX(EVENT_NUM), -1) AS BEFORENUM 
+		FROM EVENT_POST_VIEW WHERE ?>NUM
+	</select>
+	
+	<select id="geteventNextNum" resultType="java.lang.Integer">
+		SELECT NVL(MIN(EVENT_NUM), -1) AS NEXTNUM 
+		FROM EVENT_POST_VIEW WHERE NUM>?
+	</select> -->
+	<!-- <insert id="eventadd"> 
+		INSERT INTO EVENT(MID,NAME,TELEPHONE)
+		VALUES(MEMBERLISTSEQ.NEXTVAL,#{name},#{telephone})
+	</insert> -->
+	
+	
+	
+	<!-- <select id="listSearch" resultType="com.toleisure.mybatis.dto.BoardDTO">
+    <![CDATA[
+    select
+        bno,title,content,writer,regdate,viewcnt
+    from
+        EVENT_POST_VIEW
+    where bno>0        
+    ]]>    
+        <include refid="search"></include>
+    <![CDATA[
+        order by bno desc,regdate desc
+        limit #{pageStart},#{perPageNum}    
+    ]]>    
+    </select>  
+          
+    <select id="listSearchCount" resultType="java.lang.Integer">
+    <![CDATA[
+    select
+        count(bno)
+    from
+        EVENT_POST_VIEW
+    where
+        bno > 0
+    ]]><include refid="search"></include>        
+    </select>
+ 
+    <update id="update">
+    update 
+        EVENT_POST_VIEW 
+    set 
+        title= #{title}, content= #{content}
+    where EVENT_NUM= #{bno}    
+    </update>
+    
+    
+    <select id="read" resultType="com.toleisure.mybatis.dto.BoardDTO">
+    select
+        bno,title,content,writer,regdate,viewcnt
+    from 
+        EVENT_POST_VIEW
+    where EVENT_NUM= #{bno}
+    </select>     -->
+ 
+<!--     <delete id="delete">
+    delete from EVENT_POST_VIEW where bno= #{bno}
+    </delete>
+        
+    <insert id="create">
+    insert into EVENT_POST_VIEW(title,content,writer)
+    values(#{title},#{content},#{writer})    
+    </insert> -->
+    
+ <!--    <select id="listAll" resultType="com.toleisure.mybatis.dto.BoardDTO">
+    <![CDATA[
+    select
+        EVENT_NUM,EVENT_TITLE,EVENT_CONTENT,MEM_NAME,EVENT_DATE,EVENT_HITS
+    from
+        EVENT_POST_VIEW
+    where EVENT_NUM >0
+    ORDER BY EVENT_NUM DESC,EVENT_DATE DESC
+    ]]>    
+    </select>
+    
+    <select id="listPage" resultType="com.toleisure.mybatis.dto.BoardDTO">
+    <![CDATA[
+    select
+        EVENT_NUM,EVENT_TITLE,EVENT_CONTENT,MEM_NAME,EVENT_DATE,EVENT_HITS
+    from
+        EVENT_POST_VIEW
+    where EVENT_NUM>0
+    ORDER BY EVENT_NUM DESC,EVENT_DATE DESC
+    limit #{pageStart},#{perPageNum}        
+    ]]>
+    </select>
+    
+    <select id="countPaging" resultType="java.lang.Integer">
+    <![CDATA[
+    select
+        count(EVENT_NUM)
+    from
+        EVENT_POST_VIEW
+    where
+        EVENT_NUM > 0
+    ]]>
+    </select> -->
+    
+    
+    
+   <!--  <sql id="search">
+    <if test="searchType != null">
+        <if test="searchType=='t'.toString()">
+            and title like CONCAT('%',#{keyword},'%')
+        </if>
+        
+        <if test="searchType=='c'.toString()">
+            and content like CONCAT('%',#{keyword},'%')
+        </if>
+        
+        <if test="searchType=='w'.toString()">
+            and writer like CONCAT('%',#{keyword},'%')
+        </if>
+        
+        <if test="searchType=='tc'.toString()">
+            and (title like CONCAT('%',#{keyword},'%') OR content like CONCAT('%',#{keyword},'%'))
+        </if>
+        
+        <if test="searchType=='cw'.toString()">
+            and (content like CONCAT('%',#{keyword},'%') OR writer like CONCAT('%',#{keyword},'%'))
+        </if>
+        
+        <if test="searchType=='tcw'.toString()">
+            and (title like CONCAT('%',#{keyword},'%') OR 
+                content like CONCAT('%',#{keyword},'%') OR 
+                writer like CONCAT('%',#{keyword},'%'))
+        </if>
+    </if>    
+    </sql>     -->
+    
+    
+    <select id="eventListCount" resultType="Integer">
+        select count(*)
+        from EVENT_POST_VIEW
+    </select>
+    
+     <select id="eventList" resultMap = "BoardDTO">
+		SELECT  E.EVENT_NUM AS eventNum, E.EVENT_TITLE AS eventTitle, E.EVENT_CONT AS eventCont
+        		,E.EVENT_DATE AS eventDate,E.MEM_NAME AS eventMem , E.EVENT_HITS AS eventHits
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT EVENT_NUM, MEM_NAME, EVENT_TITLE, EVENT_HITS, EVENT_DATE, EVENT_CONT
+	      				FROM EVENT_POST_VIEW 
+	      				ORDER BY EVENT_NUM DESC 
+	      				) DATA 
+      				)E 
+      				WHERE RNUM >= #{startIndex} AND #{cntPerPage} >=RNUM
+      </select>
 
-
-
+   
+   <!--   <select id="eventSelect" parameterType="String" resultMap = "NoticeVo">
+        select  notice_id,
+                notice_title,
+                notice_coments
+        from push_notice
+        where notice_id = #{notice_id}
+    </select>
+    
+    
+    <insert id="noticeInsert" parameterType="com.spring.test.vo.NoticeVo">
+        insert into push_notice
+        (
+            notice_title,
+            notice_coments,
+            mod_date
+        )
+        values
+        (
+            #{notice_title},
+            #{notice_coments},
+            NOW()
+        )
+    </insert>
+    <update id="noticeUpdate" parameterType="com.spring.test.vo.NoticeVo">
+        update push_notice set
+            notice_title = #{notice_title},
+            notice_coments = #{notice_coments},
+            mod_date = NOW()
+        where notice_id = #{notice_id}
+    </update>
+    <delete id="noticeDelete" parameterType="String">
+        delete from push_notice
+        where notice_id = #{notice_id}
+    </delete>  -->
 </mapper>
