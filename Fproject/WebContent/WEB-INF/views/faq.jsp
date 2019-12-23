@@ -114,11 +114,11 @@
 				<p>[고객센터]</p>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link"
-						href="<%=cp%>/center.jsp">투레저 소개</a></li>
+						href="center.action">투레저 소개</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<%=cp%>/news.jsp">투레저 소식</a></li>
+						href="news.action">투레저 소식</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<%=cp%>/event.jsp">투레저 이벤트</a></li>
+						href="event.action">투레저 이벤트</a></li>
 					<li class="nav-item"><a class="nav-link active">FAQ</a></li>
 				</ul>
 			</div>

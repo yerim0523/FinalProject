@@ -89,18 +89,9 @@
 
 	<select id="NewGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		{CALL
-			DECLARE
-				ngPic VARCHAR(50);
-	
-			BEGIN
-				
-				SELECT NG_PIC INTO ngPic
-				FROM NEWEST_GROUP_VIEW;
-				
-				RETURN (ngPic);
-			END
-		}
+		
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM NEWEST_GROUP_VIEW 
 	</select>
 
 	<select id="NewGroupListAll"

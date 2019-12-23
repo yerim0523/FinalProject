@@ -13,6 +13,18 @@ public class BoardController
 	@Autowired
 	private SqlSession sqlsession;
 	
+	
+	@RequestMapping(value="/center.action", method=RequestMethod.GET)
+	public String center(Model model)
+	{
+		String view = "/WEB-INF/views/center.jsp";
+		
+		
+		
+		return view;
+	}
+	
+	
 	@RequestMapping(value="/news.action", method=RequestMethod.GET)
 	public String newsList(Model model)
 	{
