@@ -72,19 +72,19 @@ public class MemberController
 		
 		return isMemYn;
 	}
-//	
-//	@RequestMapping(value = "/login.action", method = {RequestMethod.POST,RequestMethod.GET})
-//	@ResponseBody
-//	public String selectEmp(MemberDTO dto, Model model)
-//	{
-//		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-//		String isMemYn = dao.selectEmp(dto);
-//		
-//		System.out.println("==================");
-//		System.out.println("==== isEmpYn = "+isMemYn);
-//		System.out.println("==================");
-//		
-//		return isMemYn;
-//	}
+	
+	@RequestMapping(value = "/loginactive.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String selectEmp(MemberDTO dto, Model model)
+	{
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		String isMemYn = dao.selectEmp(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isEmpYn = "+isMemYn);
+		System.out.println("==================");
+		
+		return isMemYn;
+	}
 	
 }
