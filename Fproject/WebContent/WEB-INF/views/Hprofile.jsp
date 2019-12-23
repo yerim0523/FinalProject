@@ -106,32 +106,33 @@
 <br><br><br>
 
 <div class="container">
-<div class="row">
+	<input type="hidden" name="memId" value="wag2397@gmail.com">
+	<div class="row">
       <div class="col-md-2" align="left">
          <span class="page">프로필</span>
       </div>
       <div class="col-md-10">
          <div class="container">
          <br><br>
-      <div class="d-flex justify-content-center h-100 left">
-         <div class="image_outer_container">
-            <div class="green_icon"></div>
-            <div class="image_inner_container">
-               <img src="images/me.png">
-            </div>
-         </div>
-         <div class="container right" style="width: 50%;">
-            <input type="text" class="form-control" value="닉네임">
-            <br><br>
-            <textarea rows="3" cols="10" class="form-control">자기소개</textarea>
-         </div>
-      </div>
-   </div>
+		      <div class="d-flex justify-content-center h-100 left">
+		         <div class="image_outer_container">
+		            <div class="green_icon"></div>
+		            <div class="image_inner_container">
+		               <img src="images/me.png">
+		            </div>
+		         </div>
+		         <div class="container right" style="width: 50%;">
+		            <input type="text" class="form-control" value="닉네임">
+		            <br><br>
+		            <textarea rows="3" cols="10" class="form-control">자기소개</textarea>
+		         </div>
+		      </div>
+  		 </div><!-- end div.container -->
          
-      </div>
+      </div><!-- end div.col-md-10 -->
       
-   </div>
-</div>
+   </div><!-- end div.row -->
+</div><!-- end div.container -->
 <hr>
 
 <div class="container">
