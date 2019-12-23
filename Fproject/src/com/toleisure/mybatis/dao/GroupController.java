@@ -16,7 +16,7 @@ public class GroupController
 	@Autowired
 	private SqlSession sqlsession;
 	
-	@RequestMapping(value = "/groupInsertForm.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/groupinsertform.action", method = RequestMethod.GET)
 	public String memberList(Model model)
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
