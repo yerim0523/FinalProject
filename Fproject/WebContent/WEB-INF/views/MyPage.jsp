@@ -88,7 +88,7 @@
 					</div>
 				</div>
 				<div class="container right" style="width: 70%;">
-					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니다.</p>
+					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니당ㅎㅎ</p>
 					<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">
 						<br>
 						${myInfo.memIntro }
