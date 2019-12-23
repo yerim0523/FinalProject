@@ -25,7 +25,7 @@
 	
 	<select id="ShowGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM CUL_SHOW_VIEW
+		FROM CUL_SHOW_VIEW 
 	</select>
 	
 	<!-- ============================================음식점 DAO================================================ -->
