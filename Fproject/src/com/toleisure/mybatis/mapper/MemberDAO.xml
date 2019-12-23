@@ -16,4 +16,11 @@
    </select>
    
    
+   <select id="login" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="String">
+   		SELECT CASE WHEN COUNT(*) >= 1 THEN 'Y' ELSE 'N' END AS ISEMP
+		FROM MEMBER
+		WHERE MEM_ID = #{memId} AND MEM_PW = #{memPw}
+   </select>
+      
+   
 </mapper>
