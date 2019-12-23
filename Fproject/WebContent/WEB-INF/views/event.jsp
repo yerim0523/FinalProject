@@ -78,10 +78,10 @@
 			<div class="col">
 				<p>[고객센터]</p>
 				<ul class="nav nav-pills">
-					<li class="nav-item"><a class="nav-link" href="center.action">소개</a>
+					<li class="nav-item"><a class="nav-link" href="center.action">투레저 소개</a>
 					</li>
-					<li class="nav-item"><a class="nav-link"href="news.action">소식</a></li>
-					<li class="nav-item"><a class="nav-link active">이벤트</a></li>
+					<li class="nav-item"><a class="nav-link"href="news.action">투레저 소식</a></li>
+					<li class="nav-item"><a class="nav-link active">투레저 이벤트</a></li>
 					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a>
 					</li>
 				</ul>
