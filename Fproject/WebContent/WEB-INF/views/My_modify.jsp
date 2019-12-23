@@ -32,15 +32,16 @@ p
 	{
 		//alert(${myInfo.memGender});
 		var gender = ${myInfo.memGender};
-		var temp = ${myInfo.mem};
+		var cate1 = ${myInfo.memCate1};
+		var cate2 = ${myInfo.memCate2};
 		
 		$("input[name='radio']:radio[value='"+ gender +"']").attr("checked","checked");
-		
-		for (var i = 0; i < array.length; i++)
-		{
-			
-		}
+		$("input[name='check']:checkbox[value='"+ cate1 +"']").attr("checked","checked");
+		$("input[name='check']:checkbox[value='"+ cate2 +"']").attr("checked","checked");
 	});
+	
+
+	  
 </script>
 
 </head>
@@ -64,7 +65,7 @@ p
 					<hr>
 				</div>
 			<div>
-				<form role="form">
+				<form role="form" name="memberForm" >
 				<div class="col-lg-10">
 					<div class="form-group">
 						<br>
@@ -101,28 +102,26 @@ p
 					</div>
 					
 					<div class="form-group" id="">
-					<p>카테고리</p>
+					<p>관심 카테고리</p>
 						<label class="checkbox-inline">
-	  						<input type="checkbox" id="inlineCheckbox1" value="option1"> 공연
+	  						<input type="checkbox" name="check" id="inlineCheckbox1" value="1"> 공연
 						</label>
 						<label class="checkbox-inline">
-	  						<input type="checkbox" id="inlineCheckbox1" value="option1"> 전시
+	  						<input type="checkbox" name="check" id="inlineCheckbox1" value="2"> 전시
 						</label>
 						<label class="checkbox-inline">
-	  						<input type="checkbox" id="inlineCheckbox1" value="option1"> 연극
+	  						<input type="checkbox" name="check" id="inlineCheckbox1" value="3"> 연극
 						</label>
 						<label class="checkbox-inline">
-	  						<input type="checkbox" id="inlineCheckbox1" value="option1"> 식당
+	  						<input type="checkbox" name="check" id="inlineCheckbox1" value="4"> 식당
 						</label>
 						<label class="checkbox-inline">
-	  						<input type="checkbox" id="inlineCheckbox1" value="option1"> 카페
+	  						<input type="checkbox" id="inlineCheckbox1" value="5"> 카페
 						</label>
 				</div>
-			</div>
-					
-			
+				</div>
 					<div class="form-group text-center">
-						<button type="submit" id="join-submit" class="btn4">
+						<button type="submit" id="join-submit" class="btn4" onclick="formCheck()">
 							수정&nbsp;&nbsp;<i class="fa fa-check spaceLeft"></i>
 						</button>
 					</div>

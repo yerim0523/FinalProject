@@ -165,4 +165,34 @@ public class MemberController
 		return "/WEB-INF/views/My_modify.jsp";
 	}
 	
+	@RequestMapping(value = "/idCheck.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String idCheck(MemberDTO dto, Model model)
+	{
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		String idCheckYn = dao.idCheck(dto);
+		
+		return idCheckYn;
+	}
+	
+	@RequestMapping(value = "/memberinsertForm.action", method = RequestMethod.GET)
+	public String memberInsert(Model model)
+	{
+		String view = "WEB-INF/views/join.jsp";
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/memberinsert.action", method = RequestMethod.POST)
+	public String memberinsert(MemberDTO m)
+	{
+		String view = "WEB-INF/views/joinTest.jsp";
+		
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		dao.add(m);
+		
+		return view;
+		
+	}
+	
 }

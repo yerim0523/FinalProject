@@ -7,6 +7,39 @@
 		FROM MEMBER
 		WHERE MEM_NAME = #{memName} AND MEM_TEL = #{memTel}
 	</select>
+
+	<select id="idCheck"
+		parameterType="com.toleisure.mybatis.dto.MemberDTO"
+		resultType="String">
+		SELECT CASE WHEN COUNT(*) >= 1 THEN 'Y' ELSE 'N' END AS
+		IDCHECK
+		FROM MEMBER
+		WHERE MEM_ID = #{memId}
+	</select>
+
+	<insert id="add"
+		parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		<choose>
+			<when test="memCate1 == 0 and memCate2 == 0">
+				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
+				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_DATE)
+				VALUES(#{memId}, #{memPw},
+				#{memName}, #{memTel}, #{memGen}, #{memComp}, #{memIntro}, sysdate)
+			</when>
+			<when test="memCate2 == 0">
+				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
+				GEN_CODE, MEM_COMP, MEM_INTRO, CATE_CODE1, MEM_DATE)
+				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
+				#{memComp}, #{memIntro}, #{memCate1}, sysdate)
+			</when>
+			<otherwise>
+				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
+				GEN_CODE, MEM_COMP, MEM_INTRO, CATE_CODE1, CATE_CODE2, MEM_DATE)
+				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
+				#{memComp}, #{memIntro}, #{memCate1}, #{memCate2}, sysdate)
+			</otherwise>
+		</choose>
+	</insert>
 	
 	
    <select id="selectMem" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="String">
@@ -29,7 +62,7 @@
    </select>
    
    <select id="myInfo" parameterType="String" resultType="com.toleisure.mybatis.dto.MemberDTO">
-		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGender
+		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGender, CATE_CODE1 AS memCate1, CATE_CODE2 AS memCate2
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
    </select>

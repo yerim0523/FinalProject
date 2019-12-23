@@ -3,8 +3,9 @@ package com.toleisure.mybatis.dto;
 
 public class MemberDTO
 {
-	private String memId, memPw, memName, memTel, memPic, memIntro;
-	private int memGender;
+	private String memId, memPw, memName, memTel, memPic;
+	private String memGen, memComp, memIntro, memDate;
+	private int memGender, memCate1, memCate2;
 
 	public String getMemPw()
 	{
@@ -74,6 +75,56 @@ public class MemberDTO
 	public void setMemGender(int memGender)
 	{
 		this.memGender = memGender;
+	}
+
+	public int getMemCate1()
+	{
+		return memCate1;
+	}
+
+	public void setMemCate1(int memCate1)
+	{
+		this.memCate1 = memCate1;
+	}
+
+	public int getMemCate2()
+	{
+		return memCate2;
+	}
+
+	public void setMemCate2(int memCate2)
+	{
+		this.memCate2 = memCate2;
+	}
+
+	public String getMemGen()
+	{
+		return memGen;
+	}
+
+	public void setMemGen(String memGen)
+	{
+		this.memGen = memGen;
+	}
+
+	public String getMemComp()
+	{
+		return memComp;
+	}
+
+	public void setMemComp(String memComp)
+	{
+		this.memComp = memComp;
+	}
+
+	public String getMemDate()
+	{
+		return memDate;
+	}
+
+	public void setMemDate(String memDate)
+	{
+		this.memDate = memDate;
 	}
 
 	
