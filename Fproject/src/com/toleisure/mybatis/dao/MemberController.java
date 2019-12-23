@@ -127,19 +127,9 @@ public class MemberController
 	public String logout(MemberDTO dto, HttpServletRequest req)
 	{
 		HttpSession session = req.getSession();
-		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
-		MemberDTO login = dao.login(dto);
-		
-		if(login!=null)
-		{
-			session.setAttribute("member", login);
-			session.setAttribute("mode", "login");
-		}
-		else
-		{
-			session.setAttribute("mode", "logout");
-		}
+		session.setAttribute("mode", "logout");
+		session.invalidate();
 				
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
