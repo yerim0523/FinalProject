@@ -72,7 +72,7 @@
 <div>
 	<h3 align="center">[결제하기]</h3>
 	<br><br>
-	<h5 align="center">결제 금액은 50000원 입니다.</h5>
+	<h5 align="center">결제 금액은 50001원 입니다.</h5>
 	<h5 align="center">원하는 결제 수단을 선택해주세요.</h5>
 </div>
 
