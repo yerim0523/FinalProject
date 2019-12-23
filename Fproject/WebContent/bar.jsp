@@ -117,20 +117,20 @@
                                     </div>
                                 </li> -->
                         <li class="nav-item">
-                        	<c:if test="${! empty sessionScope.member}">
-                        	<a class="nav-link" href="join.action">회원가입</a>
+                        	<c:if test="${mode == 'logout'}">
+                        	<a class="nav-link" href="join.action">${sessionScope.member.memId }</a>
                         	</c:if>
-                        	<c:if test="${empty sessionScope.member}">
+                        	<c:if test="${mode == 'login'}">
                         	<a class="nav-link" href="mypage.action">MyPage</a>
                         	</c:if>
                         </li>
                         <li class="nav-item"><a class="nav-link"
                            href="news.action">고객센터</a></li>
                         <li class="d-none d-lg-block">
-							<c:if test="${! empty sessionScope.member}">
+							<c:if test="${mode == 'logout'}">
                         	<a class="btn_1" href="login.action" style="color: black;">로그인</a>
                         	</c:if>
-                        	<c:if test="${empty sessionScope.member}">
+                        	<c:if test="${mode == 'login'}">
                         	<a class="btn_1" href="logout.action" style="color: black;">로그아웃</a>
                         	</c:if>
                         </li>

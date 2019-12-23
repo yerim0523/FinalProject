@@ -49,8 +49,9 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/findemail.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String findEmail(MemberDTO dto, Model model)
+	public String findEmail(MemberDTO dto, Model model, HttpServletRequest req)
 	{
+		
 		String view = "/WEB-INF/views/FindEmail.jsp";
 		
 		
@@ -100,8 +101,9 @@ public class MemberController
 	@RequestMapping(value = "/login_success.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String loginSuccess(MemberDTO dto, HttpServletRequest req)
 	{
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(true);
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
 		
 		MemberDTO login = dao.login(dto);
 		
@@ -129,7 +131,6 @@ public class MemberController
 		HttpSession session = req.getSession();
 		
 		session.invalidate();
-		session.setAttribute("mode", "logout");
 				
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
