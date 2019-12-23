@@ -24,10 +24,10 @@ public class GroupController
 		return view;
 	}
 	
-	@RequestMapping(value = "/groupInsert.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/groupinsert.action", method = RequestMethod.POST)
 	public String groupInsertForm(GroupDTO g)
 	{
-		String view = "redirect:groupInsertForm.action";
+		String view = "redirect:groupinsertform.action";
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class); 
 		dao.addGroup(g);

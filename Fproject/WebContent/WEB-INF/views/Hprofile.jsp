@@ -89,6 +89,8 @@
 
 </style>
 
+
+
 </head>
 <body>
 
@@ -105,8 +107,7 @@
 
 <br><br><br>
 
-<div class="container">
-	<input type="hidden" name="memId" value="wag2397@gmail.com">
+<div class="container" onload="alert()">
 	<div class="row">
       <div class="col-md-2" align="left">
          <span class="page">프로필</span>
@@ -122,9 +123,10 @@
 		            </div>
 		         </div>
 		         <div class="container right" style="width: 50%;">
-		            <input type="text" class="form-control" value="닉네임">
+		            <!-- ProfileController 에서 넘겨준 member(MemberDTO 타입) 를 이용해 변수값 꺼내 쓰기 -->
+		            <input type="text" class="form-control" value="${member.memName }">
 		            <br><br>
-		            <textarea rows="3" cols="10" class="form-control">자기소개</textarea>
+		            <textarea rows="3" cols="10" class="form-control">${member.memIntro }</textarea>
 		         </div>
 		      </div>
   		 </div><!-- end div.container -->
@@ -157,7 +159,7 @@
 		</div>
 	</div>
 	<br>
-	<hr>
+		<hr>
 	<br>
 	<div>
 		<div align="left">
@@ -169,35 +171,20 @@
 	</div>
 	<br>
 	<div class="row">
+		<c:forEach var="group" items="${group}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="images/iu.jpg" alt="썸네일" style="width: 100%;">
+				<!-- <img src="images/iu.jpg" alt="썸네일" style="width: 100%;"> -->
+				<img src="${group.ngPic }" alt="썸네일" style="width: 100%;">
 			<div class="caption">
-				<h3>모임</h3>
-				<p>호스트이름</p>
+				<h3>${group.grName}</h3>
+				<p>${group.memName}</p>
 			</div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/gd.jpg" alt="썸네일" style="width: 100%; height: 200px;">
-			<div class="caption">
-				<h3>모임</h3>
-				<p>호스트이름</p>
-			</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="images/iu2.jpg" alt="썸네일" style="width: 100%;">
-			<div class="caption">
-				<h3>모임</h3>
-				<p>호스트이름</p>
-			</div>
-			</div>
-		</div>
-	</div>
-</div>
+		</c:forEach>
+	</div><!-- end div.row -->
+</div><!-- end div.container -->
 
 <div>
 	<c:import url="footer.jsp"></c:import>

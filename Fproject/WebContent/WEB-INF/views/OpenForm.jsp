@@ -333,7 +333,7 @@
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">
    
-   <form action="groupInsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
+   <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
    현재 접속중인 memId : ${member.memId }
       <div align="right">
          * 은 필수항목입니다.
