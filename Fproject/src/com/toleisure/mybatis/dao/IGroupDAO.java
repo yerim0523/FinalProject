@@ -27,5 +27,4 @@ public interface IGroupDAO
 	// 분위기명으로 검색
 	public ArrayList<GroupDTO> searchMood(String mName);
 	
-	
 }
