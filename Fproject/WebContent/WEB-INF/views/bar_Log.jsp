@@ -107,21 +107,12 @@
 								</li>
 								<li class="nav-item"><a class="nav-link"
 									href="groupInsertForm.action">모임개설</a></li>
-								<!-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Pages
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                        <a class="dropdown-item" href="elements.html">Elements</a>
-                                    </div>
-                                </li> -->
 								<li class="nav-item"><a class="nav-link"
 									href="join.action">MyPage</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="news.action">고객센터</a></li>
 								<li class="d-none d-lg-block"><a class="btn_1"
-									href="login.action" style="color: black;">로그아웃</a></li>
+									href="logout.action" style="color: black;">로그아웃</a></li>
 							</ul>
 						</div>
 					</nav>

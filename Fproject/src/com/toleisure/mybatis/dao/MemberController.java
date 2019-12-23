@@ -122,4 +122,30 @@ public class MemberController
 		
 		return "redirect:main.action";
 	}
+	
+	@RequestMapping(value = "/logout.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String logout(MemberDTO dto, HttpServletRequest req)
+	{
+		HttpSession session = req.getSession();
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO login = dao.login(dto);
+		
+		if(login!=null)
+		{
+			session.setAttribute("member", login);
+			session.setAttribute("mode", "login");
+		}
+		else
+		{
+			session.setAttribute("mode", "logout");
+		}
+				
+		System.out.println("==================");
+		System.out.println("==== dto.getMemId = " + dto.getMemId());
+		System.out.println("==== dto.getMemPw = " + dto.getMemPw());
+		System.out.println("==================");
+		
+		return "redirect:main.action";
+	}
 }
