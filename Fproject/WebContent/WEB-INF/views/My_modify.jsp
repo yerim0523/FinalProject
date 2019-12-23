@@ -79,7 +79,7 @@ p
 					
 					<div class="form-group">
 						<p>이메일 주소</p><input type="email"
-							class="form-control" id="InputEmail" value="${myInfo.memId }">
+							class="form-control" id="InputEmail" value="${myInfo.memId }" readonly="readonly">
 					</div>
 					
 					<div class="form-group">

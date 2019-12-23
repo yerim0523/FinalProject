@@ -61,7 +61,7 @@
 		WHERE MEM_ID = #{memId} AND MEM_PW = #{memPw}
    </select>
    
-   <select id="myInfo" parameterType="String" resultType="com.toleisure.mybatis.dto.MemberDTO">
+   <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
 		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGender, CATE_CODE1 AS memCate1, CATE_CODE2 AS memCate2
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
