@@ -349,7 +349,7 @@
    <div class="container">
    
    <form action="groupInsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
-   ${member.memId }
+   현재 접속중인 memId : ${member.memId }
       <div align="right">
          * 은 필수항목입니다.
       </div>
