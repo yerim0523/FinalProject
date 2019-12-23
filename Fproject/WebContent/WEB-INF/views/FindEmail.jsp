@@ -15,32 +15,8 @@
 
 <script type="text/javascript">
 
-	$(function()
-	{
-		$(".findInfo").click(function()
-		{
-			var params = {};
-			params.memName = $("#memName").val();
-			params.memTel = $("#memTel").val();
-			
-			$.ajax({
-                type : "POST"
-                , url : "selectEmp.action"
-                , data : params
-                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
-                 , success: function(data){
-                    var isMember = data;
-                    if(isMember === "Y"){
-                    	alert("일치하는 정보가 있음!");
-                    }else{
-                    	alert("일치하는 정보가 없음!!");
-                    }
-                 }
-             });
-		});
-	});
 	
-	function sms()
+	   function sms()
 	   {
 	      
 	      result = Math.floor(Math.random() * 1000000) + 100000;
@@ -64,7 +40,7 @@
 	         
 	         $.ajax({
 	                type : "POST"
-	                , url : "selectEmp.action"
+	                , url : "selectMem.action"
 	                , data : params
 	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
 	                 , success: function(data){
@@ -111,10 +87,6 @@
 	      {
 	         alert("인증번호가 일치하지 않습니다");
 	      }
-
-	      /* alert(result); */
-
-	      /* alert(otp); */
 
 	   }
  

@@ -1,5 +1,13 @@
 package com.toleisure.mybatis.dao;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,16 +22,13 @@ import com.toleisure.mybatis.dto.MemberDTO;
 @Controller
 public class MemberController
 {	
-	
 	@Autowired
 	private SqlSession sqlsession;
-
 	
 	@RequestMapping(value = "/memberfindform.action", method = RequestMethod.GET)
 	public String findEmail(Model m)
 	{
 		String view = "/WEB-INF/views/FindEmail.jsp";
-		
 		
 		return view;
 	}
@@ -59,12 +64,12 @@ public class MemberController
 		return view;
 	}
 	
-	@RequestMapping(value = "/selectEmp.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/selectMem.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public String selectMem(MemberDTO dto, Model model)
 	{
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		String isMemYn = dao.selectEmp(dto);
+		String isMemYn = dao.selectMem(dto);
 		
 		System.out.println("==================");
 		System.out.println("==== isMemYn = "+isMemYn);
@@ -75,16 +80,25 @@ public class MemberController
 	
 	@RequestMapping(value = "/loginactive.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public String selectEmp(MemberDTO dto, Model model)
+	public String loginMem(MemberDTO dto, Model model)
 	{
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		String isMemYn = dao.selectEmp(dto);
+		String isMemYn = dao.searchMem(dto);
 		
 		System.out.println("==================");
-		System.out.println("==== isEmpYn = "+isMemYn);
+		System.out.println("==== isMemYn = " + isMemYn);
+		System.out.println("==== dto.getMemId = " + dto.getMemId());
+		System.out.println("==== dto.getMemPw = " + dto.getMemPw());
 		System.out.println("==================");
+		
+		if(isMemYn == "Y")
+		{
+			
+		}
 		
 		return isMemYn;
 	}
+	
+	
 	
 }
