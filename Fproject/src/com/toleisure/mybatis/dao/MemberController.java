@@ -146,5 +146,10 @@ public class MemberController
 		return "/WEB-INF/views/MyPage.jsp";
 	}
 	
+	@RequestMapping(value = "/infomodify.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String myPageModify(MemberDTO dto, Model model, HttpServletRequest req)
+	{
+		return "/WEB-INF/views/My_modify.jsp";
+	}
 	
 }

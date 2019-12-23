@@ -39,35 +39,35 @@
 			<!-- 9단길이의 첫번째 열 -->
 			<div class="col-md-9">
 				<div class="container">
+			<div class="page-header">
 				<div>
 					<h3>개인정보 수정</h3>
-					<hr>
 				</div>
-			<br><br><br>
+			</div>
 			<div>
 				<form role="form">
+				<div class="col-lg-10">
 					<div class="form-group">
-						<br>
-						<label for="inputName">이름</label> <input type="text"
+						<p>이름</p><input type="text"
 							class="form-control" id="inputName">
 					</div>
 					
 					<div class="form-group">
-						<label for="inputName">소개글</label> <textarea rows="3" cols="10" class="form-control"></textarea>
+						<p>소개글</p> <textarea rows="3" cols="10" class="form-control"></textarea>
 					</div>
 					
 					<div class="form-group">
-						<label for="InputEmail">이메일 주소</label> <input type="email"
+						<p>이메일주소</p> <input type="email"
 							class="form-control" id="InputEmail" >
 					</div>
 					
 					<div class="form-group">
-						<label for="inputMobile">휴대폰 번호</label> <input type="tel"
+						<p>휴대폰 번호</p> <input type="tel"
 							class="form-control" id="inputMobile">
 					</div>
 					
 					<div class="form-group">
-						<label for="inputMobile">성별</label><br>
+						<p>성별</p>
 						<label class="radio-inline">
 							<input type="radio" name="radio" id="inlineRadio1" value="male"> 남자
 						</label>
@@ -81,7 +81,6 @@
 					</div>
 					
 					<div class="form-group" id="">
-						<div class="col-lg-10">
 					<p>카테고리</p>
 						<label class="checkbox-inline">
 	  						<input type="checkbox" id="inlineCheckbox1" value="option1"> 공연
