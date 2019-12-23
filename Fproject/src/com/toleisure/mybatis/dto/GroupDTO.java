@@ -7,7 +7,7 @@ public class GroupDTO
 	private int grCode, grCate1, grCate2,starCode;
 
 	private int ngCode, ngMax, ngMin, ngCost;
-	private String memPic,memIntro,ngPic, ngIntro, ngMyIntro;
+	private String memPic,memIntro, ngPic, ngIntro, ngMyIntro;
 
 	private String ngLocation1, ngLocation2;
 

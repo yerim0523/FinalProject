@@ -201,7 +201,7 @@ public class MainController
 
 		model.addAttribute("RecommendGroupListAll", dao.RecommendGroupListAll(dto.getMemId()));
 		
-		model.addAttribute("AvgStar", dao.AvgStar(dto.getGrCode()));
+		/* model.addAttribute("AvgStar", dao.AvgStar(dto.getGrCode())); */
 
 		return view;
 	}

@@ -203,7 +203,9 @@ button.more
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
+          
                <span> ${NewGroup.grStarAvg}</span>
+              
             </div>
          </div>
          <br>
