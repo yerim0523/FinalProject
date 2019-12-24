@@ -149,20 +149,11 @@
 									</form>
 								</li>
 								<c:if test="${empty sessionScope.member}">
-								<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginNeed"  onclick="loginCk()">모임개설</a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginNeed">모임개설</a></li>
 								</c:if>
 								<c:if test="${!empty sessionScope.member}">
                         		<li class="nav-item"><a class="nav-link" href="groupinsertform.action">모임개설</a></li>
                         		</c:if>
-								<!-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Pages
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                        <a class="dropdown-item" href="elements.html">Elements</a>
-                                    </div>
-                                </li> -->
 								<li class="nav-item">
                         	<c:if test="${empty sessionScope.member}">
                         	<a class="nav-link" href="join.action">회원가입</a>

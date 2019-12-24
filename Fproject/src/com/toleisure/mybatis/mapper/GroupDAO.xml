@@ -40,6 +40,10 @@
       }
    </insert>
    
+   <select id="grSearch">
+   	
+   </select>
+   
    <!-- 
    <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT GR_NAME
