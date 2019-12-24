@@ -32,15 +32,34 @@
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 
 <script type="text/javascript">
-	$(function()
+	function groupSel()
 	{
-		$(".groupSel").click(function()
+		//alert("확인");
+		var f = document.groupForm;
+
+		var val = null;
+
+		var code = document.getElementsByName("grCode");
+		
+		if(!code.value)
 		{
-			alert("확인");
-		});
-	});
+			alert("모임을 선택해주세요.");
+			return;
+		}
+
+		for (var i = 0; i < code.length; i++)
+		{
+			if (code[i].checked == true) // 체크 된 값만 
+			{
+				val = code[i].value;
+			}
+		}
+		
+		f.submit();
+	}
 </script>
 
 </head>
@@ -68,7 +87,7 @@
 <br><br>
 
 <div class="container" align="center">
-	<form action="groupinsertform.action?memId=${member.memId}" method="post">
+	<form action="groupinsertform.action?memId=${member.memId }" method="post" name="groupForm">
 	<div align="center">
 	<table class="table text-center">
 		<tr>
@@ -77,6 +96,7 @@
 			<th>개설 날짜</th>
 		</tr>
 		<c:forEach var="mylist" items="${list }">
+		
 			<tr align="center">
 			<td>
 				<label for="one"><input type="radio" id="grCode" name="grCode" value="${mylist.grCode }"> ${mylist.grCount }회차</label>
@@ -88,17 +108,17 @@
 				${mylist.ngDate }
 			</td>
 			</tr>
-		</c:forEach>
-		
+		</c:forEach>		
 	</table>
 	</div>
+	</form>
 	<br><br>
 	<div align="center">
 		<a href="groupinsertform.action?memId=${member.memId}"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
-		<button type="button" class="btn4 groupSel" value="선택">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="submit" class="btn4" value="선택" onclick="groupSel()">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" class="btn4" value="취소">취소</button>
 	</div> 
-	</form>
+	
 </div>
 
 <br><br><br>

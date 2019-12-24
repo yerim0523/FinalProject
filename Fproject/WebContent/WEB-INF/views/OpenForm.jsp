@@ -345,7 +345,7 @@
             <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요.">
             </c:if>
             <c:if test="${! empty sessionScope.member}">
-            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="">
+            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="${grName }">
             </c:if>
       </div>
       <br>
