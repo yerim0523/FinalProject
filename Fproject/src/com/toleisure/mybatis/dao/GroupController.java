@@ -38,7 +38,7 @@ public class GroupController
 		return view;
 	}
 	
-	@RequestMapping(value = "/mygrouplist.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/mygrouplist.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String myGroupList(GroupDTO dto, Model m, HttpSession session)
 	{
 		String view = "WEB-INF/views/meetingOpen.jsp";

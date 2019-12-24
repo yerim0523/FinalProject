@@ -286,15 +286,15 @@
       				)E 
       				WHERE RNUM >= #{startIndex} AND #{cntPerPage} >=RNUM
       </select>
-   <!--   <select id="eventSelect" parameterType="String" resultMap = "NoticeVo">
-        select  notice_id,
-                notice_title,
-                notice_coments
-        from push_notice
-        where notice_id = #{notice_id}
+<!--    parameterType="String"  -->
+     <select id="eventSelect" resultMap ="BoardDTO">
+        SELECT  EVENT_NUM AS boardNum, EVENT_TITLE AS boardTitle, EVENT_CONT AS boardCont,
+        		EVENT_DATE AS boardDate,MEM_NAME AS boardMem, EVENT_HITS AS boardHits
+        FROM EVENT_POST_VIEW
+        WHERE EVENT_NUM = #{boardNum}
     </select>
     
-    
+    <!-- 
     <insert id="noticeInsert" parameterType="com.spring.test.vo.NoticeVo">
         insert into push_notice
         (

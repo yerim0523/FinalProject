@@ -3,10 +3,10 @@ package com.toleisure.mybatis.dto;
 public class PagingDTO {
     
 	/** 한 페이지당 게시글 수 **/
-    private int pageSize = 10;
+    private int pageSize = 1;
      
     /** 한 블럭(range)당 페이지 수 **/
-    private int rangeSize = 10;
+    private int rangeSize = 3;
      
     /** 현재 페이지 **/
     private int curPage = 1;
