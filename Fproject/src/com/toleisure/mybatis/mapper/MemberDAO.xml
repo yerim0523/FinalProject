@@ -67,4 +67,22 @@
 		WHERE MEM_ID = #{memId}
    </select>
    
+   <select resultType="java.lang.String" id="password">
+		SELECT MEM_ID AS memId
+		FROM MEMBER
+		WHERE MEM_NAME = #{memName} AND MEM_ID = #{memId}
+	</select>
+	
+	<select id="selectPmp" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="String">
+   		SELECT CASE WHEN COUNT(*) >= 1 THEN 'Y' ELSE 'N' END AS ISPMP
+		FROM MEMBER
+		WHERE MEM_NAME = #{memName} AND MEM_ID = #{memId}
+   </select>
+   
+   <update id="updatePw" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		UPDATE MEMBER
+		SET MEM_PW = #{memPw}
+		WHERE MEM_ID = #{memId}
+   </update>
+   
 </mapper>
