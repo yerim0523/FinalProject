@@ -192,7 +192,7 @@
 						</div>
 						<div>
 							<img alt="" src="images/star.png" style="width: 20px;">
-							<span> ${group.grStarAvg }</span>
+							<span> ${group.grStarAvg } </span>
 						</div>
 					</div>
 					<br>
