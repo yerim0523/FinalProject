@@ -78,7 +78,7 @@ public class BoardController
 	 
  
 	 @RequestMapping(value = "/event.action")
-	    public String noticeList(@ModelAttribute("Notice") BoardDTO event,
+	    public String eventList(@ModelAttribute("Notice") BoardDTO event,
 	                            @RequestParam(defaultValue="1") int curPage,
 	                            Model model
 	                                ) {
@@ -97,22 +97,54 @@ public class BoardController
 	        model.addAttribute("paging", paging);
 	        return view;
 	    }
-	
-	  @RequestMapping(value = "/noticeRegi") public String noticeRegi() 
+	 
+	 @RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) 
+	  public String eventDetail(String boardNum, Model model) 
 	  { 
-		  return "notice/noticeDetail"; 
-	  
-	  }
-	  
-	  @RequestMapping(value = "/noticeDetail/{notice_id}") public String
-	  noticeEdit(@PathVariable String notice_id, Model model) 
-	  { 
-		  String view ="/WEB-INF/views/noticeList.jsp"; 
+		 
+		  String view ="/WEB-INF/views/eventDetail.jsp"; 
 		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		 
+		  
+		  List<BoardDTO> eventSelect =dao.eventSelect(boardNum);
+		  
+	      model.addAttribute("eventSelect",eventSelect);
 	  
-	      model.addAttribute("notice",dao.getNoticeOne(notice_id));
+	  return view; 
+	  }
+	 
+	 
+	 @RequestMapping(value = "/newsdetail.action", method = RequestMethod.GET) 
+	  public String newsDetail(String boardNum, Model model) 
+	  { 
+		 
+		  String view ="/WEB-INF/views/newsDetail.jsp"; 
+		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		 
+		  
+		  List<BoardDTO> newsSelect =dao.newsSelect(boardNum);
+		  
+	      model.addAttribute("newsSelect",newsSelect);
 	  
-	  return "notice/noticeDetail"; }
+	  return view; 
+	  }
+	/*
+	 * @RequestMapping(value = "/noticeDetail/{notice_id}") public String
+	 * noticeEdit(@PathVariable String notice_id, Model model) { String view
+	 * ="/WEB-INF/views/noticeList.jsp"; IBoardDAO dao =
+	 * sqlsession.getMapper(IBoardDAO.class);
+	 * 
+	 * model.addAttribute("notice",dao.eventSelect(notice_id));
+	 * 
+	 * return "notice/noticeDetail"; }
+	 * 
+	 * @RequestMapping(value = "/noticeRegi") public String noticeRegi() { return
+	 * "notice/noticeDetail";
+	 * 
+	 * }
+	 */
+	  
+	  
 	  
 	 /* @RequestMapping(value = "/noticeinsert.action", method=RequestMethod.POST)
 	 * public int noticeInsert(NoticeVo notice) {

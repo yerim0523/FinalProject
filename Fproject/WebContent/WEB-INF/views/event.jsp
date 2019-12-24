@@ -61,17 +61,21 @@
 </script> -->
 <script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script>
 <script>
-    $(document).ready(function(){
+/*     $(document).ready(function(){
         $("#notice_regi").on("click",function(){
             location.href="/test/noticeRegi"
         });
     });
     function fn_paging(curPage){
-        location.href="/test/noticeList?curPage="+curPage;
+         location.href="/test/noticeList?curPage="+curPage; 
+        location.href="/WEB-INF/views/noticeList?curPage="+curPage;
     }
+    
     function notice_push(notice_id){
         alert(notice_id);
-    }
+    } */
+ 
+
 </script>
 </head>
 <body>
@@ -121,18 +125,14 @@
 				<c:forEach var="v" items="${eventList}" varStatus="status">
 				<tr>
 					<td style="color: red;">이벤트</td>
-					<td>${status.index+1+(paging.curPage-1)*10}</td>
-					<td>${v.boardTitle}</td>
+					<td>${v.boardNum}</td>
+					<td><a href="#" onclick="location='eventdetail.action?boardNum=${v.boardNum}'" style="cursor:hand;">${v.boardTitle} </a></td>
  					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
 					<td>${v.boardHits}</td>
 			    </tr>
 			  
-				</c:forEach>
-			
-			
-            
-            
+				</c:forEach>      
             
 			</thead>
 		</table>
@@ -144,9 +144,11 @@
 
 	<div class="container">
 		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-			</a></li>
+			<li class="page-item">
+			<a class="page-link" href="#"aria-label="Previous"> 
+			<span aria-hidden="true">&laquo;</span>
+			</a>
+			</li>
 			<li class="page-item"><a class="page-link" href="#">${status.index+1+(paging.curPage-1)*10}</a></li>
 			<li class="page-item"><a class="page-link" href="#">2</a></li>
 			<li class="page-item"><a class="page-link" href="#">3</a></li>

@@ -9,8 +9,8 @@ public class BoardDTO {
 	private int eventHits;
 	private String eventNum,eventTitle, eventCont,eventMem, eventDate;
 	
-	private int boardHits;
-	private String boardNum,boardTitle, boardCont,boardMem, boardDate;
+	private int boardHits,boardNum;
+	private String boardTitle, boardCont,boardMem, boardDate;
 	
 	public int getBoardHits()
 	{
@@ -20,11 +20,12 @@ public class BoardDTO {
 	{
 		this.boardHits = boardHits;
 	}
-	public String getBoardNum()
+	
+	public int getBoardNum()
 	{
 		return boardNum;
 	}
-	public void setBoardNum(String boardNum)
+	public void setBoardNum(int boardNum)
 	{
 		this.boardNum = boardNum;
 	}
