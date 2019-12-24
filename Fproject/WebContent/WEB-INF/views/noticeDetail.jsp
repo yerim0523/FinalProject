@@ -72,7 +72,7 @@
         {
             location.href="/test/noticeList";
         });
-    })
+    }) 
 </script>
 </head>
 <body>
