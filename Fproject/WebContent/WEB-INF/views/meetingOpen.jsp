@@ -60,22 +60,27 @@
 
 <div class="container" align="center">
 	<form action="">
-	현재 접속중인 memId : ${member.memId }
 	<div align="center">
-	<table class="table">
+	<table class="table text-center">
+		<tr>
+			<th>회차 정보</th>
+			<th>모임 이름</th>
+			<th>개설 날짜</th>
+		</tr>
 		<c:forEach var="mylist" items="${list }">
 			<tr align="center">
 			<td>
-				<label for="one"><input type="radio" id="one" name="count" value="소주"> ${mylist.grCount }회차</label>
+				<label for="one"><input type="radio" id="one" name="count" value="${mylist.grCode }"> ${mylist.grCount }회차</label>
 			</td>
 			<td>
-				소주모임
+				${mylist.grName }
 			</td>
 			<td>
-				2019-05-05
+				${mylist.ngDate }
 			</td>
 			</tr>
 		</c:forEach>
+		
 	</table>
 	</div>
 	<br><br>

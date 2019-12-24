@@ -11,7 +11,7 @@ public class GroupDTO
 
 	private String ngLocation1, ngLocation2;
 
-	private String ngStart1, ngStart2, ngEnd1, ngEnd2;
+	private String ngStart1, ngStart2, ngEnd1, ngEnd2, ngDate;
 
 	private int grCount, grStarCount;
 	private double grStarAvg;
@@ -311,4 +311,15 @@ public class GroupDTO
 		this.starCode = starCode;
 	}
 
+	public String getNgDate()
+	{
+		return ngDate;
+	}
+
+	public void setNgDate(String ngDate)
+	{
+		this.ngDate = ngDate;
+	}
+
+	
 }
