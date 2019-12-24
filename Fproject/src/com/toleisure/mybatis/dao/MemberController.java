@@ -210,17 +210,6 @@ public class MemberController
 		return view;
 	}
 	
-	@RequestMapping(value = "/password.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String memberPfind(MemberDTO dto, Model model)
-	{
-		String view = "/WEB-INF/views/ChangePassword.jsp";
-		
-		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class); 
-		
-		model.addAttribute("memId", dao.password(dto));
-		
-		return view;
-	}
 	
 	@RequestMapping(value = "/selectPmp.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
@@ -266,7 +255,7 @@ public class MemberController
 		
 		dao.updatePw(dto);
 		
-		return "/WEB-INF/views/pwTest.jsp";
+		return "/WEB-INF/views/login.jsp";
 		
 	}
 	

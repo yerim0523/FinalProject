@@ -18,11 +18,34 @@
 	{
 		$(".pwChange").click(function()
 		{
-			var params = {};
-			params.memId = $("#memId").val();
-			params.memPw = $("#memPw").val();
+			if($("#mempw").val()==null)
+			{
+				alert("비밀번호를 입력하세요.");
+				$("#mempw").focus();
+				return;
+			}
 			
-			$.ajax({
+			if($("#newpw").val()==null)
+			{
+				alert("새로운 비밀번호를 입력하세요.");
+				$("#newpw").focus();
+				return;
+			}
+			
+			if($("#newpw2").val()==null)
+			{
+				alert("비밀번호를 한번 더 입력하세요.");
+				$("#newpw2").focus();
+				return;
+			}
+			
+			if($("#newpw").val() == $("#newpw2").val())
+			{
+				var params = {};
+				params.memId = $("#memId").val();
+				params.memPw = $("#memPw").val();
+				
+				$.ajax({
 					type : "POST"
 					, url : "pwCheck.action"
 					, data : params
@@ -37,9 +60,21 @@
 						}
 							
 					} 
-			});
+				});
+			}
+			
+			else
+			{
+				alert("위의 비밀번호와 일치하지 않습니다.");
+				return;
+			}
+			
+			
+			
+			
 		});
 	});
+	
 
 </script>
 
