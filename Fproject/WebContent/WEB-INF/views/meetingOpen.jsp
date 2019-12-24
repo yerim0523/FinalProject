@@ -33,6 +33,15 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
 
+<script type="text/javascript">
+	$(function()
+	{
+		$(".groupSel").click(function()
+		{
+			alert("확인");
+		});
+	});
+</script>
 
 </head>
 <body>
@@ -59,7 +68,7 @@
 <br><br>
 
 <div class="container" align="center">
-	<form action="">
+	<form action="groupinsertform.action?memId=${member.memId}" method="post">
 	<div align="center">
 	<table class="table text-center">
 		<tr>
@@ -70,7 +79,7 @@
 		<c:forEach var="mylist" items="${list }">
 			<tr align="center">
 			<td>
-				<label for="one"><input type="radio" id="one" name="count" value="${mylist.grCode }"> ${mylist.grCount }회차</label>
+				<label for="one"><input type="radio" id="grCode" name="grCode" value="${mylist.grCode }"> ${mylist.grCount }회차</label>
 			</td>
 			<td>
 				${mylist.grName }
@@ -86,7 +95,7 @@
 	<br><br>
 	<div align="center">
 		<a href="groupinsertform.action?memId=${member.memId}"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
-		<button type="button" class="btn4" value="선택">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="button" class="btn4 groupSel" value="선택">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" class="btn4" value="취소">취소</button>
 	</div> 
 	</form>

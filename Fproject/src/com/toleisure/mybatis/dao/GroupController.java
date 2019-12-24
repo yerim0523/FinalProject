@@ -25,8 +25,12 @@ public class GroupController
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
 		HttpSession session = req.getSession(true);
-		
 		session.getAttribute("member");
+		
+		int grCode = (int)req.getAttribute("grCode");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.groupFormInfo(grCode);
 		
 		return view;
 	}
@@ -39,7 +43,9 @@ public class GroupController
 		
 		session.getAttribute("member");
 		
-		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class); 
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		
 		
 		dao.addGroup(dto);
 		
