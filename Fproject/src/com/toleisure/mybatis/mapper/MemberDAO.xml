@@ -67,7 +67,7 @@
 		WHERE MEM_ID = #{memId}
    </select>
    
-   <select resultType="java.lang.String" id="password">
+   <select parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO" id="password">
 		SELECT MEM_ID AS memId
 		FROM MEMBER
 		WHERE MEM_NAME = #{memName} AND MEM_ID = #{memId}
@@ -84,5 +84,11 @@
 		SET MEM_PW = #{memPw}
 		WHERE MEM_ID = #{memId}
    </update>
+   
+   <select id="pwCheck" resultType="java.lang.String">
+   		SELECT MEM_PW AS memPw
+		FROM MEMBER
+		WHERE MEM_ID = #{memId}
+   </select>
    
 </mapper>
