@@ -19,5 +19,5 @@ public interface IProfileDAO
 	public ArrayList<GroupDTO> grHistory(GroupDTO memId);
 	
 	// 프로필 - (클릭한) 회원이 개설했던 모임 리스트 『전부』 가져오기
-	public ArrayList<GroupDTO> grAllHistory(GroupDTO memId);
+	public ArrayList<GroupDTO> allHistory(GroupDTO memId);
 }

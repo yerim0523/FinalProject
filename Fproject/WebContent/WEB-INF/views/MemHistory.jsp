@@ -59,6 +59,8 @@
 	{
 		width: 50%;
 		float: left;
+		font-size: 30px;
+		font-weight: bold;
 	}
 	.right
 	{
@@ -99,45 +101,44 @@
 <div class="container">
 	<div>
 		<div align="left" class="left">
-			<%-- ${member.MemName } --%> 님의 모임 히스토리
+			<span style="color: orange;">${member.memName }</span> 님의 모임 히스토리
 		</div>
 	</div>
 	
   	<br><br><br>
   	
 	<div class="row">
-		<c:forEach var="AllGroup" items="${AllGroupList}">
+		<c:forEach var="group" items="${group}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${AllGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
-			<div class="caption">
-			<div>
-				<div class="starRev">
-					
-				</div>
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
-				</div>
-			</div>
-			<br>
-			<div>
-				<span style="font-size: 12px;">1회차|</span>
-				<div>
-					<div class="name">
-					<h5>${AllGroup.grName }</h5>
-					</div>
-					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
+				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<div class="caption">
+					<div>
+						<div class="starRev">
+						</div>
+						<div>
+							<img alt="" src="images/star.png" style="width: 20px;">
+							<span> 9.5</span>
+						</div>
 					</div>
 					<br>
-				</div>
-				<h6 style="text-align: right; font-size: 10px;">"${AllGroup.memName }"</h6>
-			</div>
-			
-			</div>
-			</div>
-		</div>
+					<div>
+						<span style="font-size: 12px;">1회차|</span>
+						<div>
+							<div class="name">
+							<h5>${group.grName }</h5>
+							</div>
+							<div class="heart" align="right">
+								<i class="far fa-heart"></i>
+							</div>
+							<br>
+						</div>
+						<h6 style="text-align: right; font-size: 10px;">"${group.memName }"</h6>
+					</div>
+				
+				</div><!-- end div.caption -->
+			</div><!-- end div.thumbnail -->
+		</div><!-- end div.col-sm-6 col-md-4 -->
 		</c:forEach>	
 		
 		

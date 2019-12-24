@@ -174,9 +174,11 @@
 		<div align="left">
 			<h4>모임히스토리</h4>
 		</div>
-		<div align="right">
-			<button type="button" class="btn4" onclick="allHistory()">더보기</button>
-		</div>
+		<form action="allHistory.action" method="post">
+			<div align="right">
+				<button type="submit" class="btn4" >더보기</button>
+			</div>
+		</form>
 	</div>
 	<br>
 	<div class="row">
