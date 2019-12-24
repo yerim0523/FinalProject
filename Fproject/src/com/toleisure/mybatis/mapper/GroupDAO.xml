@@ -57,6 +57,10 @@
 		  AND G.MEM_ID= #{memId}
 		ORDER BY NG_DATE DESC
 	</select>
+	
+	<select id="">
+	
+	</select>
    
    <!-- 
    <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">

@@ -13,7 +13,7 @@ public interface IGroupDAO
 	public ArrayList<GroupDTO> grSearch(String hostId);
 	
 	// grCode 에 따른 모임의 가장 최근 정보 가져오기
-	public GroupDTO groupList(int grCode);
+	public GroupDTO groupFormInfo(int grCode);
 	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);

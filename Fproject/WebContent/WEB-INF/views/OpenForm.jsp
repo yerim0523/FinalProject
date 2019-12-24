@@ -341,7 +341,12 @@
       <div class="form-inline">
          <label for="grName" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 모임명</label>
             <!-- <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요." value="ㅁㄴㅇㄹㄴㄹㄴㅁ"> -->
+            <c:if test="${empty sessionScope.member}">
             <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요.">
+            </c:if>
+            <c:if test="${! empty sessionScope.member}">
+            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="">
+            </c:if>
       </div>
       <br>
       
