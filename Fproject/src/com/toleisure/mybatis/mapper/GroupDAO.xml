@@ -54,7 +54,7 @@
 		                           FROM NOW_GROUP NG, TBL_GROUP G
 		                           WHERE G.GR_CODE=NG.GR_CODE
 		                           GROUP BY G.GR_CODE)
-		  AND G.MEM_ID= #{memId}
+		  AND G.MEM_ID= #{member.memId}
 		ORDER BY NG_DATE DESC
 	</select>
    

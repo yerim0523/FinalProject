@@ -144,6 +144,11 @@ public class MemberController
 		session.getAttribute("member");
 		session.setAttribute("myInfo", mine);
 		
+		System.out.println("==================");
+		System.out.println("==== dto.getMemId = " + dto.getMemId());
+		System.out.println("==== dto.getMemPw = " + dto.getMemPw());
+		System.out.println("==================");
+		
 		return "/WEB-INF/views/MyPage.jsp";
 	}
 	

@@ -38,12 +38,14 @@
 <body>
 
 <div>
- 	<c:import url="bar.jsp"></c:import>
+	<c:import url="bar.jsp"></c:import>
 </div>
 
+<section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div>
 	<c:import url="MeetingBar.jsp"></c:import>
 </div>
+</section>
 
 <br>
 
@@ -57,12 +59,14 @@
 <br><br>
 
 <div class="container" align="center">
+	<form action="">
+	현재 접속중인 memId : ${member.memId }
 	<div align="center">
 	<table class="table">
 		<c:forEach var="mylist" items="${list }">
 			<tr align="center">
 			<td>
-				<label for="one"><input type="radio" id="one" name="count" value="소주"> 1회차</label>
+				<label for="one"><input type="radio" id="one" name="count" value="소주"> ${mylist.grCount }회차</label>
 			</td>
 			<td>
 				소주모임
@@ -72,40 +76,6 @@
 			</td>
 			</tr>
 		</c:forEach>
-		
-		<tr align="center">
-			<td>
-				<label for="one"><input type="radio" id="one" name="count" value="소주"> 1회차</label>
-			</td>
-			<td>
-				소주모임
-			</td>
-			<td>
-				2019-05-05
-			</td>
-		</tr>
-		<tr align="center">
-			<td>
-				<label for="two"><input type="radio" id="two" name="count" value="맥주"> 2회차</label>
-			</td>
-			<td>
-				맥주모임
-			</td>
-			<td>
-				2019-09-05
-			</td>
-		</tr>
-		<tr align="center">
-			<td>
-				<label for="three"><input type="radio" id="three" name="count" value="맛집"> 1회차</label>
-			</td>
-			<td>
-				맛집
-			</td>
-			<td>
-				2019-11-23
-			</td>
-		</tr>
 	</table>
 	</div>
 	<br><br>
@@ -114,6 +84,7 @@
 		<button type="button" class="btn4" value="선택">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" class="btn4" value="취소">취소</button>
 	</div> 
+	</form>
 </div>
 
 <br><br><br>
