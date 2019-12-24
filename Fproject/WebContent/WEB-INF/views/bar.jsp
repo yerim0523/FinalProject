@@ -32,6 +32,9 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet" href="css/button.css">
+<link rel="stylesheet" href="css/join.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 
 <style type="text/css">
 .container {
@@ -59,7 +62,42 @@
 	}
 }
 
+.modal-dialog.modal-80size {
+  width: 50%;
+  height: 50%;
+  margin: 0;
+  padding: 0;
 }
+
+.modal-content.modal-80size {
+  min-height: 40%;
+}
+
+.modal.modal-center {
+  text-align: center;
+}
+
+@media screen and (min-width: 500px) {
+  .modal.modal-center:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog.modal-center {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 </style>
 
 
@@ -105,8 +143,12 @@
 										</div>
 									</form>
 								</li>
-								<li class="nav-item"><a class="nav-link"
-									href="groupinsertform.action">모임개설</a></li>
+								<c:if test="${empty sessionScope.member}">
+								<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginNeed"  onclick="loginCk()">모임개설</a></li>
+								</c:if>
+								<c:if test="${!empty sessionScope.member}">
+                        		<li class="nav-item"><a class="nav-link" href="groupinsertform.action">모임개설</a></li>
+                        		</c:if>
 								<!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Pages
@@ -126,7 +168,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link"
                            href="news.action">고객센터</a></li>
-                        <li class="d-none d-lg-block">
+                        <li class="d-none d-lg-block nav-item">
 							<c:if test="${empty sessionScope.member}">
                         	<a class="btn_1" href="login.action" style="color: black;">로그인</a>
                         	</c:if>
@@ -142,8 +184,25 @@
 		</div>
 	</header>
 
-	<li class="responsiveNavigationMenuImg"></li>
-	<div class="clear"></div>
+<div class="modal modal-center fade" id="loginNeed" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">로그인이 필요한 서비스입니다.</p>
+			<div class="">
+				<a href="login.action"><button type="button" class="btn_1" >로그인</button></a>
+				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+			</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
