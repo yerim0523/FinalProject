@@ -2,7 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IGroupDAO">
 
-   <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
+   <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="newGroup">
       {CALL
          DECLARE
             grCodeSeq INT;
@@ -39,8 +39,32 @@
       END
       }
    </insert>
+   
+   
+      <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
+      {CALL
+         BEGIN
 
-	<select id="grSearch" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            INSERT INTO TBL_GROUP (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
+            VALUES (#{grCode}, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1});
+            
+            INSERT INTO NOW_GROUP(NG_CODE
+               , GR_CODE
+               , NG_PIC
+               , NG_MAX
+               , NG_MIN,
+            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO)
+            VALUES(NOW_GROUPSEQ.NEXTVAL, #{grCode}, #{ngPic}, #{ngMax}, #{ngMin}
+            , TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
+            TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
+            , #{ngCost}, #{ngLocation1}||#{ngLocation2}
+            , #{ngIntro}, #{ngMyIntro});
+      END
+      }
+   </insert>
+   
+
+	<select id="grSearch" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT G.GR_CODE AS grCode, NG.NG_PIC AS ngPic,  C.CATE_NAME AS grCate1Name, C2.CATE_NAME AS grCate2Name
      		 , G.GR_NAME AS grName, G.GR_PRE AS grPre, G.GR_NOTICE AS grNotice, M.MEM_NAME AS memName, NG.NG_DATE AS ngDate, CNT.GR_COUNT AS grCount
 		FROM TBL_GROUP G, NOW_GROUP NG, MEMBER M, CATEGORY C, CATEGORY C2, (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
@@ -54,8 +78,14 @@
 		                           FROM NOW_GROUP NG, TBL_GROUP G
 		                           WHERE G.GR_CODE=NG.GR_CODE
 		                           GROUP BY G.GR_CODE)
-		  AND G.MEM_ID= #{member.memId}
+		  AND G.MEM_ID= #{memId}
 		ORDER BY NG_DATE DESC
+	</select>
+	
+	<select id="groupFormInfo" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_CODE AS grCode, MEM_ID AS memId, GR_NAME AS grName, GR_PRE AS grPre, GR_NOTICE AS grNotice, CATE_CODE1 AS grCode1, CATE_CODE2 AS grCode2
+		FROM TBL_GROUP
+		WHERE GR_CODE=${grCode}
 	</select>
    
    <!-- 

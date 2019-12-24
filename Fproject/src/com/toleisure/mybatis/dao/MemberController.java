@@ -52,15 +52,6 @@ public class MemberController
 	}
 	
 	
-	@RequestMapping(value = "/findpassword.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String findPw(MemberDTO dto, Model model)
-	{
-		String view = "/WEB-INF/views/FindPassword.jsp";
-		
-		
-		return view;
-	}
-	
 	@RequestMapping(value = "/selectMem.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public String selectMem(MemberDTO dto, Model model)
@@ -210,17 +201,15 @@ public class MemberController
 		return view;
 	}
 	
-	@RequestMapping(value = "/password.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String memberPfind(MemberDTO dto, Model model)
+	@RequestMapping(value = "/findpassword.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String findPw(MemberDTO dto, Model model)
 	{
-		String view = "/WEB-INF/views/ChangePassword.jsp";
+		String view = "/WEB-INF/views/FindPassword.jsp";
 		
-		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class); 
-		
-		model.addAttribute("memId", dao.password(dto));
 		
 		return view;
 	}
+	
 	
 	@RequestMapping(value = "/selectPmp.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
@@ -236,19 +225,66 @@ public class MemberController
 		return isMem;
 	}
 	
-	@RequestMapping(value = "/updatePw.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String updatePw(MemberDTO dto, Model model)
+	@RequestMapping(value = "/password.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String memberPfind(MemberDTO dto, Model model, HttpServletRequest req)
 	{
-		String view = "WEB-INF/views/pwTest.jsp";
-		
+		HttpSession session = req.getSession(true);
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
-		String memId = dao.password(dto);
+		MemberDTO find = dao.password(dto);
 		
-		dao.updatePw(memId);
+		System.out.println("memid = " + dto.getMemId());
+		System.out.println("mempw = " + dto.getMemPw());
 		
-		return view;
+		session.setAttribute("memId", find);
 		
+		return "/WEB-INF/views/ChangePassword.jsp";
+		
+	}
+	
+	@RequestMapping(value = "/updatePw.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String updatePw(MemberDTO dto, Model model, HttpServletRequest req)
+	{
+		HttpSession session = req.getSession(true);
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		session.getAttribute("memId");
+		
+		System.out.println("memid = " + session.getAttribute("memId"));
+		System.out.println("mempw = " + dto.getMemPw());
+		
+		dao.updatePw(dto);
+		
+		return "/WEB-INF/views/login.jsp";
+		
+	}
+	
+	@RequestMapping(value = "/pwCheck.action", method = {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public String pwCheck(MemberDTO dto, HttpServletRequest req)
+	{
+		HttpSession session = req.getSession(true);
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		session.getAttribute("memId");
+		
+		String pwCheck = dao.pwCheck(dto);
+		
+		return pwCheck;
+	}
+	
+	
+	@RequestMapping(value = "/memPwModify.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String pwModify(MemberDTO dto, Model model, HttpServletRequest req)
+	{
+		HttpSession session = req.getSession(true);
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		session.getAttribute("memId");
+		
+		dao.updatePw(dto);
+		
+		return "/WEB-INF/views/MyPage.jsp";
 	}
 	
 	

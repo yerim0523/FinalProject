@@ -14,6 +14,7 @@ public interface IBoardDAO
 	 public List<BoardDTO> newsSelect(String boardNum);
 	 public List<BoardDTO> faqSelect(String boardNum);
 
+	 
 	public List<BoardDTO> eventList(BoardDTO event);
 	
 	public List<BoardDTO> faqList(BoardDTO faq);

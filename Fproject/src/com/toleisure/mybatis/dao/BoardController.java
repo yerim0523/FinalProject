@@ -28,9 +28,7 @@ public class BoardController
 	public String center(Model model)
 	{
 		String view = "/WEB-INF/views/center.jsp";
-		
-		
-		
+
 		return view;
 	}
 		
@@ -42,10 +40,13 @@ public class BoardController
 	 String view = "/WEB-INF/views/news.jsp";
 	 
 	 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-        int listCnt = dao.newsListCount();
-        PagingDTO paging = new PagingDTO(listCnt, curPage);
+	 
+        int listCnt = dao.newsListCount();       
+        PagingDTO paging = new PagingDTO(listCnt, curPage); // 총 게시글수, 현재 페이지
         news.setStartIndex(paging.getStartIndex());
-        news.setCntPerPage(paging.getPageSize());
+        news.setEndIndex(paging.getEndIndex());
+        
+      
              
         List<BoardDTO> newsList=dao.newsList(news);
         

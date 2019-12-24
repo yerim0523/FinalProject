@@ -21,21 +21,21 @@
 		
 		f = document.passwordChange;
 		
-		if(!f.newpw.value)
+		if(!f.memPw.value)
 		{
 			alert("비밀번호를 입력하세요.");
 			f.newpw.focus();
 			return;
 		}
 		
-		if(!f.newpw2.value)
+		if(!f.memPw2.value)
 		{
 			alert("비밀번호를 한번 더 입력하세요.");
 			f.newpw2.focus();
 			return;
 		}
 		
-		if(f.newpw.value != f.newpw2.value)
+		if(f.memPw.value != f.memPw2.value)
 		{
 			alert("위의 비밀번호와 일치하지 않습니다.");
 			return;
@@ -83,28 +83,14 @@
 					</div>
 					<div class="spc_content">
 						<form action="updatePw.action" method="post" name="passwordChange">
-							<input name="token_help" type="hidden" value="4dyAbm4qXevONIw0">
-							<input name="menu" type="hidden" value="security"> 
-							<input name="encPasswd" id="encPasswd" type="hidden"> <input
-								name="encNewPasswd" id="encNewPasswd" type="hidden"> <input
-								name="encNm" id="encNm" type="hidden"> <input
-								name="captcha_type" id="captcha_type" type="hidden"
-								value="image"> <input name="chptchakey" id="chptchakey"
-								type="hidden" value="RAo8cBYfQMQdpoNA"> <input
-								name="tempAutoValue" id="tempAutoValue" type="hidden"> <input
-								name="tempChkBlockIp" id="tempChkBlockIp" type="hidden">
-
-							<fieldset>
-								
-								
 								<p class="spc_row2">
-									
-									<input name="newpw" id="newpw" style="width: 260px"
+									<input type="hidden" id="memId" name="memId" value="${memId.memId }">
+									<input name="memPw" id="memPw" style="width: 260px"
 										type="password" maxlength="20">
 								</p>
 								<p class="spc_row3">
 									 <input
-										id="newpw2" name="newpw2" style="width: 260px"
+										id="memPw2" name="memPw2" style="width: 260px"
 										type="password"
 										maxlength="20">
 								</p>
@@ -117,7 +103,6 @@
 									<button id="changeSubmit" type="button" class="btn4" onclick="passwordchange()">확인</button>
 									<button type="button" class="btn4">취소</button>
 								</div>
-							</fieldset>
 						</form>
 					</div>
 				</div>

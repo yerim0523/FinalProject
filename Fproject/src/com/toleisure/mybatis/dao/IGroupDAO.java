@@ -7,13 +7,14 @@ import com.toleisure.mybatis.dto.GroupDTO;
 public interface IGroupDAO
 {
 	// 모임 정보 INSERT 메소드 구현
-	public int addGroup(GroupDTO g);
+	public int newGroup(GroupDTO g);	// 신규 개설
+	public int addGroup(GroupDTO g);	// 기존 개설
 	
 	// 호스트ID 에 따른 모임 정보 모두 출력 (모임개설 시 리스트 표시)
 	public ArrayList<GroupDTO> grSearch(String hostId);
 	
 	// grCode 에 따른 모임의 가장 최근 정보 가져오기
-	public GroupDTO groupList(int grCode);
+	public GroupDTO groupFormInfo(int grCode);
 	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);

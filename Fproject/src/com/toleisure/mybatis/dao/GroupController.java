@@ -20,28 +20,31 @@ public class GroupController
 	@Autowired
 	private SqlSession sqlsession;
 	
-	@RequestMapping(value = "/groupinsertform.action", method = RequestMethod.GET)
-	public String memberList(Model model, HttpServletRequest req)
+	@RequestMapping(value = "/groupinsertform.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String memberList(GroupDTO dto, Model model, HttpServletRequest req)
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
 		HttpSession session = req.getSession(true);
-		
 		session.getAttribute("member");
+		
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.groupFormInfo(dto.getGrCode());
 		
 		return view;
 	}
 	
-	@RequestMapping(value = "/groupinsert.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String groupInsertForm(GroupDTO dto, HttpServletRequest req)
 	{
-		String view = "redirect:groupinsertform.action";
+		String view = "redirect:main.action";
 		HttpSession session = req.getSession(true);
 		
 		session.getAttribute("member");
 		
-		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class); 
-		dao.addGroup(dto);
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
+		dao.addGroup(dto);
 		
 		return view;
 	}

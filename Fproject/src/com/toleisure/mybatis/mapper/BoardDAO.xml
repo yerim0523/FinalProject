@@ -233,7 +233,7 @@
         		,E.NEWS_DATE AS boardDate,E.MEM_NAME AS boardMem
         			FROM
       				( 
-      				  SELECT ROWNUM RNUM, DATA.* 
+      				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.NEWS_NUM DESC) NUM, DATA.* 
       				  FROM 
 	      				( 
 	      				SELECT NEWS_NUM, MEM_NAME, NEWS_TITLE, NEWS_DATE, NEWS_CONT
@@ -241,7 +241,7 @@
 	      				ORDER BY NEWS_NUM DESC 
 	      				) DATA 
       				)E 
-      				WHERE RNUM >= #{startIndex} AND #{cntPerPage} >=RNUM
+      				WHERE NUM BETWEEN #{startIndex} AND #{endIndex}
       </select>
     
     <select id="eventListCount" resultType="Integer">
@@ -292,6 +292,14 @@
         		EVENT_DATE AS boardDate,MEM_NAME AS boardMem, EVENT_HITS AS boardHits
         FROM EVENT_POST_VIEW
         WHERE EVENT_NUM = #{boardNum}
+    </select>
+    
+    
+    <select id="newsSelect" resultMap ="BoardDTO">
+        SELECT  NEWS_NUM AS boardNum, ENWS_TITLE AS boardTitle, NEWS_CONT AS boardCont,
+        		NEWS_DATE AS boardDate,MEM_NAME AS boardMem, NEWS_HITS AS boardHits
+        FROM NEWS_POST_VIEW
+        WHERE NEWS_NUM = #{boardNum}
     </select>
     
     <!-- 
