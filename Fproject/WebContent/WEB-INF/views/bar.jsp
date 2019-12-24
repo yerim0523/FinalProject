@@ -59,6 +59,11 @@
 	}
 }
 
+.responsiveNavigationMenuImg
+{
+	list-style: none;
+}
+
 }
 </style>
 

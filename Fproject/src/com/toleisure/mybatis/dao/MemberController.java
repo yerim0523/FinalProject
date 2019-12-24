@@ -195,4 +195,56 @@ public class MemberController
 		
 	}
 	
+	@RequestMapping(value = "/memberpasswordform.action", method = RequestMethod.GET)
+	public String finePassword(Model model)
+	{
+		String view = "/WEB-INF/views/FindPassword.jsp";
+		
+		/* IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class); */
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/password.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String memberPfind(MemberDTO dto, Model model)
+	{
+		String view = "/WEB-INF/views/ChangePassword.jsp";
+		
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class); 
+		
+		model.addAttribute("memId", dao.password(dto));
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/selectPmp.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String selectPmem(MemberDTO dto, Model model)
+	{
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		String isMem = dao.selectPmp(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMem = "+isMem);
+		System.out.println("==================");
+		
+		return isMem;
+	}
+	
+	@RequestMapping(value = "/updatePw.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String updatePw(MemberDTO dto, Model model)
+	{
+		String view = "WEB-INF/views/pwTest.jsp";
+		
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		String memId = dao.password(dto);
+		
+		dao.updatePw(memId);
+		
+		return view;
+		
+	}
+	
+	
 }
