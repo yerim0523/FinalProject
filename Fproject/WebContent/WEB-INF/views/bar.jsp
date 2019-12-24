@@ -62,6 +62,11 @@
 	}
 }
 
+.responsiveNavigationMenuImg
+{
+	list-style: none;
+}
+
 .modal-dialog.modal-80size {
   width: 50%;
   height: 50%;

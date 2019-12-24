@@ -47,10 +47,10 @@ public class ProfileController
 	} 
 	
 	// 더보기 클릭 → 해당 회원의 전체 모임 히스토리 페이지로 이동
-	@RequestMapping(value = "/profile.action", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/allHistory.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String allHistory(Model model, MemberDTO dto, GroupDTO gdto)
 	{
-		String view = "WEB-INF/views/Hprofile.jsp";
+		String view = "WEB-INF/views/MemHistory.jsp";
 		
 		IProfileDAO dao = sqlsession.getMapper(IProfileDAO.class); 
 		
@@ -58,13 +58,12 @@ public class ProfileController
 		dto.setMemId("wag2397@gmail.com");
 		gdto.setMemId("wag2397@gmail.com");
 		
-		// 프로필 - 회원 정보 
 		model.addAttribute("member", dao.memInfo(dto));
 		
-		// 프로필 - 모임 히스토리
+		// 모임 히스토리
 		ArrayList<GroupDTO> list = new ArrayList<GroupDTO>();
 		list.add(gdto);
-		model.addAttribute("group", dao.grHistory(gdto));
+		model.addAttribute("group", dao.allHistory(gdto));
 		
 		return view;
 	} 

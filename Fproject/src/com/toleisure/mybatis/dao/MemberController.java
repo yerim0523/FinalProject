@@ -244,10 +244,6 @@ public class MemberController
 		
 		return view;
 		
-		
-		
-		
-		
 	}
 	
 	
