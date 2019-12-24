@@ -48,7 +48,7 @@
     <h2 class="text-center">게시글 보기</h2><p>&nbsp;</p>
     <div class="table table-responsive">
       
-        <c:forEach var="v" items="${eventSelect }">
+        <c:forEach var="v" items="${newsSelect }">
         <table class="table">
         <tr>
             <th class="success">글번호</th>

@@ -3,7 +3,7 @@ package com.toleisure.mybatis.dto;
 public class PagingDTO {
     
 	/** 한 페이지당 게시글 수 **/
-    private int pageSize = 1;
+    private int pageSize = 2;
      
     /** 한 블럭(range)당 페이지 수 **/
     private int rangeSize = 3;
@@ -31,6 +31,7 @@ public class PagingDTO {
      
     /** 시작 index **/
     private int startIndex = 0;
+    private int endIndex = 0;
      
     /** 이전 페이지 **/
     private int prevPage;
@@ -138,6 +139,11 @@ public class PagingDTO {
 		return startIndex;
 	}
 	
+	public int getEndIndex()
+	{
+		return endIndex;
+	}
+	
     public PagingDTO(int listCnt, int curPage)
     {
          
@@ -163,9 +169,12 @@ public class PagingDTO {
          
         /** DB 질의를 위한 startIndex 설정 **/
         setStartIndex(curPage);
+        setEndIndex(curPage);
     }
   
-    public void setPageCnt(int listCnt) {
+    
+
+	public void setPageCnt(int listCnt) {
         this.pageCnt = (int) Math.ceil(listCnt*1.0/pageSize);
     }
     public void setRangeCnt(int pageCnt) {
@@ -188,7 +197,23 @@ public class PagingDTO {
         this.curRange = (int)((curPage-1)/rangeSize) + 1;
     }
     public void setStartIndex(int curPage) {
-        this.startIndex = (curPage-1) * pageSize;
+        this.startIndex = curPage*pageSize-1;  ///      pagesize = 2 한페이지에 2개표시
+        //	curPage-1 * (curPage-1/curPage-1)
+        //start current		1	
+        // 0 	 1					0~1 번째 로우넘을 가져오기때문에 2개의 데이터를 잘가져온다
+        // 					2
+        // 2     2					2~2번째  1개의데이터만 가져오게 됨
+        //					3		
+        // 4     3					4~3 번째			가져올수가없음
+        
+        // 2
+        
     }
+    
+    private void setEndIndex(int curPage)
+	{
+    	this.endIndex = curPage*pageSize;
+		
+	}
     
 }

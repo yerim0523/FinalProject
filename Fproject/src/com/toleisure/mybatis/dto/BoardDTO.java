@@ -4,7 +4,12 @@ package com.toleisure.mybatis.dto;
 public class BoardDTO {
 	private int adminCode, newsHits;
 	private String newsNum,newsTitle, newsCont,newsMem, newsDate,memPwd;
+
+	private String faqNum,faqTitle, faqCont, faqDate, faqMem;
 	
+	private int endIndex;
+	 private int startIndex;
+	    private int cntPerPage;
 	
 	private int eventHits;
 	private String eventNum,eventTitle, eventCont,eventMem, eventDate;
@@ -61,10 +66,7 @@ public class BoardDTO {
 	{
 		this.boardDate = boardDate;
 	}
-	private String faqNum,faqTitle, faqCont, faqDate, faqMem;
 	
-	 private int startIndex;
-	    private int cntPerPage;
 		
 		public String getNewsNum()
 		{
@@ -236,6 +238,16 @@ public class BoardDTO {
 		public void setCntPerPage(int cntPerPage)
 		{
 			this.cntPerPage = cntPerPage;
+		}
+		public void setEndIndex(int endIndex)
+		{
+			this.endIndex = endIndex;
+			
+		}
+		
+		public int getEndIndex()
+		{
+			return endIndex;
 		}
     
 	
