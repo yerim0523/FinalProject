@@ -2,6 +2,18 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IProfileDAO">
 	
+	 <resultMap id="GroupDTO" type="com.toleisure.mybatis.dto.GroupDTO">
+        <result property="ngPic" column="ngPic"/>
+        <result property="grName" column="grName"/>
+        <result property="grCate1" column="grCate1"/>
+        <result property="grCate2" column="grCate2"/>
+        <result property="memName" column="memName"/>
+        <result property="grCount" column="grCount"/>
+        <result property="grStarAvg" column="grStarAvg"/>
+        <result property="grStarCount" column="grStarCount"/>
+    </resultMap> 
+	
+	
 	<select id="memInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
 		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
 		FROM MEMBER_VIEW
@@ -9,20 +21,21 @@
 	</select>
 	
 	
-   <select id="grHistory" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT E.NG_PIC AS ngPic, E.GR_NAME AS grName, E.MEM_NAME AS memName
+   <select id="grHistory" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultMap="GroupDTO">
+		SELECT E.NG_PIC AS ngPic, E.GR_NAME AS grName, E.CATE1 AS grCate1, E.CATE2 AS grCate2, E.MEM_NAME AS memName
+			 ,E.GR_COUNT AS grCount, E.STAR_AVG AS grStarAvg, E.STAR_COUNT AS grStarCount
 		FROM
 		(
-		SELECT NG_PIC, GR_NAME, MEM_NAME, NG_DATE
+		SELECT NG_PIC, CATE1, CATE2, GR_NAME, MEM_NAME, GR_COUNT, STAR_AVG, STAR_COUNT
 		FROM ALL_GROUP_VIEW
 		WHERE MEM_ID = #{memId}
-		ORDER BY NG_DATE DESC
 		)E
 		WHERE 3>=ROWNUM
    </select>
    
    <select id="allHistory" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, CATE1 AS grCate1, CATE2 AS grCate2, MEM_NAME AS memName
+			 , GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
 		FROM ALL_GROUP_VIEW
 		WHERE MEM_ID = #{memId}
 		ORDER BY NG_DATE DESC

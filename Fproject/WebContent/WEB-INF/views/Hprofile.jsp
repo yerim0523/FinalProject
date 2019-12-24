@@ -185,15 +185,38 @@
 		<c:forEach var="group" items="${group}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<!-- <img src="images/iu.jpg" alt="썸네일" style="width: 100%;"> -->
-				<img src="${group.ngPic }" alt="썸네일" style="width: 100%;">
-			<div class="caption">
-				<h3>${group.grName}</h3>
-				<p>${group.memName}</p>
-			</div>
-			</div>
-		</div>
-		</c:forEach>
+				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<div class="caption">
+					<div>
+						<div class="starRev">
+						</div>
+						<div>
+							<img alt="" src="images/star.png" style="width: 20px;">
+							<span> ${group.grStarAvg }</span>
+						</div>
+					</div>
+					<br>
+					<div>
+						<span style="font-size: 12px;">${group.grCount }|</span>
+						<div>
+							<div class="name">
+							<h5>${group.grName }</h5>
+							</div>
+							<div class="heart" align="right">
+								<i class="far fa-heart"></i>
+							</div>
+							<br>
+						</div>
+						<h6 style="text-align: right; font-size: 10px;">"${group.memName }"</h6>
+					</div>
+				
+				</div><!-- end div.caption -->
+			</div><!-- end div.thumbnail -->
+		</div><!-- end div.col-sm-6 col-md-4 -->
+		</c:forEach>	
+		
+		
+  	
 	</div><!-- end div.row -->
 </div><!-- end div.container -->
 
