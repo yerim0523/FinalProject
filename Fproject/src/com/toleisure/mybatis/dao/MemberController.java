@@ -259,6 +259,20 @@ public class MemberController
 		
 	}
 	
+	@RequestMapping(value = "/mypwmodify.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String myPagePwmodify(MemberDTO dto, Model model, HttpServletRequest req)
+	{
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		HttpSession session = req.getSession(true);
+		
+		MemberDTO pw = dao.myInfo(dto.getMemId());
+		
+		session.getAttribute("member");
+		session.setAttribute("myInfo", pw);
+		
+		return "/WEB-INF/views/pw_modify.jsp";
+	}
+	
 	@RequestMapping(value = "/pwCheck.action", method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public String pwCheck(MemberDTO dto, HttpServletRequest req)
