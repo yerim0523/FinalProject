@@ -122,7 +122,7 @@
 				<tr>
 					<td style="color: red;">이벤트</td>
 					<td>${status.index+1+(paging.curPage-1)*10}</td>
-					<td onclick=location.href='/WEB-INF/views/noticeDetail/${v.eventNum}'">${v.boardTitle}</td>
+					<td>${v.boardTitle}</td>
 					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
 					<td>${v.boardHits}</td>
