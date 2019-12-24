@@ -62,7 +62,7 @@
 		font-size: 30px;
 		font-weight: bold;
 	}
-	.right
+	.right 
 	{
 		width: 50%;
 		float: ri
