@@ -2,7 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toleisure.mybatis.dao.IGroupDAO">
 
-   <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
+   <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="newGroup">
       {CALL
          DECLARE
             grCodeSeq INT;
@@ -39,6 +39,30 @@
       END
       }
    </insert>
+   
+   
+      <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
+      {CALL
+         BEGIN
+
+            INSERT INTO TBL_GROUP (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
+            VALUES (#{grCode}, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1});
+            
+            INSERT INTO NOW_GROUP(NG_CODE
+               , GR_CODE
+               , NG_PIC
+               , NG_MAX
+               , NG_MIN,
+            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO)
+            VALUES(NOW_GROUPSEQ.NEXTVAL, #{grCode}, #{ngPic}, #{ngMax}, #{ngMin}
+            , TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
+            TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
+            , #{ngCost}, #{ngLocation1}||#{ngLocation2}
+            , #{ngIntro}, #{ngMyIntro});
+      END
+      }
+   </insert>
+   
 
 	<select id="grSearch" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT G.GR_CODE AS grCode, NG.NG_PIC AS ngPic,  C.CATE_NAME AS grCate1Name, C2.CATE_NAME AS grCate2Name

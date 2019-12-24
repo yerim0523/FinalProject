@@ -40,8 +40,8 @@ public class GroupController
 		session.getAttribute("member");
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class); 
-		dao.addGroup(dto);
 		
+		dao.addGroup(dto);
 		
 		return view;
 	}
