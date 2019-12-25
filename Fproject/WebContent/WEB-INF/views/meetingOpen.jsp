@@ -43,19 +43,15 @@
 
 		var val = null;
 
-		//var code = document.getElementsByName("grCode");
+		var code 	= $("#grCode").val();
 		
-		var code = $("#grCode").val();
-		
-		console.log(code);
-		
-		if(!empty(code))
+		var check 	= $('input:radio[name=grCode]').is(":checked");
+
+		if(check === false)
 		{
 			alert("모임을 선택해주세요.");
 			return;
 		}
-		
-		return;
 		
 		for (var i = 0; i < code.length; i++)
 		{
@@ -66,15 +62,6 @@
 		}
 		
 		f.submit();
-	}
-	
-	function empty(value){ 
-		if (value === null) return true;
-		if (typeof value === 'undefined') return true;
-		if (typeof value === 'string' && value === '') return true; 
-		if (Array.isArray(value) && value.length < 1) return true;
-		if (typeof value === 'object' && value.constructor.name === 'Object' && Object.keys(value).length < 1 && Object.getOwnPropertyNames(value) < 1) return true;
-		if (typeof value === 'object' && value.constructor.name === 'String' && Object.keys(value).length < 1) return true;
 	}
 
 </script>
