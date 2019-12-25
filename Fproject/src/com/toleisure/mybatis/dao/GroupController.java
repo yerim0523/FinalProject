@@ -35,7 +35,9 @@ public class GroupController
 		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
 		System.out.println("==================");
 		
-		session.setAttribute("dto", dto);
+		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode());
+		
+		session.setAttribute("groupinfo", dto2);
 		
 		return view;
 	}

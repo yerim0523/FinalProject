@@ -335,7 +335,7 @@
    
    <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
    현재 접속중인 memId : ${member.memId }
-   모임 코드 : ${dto.grCode }
+   모임 코드 : ${groupinfo.grCode }
       <div align="right">
          * 은 필수항목입니다.
       </div>
@@ -346,7 +346,7 @@
             <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요.">
             </c:if>
             <c:if test="${! empty sessionScope.member}">
-            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="${grName }">
+            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="${groupinfo.grName }">
             </c:if>
       </div>
       <br>
