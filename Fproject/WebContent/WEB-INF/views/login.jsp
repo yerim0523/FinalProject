@@ -17,11 +17,14 @@
 	{
 		$(".loginBtn").click(function()
 		{
+			var form = document.loginForm;
 			var params = {};
 			params.memId = $("#memId").val();
 			params.memPw = $("#memPw").val();
 			
-			inputCheck();
+			if(inputCheck() === "fail"){
+				return;
+			}
 
 			$.ajax(
 			{
@@ -34,9 +37,11 @@
 					if (isMember === "Y")
 					{
 						alert("일치하는 정보가 있음!");
+						form.submit();
 					} else
 					{
 						alert("일치하는 정보가 없음!!");
+						return;
 					}
 				}
 			});
@@ -45,23 +50,23 @@
 	
 	function inputCheck()
 	{
-		alert("확인");
 		f = document.loginForm;
 		
 		if (!f.memId.value)
 	    {
 	         alert("아이디를 입력하세요.");
 	         f.memId.focus();
-	         return;
+	         return "fail";
 	      }
 
 	      if (!f.memPw.value)
 	      {
 	         alert("비밀번호를 입력하세요.");
 	         f.memPw.focus();
-	         return;
+	         return "fail";
 	      }
-	      
+	    
+	      return "success";
 	}
 	
 </script>
@@ -111,11 +116,10 @@
 								</div>
 								<button
 									class="sc-jTzLTM flMyeK sc-ckVGcZ fhPrqq loginBtn LoginPage__LoginButton-co2bls-2 eLfQiK"
-									type="submit" color="orange" fill="true">
+									type="button" color="orange" fill="true">
 									<span class="sc-fjdhpX kCztpU">로그인</span>
 								</button>
 							</form>
-
 						</div>
 					</div>
 				</main>
