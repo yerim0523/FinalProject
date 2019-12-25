@@ -164,7 +164,6 @@
 	      				ORDER BY FAQ_NUM DESC 
 	      				) DATA 
       				)E 
-      				WHERE RNUM >= #{startIndex} AND #{cntPerPage} >=RNUM
       </select>
 <!--    parameterType="String"  -->
      <select id="eventSelect" resultMap ="BoardDTO">
