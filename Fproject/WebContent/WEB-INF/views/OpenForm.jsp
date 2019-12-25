@@ -335,17 +335,18 @@
    
    <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
    현재 접속중인 memId : ${member.memId }
+   모임 코드 : ${groupinfo.grCode }
       <div align="right">
          * 은 필수항목입니다.
       </div>
       <div class="form-inline">
          <label for="grName" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 모임명</label>
             <!-- <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요." value="ㅁㄴㅇㄹㄴㄹㄴㅁ"> -->
-            <c:if test="${empty sessionScope.member}">
+            <c:if test="${empty groupinfo.grCode}">
             <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요.">
             </c:if>
-            <c:if test="${! empty sessionScope.member}">
-            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="${grName }">
+            <c:if test="${! empty groupinfo.grCode}">
+            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="${groupinfo.grName }">
             </c:if>
       </div>
       <br>
@@ -451,8 +452,6 @@
       
       <input type="hidden" id="grCate1" name="grCate1" value="0">
       <input type="hidden" id="grCate2" name="grCate2" value="0"> 
-      
-       <input type="hidden" id="memId" name="memId" value="${member.memId }">
       
       
       <br>

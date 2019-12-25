@@ -128,24 +128,26 @@
 
 	<br> <br> <br>
 	<div align="center">
-		
-		<c:forEach var="faq" items="${faqList}">
-		<div class="toggler">
-			<div align="left" class="ui-widget-content ui-corner-all" style="width: 70%; border: 0px;">
-				<button id="btn_toggle" class="ui-state-default ui-corner-all">
-				${faq.boardTitle }
-				</button>
-			</div> 
-			<div align="left" id="effect"
-				class="ui-widget-content ui-corner-all">
-				<h5 class="ui-widget-header ui-corner-all">${faq.boardTitle }</h5>
-				<p>${faq.boardCont }</p>
-			</div>
+		<div id="accordion">
+			<c:forEach var="faq" items="${faqList}" varStatus="status">
+				<div class="card">
+				    <div class="card-header">
+				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
+				        #${status.index+1}. ${faq.boardTitle}
+				      </a>
+				    </div>
+				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
+				      <div class="card-body d-flex justify-content-start" style="text-align:left;">
+				        ${faq.boardCont} 
+				      </div>
+				    </div>
+			  	</div>
+			</c:forEach>
 		</div>
-		</c:forEach>
 	</div>
 	<button type="button" onclick="location='faqinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
 </div>
+
 </section>
 
 <div>

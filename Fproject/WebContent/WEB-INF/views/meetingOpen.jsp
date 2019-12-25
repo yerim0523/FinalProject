@@ -35,6 +35,7 @@
    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 
 <script type="text/javascript">
+
 	function groupSel()
 	{
 		//alert("확인");
@@ -42,14 +43,16 @@
 
 		var val = null;
 
-		var code = document.getElementsByName("grCode");
+		var code 	= $("#grCode").val();
 		
-		if(!code.value)
+		var check 	= $('input:radio[name=grCode]').is(":checked");
+
+		if(check === false)
 		{
 			alert("모임을 선택해주세요.");
 			return;
 		}
-
+		
 		for (var i = 0; i < code.length; i++)
 		{
 			if (code[i].checked == true) // 체크 된 값만 
@@ -60,6 +63,7 @@
 		
 		f.submit();
 	}
+
 </script>
 
 </head>
@@ -87,7 +91,7 @@
 <br><br>
 
 <div class="container" align="center">
-	<form action="groupinsertform.action?memId=${member.memId }" method="post" name="groupForm">
+	<form action="groupinsertform.action" method="post" name="groupForm">
 	<div align="center">
 	<table class="table text-center">
 		<tr>
@@ -95,8 +99,9 @@
 			<th>모임 이름</th>
 			<th>개설 날짜</th>
 		</tr>
-		<c:forEach var="mylist" items="${list }">
 		
+		<c:forEach var="mylist" items="${list }">
+			<c:if test="${!empty mylist.grCode}">
 			<tr align="center">
 			<td>
 				<label for="one"><input type="radio" id="grCode" name="grCode" value="${mylist.grCode }"> ${mylist.grCount }회차</label>
@@ -108,13 +113,18 @@
 				${mylist.ngDate }
 			</td>
 			</tr>
-		</c:forEach>		
+			</c:if>
+			<c:if test="${empty mylist.grCode}">
+			비어이씀다
+			</c:if>
+		</c:forEach>
+		
 	</table>
 	</div>
 	</form>
 	<br><br>
 	<div align="center">
-		<a href="groupinsertform.action?memId=${member.memId}"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a href="groupinsertform.action"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
 		<button type="submit" class="btn4" value="선택" onclick="groupSel()">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" class="btn4" value="취소">취소</button>
 	</div> 

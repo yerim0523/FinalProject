@@ -82,7 +82,7 @@
 		ORDER BY NG_DATE DESC
 	</select>
 	
-	<select id="groupFormInfo" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+	<select id="groupFormInfo" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT GR_CODE AS grCode, MEM_ID AS memId, GR_NAME AS grName, GR_PRE AS grPre, GR_NOTICE AS grNotice, CATE_CODE1 AS grCode1, CATE_CODE2 AS grCode2
 		FROM TBL_GROUP
 		WHERE GR_CODE=${grCode}
