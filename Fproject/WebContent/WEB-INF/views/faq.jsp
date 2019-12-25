@@ -138,7 +138,7 @@
 				    </div>
 				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
 				      <div class="card-body d-flex justify-content-start" style="text-align:left;">
-				        ${faq.boardCont}
+				        ${faq.boardCont} 
 				      </div>
 				    </div>
 			  	</div>
