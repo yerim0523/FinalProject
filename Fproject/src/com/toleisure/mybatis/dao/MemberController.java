@@ -265,10 +265,14 @@ public class MemberController
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		HttpSession session = req.getSession(true);
 		
-		MemberDTO pw = dao.myInfo(dto.getMemId());
+		MemberDTO mine2 = dao.myInfo(dto.getMemId());
 		
 		session.getAttribute("member");
-		session.setAttribute("myInfo", pw);
+		session.setAttribute("myId", mine2.getMemId());
+		
+		System.out.println("==================");
+		System.out.println("==== dto.getMemId = " + dto.getMemId());
+		System.out.println("==================");
 		
 		return "/WEB-INF/views/pw_modify.jsp";
 	}
@@ -280,9 +284,11 @@ public class MemberController
 		HttpSession session = req.getSession(true);
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
-		session.getAttribute("memId");
+		session.getAttribute("myId");
+		/* System.out.println(dto.getMemPw()); */
 		
 		String pwCheck = dao.pwCheck(dto);
+		System.out.println(pwCheck);
 		
 		return pwCheck;
 	}
@@ -291,10 +297,10 @@ public class MemberController
 	@RequestMapping(value = "/memPwModify.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String pwModify(MemberDTO dto, Model model, HttpServletRequest req)
 	{
-		HttpSession session = req.getSession(true);
+		/* HttpSession session = req.getSession(true); */
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
-		session.getAttribute("memId");
+		/* session.getAttribute("myId"); */
 		
 		dao.updatePw(dto);
 		

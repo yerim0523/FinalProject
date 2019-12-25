@@ -16,6 +16,7 @@ public interface IMemberDAO
 	public int updatePw(MemberDTO dto);		// 패스워드 변경 메소드
 	
 	public String pwCheck(MemberDTO dto);	// 패스워드 확인 메소드
-	public int pwModify(MemberDTO dto);		// 마이페이지 패스워드 변경 메소드
+	public int changeMyPw(MemberDTO dto);		// 마이페이지 패스워드 변경 메소드
+	
 	
 }

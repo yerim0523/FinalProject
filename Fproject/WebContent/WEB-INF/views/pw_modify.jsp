@@ -18,28 +18,28 @@
 	{
 		$(".pwChange").click(function()
 		{
-			if($("#mempw").val()==null)
+			if($("#memPw").val()==null)
 			{
 				alert("비밀번호를 입력하세요.");
-				$("#mempw").focus();
+				$("#memPw").focus();
 				return;
 			}
 			
-			if($("#newpw").val()==null)
+			if($("#newPw").val()==null)
 			{
 				alert("새로운 비밀번호를 입력하세요.");
-				$("#newpw").focus();
+				$("#newPw").focus();
 				return;
 			}
 			
-			if($("#newpw2").val()==null)
+			if($("#newPw2").val()==null)
 			{
 				alert("비밀번호를 한번 더 입력하세요.");
-				$("#newpw2").focus();
+				$("#newPw2").focus();
 				return;
 			}
 			
-			if($("#newpw").val() == $("#newpw2").val())
+			if($("#newPw").val() == $("#newPw2").val())
 			{
 				var params = {};
 				params.memId = $("#memId").val();
@@ -53,8 +53,14 @@
 					, success : function(data)
 					{
 						pwCheck = data;
-						if(pwCheck == params.memPw){
-							alert("일치");							
+						/* 
+						alert(pwCheck);
+						alert($("#mempw").val());
+						 */
+						 
+						if(pwCheck == $("#memPw").val()){
+							alert("일치");	
+							change();
 						}else{
 							alert("현재 비밀번호가 일치하지 않습니다.");
 						}
@@ -74,6 +80,20 @@
 			
 		});
 	});
+	
+	function change()
+	{
+		f = document.memPwModify;
+		
+		/* 
+		var memPw = document.getElementById("memPw").value();
+		var newPw = document.getElementById("newPw").value();
+		 */
+
+		 document.getElementById("memPw").value = document.getElementById("newPw").value;
+		 
+		f.submit();
+	}
 	
 
 </script>
@@ -112,20 +132,19 @@
 						</p>
 					</div>
 					<div class="spc_content">
-						<form action="memPwModify.action" method="post" name="memPwModify">
+						<form action="memPwModify.action" method="post" name="memPwModify" id="memPwModify">
 								<p class="spc_row1">
-									<input type="hidden" id="memId" name="memId" value="${memId.memId }">
-									<input name="mempw" id="mempw" style="width: 260px"
+									<input type="hidden" id="memId" name="memId" value="${member.memId }">
+									<input name="memPw" id="memPw" style="width: 260px"
 										type="password" maxlength="20">
 								</p>
 								<p class="spc_row2">
-									<input type="hidden" id="memId" name="memId" value="${memId.memId }">
-									<input name="newpw" id="newpw" style="width: 260px"
+									<input name="newPw" id="newPw" style="width: 260px"
 										type="password" maxlength="20">
 								</p>
 								<p class="spc_row3">
 									 <input
-										id="newpw2" name="newpw2" style="width: 260px"
+										id="newPw2" name="newPw2" style="width: 260px"
 										type="password"
 										maxlength="20">
 								</p>
@@ -140,6 +159,7 @@
 						</form>
 					</div>
 				</div>
+				<div>${member.memId }</div>
 			</div>
 		</div>
 	</div>

@@ -90,5 +90,11 @@
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
    </select>
+
+	<update id="changeMyPw" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		UPDATE MEMBER
+		SET MEM_PW = #{newPw}
+		WHERE MEM_ID = #{memId}
+	</update>
    
 </mapper>
