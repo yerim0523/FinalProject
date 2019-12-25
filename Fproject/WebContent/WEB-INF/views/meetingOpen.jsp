@@ -43,14 +43,20 @@
 
 		var val = null;
 
-		var code = document.getElementsByName("grCode");
+		//var code = document.getElementsByName("grCode");
 		
-		if(!code)
+		var code = $("#grCode").val();
+		
+		console.log(code);
+		
+		if(!empty(code))
 		{
 			alert("모임을 선택해주세요.");
 			return;
 		}
-
+		
+		return;
+		
 		for (var i = 0; i < code.length; i++)
 		{
 			if (code[i].checked == true) // 체크 된 값만 
@@ -61,6 +67,16 @@
 		
 		f.submit();
 	}
+	
+	const empty = (value) => { 
+		if (value === null) return true 
+		if (typeof value === 'undefined') return true 
+		if (typeof value === 'string' && value === '') return true 
+		if (Array.isArray(value) && value.length < 1) return true 
+		if (typeof value === 'object' && value.constructor.name === 'Object' && Object.keys(value).length < 1 && Object.getOwnPropertyNames(value) < 1) return true 
+		if (typeof value === 'object' && value.constructor.name === 'String' && Object.keys(value).length < 1) return true // new String() return false 
+	}
+
 </script>
 
 </head>
