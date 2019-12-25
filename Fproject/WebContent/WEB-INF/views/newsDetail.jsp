@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>newContent.jsp</title>
+<title>newsDetail.jsp</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -31,7 +31,24 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
     
+<script type="text/javascript">
 
+function fn_paging(curPage)
+{	
+	location.href="news.action?curPage="+curPage;
+}
+
+function del_news(boardNum)
+{	
+	location.href="newsdelete.action?boardNum="+boardNum;
+}
+
+/* function edit_news(boardNum)
+{	
+	location.href="newsinsertform.action?boardNum="+boardNum;
+} */
+
+</script>
 
 </head>
 <body>
@@ -82,8 +99,8 @@
 					<tr>
 						<td colspan="4" class="text-center">
 							<input type="button" class="btn4" style="background-color: #D4F4FA;" value="수정하기" onclick="">
-							<input type="button" class="btn4" style="background-color: #eec4c4;" value="삭제하기" onclick="">
-							<input type="button" class="btn4" style="background-color: #FAED7D;" value="목록보기" onclick=""></td>
+							<input type="button" onClick="del_news(${v.boardNum})"class="btn4" style="background-color: #eec4c4;" value="삭제하기" onclick="">
+							<input type="button" onClick="fn_paging(${paging.curPage})"class="btn4" style="background-color: #FAED7D;" value="목록보기" onclick=""></td>
 					</tr>
 				</table>
 				</c:forEach>

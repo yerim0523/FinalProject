@@ -31,7 +31,23 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
     
+<script type="text/javascript">
 
+function edit_paging(curPage)
+{	
+	location.href="news.action?curPage="+curPage;
+}
+
+function del_event(boardNum)
+{	
+	location.href="eventdelete.action?boardNum="+boardNum;
+}
+
+function fn_paging(curPage)
+{	
+	location.href="news.action?curPage="+curPage;
+}
+</script>
 
 </head>
 <body>
@@ -83,9 +99,9 @@
 					<tr>
 						<td colspan="4" class="text-center">
 						
-							<input type="button" class="btn4" style="background-color: #D4F4FA;" value="수정하기" onclick="">
-							<input type="button" class="btn4" style="background-color: #eec4c4;" value="삭제하기" onclick="">
-							<input type="button" class="btn4" style="background-color: #FAED7D;" value="목록보기" onclick=""></td>
+							<input type="button" onClick="edit_paging(${paging.curPage})" class="btn4" style="background-color: #D4F4FA;" value="수정하기" >
+							<input type="button" onClick="del_event(${v.boardNum})" class="btn4" style="background-color: #eec4c4;" value="삭제하기" >
+							<input type="button" onClick="fn_paging(${paging.curPage})" class="btn4" style="background-color: #FAED7D;" value="목록보기"></td>
 					</tr>
 
 

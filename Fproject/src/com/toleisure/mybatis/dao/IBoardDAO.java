@@ -10,9 +10,9 @@ public interface IBoardDAO
 {
 	 
 	 
-	 public List<BoardDTO> eventSelect(String boardNum);
-	 public List<BoardDTO> newsSelect(String boardNum);
-	 public List<BoardDTO> faqSelect(String boardNum);
+	 public List<BoardDTO> eventSelect(int boardNum);
+	 public List<BoardDTO> newsSelect(int boardNum);
+	 public List<BoardDTO> faqSelect(int boardNum);
 
 	 
 	public List<BoardDTO> eventList(BoardDTO event);
@@ -27,6 +27,10 @@ public interface IBoardDAO
 	 
 	 public int newsListCount();
 	
+	 
+	 public int newsDelete(int boardNum);
+	 public int eventDelete(int boardNum);
+	 public int faqDelete(int boardNum);
 	
 	/*
 	public int getfaqMaxNum();

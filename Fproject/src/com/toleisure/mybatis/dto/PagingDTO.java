@@ -2,6 +2,10 @@ package com.toleisure.mybatis.dto;
 
 public class PagingDTO {
     
+	public PagingDTO()
+	{
+		
+	}
 	/** 한 페이지당 게시글 수 **/
     private int pageSize = 2;
      

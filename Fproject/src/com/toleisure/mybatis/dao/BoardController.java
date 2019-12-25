@@ -66,6 +66,7 @@ public class BoardController
 		 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	        int listCnt = dao.faqListCount();
 	        PagingDTO paging = new PagingDTO(listCnt, curPage);
+	     
 	        faq.setStartIndex(paging.getStartIndex());
 	        faq.setCntPerPage(paging.getPageSize());
 	             
@@ -89,7 +90,7 @@ public class BoardController
 	        int listCnt = dao.eventListCount();
 	        PagingDTO paging = new PagingDTO(listCnt, curPage);
 	        event.setStartIndex(paging.getStartIndex());
-	        event.setCntPerPage(paging.getPageSize());
+	        event.setEndIndex(paging.getEndIndex());
 	             
 	        List<BoardDTO> eventList=dao.eventList(event);
 	        
@@ -100,33 +101,39 @@ public class BoardController
 	    }
 	 
 	 @RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) 
-	  public String eventDetail(String boardNum, Model model) 
+	  public String eventDetail(int boardNum,int curPage, Model model) 
 	  { 
 		 
 		  String view ="/WEB-INF/views/eventDetail.jsp"; 
+		  
 		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-		 
+		  int listCnt = dao.newsListCount();
+		  
+		  PagingDTO paging = new PagingDTO(listCnt, curPage);
 		  
 		  List<BoardDTO> eventSelect =dao.eventSelect(boardNum);
 		  
 	      model.addAttribute("eventSelect",eventSelect);
-	  
+	      model.addAttribute("paging", paging);
+	      
 	  return view; 
 	  }
 	 
 	 
 	 @RequestMapping(value = "/newsdetail.action", method = RequestMethod.GET) 
-	  public String newsDetail(String boardNum, Model model) 
+	  public String newsDetail(int boardNum,int curPage, Model model) 
 	  { 
 		 
 		  String view ="/WEB-INF/views/newsDetail.jsp"; 
 		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		  int listCnt = dao.newsListCount();
 		 
+		  PagingDTO paging = new PagingDTO(listCnt, curPage);
 		  
 		  List<BoardDTO> newsSelect =dao.newsSelect(boardNum);
 		  
 	      model.addAttribute("newsSelect",newsSelect);
-	  
+	      model.addAttribute("paging", paging);
 	  return view; 
 	  }
 	/*
@@ -147,28 +154,49 @@ public class BoardController
 	  
 	  
 	  
-	 /* @RequestMapping(value = "/noticeinsert.action", method=RequestMethod.POST)
-	 * public int noticeInsert(NoticeVo notice) {
-	 * 
-	 * IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-	 * 
-	 * return dao.NoticeInsert(notice); }
-	 * 
-	 * 
-	 * @RequestMapping(value = "/noticeupdate.action", method=RequestMethod.POST)
+	@RequestMapping(value = "/newsinsertform.action", method=RequestMethod.POST)
+	  public String newsInsertForm(BoardDTO news) 
+	 {
+	  String view = "/WEB-INF/views/EventInsertForm.jsp"; 
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  return view; 
+	  
+	  
+	  }
+	  
+	 
+	 /* @RequestMapping(value = "/noticeupdate.action", method=RequestMethod.POST)
 	 * public int noticeUpdate(NoticeVo notice) {
 	 * 
 	 * IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	 * 
 	 * return dao.NoticeUpdate(notice); }
-	 * 
-	 * @RequestMapping(value = "/noticedelete.action", method=RequestMethod.POST)
-	 * public int noticeDelete(NoticeVo notice) {
-	 * 
-	 * IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-	 * 
-	 * return dao.NoticeDelete(notice.getNotice_id()); }
-	 */
+	 */ 
+	  @RequestMapping(value = "/newsdelete.action", method={RequestMethod.GET, RequestMethod.POST})
+	  public String newsDelete(int boardNum) 
+	  {
+		  String view = "news.action";
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  dao.newsDelete(boardNum);
+	  
+	 return view;
+	 
+	  }
+	  
+	  @RequestMapping(value = "/eventdelete.action", method={RequestMethod.GET, RequestMethod.POST})
+	  public String eventDelete(int boardNum) 
+	  {
+		  String view = "event.action";
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	   dao.eventDelete(boardNum);
+	  
+	 return view;
+	 
+	  }
+	
 	
 
 }

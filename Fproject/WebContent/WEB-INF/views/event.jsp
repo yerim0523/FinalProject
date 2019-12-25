@@ -126,7 +126,7 @@
 				<tr>
 					<td style="color: red;">이벤트</td>
 					<td>${v.boardNum}</td>
-					<td><a href="#" onclick="location='eventdetail.action?boardNum=${v.boardNum}'" style="cursor:hand;">${v.boardTitle} </a></td>
+					<td><a href="#" onclick="location='eventdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
  					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
 					<td>${v.boardHits}</td>
@@ -145,16 +145,30 @@
 	<div class="container">
 		<ul class="pagination">
 			<li class="page-item">
-			<a class="page-link" href="#"aria-label="Previous"> 
+			
+			<c:if test="${paging.curPage ne 1}">
+			<a class="page-link" href="#" aria-label="Previous" onClick="fn_paging(${paging.prevPage })">	
 			<span aria-hidden="true">&laquo;</span>
-			</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">${status.index+1+(paging.curPage-1)*10}</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 			</a></li>
+			</c:if>
+			<%-- ${status.index+1+(paging.curPage-1)*10} --%>
+			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
+			 	<c:choose>
+			 		<c:when test="${pageNum eq  paging.curPage}">
+			<!-- 선택되게하기 --><li class="page-item"><a class="page-link" onClick="fn_paging(${pageNum })"  href="#"> ${paging.curPage }</a></li>
+					</c:when>
+					  <c:otherwise>
+                               <li class="page-item"> <a class="page-link" href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> </li>
+                            </c:otherwise>
+                        </c:choose>
+                        </c:forEach>
+                        
+             <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
+			<li class="page-item"><a class="page-link" href="#"aria-label="Next" onClick="fn_paging(${paging.nextPage })"> 
+			<span aria-hidden="true">&raquo;</span>
+			</a></li>
+			</c:if>
+		
 		</ul>
 	</div>
 	
@@ -165,20 +179,9 @@
                     <c:if test="${paging.curPage ne 1}">
                         <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
                     </c:if>
-                    <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
-                        <c:choose>
-                            <c:when test="${pageNum eq  paging.curPage}">
-                                <span style="font-weight: bold;">
-                                    <a href="#" onClick="fn_paging(${pageNum })" style="font-weight: bold; color:red;">
-                                        ${pageNum }
-                                    </a>
-                                </span> 
-                            </c:when>
-                            <c:otherwise>
-                                <a href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> 
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
+                    
+                    
+                    
                     <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
                         <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
                     </c:if>

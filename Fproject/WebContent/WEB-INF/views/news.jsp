@@ -125,7 +125,7 @@
 				<tr>
 					<td style="color: green;">소식</td>
 					<td>${v.boardNum}</td>
-					<a href="#" onclick="location='newsdetail.action?boardNum=${v.boardNum}'" style="cursor:hand;"><td>${v.boardTitle}</td></a>
+					<td><a href="#" onclick="location='newsdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
 					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
 			    </tr>
@@ -153,7 +153,7 @@
 			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
 			 	<c:choose>
 			 		<c:when test="${pageNum eq  paging.curPage}">
-			<li class="page-item"><a class="page-link" onClick="fn_paging(${pageNum })"  href="#"> ${paging.curPage }</a></li>
+			<!-- 선택되게하기 --><li class="page-item"><a class="page-link" onClick="fn_paging(${pageNum })"  href="#"> ${paging.curPage }</a></li>
 					</c:when>
 					  <c:otherwise>
                                <li class="page-item"> <a class="page-link" href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> </li>
