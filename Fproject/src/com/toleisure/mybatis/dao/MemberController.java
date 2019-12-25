@@ -125,10 +125,9 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/mypage.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String myPageMain(MemberDTO dto, Model model, HttpServletRequest req)
+	public String myPageMain(MemberDTO dto, Model model, HttpSession session)
 	{
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		HttpSession session = req.getSession(true);
 		
 		MemberDTO mine = dao.myInfo(dto.getMemId());
 		
@@ -144,10 +143,9 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/infomodify.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String myPageModify(MemberDTO dto, Model model, HttpServletRequest req)
+	public String myPageModify(MemberDTO dto, Model model, HttpSession session)
 	{
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		HttpSession session = req.getSession(true);
 		
 		MemberDTO mine2 = dao.myInfo(dto.getMemId());
 		
@@ -226,9 +224,9 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/password.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String memberPfind(MemberDTO dto, Model model, HttpServletRequest req)
+	public String memberPfind(MemberDTO dto, Model model, HttpSession session)
 	{
-		HttpSession session = req.getSession(true);
+		session.getAttribute("member");
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
 		MemberDTO find = dao.password(dto);
@@ -243,9 +241,9 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/updatePw.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String updatePw(MemberDTO dto, Model model, HttpServletRequest req)
+	public String updatePw(MemberDTO dto, Model model, HttpSession session)
 	{
-		HttpSession session = req.getSession(true);
+		session.getAttribute("member");
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
 		session.getAttribute("memId");
@@ -260,10 +258,9 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/mypwmodify.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String myPagePwmodify(MemberDTO dto, Model model, HttpServletRequest req)
+	public String myPagePwmodify(MemberDTO dto, Model model, HttpSession session)
 	{
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		HttpSession session = req.getSession(true);
 		
 		MemberDTO mine2 = dao.myInfo(dto.getMemId());
 		
@@ -279,11 +276,11 @@ public class MemberController
 	
 	@RequestMapping(value = "/pwCheck.action", method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
-	public String pwCheck(MemberDTO dto, HttpServletRequest req)
+	public String pwCheck(MemberDTO dto, HttpSession session)
 	{
-		HttpSession session = req.getSession(true);
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
+		session.getAttribute("member");
 		session.getAttribute("myId");
 		/* System.out.println(dto.getMemPw()); */
 		
@@ -295,9 +292,9 @@ public class MemberController
 	
 	
 	@RequestMapping(value = "/memPwModify.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String pwModify(MemberDTO dto, Model model, HttpServletRequest req)
+	public String pwModify(MemberDTO dto, Model model, HttpSession session)
 	{
-		/* HttpSession session = req.getSession(true); */
+		session.getAttribute("member");
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
 		/* session.getAttribute("myId"); */

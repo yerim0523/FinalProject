@@ -346,7 +346,7 @@
             <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" placeholder="모임명을 입력해주세요.">
             </c:if>
             <c:if test="${! empty groupinfo.grCode}">
-            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="${groupinfo.grName }">
+            <input type="text" class="form-control" name="grName" id="grName" style="width: 700px;" value="${groupinfo.grName }" readonly="readonly">
             </c:if>
       </div>
       <br>
@@ -467,7 +467,7 @@
       <div class="form-inline">
          <label for="ngIntro" class="col-sm-2 control-label" style="font-weight: bold;">소개글</label>
          <textarea class="form-control col-sm-5" name="ngIntro" rows="5"
-                  placeholder="모임에 대한 소개글입니다!" id="ngIntro">ㅁㄴㅇㄹ</textarea>
+                  placeholder="모임에 대한 소개글입니다!" id="ngIntro"></textarea>
       </div>
       
       <br>
@@ -475,23 +475,35 @@
       <div class="form-inline">
          <label for="ngMyIntro" class="col-sm-2 control-label" style="font-weight: bold;">본인소개</label>
          <textarea class="form-control col-sm-5" name="ngMyIntro" rows="5"
-                  placeholder="호스트님의 소개를 입력해주세요!" id="ngMyIntro">ㅁㄴㅇㄹ</textarea>
+                  placeholder="호스트님의 소개를 입력해주세요!" id="ngMyIntro"></textarea>
       </div>
       
       <br>
 
       <div class="form-inline">
          <label for="grPre" class="col-sm-2 control-label" style="font-weight: bold;">준비물</label>
+         <c:if test="${empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" rows="5" name="grPre"
                   placeholder="모임에 대한 준비물입니다!" id="grPre">ㄴㅇㄹ</textarea>
+		</c:if>
+		<c:if test="${!empty groupinfo.grCode}">
+         <textarea class="form-control col-sm-5" rows="5" name="grPre"
+                  placeholder="모임에 대한 준비물입니다!" id="grPre" readonly="readonly">${groupinfo.grPre }</textarea>
+		</c:if>
       </div>
       
       <br>
 
       <div class="form-inline">
          <label for="grNotice" class="col-sm-2 control-label" style="font-weight: bold;">유의사항</label>
+         <c:if test="${empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" rows="5" name="grNotice"
                   placeholder="모임에 대한 유의사항입니다!" id="grNotice">ㅁㄴㅇㄹ</textarea>
+         </c:if>
+         <c:if test="${!empty groupinfo.grCode}">
+         <textarea class="form-control col-sm-5" rows="5" name="grNotice"
+                  placeholder="모임에 대한 유의사항입니다!" id="grNotice" readonly="readonly">${groupinfo.grNotice }</textarea>
+         </c:if>
       </div>
       
       <br>
