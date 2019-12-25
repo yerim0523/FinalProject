@@ -2,7 +2,9 @@ package com.toleisure.mybatis.dto;
 
 
 public class BoardDTO {
-	private int adminCode, newsHits;
+	private int adminCode, newsHits,rNum;
+	
+
 	private String newsNum,newsTitle, newsCont,newsMem, newsDate,memPwd;
 
 	private String faqNum,faqTitle, faqCont, faqDate, faqMem;
@@ -248,6 +250,15 @@ public class BoardDTO {
 		public int getEndIndex()
 		{
 			return endIndex;
+		}
+		
+		public int getrNum()
+		{
+			return rNum;
+		}
+		public void setrNum(int rNum)
+		{
+			this.rNum = rNum;
 		}
     
 	

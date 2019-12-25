@@ -3,6 +3,7 @@
 <mapper namespace="com.toleisure.mybatis.dao.IBoardDAO">
 	 
  <resultMap id="BoardDTO" type="com.toleisure.mybatis.dto.BoardDTO">
+        <result property="rNum" column="rNum"/>
         <result property="boardNum" column="boardNum"/>
         <result property="boardTitle" column="boardTitle"/>
         <result property="boardCont" column="boardCont"/>
@@ -108,7 +109,7 @@
     </select>
     
      <select id="newsList" resultMap = "BoardDTO">
-		SELECT  E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
+		SELECT  E.NUM AS rNum,E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
         		,E.NEWS_DATE AS boardDate,E.MEM_NAME AS boardMem
         			FROM
       				( 
@@ -129,7 +130,7 @@
     </select>
     
      <select id="eventList" resultMap = "BoardDTO">
-		SELECT  E.EVENT_NUM AS boardNum, E.EVENT_TITLE AS boardTitle, E.EVENT_CONT AS boardCont
+		SELECT  E.NUM AS rNum,E.EVENT_NUM AS boardNum, E.EVENT_TITLE AS boardTitle, E.EVENT_CONT AS boardCont
         		,E.EVENT_DATE AS boardDate,E.MEM_NAME AS boardMem , E.EVENT_HITS AS boardHits
         			FROM
       				( 

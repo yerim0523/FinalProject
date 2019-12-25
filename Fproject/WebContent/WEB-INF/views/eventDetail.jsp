@@ -35,7 +35,7 @@
 
 function edit_paging(curPage)
 {	
-	location.href="news.action?curPage="+curPage;
+	location.href="event.action?curPage="+curPage;
 }
 
 function del_event(boardNum)
@@ -45,7 +45,7 @@ function del_event(boardNum)
 
 function fn_paging(curPage)
 {	
-	location.href="news.action?curPage="+curPage;
+	location.href="event.action?curPage="+curPage;
 }
 </script>
 

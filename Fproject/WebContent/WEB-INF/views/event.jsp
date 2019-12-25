@@ -125,7 +125,7 @@
 				<c:forEach var="v" items="${eventList}" varStatus="status">
 				<tr>
 					<td style="color: red;">이벤트</td>
-					<td>${v.boardNum}</td>
+					<td>${v.rNum}</td>
 					<td><a href="#" onclick="location='eventdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
  					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
