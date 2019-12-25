@@ -2,7 +2,6 @@ package com.toleisure.mybatis.dao;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,8 +27,9 @@ public class BoardController
 	
 	
    @RequestMapping(value="/center.action", method=RequestMethod.GET)
-	public String center(Model model)
+	public String center(Model model, HttpSession session)
 	{
+	   session.getAttribute("member");
 		String view = "/WEB-INF/views/center.jsp";
 
 		return view;
@@ -38,14 +38,15 @@ public class BoardController
 	@RequestMapping(value = "/news.action")
     public String newsList(@ModelAttribute("NEWS") BoardDTO news,
                             @RequestParam(defaultValue="1") int curPage,
-                            Model model
+                            Model model, HttpSession session
                                 ) {
 	 String view = "/WEB-INF/views/news.jsp";
+	 session.getAttribute("member");
 	 
 	 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	 
         int listCnt = dao.newsListCount();       
-        PagingDTO paging = new PagingDTO(listCnt, curPage); // 총 게시글수, 현재 페이지
+        PagingDTO paging = new PagingDTO(listCnt, curPage); // 珥� 寃뚯떆湲��닔, �쁽�옱 �럹�씠吏�
         news.setStartIndex(paging.getStartIndex());
         news.setEndIndex(paging.getEndIndex());
         
@@ -62,9 +63,10 @@ public class BoardController
 	 @RequestMapping(value = "/faq.action")
 	    public String faqList(@ModelAttribute("FAQ") BoardDTO faq,
 	                            @RequestParam(defaultValue="1") int curPage,
-	                            Model model
+	                            Model model, HttpSession session
 	                                ) {
 		 String view = "/WEB-INF/views/faq.jsp";
+		 session.getAttribute("member");
 		 
 		 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	        int listCnt = dao.faqListCount();
@@ -85,9 +87,10 @@ public class BoardController
 	 @RequestMapping(value = "/event.action")
 	    public String eventList(@ModelAttribute("Notice") BoardDTO event,
 	                            @RequestParam(defaultValue="1") int curPage,
-	                            Model model
+	                            Model model, HttpSession session
 	                                ) {
 		 String view = "/WEB-INF/views/event.jsp";
+		 session.getAttribute("member");
 		 
 		 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	        int listCnt = dao.eventListCount();
@@ -104,10 +107,10 @@ public class BoardController
 	    }
 	 
 	 @RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) 
-	  public String eventDetail(int boardNum,int curPage, Model model) 
+	  public String eventDetail(int boardNum,int curPage, Model model, HttpSession session) 
 	  { 
-		 
 		  String view ="/WEB-INF/views/eventDetail.jsp"; 
+		  session.getAttribute("member");
 		  
 		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		  int listCnt = dao.newsListCount();
@@ -124,9 +127,9 @@ public class BoardController
 	 
 	 
 	 @RequestMapping(value = "/newsdetail.action", method = RequestMethod.GET) 
-	  public String newsDetail(int boardNum,int curPage, Model model) 
+	  public String newsDetail(int boardNum,int curPage, Model model, HttpSession session) 
 	  { 
-		 
+		 session.getAttribute("member");
 		  String view ="/WEB-INF/views/newsDetail.jsp"; 
 		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		  int listCnt = dao.newsListCount();
@@ -155,8 +158,9 @@ public class BoardController
 	 * }
 	 */
 	 @RequestMapping(value = "/eventinsertform.action")
-	  public String eventInsertForm() 
+	  public String eventInsertForm(HttpSession session) 
 	 {
+		 session.getAttribute("member");
 	  String view = "/WEB-INF/views/EventInsertForm.jsp"; 
 	  
 	  return view; 
@@ -165,10 +169,10 @@ public class BoardController
 	  }
 	  
 	 @RequestMapping(value = "/eventinsert.action",method={RequestMethod.GET, RequestMethod.POST}) 
-	  public String eventInsert(HttpServletRequest req,BoardDTO dto) 
+	  public String eventInsert(HttpSession session,BoardDTO dto) 
 	 {
 	  String view = "event.action";
-	  HttpSession session = req.getSession(true);
+	  session.getAttribute("member");
 		
 		session.getAttribute("member");
 	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
@@ -191,11 +195,9 @@ public class BoardController
 	
 	
 	 @RequestMapping(value = "/newsinsert.action",method={RequestMethod.GET, RequestMethod.POST}) 
-	  public String newsInsert(HttpServletRequest req,BoardDTO dto) 
+	  public String newsInsert(HttpSession session,BoardDTO dto) 
 	 {
 	  String view = "news.action";
-	  HttpSession session = req.getSession(true);
-		
 		session.getAttribute("member");
 	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	  
@@ -214,12 +216,11 @@ public class BoardController
 	 
 	 
 	 @RequestMapping(value = "/faqinsert.action",method={RequestMethod.GET, RequestMethod.POST}) 
-	  public String faqInsert(HttpServletRequest req,BoardDTO dto) 
+	  public String faqInsert(HttpSession session,BoardDTO dto) 
 	 {
 	  String view = "faq.action";
-	  HttpSession session = req.getSession(true);
+	  session.getAttribute("member");
 		
-		session.getAttribute("member");
 	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	  
 	  dao.faqInsert(dto);
@@ -234,10 +235,11 @@ public class BoardController
 	 * return dao.NoticeUpdate(notice); }
 	 */ 
 	  @RequestMapping(value = "/newsdelete.action", method={RequestMethod.GET, RequestMethod.POST})
-	  public String newsDelete(int boardNum) 
+	  public String newsDelete(int boardNum, HttpSession session) 
 	  {
 		  String view = "news.action";
 	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  session.getAttribute("member");
 	  
 	  dao.newsDelete(boardNum);
 	  
@@ -246,10 +248,11 @@ public class BoardController
 	  }
 	  
 	  @RequestMapping(value = "/eventdelete.action", method={RequestMethod.GET, RequestMethod.POST})
-	  public String eventDelete(int boardNum) 
+	  public String eventDelete(int boardNum, HttpSession session) 
 	  {
 		  String view = "event.action";
 	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  session.getAttribute("member");
 	  
 	   dao.eventDelete(boardNum);
 	  
