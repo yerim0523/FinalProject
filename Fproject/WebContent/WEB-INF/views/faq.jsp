@@ -132,12 +132,12 @@
 			<c:forEach var="faq" items="${faqList}" varStatus="status">
 				<div class="card">
 				    <div class="card-header">
-				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}" style="text-align:left;">
+				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
 				        #${status.index+1}. ${faq.boardTitle}
 				      </a>
 				    </div>
 				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
-				      <div class="card-body d-flex justify-content-start">
+				      <div class="card-body d-flex justify-content-start" style="text-align:left;">
 				        ${faq.boardCont}
 				      </div>
 				    </div>
