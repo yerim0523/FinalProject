@@ -1,7 +1,6 @@
 package com.toleisure.mybatis.dao;
 
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,10 +20,9 @@ public class GroupController
 	private SqlSession sqlsession;
 	
 	@RequestMapping(value = "/groupinsertform.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String memberList(GroupDTO dto, Model model, HttpServletRequest req)
+	public String memberList(GroupDTO dto, Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
-		HttpSession session = req.getSession(true);
 		session.getAttribute("member");
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
@@ -43,11 +41,9 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String groupInsertForm(GroupDTO dto, HttpServletRequest req)
+	public String groupInsertForm(GroupDTO dto, HttpSession session)
 	{
 		String view = "redirect:main.action";
-		HttpSession session = req.getSession(true);
-		
 		session.getAttribute("member");
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
@@ -58,10 +54,10 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/mygrouplist.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String myGroupList(MemberDTO dto, Model m, HttpServletRequest req)
+	public String myGroupList(MemberDTO dto, Model m, HttpSession session)
 	{
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		HttpSession session = req.getSession(true);
+		session.getAttribute("member");
 		
 		session.getAttribute("member");
 		
