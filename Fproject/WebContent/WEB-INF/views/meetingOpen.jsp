@@ -68,7 +68,7 @@
 		f.submit();
 	}
 	
-	const empty = (value) => { 
+	function empty(value){ 
 		if (value === null) return true 
 		if (typeof value === 'undefined') return true 
 		if (typeof value === 'string' && value === '') return true 
