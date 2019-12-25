@@ -210,8 +210,7 @@
 		</table>
 
 		<hr>
-		<button type="button" class="btn4"
-			style="float: right;">글쓰기</button>
+		<button type="button" class="btn4"style="float: right;">글쓰기</button>
 
 
 

@@ -2,6 +2,9 @@ package com.toleisure.mybatis.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -151,21 +154,78 @@ public class BoardController
 	 * 
 	 * }
 	 */
-	  
-	  
-	  
-	@RequestMapping(value = "/newsinsertform.action", method=RequestMethod.POST)
-	  public String newsInsertForm(BoardDTO news) 
+	 @RequestMapping(value = "/eventinsertform.action")
+	  public String eventInsertForm() 
 	 {
 	  String view = "/WEB-INF/views/EventInsertForm.jsp"; 
-	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	  
 	  return view; 
 	  
 	  
 	  }
 	  
+	 @RequestMapping(value = "/eventinsert.action",method={RequestMethod.GET, RequestMethod.POST}) 
+	  public String eventInsert(HttpServletRequest req,BoardDTO dto) 
+	 {
+	  String view = "event.action";
+	  HttpSession session = req.getSession(true);
+		
+		session.getAttribute("member");
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  dao.eventInsert(dto);
+	  
+	  return view; 
+	  
+	  
+	  }
 	 
+	@RequestMapping(value = "/newsinsertform.action")
+	  public String newsInsertForm() 
+	 {
+	  String view = "/WEB-INF/views/NewsInsertForm.jsp"; 
+	  
+	  return view;   
+	  }
+	  
+	
+	
+	 @RequestMapping(value = "/newsinsert.action",method={RequestMethod.GET, RequestMethod.POST}) 
+	  public String newsInsert(HttpServletRequest req,BoardDTO dto) 
+	 {
+	  String view = "news.action";
+	  HttpSession session = req.getSession(true);
+		
+		session.getAttribute("member");
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  dao.newsInsert(dto);
+	  
+	  return view; 	  
+	  }
+	 
+	 @RequestMapping(value = "/faqinsertform.action")
+	  public String faqInsertForm() 
+	 {
+	  String view = "/WEB-INF/views/FAQInsertForm.jsp"; 
+	  
+	  return view;   
+	  }
+	 
+	 
+	 @RequestMapping(value = "/faqinsert.action",method={RequestMethod.GET, RequestMethod.POST}) 
+	  public String faqInsert(HttpServletRequest req,BoardDTO dto) 
+	 {
+	  String view = "faq.action";
+	  HttpSession session = req.getSession(true);
+		
+		session.getAttribute("member");
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  dao.faqInsert(dto);
+	  
+	  return view; 	  
+	  }
 	 /* @RequestMapping(value = "/noticeupdate.action", method=RequestMethod.POST)
 	 * public int noticeUpdate(NoticeVo notice) {
 	 * 

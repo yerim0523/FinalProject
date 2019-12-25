@@ -57,9 +57,8 @@
 
 function formCheck()
 {
-   var f = document.EventInsertForm;
+   var f = document.NewsInsertForm;
    var str = f.boardTitle.value;
-   var max,min;
    
    str = str.trim();
    if(!str || 5>str.length || 100<str.length)
@@ -113,13 +112,13 @@ function formCheck()
 	<div class="col-md-2" align="left">
 		<div class="panel-heading">
 			
-			 <h4 class="panel-title" align="center">이벤트</h4>
+			 <h4 class="panel-title" align="center">소식</h4>
 			<!-- <h4 class="panel-title" align="center">자유게시판</h4> -->
 			<hr>
 		</div>
 	</div>
 		
-	  <form action="eventinsert.action" method="post" name="EventInsertForm" id="EventInsertForm" class="form-horizontal">	
+	  <form action="newsinsert.action" method="post" name="NewsInsertForm" id="NewsInsertForm" class="form-horizontal">	
 	<div class="container">
 		<table class="table" style="text-align: center;">
 			<tr>

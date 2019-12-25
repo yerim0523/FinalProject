@@ -28,6 +28,10 @@ public interface IBoardDAO
 	 public int newsListCount();
 	
 	 
+	 public int eventInsert(BoardDTO board);
+	 public int newsInsert(BoardDTO board);
+	 public int faqInsert(BoardDTO board);
+	 
 	 public int newsDelete(int boardNum);
 	 public int eventDelete(int boardNum);
 	 public int faqDelete(int boardNum);

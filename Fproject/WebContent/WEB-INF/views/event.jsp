@@ -138,8 +138,7 @@
 		</table>
 
 		<hr>
-		<button type="button" class="btn4"
-			style="float: right;">글쓰기</button>
+		<button type="button" onclick="location='eventinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
 	</div>
 
 	<div class="container">

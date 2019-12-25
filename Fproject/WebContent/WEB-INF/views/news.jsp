@@ -128,6 +128,7 @@
 					<td><a href="#" onclick="location='newsdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
 					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
+					<td>${v.boardHits}</td>
 			    </tr>
 			  
 				</c:forEach>        
@@ -136,8 +137,7 @@
 		</table>
 
 		<hr>
-		<button type="button" class="btn4"
-			style="float: right;">글쓰기</button>
+		<button type="button" onclick="location='newsinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
 	</div>
 
 	<div class="container">

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EventInsertForm.jsp</title>
+<title>FAQInsertForm.jsp</title>
 
 <style type="text/css">
 .pagination {
@@ -57,9 +57,9 @@
 
 function formCheck()
 {
-   var f = document.EventInsertForm;
+   var f = document.FAQInsertForm;
+   
    var str = f.boardTitle.value;
-   var max,min;
    
    str = str.trim();
    if(!str || 5>str.length || 100<str.length)
@@ -67,16 +67,6 @@ function formCheck()
       alert("제목을 【4 ~ 100자】 내외로 입력해주세요.");
       f.boardTitle.focus();
       return;
-   }
-   
-   var Announce = document.getElementById('AnnounceCheck');
-   var AnnounceResult = Announce.getAttribute("checked")
-   var check=0;
-   
-   if($('input').is(":checked") == true)         // 체크 된 값만 
-   {
-      check=1;
-      //alert(temp[i]);
    }
    
    str = f.boardCont.value;
@@ -87,7 +77,6 @@ function formCheck()
       f.boardCont.focus();
       return;
    }
-   document.getElementById("check").value=check;
    
    f.submit();
 
@@ -113,13 +102,13 @@ function formCheck()
 	<div class="col-md-2" align="left">
 		<div class="panel-heading">
 			
-			 <h4 class="panel-title" align="center">이벤트</h4>
+			 <h4 class="panel-title" align="center">FAQ</h4>
 			<!-- <h4 class="panel-title" align="center">자유게시판</h4> -->
 			<hr>
 		</div>
 	</div>
 		
-	  <form action="eventinsert.action" method="post" name="EventInsertForm" id="EventInsertForm" class="form-horizontal">	
+	  <form action="faqinsert.action" method="post" name="FAQInsertForm" id="FAQInsertForm" class="form-horizontal">	
 	<div class="container">
 		<table class="table" style="text-align: center;">
 			<tr>
@@ -128,16 +117,10 @@ function formCheck()
 					<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
 							required="required" pattern=".{4,100}">
 				</td>
-				<td>
-					<input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록
-				</td>
-				
-				<input type="hidden" id="check" name="check" value="0">
 			<tr>
 				<td>내용</td>
 				<td colspan="2">
-				<textarea class="form-control" rows="5" id="boardCont" name="boardCont"
-				placeholder="내용 작성"></textarea>
+				<textarea class="form-control" rows="5" id="boardCont" name="boardCont"placeholder="내용 작성"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -146,7 +129,7 @@ function formCheck()
 				</td>
 				<td colspan="2">
 					<div align="right">
-						<button type="button" class="btn4 btn-info submit" onclick="formCheck()" >등록</button>
+						<button type="button" class="btn4 btn-info submit" onclick="formCheck()">등록</button>
 					</div>
 				</td>
 			</tr>

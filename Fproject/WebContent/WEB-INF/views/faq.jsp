@@ -144,7 +144,7 @@
 		</div>
 		</c:forEach>
 	</div>
-
+	<button type="button" onclick="location='faqinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
 </div>
 </section>
 
