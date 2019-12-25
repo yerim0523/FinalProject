@@ -453,8 +453,6 @@
       <input type="hidden" id="grCate1" name="grCate1" value="0">
       <input type="hidden" id="grCate2" name="grCate2" value="0"> 
       
-       <input type="hidden" id="memId" name="memId" value="${member.memId }">
-      
       
       <br>
       

@@ -69,12 +69,12 @@
 	}
 	
 	function empty(value){ 
-		if (value === null) return true 
-		if (typeof value === 'undefined') return true 
-		if (typeof value === 'string' && value === '') return true 
-		if (Array.isArray(value) && value.length < 1) return true 
-		if (typeof value === 'object' && value.constructor.name === 'Object' && Object.keys(value).length < 1 && Object.getOwnPropertyNames(value) < 1) return true 
-		if (typeof value === 'object' && value.constructor.name === 'String' && Object.keys(value).length < 1) return true // new String() return false 
+		if (value === null) return true;
+		if (typeof value === 'undefined') return true;
+		if (typeof value === 'string' && value === '') return true; 
+		if (Array.isArray(value) && value.length < 1) return true;
+		if (typeof value === 'object' && value.constructor.name === 'Object' && Object.keys(value).length < 1 && Object.getOwnPropertyNames(value) < 1) return true;
+		if (typeof value === 'object' && value.constructor.name === 'String' && Object.keys(value).length < 1) return true;
 	}
 
 </script>
@@ -104,7 +104,7 @@
 <br><br>
 
 <div class="container" align="center">
-	<form action="groupinsertform.action?memId=${member.memId }" method="post" name="groupForm">
+	<form action="groupinsertform.action" method="post" name="groupForm">
 	<div align="center">
 	<table class="table text-center">
 		<tr>
@@ -137,7 +137,7 @@
 	</form>
 	<br><br>
 	<div align="center">
-		<a href="groupinsertform.action?memId=${member.memId}"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a href="groupinsertform.action"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
 		<button type="submit" class="btn4" value="선택" onclick="groupSel()">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" class="btn4" value="취소">취소</button>
 	</div> 
