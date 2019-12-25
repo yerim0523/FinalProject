@@ -35,6 +35,7 @@
    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 
 <script type="text/javascript">
+
 	function groupSel()
 	{
 		//alert("확인");
@@ -44,7 +45,7 @@
 
 		var code = document.getElementsByName("grCode");
 		
-		if(!code.value)
+		if(!code)
 		{
 			alert("모임을 선택해주세요.");
 			return;
@@ -95,8 +96,9 @@
 			<th>모임 이름</th>
 			<th>개설 날짜</th>
 		</tr>
-		<c:forEach var="mylist" items="${list }">
 		
+		<c:forEach var="mylist" items="${list }">
+			<c:if test="${!empty mylist.grCode}">
 			<tr align="center">
 			<td>
 				<label for="one"><input type="radio" id="grCode" name="grCode" value="${mylist.grCode }"> ${mylist.grCount }회차</label>
@@ -108,7 +110,12 @@
 				${mylist.ngDate }
 			</td>
 			</tr>
-		</c:forEach>		
+			</c:if>
+			<c:if test="${empty mylist.grCode}">
+			비어이씀다
+			</c:if>
+		</c:forEach>
+		
 	</table>
 	</div>
 	</form>
