@@ -110,13 +110,13 @@
     
      <select id="newsList" resultMap = "BoardDTO">
 		SELECT  E.NUM AS rNum,E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
-        		,E.NEWS_DATE AS boardDate,E.MEM_NAME AS boardMem
+        		,E.NEWS_DATE AS boardDate,E.MEM_NAME AS boardMem, E.NEWS_HITS AS boardHits
         			FROM
       				( 
       				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.NEWS_NUM DESC) NUM, DATA.* 
       				  FROM 
 	      				( 
-	      				SELECT NEWS_NUM, MEM_NAME, NEWS_TITLE, NEWS_DATE, NEWS_CONT
+	      				SELECT NEWS_NUM, MEM_NAME, NEWS_TITLE, NEWS_DATE, NEWS_CONT,NEWS_HITS
 	      				FROM NEWS_POST_VIEW 
 	      				ORDER BY NEWS_NUM DESC 
 	      				) DATA 
@@ -252,6 +252,22 @@
         INSERT INTO FAQ(FAQ_NUM,ADMIN_CODE,FAQ_TITLE,FAQ_CONT,FAQ_DATE)
             VALUES(FAQSEQ.NEXTVAL,1, #{boardTitle}, #{boardCont} ,SYSDATE);
    </insert>
+   
+   
+   <update id ="updateNewsHitCount" parameterType="Integer">
+   			UPDATE NEWS
+   			SET NEWS_HITS = NEWS_HITS+1
+   			WHERE NEWS_NUM =#{boardNum}
+   </update>
+   
+    <update id ="updateEventHitCount" parameterType="Integer">
+   			UPDATE EVENT
+   			SET EVENT_HITS = EVENT_HITS+1
+   			WHERE EVENT_NUM =#{boardNum}
+   </update>
+   
+   
+   
  <!--    <insert id="noticeInsert" parameterType="com.toleisure.mybatis.dto.BoardDTO">
         insert into push_notice
         (

@@ -46,7 +46,7 @@ public class BoardController
 	 IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 	 
         int listCnt = dao.newsListCount();       
-        PagingDTO paging = new PagingDTO(listCnt, curPage); // 珥� 寃뚯떆湲��닔, �쁽�옱 �럹�씠吏�
+        PagingDTO paging = new PagingDTO(listCnt, curPage); // 총 데이터개수, 현재페이지
         news.setStartIndex(paging.getStartIndex());
         news.setEndIndex(paging.getEndIndex());
         
@@ -115,6 +115,10 @@ public class BoardController
 		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		  int listCnt = dao.newsListCount();
 		  
+		  
+		  dao.updateEventHitCount(boardNum);
+		  
+		  
 		  PagingDTO paging = new PagingDTO(listCnt, curPage);
 		  
 		  List<BoardDTO> eventSelect =dao.eventSelect(boardNum);
@@ -133,7 +137,9 @@ public class BoardController
 		  String view ="/WEB-INF/views/newsDetail.jsp"; 
 		  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		  int listCnt = dao.newsListCount();
-		 
+		  
+		  dao.updateNewsHitCount(boardNum);
+		  
 		  PagingDTO paging = new PagingDTO(listCnt, curPage);
 		  
 		  List<BoardDTO> newsSelect =dao.newsSelect(boardNum);

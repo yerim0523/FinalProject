@@ -75,7 +75,11 @@
         alert(notice_id);
     } */
  
-
+  function fn_paging(curPage){
+    	
+    	location.href="event.action?curPage="+curPage;
+        /* location.href="/test/noticeList?curPage="+curPage; */
+    }
 </script>
 </head>
 <body>
@@ -154,7 +158,7 @@
 			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
 			 	<c:choose>
 			 		<c:when test="${pageNum eq  paging.curPage}">
-			<!-- 선택되게하기 --><li class="page-item"><a class="page-link" onClick="fn_paging(${pageNum })"  href="#"> ${paging.curPage }</a></li>
+			<!-- 선택되게하기 --><li class="page-item active"><a class="page-link" onClick="fn_paging(${pageNum })"  href="#"> ${paging.curPage }</a></li>
 					</c:when>
 					  <c:otherwise>
                                <li class="page-item"> <a class="page-link" href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> </li>
