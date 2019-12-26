@@ -12,7 +12,9 @@ public class BoardDTO
 	private int faqCate;
 
 
-	private String faqNum, faqTitle, faqCont, faqDate, faqMem;
+	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem;
+
+	
 
 	private int endIndex;
 	private int startIndex;
@@ -356,6 +358,16 @@ public class BoardDTO
 	public void setFaqCate(int faqCate)
 	{
 		this.faqCate = faqCate;
+	}
+	
+	public String getFaqName()
+	{
+		return faqName;
+	}
+
+	public void setFaqName(String faqName)
+	{
+		this.faqName = faqName;
 	}
 
 }

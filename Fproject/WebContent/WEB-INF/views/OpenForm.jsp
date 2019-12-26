@@ -52,41 +52,41 @@
 	{
 		$("#postcodify_search_button").postcodifyPopUp();
 		
-		$(".fileDrop").on("dragenter dragover", function(event)
-		{
-			event.preventDefault();	// 기본효과 막음
-		});
+// 		$(".fileDrop").on("dragenter dragover", function(event)
+// 		{
+// 			event.preventDefault();	// 기본효과 막음
+// 		});
 		
-		$(".fileDrop").on("drop", function(event)
-		{
-			event.preventDefault();
+// 		$(".fileDrop").on("drop", function(event)
+// 		{
+// 			event.preventDefault();
 			
-			// 드래그된 파일의 정보
-			var files = event.originalEvent.dataTransfer.files;
+// 			// 드래그된 파일의 정보
+// 			var files = event.originalEvent.dataTransfer.files;
 			
-			// 첫 번째 파일
-			var file = files[0];
+// 			// 첫 번째 파일
+// 			var file = files[0];
 			
-			// 콘솔에서 파일정보 확인
-			console.log(file);
+// 			// 콘솔에서 파일정보 확인
+// 			console.log(file);
 			
-			var formData = new FormData();
-			formData.append("file", file);
+// 			var formData = new FormData();
+// 			formData.append("file", file);
 			
 			
-			$.ajax({
-				type: "post",
-				url: "${path}/upload",
-				data: fromData,
-				dataType: "text",
-				processData: false,
-				contentType: false,
-				success: function()
-				{
-					alert(data);
-				}
-			});
-		});
+// 			$.ajax({
+// 				type: "post",
+// 				url: "${path}/upload",
+// 				data: fromData,
+// 				dataType: "text",
+// 				processData: false,
+// 				contentType: false,
+// 				success: function()
+// 				{
+// 					alert(data);
+// 				}
+// 			});
+// 		});
 	});
 
    function sample4_execDaumPostcode()
@@ -368,10 +368,11 @@
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">
    
-   <form action="<%=cp %>/groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal" >
+   <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal" >
    현재 접속중인 memId : ${member.memId }
-   <%-- <input type="hidden" id="memId" name="memId" value="${member.memID }"> --%>
+   <input type="hidden" id="memId" name="memId" value="${member.memId }">
    모임 코드 : ${groupinfo.grCode }
+   <input type="hidden" id="grCode" name="grCode" value="${groupinfo.grCode }">
       <div align="right">
          * 은 필수항목입니다.
       </div>

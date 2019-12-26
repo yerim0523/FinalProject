@@ -207,7 +207,7 @@
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
-
+ 
 
 </body>
 </html>

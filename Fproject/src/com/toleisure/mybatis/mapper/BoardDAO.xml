@@ -10,6 +10,7 @@
         <result property="boardDate" column="boardDate"/>
         <result property="boardMem" column="boardMem"/>
         <result property="boardHits" column="boardHits"/>
+        <result property="faqName" column="faqName"/>
     </resultMap> 
     
   <!-- <resultMap id="BoardDTO" type="com.toleisure.mybatis.dto.BoardDTO">  resultMap id는 하나밖에못씀
@@ -72,14 +73,95 @@
     
      <select id="faqList" resultMap = "BoardDTO">
 		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
-        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem
+        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem, E.FAQ_NAME AS faqName
         			FROM
       				( 
       				  SELECT ROWNUM RNUM, DATA.* 
       				  FROM 
 	      				( 
-	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT
+	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT, FAQ_NAME
 	      				FROM FAQ_POST_VIEW 
+	      				ORDER BY FAQ_NUM DESC 
+	      				) DATA 
+      				)E 
+      </select>
+      
+      <select id="faqEtcList" resultMap = "BoardDTO">
+		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
+        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem, E.FAQ_NAME AS faqName
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT, FAQ_NAME
+	      				FROM FAQ_POST_VIEW 
+	      				WHERE FAQ_NAME = '기타'
+	      				ORDER BY FAQ_NUM DESC 
+	      				) DATA 
+      				)E 
+      				
+      </select>
+      
+      <select id="faqHostList" resultMap = "BoardDTO">
+		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
+        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem, E.FAQ_NAME AS faqName
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT, FAQ_NAME
+	      				FROM FAQ_POST_VIEW 
+	      				WHERE FAQ_NAME = '호스트신청' 
+	      				ORDER BY FAQ_NUM DESC 
+	      				) DATA 
+      				)E 
+      </select>
+      
+      <select id="faqPayList" resultMap = "BoardDTO">
+		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
+        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem, E.FAQ_NAME AS faqName
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT, FAQ_NAME
+	      				FROM FAQ_POST_VIEW 
+	      				WHERE FAQ_NAME = '결제/환불'
+	      				ORDER BY FAQ_NUM DESC 
+	      				) DATA 
+      				)E 
+      </select>
+      
+      <select id="faqUseList" resultMap = "BoardDTO">
+		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
+        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem, E.FAQ_NAME AS faqName
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT, FAQ_NAME
+	      				FROM FAQ_POST_VIEW 
+	      				WHERE FAQ_NAME = '이용안내'
+	      				ORDER BY FAQ_NUM DESC 
+	      				) DATA 
+      				)E 
+      </select>
+      
+      <select id="faqUserList" resultMap = "BoardDTO">
+		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
+        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem, E.FAQ_NAME AS faqName
+        			FROM
+      				( 
+      				  SELECT ROWNUM RNUM, DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT, FAQ_NAME
+	      				FROM FAQ_POST_VIEW 
+	      				WHERE FAQ_NAME = '회원정보'
 	      				ORDER BY FAQ_NUM DESC 
 	      				) DATA 
       				)E 
