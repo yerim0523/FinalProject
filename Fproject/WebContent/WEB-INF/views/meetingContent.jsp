@@ -284,13 +284,13 @@
 			</div>
 		</div>
 	 -->
-	 <c:forEach var="grcontent" items="${groupContent }"></c:forEach>
+	 <c:forEach var="grcontent" items="${groupContent }">
 	 <div class="container">
 			<div class="row">
 				<div class="col-lg-8 course_details_left">
 					<div class="main_image">
 						<img class="img-fluid" src=${grcontent.ngPic }
-							style="width: 1000px; height: 400px;">
+							style="width: 700px; height: 400px;">
 					</div>
 
 					<br>
@@ -324,7 +324,7 @@
 										<div class="image_outer_container">
 											<div class="green_icon"></div>
 											<div class="image_inner_container">
-												<img src="images/ma.jpg" class="rounded-circle" style="width: 150px; height: 200px; margin-right: 100px;">
+												<img src="${grcontent.memPic }" class="rounded-circle" style="width: 150px; height: 200px; margin-right: 100px;">
 											</div>
 										</div>
 										<div>
@@ -421,20 +421,20 @@
 					<div class="sidebar_top">
 						<ul>
 							<li><a class="justify-content-between d-flex"> <span
-									class="color" style="text-align: left;">${grcontent.grCate1 } | ${grcontent.grCate2 }</span> <span
-									class="color" style="text-align: right;">${grcontent.grCount }</span>
+									class="color" style="text-align: left;">${grcontent.grCate1Name } | ${grcontent.grCate2Name }</span> <span
+									class="color" style="text-align: right;">${grcontent.grCount }회차</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>모임명</p> <span class="color">${grcontent.grName }</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>가격</p> <span>${grcontent.ngCost }</span>
+									<p>가격</p> <span>${grcontent.ngCost } 원</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>최소인원수</p> <span>${grcontent.ngMin }</span>
+									<p>최소인원수</p> <span>${grcontent.ngMin } 명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>최대인원수</p> <span>${grcontent.ngMax }</span>
+									<p>최대인원수</p> <span>${grcontent.ngMax } 명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>모임날짜 및 시간</p> <span>${grcontent.ngStart } to ${grcontent.ngEnd }</span>
@@ -483,7 +483,7 @@
 		</div>
 	 
 	 
-	 
+	 </c:forEach>
 	 
 	 
 	</section>

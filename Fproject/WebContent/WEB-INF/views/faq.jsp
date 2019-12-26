@@ -133,7 +133,7 @@
 				<div class="card">
 				    <div class="card-header">
 				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
-				        <!-- #${status.index+1}.  -->${faq.boardTitle}
+				       ${faq.boardTitle} <!-- #${status.index+1}.  -->${faq.boardTitle}
 				        
 				      </a>
 				      <button type="button" onclick="location='faqdelete.action?boardNum=${faq.boardNum}'" style="float: right;">삭제</button>
