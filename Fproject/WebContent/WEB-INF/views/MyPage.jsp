@@ -76,7 +76,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2" align="left">
-				<span class="page">MyPage임다</span>
+				<span class="page">> MyPage</span>
 			</div>
 			<div class="col-md-10">
 				<div class="container">
