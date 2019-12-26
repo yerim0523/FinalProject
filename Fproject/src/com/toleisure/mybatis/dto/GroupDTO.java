@@ -3,20 +3,20 @@ package com.toleisure.mybatis.dto;
 public class GroupDTO
 {
 
-	private String memId,memName, grName, grPre, grNotice , grCate1Name, grCate2Name;
+	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name;
 	private int grCode, grCate1, grCate2,starCode;
 
-	private int ngCode, ngMax, ngMin, ngCost;
-	private String memPic,memIntro, ngPic, ngIntro, ngMyIntro;
+	private int ngCode, ngMax, ngMin, ngCost, ngFavorite;
+	private String memPic, memIntro, ngPic, ngIntro, ngMyIntro;
 
-	private String ngLocation1, ngLocation2;
+	private String ngLocation, ngLocation1, ngLocation2;
 
-	private String ngStart1, ngStart2, ngEnd1, ngEnd2, ngDate;
+	private String ngStart, ngStart1, ngStart2, ngEnd, ngEnd1, ngEnd2, ngDate;
 
 	private int grCount, grStarCount;
 	private double grStarAvg;
 
-	// setter / getter 구성 (TBL_GROUP 테이블)
+	// setter / getter 구성 (TBL_GROUP 테이블 - String)
 	public String getMemId()
 	{
 		return memId;
@@ -29,7 +29,7 @@ public class GroupDTO
 
 	public String getGrName()
 	{
-		return grName;
+		return grName; 
 	}
   
 	public void setGrName(String grName)
@@ -57,6 +57,7 @@ public class GroupDTO
 		this.grNotice = grNotice;
 	}
 
+	// setter / getter 구성 (TBL_GROUP 테이블 - Int)
 	public int getGrCode()
 	{
 		return grCode;
@@ -108,7 +109,7 @@ public class GroupDTO
 	}
 
 
-	// setter / getter 구성 (NOW_GROUP 테이블)
+	// setter / getter 구성 (NOW_GROUP 테이블 - Int)
 	public int getNgCode()
 	{
 		return ngCode;
@@ -148,7 +149,18 @@ public class GroupDTO
 	{
 		this.ngCost = ngCost;
 	}
+	
+	public int getNgFavorite()
+	{
+		return ngFavorite;
+	}
 
+	public void setNgFavorite(int ngFavorite)
+	{
+		this.ngFavorite = ngFavorite;
+	}
+
+	// setter / getter 구성 (NOW_GROUP 테이블 - String)
 	public String getNgPic()
 	{
 		return ngPic;
@@ -179,6 +191,7 @@ public class GroupDTO
 		this.grCount = grCount;
 	}
 
+	// setter / getter 구성 (TBL_GROUP 테이블 - 별점, 별점인원)
 	public int getGrStarCount()
 	{
 		return grStarCount;
@@ -210,6 +223,16 @@ public class GroupDTO
 	{
 		this.ngMyIntro = ngMyIntro;
 	}
+	
+	public String getNgStart()
+	{
+		return ngStart;
+	}
+
+	public void setNgStart(String ngStart)
+	{
+		this.ngStart = ngStart;
+	}
 
 	public String getNgStart1()
 	{
@@ -229,6 +252,16 @@ public class GroupDTO
 	public void setNgStart2(String ngStart2)
 	{
 		this.ngStart2 = ngStart2;
+	}
+	
+	public String getNgEnd()
+	{
+		return ngEnd;
+	}
+
+	public void setNgEnd(String ngEnd)
+	{
+		this.ngEnd = ngEnd;
 	}
 
 	public String getNgEnd1()
@@ -285,6 +318,16 @@ public class GroupDTO
 	{
 		return ngLocation1;
 	}
+	
+	public String getNgLocation()
+	{
+		return ngLocation;
+	}
+
+	public void setNgLocation(String ngLocation)
+	{
+		this.ngLocation = ngLocation;
+	}
 
 	public void setNgLocation1(String ngLocation1)
 	{
@@ -319,6 +362,16 @@ public class GroupDTO
 	public void setNgDate(String ngDate)
 	{
 		this.ngDate = ngDate;
+	}
+
+	public String getGrPic()
+	{
+		return grPic;
+	}
+
+	public void setGrPic(String grPic)
+	{
+		this.grPic = grPic;
 	}
 
 	

@@ -19,8 +19,19 @@ public class GroupController
 	@Autowired
 	private SqlSession sqlsession;
 	
+	
+	@RequestMapping(value = "/newinsertform.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String newInsertForm(GroupDTO dto, Model model, HttpSession session)
+	{
+		String view = "WEB-INF/views/OpenForm.jsp";
+		session.getAttribute("member");
+		
+		
+		return view;
+	}
+	
 	@RequestMapping(value = "/groupinsertform.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String memberList(GroupDTO dto, Model model, HttpSession session)
+	public String insertForm(GroupDTO dto, Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
 		session.getAttribute("member");
@@ -41,9 +52,9 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String groupInsertForm(GroupDTO dto, HttpSession session)
+	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session)
 	{
-		String view = "redirect:main.action";
+		//String view = "redirect:main.action";
 		session.getAttribute("member");
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
@@ -63,7 +74,8 @@ public class GroupController
 			System.out.println("==================");
 		}
 		
-		return view;
+		//return view;
+		return "result.jsp";
 	}
 	
 	@RequestMapping(value = "/mygrouplist.action", method = {RequestMethod.POST,RequestMethod.GET})
@@ -80,4 +92,6 @@ public class GroupController
 		
 		return "WEB-INF/views/meetingOpen.jsp";
 	}
+	
+	
 }

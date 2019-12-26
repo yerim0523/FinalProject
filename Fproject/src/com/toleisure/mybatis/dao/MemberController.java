@@ -94,11 +94,6 @@ public class MemberController
 		if(login!=null)
 		{
 			session.setAttribute("member", login);
-			session.setAttribute("mode", "login");
-		}
-		else
-		{
-			session.setAttribute("mode", "logout");
 		}
 				
 		System.out.println("==================");
@@ -131,7 +126,7 @@ public class MemberController
 		
 		MemberDTO mine = dao.myInfo(dto.getMemId());
 		
-		session.setAttribute("myInfo", mine);
+		model.addAttribute("myInfo", mine);
 		
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
@@ -150,6 +145,7 @@ public class MemberController
 		
 		session.getAttribute("member");
 		session.setAttribute("myInfo", mine2);
+		
 		
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
@@ -300,7 +296,20 @@ public class MemberController
 		
 		dao.updatePw(dto);
 		
-		return "/WEB-INF/views/MyPage.jsp";
+		return "mypage.action";
+	}
+	
+	
+	@RequestMapping(value = "/infoupdate.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String infoModify(MemberDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		dao.infoUpdate(dto);
+		
+		return "mypage.action"; 
 	}
 	
 	

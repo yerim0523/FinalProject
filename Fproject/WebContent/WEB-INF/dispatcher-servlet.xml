@@ -33,7 +33,6 @@
 		<property name="username" value="FINAL_4"></property>
 		<property name="password" value="java006$"></property>
 	</bean>
-	
 	<!-- ② mybatis 등록 과정에서 생겨나는 추가 코드-->
 	<!-- ※ mybatis 를 사용하기 위한 환경 설정 추가 1 -->
 	<!-- → SqlSessionFactoryBean -->
@@ -52,5 +51,7 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
 		<constructor-arg ref="sqlSessionFactory" index="0"/>
 	</bean>
-
+	
+	
+	
 </beans>

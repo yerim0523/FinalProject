@@ -152,14 +152,14 @@
 								<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginNeed">모임개설</a></li>
 								</c:if>
 								<c:if test="${!empty sessionScope.member}">
-                        		<li class="nav-item"><a class="nav-link" href="mygrouplist.action?memId=${member.memId }"> 모임개설</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="mygrouplist.action?memId=${member.memId }"> 모임개설 </a></li>
                         		</c:if>
 								<li class="nav-item">
                         	<c:if test="${empty sessionScope.member}">
                         	<a class="nav-link" href="join.action">회원가입</a>
                         	</c:if>
                         	<c:if test="${!empty sessionScope.member}">
-                        	<a class="nav-link" href="mypage.action?memId=${member.memId }">MyPage</a>
+                        	<a class="nav-link" href="mypage.action?memId=${member.memId }">MyPage</a> 
                         	</c:if>
                         </li>
                         <li class="nav-item"><a class="nav-link"
