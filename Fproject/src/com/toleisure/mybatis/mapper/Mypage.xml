@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toleisure.mybatis.dao.MypageDAO">
+
+
+	<!-- 세션아이디를 통해 myPage 에 정보를 띄워주기 위한 메소드 -->
+	<select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
+		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_COMP AS memComp, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGen, NVL(CATE_CODE1,0) AS memCate1, NVL(CATE_CODE2,0) AS memCate2
+		FROM MEMBER
+		WHERE MEM_ID = #{memId}
+    </select>
+
+	<!-- 개인정보 수정시 수행되는 메소드 -->
+	<update id="infoUpdate" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		<choose>
+			<when test="memCate1 == 0 and memCate2 == 0">
+				UPDATE MEMBER 
+				SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}, CATE_CODE1=null, CATE_CODE2=null
+				WHERE MEM_ID=#{memId}
+			</when>
+			<when test="memCate2 == 0">
+				UPDATE MEMBER SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}, CATE_CODE1=#{memCate1}, CATE_CODE2=null
+				WHERE MEM_ID=#{memId}
+			</when>
+			<otherwise>
+				UPDATE MEMBER SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro},  CATE_CODE1=#{memCate1}, CATE_CODE2=#{memCate2}
+				WHERE MEM_ID=#{memId}
+			</otherwise>
+		</choose>
+	</update>
+	
+	<!-- 패스워드 변경 메소드 -->
+	<update id="updatePw" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		UPDATE MEMBER
+		SET MEM_PW = #{memPw}
+		WHERE MEM_ID = #{memId}
+    </update>
+    
+    <!-- 패스워드 확인 메소드 -->
+    <select id="pwCheck" resultType="java.lang.String">
+   		SELECT MEM_PW AS memPw
+		FROM MEMBER
+		WHERE MEM_ID = #{memId}
+    </select>
+    
+    <!-- 마이페이지 패스워드 변경 메소드 -->
+    <update id="changeMyPw" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		UPDATE MEMBER
+		SET MEM_PW = #{newPw}
+		WHERE MEM_ID = #{memId}
+	</update>
+
+
+
+
+</mapper>
