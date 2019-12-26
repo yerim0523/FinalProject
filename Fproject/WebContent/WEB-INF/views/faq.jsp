@@ -72,7 +72,7 @@
 	height: 200px;
 }
 
-#effect {
+#effect { 
 	position: relative;
 	width: 70%;
 	height: 170px;
