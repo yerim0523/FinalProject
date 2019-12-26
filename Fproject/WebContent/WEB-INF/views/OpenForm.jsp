@@ -335,6 +335,7 @@
    
    <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
    현재 접속중인 memId : ${member.memId }
+   <input type="hidden" id="memId" name="memId" value="${member.memID }">
    모임 코드 : ${groupinfo.grCode }
       <div align="right">
          * 은 필수항목입니다.
