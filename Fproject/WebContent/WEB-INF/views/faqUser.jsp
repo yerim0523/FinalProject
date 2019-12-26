@@ -187,7 +187,7 @@
 	<br> <br> <br>
 	<div align="center">
 		<div id="accordion">
-			<c:forEach var="faq" items="${faqList}" varStatus="status">
+			<c:forEach var="faq" items="${faqUserList}" varStatus="status">
 				<div class="card">
 				    <div class="card-header">
 				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">

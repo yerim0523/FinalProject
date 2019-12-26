@@ -90,8 +90,6 @@ public class BoardController
 	{
 		String view = "event.action";
 		session.getAttribute("member");
-
-		session.getAttribute("member");
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		dao.eventInsert(dto);
@@ -303,26 +301,96 @@ public class BoardController
 	}
 
 	@RequestMapping(value = "/faq.action")
-	public String faqList(@ModelAttribute("FAQ") BoardDTO faq, @RequestParam(defaultValue = "1") int curPage,
-			Model model, HttpSession session)
+	public String faqList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/faq.jsp";
 		session.getAttribute("member");
 
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-		int listCnt = dao.faqListCount();
-		PagingDTO paging = new PagingDTO(listCnt, curPage);
-
-		faq.setStartIndex(paging.getStartIndex());
-		faq.setCntPerPage(paging.getPageSize());
-
+		
 		List<BoardDTO> faqList = dao.faqList(faq);
 
 		model.addAttribute("faqList", faqList);
-		model.addAttribute("listCnt", listCnt);
-		model.addAttribute("paging", paging);
+	
 		return view;
 	}
+	
+	@RequestMapping(value = "/faqetc.action")
+	public String faqEtcList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/faqEtc.jsp";
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+
+		List<BoardDTO> faqEtcList = dao.faqEtcList(faq);
+
+		model.addAttribute("faqEtcList", faqEtcList);
+		return view;
+	}
+	
+	@RequestMapping(value = "/faqhost.action")
+	public String faqHostList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/faqHost.jsp";
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+
+		List<BoardDTO> faqHostList = dao.faqHostList(faq);
+
+		model.addAttribute("faqHostList", faqHostList);
+		return view;
+	}
+	
+	@RequestMapping(value = "/faqpay.action")
+	public String faqPayList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/faqPay.jsp";
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+
+		List<BoardDTO> faqPayList = dao.faqPayList(faq);
+
+		model.addAttribute("faqPayList", faqPayList);
+		return view;
+	}
+	
+	@RequestMapping(value = "/faquse.action")
+	public String faqUseList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/faqUse.jsp";
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+
+		List<BoardDTO> faqUseList = dao.faqUseList(faq);
+
+		model.addAttribute("faqUseList", faqUseList);
+		return view;
+	}
+	
+	@RequestMapping(value = "/faquser.action")
+	public String faqUserList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/faqUser.jsp";
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+
+		List<BoardDTO> faqUserList = dao.faqUserList(faq);
+
+		model.addAttribute("faqUserList", faqUserList);
+		return view;
+	}
+	
+	
 
 	@RequestMapping(value = "/faqinsertform.action")
 	public String faqInsertForm()
