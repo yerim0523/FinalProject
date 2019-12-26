@@ -48,10 +48,46 @@
 <script type="text/javascript">
 
    
-   $(document).ready(function()
-   {
-      $("#postcodify_search_button").postcodifyPopUp();
-   });
+	$(document).ready(function()
+	{
+		$("#postcodify_search_button").postcodifyPopUp();
+		
+		$(".fileDrop").on("dragenter dragover", function(event)
+		{
+			event.preventDefault();	// 기본효과 막음
+		});
+		
+		$(".fileDrop").on("drop", function(event)
+		{
+			event.preventDefault();
+			
+			// 드래그된 파일의 정보
+			var files = event.originalEvent.dataTransfer.files;
+			
+			// 첫 번째 파일
+			var file = files[0];
+			
+			// 콘솔에서 파일정보 확인
+			console.log(file);
+			
+			var formData = new FormData();
+			formData.append("file", file);
+			
+			
+			$.ajax({
+				type: "post",
+				url: "${path}/upload",
+				data: fromData,
+				dataType: "text",
+				processData: false,
+				contentType: false,
+				success: function()
+				{
+					alert(data);
+				}
+			});
+		});
+	});
 
    function sample4_execDaumPostcode()
    {
@@ -459,7 +495,7 @@
       <div class="form-inline">
          <label for="ngPic" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 대표이미지</label>
             <!-- <input type="file" name="ngPic" class="form-control" id="titleImg" value="title.img"> -->
-            <input type="file" name="ngPic" class="form-control" id="ngPic">
+            <input type="file" name="ngPic" class="form-control fileDrop" id="ngPic">
       </div>
       
       <br>
