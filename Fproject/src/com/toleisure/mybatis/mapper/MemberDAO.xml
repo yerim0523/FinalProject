@@ -62,7 +62,7 @@
    </select>
    
    <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
-		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGender, CATE_CODE1 AS memCate1, CATE_CODE2 AS memCate2
+		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_COMP AS memComp, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGender, CATE_CODE1 AS memCate1, CATE_CODE2 AS memCate2
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
    </select>
@@ -72,6 +72,23 @@
 		FROM MEMBER
 		WHERE MEM_NAME = #{memName} AND MEM_ID = #{memId}
 	</select>
+	
+	<update parameterType="com.toleisure.mybatis.dto.MemberDTO" id="infoUpdate">
+		<choose>
+			<when test="memCate1 == 0 and memCate2 == 0">
+				UPDATE MEMBER SET MEM_NAME=${memName} AND MEM_TEL=${memTel} AND GEN_CODE=${memGen} AND MEM_COMP=${memComp} AND MEM_INTRO=${memIntro}
+				WHERE MEM_ID=${memId}
+			</when>
+			<when test="memCate2 == 0">
+				UPDATE MEMBER SET MEM_NAME=${memName} AND MEM_TEL=${memTel} AND GEN_CODE=${memGen} AND MEM_COMP=${memComp} AND MEM_INTRO=${memIntro} AND CATE_CODE1=#{memCate1}
+				WHERE MEM_ID=${memId}
+			</when>
+			<otherwise>
+				UPDATE MEMBER SET MEM_NAME=${memName} AND MEM_TEL=${memTel} AND GEN_CODE=${memGen} AND MEM_COMP=${memComp} AND MEM_INTRO=${memIntro} AND CATE_CODE1=#{memCate1} AND CATE_CODE2=#{memCate2}
+				WHERE MEM_ID=${memId}
+			</otherwise>
+		</choose>
+	</update>
 	
 	<select id="selectPmp" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="String">
    		SELECT CASE WHEN COUNT(*) >= 1 THEN 'Y' ELSE 'N' END AS ISPMP
