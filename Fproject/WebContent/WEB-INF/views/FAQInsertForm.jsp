@@ -45,7 +45,6 @@
     <script src="js/masonry.pkgd.js"></script>
     <!-- particles js -->
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
@@ -114,8 +113,19 @@ function formCheck()
 			<tr>
 				<td>제목</td>
 				<td>
-					<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
-							required="required" pattern=".{4,100}">
+					<div class="form-inline">
+						<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
+								required="required" pattern=".{4,100}" style="width: 770px;">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<select class="form-control" style="width: 200px;">
+				            <option>카테고리선택</option>
+				            <option value="1">호스트신청</option>
+				            <option value="2">이용안내</option>
+				            <option value="3">회원정보</option>
+				            <option value="4">결제/환불</option>
+				            <option value="5">기타</option>
+				         </select>
+			         </div>
 				</td>
 			<tr>
 				<td>내용</td>
