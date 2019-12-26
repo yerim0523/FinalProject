@@ -111,7 +111,7 @@
 	function edit(boardNum)
 	{
 	
-			location="faqinsertform.action?boardNum="+boardNum;
+			location="faqupdateform.action?boardNum="+boardNum;
 		
 	}
 

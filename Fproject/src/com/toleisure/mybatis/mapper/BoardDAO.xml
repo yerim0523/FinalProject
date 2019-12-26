@@ -169,7 +169,7 @@
 
      <select id="eventSelect" resultMap ="BoardDTO">
         SELECT  EVENT_NUM AS boardNum, EVENT_TITLE AS boardTitle, EVENT_CONT AS boardCont,
-        		EVENT_DATE AS boardDate,M EM_NAME AS boardMem, EVENT_HITS AS boardHits
+        		EVENT_DATE AS boardDate,MEM_NAME AS boardMem, EVENT_HITS AS boardHits
         FROM EVENT_POST_VIEW
         WHERE EVENT_NUM = #{boardNum}
     </select>
