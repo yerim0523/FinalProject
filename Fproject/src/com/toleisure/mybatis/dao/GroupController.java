@@ -19,8 +19,18 @@ public class GroupController
 	@Autowired
 	private SqlSession sqlsession;
 	
+	@RequestMapping(value = "/newinsertform.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String newInsertForm(GroupDTO dto, Model model, HttpSession session)
+	{
+		String view = "WEB-INF/views/OpenForm.jsp";
+		session.getAttribute("member");
+		
+		
+		return view;
+	}
+	
 	@RequestMapping(value = "/groupinsertform.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String memberList(GroupDTO dto, Model model, HttpSession session)
+	public String insertForm(GroupDTO dto, Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
 		session.getAttribute("member");

@@ -333,7 +333,7 @@
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">
    
-   <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal">
+   <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal" enctype="multipart/form-data">
    현재 접속중인 memId : ${member.memId }
    <input type="hidden" id="memId" name="memId" value="${member.memID }">
    모임 코드 : ${groupinfo.grCode }
