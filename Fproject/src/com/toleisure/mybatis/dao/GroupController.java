@@ -62,8 +62,13 @@ public class GroupController
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
+		System.out.println("==================");
+		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
+		System.out.println("==================");
+		
 		if(dto.getGrCode()!=0)
 		{
+			System.out.println("기존모임생성");
 			dao.addGroup(dto);
 			System.out.println("==================");
 			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
@@ -71,6 +76,7 @@ public class GroupController
 		}
 		else if(dto.getGrCode()==0)
 		{
+			System.out.println("신규모임생성");
 			dao.newGroup(dto);
 			System.out.println("==================");
 			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
@@ -78,7 +84,7 @@ public class GroupController
 		}
 		
 		//return view;
-		return "WEB-INF/views/result.jsp";
+		return "redirect:main.action";
 	}
 	
 //	
