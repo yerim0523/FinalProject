@@ -92,6 +92,7 @@
 
 <div class="container" align="center">
 	<form action="groupinsertform.action" method="post" name="groupForm">
+	<input type="hidden" name="memId" value="${member.memId }">
 	<div align="center">
 	<table class="table text-center">
 		<tr>
@@ -126,7 +127,7 @@
 	<div align="center">
 		<a href="newinsertform.action"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
 		<button type="submit" class="btn4" value="선택" onclick="groupSel()">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
-		<button type="button" class="btn4" value="취소">취소</button>
+		<a href="main.action"><button type="button" class="btn4" value="취소">취소</button></a>
 	</div> 
 	
 </div>

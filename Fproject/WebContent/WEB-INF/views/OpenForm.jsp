@@ -29,6 +29,7 @@
 <!-- 주소 검색 -->
 <!-- jQuery와 Postcodify를 로딩한다 -->
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script src="js/waypoints.min.js"></script>
 
 <!-- jquery plugins here-->
 <!-- easing js -->
@@ -42,8 +43,6 @@
 <!-- swiper js -->
 <script src="js/slick.min.js"></script>
 <script src="js/jquery.counterup.min.js"></script>
-<script src="js/waypoints.min.js"></script>
-
 
 
 <script type="text/javascript">
@@ -333,9 +332,9 @@
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">
    
-   <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal" enctype="multipart/form-data">
+   <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal" >
    현재 접속중인 memId : ${member.memId }
-   <input type="hidden" id="memId" name="memId" value="${member.memID }">
+   <%-- <input type="hidden" id="memId" name="memId" value="${member.memID }"> --%>
    모임 코드 : ${groupinfo.grCode }
       <div align="right">
          * 은 필수항목입니다.
@@ -513,7 +512,7 @@
 
          <button type="button" class="btn btn-info submit" onclick="formCheck()">개설</button>
 
-         <button type="reset" class="btn btn-info">취소</button>
+         <a href="mygrouplist.action?memId=${member.memId }"><button type="button" class="btn btn-info">취소</button></a>
       </div>
       
       <br><br><br><br>

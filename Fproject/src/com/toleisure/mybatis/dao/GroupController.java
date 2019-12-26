@@ -1,6 +1,9 @@
 package com.toleisure.mybatis.dao;
 
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
@@ -25,7 +30,6 @@ public class GroupController
 	{
 		String view = "WEB-INF/views/OpenForm.jsp";
 		session.getAttribute("member");
-		
 		
 		return view;
 	}
@@ -46,18 +50,19 @@ public class GroupController
 		
 		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode());
 		
-		session.setAttribute("groupinfo", dto2);
+		model.addAttribute("groupinfo", dto2);
 		
 		return view;
 	}
 	
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session)
+	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session, @RequestParam("ngPic") MultipartFile file) throws IllegalStateException, IOException
 	{
 		//String view = "redirect:main.action";
 		session.getAttribute("member");
-		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		String root = session.getServletContext().getRealPath("/");
+		String savePath = root + File.separator + "image";
 		
 		if(dto.getGrCode()!=0)
 		{
@@ -74,8 +79,12 @@ public class GroupController
 			System.out.println("==================");
 		}
 		
+		File uploadFile = new File(savePath);
+		file.transferTo(uploadFile);
+		model.addAttribute("filename", file.getOriginalFilename());
+		
 		//return view;
-		return "result.jsp";
+		return "WEB-INF/views/result.jsp";
 	}
 	
 	@RequestMapping(value = "/mygrouplist.action", method = {RequestMethod.POST,RequestMethod.GET})
