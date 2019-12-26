@@ -1,6 +1,7 @@
 package com.toleisure.mybatis.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.toleisure.mybatis.dto.GroupDTO;
 
@@ -39,6 +40,7 @@ public interface IMainDAO
 	 
 	//-- 모임 상세 페이지 내용
 	public ArrayList<GroupDTO> groupContent(int ngCode);
+	public List<GroupDTO> groupContent(GroupDTO dto);
 	
 	 
 	 

@@ -72,7 +72,7 @@
 	height: 200px;
 }
 
-#effect {
+#effect { 
 	position: relative;
 	width: 70%;
 	height: 170px;
@@ -97,6 +97,19 @@
 			runEffect();
 		});
 	});
+	
+	function delcheck(boardNum)
+	{
+		if (confirm("정말 삭제하시겠습니까??") == true)
+		{    //확인
+			location="faqdelete.action?boardNum="+boardNum;
+		}else{   //취소
+		    return;
+		}	
+	}
+	
+
+
 </script>
 </head>
 <body>
@@ -171,11 +184,11 @@
 				<div class="card">
 				    <div class="card-header">
 				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
-				        <!-- #${status.index+1}.  -->${faq.boardTitle}
+				       ${faq.boardTitle} <!-- #${status.index+1}.  -->${faq.boardTitle}
 				        
 				      </a>
-				      <button type="button" onclick="location='faqdelete.action?boardNum=${faq.boardNum}'" style="float: right;">삭제</button>
-				      <button type="button" onclick="location='faqupdateform.action?boardNum=${faq.boardNum}'" style="float: right;">수정</button>
+				      <button type="button" onclick="delcheck(${faq.boardNum})" style="float: right;">삭제</button>
+				      <button type="button" onclick="location='faqupdateform.action?boardNum=${faq.boardNum}'"  style="float: right;">수정</button>
 				    </div>
 				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
 				      <div class="card-body d-flex justify-content-start" style="text-align:left;">
