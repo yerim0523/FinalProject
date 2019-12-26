@@ -174,11 +174,11 @@
 				</ul>
 			 -->
 					<a class="cate" href="#" style="font-weight: bold;">전체</a> |
-					<a class="cate" href="#">호스트신청</a> |
-					<a class="cate" href="#">이용안내</a> |
-					<a class="cate" href="#">회원정보</a> |
-					<a class="cate" href="#">결제/환불</a> |
-					<a class="cate" href="#">기타</a>
+					<a class="cate" href="faqhost.action">호스트신청</a> |
+					<a class="cate" href="faquse.action">이용안내</a> |
+					<a class="cate" href="faquser.action">회원정보</a> |
+					<a class="cate" href="faqpay.action">결제/환불</a> |
+					<a class="cate" href="faqetc.action">기타</a>
 			 
 			</div>
 		</div>
