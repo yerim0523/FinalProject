@@ -6,7 +6,7 @@ public class GroupDTO
 	private String memId, memName, grName, grPre, grNotice , grCate1Name, grCate2Name;
 	private int grCode, grCate1, grCate2,starCode;
 
-	private int ngCode, ngMax, ngMin, ngCost;
+	private int ngCode, ngMax, ngMin, ngCost, ngFavorite;
 	private String memPic, memIntro, ngPic, ngIntro, ngMyIntro;
 
 	private String ngLocation, ngLocation1, ngLocation2;
@@ -16,7 +16,7 @@ public class GroupDTO
 	private int grCount, grStarCount;
 	private double grStarAvg;
 
-	// setter / getter 구성 (TBL_GROUP 테이블)
+	// setter / getter 구성 (TBL_GROUP 테이블 - String)
 	public String getMemId()
 	{
 		return memId;
@@ -57,6 +57,7 @@ public class GroupDTO
 		this.grNotice = grNotice;
 	}
 
+	// setter / getter 구성 (TBL_GROUP 테이블 - Int)
 	public int getGrCode()
 	{
 		return grCode;
@@ -108,7 +109,7 @@ public class GroupDTO
 	}
 
 
-	// setter / getter 구성 (NOW_GROUP 테이블)
+	// setter / getter 구성 (NOW_GROUP 테이블 - Int)
 	public int getNgCode()
 	{
 		return ngCode;
@@ -148,7 +149,18 @@ public class GroupDTO
 	{
 		this.ngCost = ngCost;
 	}
+	
+	public int getNgFavorite()
+	{
+		return ngFavorite;
+	}
 
+	public void setNgFavorite(int ngFavorite)
+	{
+		this.ngFavorite = ngFavorite;
+	}
+
+	// setter / getter 구성 (NOW_GROUP 테이블 - String)
 	public String getNgPic()
 	{
 		return ngPic;
@@ -179,6 +191,7 @@ public class GroupDTO
 		this.grCount = grCount;
 	}
 
+	// setter / getter 구성 (TBL_GROUP 테이블 - 별점, 별점인원)
 	public int getGrStarCount()
 	{
 		return grStarCount;
