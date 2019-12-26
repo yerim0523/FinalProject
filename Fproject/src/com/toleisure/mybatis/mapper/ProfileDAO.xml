@@ -37,7 +37,7 @@
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name, MEM_NAME AS memName
 			 , GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
 		FROM ALL_GROUP_VIEW
-		WHERE MEM_ID = #{memId}
+		WHERE MEM_ID = #{memId} 
 		ORDER BY NG_DATE DESC
    </select>
    
