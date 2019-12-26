@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>newContent.jsp</title>
+<title>eventDetail.jsp</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -33,9 +33,9 @@
     
 <script type="text/javascript">
 
-function edit_paging(curPage)
-{	
-	location.href="event.action?curPage="+curPage;
+function edit_paging(boardNum)
+{	  
+	  location.href="eventupdateform.action?boardNum="+boardNum;
 }
 
 function del_event(boardNum)
@@ -64,20 +64,21 @@ function fn_paging(curPage)
     <h2 class="text-center">게시글 보기</h2><p>&nbsp;</p>
     <div class="table table-responsive">
       
+      
         <c:forEach var="v" items="${eventSelect }">
         <table class="table">
         <tr>
-            <th class="success">글번호</th>
+            <th class="success" id = "boardNum" value="${v.boardNum}">글번호</th>
             <td>${v.boardNum}</td>
-            <th class="success">조회수</th>
+            <th class="success" id = "boardHits" value="${v.boardHits}">조회수</th>
             <td>${v.boardHits}</td>
         </tr>
            
          
         <tr>
-            <th class="success">작성자</th>
+            <th class="success" id = "boardMem" value="${v.boardMem}">작성자</th>
             <td>${v.boardMem}</td>
-            <th class="success">작성일</th>
+            <th class="success" id = "boardDate" value="${v.boardDate}">작성일</th>
             <td>${v.boardDate}</td>
         </tr>
          
@@ -87,31 +88,34 @@ function fn_paging(curPage)
         </tr>
          
         <tr>
-            <th class="success">제목</th>
+            <th class="success" id = "boardTitle" value="${v.boardTitle}">제목</th>
             <td colspan="3">${v.boardTitle}</td>
         </tr>
          
         <tr>
-            <th class="success">글 내용</th>
+            <th class="success" id = "boardCont" value="${v.boardCont}">글 내용</th>
             <td colspan="3">${v.boardCont}</td>
-        </tr>
+       </tr>
 
-					<tr>
-						<td colspan="4" class="text-center">
+			<tr>
+					<td colspan="4" class="text-center">
 						
-							<input type="button" onClick="edit_paging(${paging.curPage})" class="btn4" style="background-color: #D4F4FA;" value="수정하기" >
+							<input type="button" onClick="edit_paging(${v.boardNum})" class="btn4" style="background-color: #D4F4FA;" value="수정하기" >
 							<input type="button" onClick="del_event(${v.boardNum})" class="btn4" style="background-color: #eec4c4;" value="삭제하기" >
-							<input type="button" onClick="fn_paging(${paging.curPage})" class="btn4" style="background-color: #FAED7D;" value="목록보기"></td>
+							<input type="button" onClick="fn_paging(${paging.curPage})" class="btn4" style="background-color: #FAED7D;" value="목록보기">
+						</td>
 					</tr>
 
 
 
 				</table>
+		
 				</c:forEach>
     </div>
-     
+    
     </div>
 </div>
+ 
  
  </div>
 </section>

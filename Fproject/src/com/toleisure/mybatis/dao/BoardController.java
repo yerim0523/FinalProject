@@ -233,13 +233,132 @@ public class BoardController
 	  
 	  return view; 	  
 	  }
-	 /* @RequestMapping(value = "/noticeupdate.action", method=RequestMethod.POST)
-	 * public int noticeUpdate(NoticeVo notice) {
-	 * 
-	 * IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-	 * 
-	 * return dao.NoticeUpdate(notice); }
-	 */ 
+	 
+	 
+	 
+	 
+	 @RequestMapping(value = "/eventupdateform.action",method={RequestMethod.GET, RequestMethod.POST}) 
+	  public String eventUpdateForm(int boardNum,HttpSession session,BoardDTO dto,Model model) 
+	 {
+	  String view = "/WEB-INF/views/EventUpdateForm.jsp";
+	  
+	  session.getAttribute("member");
+		
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  
+	  List<BoardDTO> eventUpdate =dao.eventSelect(boardNum);
+	  
+      model.addAttribute("eventUpdate",eventUpdate);
+	  
+	  return view; 	  
+	  }
+	 
+	 
+	 @RequestMapping(value = "/eventupdate.action",method={RequestMethod.GET, RequestMethod.POST}) 
+	  public String eventUpdate(HttpSession session,BoardDTO dto) 
+	 {
+	  String view = "event.action";
+		session.getAttribute("member");
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  int boardNum = dto.getBoardNum();
+	  
+	 int result = dao.EventNoticeCheck(boardNum);
+	 int check = dto.getCheck();
+	 
+	 dto.setEventNoticeCheck(result);
+	 
+	 if(dto.getEventNoticeCheck()!=0) // 원래 공지로 되어있다면
+	 {
+		 if(check!=0)			// 또 공지로 등록이면
+		 {
+		 dao.eventUpdate(dto);
+		 }
+		 
+		 else					// 공지를 해제한다면
+		 {
+		 dao.eventUpdate(dto);
+		 dao.EventNoticeDelete(dto);
+		 }
+	 }
+	 else						// 공지가 아니었다면
+	 {
+		 if(check!=0)			// 새롭게 공지등록이면
+		 {
+		 dao.eventUpdate(dto);
+		 dao.InsertEventNotice(dto);
+		 }
+		 else					// 공지가 아니라면
+		 {
+			 dao.eventUpdate(dto);
+		 }
+	 }
+	  return view; 	  
+	  }
+	 
+	 
+	 @RequestMapping(value = "/newsupdateform.action",method={RequestMethod.GET, RequestMethod.POST}) 
+	  public String newsUpdateForm(int boardNum,HttpSession session,BoardDTO dto,Model model) 
+	 {
+	  String view = "/WEB-INF/views/NewsUpdateForm.jsp";
+	  
+	  session.getAttribute("member");
+		
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  
+	  List<BoardDTO> newsUpdate =dao.newsSelect(boardNum);
+	  
+     model.addAttribute("newsUpdate",newsUpdate);
+	  
+	  return view; 	  
+	  }
+	 
+	 
+	 @RequestMapping(value = "/newsupdate.action",method={RequestMethod.GET, RequestMethod.POST}) 
+	  public String newsUpdate(HttpSession session,BoardDTO dto) 
+	 {
+	  String view = "news.action";
+		session.getAttribute("member");
+	  IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+	  
+	  int boardNum = dto.getBoardNum();
+	  
+	  
+	 int result = dao.NewsNoticeCheck(boardNum);
+	 int check = dto.getCheck();
+	 
+	 dto.setNewsNoticeCheck(result);
+
+	 
+	 if(dto.getNewsNoticeCheck()!=0) // 원래 공지로 되어있다면
+	 {
+		 if(check!=0)			// 또 공지로 등록이면
+		 {
+		 dao.newsUpdate(dto);
+		 }
+		 
+		 else					// 공지를 해제한다면
+		 {
+		 dao.newsUpdate(dto);
+		 dao.NewsNoticeDelete(dto);
+		 }
+	 }
+	 else						// 공지가 아니었다면
+	 {
+		 if(check!=0)			// 새롭게 공지등록이면
+		 {
+		 dao.newsUpdate(dto);
+		 dao.InsertNewsNotice(dto);
+		 }
+		 else					// 공지가 아니라면
+		 {
+			 dao.newsUpdate(dto);
+		 }
+	 }
+	  return view; 	  
+	  }
 	  @RequestMapping(value = "/newsdelete.action", method={RequestMethod.GET, RequestMethod.POST})
 	  public String newsDelete(int boardNum, HttpSession session) 
 	  {

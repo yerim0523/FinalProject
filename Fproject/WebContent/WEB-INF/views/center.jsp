@@ -72,7 +72,7 @@
 	<div class="container" align="center">
 		<div class="row">
 			<div class="col">
-				<p>[고객센터]</p>
+				<p style="font-size: 20pt;">[고객센터]</p>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link active">투레저 소개</a></li>
 					<li class="nav-item"><a class="nav-link" href="news.action">소식</a></li>
