@@ -9,12 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
-import com.toleisure.util.FileService;
 
 @Controller
 public class GroupController
@@ -22,8 +19,6 @@ public class GroupController
 	@Autowired
 	private SqlSession sqlsession;
 	
-	@Autowired
-	FileService fileUploadService;
 	
 	@RequestMapping(value = "/newinsertform.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String newInsertForm(GroupDTO dto, Model model, HttpSession session)
@@ -57,15 +52,12 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session, @RequestParam("ngPic") MultipartFile file)
+	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session)
 	{
 		//String view = "redirect:main.action";
 		session.getAttribute("member");
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		
-		String url = fileUploadService.restore(file, dto.getNgPic());
-		model.addAttribute("url", url);
 		
 		if(dto.getGrCode()!=0)
 		{
