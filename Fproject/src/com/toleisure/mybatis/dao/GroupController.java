@@ -68,7 +68,7 @@ public class GroupController
 		{
 			dao.addGroup(dto);
 			System.out.println("==================");
-			System.out.println("==== 현재 들어간 모임코드  = " + dto.getGrCode());
+			System.out.println("==== 현재 들어간 모임코드   = " + dto.getGrCode());
 			System.out.println("==================");
 		}
 		else if(dto.getGrCode()==0)
