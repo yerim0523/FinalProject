@@ -5,7 +5,7 @@
 
 	<select id="AllGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
 		grCate1Name, CATE2 AS grCate2Name
 		FROM ALL_GROUP_VIEW
 	</select>
