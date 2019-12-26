@@ -7,6 +7,8 @@ package com.toleisure.mybatis.dao;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +27,8 @@ public class ProfileController
 	
 	// profile.action 요청시 회원 프로필 페이지로 이동
 	@RequestMapping(value = "/profile.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String profile(Model model, MemberDTO dto, GroupDTO gdto)
+	public String profile(Model model, MemberDTO dto, GroupDTO gdto, HttpSession session)
 	{
-		
 		String view = "WEB-INF/views/Hprofile.jsp";
 		
 		IProfileDAO dao = sqlsession.getMapper(IProfileDAO.class); 

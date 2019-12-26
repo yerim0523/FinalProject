@@ -58,8 +58,12 @@
 	<div>
 		<c:import url="bar.jsp"></c:import>
 	</div>
+	
+	<section class="course_details_area section_padding" style="padding-bottom: 0;">
+		<div>
+			<c:import url="MeetingBar.jsp"></c:import>
+		</div>
 
-	<section class="course_details_area section_padding">
 	<!-- 
 		<div class="container">
 			<div class="row">
@@ -420,24 +424,27 @@
 				<div class="col-lg-4 right-contents">
 					<div class="sidebar_top">
 						<ul>
-							<li><a class="justify-content-between d-flex"> <span
-									class="color" style="text-align: left;">${grcontent.grCate1Name } | ${grcontent.grCate2Name }</span> <span
-									class="color" style="text-align: right;">${grcontent.grCount }회차</span>
+							<li><a class="justify-content-between d-flex"> 
+							<span class="color" style="text-align: left;">${grcontent.grCate1Name }
+							<c:if test="${grcontent.grCate2Name != null }">
+							 | ${grcontent.grCate2Name }</c:if> 
+							 </span>
+							<span class="color" style="text-align: right;">${grcontent.grCount }회차</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>모임명</p> <span class="color">${grcontent.grName }</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>가격</p> <span>${grcontent.ngCost } 원</span>
+									<p>가격</p> <span>${grcontent.ngCost }원</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>최소인원수</p> <span>${grcontent.ngMin } 명</span>
+									<p>최소인원수</p> <span>${grcontent.ngMin }명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>최대인원수</p> <span>${grcontent.ngMax } 명</span>
+									<p>최대인원수</p> <span>${grcontent.ngMax }명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>모임날짜 및 시간</p> <span>${grcontent.ngStart } to ${grcontent.ngEnd }</span>
+									<p>모임날짜</p> <span>${grcontent.ngStart }<br> ~ ${grcontent.ngEnd }</span>
 							</a></li>
 
 						</ul>
@@ -481,12 +488,13 @@
 				</div>
 			</div>
 		</div>
-	 
-	 
 	 </c:forEach>
 	 
+	 </section>
 	 
-	</section>
+	 
+	 
+	 
 	
 	<div>
 		<c:import url="footer.jsp"></c:import>
