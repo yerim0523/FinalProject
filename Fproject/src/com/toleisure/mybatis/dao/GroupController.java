@@ -56,19 +56,17 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session, @RequestParam("ngPic") MultipartFile file) throws IllegalStateException, IOException
+	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session) throws IllegalStateException, IOException
 	{
 		//String view = "redirect:main.action";
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		String root = session.getServletContext().getRealPath("/");
-		String savePath = root + File.separator + "image";
 		
 		if(dto.getGrCode()!=0)
 		{
 			dao.addGroup(dto);
 			System.out.println("==================");
-			System.out.println("==== 현재 들어간 모임코드   = " + dto.getGrCode());
+			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
 			System.out.println("==================");
 		}
 		else if(dto.getGrCode()==0)
@@ -79,13 +77,42 @@ public class GroupController
 			System.out.println("==================");
 		}
 		
-		File uploadFile = new File(savePath);
-		file.transferTo(uploadFile);
-		model.addAttribute("filename", file.getOriginalFilename());
-		
 		//return view;
 		return "WEB-INF/views/result.jsp";
 	}
+	
+//	
+//	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+//	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session, @RequestParam("ngPic") MultipartFile file) throws IllegalStateException, IOException
+//	{
+//		//String view = "redirect:main.action";
+//		session.getAttribute("member");
+//		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+//		String root = session.getServletContext().getRealPath("/");
+//		String savePath = root + File.separator + "image";
+//		
+//		if(dto.getGrCode()!=0)
+//		{
+//			dao.addGroup(dto);
+//			System.out.println("==================");
+//			System.out.println("==== 현재 들어간 모임코드   = " + dto.getGrCode());
+//			System.out.println("==================");
+//		}
+//		else if(dto.getGrCode()==0)
+//		{
+//			dao.newGroup(dto);
+//			System.out.println("==================");
+//			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
+//			System.out.println("==================");
+//		}
+//		
+//		File uploadFile = new File(savePath);
+//		file.transferTo(uploadFile);
+//		model.addAttribute("filename", file.getOriginalFilename());
+//		
+//		//return view;
+//		return "WEB-INF/views/result.jsp";
+//	}
 	
 	@RequestMapping(value = "/mygrouplist.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String myGroupList(MemberDTO dto, Model m, HttpSession session)
