@@ -168,7 +168,7 @@ p
 		alert(document.getElementById("memCate2").value);
 		
 		
-		alert("변경이 완료되었습니다.");
+		alert("변경이 완료되었습니당.");
 		
 		f.submit();
 	}
