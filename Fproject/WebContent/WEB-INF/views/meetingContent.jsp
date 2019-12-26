@@ -284,7 +284,7 @@
 			</div>
 		</div>
 	 -->
-	 <c:forEach var="grcontent" items="${groupContent }">
+	 <c:forEach var="grcontent" items="${groupContent }"></c:forEach>
 	 <div class="container">
 			<div class="row">
 				<div class="col-lg-8 course_details_left">
@@ -481,7 +481,7 @@
 				</div>
 			</div>
 		</div>
-	 </c:forEach>
+	 
 	 
 	 
 	 

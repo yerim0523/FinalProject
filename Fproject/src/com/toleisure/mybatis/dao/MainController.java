@@ -1,5 +1,7 @@
 package com.toleisure.mybatis.dao;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -240,4 +242,24 @@ public class MainController
 
 		return view;
 	}
+	
+	// ---------------------------------------------------------- 모임 상세 페이지 내용
+	@RequestMapping(value = "/groupdetail.action", method = {RequestMethod.GET,RequestMethod.POST})
+	public String GroupContent(int ngCode, GroupDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/meetingContent.jsp";
+		session.getAttribute("member");
+		
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		//dao.groupContent(ngCode);
+		
+		List<GroupDTO> groupContent = dao.groupContent(ngCode);
+		
+		model.addAttribute("groupContent", groupContent);
+		
+		return view;
+		
+	}
+	
 }
