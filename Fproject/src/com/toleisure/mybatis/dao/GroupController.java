@@ -135,5 +135,13 @@ public class GroupController
 		return "WEB-INF/views/meetingOpen.jsp";
 	}
 	
+	@RequestMapping(value = "/favoritegroup.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteGroup(MemberDTO dto, Model m, HttpSession session)
+	{
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		session.getAttribute("member");
+		
+		return "WEB-INF/views/jjimList.jsp";
+	}
 	
 }

@@ -113,7 +113,7 @@
 					<div class="a_content">
 						<div class="box"><a href="infomodify.action?memId=${member.memId }"><span style="color: black;"><i class="fas fa-user fa-7x"></i><br><br><p class="menu">개인정보수정</p></span></a></div>
 						<div class="box"><a href="mypwmodify.action?memId=${member.memId }"><span style="color: black;"><i class="fas fa-lock fa-7x"></i><br><br><p class="menu">비밀번호 재설정</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-heart fa-7x"></i><br><br><p class="menu">찜목록</p></span></a></div>
+						<div class="box"><a href="favoritegroup.action?memId=${member.memId }"><span style="color: black;"><i class="fas fa-heart fa-7x"></i><br><br><p class="menu">찜목록</p></span></a></div>
 					</div>
 					<br>
 					<div class="a_content">
