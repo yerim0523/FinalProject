@@ -227,8 +227,10 @@
 	
 	<select id="groupContent" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NGCODE AS ngCode, NGPIC AS ngPic, NGFAVORITE AS ngFavorite, GRCATE1 AS grCate1, GRCATE2 AS grCate2, CATENAME1 AS grCate1Name, CATENAME2 AS grCate2Name
-     	, GRNAME AS grName, MEMPIC AS memPic, MEMNAME AS memName, NGMAX AS ngMax, NGMIN AS ngMin, NGCOST AS ngCost, NGMYINTRO AS ngMyIntro, NGSTART AS ngStart, NGEND AS ngEnd
-     	, NGLOCATION AS ngLocation, NGINTRO AS ngIntro, NGDATE AS ngDate, GRPRE AS grPre, GRNOTICE AS grNotice, MEMINTRO AS memIntro, GRCOUNT AS grCount, GRSTARAVG AS grStarAvg, GRSTARCOUNT AS grStarCount
+     	, GRNAME AS grName, MEMPIC AS memPic, MEMNAME AS memName, NGMAX AS ngMax, NGMIN AS ngMin, NGCOST AS ngCost, NGMYINTRO AS ngMyIntro
+     	, TO_CHAR(NGSTART, 'YYYY-MM-DD HH24:MI') AS ngStart, TO_CHAR(NGEND, 'YYYY-MM-DD HH24:MI') AS ngEnd
+     	, NGLOCATION AS ngLocation, NGINTRO AS ngIntro, NGDATE AS ngDate, GRPRE AS grPre, GRNOTICE AS grNotice
+     	, MEMINTRO AS memIntro, GRCOUNT AS grCount, GRSTARAVG AS grStarAvg, GRSTARCOUNT AS grStarCount
 		FROM GROUP_DETAIL_VIEW
 		WHERE NGCODE = #{ngCode}
 	</select>

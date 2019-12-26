@@ -437,7 +437,7 @@
 									<p>최대인원수</p> <span>${grcontent.ngMax }</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>모임날짜 및 시간</p> <span>${grcontent.ngStart } to ${grcontent.ngEnd }</span>
+									<p>모임날짜</p> <span>${grcontent.ngStart } ~ ${grcontent.ngEnd }</span>
 							</a></li>
 
 						</ul>
