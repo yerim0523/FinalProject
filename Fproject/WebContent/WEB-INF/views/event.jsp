@@ -98,7 +98,7 @@
 	<div align="center">
 		<div class="row">
 			<div class="col">
-				<p>[고객센터]</p>
+				<p style="font-size: 20pt;">[고객센터]</p>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link" href="center.action">투레저 소개</a>
 					</li>

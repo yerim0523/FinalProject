@@ -4,6 +4,9 @@ public class BoardDTO
 {
 	private int adminCode, newsHits, rNum, check;
 
+	private int eventNoticeCheck=0;
+	private int newsNoticeCheck=0;
+	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
 	private String faqNum, faqTitle, faqCont, faqDate, faqMem;
@@ -13,11 +16,24 @@ public class BoardDTO
 	private int cntPerPage;
 
 	private int eventHits;
+
+
 	private String eventNum, eventTitle, eventCont, eventMem, eventDate;
 
 	private int boardHits, boardNum;
 	private String boardTitle, boardCont, boardMem, boardDate;
 
+	
+	public int getEventNoticeCheck()
+	{
+		return eventNoticeCheck;
+	}
+
+	public void setEventNoticeCheck(int eventNoticeCheck)
+	{
+		this.eventNoticeCheck = eventNoticeCheck;
+	}
+	
 	public int getBoardHits()
 	{
 		return boardHits;
@@ -318,5 +334,17 @@ public class BoardDTO
 	{
 		this.check = check;
 	}
+
+	public int getNewsNoticeCheck()
+	{
+		return newsNoticeCheck;
+	}
+
+	public void setNewsNoticeCheck(int newsNoticeCheck)
+	{
+		this.newsNoticeCheck = newsNoticeCheck;
+	}
+
+	
 
 }

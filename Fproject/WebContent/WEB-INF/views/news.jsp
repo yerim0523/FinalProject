@@ -93,7 +93,7 @@
 	<div align="center">
 		<div class="row">
 			<div class="col">
-				<p>[고객센터]</p>
+				<p style="font-size: 20pt;">[고객센터]</p>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link" href="center.action">투레저 소개</a>
 					</li>
@@ -176,10 +176,7 @@
                         <a href="#" onClick="fn_paging(1)">[처음]</a> 
                     <c:if test="${paging.curPage ne 1}">
                         <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
-                    </c:if>
-                    
-                    
-                    
+                    </c:if>      
                     <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
                         <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
                     </c:if>

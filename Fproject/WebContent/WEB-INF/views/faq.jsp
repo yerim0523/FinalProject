@@ -111,7 +111,7 @@
 	<div class="container" align="center">
 		<div class="row">
 			<div class="col">
-				<p>[고객센터]</p>
+				<p style="font-size: 20pt;">[고객센터]</p>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link"
 						href="center.action">투레저 소개</a></li>
@@ -133,7 +133,7 @@
 				<div class="card">
 				    <div class="card-header">
 				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
-				        #${status.index+1}. ${faq.boardTitle}
+				        <!-- #${status.index+1}.  -->${faq.boardTitle}
 				      </a>
 				    </div>
 				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
@@ -146,6 +146,7 @@
 		</div>
 	</div>
 	<button type="button" onclick="location='faqinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
+	<button type="button" onclick="location='qnainsertform.action'" class="btn4" style="float: left;">1:1 문의</button>
 </div>
 
 </section>

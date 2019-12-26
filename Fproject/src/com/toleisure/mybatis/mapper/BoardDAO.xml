@@ -21,88 +21,6 @@
     </resultMap> -->
     
 
-	 
-<!-- 	
-	
-	<select id="news" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT NEWS_NUM AS newsNum, MEM_NAME AS memName
-			 , NEWS_TITLE AS newsTitle, NEWS_CONT AS newsCont, SUBSTR(NEWS_DATE, 1, 10) AS newsDate, NVL(NEWS_HITS, 0)AS newsHits
-		FROM NEWS_POST_VIEW
-	</select>
-	
-	
-	
-	<select id="faq" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
-		FROM FAQ_POST_VIEW
-	</select> -->
-
-<!-- 	<select id="getfaqMaxNum" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT NVL(MAX(NUM), 0) AS MAXNUM 
-		FROM FAQ_POST_VIEW
-	</select>
-	
-	<select id="getfaqReadData" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
-        FROM FAQ_POST_VIEW
-        WHERE FAQ_NUM=#{faqNum}
-	</select>
-	
-	
-	<select id="comMaxNum" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT NVL(MAX(NUM), 0) AS MAXNUM 
-		FROM FAQ_POST_VIEW
-	</select>
-	
-	<select id="getcomReadData" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT FAQ_NUM AS faqNum, FAQ_TITLE AS faqTitle, FAQ_CONT AS faqCont, FAQ_DATE AS faqDate
-        FROM FAQ_POST_VIEW
-        WHERE FAQ_NUM=#{faqNum}
-	</select> -->
-<!-- 	<select id="noticeList" resultType="com.toleisure.mybatis.dto.BoardDTO">
-		SELECT EVENT_NUM AS eventNum, MEM_NAME AS memName, EVENT_TITLE AS eventTitle,
-			   EVENT_CONT AS eventCont, EVENT_DATE AS eventDate, NVL(EVENT_HITS, 0) AS eventHits
-      				( SELECT ROWNUM RNUM, DATA.* 
-      				  FROM 
-	      				( 
-	      				SELECT EVENT_NUM, MEM_NAME, EVENT_TITLE, EVENT_HITS, EVENT_DATE, EVENT_CONT
-	      				FROM EVENT_POST_VIEW 
-	      				ORDER BY EVENT_NUM DESC 
-	      				) DATA 
-      				) WHERE RNUM >= #{start} AND #{end} >=RNUM
-		
-	</select> -->
-
-    
-   <!--  <sql id="search">
-    <if test="searchType != null">
-        <if test="searchType=='t'.toString()">
-            and title like CONCAT('%',#{keyword},'%')
-        </if>
-        
-        <if test="searchType=='c'.toString()">
-            and content like CONCAT('%',#{keyword},'%')
-        </if>
-        
-        <if test="searchType=='w'.toString()">
-            and writer like CONCAT('%',#{keyword},'%')
-        </if>
-        
-        <if test="searchType=='tc'.toString()">
-            and (title like CONCAT('%',#{keyword},'%') OR content like CONCAT('%',#{keyword},'%'))
-        </if>
-        
-        <if test="searchType=='cw'.toString()">
-            and (content like CONCAT('%',#{keyword},'%') OR writer like CONCAT('%',#{keyword},'%'))
-        </if>
-        
-        <if test="searchType=='tcw'.toString()">
-            and (title like CONCAT('%',#{keyword},'%') OR 
-                content like CONCAT('%',#{keyword},'%') OR 
-                writer like CONCAT('%',#{keyword},'%'))
-        </if>
-    </if>    
-    </sql>     -->
      <select id="newsListCount" resultType="Integer">
         SELECT COUNT(*)
         FROM NEWS_POST_VIEW
@@ -110,7 +28,8 @@
     
      <select id="newsList" resultMap = "BoardDTO">
 		SELECT  E.NUM AS rNum,E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
-        		, E.NEWS_DATE AS boardDate, E.MEM_NAME AS boardMem, E.NEWS_HITS AS boardHits
+        		,SUBSTR(E.NEWS_DATE, 1, 10) AS boardDate,E.MEM_NAME AS boardMem, E.NEWS_HITS AS boardHits
+
         			FROM
       				( 
       				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.NEWS_NUM DESC) NUM, DATA.* 
@@ -131,7 +50,7 @@
     
      <select id="eventList" resultMap = "BoardDTO">
 		SELECT  E.NUM AS rNum,E.EVENT_NUM AS boardNum, E.EVENT_TITLE AS boardTitle, E.EVENT_CONT AS boardCont
-        		, E.EVENT_DATE AS boardDate, E.MEM_NAME AS boardMem, E.EVENT_HITS AS boardHits
+        		,SUBSTR(E.EVENT_DATE, 1, 10) AS boardDate,E.MEM_NAME AS boardMem , E.EVENT_HITS AS boardHits
         			FROM
       				( 
       				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.EVENT_NUM DESC) NUM, DATA.* 
@@ -165,7 +84,7 @@
 	      				) DATA 
       				)E 
       </select>
-<!--    parameterType="String"  -->
+
      <select id="eventSelect" resultMap ="BoardDTO">
         SELECT  EVENT_NUM AS boardNum, EVENT_TITLE AS boardTitle, EVENT_CONT AS boardCont,
         		EVENT_DATE AS boardDate,M EM_NAME AS boardMem, EVENT_HITS AS boardHits
@@ -250,7 +169,7 @@
    
    <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="faqInsert">
         INSERT INTO FAQ(FAQ_NUM,ADMIN_CODE,FAQ_TITLE,FAQ_CONT,FAQ_DATE)
-            VALUES(FAQSEQ.NEXTVAL,1, #{boardTitle}, #{boardCont} ,SYSDATE);
+            VALUES(FAQSEQ.NEXTVAL,1, #{boardTitle}, #{boardCont} ,SYSDATE)
    </insert>
    
    
@@ -267,30 +186,59 @@
    </update>
    
    
+   <select id ="EventNoticeCheck" resultType="Integer">
+   SELECT  COUNT(*)
+            FROM EVENT_NOTICE
+            WHERE EVENT_NUM=#{boardNum}
+   </select>
    
- <!--    <insert id="noticeInsert" parameterType="com.toleisure.mybatis.dto.BoardDTO">
-        insert into push_notice
-        (
-            notice_title,
-            notice_coments,
-            mod_date
-        )
-        values
-        (
-            #{notice_title},
-            #{notice_coments},
-            NOW()
-        )
-    </insert> -->
+   
+    <update id ="eventUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
+             UPDATE EVENT
+             SET EVENT_TITLE=#{boardTitle},EVENT_CONT=#{boardCont}
+			 WHERE EVENT_NUM = #{boardNum}           	           		           
+   </update>
+   
+    <delete id="EventNoticeDelete" >
+        DELETE 
+        FROM EVENT_NOTICE
+        WHERE EVENT_NUM = #{boardNum}
+    </delete>
     
+    <insert id ="InsertEventNotice">
+    	          INSERT INTO EVENT_NOTICE
+                     (ENOTICE_NUM, EVENT_NUM,ADMIN_CODE)
+                  VALUES
+                     (EVENT_NOTSEQ.NEXTVAL,#{boardNum},1)
+    </insert>
+   
+   
+   
+   <select id ="NewsNoticeCheck" resultType="Integer">
+   SELECT  COUNT(*)
+            FROM NEWS_NOTICE
+            WHERE NEWS_NUM=#{boardNum}
+   </select>
+   
+   
+    <update id ="newsUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
+             UPDATE NEWS
+             SET NEWS_TITLE=#{boardTitle},NEWS_CONT=#{boardCont}
+			 WHERE NEWS_NUM = #{boardNum}           	           		           
+   </update>
+   
+    <delete id="NewsNoticeDelete" >
+        DELETE 
+        FROM NEWS_NOTICE
+        WHERE NEWS_NUM = #{boardNum}
+    </delete>
     
-    
-   <!--  <update id="noticeUpdate" parameterType="com.spring.test.vo.NoticeVo">
-        update push_notice set
-            notice_title = #{notice_title},
-            notice_coments = #{notice_coments},
-            mod_date = NOW()
-        where notice_id = #{notice_id}
-    </update> -->
+    <insert id ="InsertNewsNotice">
+    	          INSERT INTO NEWS_NOTICE
+                     (NNOTICE_NUM, NEWS_NUM,ADMIN_CODE)
+                  VALUES
+                     (NEWS_NOTSEQ.NEXTVAL,#{boardNum},1)
+    </insert>
+ 
     
 </mapper>
