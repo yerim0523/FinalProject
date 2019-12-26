@@ -55,7 +55,7 @@
 						pwCheck = data;
 						 
 						if(pwCheck == $("#memPw").val()){
-							alert("일치");	
+							alert("비밀번호가 변경되었습니다.");	
 							change();
 						}else{
 							alert("현재 비밀번호가 일치하지 않습니다.");
@@ -67,7 +67,7 @@
 			
 			else
 			{
-				alert("위의 비밀번호와 일치하지 않습니다.");
+				alert("변경된 비밀번호와 일치하지 않습니다.");
 				return;
 			}
 			
