@@ -32,8 +32,11 @@ public interface IBoardDAO
 	 	 
 	 public List<BoardDTO> faqList(BoardDTO faq);
 	 public List<BoardDTO> faqSelect(int boardNum);
-     public int faqListCount();
+	 public List<BoardDTO> faqUpdateForm(int boardNum);
+	 public int faqListCount();
 	 public int faqInsert(BoardDTO board);
 	 public int faqDelete(int boardNum);
+	 public void faqUpdate(BoardDTO dto);
+	
 	
 }

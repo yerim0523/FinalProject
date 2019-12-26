@@ -9,6 +9,9 @@ public class BoardDTO
 	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
+	private int faqCate;
+
+
 	private String faqNum, faqTitle, faqCont, faqDate, faqMem;
 
 	private int endIndex;
@@ -345,6 +348,14 @@ public class BoardDTO
 		this.newsNoticeCheck = newsNoticeCheck;
 	}
 
-	
+	public int getFaqCate()
+	{
+		return faqCate;
+	}
+
+	public void setFaqCate(int faqCate)
+	{
+		this.faqCate = faqCate;
+	}
 
 }

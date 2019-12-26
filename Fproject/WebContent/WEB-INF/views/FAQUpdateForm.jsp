@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQInsertForm.jsp</title>
+<title>FAQUpdateForm.jsp</title>
 
 <style type="text/css">
 .pagination {
@@ -56,7 +56,7 @@
 
 function formCheck()
 {
-   var f = document.FAQInsertForm;
+   var f = document.FAQUpdateForm;
    
    var str = f.boardTitle.value;
    
@@ -107,7 +107,8 @@ function formCheck()
 		</div>
 	</div>
 		
-	  <form action="faqinsert.action" method="post" name="FAQInsertForm" id="FAQInsertForm" class="form-horizontal">	
+	  <form action="faqupdate.action" method="post" name="FAQUpdateForm" id="FAQUpdateForm" class="form-horizontal">	
+	  <c:forEach var="v" items="${faqUpdate }">
 	<div class="container">
 		<table class="table" style="text-align: center;">
 			<tr>
@@ -115,7 +116,7 @@ function formCheck()
 				<td>
 					<div class="form-inline">
 						<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
-								required="required" pattern=".{4,100}" style="width: 770px;">
+						value="${v.boardTitle }"required="required" pattern=".{4,100}" style="width: 770px;">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name="faqCate" class="form-control" style="width: 200px;">
 				            <option>카테고리선택</option>
@@ -125,7 +126,7 @@ function formCheck()
 				            <option id="faqCate" value="4">결제/환불</option>
 				            <option id="faqCate" value="5">기타</option>
 				         </select>
-				         
+				         <input type="hidden" id="boardNum" name="boardNum" value="${v.boardNum }">
 				         
 			         </div>
 			         
@@ -133,7 +134,7 @@ function formCheck()
 			<tr>
 				<td>내용</td>
 				<td colspan="2">
-				<textarea class="form-control" rows="5" id="boardCont" name="boardCont"placeholder="내용 작성"></textarea>
+				<textarea class="form-control" rows="5" id="boardCont" name="boardCont"placeholder="내용 작성">${v.boardCont }</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -149,7 +150,9 @@ function formCheck()
 			
 		</table>
 	</div>
+	</c:forEach>
 	</form>
+	
 </div>
 
 </body>

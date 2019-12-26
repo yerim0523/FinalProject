@@ -134,7 +134,10 @@
 				    <div class="card-header">
 				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
 				        <!-- #${status.index+1}.  -->${faq.boardTitle}
+				        
 				      </a>
+				      <button type="button" onclick="location='faqdelete.action?boardNum=${faq.boardNum}'" style="float: right;">삭제</button>
+				      <button type="button" onclick="location='faqupdateform.action?boardNum=${faq.boardNum}'" style="float: right;">수정</button>
 				    </div>
 				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
 				      <div class="card-body d-flex justify-content-start" style="text-align:left;">

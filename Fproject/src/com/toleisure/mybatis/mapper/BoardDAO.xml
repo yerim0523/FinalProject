@@ -100,6 +100,13 @@
         WHERE NEWS_NUM = #{boardNum}
     </select>
     
+        <select id="faqUpdateForm" resultMap ="BoardDTO">
+        SELECT  FAQ_NUM AS boardNum, FAQ_TITLE AS boardTitle, FAQ_CONT AS boardCont,
+        		FAQ_DATE AS boardDate , MEM_NAME AS boardMem
+        FROM FAQ_POST_VIEW
+        WHERE FAQ_NUM = #{boardNum}
+    </select>
+    
    <delete id="newsDelete" >
         DELETE 
         FROM NEWS
@@ -110,6 +117,12 @@
         DELETE 
         FROM EVENT
         WHERE EVENT_NUM = #{boardNum}
+    </delete>
+    
+    <delete id="faqDelete" >
+        DELETE 
+        FROM FAQ
+        WHERE FAQ_NUM = #{boardNum}
     </delete>
     
     
@@ -168,8 +181,8 @@
    
    
    <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="faqInsert">
-        INSERT INTO FAQ(FAQ_NUM,ADMIN_CODE,FAQ_TITLE,FAQ_CONT,FAQ_DATE)
-            VALUES(FAQSEQ.NEXTVAL,1, #{boardTitle}, #{boardCont} ,SYSDATE)
+        INSERT INTO FAQ(FAQ_NUM,ADMIN_CODE,FAQ_CODE,FAQ_TITLE,FAQ_CONT)
+        VALUES(FAQSEQ.NEXTVAL, 1, #{faqCate}, #{boardTitle}, #{boardCont})
    </insert>
    
    
@@ -197,6 +210,12 @@
              UPDATE EVENT
              SET EVENT_TITLE=#{boardTitle},EVENT_CONT=#{boardCont}
 			 WHERE EVENT_NUM = #{boardNum}           	           		           
+   </update>
+   
+   <update id ="faqUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
+             UPDATE FAQ
+             SET FAQ_TITLE=#{boardTitle},FAQ_CONT=#{boardCont} ,FAQ_CODE=#{faqCate}
+			 WHERE FAQ_NUM = #{boardNum}           	           		           
    </update>
    
     <delete id="EventNoticeDelete" >
