@@ -78,6 +78,11 @@
 	height: 170px;
 	padding: 0.4em;
 }
+
+.cate{
+	color: black;
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -135,8 +140,41 @@
 					<li class="nav-item"><a class="nav-link active">FAQ</a></li>
 				</ul>
 			</div>
-
 		</div> 
+	</div>
+	
+	<br>
+	
+	<div class="container" align="center">
+		<div class="row">
+			<div class="col">
+			<!-- 
+				<ul class="nav nav-pills">
+					<li class="nav-item">
+						<a class="nav-link cate" href="#">호스트신청</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link cate" href="#">이용안내</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link cate" href="#">회원정보</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link cate" href="#">결제/환불</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link cate" href="#">기타</a>
+					</li>
+				</ul>
+			 -->
+					<a class="cate" href="#">호스트신청</a> |
+					<a class="cate" href="#">이용안내</a> |
+					<a class="cate" href="#">회원정보</a> |
+					<a class="cate" href="#">결제/환불</a> |
+					<a class="cate" href="#">기타</a>
+			 
+			</div>
+		</div>
 	</div>
 
 	<br> <br> <br>
