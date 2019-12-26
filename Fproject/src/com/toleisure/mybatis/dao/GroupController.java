@@ -90,4 +90,6 @@ public class GroupController
 		
 		return "WEB-INF/views/meetingOpen.jsp";
 	}
+	
+	
 }
