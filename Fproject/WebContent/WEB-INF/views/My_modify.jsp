@@ -122,7 +122,7 @@ p
 		
 		if(telOtp == "N")
 		{
-			alert("휴대폰 인증이 필요합니다.");
+			alert("휴대폰 인증이 필요합니당.");
 			telOtp = "Y";
 			return;
 		}
