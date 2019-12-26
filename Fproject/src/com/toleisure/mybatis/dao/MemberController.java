@@ -311,10 +311,9 @@ public class MemberController
 		session.getAttribute("member");
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
+		dao.infoUpdate(dto);
 		
-		dao.updatePw(dto);
-		
-		return "/WEB-INF/views/MyPage.jsp"; 
+		return "mypage.action"; 
 	}
 	
 	
