@@ -424,9 +424,12 @@
 				<div class="col-lg-4 right-contents">
 					<div class="sidebar_top">
 						<ul>
-							<li><a class="justify-content-between d-flex"> <span
-									class="color" style="text-align: left;">${grcontent.grCate1Name } | ${grcontent.grCate2Name }</span> <span
-									class="color" style="text-align: right;">${grcontent.grCount }회차</span>
+							<li><a class="justify-content-between d-flex"> 
+							<span class="color" style="text-align: left;">${grcontent.grCate1Name }
+							<c:if test="${grcontent.grCate2Name != null }">
+							 | ${grcontent.grCate2Name }</c:if> 
+							 </span>
+							<span class="color" style="text-align: right;">${grcontent.grCount }회차</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>모임명</p> <span class="color">${grcontent.grName }</span>
