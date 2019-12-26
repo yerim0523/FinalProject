@@ -83,7 +83,8 @@
 		FROM TBL_GROUP
 		WHERE GR_CODE=${grCode}
 	</select>
-   
+
+
    <!-- 
    <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT GR_NAME
