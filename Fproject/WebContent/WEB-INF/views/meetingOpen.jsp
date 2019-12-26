@@ -124,7 +124,7 @@
 	</form>
 	<br><br>
 	<div align="center">
-		<a href="groupinsertform.action"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a href="newinsertform.action"><button type="button" class="btn4" value="새로 개설" style="background-color: #FAED7D;">새로 개설</button></a>&nbsp;&nbsp;&nbsp;&nbsp; 
 		<button type="submit" class="btn4" value="선택" onclick="groupSel()">선택</button>&nbsp;&nbsp;&nbsp;&nbsp;
 		<button type="button" class="btn4" value="취소">취소</button>
 	</div> 
