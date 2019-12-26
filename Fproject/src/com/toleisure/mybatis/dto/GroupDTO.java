@@ -3,15 +3,15 @@ package com.toleisure.mybatis.dto;
 public class GroupDTO
 {
 
-	private String memId,memName, grName, grPre, grNotice , grCate1Name, grCate2Name;
+	private String memId, memName, grName, grPre, grNotice , grCate1Name, grCate2Name;
 	private int grCode, grCate1, grCate2,starCode;
 
 	private int ngCode, ngMax, ngMin, ngCost;
-	private String memPic,memIntro, ngPic, ngIntro, ngMyIntro;
+	private String memPic, memIntro, ngPic, ngIntro, ngMyIntro;
 
-	private String ngLocation1, ngLocation2;
+	private String ngLocation, ngLocation1, ngLocation2;
 
-	private String ngStart1, ngStart2, ngEnd1, ngEnd2, ngDate;
+	private String ngStart, ngStart1, ngStart2, ngEnd, ngEnd1, ngEnd2, ngDate;
 
 	private int grCount, grStarCount;
 	private double grStarAvg;
@@ -210,6 +210,16 @@ public class GroupDTO
 	{
 		this.ngMyIntro = ngMyIntro;
 	}
+	
+	public String getNgStart()
+	{
+		return ngStart;
+	}
+
+	public void setNgStart(String ngStart)
+	{
+		this.ngStart = ngStart;
+	}
 
 	public String getNgStart1()
 	{
@@ -229,6 +239,16 @@ public class GroupDTO
 	public void setNgStart2(String ngStart2)
 	{
 		this.ngStart2 = ngStart2;
+	}
+	
+	public String getNgEnd()
+	{
+		return ngEnd;
+	}
+
+	public void setNgEnd(String ngEnd)
+	{
+		this.ngEnd = ngEnd;
 	}
 
 	public String getNgEnd1()
@@ -284,6 +304,16 @@ public class GroupDTO
 	public String getNgLocation1()
 	{
 		return ngLocation1;
+	}
+	
+	public String getNgLocation()
+	{
+		return ngLocation;
+	}
+
+	public void setNgLocation(String ngLocation)
+	{
+		this.ngLocation = ngLocation;
 	}
 
 	public void setNgLocation1(String ngLocation1)
