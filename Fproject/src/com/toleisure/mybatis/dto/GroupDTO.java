@@ -3,7 +3,7 @@ package com.toleisure.mybatis.dto;
 public class GroupDTO
 {
 
-	private String memId, memName, grName, grPre, grNotice , grCate1Name, grCate2Name;
+	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name;
 	private int grCode, grCate1, grCate2,starCode;
 
 	private int ngCode, ngMax, ngMin, ngCost, ngFavorite;
@@ -362,6 +362,16 @@ public class GroupDTO
 	public void setNgDate(String ngDate)
 	{
 		this.ngDate = ngDate;
+	}
+
+	public String getGrPic()
+	{
+		return grPic;
+	}
+
+	public void setGrPic(String grPic)
+	{
+		this.grPic = grPic;
 	}
 
 	

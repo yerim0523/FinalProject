@@ -15,7 +15,7 @@ public class FileService {
 	private static final String SAVE_PATH = "/upload";
 	private static final String PREFIX_URL = "/upload/";
 	
-	public String restore(MultipartFile multipartFile) {
+	public String restore(MultipartFile multipartFile, String fileName) {
 		String url = null;
 		
 		try {
@@ -26,7 +26,7 @@ public class FileService {
 			Long size = multipartFile.getSize();
 			
 			// 서버에서 저장 할 파일 이름
-			String saveFileName = genSaveFileName(extName);
+			String saveFileName = fileName;
 			
 			System.out.println("originFilename : " + originFilename);
 			System.out.println("extensionName : " + extName);

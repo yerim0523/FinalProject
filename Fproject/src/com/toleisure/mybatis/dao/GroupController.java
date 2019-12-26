@@ -59,12 +59,12 @@ public class GroupController
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session, @RequestParam("ngPic") MultipartFile file)
 	{
-		String view = "redirect:main.action";
+		//String view = "redirect:main.action";
 		session.getAttribute("member");
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
-		String url = fileUploadService.restore(file);
+		String url = fileUploadService.restore(file, dto.getNgPic());
 		model.addAttribute("url", url);
 		
 		if(dto.getGrCode()!=0)
@@ -82,7 +82,8 @@ public class GroupController
 			System.out.println("==================");
 		}
 		
-		return view;
+		//return view;
+		return "result.jsp";
 	}
 	
 	@RequestMapping(value = "/mygrouplist.action", method = {RequestMethod.POST,RequestMethod.GET})
