@@ -29,7 +29,7 @@ public class GroupDTO
 
 	public String getGrName()
 	{
-		return grName;
+		return grName; 
 	}
   
 	public void setGrName(String grName)
