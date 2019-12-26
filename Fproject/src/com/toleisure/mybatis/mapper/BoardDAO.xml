@@ -110,7 +110,7 @@
     
      <select id="newsList" resultMap = "BoardDTO">
 		SELECT  E.NUM AS rNum,E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
-        		,E.NEWS_DATE AS boardDate,E.MEM_NAME AS boardMem, E.NEWS_HITS AS boardHits
+        		, E.NEWS_DATE AS boardDate, E.MEM_NAME AS boardMem, E.NEWS_HITS AS boardHits
         			FROM
       				( 
       				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.NEWS_NUM DESC) NUM, DATA.* 
@@ -131,7 +131,7 @@
     
      <select id="eventList" resultMap = "BoardDTO">
 		SELECT  E.NUM AS rNum,E.EVENT_NUM AS boardNum, E.EVENT_TITLE AS boardTitle, E.EVENT_CONT AS boardCont
-        		,E.EVENT_DATE AS boardDate,E.MEM_NAME AS boardMem , E.EVENT_HITS AS boardHits
+        		, E.EVENT_DATE AS boardDate, E.MEM_NAME AS boardMem, E.EVENT_HITS AS boardHits
         			FROM
       				( 
       				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.EVENT_NUM DESC) NUM, DATA.* 
@@ -153,7 +153,7 @@
     
      <select id="faqList" resultMap = "BoardDTO">
 		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
-        		,E.FAQ_DATE AS boardDate,E.MEM_NAME AS boardMem
+        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem
         			FROM
       				( 
       				  SELECT ROWNUM RNUM, DATA.* 
@@ -168,7 +168,7 @@
 <!--    parameterType="String"  -->
      <select id="eventSelect" resultMap ="BoardDTO">
         SELECT  EVENT_NUM AS boardNum, EVENT_TITLE AS boardTitle, EVENT_CONT AS boardCont,
-        		EVENT_DATE AS boardDate,MEM_NAME AS boardMem, EVENT_HITS AS boardHits
+        		EVENT_DATE AS boardDate,M EM_NAME AS boardMem, EVENT_HITS AS boardHits
         FROM EVENT_POST_VIEW
         WHERE EVENT_NUM = #{boardNum}
     </select>
@@ -176,7 +176,7 @@
     
     <select id="newsSelect" resultMap ="BoardDTO">
         SELECT  NEWS_NUM AS boardNum, NEWS_TITLE AS boardTitle, NEWS_CONT AS boardCont,
-        		NEWS_DATE AS boardDate,MEM_NAME AS boardMem, NEWS_HITS AS boardHits
+        		NEWS_DATE AS boardDate, MEM_NAME AS boardMem, NEWS_HITS AS boardHits
         FROM NEWS_POST_VIEW
         WHERE NEWS_NUM = #{boardNum}
     </select>
