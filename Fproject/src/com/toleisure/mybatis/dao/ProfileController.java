@@ -27,6 +27,7 @@ public class ProfileController
 	@RequestMapping(value = "/profile.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String profile(Model model, MemberDTO dto, GroupDTO gdto)
 	{
+		
 		String view = "WEB-INF/views/Hprofile.jsp";
 		
 		IProfileDAO dao = sqlsession.getMapper(IProfileDAO.class); 
@@ -39,9 +40,10 @@ public class ProfileController
 		model.addAttribute("member", dao.memInfo(dto));
 		
 		// 프로필 - 모임 히스토리
-		ArrayList<GroupDTO> list = new ArrayList<GroupDTO>();
+		ArrayList<GroupDTO> list = new ArrayList<GroupDTO>(); 
 		list.add(gdto);
 		model.addAttribute("group", dao.grHistory(gdto));
+		 
 		
 		return view;
 	} 

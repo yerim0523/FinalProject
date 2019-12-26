@@ -192,12 +192,12 @@
 						</div>
 						<div>
 							<img alt="" src="images/star.png" style="width: 20px;">
-							<span> ${group.grStarAvg } </span>
+							<span> ${group.grStarAvg } / ${group.grStarCount }</span>
 						</div>
 					</div>
 					<br>
 					<div>
-						<span style="font-size: 12px;">${group.grCount }|</span>
+						<span style="font-size: 12px;">${group.grCount }회차 | ${group.grCate1Name } ${group.grCate2Name }</span>
 						<div>
 							<div class="name">
 							<h5>${group.grName }</h5>
