@@ -31,13 +31,17 @@ p
 	$(function()
 	{
 		//alert(${myInfo.memGender});
-		var gender = ${myInfo.memGender};
+		var gender = ${myInfo.memGen};
 		var cate1 = ${myInfo.memCate1};
 		var cate2 = ${myInfo.memCate2};
+		
+		alert(cate1 + " " + cate2);
 		
 		$("input[name='memGen']:radio[value='"+ gender +"']").attr("checked","checked");
 		$("input[name='check']:checkbox[value='"+ cate1 +"']").attr("checked","checked");
 		$("input[name='check']:checkbox[value='"+ cate2 +"']").attr("checked","checked");
+		
+		
 	});
 	
 	function sms()
@@ -133,7 +137,7 @@ p
 		var str1 = document.getElementById("memCate1").value;
 		var str2 = document.getElementById("memCate2").value;
 		
-		cate = document.getElementsByName("inlineCheckbox");
+		cate = document.getElementsByName("check");
 		
 		for (var i = 0; i < cate.length; i++)
 		{
@@ -159,6 +163,12 @@ p
 		
 		document.getElementById("memCate1").value = str1;
 		document.getElementById("memCate2").value = str2;
+		
+		alert(document.getElementById("memCate1").value);
+		alert(document.getElementById("memCate2").value);
+		
+		
+		alert("변경이 완료되었습니다.");
 		
 		f.submit();
 	}
@@ -188,7 +198,6 @@ p
 			<form action="infoupdate.action" method="post" role="form" id="memberForm" name="memberForm" >
 			<div>
 				<div class="col-lg-10">
-					<input type="hidden" name="memId" id="memId" value="${member.memId }">
 					<div class="form-group">
 						<br>
 						<p>이름</p> <input type="text"
@@ -202,7 +211,7 @@ p
 					
 					<div class="form-group">
 						<p>이메일 주소</p><input type="email"
-							class="form-control" name="memIntro" id="memIntro" value="${myInfo.memId }" readonly="readonly">
+							class="form-control" name="memId" id="memId" value="${myInfo.memId }" readonly="readonly">
 					</div>
 					
 					<div class="form-group">
@@ -256,7 +265,7 @@ p
 	  						<input type="checkbox" name="check" id="inlineCheckbox1" value="4"> 식당
 						</label>
 						<label class="checkbox-inline">
-	  						<input type="checkbox" id="inlineCheckbox1" value="5"> 카페
+	  						<input type="checkbox" name="check" id="inlineCheckbox1" value="5"> 카페
 						</label>
 						
 						<input type="hidden" id="memCate1" name="memCate1" value="0">

@@ -94,11 +94,6 @@ public class MemberController
 		if(login!=null)
 		{
 			session.setAttribute("member", login);
-			session.setAttribute("mode", "login");
-		}
-		else
-		{
-			session.setAttribute("mode", "logout");
 		}
 				
 		System.out.println("==================");
@@ -306,9 +301,10 @@ public class MemberController
 	
 	
 	@RequestMapping(value = "/infoupdate.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String infoUpdate(MemberDTO dto, Model model, HttpSession session)
+	public String infoModify(MemberDTO dto, Model model, HttpSession session)
 	{
 		session.getAttribute("member");
+		
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
 		dao.infoUpdate(dto);

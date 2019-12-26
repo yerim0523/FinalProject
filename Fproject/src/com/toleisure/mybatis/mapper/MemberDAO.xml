@@ -62,7 +62,7 @@
    </select>
    
    <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
-		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_COMP AS memComp, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGen, CATE_CODE1 AS memCate1, CATE_CODE2 AS memCate2
+		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_COMP AS memComp, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGen, NVL(CATE_CODE1,0) AS memCate1, NVL(CATE_CODE2,0) AS memCate2
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
    </select>
@@ -73,14 +73,15 @@
 		WHERE MEM_NAME = #{memName} AND MEM_ID = #{memId}
 	</select>
 	
-	<update parameterType="com.toleisure.mybatis.dto.MemberDTO" id="infoUpdate">
+	<update id="infoUpdate" parameterType="com.toleisure.mybatis.dto.MemberDTO">
 		<choose>
 			<when test="memCate1 == 0 and memCate2 == 0">
-				UPDATE MEMBER SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}
+				UPDATE MEMBER 
+				SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}, CATE_CODE1=null, CATE_CODE2=null
 				WHERE MEM_ID=#{memId}
 			</when>
 			<when test="memCate2 == 0">
-				UPDATE MEMBER SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}, CATE_CODE1=#{memCate1}
+				UPDATE MEMBER SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}, CATE_CODE1=#{memCate1}, CATE_CODE2=null
 				WHERE MEM_ID=#{memId}
 			</when>
 			<otherwise>
