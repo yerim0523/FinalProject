@@ -131,7 +131,7 @@ public class MemberController
 		
 		MemberDTO mine = dao.myInfo(dto.getMemId());
 		
-		session.setAttribute("myInfo", mine);
+		model.addAttribute("myInfo", mine);
 		
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
@@ -149,7 +149,8 @@ public class MemberController
 		MemberDTO mine2 = dao.myInfo(dto.getMemId());
 		
 		session.getAttribute("member");
-		session.setAttribute("myInfo", mine2);
+		model.addAttribute("myInfo", mine2);
+		
 		
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());

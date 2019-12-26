@@ -53,10 +53,6 @@
 					, success : function(data)
 					{
 						pwCheck = data;
-						/* 
-						alert(pwCheck);
-						alert($("#mempw").val());
-						 */
 						 
 						if(pwCheck == $("#memPw").val()){
 							alert("일치");	
@@ -85,11 +81,6 @@
 	{
 		f = document.memPwModify;
 		
-		/* 
-		var memPw = document.getElementById("memPw").value();
-		var newPw = document.getElementById("newPw").value();
-		 */
-
 		 document.getElementById("memPw").value = document.getElementById("newPw").value;
 		 
 		f.submit();
@@ -135,16 +126,16 @@
 						<form action="memPwModify.action" method="post" name="memPwModify" id="memPwModify">
 								<p class="spc_row1">
 									<input type="hidden" id="memId" name="memId" value="${member.memId }">
-									<input name="memPw" id="memPw" style="width: 260px"
+									<input name="memPw" id="memPw"  placeholder="현재 비밀번호" style="width: 260px"
 										type="password" maxlength="20">
 								</p>
 								<p class="spc_row2">
-									<input name="newPw" id="newPw" style="width: 260px"
+									<input name="newPw" id="newPw"  placeholder="새 비밀번호" style="width: 260px"
 										type="password" maxlength="20">
 								</p>
 								<p class="spc_row3">
 									 <input
-										id="newPw2" name="newPw2" style="width: 260px"
+										id="newPw2" name="newPw2"  placeholder="비밀번호 확인" style="width: 260px"
 										type="password"
 										maxlength="20">
 								</p>
@@ -159,7 +150,6 @@
 						</form>
 					</div>
 				</div>
-				<div>${member.memId }</div>
 			</div>
 		</div>
 	</div>
