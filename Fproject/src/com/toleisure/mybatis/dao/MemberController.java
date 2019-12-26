@@ -301,7 +301,7 @@ public class MemberController
 		
 		dao.updatePw(dto);
 		
-		return "redirect:mypage.action";
+		return "mypage.action";
 	}
 	
 	
