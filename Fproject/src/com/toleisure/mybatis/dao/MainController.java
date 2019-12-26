@@ -1,5 +1,7 @@
 package com.toleisure.mybatis.dao;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,9 @@ public class MainController
 	private SqlSession sqlsession;
 
 	@RequestMapping(value = "/main.action", method = RequestMethod.GET)
-	public String HotGroupList(Model model)
+	public String HotGroupList(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Main.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -37,8 +40,9 @@ public class MainController
 
 	// -----------------------------------전체 모임 출력-------------------
 	@RequestMapping(value = "/all.action", method = RequestMethod.GET)
-	public String AllMeeting(Model model)
+	public String AllMeeting(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/AllMeeting.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -50,8 +54,9 @@ public class MainController
 
 	// -----------------------------------문화생활 모임-------------------
 	@RequestMapping(value = "/culture.action", method = RequestMethod.GET)
-	public String Culture(Model model)
+	public String Culture(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Culture.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -62,8 +67,9 @@ public class MainController
 	}
 
 	@RequestMapping(value = "/exhibit.action", method = RequestMethod.GET)
-	public String Exhibit(Model model)
+	public String Exhibit(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Exhibit.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -74,8 +80,9 @@ public class MainController
 	}
 
 	@RequestMapping(value = "/show.action", method = RequestMethod.GET)
-	public String Performance(Model model)
+	public String Performance(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Show.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -86,8 +93,9 @@ public class MainController
 	}
 
 	@RequestMapping(value = "/play.action", method = RequestMethod.GET)
-	public String Play(Model model)
+	public String Play(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Play.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -99,8 +107,9 @@ public class MainController
 
 	// -----------------------------------맛집모임-------------------
 	@RequestMapping(value = "/food.action", method = RequestMethod.GET)
-	public String Food(Model model)
+	public String Food(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Food.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -111,8 +120,9 @@ public class MainController
 	}
 
 	@RequestMapping(value = "/restaurant.action", method = RequestMethod.GET)
-	public String restraunt(Model model)
+	public String restraunt(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Restaurant.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -123,8 +133,9 @@ public class MainController
 	}
 
 	@RequestMapping(value = "/cafe.action", method = RequestMethod.GET)
-	public String Cafe(Model model)
+	public String Cafe(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/Cafe.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -137,8 +148,9 @@ public class MainController
 	// -----------------------------------테마별모임-------------------
 	// -----------------------------------------------인기모임(default)
 	@RequestMapping(value = "/theme.action", method = RequestMethod.GET)
-	public String HotGroup(Model model)
+	public String HotGroup(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/HotGroup.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -150,8 +162,9 @@ public class MainController
 
 	// ----------------------------------------------------신규모임
 	@RequestMapping(value = "/newgroup.action", method = RequestMethod.GET)
-	public String Theme(Model model)
+	public String Theme(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/NewGroup.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -163,7 +176,7 @@ public class MainController
 
 	// ----------------------------------------------------인기호스트
 	@RequestMapping(value = "/hothost.action", method = RequestMethod.GET)
-	public String HotHost(Model model)
+	public String HotHost(Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/HotHost.jsp";
 
@@ -176,9 +189,10 @@ public class MainController
 
 	// ---------------------------------------------------마감임박모임
 	@RequestMapping(value = "/closing.action", method = RequestMethod.GET)
-	public String Closing(Model model)
+	public String Closing(Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/ClosingGroup.jsp";
+		session.getAttribute("member");
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 
@@ -189,8 +203,9 @@ public class MainController
 
 	// --------------------------------------------------------추천모임
 	@RequestMapping(value = "/recommend.action", method = RequestMethod.GET)
-	public String Recommend(Model model)
+	public String Recommend(Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		String view = "WEB-INF/views/RecommendGroup.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);

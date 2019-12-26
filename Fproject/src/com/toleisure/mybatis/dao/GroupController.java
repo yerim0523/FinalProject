@@ -59,8 +59,6 @@ public class GroupController
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		session.getAttribute("member");
 		
-		session.getAttribute("member");
-		
 		System.out.println("==================");
 		System.out.println("==== dto.getMemId = " + dto.getMemId());
 		System.out.println("==================");

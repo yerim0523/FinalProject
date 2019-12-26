@@ -114,7 +114,7 @@
 			</td>
 			</tr>
 			</c:if>
-			<c:if test="${empty mylist.grCode}">
+			<c:if test="${empty mylist}">
 			비어이씀다
 			</c:if>
 		</c:forEach>
