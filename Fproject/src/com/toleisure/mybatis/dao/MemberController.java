@@ -314,7 +314,7 @@ public class MemberController
 		
 		dao.updatePw(dto);
 		
-		return "/WEB-INF/views/MyPage.jsp";
+		return "/WEB-INF/views/MyPage.jsp"; 
 	}
 	
 	
