@@ -425,9 +425,9 @@
 					<div class="sidebar_top">
 						<ul>
 							<li><a class="justify-content-between d-flex"> 
-							<span class="color" style="text-align: left;">${grcontent.grCate1Name }
+							<span class="color" style="text-align: left;">[ ${grcontent.grCate1Name }
 							<c:if test="${grcontent.grCate2Name != null }">
-							 | ${grcontent.grCate2Name }</c:if> 
+							 | ${grcontent.grCate2Name }</c:if> ] 
 							 </span>
 							<span class="color" style="text-align: right;">${grcontent.grCount }회차</span>
 							</a></li>
