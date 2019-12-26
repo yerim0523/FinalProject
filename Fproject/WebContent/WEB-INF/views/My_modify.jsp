@@ -35,13 +35,17 @@ p
 		var cate1 = ${myInfo.memCate1};
 		var cate2 = ${myInfo.memCate2};
 		
-		$("input[name='radio']:radio[value='"+ gender +"']").attr("checked","checked");
+		$("input[name='memGen']:radio[value='"+ gender +"']").attr("checked","checked");
 		$("input[name='check']:checkbox[value='"+ cate1 +"']").attr("checked","checked");
 		$("input[name='check']:checkbox[value='"+ cate2 +"']").attr("checked","checked");
 	});
 	
-
-	  
+	function formCheck()
+	{
+		var f = document.memberForm;
+		alert(f);
+	}
+	
 </script>
 
 </head>
@@ -65,38 +69,39 @@ p
 					<hr>
 				</div>
 			<div>
-				<form role="form" name="memberForm" >
+				<form action="infoupdate.action" method="post" role="form" name="memberForm" >
 				<div class="col-lg-10">
+					<input type="hidden" name="memId" id="memId" value="${member.memId }">
 					<div class="form-group">
 						<br>
 						<p>이름</p> <input type="text"
-							class="form-control" id="inputName" value="${myInfo.memName }">
+							class="form-control" name="memName" id="memName" value="${myInfo.memName }">
 					</div>
 					
 					<div class="form-group">
-						<p>소개글</p> <textarea rows="3" cols="10" class="form-control">${myInfo.memIntro }</textarea>
+						<p>소개글</p> <textarea rows="3" cols="10" class="form-control" name="memIntro" id="memIntro" >${myInfo.memIntro }</textarea>
 					</div>
 					
 					<div class="form-group">
 						<p>이메일 주소</p><input type="email"
-							class="form-control" id="InputEmail" value="${myInfo.memId }" readonly="readonly">
+							class="form-control" name="memIntro" id="memIntro" value="${myInfo.memId }" readonly="readonly">
 					</div>
 					
 					<div class="form-group">
 						<p>휴대폰 번호</p><input type="tel"
-							class="form-control" id="inputMobile" value="${myInfo.memTel }">
+							class="form-control" id="memTel" value="${myInfo.memTel }">
 					</div>
 					
 					<div class="form-group">
 						<p>성별</p>
 						<label class="radio-inline">
-							<input type="radio" name="radio" id="inlineRadio1" value="1" > 남자
+							<input type="radio" name="memGen" id="memGen" value="1" > 남자
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="radio" id="inlineRadio2" value="2"> 여자
+							<input type="radio" name="memGen" id="memGen" value="2"> 여자
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="radio" id="inlineRadio3" value="3"> 선택안함
+							<input type="radio" name="memGen" id="memGen" value="3"> 선택안함
 						</label>
 	
 					</div>
@@ -121,7 +126,7 @@ p
 				</div>
 				</div>
 					<div class="form-group text-center">
-						<button type="submit" id="join-submit" class="btn4" onclick="formCheck()">
+						<button type="button" id="join-submit" class="btn4" onclick="formCheck()">
 							수정&nbsp;&nbsp;<i class="fa fa-check spaceLeft"></i>
 						</button>
 					</div>

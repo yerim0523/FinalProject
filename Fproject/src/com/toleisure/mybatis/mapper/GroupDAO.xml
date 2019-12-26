@@ -44,10 +44,6 @@
       <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
       {CALL
          BEGIN
-
-            INSERT INTO TBL_GROUP (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
-            VALUES (#{grCode}, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1});
-            
             INSERT INTO NOW_GROUP(NG_CODE
                , GR_CODE
                , NG_PIC

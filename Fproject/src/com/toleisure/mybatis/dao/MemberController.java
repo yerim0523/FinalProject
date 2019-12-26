@@ -131,7 +131,6 @@ public class MemberController
 		
 		MemberDTO mine = dao.myInfo(dto.getMemId());
 		
-		session.getAttribute("member");
 		session.setAttribute("myInfo", mine);
 		
 		System.out.println("==================");

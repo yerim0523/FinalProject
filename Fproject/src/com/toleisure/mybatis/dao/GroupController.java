@@ -48,7 +48,20 @@ public class GroupController
 		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
-		dao.addGroup(dto);
+		if(dto.getGrCode()!=0)
+		{
+			dao.addGroup(dto);
+			System.out.println("==================");
+			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
+			System.out.println("==================");
+		}
+		else if(dto.getGrCode()==0)
+		{
+			dao.newGroup(dto);
+			System.out.println("==================");
+			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
+			System.out.println("==================");
+		}
 		
 		return view;
 	}
