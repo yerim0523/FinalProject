@@ -300,6 +300,19 @@ public class MemberController
 		
 		dao.updatePw(dto);
 		
+		return "redirect:mypage.action";
+	}
+	
+	
+	@RequestMapping(value = "/infoupdate.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String infoUpdate(MemberDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		
+		dao.updatePw(dto);
+		
 		return "/WEB-INF/views/MyPage.jsp";
 	}
 	
