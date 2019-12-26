@@ -79,7 +79,7 @@ public class GroupController
 			System.out.println("신규모임생성");
 			dao.newGroup(dto);
 			System.out.println("==================");
-			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
+			System.out.println("==== 현재 들어간 모임코드 =  " + dto.getGrCode());
 			System.out.println("==================");
 		}
 		
