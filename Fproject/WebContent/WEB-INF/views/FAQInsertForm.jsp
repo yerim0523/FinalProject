@@ -119,11 +119,10 @@ function formCheck()
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name="faqCate" class="form-control" style="width: 200px;">
 				            <option>카테고리선택</option>
-				            <option id="faqCate" value="1" selected="selected">호스트신청</option>
-				            <option id="faqCate" value="2">이용안내</option>
-				            <option id="faqCate" value="3">회원정보</option>
-				            <option id="faqCate" value="4">결제/환불</option>
-				            <option id="faqCate" value="5">기타</option>
+				            <option id="faqCate" value="1">이용안내</option>
+				            <option id="faqCate" value="2">회원정보</option>
+				            <option id="faqCate" value="3">결제/환불</option>
+				            <option id="faqCate" value="4">기타</option>
 				         </select>
 				         
 				         

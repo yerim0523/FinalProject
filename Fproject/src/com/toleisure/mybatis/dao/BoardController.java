@@ -330,21 +330,6 @@ public class BoardController
 		return view;
 	}
 	
-	@RequestMapping(value = "/faqhost.action")
-	public String faqHostList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
-	{
-		String view = "/WEB-INF/views/faqHost.jsp";
-		session.getAttribute("member");
-
-		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-
-
-		List<BoardDTO> faqHostList = dao.faqHostList(faq);
-
-		model.addAttribute("faqHostList", faqHostList);
-		return view;
-	}
-	
 	@RequestMapping(value = "/faqpay.action")
 	public String faqPayList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
 	{
@@ -457,5 +442,6 @@ public class BoardController
 		return view;
 
 	}
+	
 
 }

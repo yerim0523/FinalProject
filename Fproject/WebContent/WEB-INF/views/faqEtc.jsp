@@ -139,6 +139,8 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link"
 						href="center.action">투레저 소개</a></li>
+						<li class="nav-item"><a class="nav-link"
+						href="announce.action">공지사항</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="news.action">투레저 소식</a></li>
 					<li class="nav-item"><a class="nav-link"
@@ -174,7 +176,6 @@
 				</ul>
 			 -->
 					<a class="cate" href="faq.action" >전체</a> |
-					<a class="cate" href="faqhost.action">호스트신청</a> |
 					<a class="cate" href="faquse.action">이용안내</a> |
 					<a class="cate" href="faquser.action">회원정보</a> |
 					<a class="cate" href="faqpay.action">결제/환불</a> |

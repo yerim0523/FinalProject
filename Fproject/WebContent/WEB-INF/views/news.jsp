@@ -115,7 +115,7 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th></th>
+					<th>글번호</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>날짜</th>
@@ -123,7 +123,11 @@
 				</tr>
 				<c:forEach var="v" items="${newsList}" varStatus="status">
 				<tr>
-					<td style="color: green;">소식</td>
+					<c:choose>
+					<c:when test="${v.boardNotice ne 0}"><td style="color: red;">[공지]</td></c:when>
+					<c:when test="${v.boardNotice eq 0}"><td style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></c:when>
+					</c:choose>
+					
 					<td>${v.rNum}</td>
 					<td><a href="#" onclick="location='newsdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
 					<td>${v.boardMem}</td>

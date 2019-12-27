@@ -109,6 +109,7 @@ function formCheck()
 		
 	  <form action="faqupdate.action" method="post" name="FAQUpdateForm" id="FAQUpdateForm" class="form-horizontal">	
 	  <c:forEach var="v" items="${faqUpdate }">
+	
 	<div class="container">
 		<table class="table" style="text-align: center;">
 			<tr>
@@ -120,11 +121,10 @@ function formCheck()
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name="faqCate" class="form-control" style="width: 200px;">
 				            <option>카테고리선택</option>
-				            <option id="faqCate" value="1" selected="selected">호스트신청</option>
-				            <option id="faqCate" value="2">이용안내</option>
-				            <option id="faqCate" value="3">회원정보</option>
-				            <option id="faqCate" value="4">결제/환불</option>
-				            <option id="faqCate" value="5">기타</option>
+				            <option id="faqCate"  value="1">이용안내</option>
+				            <option id="faqCate" value="2">회원정보</option>
+				            <option id="faqCate" value="3">결제/환불</option>
+				            <option id="faqCate" value="4">기타</option>
 				         </select>
 				         <input type="hidden" id="boardNum" name="boardNum" value="${v.boardNum }">
 				         

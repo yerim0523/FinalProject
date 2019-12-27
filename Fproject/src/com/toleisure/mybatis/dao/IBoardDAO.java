@@ -38,10 +38,12 @@ public interface IBoardDAO
 	 public int faqDelete(int boardNum);
 	 public void faqUpdate(BoardDTO dto);
 	public List<BoardDTO> faqEtcList(BoardDTO faq);
-	public List<BoardDTO> faqHostList(BoardDTO faq);
 	public List<BoardDTO> faqPayList(BoardDTO faq);
 	public List<BoardDTO> faqUseList(BoardDTO faq);
 	public List<BoardDTO> faqUserList(BoardDTO faq);
+	
+	
+	public List<BoardDTO> announceList(BoardDTO announce);
 	
 	
 }
