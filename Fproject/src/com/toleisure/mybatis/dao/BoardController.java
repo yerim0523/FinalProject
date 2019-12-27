@@ -468,5 +468,22 @@ public class BoardController
 
 	}
 	
+	
+	
+	
+	@RequestMapping(value = "/qnainsert.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String qnaInsert(HttpSession session, BoardDTO dto)
+		{
+			String view = "faq.action";
+			session.getAttribute("member");
+
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+			dao.qnaInsert(dto);
+
+			return view;
+		}
+	
 
 }

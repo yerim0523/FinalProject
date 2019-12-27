@@ -63,7 +63,7 @@ function formCheck()
    str = str.trim();
    if(!str || 5>str.length || 100<str.length)
    {
-      alert("제목을 【4 ~ 100자】 내외로 입력해주세요.");
+      alert("제목을 【5 ~ 100자】 내외로 입력해주세요.");
       f.boardTitle.focus();
       return;
    }
@@ -73,7 +73,7 @@ function formCheck()
    str = str.trim();
    if(!str || 5>str.length || 1000<str.length)
    {
-      alert("내용을 【4 ~ 1000자】 내외로 입력해주세요.");
+      alert("내용을 【5 ~ 1000자】 내외로 입력해주세요.");
       f.boardCont.focus();
       return;
    }

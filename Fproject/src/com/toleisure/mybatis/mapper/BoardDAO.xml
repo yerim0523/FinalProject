@@ -305,7 +305,7 @@
         WHERE FAQ_NUM = #{boardNum}
     </delete>
 
-   <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="faqInsert">
+   <insert id="faqInsert" parameterType="com.toleisure.mybatis.dto.BoardDTO" >
         INSERT INTO FAQ(FAQ_NUM,ADMIN_CODE,FAQ_CODE,FAQ_TITLE,FAQ_CONT)
         VALUES(FAQSEQ.NEXTVAL, 1, #{faqCate}, #{boardTitle}, #{boardCont})
    </insert>
@@ -340,5 +340,10 @@
         FROM QNA_VIEW
 		WHERE MEM_ID=#{memId}
     </select>
+    
+    <insert id="qnaInsert" parameterType="com.toleisure.mybatis.dto.BoardDTO" >
+        INSERT INTO QNA(FAQ_NUM,ADMIN_CODE,FAQ_CODE,FAQ_TITLE,FAQ_CONT)
+        VALUES(FAQSEQ.NEXTVAL, 1, #{faqCate}, #{boardTitle}, #{boardCont})
+   </insert>
     
 </mapper>

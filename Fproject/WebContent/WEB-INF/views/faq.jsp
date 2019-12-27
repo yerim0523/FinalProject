@@ -33,7 +33,6 @@
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
-    <script src="js/custom.js"></script>
 <style type="text/css">
 .pagination {
 	justify-content: center;
@@ -74,7 +73,7 @@
 
 #effect { 
 	position: relative;
-	width: 70%;
+	width: 90%;
 	height: 170px;
 	padding: 0.4em;
 }
@@ -83,14 +82,14 @@
 	color: black;
 }
 .modal-dialog.modal-80size {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   margin: 0;
   padding: 0;
 }
 
 .modal-content.modal-80size {
-  min-height: 80%;
+  min-height: 90%;
 }
 
 .modal.modal-center {
@@ -147,6 +146,34 @@
 	
 			location="faqupdateform.action?boardNum="+boardNum;
 		
+	}
+	
+	function formCheck()
+	{
+	   var f = document.QNAInsertForm;
+	   
+	   var str = f.boardTitle.value;
+	   
+	   str = str.trim();
+	   if(!str || 5>str.length || 100<str.length)
+	   {
+	      alert("제목을 【5 ~ 100자】 내외로 입력해주세요.");
+	      f.boardTitle.focus();
+	      return;
+	   }
+
+	   
+	   str = f.boardCont.value;
+	   str = str.trim();
+	   if(!str || 5>str.length || 1000<str.length)
+	   {
+	      alert("내용을 【5 ~ 1000자】 내외로 입력해주세요.");
+	      f.boardCont.focus();
+	      return;
+	   }
+	   
+	   f.submit();
+
 	}
 
 
@@ -277,17 +304,15 @@
   </div>
 </div>
 
-
-<div class="modal modal-center fade" id="QNA" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
-  <div class="modal-dialog modal-80size modal-center" role="document">
-    <div class="modal-content modal-80size">
-      <div class="modal-header">
+  <div class="modal modal-center" id="QNA">
+    <div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">
+      <div class="modal-content">
+        <div class="modal-header">
       	<span style="font-size: 15pt; font-weight: bold;">1 : 1 문의</span>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body center-block">
-      
-			<div>
+       <div>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -305,7 +330,7 @@
 					<c:when test="${v.boardNotice eq 0}"><td style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></c:when>
 					</c:choose>
 					<td>${v.rNum}</td>
-					<td><a href="#" onclick="location='eventdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
+					<td><a href="#" onclick="location='qnadetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
  					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
 					<td>${v.boardHits}</td>
@@ -317,7 +342,7 @@
 		</table>
 
 		<hr>
-		<button type="button" data-toggle="modal" data-target="#addqna" class="btn4" style="float: left;">글쓰기</button>
+		<button type="button" data-dismiss="modal" data-toggle="modal" data-target="#addqna" class="btn4" style="float: Right;">글쓰기</button>
 	</div>
 
 	<div class="container">
@@ -346,158 +371,70 @@
 			<span aria-hidden="true">&raquo;</span>
 			</a></li>
 			</c:if>
-		
 		</ul>
 	</div>
-	
-	<div class="greenTable outerTableFooter">
-            <div class="tableFootStyle">
-                <div class="links">
-                        <a href="#" onClick="fn_paging(1)">[처음]</a> 
-                    <c:if test="${paging.curPage ne 1}">
-                        <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
-                    </c:if>
-                    
-                    
-                    
-                    <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
-                        <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
-                    </c:if>
-                    <c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt > 0}">
-                        <a href="#" onClick="fn_paging(${paging.pageCnt })">[끝]</a> 
-                    </c:if>
-                </div>
-            </div>
-        </div>
-         
-        <div>
-                    총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
-        </div>
-			
-			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
 </div>
-			
-			<div class="">
-				<a href="login.action"><button type="button" class="btn_1" >로그인</button></a>
-				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
-			</div>
       </div>
       <div class="modal-footer">
       </div>
     </div>
   </div>
-</div>
-
-
-<div class="modal modal-center fade" id="addqna" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
-  <div class="modal-dialog modal-80size modal-center" role="document">
-    <div class="modal-content modal-80size">
-      <div class="modal-header">
+      
+  <div class="modal modal-center" id="addqna">
+    <div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">
+      <div class="modal-content">
+        <div class="modal-header">
       	<span style="font-size: 15pt; font-weight: bold;">1 : 1 문의</span>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body center-block">
       
-			<div>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th></th>
-					<th></th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>날짜</th>
-					<th>조회수</th>
-				</tr>
-				<c:forEach var="v" items="${qnaList}" varStatus="status">
-				<tr>
-					<c:choose>
-					<c:when test="${v.boardNotice ne 0}"><td style="color: red;">[공지]</td></c:when>
-					<c:when test="${v.boardNotice eq 0}"><td style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></c:when>
-					</c:choose>
-					<td>${v.rNum}</td>
-					<td><a href="#" onclick="location='eventdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
- 					<td>${v.boardMem}</td>
-					<td>${v.boardDate}</td>
-					<td>${v.boardHits}</td>
-			    </tr>
-			  
-				</c:forEach>      
-            
-			</thead>
-		</table>
-
-		<hr>
-		<button type="button" data-toggle="modal" data-target="#addqna" class="btn4" style="float: left;">글쓰기</button>
-	</div>
-
+ <form action="qnainsert.action" method="post" name="QNAInsertForm" id="QNAInsertForm" class="form-horizontal">	
 	<div class="container">
-		<ul class="pagination">
-			<li class="page-item">
+		<table class="table" style="text-align: center;">
+			<tr>
+				<td>제목</td>
+				<td>
+					<div class="form-inline">
+						<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
+								required="required" pattern=".{4,100}" style="width: 450px;">
+
+						<select name="faqCate" class="form-control" style="width: 150px;">
+				            <option id="faqCate" value="1">이용안내</option>
+				            <option id="faqCate" value="2">회원정보</option>
+				            <option id="faqCate" value="3">결제/환불</option>
+				            <option id="faqCate" value="4">기타</option>
+				         </select>	         
+			         </div>
+				</td>
+			<tr>
+				<td>내용</td>
+				<td colspan="2">
+				<textarea class="form-control" rows="5" id="boardCont" name="boardCont"placeholder="내용 작성"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				
+				</td>
+				<td colspan="2">
+					<div align="right">
+						<button type="button" class="btn4 btn-info submit" onclick="formCheck()">등록</button>
+					</div>
+				</td>
+			</tr>
 			
-			<c:if test="${paging.curPage ne 1}">
-			<a class="page-link" href="#" aria-label="Previous" onClick="fn_paging(${paging.prevPage })">	
-			<span aria-hidden="true">&laquo;</span>
-			</a></li>
-			</c:if>
-			<%-- ${status.index+1+(paging.curPage-1)*10} --%>
-			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
-			 	<c:choose>
-			 		<c:when test="${pageNum eq  paging.curPage}">
-			<!-- 선택되게하기 --><li class="page-item active"><a class="page-link" onClick="fn_paging(${pageNum })"  href="#"> ${paging.curPage }</a></li>
-					</c:when>
-					  <c:otherwise>
-                               <li class="page-item"> <a class="page-link" href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> </li>
-                            </c:otherwise>
-                        </c:choose>
-                        </c:forEach>
-                        
-             <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
-			<li class="page-item"><a class="page-link" href="#"aria-label="Next" onClick="fn_paging(${paging.nextPage })"> 
-			<span aria-hidden="true">&raquo;</span>
-			</a></li>
-			</c:if>
-		
-		</ul>
+		</table>
 	</div>
-	
-	<div class="greenTable outerTableFooter">
-            <div class="tableFootStyle">
-                <div class="links">
-                        <a href="#" onClick="fn_paging(1)">[처음]</a> 
-                    <c:if test="${paging.curPage ne 1}">
-                        <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
-                    </c:if>
-                    
-                    
-                    
-                    <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
-                        <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
-                    </c:if>
-                    <c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt > 0}">
-                        <a href="#" onClick="fn_paging(${paging.pageCnt })">[끝]</a> 
-                    </c:if>
-                </div>
-            </div>
-        </div>
-         
-        <div>
-                    총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
-        </div>
+		<hr>
+		</div>
+	</form>	
 			
-			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
-</div>
-			
-			<div class="">
-				<a href="login.action"><button type="button" class="btn_1" >로그인</button></a>
-				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
-			</div>
       </div>
       <div class="modal-footer">
       </div>
     </div>
   </div>
-</div>
 
 
 </body>
