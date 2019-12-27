@@ -22,14 +22,6 @@ public class MemberController
 	@Autowired
 	private SqlSession sqlsession;
 	
-	@RequestMapping(value = "/memberfindform.action", method = RequestMethod.GET)
-	public String findEmail(Model m)
-	{
-		String view = "/WEB-INF/views/FindEmail.jsp";
-		
-		return view;
-	}
-	
 	@RequestMapping(value = "/efind.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String memberEfind(MemberDTO dto, Model model)
 	{
@@ -300,7 +292,7 @@ public class MemberController
 		return "mypage.action";
 	}
 	
-	
+	//
 	@RequestMapping(value = "/infoupdate.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String infoModify(MemberDTO dto, Model model, HttpSession session)
 	{
@@ -313,6 +305,7 @@ public class MemberController
 		return "mypage.action"; 
 	}
 	
+	//
 	@RequestMapping(value = "/mycal.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String myCalendar(MemberDTO dto, Model model, HttpSession session)
 	{
