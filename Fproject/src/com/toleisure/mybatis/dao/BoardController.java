@@ -35,7 +35,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/event.action") // 이벤트 리스트 호출
+	@RequestMapping(value = "/event.action") // �씠踰ㅽ듃 由ъ뒪�듃 �샇異�
 	public String eventList(BoardDTO event, @RequestParam(defaultValue = "1") int curPage,
 			Model model, HttpSession session)
 	{
@@ -56,7 +56,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) // 이벤트 상세 목록 호출
+	@RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) // �씠踰ㅽ듃 �긽�꽭 紐⑸줉 �샇異�
 	public String eventDetail(int boardNum, int curPage, Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/eventDetail.jsp";
@@ -77,7 +77,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventinsertform.action")		// 이벤트 입력 폼 호출
+	@RequestMapping(value = "/eventinsertform.action")		// �씠踰ㅽ듃 �엯�젰 �뤌 �샇異�
 	public String eventInsertForm(HttpSession session)
 	{
 		session.getAttribute("member");
@@ -86,7 +86,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventinsert.action", method ={ RequestMethod.GET, RequestMethod.POST }) // 이벤트 입력 실행
+	@RequestMapping(value = "/eventinsert.action", method ={ RequestMethod.GET, RequestMethod.POST }) // �씠踰ㅽ듃 �엯�젰 �떎�뻾
 	public String eventInsert(HttpSession session, BoardDTO dto)
 	{
 		String view = "event.action";
@@ -98,7 +98,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventupdateform.action", method ={ RequestMethod.GET, RequestMethod.POST }) // 이벤트 수정 폼 호출
+	@RequestMapping(value = "/eventupdateform.action", method ={ RequestMethod.GET, RequestMethod.POST }) // �씠踰ㅽ듃 �닔�젙 �뤌 �샇異�
 	public String eventUpdateForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
 	{
 		String view = "/WEB-INF/views/EventUpdateForm.jsp";
@@ -114,7 +114,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventupdate.action", method ={ RequestMethod.GET, RequestMethod.POST })   // 이벤트 업데이트 실행
+	@RequestMapping(value = "/eventupdate.action", method ={ RequestMethod.GET, RequestMethod.POST })   // �씠踰ㅽ듃 �뾽�뜲�씠�듃 �떎�뻾
 	public String eventUpdate(HttpSession session, BoardDTO dto)
 	{
 		String view = "event.action";
@@ -128,25 +128,25 @@ public class BoardController
 
 		dto.setEventNoticeCheck(result);
 
-		if (dto.getEventNoticeCheck() != 0) // 원래 공지로 되어있다면
+		if (dto.getEventNoticeCheck() != 0) // �썝�옒 怨듭�濡� �릺�뼱�엳�떎硫�
 		{
-			if (check != 0) // 또 공지로 등록이면
+			if (check != 0) // �삉 怨듭�濡� �벑濡앹씠硫�
 			{
 				dao.eventUpdate(dto);
 			}
 
-			else // 공지를 해제한다면
+			else // 怨듭�瑜� �빐�젣�븳�떎硫�
 			{
 				dao.eventUpdate(dto);
 				dao.EventNoticeDelete(dto);
 			}
-		} else // 공지가 아니었다면
+		} else // 怨듭�媛� �븘�땲�뿀�떎硫�
 		{
-			if (check != 0) // 새롭게 공지등록이면
+			if (check != 0) // �깉濡�寃� 怨듭��벑濡앹씠硫�
 			{
 				dao.eventUpdate(dto);
 				dao.InsertEventNotice(dto);
-			} else // 공지가 아니라면
+			} else // 怨듭�媛� �븘�땲�씪硫�
 			{
 				dao.eventUpdate(dto);
 			}
@@ -154,7 +154,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventdelete.action", method ={ RequestMethod.GET, RequestMethod.POST })  // 이벤트 삭제 실행
+	@RequestMapping(value = "/eventdelete.action", method ={ RequestMethod.GET, RequestMethod.POST })  // �씠踰ㅽ듃 �궘�젣 �떎�뻾
 	public String eventDelete(int boardNum, HttpSession session)
 	{
 		String view = "event.action";
@@ -177,7 +177,7 @@ public class BoardController
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		int listCnt = dao.newsListCount();
-		PagingDTO paging = new PagingDTO(listCnt, curPage); // 총 데이터개수, 현재페이지
+		PagingDTO paging = new PagingDTO(listCnt, curPage); // 珥� �뜲�씠�꽣媛쒖닔, �쁽�옱�럹�씠吏�
 		news.setStartIndex(paging.getStartIndex());
 		news.setEndIndex(paging.getEndIndex());
 
@@ -261,25 +261,25 @@ public class BoardController
 
 		dto.setNewsNoticeCheck(result);
 
-		if (dto.getNewsNoticeCheck() != 0) // 원래 공지로 되어있다면
+		if (dto.getNewsNoticeCheck() != 0) // �썝�옒 怨듭�濡� �릺�뼱�엳�떎硫�
 		{
-			if (check != 0) // 또 공지로 등록이면
+			if (check != 0) // �삉 怨듭�濡� �벑濡앹씠硫�
 			{
 				dao.newsUpdate(dto);
 			}
 
-			else // 공지를 해제한다면
+			else // 怨듭�瑜� �빐�젣�븳�떎硫�
 			{
 				dao.newsUpdate(dto);
 				dao.NewsNoticeDelete(dto);
 			}
-		} else // 공지가 아니었다면
+		} else // 怨듭�媛� �븘�땲�뿀�떎硫�
 		{
-			if (check != 0) // 새롭게 공지등록이면
+			if (check != 0) // �깉濡�寃� 怨듭��벑濡앹씠硫�
 			{
 				dao.newsUpdate(dto);
 				dao.InsertNewsNotice(dto);
-			} else // 공지가 아니라면
+			} else // 怨듭�媛� �븘�땲�씪硫�
 			{
 				dao.newsUpdate(dto);
 			}
@@ -322,17 +322,14 @@ public class BoardController
 		
 		PagingDTO paging = new PagingDTO(listCnt, curPage);
 		
-		
-		
-		
 		faq.setStartIndex(paging.getStartIndex());
 		faq.setEndIndex(paging.getEndIndex());
 		
-		System.out.println(paging.getStartIndex());
-		System.out.println(paging.getEndIndex());
+		System.out.println(faq.getStartIndex());
+		System.out.println(faq.getEndIndex());
 		
 		List<BoardDTO> faqList = dao.faqList(faq);
-		List<BoardDTO> qnaList = dao.qnaList(faqId);
+		List<BoardDTO> qnaList = dao.qnaList(faq);
 
 		
 		model.addAttribute("faqList", faqList);

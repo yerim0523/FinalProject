@@ -317,7 +317,7 @@
 			 WHERE FAQ_NUM = #{boardNum}           	           		           
    </update>
 
- <select id="qnaList" parameterType="String" resultMap = "BoardDTO">
+ <select id="qnaList" parameterType="com.toleisure.mybatis.dto.BoardDTO" resultMap = "BoardDTO">
 	SELECT  E.NUM AS rNum,E.QNA_CODE AS boardNum,E.QNA_TITLE AS boardTitle,E.QNA_CONTENT AS boardCont
     ,SUBSTR(E.QNA_DATE, 1, 10) AS boardDate,E.MEM_ID AS boardMem,E.FAQ_NAME AS faqName
     FROM

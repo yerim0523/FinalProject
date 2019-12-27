@@ -83,14 +83,14 @@
 	color: black;
 }
 .modal-dialog.modal-80size {
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
   margin: 0;
   padding: 0;
 }
 
 .modal-content.modal-80size {
-  min-height: 40%;
+  min-height: 80%;
 }
 
 .modal.modal-center {

@@ -44,7 +44,7 @@ public interface IBoardDAO
 	
 	
 	public List<BoardDTO> announceList(BoardDTO announce);
-	public List<BoardDTO> qnaList(String id);
+	public List<BoardDTO> qnaList(BoardDTO dto);
 	public int qnaListCount(String id);
 	
 	

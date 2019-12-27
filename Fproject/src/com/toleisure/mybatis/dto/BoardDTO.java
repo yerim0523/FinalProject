@@ -14,9 +14,6 @@ public class BoardDTO
 
 	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId;
 
-	
-
-	
 	private int endIndex;
 	private int startIndex;
 	private int cntPerPage;
