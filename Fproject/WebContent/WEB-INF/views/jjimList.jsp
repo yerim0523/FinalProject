@@ -72,36 +72,36 @@
 			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
-						<h3>찜 목록</h3>
+						<h3>> 찜 목록</h3>
 					</div>
 				</div>
 				<br>
 				
 					<div class="page-header">
-						<b><h5>찜 모임</h5></b>
+						<h5 style="font-weight: bold;">찜 모임</h5>
 					</div>
 					<br>
 					<div class="row">
-						<c:forEach var="jjim" items="${jjimGroup}">
+						<c:forEach var="jjimG" items="${jjimGroup}">
 						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
 							<div class="text-center">
-								<img class="image" src="<%=cp%>/images/${jjim.ngPic}">
+								<img class="image" src="<%=cp%>/images/${jjimG.ngPic}">
 							</div>
 								<i class="far fa-heart"></i>
 									<a class="justify-content-between d-flex"> 
 									<span class="color" style="text-align: left;">
-									<c:if test="${jjim.grCate2Name != null }">
-									<span style="font-weight: bold; font-size: 13px; color: gray;">${jjim.grCate1Name } | ${jjim.grCate2Name }</span>
+									<c:if test="${jjimG.grCate2Name != null }">
+									<span style="font-weight: bold; font-size: 13px; color: gray;">${jjimG.grCate1Name } | ${jjimG.grCate2Name }</span>
 									</c:if>
-									<c:if test="${jjim.grCate2Name == null }">
-										${jjim.grCate1Name }
+									<c:if test="${jjimG.grCate2Name == null }">
+										${jjimG.grCate1Name }
 									</c:if>
 									</span>
-									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${jjim.grCount }</span>회차</span>
+									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${jjimG.grCount }</span>회차</span>
 									</a>
-								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${jjim.grName }</span>
+								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${jjimG.grName }</span>
 								<div>
-								<p class="text-right">${jjim.memName }</p>
+								<p class="text-right">${jjimG.memName }</p>
 								</div>
 						</div>
 						</c:forEach>
@@ -109,43 +109,19 @@
 					<br><br>
 					<div class="page-header">
 					<div>
-						<h3>찜 호스트</h3>
+						<h5 style="font-weight: bold;">찜 호스트</h5>
 					</div>
 					<br>
 					</div>
 					<div class="row">
-					<div class="host">
-						<img src="images/gd.jpg" class="rounded-circle" ><br>
-						백호진
+						<c:forEach var="jjimH" items="${jjimHost }">
+						<div class="host" style="padding-right: 20px;">
+							<img src="<%=cp%>/images/${jjimH.memPic}" class="rounded-circle" ><br>
+							<i class="far fa-heart"></i>
+							${jjimH.memName }
+						</div>
+						</c:forEach>
 					</div>
-					
-					<div class="host">
-						<img src="images/gd.jpg" class="rounded-circle" ><br>
-						백호진
-					</div>
-					
-					<div class="host">
-						<img src="images/gd.jpg" class="rounded-circle"><br>
-						백호진
-					</div>
-					
-					<div class="host">
-						<img src="images/gd.jpg" class="rounded-circle"><br>
-						백호진
-					</div>
-					
-					<div class="host">
-						<img src="images/gd.jpg" class="rounded-circle"><br>
-						백호진
-					</div>
-					
-					<div class="host">
-						<img src="images/gd.jpg" class="rounded-circle"><br>
-						백호진
-					</div>
-					
-					</div>
-					
 					<br><br><br>
 				
 			</div>

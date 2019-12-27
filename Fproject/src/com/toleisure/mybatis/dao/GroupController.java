@@ -146,6 +146,7 @@ public class GroupController
 		System.out.println("==================");
 		
 		m.addAttribute("jjimGroup", dao.jjimGroup(dto.getMemId()));
+		m.addAttribute("jjimHost", dao.jjimHost(dto.getMemId()));
 		
 		return "WEB-INF/views/jjimList.jsp";
 	}
