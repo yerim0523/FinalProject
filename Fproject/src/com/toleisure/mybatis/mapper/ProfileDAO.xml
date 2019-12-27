@@ -22,7 +22,7 @@
 	
 	
    <select id="grHistory" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT E.NG_PIC AS ngPic, E.CATE1 AS grCate1Name, E.CATE2 AS grCate2Name, E.GR_NAME AS grName, E.MEM_NAME AS memName
+		SELECT E.NG_PIC AS ngPic, E.CATE1 AS grCate1Name, CASE WHEN E.CATE2='0' THEN '' ELSE E.CATE2 END AS grCate2Name, E.GR_NAME AS grName, E.MEM_NAME AS memName
 			 ,E.GR_COUNT AS grCount, E.STAR_AVG AS grStarAvg, E.STAR_COUNT AS grStarCount
 		FROM
 		(
