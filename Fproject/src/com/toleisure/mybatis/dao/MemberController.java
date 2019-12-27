@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.toleisure.mybatis.dto.BoardDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
 
@@ -315,10 +316,10 @@ public class MemberController
 	@RequestMapping(value = "/mycal.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String myCalendar(MemberDTO dto, Model model, HttpSession session)
 	{
-		session.getAttribute("member");
+		dto = (MemberDTO)session.getAttribute("member");
+		String memId = dto.getMemId();
 		
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		
 		
 		return "/WEB-INF/views/myCalendar.jsp"; 
 	}
