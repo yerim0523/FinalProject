@@ -41,6 +41,9 @@ public interface IMainDAO
 	//-- 모임 상세 페이지 내용
 	public ArrayList<GroupDTO> groupContent(int ngCode);
 	public List<GroupDTO> groupContent(GroupDTO dto);
+	public ArrayList<GroupDTO> ContentReview(int ngCode);
+	public ArrayList<GroupDTO> ContentGBoard(int ngCode);
+	public ArrayList<GroupDTO> ContentMember(int ngCode);
 	
 	 
 	 

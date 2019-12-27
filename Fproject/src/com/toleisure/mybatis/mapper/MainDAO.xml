@@ -235,6 +235,57 @@
 		WHERE NGCODE = #{ngCode}
 	</select>
 	
+	<!-- 모임 상세 페이지 후기 -->
+	
+	<select id="ContentReview" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_NAME AS grName, MEM_PIC AS memPic, MEM_NAME AS memName, REVIEW_CONT AS reviewCont, REVIEW_STAR AS reviewStar, TO_CHAR(REVIEW_DATE, 'YYYY-MM-DD HH24:MI') AS reviewDate
+		FROM
+		(
+		    SELECT GR.GR_NAME, NG.NG_CODE, ME.MEM_PIC, ME.MEM_NAME, RE.REVIEW_CONT, RE.REVIEW_STAR, RE.REVIEW_DATE
+		    FROM NOW_GROUP NG JOIN TBL_GROUP GR
+		    ON NG.GR_CODE = GR.GR_CODE
+		        JOIN GR_REQUEST QU
+		        ON QU.NG_CODE = NG.NG_CODE
+		            JOIN PAYMENT PA
+		            ON PA.RE_CODE = QU.RE_CODE
+		                JOIN GR_JOIN JO
+		                ON JO.PAY_CODE = PA.PAY_CODE
+		                    JOIN REVIEW RE
+		                    ON RE.JOIN_CODE = JO.JOIN_CODE
+		                        JOIN MEMBER ME
+		                        ON ME.MEM_ID = QU.MEM_ID
+		)
+		WHERE NG_CODE = #{ngCode}
+	</select>
+	
+	<!-- 모임 상세 페이지 방명록 -->
+	
+	<select id="ContentGBoard" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT BOARD_NUM AS boardNum, NG_CODE AS ngCode, MEM_PIC AS memPic, MEM_NAME AS memName, BOARD_CONT AS boardCont, BOARD_DATE AS boardDate
+		FROM
+		(
+		    SELECT GB.BOARD_NUM, GB.NG_CODE, MB.MEM_PIC, MB.MEM_NAME, GB.BOARD_CONT, GB.BOARD_DATE
+		    FROM GUESTBOARD GB JOIN NOW_GROUP NG
+		    ON GB.NG_CODE = NG.NG_CODE
+		        JOIN MEMBER MB
+		        ON MB.MEM_ID = GB.MEM_ID
+		)   
+		WHERE NG_CODE = #{ngCode}
+	</select>
+	
+	<!-- 모임 상세 페이지 참여 인원 목록 -->
+	
+	<select id="ContentMember" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT MEM_PIC AS memPic, MEM_NAME AS memName
+		FROM GR_JOIN JO, PAYMENT PA, GR_REQUEST RE, FIXED_GROUP FI, NOW_GROUP NG, MEMBER MB
+		WHERE JO.FIX_CODE = FI.FIX_CODE
+		  AND FI.NG_CODE = NG.NG_CODE
+		  AND RE.NG_CODE = NG.NG_CODE
+		  AND JO.PAY_CODE = PA.PAY_CODE
+		  AND PA.RE_CODE = RE.RE_CODE
+		  AND RE.MEM_ID = MB.MEM_ID
+		  AND NG.NG_CODE = #{ngCode}	
+	</select>
 	
 	
 	

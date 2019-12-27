@@ -12,6 +12,13 @@ public class GroupDTO
 	private String ngLocation, ngLocation1, ngLocation2;
 
 	private String ngStart, ngStart1, ngStart2, ngEnd, ngEnd1, ngEnd2, ngDate;
+	
+	private String reviewCont, reviewDate;
+	private double reviewStar;
+	
+	private String boardCont, boardDate;
+	private int boardNum;
+
 
 	private int grCount, grStarCount;
 	private double grStarAvg;
@@ -372,6 +379,68 @@ public class GroupDTO
 	public void setGrPic(String grPic)
 	{
 		this.grPic = grPic;
+	}
+	
+	//------------------------------------Review
+	public String getReviewCont()
+	{
+		return reviewCont;
+	}
+
+	public void setReviewCont(String reviewCont)
+	{
+		this.reviewCont = reviewCont;
+	}
+
+	public String getReviewDate()
+	{
+		return reviewDate;
+	}
+
+	public void setReviewDate(String reviewDate)
+	{
+		this.reviewDate = reviewDate;
+	}
+
+	public double getReviewStar()
+	{
+		return reviewStar;
+	}
+
+	public void setReviewStar(double reviewStar)
+	{
+		this.reviewStar = reviewStar;
+	}
+	
+	//-----------------------------------------GUESTBOARD
+	public String getBoardCont()
+	{
+		return boardCont;
+	}
+
+	public void setBoardCont(String boardCont)
+	{
+		this.boardCont = boardCont;
+	}
+
+	public String getBoardDate()
+	{
+		return boardDate;
+	}
+
+	public void setBoardDate(String boardDate)
+	{
+		this.boardDate = boardDate;
+	}
+
+	public int getBoardNum()
+	{
+		return boardNum;
+	}
+
+	public void setBoardNum(int boardNum)
+	{
+		this.boardNum = boardNum;
 	}
 
 	
