@@ -312,5 +312,14 @@ public class MemberController
 		return "mypage.action"; 
 	}
 	
-	
+	@RequestMapping(value = "/mycal.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String myCalendar(MemberDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		
+		return "/WEB-INF/views/myCalendar.jsp"; 
+	}
 }

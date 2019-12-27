@@ -118,7 +118,7 @@
 					<br>
 					<div class="a_content">
 						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users fa-7x"></i><br><br><p class="menu">내 모임</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">일정관리</p></span></a></div>
+						<div class="box"><a href="mycal.action"><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">일정관리</p></span></a></div>
 						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">모임관리</p></span></a></div>
 						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-receipt fa-7x"></i><br><br><p class="menu">결제내역</p></span></a></div>
 					</div>

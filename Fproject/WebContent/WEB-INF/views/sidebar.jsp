@@ -105,7 +105,7 @@ text-align: center;
 				<li><a href="mylistEnd.jsp"> 종료 모임</a></li>
 			</ul>
 		</li>
-		<li><a href="#contact"><i class="fa fa-fw fa-calendar-alt"></i>	일정관리</a></li>
+		<li><a href="mycal.action"><i class="fa fa-fw fa-calendar-alt"></i>	일정관리</a></li>
 		<li><a href="#contact"><i class="fa fa-fw fa-users-cog"></i> 모임관리</a></li>
 		<li><a href="#contact"><i class="fa fa-fw fa-receipt"></i> 결제내역</a></li>
 	</ul>
