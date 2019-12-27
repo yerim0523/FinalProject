@@ -9,18 +9,41 @@
 <head>
 <meta charset="UTF-8">
 <title>calendar.jsp</title>
+<style type="text/css">
+	
+</style>
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.min.js"></script>
-<script type="js/bootstrap.js"></script>
 <link rel="stylesheet" href="css/calendar.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 
 </head>
 <body>
 
-<div id="calendar"></div>
+<div>
+	<div>
+		<c:import url="bar.jsp"></c:import>
+	</div>
+</div>
+
+
+<section class="course_details_area section_padding" style="padding-bottom: 0;">
+<div class="container">
+
+	<div class="row">
+		<c:import url="sidebar.jsp"></c:import>
+		
+		<div id="calendar"></div>
+	</div>
+	
+</div>
+</section>
+
+
+
+
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
 
 <script type="text/javascript">
 
