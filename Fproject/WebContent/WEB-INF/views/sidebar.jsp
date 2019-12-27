@@ -98,7 +98,7 @@ text-align: center;
 	<ul id="nav">
 		<li><a href="infomodify.action?memId=${member.memId }"><i class="fa fa-fw fa-user"></i> 개인정보수정</a></li>
 		<li><a href="mypwmodify.action?memId=${member.memId }"><i class="fa fa-fw fa-lock"></i> 비밀번호 재설정</a></li> 
-		<li><a href="#clients"><i class="fa fa-fw fa-heart"></i> 찜목록</a></li>
+		<li><a href="favoritegroup.action?memId=${member.memId }"><i class="fa fa-fw fa-heart"></i> 찜목록</a></li>
 		<li><a href="#myGroupList"><i class="fa fa-fw fa-users"></i> 내 모임</a>
 			<ul>
 				<li><a href="mylist.jsp"> 참여 모임</a></li>
