@@ -174,7 +174,6 @@
 				</ul>
 			 -->
 					<a class="cate" href="faq.action" >전체</a> |
-					<a class="cate" href="faqhost.action">호스트신청</a> |
 					<a class="cate" href="faquse.action">이용안내</a> |
 					<a class="cate" href="#" style="font-weight: bold;">회원정보</a> |
 					<a class="cate" href="faqpay.action">결제/환불</a> |
@@ -192,7 +191,6 @@
 				    <div class="card-header">
 				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
 				       [${faq.faqName}] ${faq.boardTitle}
-				        
 				      </a>
 				      <button type="button" onclick="delcheck(${faq.boardNum})" style="float: right;">삭제</button>
 				      <button type="button" onclick="edit(${faq.boardNum})"  style="float: right;">수정</button>

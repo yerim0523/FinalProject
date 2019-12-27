@@ -10,6 +10,7 @@
         <result property="boardDate" column="boardDate"/>
         <result property="boardMem" column="boardMem"/>
         <result property="boardHits" column="boardHits"/>
+        <result property="boardNotice" column="boardNotice"/>
         <result property="faqName" column="faqName"/>
     </resultMap> 
     
@@ -21,28 +22,6 @@
         <result property="faqMem" column="faqMem"/>
     </resultMap> -->
     
-
-     <select id="newsListCount" resultType="Integer">
-        SELECT COUNT(*)
-        FROM NEWS_POST_VIEW
-    </select>
-    
-     <select id="newsList" resultMap = "BoardDTO">
-		SELECT  E.NUM AS rNum,E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
-        		,SUBSTR(E.NEWS_DATE, 1, 10) AS boardDate,E.MEM_NAME AS boardMem, E.NEWS_HITS AS boardHits
-
-        			FROM
-      				( 
-      				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.NEWS_NUM DESC) NUM, DATA.* 
-      				  FROM 
-	      				( 
-	      				SELECT NEWS_NUM, MEM_NAME, NEWS_TITLE, NEWS_DATE, NEWS_CONT,NEWS_HITS
-	      				FROM NEWS_POST_VIEW 
-	      				ORDER BY NEWS_NUM DESC 
-	      				) DATA 
-      				)E 
-      				WHERE NUM BETWEEN #{startIndex} AND #{endIndex}
-      </select>
     
     <select id="eventListCount" resultType="Integer">
         SELECT COUNT(*)
@@ -51,21 +30,183 @@
     
      <select id="eventList" resultMap = "BoardDTO">
 		SELECT  E.NUM AS rNum,E.EVENT_NUM AS boardNum, E.EVENT_TITLE AS boardTitle, E.EVENT_CONT AS boardCont
-        		,SUBSTR(E.EVENT_DATE, 1, 10) AS boardDate,E.MEM_NAME AS boardMem , E.EVENT_HITS AS boardHits
+        		,SUBSTR(E.EVENT_DATE, 1, 10) AS boardDate,E.MEM_NAME AS boardMem, E.EVENT_HITS AS boardHits,NVL(E.ENOTICE_NUM,0) AS boardNotice
         			FROM
       				( 
-      				  SELECT ROW_NUMBER() OVER (ORDER BY DATA.EVENT_NUM DESC) NUM, DATA.* 
+      				  SELECT DATA.* 
       				  FROM 
 	      				( 
-	      				SELECT EVENT_NUM, MEM_NAME, EVENT_TITLE, EVENT_HITS, EVENT_DATE, EVENT_CONT
-	      				FROM EVENT_POST_VIEW 
-	      				ORDER BY EVENT_NUM DESC 
+	      				SELECT ROWNUM AS NUM,EVENT_NUM, MEM_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONT,EVENT_HITS,ENOTICE_NUM
+	      				FROM EVENT_ANNOUNCE_VIEW 
+	      				ORDER BY ENOTICE_NUM
 	      				) DATA 
       				)E 
-      				WHERE NUM BETWEEN #{startIndex} AND #{endIndex}
+      				WHERE E.NUM BETWEEN #{startIndex} AND #{endIndex}
       </select>
 
+	 <select id="eventSelect" resultMap ="BoardDTO">
+        SELECT  EVENT_NUM AS boardNum, EVENT_TITLE AS boardTitle, EVENT_CONT AS boardCont,
+        		EVENT_DATE AS boardDate,MEM_NAME AS boardMem, EVENT_HITS AS boardHits,NVL(ENOTICE_NUM,0) AS boardNotice
+        FROM EVENT_ANNOUNCE_VIEW 
+        WHERE EVENT_NUM = #{boardNum}
+    </select>
+    
+    <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="eventInsert">
+      {CALL
+         DECLARE
+            boardCodeSeq INT;
+         BEGIN
+            boardCodeSeq := EVENTSEQ.NEXTVAL;
+  
+             INSERT INTO EVENT(EVENT_NUM,ADMIN_CODE,EVENT_TITLE,EVENT_CONT,EVENT_DATE,EVENT_HITS)
+            VALUES(boardCodeSeq,1, #{boardTitle}, #{boardCont} ,SYSDATE,0);
+            
+            <choose>
+               <when test='check!= 0'>
+                  INSERT INTO EVENT_NOTICE
+                     (ENOTICE_NUM, EVENT_NUM,ADMIN_CODE)
+                  VALUES
+                     (EVENT_NOTSEQ.NEXTVAL,boardCodeSeq,1);
+               </when>
+               <otherwise>
+                 
+               </otherwise>
+            </choose>
+      END
+      }
+   </insert>
+   <update id ="eventUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
+             UPDATE EVENT
+             SET EVENT_TITLE=#{boardTitle},EVENT_CONT=#{boardCont}
+			 WHERE EVENT_NUM = #{boardNum}           	           		           
+   </update>
    
+   <delete id="eventDelete" >
+        DELETE 
+        FROM EVENT
+        WHERE EVENT_NUM = #{boardNum}
+    </delete>
+    
+   <select id ="EventNoticeCheck" resultType="Integer">
+   SELECT  COUNT(*)
+            FROM EVENT_NOTICE
+            WHERE EVENT_NUM=#{boardNum}
+   </select>
+   
+   <delete id="EventNoticeDelete" >
+        DELETE 
+        FROM EVENT_NOTICE
+        WHERE EVENT_NUM = #{boardNum}
+    </delete>
+    
+    <update id ="updateEventHitCount" parameterType="Integer">
+   			UPDATE EVENT
+   			SET EVENT_HITS = EVENT_HITS+1
+   			WHERE EVENT_NUM =#{boardNum}
+   </update>
+    
+    <insert id ="InsertEventNotice">
+    	          INSERT INTO EVENT_NOTICE
+                     (ENOTICE_NUM, EVENT_NUM,ADMIN_CODE)
+                  VALUES
+                     (EVENT_NOTSEQ.NEXTVAL,#{boardNum},1)
+    </insert>
+    
+    
+     <select id="newsListCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM NEWS_POST_VIEW
+    </select>
+    
+     <select id="newsList" resultMap = "BoardDTO">
+		SELECT  E.NUM AS rNum,E.NEWS_NUM AS boardNum, E.NEWS_TITLE AS boardTitle, E.NEWS_CONT AS boardCont
+        		,SUBSTR(E.NEWS_DATE, 1, 10) AS boardDate,E.MEM_NAME AS boardMem, E.NEWS_HITS AS boardHits,NVL(E.NNOTICE_NUM,0) AS boardNotice
+        			FROM
+      				( 
+      				  SELECT DATA.* 
+      				  FROM 
+	      				( 
+	      				SELECT ROWNUM AS NUM,NEWS_NUM, MEM_NAME, NEWS_TITLE, NEWS_DATE, NEWS_CONT,NEWS_HITS,NNOTICE_NUM
+	      				FROM NEWS_ANNOUNCE_VIEW 
+	      				ORDER BY NNOTICE_NUM
+	      				) DATA
+      				)E 
+      				WHERE E.NUM BETWEEN #{startIndex} AND #{endIndex}
+      </select>
+    
+    <select id="newsSelect" resultMap ="BoardDTO">
+        SELECT  NEWS_NUM AS boardNum, NEWS_TITLE AS boardTitle, NEWS_CONT AS boardCont,
+        		NEWS_DATE AS boardDate, MEM_NAME AS boardMem, NEWS_HITS AS boardHits,NVL(NNOTICE_NUM,0) AS boardNotice
+        FROM NEWS_ANNOUNCE_VIEW
+        WHERE NEWS_NUM = #{boardNum}
+    </select>
+   
+   
+   <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="newsInsert">
+      {CALL
+         DECLARE
+            boardCodeSeq INT;
+         BEGIN
+            boardCodeSeq := NEWSSEQ.NEXTVAL;
+  
+             INSERT INTO NEWS(NEWS_NUM,ADMIN_CODE,NEWS_TITLE,NEWS_CONT,NEWS_DATE,NEWS_HITS)
+            VALUES(boardCodeSeq,1, #{boardTitle}, #{boardCont} ,SYSDATE,0);
+            
+            <choose>
+               <when test='check!= 0'>
+                  INSERT INTO NEWS_NOTICE
+                     (NNOTICE_NUM, NEWS_NUM,ADMIN_CODE)
+                  VALUES
+                     (NEWS_NOTSEQ.NEXTVAL,boardCodeSeq,1);
+               </when>
+               <otherwise>
+                 
+               </otherwise>
+            </choose>
+      END
+      }
+   </insert>
+    
+   <delete id="newsDelete" >
+        DELETE 
+        FROM NEWS
+        WHERE NEWS_NUM = #{boardNum}
+    </delete>
+
+   <select id ="NewsNoticeCheck" resultType="Integer">
+   SELECT  COUNT(*)
+            FROM NEWS_NOTICE
+            WHERE NEWS_NUM=#{boardNum}
+   </select>
+   
+   <update id ="updateNewsHitCount" parameterType="Integer">
+   			UPDATE NEWS
+   			SET NEWS_HITS = NEWS_HITS+1
+   			WHERE NEWS_NUM =#{boardNum}
+   </update>
+   
+    <update id ="newsUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
+             UPDATE NEWS
+             SET NEWS_TITLE=#{boardTitle},NEWS_CONT=#{boardCont}
+			 WHERE NEWS_NUM = #{boardNum}           	           		           
+   </update>
+   
+    <delete id="NewsNoticeDelete" >
+        DELETE 
+        FROM NEWS_NOTICE
+        WHERE NEWS_NUM = #{boardNum}
+    </delete>
+    
+    <insert id ="InsertNewsNotice">
+    	          INSERT INTO NEWS_NOTICE
+                     (NNOTICE_NUM, NEWS_NUM,ADMIN_CODE)
+                  VALUES
+                     (NEWS_NOTSEQ.NEXTVAL,#{boardNum},1)
+    </insert>
+    
+    
+   
+    
     <select id="faqListCount" resultType="Integer">
         SELECT COUNT(*)
         FROM FAQ_POST_VIEW
@@ -101,22 +242,6 @@
 	      				) DATA 
       				)E 
       				
-      </select>
-      
-      <select id="faqHostList" resultMap = "BoardDTO">
-		SELECT  E.FAQ_NUM AS boardNum, E.FAQ_TITLE AS boardTitle, E.FAQ_CONT AS boardCont
-        		, E.FAQ_DATE AS boardDate, E.MEM_NAME AS boardMem, E.FAQ_NAME AS faqName
-        			FROM
-      				( 
-      				  SELECT ROWNUM RNUM, DATA.* 
-      				  FROM 
-	      				( 
-	      				SELECT FAQ_NUM, MEM_NAME, FAQ_TITLE, FAQ_DATE, FAQ_CONT, FAQ_NAME
-	      				FROM FAQ_POST_VIEW 
-	      				WHERE FAQ_NAME = '호스트신청' 
-	      				ORDER BY FAQ_NUM DESC 
-	      				) DATA 
-      				)E 
       </select>
       
       <select id="faqPayList" resultMap = "BoardDTO">
@@ -165,181 +290,32 @@
 	      				ORDER BY FAQ_NUM DESC 
 	      				) DATA 
       				)E 
-      </select>
-
-     <select id="eventSelect" resultMap ="BoardDTO">
-        SELECT  EVENT_NUM AS boardNum, EVENT_TITLE AS boardTitle, EVENT_CONT AS boardCont,
-        		EVENT_DATE AS boardDate,MEM_NAME AS boardMem, EVENT_HITS AS boardHits
-        FROM EVENT_POST_VIEW
-        WHERE EVENT_NUM = #{boardNum}
-    </select>
+      </select>  
     
-    
-    <select id="newsSelect" resultMap ="BoardDTO">
-        SELECT  NEWS_NUM AS boardNum, NEWS_TITLE AS boardTitle, NEWS_CONT AS boardCont,
-        		NEWS_DATE AS boardDate, MEM_NAME AS boardMem, NEWS_HITS AS boardHits
-        FROM NEWS_POST_VIEW
-        WHERE NEWS_NUM = #{boardNum}
-    </select>
-    
-        <select id="faqUpdateForm" resultMap ="BoardDTO">
+    <select id="faqUpdateForm" resultMap ="BoardDTO">
         SELECT  FAQ_NUM AS boardNum, FAQ_TITLE AS boardTitle, FAQ_CONT AS boardCont,
         		FAQ_DATE AS boardDate , MEM_NAME AS boardMem
         FROM FAQ_POST_VIEW
         WHERE FAQ_NUM = #{boardNum}
     </select>
     
-   <delete id="newsDelete" >
-        DELETE 
-        FROM NEWS
-        WHERE NEWS_NUM = #{boardNum}
-    </delete>
-    
-    <delete id="eventDelete" >
-        DELETE 
-        FROM EVENT
-        WHERE EVENT_NUM = #{boardNum}
-    </delete>
-    
     <delete id="faqDelete" >
         DELETE 
         FROM FAQ
         WHERE FAQ_NUM = #{boardNum}
     </delete>
-    
-    
-    
-    
-    <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="eventInsert">
-      {CALL
-         DECLARE
-            boardCodeSeq INT;
-         BEGIN
-            boardCodeSeq := EVENTSEQ.NEXTVAL;
-  
-             INSERT INTO EVENT(EVENT_NUM,ADMIN_CODE,EVENT_TITLE,EVENT_CONT,EVENT_DATE,EVENT_HITS)
-            VALUES(boardCodeSeq,1, #{boardTitle}, #{boardCont} ,SYSDATE,0);
-            
-            <choose>
-               <when test='check!= 0'>
-                  INSERT INTO EVENT_NOTICE
-                     (ENOTICE_NUM, EVENT_NUM,ADMIN_CODE)
-                  VALUES
-                     (EVENT_NOTSEQ.NEXTVAL,boardCodeSeq,1);
-               </when>
-               <otherwise>
-                 
-               </otherwise>
-            </choose>
-      END
-      }
-   </insert>
-   
-   
-    <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="newsInsert">
-      {CALL
-         DECLARE
-            boardCodeSeq INT;
-         BEGIN
-            boardCodeSeq := NEWSSEQ.NEXTVAL;
-  
-             INSERT INTO NEWS(NEWS_NUM,ADMIN_CODE,NEWS_TITLE,NEWS_CONT,NEWS_DATE,NEWS_HITS)
-            VALUES(boardCodeSeq,1, #{boardTitle}, #{boardCont} ,SYSDATE,0);
-            
-            <choose>
-               <when test='check!= 0'>
-                  INSERT INTO NEWS_NOTICE
-                     (NNOTICE_NUM, NEWS_NUM,ADMIN_CODE)
-                  VALUES
-                     (NEWS_NOTSEQ.NEXTVAL,boardCodeSeq,1);
-               </when>
-               <otherwise>
-                 
-               </otherwise>
-            </choose>
-      END
-      }
-   </insert>
-   
-   
+
    <insert parameterType="com.toleisure.mybatis.dto.BoardDTO" id="faqInsert">
         INSERT INTO FAQ(FAQ_NUM,ADMIN_CODE,FAQ_CODE,FAQ_TITLE,FAQ_CONT)
         VALUES(FAQSEQ.NEXTVAL, 1, #{faqCate}, #{boardTitle}, #{boardCont})
    </insert>
-   
-   
-   <update id ="updateNewsHitCount" parameterType="Integer">
-   			UPDATE NEWS
-   			SET NEWS_HITS = NEWS_HITS+1
-   			WHERE NEWS_NUM =#{boardNum}
-   </update>
-   
-    <update id ="updateEventHitCount" parameterType="Integer">
-   			UPDATE EVENT
-   			SET EVENT_HITS = EVENT_HITS+1
-   			WHERE EVENT_NUM =#{boardNum}
-   </update>
-   
-   
-   <select id ="EventNoticeCheck" resultType="Integer">
-   SELECT  COUNT(*)
-            FROM EVENT_NOTICE
-            WHERE EVENT_NUM=#{boardNum}
-   </select>
-   
-   
-    <update id ="eventUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
-             UPDATE EVENT
-             SET EVENT_TITLE=#{boardTitle},EVENT_CONT=#{boardCont}
-			 WHERE EVENT_NUM = #{boardNum}           	           		           
-   </update>
-   
+
+    
    <update id ="faqUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
              UPDATE FAQ
              SET FAQ_TITLE=#{boardTitle},FAQ_CONT=#{boardCont} ,FAQ_CODE=#{faqCate}
 			 WHERE FAQ_NUM = #{boardNum}           	           		           
    </update>
-   
-    <delete id="EventNoticeDelete" >
-        DELETE 
-        FROM EVENT_NOTICE
-        WHERE EVENT_NUM = #{boardNum}
-    </delete>
-    
-    <insert id ="InsertEventNotice">
-    	          INSERT INTO EVENT_NOTICE
-                     (ENOTICE_NUM, EVENT_NUM,ADMIN_CODE)
-                  VALUES
-                     (EVENT_NOTSEQ.NEXTVAL,#{boardNum},1)
-    </insert>
-   
-   
-   
-   <select id ="NewsNoticeCheck" resultType="Integer">
-   SELECT  COUNT(*)
-            FROM NEWS_NOTICE
-            WHERE NEWS_NUM=#{boardNum}
-   </select>
-   
-   
-    <update id ="newsUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
-             UPDATE NEWS
-             SET NEWS_TITLE=#{boardTitle},NEWS_CONT=#{boardCont}
-			 WHERE NEWS_NUM = #{boardNum}           	           		           
-   </update>
-   
-    <delete id="NewsNoticeDelete" >
-        DELETE 
-        FROM NEWS_NOTICE
-        WHERE NEWS_NUM = #{boardNum}
-    </delete>
-    
-    <insert id ="InsertNewsNotice">
-    	          INSERT INTO NEWS_NOTICE
-                     (NNOTICE_NUM, NEWS_NUM,ADMIN_CODE)
-                  VALUES
-                     (NEWS_NOTSEQ.NEXTVAL,#{boardNum},1)
-    </insert>
- 
+
     
 </mapper>

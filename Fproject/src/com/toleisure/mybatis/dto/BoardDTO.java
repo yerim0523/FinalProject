@@ -25,7 +25,9 @@ public class BoardDTO
 
 	private String eventNum, eventTitle, eventCont, eventMem, eventDate;
 
-	private int boardHits, boardNum;
+	private int boardHits, boardNum,boardNotice;
+	
+
 	private String boardTitle, boardCont, boardMem, boardDate;
 
 	
@@ -368,6 +370,16 @@ public class BoardDTO
 	public void setFaqName(String faqName)
 	{
 		this.faqName = faqName;
+	}
+	
+	public int getBoardNotice()
+	{
+		return boardNotice;
+	}
+
+	public void setBoardNotice(int boardNotice)
+	{
+		this.boardNotice = boardNotice;
 	}
 
 }

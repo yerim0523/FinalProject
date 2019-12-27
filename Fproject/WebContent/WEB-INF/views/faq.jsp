@@ -174,7 +174,6 @@
 				</ul>
 			 -->
 					<a class="cate" href="#" style="font-weight: bold;">전체</a> |
-					<a class="cate" href="faqhost.action">호스트신청</a> |
 					<a class="cate" href="faquse.action">이용안내</a> |
 					<a class="cate" href="faquser.action">회원정보</a> |
 					<a class="cate" href="faqpay.action">결제/환불</a> |
