@@ -67,6 +67,7 @@ function formCheck()
       f.boardTitle.focus();
       return;
    }
+
    
    str = f.boardCont.value;
    str = str.trim();
@@ -120,7 +121,6 @@ function formCheck()
 						value="${v.boardTitle }"required="required" pattern=".{4,100}" style="width: 770px;">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name="faqCate" class="form-control" style="width: 200px;">
-				            <option>카테고리선택</option>
 				            <option id="faqCate"  value="1">이용안내</option>
 				            <option id="faqCate" value="2">회원정보</option>
 				            <option id="faqCate" value="3">결제/환불</option>

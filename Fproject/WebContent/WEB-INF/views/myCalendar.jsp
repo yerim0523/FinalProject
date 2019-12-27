@@ -103,7 +103,8 @@
 	  Calendar.prototype.drawMonth = function() {
 	    var self = this;
 	    
-	    this.events.forEach(function(ev) {
+	    this.events.forEach(function(ev) 
+	    {
 	     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
 	    });
 	    
@@ -401,9 +402,7 @@
 
 	}();
 
-
 </script>
-
 
 </body>
 </html>

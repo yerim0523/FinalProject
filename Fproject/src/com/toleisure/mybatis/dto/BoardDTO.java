@@ -12,10 +12,11 @@ public class BoardDTO
 	private int faqCate;
 
 
-	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem;
+	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId;
 
 	
 
+	
 	private int endIndex;
 	private int startIndex;
 	private int cntPerPage;
@@ -381,5 +382,16 @@ public class BoardDTO
 	{
 		this.boardNotice = boardNotice;
 	}
+	
+	public String getFaqId()
+	{
+		return faqId;
+	}
+
+	public void setFaqId(String faqId)
+	{
+		this.faqId = faqId;
+	}
+
 
 }
