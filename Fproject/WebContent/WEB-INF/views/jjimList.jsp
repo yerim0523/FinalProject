@@ -116,7 +116,7 @@
 					<br><br>
 					<div class="page-header">
 					<div>
-						<h5 style="font-weight: bold;">찜 호스트</h5>
+						<h5 style="font-weight: bold;">찜 호스트 </h5>
 					</div>
 					<br>
 					</div>
