@@ -285,7 +285,7 @@ public class MemberController
 		session.getAttribute("member");
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 		
-		/* session.getAttribute("myId"); */
+		/* session.getAttribute("myId"); */ 
 		
 		dao.updatePw(dto);
 		
