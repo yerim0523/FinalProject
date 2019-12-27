@@ -90,7 +90,7 @@
 <!-- 									<i id="emptyHeart" class="far fa-heart"></i> -->
 <!-- 									<i id="fullHeart" class="fas fa-heart"></i> -->
 									<i id="emptyHeart" class="far fa-heart"></i>
-									<a class="justify-content-between d-flex"> 
+									<a href="#모임상세페이지?grCode=${jjimG.ngCode }" class="justify-content-between d-flex"> 
 									<span class="color" style="text-align: left;">
 									<c:if test="${jjimG.grCate2Name != null }">
 									<span style="font-weight: bold; font-size: 13px; color: gray;">${jjimG.grCate1Name } | ${jjimG.grCate2Name }</span>
