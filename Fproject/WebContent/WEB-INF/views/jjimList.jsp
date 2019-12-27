@@ -87,7 +87,9 @@
 							<div class="text-center">
 								<img class="image" src="<%=cp%>/images/${jjimG.ngPic}">
 							</div>
-								<i class="far fa-heart"></i>
+<!-- 									<i id="emptyHeart" class="far fa-heart"></i> -->
+<!-- 									<i id="fullHeart" class="fas fa-heart"></i> -->
+									<i id="emptyHeart" class="far fa-heart"></i>
 									<a class="justify-content-between d-flex"> 
 									<span class="color" style="text-align: left;">
 									<c:if test="${jjimG.grCate2Name != null }">
@@ -105,6 +107,11 @@
 								</div>
 						</div>
 						</c:forEach>
+						<c:if test="${jjimGroup == null }">
+						<div>
+							<p class="text-center">찜 모임 목록이 비어있습니다. <br>모임을 찜해주세요 ㅎㅎ</p>
+						</div>
+						</c:if>
 					</div>
 					<br><br>
 					<div class="page-header">
