@@ -75,13 +75,14 @@
 						<h3>> 찜 목록</h3>
 					</div>
 				</div>
-				<br>
+				<br><br>
 				
 					<div class="page-header">
 						<h5 style="font-weight: bold;">찜 모임</h5>
 					</div>
 					<br>
 					<div class="row">
+						<c:if test="${!empty jjimGroup }">
 						<c:forEach var="jjimG" items="${jjimGroup}">
 						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
 							<div class="text-center">
@@ -107,12 +108,13 @@
 								</div>
 						</div>
 						</c:forEach>
-						<c:if test="${jjimGroup == null }">
-						<div>
-							<p class="text-center">찜 모임 목록이 비어있습니다. <br>모임을 찜해주세요 ㅎㅎ</p>
-						</div>
 						</c:if>
 					</div>
+					<c:if test="${empty jjimGroup }">
+						<div align="center">
+							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;찜 모임 목록이 비어있습니다. 모임을 찜해주세요 ~ !</p>
+						</div>
+						</c:if>
 					<br><br>
 					<div class="page-header">
 					<div>
@@ -129,8 +131,12 @@
 						</div>
 						</c:forEach>
 					</div>
+					<c:if test="${empty jjimHost }">
+						<div align="center">
+							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;찜 호스트 목록이 비어있습니다. 호스트를 찜해주세요 ~ !</p>
+						</div>
+					</c:if>
 					<br><br><br>
-				
 			</div>
 		</div>
 	
