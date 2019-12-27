@@ -90,6 +90,13 @@
 		FROM MEM_FAV_GROUP
 		WHERE MEM_ID=#{memId}
 	</select>
+	
+	
+	<select id="jjimHost" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT HF.MEM_ID AS memId, H.MEM_ID AS hostId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName
+		FROM HOST_FAVORITE HF, HOST H, MEMBER M
+		WHERE HF.HOST_CODE = H.HOST_CODE AND H.MEM_ID = M.MEM_ID AND HF.MEM_ID=#{memId}
+	</select>
 
 
    <!-- 

@@ -16,8 +16,11 @@ public interface IGroupDAO
 	// grCode 에 따른 모임의 가장 최근 정보 가져오기
 	public GroupDTO groupFormInfo(int grCode);
 	
-	// 메이트ID 에 따른 찜모임 리스트 출력 (마이페이지 - 찜목록)
+	// 메이트ID 에 따른 찜 모임 리스트 출력 (마이페이지 - 찜 목록)
 	public ArrayList<GroupDTO> jjimGroup(String memId);
+	
+	// 메이트ID 에 따른 찜 호스트 리스트 출력 (마이페이지 - 찜 목록)
+	public ArrayList<GroupDTO> jjimHost(String memId);
 	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);
