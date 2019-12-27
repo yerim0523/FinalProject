@@ -51,7 +51,8 @@
 
 	  var today = moment();
 
-	  function Calendar(selector, events) {
+	  function Calendar(selector, events) 
+	  {
 	    this.el = document.querySelector(selector);
 	    this.events = events;
 	    this.current = moment().date(1);
