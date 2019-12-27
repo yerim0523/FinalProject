@@ -158,7 +158,7 @@
 			</div>
 			
 			</div>
-			</div>
+			</div><!-- end div.thumbnail -->
 			<%-- <div>ngCode = ${AllGroup.ngCode}</div> --%>
 		</div>
 		</c:forEach>

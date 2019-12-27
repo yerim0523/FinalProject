@@ -55,6 +55,12 @@
 
 <style type="text/css">
 
+	.img-responsive
+	{
+		height: 200px;
+		width: 500px;
+	}
+	
 	.page
 	{
 	   font-weight: bold;
@@ -164,7 +170,9 @@
 	<br>
 		<div>
 			<textarea rows="10" cols="160" style="width: 100%;">호스트 후기</textarea>
-			<button type="button" class="btn4" style="width: 100%;">더보기</button>
+			<div align="center">
+			<button type="button" class="btn4" style="width: 15%;">더보기</button>
+			</div>
 		</div>
 	</div>
 	<br>
@@ -185,15 +193,21 @@
 		<c:forEach var="group" items="${group}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" >
 				<div class="caption">
 					<div>
 						<div class="starRev">
 						</div>
 						<div>
-							<img alt="" src="images/star_full.png" style="width: 20px;">
-							<img alt="" src="images/star_full.png" style="width: 20px;">
-							<span> ${group.grStarAvg } / ${group.grStarCount }</span>
+							<c:if test="${group.grStarAvg != 0.0 }">
+							<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+							</c:if>
+							<c:if test="${group.grStarAvg == 0.0 }">
+							<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+							</c:if>
+							<span style="color: gray;">&nbsp;&nbsp;${group.grStarAvg } 
+								<span style="font-size: 10pt; color: gray;">/ ${group.grStarCount }<span style="font-size: 8pt;">명</span></span>
+							</span>
 						</div>
 					</div>
 					<br>

@@ -117,7 +117,12 @@
 						<div class="starRev">
 						</div>
 						<div>
-							<img alt="" src="images/star.png" style="width: 20px;">
+							<c:if test="${group.grStarAvg != 0.0 }">
+							<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+							</c:if>
+							<c:if test="${group.grStarAvg == 0.0 }">
+							<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+							</c:if>
 							<span> ${group.grStarAvg } / ${group.grStarCount }</span>
 						</div>
 					</div>
