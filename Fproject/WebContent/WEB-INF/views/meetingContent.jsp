@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+   request.setCharacterEncoding("UTF-8");
+   String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +54,56 @@
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    
+<style type="text/css">
+
+.starR1{
+	    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+	    background-size: auto 100%;
+	    width: 15px;
+	    height: 30px;
+	    float: right;
+	    text-indent: -9999px;
+	    cursor: pointer;
+	}
+	.starR2{
+	    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+	    background-size: auto 100%;
+	    width: 15px;
+	    height: 30px;
+	    float: right;
+	    text-indent: -9999px;
+	    cursor: pointer;
+	}
+	
+	.starR1.on{background-position:0 0;}
+	.starR2.on{background-position:-15px 0;}
+	
+	.review
+	{
+	  border: 1px solid gray;
+	  border-radius: 30px;
+	  padding: 20px;
+	  margin: 10px;
+	  align-self: center;
+	  width: 720px;
+	}
+	
+	.review p, .balloon p
+	{
+		font-weight: bold;
+		font-size: 11pt;
+		color: #333333;
+	}
+	
+	.review a, .balloon a
+	{
+		font-weight: bold;
+		font-size: 13pt;
+		color: #333333;
+	}
+
+</style>
 
 
 </head>
@@ -64,230 +118,6 @@
 			<c:import url="MeetingBar.jsp"></c:import>
 		</div>
 
-	<!-- 
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 course_details_left">
-					<div class="main_image">
-						<img class="img-fluid" src="images/ma.jpg"
-							style="width: 1000px; height: 400px;">
-					</div>
-
-					<br>
-					<br>
-					<div align="center">
-						<a href="#introduce">모임소개</a> | <a href="#note">유의사항</a> | <a
-							href="#host">호스트소개</a> | <a href="#after">후기</a> | <a
-							href="#bang">방명록</a> | <a href="#refund">환불정책</a>
-					</div>
-
-					<div class="content_wrapper">
-						<h4 class="title_top" id="introduce">모임소개</h4>
-						<div class="content">
-							When you enter into any new area of science, you almost always
-							find yourself with a baffling new language of technical terms to
-							learn before you can converse with the experts. This is certainly
-							true in astronomy both in terms of terms that refer to the cosmos
-							and terms that describe the tools of the trade, the most
-							prevalent being the telescope. <br> <br> Lorem ipsum
-							dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-							minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-							aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
-						</div>
-
-						<h4 class="title" id="note">유의사항</h4>
-						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. <br> <br>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
-						</div>
-
-						<h4 class="title" id="host">호스트소개</h4>
-						<div class="row">
-							<div class="col-md-2" align="left">
-								<span class="page" style="font-size: 15pt;">프로필</span>
-							</div>
-							<div class="col-md-10">
-								<div>
-									<br> <br>
-									<div class="d-flex justify-content-center h-100">
-										<div class="image_outer_container">
-											<div class="green_icon"></div>
-											<div class="image_inner_container">
-												<img src="images/ma.jpg" class="rounded-circle" style="width: 150px; height: 200px; margin-right: 100px;">
-											</div>
-										</div>
-										<div>
-											<input type="text" value="닉네임"> <br> <br>
-											<textarea rows="3" cols="50">자기소개</textarea>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div>
-							<div class="left">
-								<h4 class="title" id="after">후기</h4>
-							</div>
-						</div>
-						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. <br> <br>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
-						</div>
-						<div align="right">
-							<a class="btn4" href="#"> 더보기</a>
-						</div>
-
-						<div>
-							<div class="left">
-								<h4 class="title" id="bang">방명록</h4>
-							</div>
-						</div>
-						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. <br> <br>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
-						</div>
-						<div align="right">
-							<a class="btn4" href="#"> 더보기</a>
-						</div>
-
-						<div>
-							<div class="left">
-								<h4 class="title" id="refund">환불정책</h4>
-							</div>
-						</div>
-						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. <br> <br>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
-						</div>
-						<div align="right">
-							<a class="btn4" href="#"> 더보기</a>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="col-lg-4 right-contents">
-					<div class="sidebar_top">
-						<ul>
-							<li><a class="justify-content-between d-flex"> <span
-									class="color" style="text-align: left;">전시 | 카페</span> <span
-									class="color" style="text-align: right;">5회차</span>
-							</a></li>
-							<li><a class="justify-content-between d-flex">
-									<p>모임명</p> <span class="color">맥주모임</span>
-							</a></li>
-							<li><a class="justify-content-between d-flex">
-									<p>가격</p> <span>$230</span>
-							</a></li>
-							<li><a class="justify-content-between d-flex">
-									<p>인원수</p> <span>15</span>
-							</a></li>
-							<li><a class="justify-content-between d-flex">
-									<p>모임날짜 및 시간</p> <span>2.00 pm to 4.00 pm</span>
-							</a></li>
-
-						</ul>
-						<a class="btn4" href="Pay.jsp" style="margin-left: 30px;">모임신청하기(결제)</a>
-					</div>
-
-					<br>
-					<br>
-
-					<div class="sidebar_top">
-						<div align="center">
-							<a> <span>모임원</span>
-							</a>
-							<hr>
-						</div>
-						<div align="left">
-							<img src="images/me.png" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 백호진
-						</div>
-						<br>
-						<div align="left">
-							<img src="images/iu.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 박지혜
-						</div>
-						<br>
-						<div align="left">
-							<img src="images/iu2.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 이예림
-						</div>
-						<br>
-						<div align="left">
-							<img src="images/ma.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 이성조
-						</div>
-						<br>
-						<div align="left">
-							<img src="images/gd.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 정민하
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	 -->
 	 <c:forEach var="grcontent" items="${groupContent }">
 	 <div class="container">
 			<div class="row">
@@ -317,18 +147,14 @@
 						</div>
 
 						<h4 class="title" id="host">호스트소개</h4>
-						<div class="row">
-							<div class="col-md-2" align="left">
+							<div class="content">
 								<span class="page" style="font-size: 15pt;">프로필</span>
-							</div>
-							<div class="col-md-10">
-								<div>
-									<br> <br>
+								<br> <br>
 									<div class="d-flex justify-content-center h-100">
 										<div class="image_outer_container">
 											<div class="green_icon"></div>
 											<div class="image_inner_container">
-												<img src="${grcontent.memPic }" class="rounded-circle" style="width: 150px; height: 200px; margin-right: 100px;">
+												<img src="${grcontent.memPic }" class="rounded-circle" style="width: 150px; height: 200px; margin-right: 50px;">
 											</div>
 										</div>
 										<div>
@@ -336,33 +162,69 @@
 											<textarea rows="3" cols="50" readonly="readonly">${grcontent.memIntro }</textarea>
 										</div>
 									</div>
-								</div>
-
 							</div>
-						</div>
 						<div>
 							<div class="left">
 								<h4 class="title" id="after">후기</h4>
 							</div>
 						</div>
+						<%-- 
 						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. <br> <br>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
+							<table class="table table-bordered">
+								<c:forEach var="review" items="${contentReview }">
+									<tr>
+										<td>
+											<img src="images/me.png" class="rounded-circle"	style="width: 50px; height: 50px;">&nbsp;&nbsp;
+											${review.memName }
+										</td>
+										<td>
+											${review.reviewCont }
+										</td>
+										<td>
+											${review.reviewStar }
+										</td>
+										<td>
+											${review.reviewDate }
+										</td>
+									</tr>
+								</c:forEach>
+							</table>
 						</div>
-						<div align="right">
+						 --%>
+						<c:forEach var="review" items="${contentReview }">
+						<div class="review" align="left">
+							<div align="left">
+								<img src="${review.memPic }" class="rounded-circle"	style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
+								<a class="name">${review.memName }</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 9pt;">${review.reviewDate }</span>
+								<div style="float: right;">
+									<img src="<%=cp%>/images/siren.png"	style="width: 30px; height: 30px;">
+								</div>
+								<div class="col-12 p-0 d-flex align-items-center justify-content-end">
+									<div class="d-flex align-items-center groupCnt">
+										${review.reviewStar }&nbsp;
+									</div>
+									<div class="starRev">
+										<span class="starR2"></span> 
+										<span class="starR1"></span>
+										<span class="starR2"></span> 
+										<span class="starR1"></span> 
+										<span class="starR2"></span> 
+										<span class="starR1"></span> 
+										<span class="starR2"></span> 
+										<span class="starR1"></span> 
+										<span class="starR2"></span> 
+										<span class="starR1 on"></span>
+									</div>
+								</div>
+								<br><br>
+								<div style="margin-bottom: 30px; padding-left: 20px;">
+								<span>${review.reviewCont }</span>
+								</div>
+							</div>
+						</div>
+						</c:forEach>
+						
+							<div align="right">
 							<a class="btn4" href="#"> 더보기</a>
 						</div>
 
@@ -371,23 +233,21 @@
 								<h4 class="title" id="bang">방명록</h4>
 							</div>
 						</div>
-						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. <br> <br>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
+						<c:forEach var="board" items="${contentGBoard }">
+						<div class="review" align="left">
+							<div align="left">
+								<img src="${board.memPic }" class="rounded-circle"	style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
+								<a class="name">${board.memName }</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 9pt;">${board.boardDate }</span>
+								<div style="float: right;">
+									<img src="<%=cp%>/images/siren.png"	style="width: 30px; height: 30px;">
+								</div>
+								<br><br>
+								<div style="margin-bottom: 30px; padding-left: 20px;">
+								<span>${board.boardCont }</span>
+								</div>
+							</div>
 						</div>
+						</c:forEach>
 						<div align="right">
 							<a class="btn4" href="#"> 더보기</a>
 						</div>
@@ -398,26 +258,16 @@
 							</div>
 						</div>
 						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. <br> <br>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor
-							sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-							veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-							ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum.
+							<span>
+									환불은 모임시작전에 참가취소를 하시면 100% 환불이 가능합니다.<br>
+									그 이후로는 환불이 불가능하니 신중하게 생각해주세요!
+							</span>
 						</div>
+						<!-- 
 						<div align="right">
 							<a class="btn4" href="#"> 더보기</a>
 						</div>
-
+						 -->
 					</div>
 				</div>
 
@@ -460,30 +310,13 @@
 							</a>
 							<hr>
 						</div>
+						<c:forEach var="member" items="${contentMember }">
 						<div align="left">
-							<img src="images/me.png" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 백호진
+							<img src="${member.memPic }" class="rounded-circle"
+								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; ${member.memName }
 						</div>
 						<br>
-						<div align="left">
-							<img src="images/iu.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 박지혜
-						</div>
-						<br>
-						<div align="left">
-							<img src="images/iu2.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 이예림
-						</div>
-						<br>
-						<div align="left">
-							<img src="images/ma.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 이성조
-						</div>
-						<br>
-						<div align="left">
-							<img src="images/gd.jpg" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 정민하
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
