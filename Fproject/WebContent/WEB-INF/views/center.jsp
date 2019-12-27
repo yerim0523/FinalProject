@@ -81,7 +81,6 @@
 				</li>
 				</ul>
 			</div>
-			
 			<div align="center">
 				<img alt="소개 이미지" src="images/about.png">
 			</div>

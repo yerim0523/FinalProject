@@ -317,5 +317,28 @@
 			 WHERE FAQ_NUM = #{boardNum}           	           		           
    </update>
 
+ <select id="qnaList" parameterType="String" resultMap = "BoardDTO">
+	SELECT  E.NUM AS rNum,E.QNA_CODE AS boardNum,E.QNA_TITLE AS boardTitle,E.QNA_CONTENT AS boardCont
+    ,SUBSTR(E.QNA_DATE, 1, 10) AS boardDate,E.MEM_ID AS boardMem,E.FAQ_NAME AS faqName
+    FROM
+    ( 
+	    SELECT DATA.*,ROWNUM AS NUM
+	    FROM 
+		( 
+	     SELECT QNA_TITLE,QNA_CODE,MEM_ID,FAQ_NAME,QNA_CONTENT,QNA_DATE
+	     FROM QNA_VIEW 
+	     WHERE MEM_ID = #{faqId}
+	     ORDER BY QNA_CODE
+	     ) DATA
+     )E 
+     WHERE E.NUM BETWEEN #{startIndex} AND #{endIndex}
+	</select>
+	
+	
+	<select id="qnaListCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM QNA_VIEW
+		WHERE MEM_ID=#{memId}
+    </select>
     
 </mapper>

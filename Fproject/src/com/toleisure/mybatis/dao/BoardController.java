@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.BoardDTO;
+import com.toleisure.mybatis.dto.MemberDTO;
 import com.toleisure.mybatis.dto.NoticeVo;
 import com.toleisure.mybatis.dto.PagingDTO;
 
@@ -35,7 +36,7 @@ public class BoardController
 	}
 
 	@RequestMapping(value = "/event.action") // 이벤트 리스트 호출
-	public String eventList(@ModelAttribute("Notice") BoardDTO event, @RequestParam(defaultValue = "1") int curPage,
+	public String eventList(BoardDTO event, @RequestParam(defaultValue = "1") int curPage,
 			Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/event.jsp";
@@ -301,17 +302,44 @@ public class BoardController
 	}
 
 	@RequestMapping(value = "/faq.action")
-	public String faqList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
+	public String faqList(BoardDTO faq, @RequestParam(defaultValue = "1") int curPage,
+			Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/faq.jsp";
-		session.getAttribute("member");
-
+		MemberDTO dto = (MemberDTO)session.getAttribute("member");
+		
+		String id=dto.getMemId();	
+		
+		faq.setFaqId(id);
+		String faqId= faq.getFaqId();
+		System.out.println(faqId);
+		System.out.println(id);
+		
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		
+		int listCnt = dao.qnaListCount(id);
+		System.out.println(listCnt);
+		
+		PagingDTO paging = new PagingDTO(listCnt, curPage);
+		
+		
+		
+		
+		faq.setStartIndex(paging.getStartIndex());
+		faq.setEndIndex(paging.getEndIndex());
+		
+		System.out.println(paging.getStartIndex());
+		System.out.println(paging.getEndIndex());
+		
 		List<BoardDTO> faqList = dao.faqList(faq);
+		List<BoardDTO> qnaList = dao.qnaList(faqId);
 
+		
 		model.addAttribute("faqList", faqList);
-	
+		model.addAttribute("qnaList", qnaList);
+		model.addAttribute("listCnt", listCnt);
+		model.addAttribute("paging", paging);
+		
 		return view;
 	}
 	
