@@ -83,6 +83,13 @@
 		FROM TBL_GROUP
 		WHERE GR_CODE=${grCode}
 	</select>
+	
+	
+	<select id="jjimGroup" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT MEM_ID AS memId, GR_CODE AS grCode, NG_PIC AS ngPic, CATE1 AS grCate1Name, CATE2 AS grCate2Name, GR_NAME AS grName, MEM_NAME AS memName, NG_DATE AS ngDate, GR_COUNT AS grCount
+		FROM MEM_FAV_GROUP
+		WHERE MEM_ID=#{memId}
+	</select>
 
 
    <!-- 

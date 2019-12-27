@@ -141,6 +141,12 @@ public class GroupController
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		session.getAttribute("member");
 		
+		System.out.println("==================");
+		System.out.println("==== dto.getMemId = " + dto.getMemId());
+		System.out.println("==================");
+		
+		m.addAttribute("jjimGroup", dao.jjimGroup(dto.getMemId()));
+		
 		return "WEB-INF/views/jjimList.jsp";
 	}
 	

@@ -72,56 +72,44 @@
 			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
-						<h3>찜한 목록 </h3>
+						<h3>찜 목록</h3>
 					</div>
 				</div>
 				<br>
 				
 					<div class="page-header">
-						<h5>찜한 모임</h5>
+						<b><h5>찜 모임</h5></b>
 					</div>
 					<br>
-					<div class="row" >
-						<div class="thumbnail " style="padding: 10px;">
-							<img class="image" src="images/iu.jpg">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
+					<div class="row">
+						<c:forEach var="jjim" items="${jjimGroup}">
+						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
+							<div class="text-center">
+								<img class="image" src="<%=cp%>/images/${jjim.ngPic}">
 							</div>
+								<i class="far fa-heart"></i>
+									<a class="justify-content-between d-flex"> 
+									<span class="color" style="text-align: left;">
+									<c:if test="${jjim.grCate2Name != null }">
+									<span style="font-weight: bold; font-size: 13px; color: gray;">${jjim.grCate1Name } | ${jjim.grCate2Name }</span>
+									</c:if>
+									<c:if test="${jjim.grCate2Name == null }">
+										${jjim.grCate1Name }
+									</c:if>
+									</span>
+									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${jjim.grCount }</span>회차</span>
+									</a>
+								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${jjim.grName }</span>
+								<div>
+								<p class="text-right">${jjim.memName }</p>
+								</div>
 						</div>
-						
-						<div class="thumbnail" style="padding: 10px;">
-							<img class="image" src="images/me.png">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-							</div>
-						</div>
-						
-						<div class="thumbnail" style="padding: 10px;">
-							<img class="image" src="images/me.png">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-							</div>
-						</div>
-						
-						<div class="thumbnail" style="padding: 10px;">
-							<img class="image" src="images/me.png">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 					<br><br>
 					<div class="page-header">
 					<div>
-						<h3>찜한 호스트 </h3>
+						<h3>찜 호스트</h3>
 					</div>
 					<br>
 					</div>
