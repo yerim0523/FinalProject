@@ -16,10 +16,18 @@
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
 	</select>
+	
+	<select id="adminCheck"
+		parameterType="com.toleisure.mybatis.dto.MemberDTO"
+		resultType="Integer">
+		SELECT COUNT(*)
+		FROM ADMIN
+		WHERE MEM_ID = #{memId}
+	</select>
 
 	<insert id="add"
 		parameterType="com.toleisure.mybatis.dto.MemberDTO">
-		<choose>
+		<choose> 
 			<when test="memCate1 == 0 and memCate2 == 0">
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
 				GEN_CODE, MEM_COMP, MEM_INTRO)

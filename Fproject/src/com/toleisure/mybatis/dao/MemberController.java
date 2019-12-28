@@ -92,9 +92,25 @@ public class MemberController
 		
 		MemberDTO login = dao.login(dto);
 		
+		
+		
+		
 		if(login!=null)
 		{
 			session.setAttribute("member", login);
+			
+			int check = dao.adminCheck(login);
+			
+			if(check==1)
+			{
+				session.setAttribute("mode", 1);
+			}
+			else 
+			{
+				session.setAttribute("mode", 0);
+			}
+				
+		
 		}
 				
 		System.out.println("==================");

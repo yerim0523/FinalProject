@@ -302,44 +302,56 @@ public class BoardController
 	}
 
 	@RequestMapping(value = "/faq.action")
-	public String faqList(BoardDTO faq, @RequestParam(defaultValue = "1") int curPage,
-			Model model, HttpSession session)
+	public String faqList(BoardDTO faq,Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/faq.jsp";
+		
 		MemberDTO dto = (MemberDTO)session.getAttribute("member");
 		
 		String id=dto.getMemId();	
+		
+		
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		
+		List<BoardDTO> faqList = dao.faqList(faq);
+		model.addAttribute("faqList", faqList);
+	
+		if(id==null)
+		{
+			view ="/WEB-INF/views/Basicfaq.jsp";
+			return view;
+		}
+		
+		int mode = (int)session.getAttribute("mode");
+		System.out.println(mode);
+
+		
 		
 		faq.setFaqId(id);
 		String faqId= faq.getFaqId();
 		System.out.println(faqId);
 		System.out.println(id);
 		
-		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		
 		
 		int listCnt = dao.qnaListCount(id);
 		
 		System.out.println(listCnt);
+
 		
-		PagingDTO paging = new PagingDTO(listCnt, curPage);
 		
-		faq.setStartIndex(paging.getStartIndex());
-		faq.setEndIndex(paging.getEndIndex());
-		
-		System.out.println(faq.getStartIndex());
-		System.out.println(faq.getEndIndex());
-		
-		List<BoardDTO> faqList = dao.faqList(faq);
 		List<BoardDTO> qnaList = dao.qnaList(faq);
 
 		
-		model.addAttribute("faqList", faqList);
+		
 		model.addAttribute("qnaList", qnaList);
 		model.addAttribute("listCnt", listCnt);
-		model.addAttribute("paging", paging);
 		
 		return view;
 	}
+	
+	
+	
 	
 	@RequestMapping(value = "/faqetc.action")
 	public String faqEtcList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
@@ -491,6 +503,49 @@ public class BoardController
 
 			return view;
 		}
+	
+	@RequestMapping(value = "/answerinsertform.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String answerInsert(HttpSession session, BoardDTO faq)
+		{
+			String view = "faq.action";
+			session.getAttribute("member");
+			MemberDTO dto = (MemberDTO)session.getAttribute("member");
+			
+			String id=dto.getMemId();	
+			faq.setFaqId(id);
+			
+			int mode = (int)session.getAttribute("mode");
+			System.out.println(mode);
+			
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+			dao.qnaInsert(faq);
+
+			return view;
+		}
+	
+	@RequestMapping(value = "/qnadetail.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String QNADetail(HttpSession session, BoardDTO faq)
+		{
+			String view = "faq.action";
+			session.getAttribute("member");
+			MemberDTO dto = (MemberDTO)session.getAttribute("member");
+			
+			String id=dto.getMemId();	
+			faq.setFaqId(id);
+			
+			int mode = (int)session.getAttribute("mode");
+			System.out.println(mode);
+			
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+			dao.qnaInsert(faq);
+
+			return view;
+		}
+	
 	
 
 }

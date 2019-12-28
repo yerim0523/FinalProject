@@ -77,8 +77,12 @@
 					<li class="nav-item"><a class="nav-link active">투레저 소개</a></li>
 					<li class="nav-item"><a class="nav-link" href="news.action">소식</a></li>
 					<li class="nav-item"><a class="nav-link" href="event.action">이벤트</a></li>
-					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a>
-				</li>
+					<c:if test="${empty sessionScope.member}">
+								<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginNeed">FAQ</a></li>
+								</c:if>
+					<c:if test="${!empty sessionScope.member}">
+								<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a></li>
+								</c:if>
 				</ul>
 			</div>
 			<div align="center">
@@ -97,6 +101,25 @@
 	<c:import url="footer.jsp"></c:import>
 </div>
 
+<div class="modal modal-center fade" id="loginNeed" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">로그인이 필요한 서비스입니다.</p>
+			<div class="">
+				<a href="login.action"><button type="button" class="btn_1" >로그인</button></a>
+				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+			</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
