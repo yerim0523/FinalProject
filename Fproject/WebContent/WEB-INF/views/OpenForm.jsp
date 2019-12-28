@@ -47,57 +47,19 @@
 
 <script type="text/javascript">
 
-   
 	$(document).ready(function()
 	{
 		$("#postcodify_search_button").postcodifyPopUp();
+
+		var grcode = "${groupinfo.grCode}";
+		var cate1 = "${groupinfo.grCate1}";
+		var cate2 = "${groupinfo.grCate2}";
 		
-		if(${!empty groupinfo})
+		if(grcode != "")
 		{
-			var grcode = ${groupinfo.grCode};
-			var cate1 = ${groupinfo.grCate1};
-			var cate2 = ${groupinfo.grCate2};
-			
 			$("input[name='inlineCheckbox']:checkbox[value='"+ cate1 +"']").attr("checked","checked");
 			$("input[name='inlineCheckbox']:checkbox[value='"+ cate2 +"']").attr("checked","checked");
 		}
-
-		
-// 		$(".fileDrop").on("dragenter dragover", function(event)
-// 		{
-// 			event.preventDefault();	// 기본효과 막음
-// 		});
-		
-// 		$(".fileDrop").on("drop", function(event)
-// 		{
-// 			event.preventDefault();
-			
-// 			// 드래그된 파일의 정보
-// 			var files = event.originalEvent.dataTransfer.files;
-			
-// 			// 첫 번째 파일
-// 			var file = files[0];
-			
-// 			// 콘솔에서 파일정보 확인
-// 			console.log(file);
-			
-// 			var formData = new FormData();
-// 			formData.append("file", file);
-			
-			
-// 			$.ajax({
-// 				type: "post",
-// 				url: "${path}/upload",
-// 				data: fromData,
-// 				dataType: "text",
-// 				processData: false,
-// 				contentType: false,
-// 				success: function()
-// 				{
-// 					alert(data);
-// 				}
-// 			});
-// 		});
 	});
 
    function sample4_execDaumPostcode()
@@ -390,7 +352,13 @@
    현재 접속중인 memId : ${member.memId }
    <input type="hidden" id="memId" name="memId" value="${member.memId }">
    모임 코드 : ${groupinfo.grCode }
-   <input type="hidden" id="grCode" name="grCode" value="${groupinfo.grCode }">
+   <c:if test="${!empty groupinfo.grCode }">
+		<input type="hidden" id="grCode" name="grCode" value="${groupinfo.grCode }">
+   </c:if>
+   <c:if test="${empty groupinfo.grCode }">
+		<input type="hidden" id="grCode" name="grCode" value="0">
+   </c:if>
+   
       <div align="right">
          * 은 필수항목입니다.
       </div>
