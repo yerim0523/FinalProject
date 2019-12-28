@@ -33,7 +33,13 @@
 		<c:import url="sidebar.jsp"></c:import>
 		
 		<div id="calendar"></div>
+		
+		<c:forEach var="myCal" items="${myCal }">
+			ngCode : ${myCal.ngCode } <br>
+			grName : ${myCal.grName }
+		</c:forEach>
 	</div>
+	
 	
 </div>
 </section>
@@ -402,6 +408,8 @@
 	}();
 
 </script>
+
+
 
 </body>
 </html>

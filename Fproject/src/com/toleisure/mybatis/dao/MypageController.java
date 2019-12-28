@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
 public class MypageController
@@ -29,10 +30,14 @@ public class MypageController
 		IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
 		
 		session.getAttribute("member");
+		
 		MemberDTO mine = (MemberDTO)session.getAttribute("member");
 		String memId = mine.getMemId();
 		
-		ArrayList<MemberDTO> list = dao.myCalendar(memId);
+		System.out.println("-------");
+		System.out.println(memId);
+		
+		ArrayList<GroupDTO> list = dao.myCalendar(memId);
 		
 		model.addAttribute("myCal", list);
 		
