@@ -305,48 +305,53 @@ public class BoardController
 	public String faqList(BoardDTO faq,Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/faq.jsp";
-		
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		MemberDTO dto = (MemberDTO)session.getAttribute("member");
 		
-		String id=dto.getMemId();	
-		
-		
-		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-		
-		List<BoardDTO> faqList = dao.faqList(faq);
-		model.addAttribute("faqList", faqList);
-	
-		if(id==null)
+		if(dto != null)
 		{
+			String id=dto.getMemId();
+			
+			List<BoardDTO> faqList = dao.faqList(faq);
+			model.addAttribute("faqList", faqList);
+			
+			
+			int mode = (int)session.getAttribute("mode");
+			System.out.println(mode);
+
+			
+			
+			faq.setFaqId(id);
+			String faqId= faq.getFaqId();
+			System.out.println(faqId);
+			System.out.println(id);
+			
+			
+			
+			int listCnt = dao.qnaListCount(id);
+			
+			System.out.println(listCnt);
+
+			
+			
+			List<BoardDTO> qnaList = dao.qnaList(faq);
+
+			
+			
+			model.addAttribute("qnaList", qnaList);
+			model.addAttribute("listCnt", listCnt);
+		}
+		else
+		{
+			List<BoardDTO> faqList = dao.faqList(faq);
+			model.addAttribute("faqList", faqList);
+			
+			
 			view ="/WEB-INF/views/Basicfaq.jsp";
 			return view;
 		}
 		
-		int mode = (int)session.getAttribute("mode");
-		System.out.println(mode);
 
-		
-		
-		faq.setFaqId(id);
-		String faqId= faq.getFaqId();
-		System.out.println(faqId);
-		System.out.println(id);
-		
-		
-		
-		int listCnt = dao.qnaListCount(id);
-		
-		System.out.println(listCnt);
-
-		
-		
-		List<BoardDTO> qnaList = dao.qnaList(faq);
-
-		
-		
-		model.addAttribute("qnaList", qnaList);
-		model.addAttribute("listCnt", listCnt);
-		
 		return view;
 	}
 	
