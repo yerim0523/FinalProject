@@ -318,6 +318,7 @@ public class BoardController
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		
 		int listCnt = dao.qnaListCount(id);
+		
 		System.out.println(listCnt);
 		
 		PagingDTO paging = new PagingDTO(listCnt, curPage);
@@ -473,14 +474,20 @@ public class BoardController
 	
 	@RequestMapping(value = "/qnainsert.action", method =
 		{ RequestMethod.GET, RequestMethod.POST })
-		public String qnaInsert(HttpSession session, BoardDTO dto)
+		public String qnaInsert(HttpSession session, BoardDTO faq)
 		{
 			String view = "faq.action";
 			session.getAttribute("member");
-
+			MemberDTO dto = (MemberDTO)session.getAttribute("member");
+			
+			String id=dto.getMemId();	
+			
+			faq.setFaqId(id);
+			
+			
 			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
-			dao.qnaInsert(dto);
+			dao.qnaInsert(faq);
 
 			return view;
 		}
