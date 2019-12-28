@@ -152,20 +152,21 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/pay.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String payMethod(GroupDTO pay, Model model, HttpSession session)
+	public String payMethod(GroupDTO dto, Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/Pay.jsp";
 		
-		MemberDTO dto = (MemberDTO)session.getAttribute("member");
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
-		String id = dto.getMemId();
-		pay.setMemId(id);
-		String memId = pay.getMemId();
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
 		
 		int ngCode = (int) session.getAttribute("ngCode");
 		
 		int ngCost = dao.cost(ngCode);
+		dto.setNgCode(ngCode);
 		
 		model.addAttribute("ngCost", ngCost);
 		session.setAttribute("ngCost", ngCost);
@@ -203,11 +204,11 @@ public class GroupController
 	/*
 	public String cardPay(MemberDTO dto, Model model, HttpSession session)
 	{
-		String view = "/WEB-INF/views/Main.jsp";
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
 		
 		
+		return "redirect:groupdetail.action";
 	}
 	*/
 	
