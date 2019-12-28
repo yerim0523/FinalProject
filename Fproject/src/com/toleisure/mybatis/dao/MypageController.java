@@ -46,6 +46,7 @@ public class MypageController
 		
 		model.addAttribute("myCal", list);
 		
+		
 		return view;
 	}
 }
