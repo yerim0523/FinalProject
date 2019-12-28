@@ -34,4 +34,10 @@ public interface IGroupDAO
 	// 분위기명으로 검색
 	public ArrayList<GroupDTO> searchMood(String mName);
 	
+	// 결제 금액 조회
+	public int cost(int ngCode);
+	
+	// 모임 신청 INSERT
+	public int request(GroupDTO dto);
+	
 }

@@ -264,6 +264,8 @@ public class MainController
 		model.addAttribute("contentGBoard", contentGBoard);
 		model.addAttribute("contentMember", contentMember);
 		
+		session.setAttribute("ngCode", dto.getNgCode());
+		
 		return view;
 		
 	}

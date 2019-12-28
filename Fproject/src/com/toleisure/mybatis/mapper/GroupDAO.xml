@@ -97,6 +97,21 @@
 		FROM HOST_FAVORITE HF, HOST H, MEMBER M
 		WHERE HF.HOST_CODE = H.HOST_CODE AND H.MEM_ID = M.MEM_ID AND HF.MEM_ID=#{memId}
 	</select>
+	
+	<!-- 모임 비용 조회 -->
+	
+	<select id="cost" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT NG_COST AS ngCost
+		FROM NOW_GROUP
+		WHERE NG_CODE = #{ngCode}
+	</select>
+	
+	<!-- GR_REQUEST 테이블 INSERT -->
+	
+	<insert id="request" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+		INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
+		VALUES(GR_REQSEQ.NEXTVAL, #{ngCode}, #{memId})
+	</insert>
 
 
    <!-- 
