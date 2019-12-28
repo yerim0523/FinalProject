@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>calendar.jsp</title>
+<title>mycalendar.jsp</title>
 <style type="text/css">
 	
 </style>
@@ -32,12 +32,19 @@
 	<div class="row">
 		<c:import url="sidebar.jsp"></c:import>
 		
-		<div id="calendar"></div>
-		
-		<c:forEach var="myCal" items="${myCal }">
+		<div id="calendar"></div><br>
+		안녕<br>
+		<c:forEach var="myCal" items="${myCal}">
 			ngCode : ${myCal.ngCode } <br>
-			grName : ${myCal.grName }
+			ngCode : ${myCal.ngCode } <br>
+			ngCode : ${myCal.ngLocation } <br>
+			grName : ${myCal.ngStart }<br>
+			grName : ${myCal.year }<br>
+			grName : ${myCal.month }<br>
+			grName : ${myCal.day }<br>
+			
 		</c:forEach>
+		
 	</div>
 	
 	

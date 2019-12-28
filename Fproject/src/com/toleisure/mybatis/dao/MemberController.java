@@ -1,5 +1,7 @@
 package com.toleisure.mybatis.dao;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.BoardDTO;
+import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
 
@@ -329,4 +332,30 @@ public class MemberController
 		return "mypage.action"; 
 	}
 	
+	@RequestMapping(value="/mycal.action", method ={ RequestMethod.GET, RequestMethod.POST })
+	public String calOpen(MemberDTO dto, Model model, HttpSession session)
+	{
+		System.out.println("-------1");
+		String view = "WEB-INF/views/myCalendar.jsp";
+		IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+		
+		System.out.println("-------2");
+		
+		session.getAttribute("member");
+		
+		System.out.println("-------3");
+		
+		MemberDTO mine = (MemberDTO)session.getAttribute("member");
+		String memId = mine.getMemId();
+		
+		System.out.println("-------4");
+		System.out.println(memId);
+		
+		ArrayList<GroupDTO> list = dao.myCalendar(memId);
+		
+		model.addAttribute("myCal", list);
+		
+		
+		return view;
+	}
 }
