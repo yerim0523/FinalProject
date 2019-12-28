@@ -330,8 +330,7 @@
 	     WHERE MEM_ID = #{faqId}
 	     ORDER BY QNA_CODE
 	     ) DATA
-     )E 
-     WHERE E.NUM BETWEEN #{startIndex} AND #{endIndex}
+     )E
 	</select>
 	
 	
@@ -342,8 +341,8 @@
     </select>
     
     <insert id="qnaInsert" parameterType="com.toleisure.mybatis.dto.BoardDTO" >
-        INSERT INTO QNA(FAQ_NUM,ADMIN_CODE,FAQ_CODE,FAQ_TITLE,FAQ_CONT)
-        VALUES(FAQSEQ.NEXTVAL, 1, #{faqCate}, #{boardTitle}, #{boardCont})
+        INSERT INTO QNA(QNA_CODE,MEM_ID,FAQ_CODE,QNA_CONTENT,QNA_DATE,QNA_TITLE)
+        VALUES(QNASEQ.NEXTVAL, #{faqId},#{faqCate}, #{boardCont}, SYSDATE,#{boardTitle})
    </insert>
     
 </mapper>
