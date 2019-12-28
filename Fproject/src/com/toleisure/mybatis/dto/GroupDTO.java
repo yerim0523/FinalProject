@@ -12,6 +12,7 @@ public class GroupDTO
 	private String ngLocation, ngLocation1, ngLocation2;
 
 	private String ngStart, ngStart1, ngStart2, ngEnd, ngEnd1, ngEnd2, ngDate;
+	private String year, month, day;
 	
 	private String reviewCont, reviewDate;
 	private double reviewStar;
@@ -441,6 +442,30 @@ public class GroupDTO
 	public void setBoardNum(int boardNum)
 	{
 		this.boardNum = boardNum;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
 	}
 
 	

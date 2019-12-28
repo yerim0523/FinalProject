@@ -5,6 +5,8 @@
 
 package com.toleisure.mybatis.dao;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,8 +26,15 @@ public class MypageController
 	public String calOpen(MemberDTO dto, Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/myCalendar.jsp";
+		IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
 		
 		session.getAttribute("member");
+		MemberDTO mine = (MemberDTO)session.getAttribute("member");
+		String memId = mine.getMemId();
+		
+		ArrayList<MemberDTO> list = dao.myCalendar(memId);
+		
+		model.addAttribute("myCal", list);
 		
 		return view;
 	}

@@ -50,7 +50,17 @@
 		WHERE MEM_ID = #{memId}
 	</update>
 
-
+	<select id="myCalendar" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT RQ.MEM_ID AS memId, RQ.NG_CODE AS ngCode, G.GR_NAME AS grName
+			 , SUBSTR(NG.NG_STARTDATE,0,4) AS year, SUBSTR(NG.NG_STARTDATE,6,2) AS month, SUBSTR(NG.NG_STARTDATE,9,2) AS day
+			 , NG.NG_STARTDATE AS ngStart, NG.NG_ENDDATE AS ngEnd, NG.NG_LOCATION AS ngLocation
+		FROM MEMBER M, GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G
+		WHERE M.MEM_ID=RQ.MEM_ID AND RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE 
+		  AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID
+		                                       FROM GR_REQUEST RQ, PAYMENT P, REFUND RF
+		                                       WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
+		  AND RQ.MEM_ID=#{memId};
+	</select>
 
 
 </mapper>
