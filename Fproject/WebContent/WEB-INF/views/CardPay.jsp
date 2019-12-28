@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -90,21 +91,29 @@
 			<tr>
 				<th>이름</th>
 				<td style="padding: 10px;">
-					<input type="text" class="name" name="name">
+					<input type="text" class="form-control" name="name" value="${myInfo.memName }" readonly="readonly">
+				</td>
+			</tr>
+			<tr>
+				<th>결제금액</th>
+				<td style="padding: 10px;">
+					<%-- <fmt:setLocale value="ko_KR"/><input type="text" class="form-control" value='<fmt:formatNumber value="${ngCost }"></fmt:formatNumber>' readonly="readonly"> --%>
+					<%-- <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${ngCost}" /> --%>
+					<input type="text" class="form-control" name="name" value="${ngCost }원" readonly="readonly">
 				</td>
 			</tr>
 
 			<tr>
 				<th>카드번호</th>
 				<td style="padding: 10px;">
-					<input type="text" class="cnum"	name="cnum">
+					<input type="text" class="form-control"	name="payDetail" id="payDetail">
 				</td>
 			</tr>
 
 			<tr>
 				<th>비밀번호</th>
 				<td style="padding: 10px;">
-					<input type="password" class="pw" name="pw">
+					<input type="password" class="form-control" name="pw">
 				</td>
 			</tr>
 			<tr>

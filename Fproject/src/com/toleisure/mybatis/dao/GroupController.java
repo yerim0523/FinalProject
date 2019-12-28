@@ -151,4 +151,65 @@ public class GroupController
 		return "WEB-INF/views/jjimList.jsp";
 	}
 	
+	@RequestMapping(value = "/pay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String payMethod(GroupDTO pay, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/Pay.jsp";
+		
+		MemberDTO dto = (MemberDTO)session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		String id = dto.getMemId();
+		pay.setMemId(id);
+		String memId = pay.getMemId();
+		
+		int ngCode = (int) session.getAttribute("ngCode");
+		
+		int ngCost = dao.cost(ngCode);
+		
+		model.addAttribute("ngCost", ngCost);
+		session.setAttribute("ngCost", ngCost);
+		
+		System.out.println(memId);
+		System.out.println(ngCode);
+		System.out.println(ngCost);
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/cardpage.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String cardPage(MemberDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/CardPay.jsp";
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCost = (int)session.getAttribute("ngCost");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
+
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		model.addAttribute("ngCost", ngCost);
+		model.addAttribute("myInfo", mine);
+		
+		return view;
+	}
+	
+	// 카드 결제 메소드 미완성
+	/*
+	public String cardPay(MemberDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/Main.jsp";
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		
+		
+	}
+	*/
+	
+	
 }

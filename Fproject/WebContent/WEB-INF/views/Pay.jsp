@@ -50,6 +50,14 @@
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    
+    <style type="text/css">
+    
+    button.btn4{
+    background-color: #5cb196;
+    }
+    
+    </style>
 </head>
 <body>
 
@@ -64,14 +72,12 @@
 </section>
 
 <br><br><br><br>
-
 <div>
 	<h3 align="center">[결제하기]</h3>
 	<br><br>
-	<h5 align="center">결제 금액은 50001원 입니다.</h5>
+	<h5 align="center">결제 금액은 ${ngCost }원 입니다.</h5>
 	<h5 align="center">원하는 결제 수단을 선택해주세요.</h5>
 </div>
-
 
 <br><br><br><br>
 
@@ -82,7 +88,8 @@
 	      <span><i class="fas fa-mobile-alt fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="phonepage.action" class="btn4" role="button">휴대폰결제</a></p>
+	        <!-- <p><a href="phonepage.action" class="btn4" role="button">휴대폰결제</a></p> -->
+	        <button type="button" class="btn4" value="1" name="phonePay" id="phonePay" style="background-color: #5cb196" onclick="location.href='phonepage.action'">휴대폰결제</button>
 	      </div>
 	    </div>
 	  </div>
@@ -91,7 +98,8 @@
 	      <span><i class="fas fa-credit-card fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="cardpage.action" class="btn4" role="button">카드결제</a></p>
+	        <!-- <p><a href="cardpage.action" class="btn4" role="button">카드결제</a></p> -->
+	        <button type="button" class="btn4" value="2" name="cardPay" id="phonePay" style="background-color: #5cb196" onclick="location.href='cardpage.action'">카드결제</button>
 	      </div>
 	    </div>
 	  </div>
@@ -100,7 +108,8 @@
 	      <span><i class="fas fa-dollar-sign fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="bankpage.action" class="btn4" role="button">가상계좌결제</a></p>
+	        <!-- <p><a href="bankpage.action" class="btn4" role="button">가상계좌결제</a></p> -->
+	        <button type="button" class="btn4" value="3" name="bankPay" id="bankPay" style="background-color: #5cb196" onclick="location.href='bankpage.action'">가상계좌결제</button>
 	      </div>
 	    </div>
 	  </div>
