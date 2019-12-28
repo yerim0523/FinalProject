@@ -372,7 +372,7 @@
 	  var data = [
 	    { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange', date: 25 },
  	    { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange', date: 20 },
-// 	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
+ 	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
 // 	    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
 
 // 	    { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
