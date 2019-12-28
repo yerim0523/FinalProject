@@ -14,13 +14,9 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/button.css" >
@@ -86,7 +82,7 @@
 	      <span><i class="fas fa-mobile-alt fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="PhonePay.jsp" class="btn4" role="button">휴대폰결제</a></p>
+	        <p><a href="phonepage.action" class="btn4" role="button">휴대폰결제</a></p>
 	      </div>
 	    </div>
 	  </div>
@@ -95,7 +91,7 @@
 	      <span><i class="fas fa-credit-card fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="CardPay.jsp" class="btn4" role="button">카드결제</a></p>
+	        <p><a href="cardpage.action" class="btn4" role="button">카드결제</a></p>
 	      </div>
 	    </div>
 	  </div>
@@ -104,7 +100,7 @@
 	      <span><i class="fas fa-dollar-sign fa-7x"></i></span>
 	      <br><br>
 	      <div class="caption">
-	        <p><a href="BankPay.jsp" class="btn4" role="button">가상계좌결제</a></p>
+	        <p><a href="bankpage.action" class="btn4" role="button">가상계좌결제</a></p>
 	      </div>
 	    </div>
 	  </div>
