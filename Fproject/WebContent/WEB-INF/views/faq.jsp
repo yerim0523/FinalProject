@@ -118,9 +118,14 @@
 	margin-right: auto;
 }
 
-.modal-dialog{ overflow-y: initial !important } 
-.modal-body{ height: 100%; overflow-y: auto; }
+.modal-dialog {
+	overflow-y: initial !important
+}
 
+.modal-body {
+	height: 100%;
+	overflow-y: auto;
+}
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -184,12 +189,6 @@ $(document).ready(function ()
 
 	}
 	
-	function fn_paging(title)
-	{
-		var test = title;
-	  $(".form-inline #boardTitledetail").val(test)
-		$("#detailqna").modal();
-	}
 
 
 	
@@ -285,9 +284,12 @@ $(document).ready(function ()
 					</c:forEach>
 				</div>
 			</div>
+			
+			<c:if test="${!empty sessionScope.mode}">
 			<button type="button" onclick="location='faqinsertform.action'"
 				class="btn4" style="float: right;">글쓰기</button>
-
+			</c:if>
+			
 			<c:if test="${empty sessionScope.member}">
 				<button type="button" data-toggle="modal" data-target="#loginNeed"
 					class="btn4" style="float: left;">1:1 문의</button>
@@ -296,7 +298,6 @@ $(document).ready(function ()
 				<button type="button" data-toggle="modal" data-target="#QNA"
 					class="btn4" style="float: left;">1:1 문의</button>
 			</c:if>
-			<!-- <button type="button" onclick="location='qnainsertform.action'" data-toggle="modal" data-target="#loginNeed" class="btn4" style="float: left;">1:1 문의</button> -->
 		</div>
 
 	</section>
@@ -333,7 +334,7 @@ $(document).ready(function ()
 		<div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">
 			<div class="modal-content">
 				<div class="modal-header">
-					<span style="font-size: 15pt; font-weight: bold;">1 : 1 문의</span>
+					<span style="font-size: 15pt; font-weight: bold;">나의 문의 내역</span>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -357,8 +358,16 @@ $(document).ready(function ()
 											<td style="color: red;">[${v.faqName}]</td>
 										</c:if>
 										<td>${v.rNum}</td>
-										<td><a href="#" onClick="fn_paging(title)"
-											style="cursor: hand;">${v.boardTitle} </a></td>
+										<td>
+										<c:choose>
+												<c:when test="${v.boardNotice ne 0}">
+													<a href="#"
+														onclick="location='qnadetail.action?boardNum=${v.boardNum}'"
+														style="cursor: hand;">${v.boardTitle}</a>
+												</c:when>
+												<c:when test="${v.boardNotice eq 0}">${v.boardTitle}</c:when>
+										</c:choose>
+										</td>
 										<td>${v.boardMem}</td>
 										<td>${v.boardDate}</td>
 										<td>${v.boardHits}</td>
@@ -385,7 +394,7 @@ $(document).ready(function ()
 		<div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">
 			<div class="modal-content">
 				<div class="modal-header">
-					<span style="font-size: 15pt; font-weight: bold;">1 : 1 문의</span>
+					<span style="font-size: 15pt; font-weight: bold;">1 : 1 문의작성</span>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -443,63 +452,7 @@ $(document).ready(function ()
 	</div>
 
 
-	<div class="modal modal-center" id="detailqna">
-		<div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">
-			<div class="modal-content">
-				<div class="modal-header">
-					<span style="font-size: 15pt; font-weight: bold;">문의내역</span>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body center-block">
 
-					<div class="container" role="dialog">
-						<table class="table" style="text-align: center;">
-							<tr>
-								<td>제목</td>
-								<td>
-									<div class="form-inline">
-										<input type="text" class="form-control" id="boardTitledetail"
-											value="" placeholder="제목 입력(4-100)" name="boardTitledetail"
-											maxlength="100" required="required" pattern=".{4,100}"
-											style="width: 450px;"> <select name="faqCate"
-											class="form-control" style="width: 150px;">
-											<option id="faqCate" value="1">이용안내</option>
-											<option id="faqCate" value="2">회원정보</option>
-											<option id="faqCate" value="3">결제/환불</option>
-											<option id="faqCate" value="4">기타</option>
-										</select>
-									</div>
-								</td>
-							<tr>
-								<td>내용</td>
-
-								<td colspan="2"><textarea class="form-control" rows="5"
-										id="boardContdetail" name="boardContdetail"
-										placeholder="내용 작성"></textarea></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td colspan="2">
-									<div align="right">
-										<button type="button" class="btn4 btn-info submit"
-											onclick="formCheck()">등록</button>
-									</div>
-								</td>
-							</tr>
-
-						</table>
-
-					</div>
-					<hr>
-				</div>
-
-			</div>
-			<div class="modal-footer"></div>
-		</div>
-	</div>
 
 </body>
 </html>

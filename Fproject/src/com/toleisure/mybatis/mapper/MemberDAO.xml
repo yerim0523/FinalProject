@@ -16,6 +16,14 @@
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
 	</select>
+	
+	<select id="adminCheck"
+		parameterType="com.toleisure.mybatis.dto.MemberDTO"
+		resultType="Integer">
+		SELECT COUNT(*)
+		FROM ADMIN
+		WHERE MEM_ID = #{memId}
+	</select>
 
 	<insert id="add"
 		parameterType="com.toleisure.mybatis.dto.MemberDTO">
