@@ -318,14 +318,11 @@ public class BoardController
 			
 			int mode = (int)session.getAttribute("mode");
 			System.out.println(mode);
-
-			
 			
 			faq.setFaqId(id);
 			String faqId= faq.getFaqId();
 			System.out.println(faqId);
 			System.out.println(id);
-			
 			
 			
 			int listCnt = dao.qnaListCount(id);
