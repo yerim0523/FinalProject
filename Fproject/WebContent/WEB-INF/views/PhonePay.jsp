@@ -73,21 +73,23 @@
 <div class="container" align="center">
 	<table>
 		<tr>
-			<th>결제금액</th>
+			<th>이름</th>
 			<td style="padding: 10px;">
-				<input type="text" class="money" name="money" value="50000원">
+				<input type="text" class="form-control" id="memName" name="memName" value="${myInfo.memName }" readonly="readonly">
 			</td>
 		</tr>
 		<tr>
-			<th>이름</th>
+			<th>결제금액</th>
 			<td style="padding: 10px;">
-				<input type="text" class="name" name="name" >
+				<%-- <fmt:setLocale value="ko_KR"/><input type="text" class="form-control" value='<fmt:formatNumber value="${ngCost }"></fmt:formatNumber>' readonly="readonly"> --%>
+				<%-- <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${ngCost}" /> --%>
+				<input type="text" class="form-control" id="ngCost" name="ngCost" value="${ngCost }" readonly="readonly">
 			</td>
 		</tr>
 		<tr>
 			<th>전화번호</th>
 			<td style="padding: 10px;">
-				<input type="tel" class="phone" name="phone">
+				<input type="tel" class="form-control" name="payDetail" id="payDetail">
 			</td>
 		</tr>
 		<tr>
@@ -98,7 +100,7 @@
 		<tr>
 			<th>인증번호</th>
 			<td style="padding: 10px;">
-				<input type="tel" class="num" name="num">
+				<input type="tel" class="form-control" name="num">
 			</td>
 		</tr>
 		<tr>

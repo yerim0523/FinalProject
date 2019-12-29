@@ -200,7 +200,6 @@ public class GroupController
 		return view;
 	}
 	
-	// 카드 결제 메소드 미완성
 	@RequestMapping(value = "/cardpay.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String cardPay(GroupDTO dto, Model model, HttpSession session)
 	{
@@ -221,6 +220,31 @@ public class GroupController
 		
 		return "redirect:main.action";
 	}
+	
+	// 핸드폰 결제 미완성
+	/*
+	@RequestMapping(value = "/phonepage.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String phonePage(MemberDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/PhonePay.jsp";
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCost = (int)session.getAttribute("ngCost");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
+
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		model.addAttribute("ngCost", ngCost);
+		model.addAttribute("myInfo", mine);
+		
+		return view;
+	}
+	*/
 	
 	
 	
