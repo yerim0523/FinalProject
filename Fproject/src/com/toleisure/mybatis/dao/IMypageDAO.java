@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
+import com.toleisure.mybatis.dto.PayDTO;
 
 public interface IMypageDAO
 {
@@ -18,4 +19,6 @@ public interface IMypageDAO
 	public String pwCheck(MemberDTO dto);				// 패스워드 확인 메소드
 	public int changeMyPw(MemberDTO dto);				// 마이페이지 패스워드 변경 메소드
 	public ArrayList<GroupDTO> myCalendar(String memId); 	// 내가 가지고 있는 일정을 모두 가져오는 메소드
+	
+	public ArrayList<PayDTO> payList(String memId);		// 본인의 결제, 환불내역을 모두 가져오는 method
 }

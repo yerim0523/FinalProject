@@ -64,6 +64,13 @@
 		                                       WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
 		  AND RQ.MEM_ID=#{memId}
 	</select>
+	
+	
+	<!-- 본인의 결제, 환불내역을 모두 가져오는 method -->
+	<select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
+		SELECT payCode,.ngCode, grName, grCount, ngCost, memId, pmName, payDate, rfCode, rfDate
+		FROM PAY_REFUND_VIEW
+    </select>
 
 
 </mapper>
