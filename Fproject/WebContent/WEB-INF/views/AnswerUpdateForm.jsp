@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EventUpdateForm.jsp</title>
+<title>AnswerUpdateForm.jsp</title>
 
 <style type="text/css">
 .pagination {
@@ -57,7 +57,7 @@
 
 function formCheck()
 {
-   var f = document.AnswerInsertForm;
+   var f = document.AnswerUpdateForm;
    var str = f.boardCont.value;
    var max,min;
    
@@ -100,7 +100,7 @@ function formCheck()
 		</div>
 	</div>
 		
-	  <form action="answerinsert.action" method="post" name="AnswerInsertForm" id="AnswerInsertForm" class="form-horizontal">	
+	  <form action="answerupdate.action" method="post" name="AnswerUpdateForm" id="AnswerUpdateForm" class="form-horizontal">	
 	  
 	<div class="container">
 		<table class="table" style="text-align: center;">
@@ -121,12 +121,13 @@ function formCheck()
 				placeholder="내용 작성" >${v.boardCont}</textarea>
 				</td>
 			</tr>
-			
+			</c:forEach>
+			<c:forEach var="answer" items="${answerUpdate}" varStatus="status">
 			<tr>
 				<td>답변</td>
 				<td colspan="2">
 				<textarea  class="form-control" rows="5" id="boardCont" name="boardCont" 
-				placeholder="답변 작성" ></textarea>
+				placeholder="답변 작성" >${answer.boardCont}</textarea>
 				</td>
 			</tr>
 			<tr>

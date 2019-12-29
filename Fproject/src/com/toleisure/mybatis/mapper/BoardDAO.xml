@@ -12,6 +12,7 @@
         <result property="boardHits" column="boardHits"/>
         <result property="boardNotice" column="boardNotice"/>
         <result property="faqName" column="faqName"/>
+        <result property="checkCode" column="checkCode"/>
     </resultMap> 
     
   <!-- <resultMap id="BoardDTO" type="com.toleisure.mybatis.dto.BoardDTO">  resultMap id는 하나밖에못씀
@@ -353,18 +354,19 @@
    
     <select id="answerList" parameterType="com.toleisure.mybatis.dto.BoardDTO" resultMap = "BoardDTO">
 	SELECT  E.NUM AS rNum,E.QNA_CODE AS boardNum,E.QNA_TITLE AS boardTitle,E.QNA_CONTENT AS boardCont
-    ,SUBSTR(E.QNA_DATE, 1, 10) AS boardDate,E.MEM_ID AS boardMem,E.FAQ_NAME AS faqName
+    ,SUBSTR(E.QNA_DATE, 1, 10) AS boardDate,E.MEM_ID AS boardMem,E.FAQ_NAME AS faqName,E.ANSWER_CODE AS checkCode
     FROM
     ( 
 	    SELECT DATA.*,ROWNUM AS NUM
 	    FROM 
 		( 
-	     SELECT QNA_TITLE,QNA_CODE,MEM_ID,FAQ_NAME,QNA_CONTENT,QNA_DATE
-	     FROM QNA_VIEW 
-	     ORDER BY QNA_CODE
+	     SELECT QNA_TITLE,QNA_CODE,MEM_ID,FAQ_NAME,QNA_CONTENT,QNA_DATE,ANSWER_CODE
+	     FROM ANSWER_VIEW 
+	     ORDER BY ANSWER_CODE , QNA_DATE
 	     ) DATA
      )E
      WHERE E.NUM BETWEEN #{startIndex} AND #{endIndex}
+     
 	</select>
 	
 	<select id="answerDetail" resultMap ="BoardDTO">
@@ -374,6 +376,18 @@
         WHERE QNA_CODE = #{boardNum}
     </select>
     
+    <select id="answerUpdateForm" resultMap ="BoardDTO">
+        SELECT  ANSWER_CODE AS boardNum,ANSWER_CONTENT AS boardCont,
+        		ANSWER_DATE AS boardDate, MEM_ID AS boardMem
+        FROM QNA_ANSWER
+        WHERE QNA_CODE = #{boardNum}
+    </select>
+    
+    <update id ="answerUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
+             UPDATE QNA_ANSWER
+             SET ANSWER_DATE=SYSDATE,ANSWER_CONTENT=#{boardCont},MEM_ID=#{memId}
+			 WHERE QNA_CODE = #{boardNum}           	           		           
+   </update>
     
     <insert id="answerInsert" parameterType="com.toleisure.mybatis.dto.BoardDTO" >
         INSERT INTO QNA_ANSWER(ANSWER_CODE,QNA_CODE,ANSWER_CONTENT,ANSWER_DATE,MEM_ID)

@@ -52,6 +52,8 @@ public interface IBoardDAO
 	public List<BoardDTO> answerList(BoardDTO answer);
 	public List<BoardDTO> answerDetail(int boardNum);
 	public void answerInsert(BoardDTO dto);
+	public List<BoardDTO> answerUpdateForm(int boardNum);
+	public void answerUpdate(BoardDTO dto);
 	
 	
 }

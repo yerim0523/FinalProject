@@ -9,8 +9,10 @@ public class BoardDTO
 	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
-	private int faqCate;
+	private int faqCate, checkCode;
 
+
+	
 
 	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId;
 
@@ -400,6 +402,16 @@ public class BoardDTO
 	public void setMemId(String memId)
 	{
 		this.memId = memId;
+	}
+	
+	public int getCheckCode()
+	{
+		return checkCode;
+	}
+
+	public void setCheckCode(int checkCode)
+	{
+		this.checkCode = checkCode;
 	}
 
 }

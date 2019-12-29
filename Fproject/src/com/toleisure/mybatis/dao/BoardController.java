@@ -544,20 +544,17 @@ public class BoardController
 	
 	
 	@RequestMapping(value = "/answerinsertform.action", method = { RequestMethod.GET, RequestMethod.POST })// �씠踰ㅽ듃 �긽�꽭 紐⑸줉 �샇異�
-	public String answerDetailForm(int boardNum,int curPage, BoardDTO dto,Model model, HttpSession session)
+	public String answerDetailForm(int boardNum, BoardDTO dto,Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/AnswerInsertForm.jsp";
 		session.getAttribute("member");
 
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-		int listCnt = dao.answerListCount();
 		List<BoardDTO> answerDetail = dao.answerDetail(boardNum);
 		
-		PagingDTO paging = new PagingDTO(listCnt, curPage);
 
 
 		model.addAttribute("answerDetail", answerDetail);
-		model.addAttribute("paging", paging);
 		return view;
 	}
 	
@@ -578,4 +575,45 @@ public class BoardController
 		
 		return "redirect:answer.action";
 	}
+	
+	
+	@RequestMapping(value = "/answerupdateform.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String answerUpdateForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
+		{
+			String view = "/WEB-INF/views/AnswerUpdateForm.jsp";
+
+			session.getAttribute("member");
+
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+			
+			List<BoardDTO> answerDetail = dao.answerDetail(boardNum);
+			List<BoardDTO> answerUpdate = dao.answerUpdateForm(boardNum);
+
+			model.addAttribute("answerUpdate", answerUpdate);
+			model.addAttribute("answerDetail", answerDetail);
+			return view;
+		}
+	
+	
+
+	@RequestMapping(value = "/answerupdate.action", method =
+	{ RequestMethod.GET, RequestMethod.POST })
+	public String answerUpdate(HttpSession session, BoardDTO dto)
+	{
+		session.getAttribute("member");
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		
+		String id=mem.getMemId();	
+		
+		
+		dto.setMemId(id);
+		
+		
+		dao.answerUpdate(dto);
+
+		return "redirect:answer.action";
+	}
+	
 }

@@ -74,7 +74,16 @@
     function notice_push(notice_id){
         alert(notice_id);
     } */
- 
+    $(function() {
+		function runEffect() {
+			$("#effect").toggle("blind", null, 700);
+		}
+		;
+
+		$("#btn_toggle").on("click", function() {
+			runEffect();
+		});
+	});
   function fn_paging(curPage){
     	
     	location.href="answer.action?curPage="+curPage;
@@ -117,17 +126,19 @@
 	<br>
 	<br>
 	<br>
-
+	
+	
 	<div>
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th></th>
+					<th>분류</th>
 					<th></th>
 					<th>제목</th>
-					<th>작성자</th>
+					<th>회원 아이디</th>
 					<th>날짜</th>
 					<th>답변여부</th>
+					<th></th>
 				</tr>
 				<c:forEach var="v" items="${answerList}" varStatus="status">
 				<tr>
@@ -136,8 +147,28 @@
 					<td>${v.boardTitle}</td>
  					<td>${v.boardMem}</td>
 					<td>${v.boardDate}</td>
-					<td><button type="button" onclick="location='answerinsertform.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" 
-					 style="float: right;">답변달기</button></td>
+					
+					<c:choose>
+					<c:when test="${v.checkCode!=0}">
+						<td style="color: red;">답변완료</td>
+				    </c:when>
+					<c:otherwise>
+						<td style="color: blue;">답변대기</td>
+					</c:otherwise>
+					</c:choose>
+					
+					<td>
+					<c:choose>
+			 		<c:when test="${v.checkCode!=0}">
+					<button type="button" onclick="location='answerupdateform.action?boardNum=${v.boardNum}'" 
+					 style="float: right; color: blue;">답변수정</button>
+					</c:when>
+					  <c:otherwise>
+                              <button type="button" onclick="location='answerinsertform.action?boardNum=${v.boardNum}'" 
+					 style="float: right; color: red;">답변작성</button>
+                            </c:otherwise>
+                    </c:choose>
+                    </td>
 			    </tr>
 				</c:forEach>      
             
@@ -145,10 +176,7 @@
 		</table>
 
 		<hr>
-		<c:if test="${sessionScope.mode==1}">
-			<button type="button" onclick="location='eventinsertform.action'"
-				class="btn4" style="float: right;">글쓰기</button>
-			</c:if>
+	
 	</div>
 
 	<div class="container">
@@ -207,7 +235,6 @@
                     총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
         </div>
 			
-			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
 </div>
 </section>
 
