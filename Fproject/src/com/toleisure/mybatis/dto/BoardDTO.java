@@ -12,7 +12,9 @@ public class BoardDTO
 	private int faqCate;
 
 
-	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId;
+	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId;
+
+	
 
 	private int endIndex;
 	private int startIndex;
@@ -390,5 +392,14 @@ public class BoardDTO
 		this.faqId = faqId;
 	}
 
+	public String getMemId()
+	{
+		return memId;
+	}
+
+	public void setMemId(String memId)
+	{
+		this.memId = memId;
+	}
 
 }

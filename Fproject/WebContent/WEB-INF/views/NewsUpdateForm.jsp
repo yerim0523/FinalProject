@@ -137,7 +137,7 @@ function formCheck()
 					<input type="hidden" id="boardNum" name="boardNum" value="${v.boardNum }">
 				</td>
 				<td>
-					<input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록
+					<label><input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록</label>
 				</td>
 				
 				<input type="hidden" id="check" name="check" value="0">

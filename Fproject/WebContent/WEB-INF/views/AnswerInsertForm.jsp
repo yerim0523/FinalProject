@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AnswerInsertForm.jsp</title>
+<title>EventUpdateForm.jsp</title>
 
 <style type="text/css">
 .pagination {
@@ -45,6 +45,7 @@
     <script src="js/masonry.pkgd.js"></script>
     <!-- particles js -->
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
@@ -56,24 +57,15 @@
 
 function formCheck()
 {
-   var f = document.FAQInsertForm;
-   
-   var str = f.boardTitle.value;
+   var f = document.AnswerInsertForm;
+   var str = f.boardCont.value;
+   var max,min;
    
    str = str.trim();
-   if(!str || 5>str.length || 100<str.length)
-   {
-      alert("제목을 【5 ~ 100자】 내외로 입력해주세요.");
-      f.boardTitle.focus();
-      return;
-   }
 
-   
-   str = f.boardCont.value;
-   str = str.trim();
    if(!str || 5>str.length || 1000<str.length)
    {
-      alert("내용을 【5 ~ 1000자】 내외로 입력해주세요.");
+      alert("내용을 【4 ~ 1000자】 내외로 입력해주세요.");
       f.boardCont.focus();
       return;
    }
@@ -102,50 +94,53 @@ function formCheck()
 	<div class="col-md-2" align="left">
 		<div class="panel-heading">
 			
-			 <h4 class="panel-title" align="center">FAQ</h4>
+			 <h4 class="panel-title" align="center">답변 등록</h4>
 			<!-- <h4 class="panel-title" align="center">자유게시판</h4> -->
 			<hr>
 		</div>
 	</div>
 		
-	  <form action="faqinsert.action" method="post" name="FAQInsertForm" id="FAQInsertForm" class="form-horizontal">	
+	  <form action="answerinsert.action" method="post" name="AnswerInsertForm" id="AnswerInsertForm" class="form-horizontal">	
+	  
 	<div class="container">
 		<table class="table" style="text-align: center;">
+			<c:forEach var="v" items="${answerDetail}" varStatus="status">
 			<tr>
 				<td>제목</td>
 				<td>
-					<div class="form-inline">
-						<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
-								required="required" pattern=".{4,100}" style="width: 770px;">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<select name="faqCate" class="form-control" style="width: 200px;">
-				            <option id="faqCate" value="1">이용안내</option>
-				            <option id="faqCate" value="2">회원정보</option>
-				            <option id="faqCate" value="3">결제/환불</option>
-				            <option id="faqCate" value="4">기타</option>
-				         </select>
-				         
-				         
-			         </div>
-			         
+					<input type="text" class="form-control" id="questionTitle" disabled="disabled"
+					name="questionTitle" maxlength="100"required="required" value="${v.boardTitle}"pattern=".{4,100}">
+					
+					<input type="hidden" id="boardNum" name="boardNum" value="${v.boardNum }">
 				</td>
+				<td style="color: red;">[${v.faqName}]</td>
 			<tr>
 				<td>내용</td>
 				<td colspan="2">
-				<textarea class="form-control" rows="5" id="boardCont" name="boardCont"placeholder="내용 작성"></textarea>
+				<textarea  disabled="disabled" class="form-control" rows="5" id="questionCont" name="questionCont" value="${v.boardCont}"
+				placeholder="내용 작성" >${v.boardCont}</textarea>
 				</td>
 			</tr>
+			
+			<tr>
+				<td>답변</td>
+				<td colspan="2">
+				<textarea  class="form-control" rows="5" id="boardCont" name="boardCont" 
+				placeholder="답변 작성" ></textarea>
+				</td>
+			</tr>
+			<input type="hidden" id="boardMem" name="boardMem" value="${sessionScope.member}">
 			<tr>
 				<td>
 				
 				</td>
 				<td colspan="2">
 					<div align="right">
-						<button type="button" class="btn4 btn-info submit" onclick="formCheck()">등록</button>
+						<button type="button" class="btn4 btn-info submit" onclick="formCheck()" >등록</button>
 					</div>
 				</td>
 			</tr>
-			
+			</c:forEach>
 		</table>
 	</div>
 	</form>

@@ -48,5 +48,10 @@ public interface IBoardDAO
 	public int qnaListCount(String id);
 	public void qnaInsert(BoardDTO dto);
 	
+	public int answerListCount();
+	public List<BoardDTO> answerList(BoardDTO answer);
+	public List<BoardDTO> answerDetail(int boardNum);
+	public void answerInsert(BoardDTO dto);
+	
 	
 }
