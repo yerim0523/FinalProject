@@ -392,13 +392,9 @@ public class MemberController
 	
 	
 	@RequestMapping(value = "/nowgrouplist.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String nowGroup(MemberDTO dto, Model model, HttpSession session)
+	public String nowGroup(Model model, HttpSession session)
 	{
 		session.getAttribute("member");
-		
-		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-		
-		dao.infoUpdate(dto);
 		
 		return "/WEB-INF/views/mylist.jsp"; 
 	}
