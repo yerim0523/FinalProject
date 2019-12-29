@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 
@@ -16,6 +17,7 @@
 	<h3>회원가입이 완료되었습니다.</h3>
 </div>
 
+<br>
 
 </body>
 </html>

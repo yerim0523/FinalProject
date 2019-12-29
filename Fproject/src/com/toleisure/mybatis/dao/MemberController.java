@@ -1,5 +1,7 @@
 package com.toleisure.mybatis.dao;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.toleisure.mybatis.dto.BoardDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
@@ -193,12 +197,39 @@ public class MemberController
 	}
 	
 	@RequestMapping(value = "/memberinsert.action", method = RequestMethod.POST)
-	public String memberinsert(MemberDTO m)
+	public String memberinsert(MemberDTO m, HttpServletRequest req) throws UnsupportedEncodingException
 	{
 		String view = "WEB-INF/views/joinTest.jsp";
 		
 		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		System.out.println("=====" + m.getMemId());
 		dao.add(m);
+		
+		MultipartRequest multi = null;
+
+		req.setCharacterEncoding("utf-8");
+
+		int sizeLimit = 10 * 1024 * 1024 ; // 10MB 크기 제한
+
+		String savePath = "C:\\ToLeisure\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\images"; 
+
+		// 저장 경로 설정
+		System.out.println("savePath : " + savePath);
+
+		try{
+
+		multi=new MultipartRequest(req, savePath, sizeLimit, 
+
+		"utf-8", new DefaultFileRenamePolicy()); 
+
+		// 업로드
+
+		} catch (Exception e) {
+
+		e.printStackTrace();
+
+		} 
 		
 		return view;
 		

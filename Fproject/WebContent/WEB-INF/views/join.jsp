@@ -219,7 +219,7 @@
 							<div class="sc-krvtoX ksOaZn">
 								<div class="sc-cbkKFq hBlXcX">
 									<h1>회원가입</h1>
-									<form action="memberinsert.action" method="post" name="memberJoinForm">
+									<form action="memberinsert.action" method="post" name="memberJoinForm" enctype="multipart/form-data">
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 											<label class="sc-iyvyFf kBgtyY">*이름</label>
 											<div class="sc-eTuwsz cIWDpP">
@@ -279,12 +279,12 @@
 											</div>
 										</div>
 										
-										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
-											<label class="sc-iyvyFf kBgtyY">생년월일</label>
-											<div>
-												<input type="text" class="sc-hrWEMg feokCA"	name="memBirth" id="memBirth" placeholder="ex) 19960523 ">
-											</div>
-										</div>
+<!-- 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh"> -->
+<!-- 											<label class="sc-iyvyFf kBgtyY">생년월일</label> -->
+<!-- 											<div> -->
+<!-- 												<input type="text" class="sc-hrWEMg feokCA"	name="memBirth" id="memBirth" placeholder="ex) 19960523 "> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 											<label class="sc-iyvyFf kBgtyY">*직장</label>
