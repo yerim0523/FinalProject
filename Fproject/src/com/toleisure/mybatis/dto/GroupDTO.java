@@ -20,9 +20,10 @@ public class GroupDTO
 	private String boardCont, boardDate;
 	private int boardNum;
 
-
 	private int grCount, grStarCount;
 	private double grStarAvg;
+	
+	private String payDetail;
 
 	// setter / getter 구성 (TBL_GROUP 테이블 - String)
 	public String getMemId()
@@ -466,6 +467,16 @@ public class GroupDTO
 
 	public void setDay(String day) {
 		this.day = day;
+	}
+	
+	public String getPayDetail()
+	{
+		return payDetail;
+	}
+
+	public void setPayDetail(String payDetail)
+	{
+		this.payDetail = payDetail;
 	}
 
 	

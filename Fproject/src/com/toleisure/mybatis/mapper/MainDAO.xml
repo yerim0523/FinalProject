@@ -281,11 +281,8 @@
 	
 	<select id="ContentMember" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT MEM_PIC AS memPic, MEM_NAME AS memName
-		FROM GR_JOIN JO, PAYMENT PA, GR_REQUEST RE, FIXED_GROUP FI, NOW_GROUP NG, MEMBER MB
-		WHERE JO.FIX_CODE = FI.FIX_CODE
-		  AND FI.NG_CODE = NG.NG_CODE
-		  AND RE.NG_CODE = NG.NG_CODE
-		  AND JO.PAY_CODE = PA.PAY_CODE
+		FROM PAYMENT PA, GR_REQUEST RE, NOW_GROUP NG, MEMBER MB
+		WHERE RE.NG_CODE = NG.NG_CODE
 		  AND PA.RE_CODE = RE.RE_CODE
 		  AND RE.MEM_ID = MB.MEM_ID
 		  AND NG.NG_CODE = #{ngCode}	

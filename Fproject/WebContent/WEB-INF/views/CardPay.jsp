@@ -55,6 +55,31 @@
 <!-- custom js -->
 <script src="js/custom.js"></script>
 
+<script type="text/javascript">
+
+	function cardPay()
+	{
+		f = document.cardpayForm;
+		
+		if(!f.payDetail.value)
+		{
+			alert("카드번호를 입력해주세요.");
+			f.payDetail.focus();
+			return;
+		}
+		
+		if(!f.cardPw.value)
+		{
+			alert("비밀번호를 입력해주세요.");
+			f.cardPw.focus();
+			return;
+		}
+		
+		f.submit();
+	}
+
+</script>
+
 
 
 </head>
@@ -91,7 +116,7 @@
 			<tr>
 				<th>이름</th>
 				<td style="padding: 10px;">
-					<input type="text" class="form-control" name="name" value="${myInfo.memName }" readonly="readonly">
+					<input type="text" class="form-control" id="memName" name="memName" value="${myInfo.memName }" readonly="readonly">
 				</td>
 			</tr>
 			<tr>
@@ -99,7 +124,7 @@
 				<td style="padding: 10px;">
 					<%-- <fmt:setLocale value="ko_KR"/><input type="text" class="form-control" value='<fmt:formatNumber value="${ngCost }"></fmt:formatNumber>' readonly="readonly"> --%>
 					<%-- <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${ngCost}" /> --%>
-					<input type="text" class="form-control" name="name" value="${ngCost }원" readonly="readonly">
+					<input type="text" class="form-control" id="ngCost" name="ngCost" value="${ngCost }" readonly="readonly">
 				</td>
 			</tr>
 
@@ -113,12 +138,12 @@
 			<tr>
 				<th>비밀번호</th>
 				<td style="padding: 10px;">
-					<input type="password" class="form-control" name="pw">
+					<input type="password" class="form-control" id="cardPw" name="cardPw">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding: 10px; text-align: center;">
-					<button type="button" class="btn4">결제하기</button>&nbsp;&nbsp;
+					<button type="button" class="btn4" onclick="cardPay()">결제하기</button>&nbsp;&nbsp;
 					<button type="button" class="btn4">취소하기</button>
 				</td>
 			</tr>

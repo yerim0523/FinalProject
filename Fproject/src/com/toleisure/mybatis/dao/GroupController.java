@@ -201,16 +201,27 @@ public class GroupController
 	}
 	
 	// 카드 결제 메소드 미완성
-	/*
-	public String cardPay(MemberDTO dto, Model model, HttpSession session)
+	@RequestMapping(value = "/cardpay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String cardPay(GroupDTO dto, Model model, HttpSession session)
 	{
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCode = (int)session.getAttribute("ngCode");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		
+		dto.setNgCode(ngCode);
+		
+		System.out.println(ngCode);
+		
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
+		dao.cardPay(dto);
 		
 		
-		return "redirect:groupdetail.action";
+		return "redirect:main.action";
 	}
-	*/
+	
 	
 	
 }

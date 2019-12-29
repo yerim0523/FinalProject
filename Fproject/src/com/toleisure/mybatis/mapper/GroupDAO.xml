@@ -108,11 +108,24 @@
 	
 	<!-- GR_REQUEST 테이블 INSERT -->
 	
-	<insert id="request" parameterType="com.toleisure.mybatis.dto.GroupDTO">
-		INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
-		VALUES(GR_REQSEQ.NEXTVAL, #{ngCode}, #{memId})
+	<insert id="cardPay" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+		{
+			CALL
+			DECLARE
+			   requestCodeSeq INT;
+			BEGIN
+			   requestCodeSeq := GR_REQSEQ.NEXTVAL;
+			       
+			   INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
+			   VALUES(requestCodeSeq, #{ngCode}, #{memId});
+			       
+			   INSERT INTO PAYMENT(PAY_CODE, RE_CODE, PM_CODE, PAY_DETAIL)
+			   VALUES(PAYMENTSEQ.NEXTVAL, requestCodeSeq, 2, #{payDetail});
+			   
+			END
+		}
 	</insert>
-
+		
 
    <!-- 
    <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
