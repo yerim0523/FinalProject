@@ -145,18 +145,26 @@
 		</table>
 
 		<hr>
-		<button type="button" onclick="location='eventinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
+		<c:if test="${!empty sessionScope.mode}">
+		<c:if test="${sessionScope.mode==1}">
+		
+			<button type="button" onclick="location='eventinsertform.action'"
+				class="btn4" style="float: right;">글쓰기</button>
+			</c:if>
+		</c:if>
 	</div>
 
 	<div class="container">
 		<ul class="pagination">
-			<li class="page-item">
+			
 			
 			<c:if test="${paging.curPage ne 1}">
+			<li class="page-item">
 			<a class="page-link" href="#" aria-label="Previous" onClick="fn_paging(${paging.prevPage })">	
 			<span aria-hidden="true">&laquo;</span>
 			</a></li>
 			</c:if>
+			
 			<%-- ${status.index+1+(paging.curPage-1)*10} --%>
 			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
 			 	<c:choose>

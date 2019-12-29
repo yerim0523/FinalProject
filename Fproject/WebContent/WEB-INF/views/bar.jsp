@@ -149,7 +149,7 @@
 									</form>
 								</li>
 								<c:if test="${empty sessionScope.member}">
-								<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginNeed">모임개설</a></li>
+								<li class="nav-item"><a class="nav-link" style="cursor:pointer;"data-toggle="modal" data-target="#loginNeed">모임개설</a></li>
 								</c:if>
 								<c:if test="${!empty sessionScope.member}">
                         		<li class="nav-item"><a class="nav-link" href="mygrouplist.action?memId=${member.memId }"> 모임개설 </a></li>

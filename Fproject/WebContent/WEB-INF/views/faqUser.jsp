@@ -204,7 +204,12 @@
 			</c:forEach> 
 		</div>
 	</div>
-	<button type="button" onclick="location='faqinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
+	<c:if test="${!empty sessionScope.mode}">
+			<c:if test="${sessionScope.mode==1}">
+			<button type="button" onclick="location='faqinsertform.action'"
+				class="btn4" style="float: right;">글쓰기</button>
+			</c:if>
+			</c:if>
 	<button type="button" onclick="location='qnainsertform.action'" class="btn4" style="float: left;">1:1 문의</button>
 </div>
 

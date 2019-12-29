@@ -286,14 +286,17 @@ $(document).ready(function ()
 			</div>
 			
 			<c:if test="${!empty sessionScope.mode}">
+			<c:if test="${sessionScope.mode==1}">
 			<button type="button" onclick="location='faqinsertform.action'"
 				class="btn4" style="float: right;">글쓰기</button>
+			</c:if>
 			</c:if>
 			
 			<c:if test="${empty sessionScope.member}">
 				<button type="button" data-toggle="modal" data-target="#loginNeed"
 					class="btn4" style="float: left;">1:1 문의</button>
 			</c:if>
+			
 			<c:if test="${!empty sessionScope.member}">
 				<button type="button" data-toggle="modal" data-target="#QNA"
 					class="btn4" style="float: left;">1:1 문의</button>

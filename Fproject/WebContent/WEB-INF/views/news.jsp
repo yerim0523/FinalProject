@@ -141,7 +141,12 @@
 		</table>
 
 		<hr>
-		<button type="button" onclick="location='newsinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
+		<c:if test="${!empty sessionScope.mode}">
+			<c:if test="${sessionScope.mode==1}">
+			<button type="button" onclick="location='newsinsertform.action'"
+				class="btn4" style="float: right;">글쓰기</button>
+			</c:if>
+			</c:if>
 	</div>
 
 	<div class="container">
