@@ -95,16 +95,6 @@
 
 </style>
 
-<script type="text/javascript">
-
-	function allHistory()
-	{
-		
-	}
-
-</script>
-
-
 
 </head>
 <body>
@@ -193,7 +183,7 @@
 		<c:forEach var="group" items="${group}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" >
+				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" style="width: 500px;">
 				<div class="caption">
 					<div>
 						<div class="starRev">
