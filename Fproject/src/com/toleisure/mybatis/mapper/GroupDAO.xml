@@ -84,6 +84,7 @@
 		WHERE GR_CODE=${grCode}
 	</select>
 	
+	<!-- 찜 모임 목록 -->
 	
 	<select id="jjimGroup" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT MEM_ID AS memId, NG_CODE AS ngCode, NG_PIC AS ngPic, CATE1 AS grCate1Name, CATE2 AS grCate2Name, GR_NAME AS grName, MEM_NAME AS memName, NG_DATE AS ngDate, GR_COUNT AS grCount
@@ -91,11 +92,25 @@
 		WHERE MEM_ID=#{memId}
 	</select>
 	
+	<!-- 찜 호스트 목록 -->
 	
 	<select id="jjimHost" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT HF.MEM_ID AS memId, H.MEM_ID AS hostId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName
 		FROM HOST_FAVORITE HF, HOST H, MEMBER M
 		WHERE HF.HOST_CODE = H.HOST_CODE AND H.MEM_ID = M.MEM_ID AND HF.MEM_ID=#{memId}
+	</select>
+	
+	<!-- 현재 참여중인 나(접속중인 사람)의 모임 목록 -->
+	<select id="myNowGroup" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG.NG_CODE AS ngCode, NG.NG_PIC as ngPic, G.GR_NAME as grName, C.CATE_NAME AS grCate1Name, NVL(C2.CATE_NAME,0) AS grCate2Name, M.MEM_NAME as memName, NG.NG_STARTDATE as ngStart, NVL(CNT.GR_COUNT,0) AS grCount
+		FROM GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
+		                                                                                      FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
+		                                                                                      WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE=NG.NG_CODE
+		                                                                                      GROUP BY G.GR_CODE) CNT
+		WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
+		  AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE
+		  AND RQ.MEM_ID=#{memId}
+		ORDER BY NG_DATE DESC
 	</select>
 	
 	<!-- 모임 비용 조회 -->

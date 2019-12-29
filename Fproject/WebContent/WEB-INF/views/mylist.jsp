@@ -87,53 +87,19 @@
 					</div>
 					<br>
 					<div class="row" >
+						<c:forEach var="nowGroup" items="${nowGroup }">
 						<div class="thumbnail " style="padding: 10px;">
 							<img class="image" src="images/iu.jpg">
 							<br><br>
 							<div class="caption">
-								<span class="title">맥주모임</span>
+								<span class="title">${nowGroup.grName }</span>
 								<p>ㅁㄴㅇㄹ</p>
 								<div align="center">
 									<button type="button" class="btn4" data-toggle="modal" data-target="#feedbackPopup" onclick="fn_">피드백</button>
 								</div>
 							</div>
 						</div>
-						
-						<div class="thumbnail" style="padding: 10px;">
-							<img class="image" src="images/me.png">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="center">
-									<button type="button" class="btn4">피드백</button>
-								</div>
-							</div>
-						</div>
-						
-						<div class="thumbnail" style="padding: 10px;">
-							<img class="image" src="images/me.png">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="center">
-									<button type="button" class="btn4">피드백</button>
-								</div>
-							</div>
-						</div>
-						
-						<div class="thumbnail" style="padding: 10px;">
-							<img class="image" src="images/me.png">
-							<br><br>
-							<div class="caption">
-								<span class="title">맥주모임</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="center">
-									<button type="button" class="btn4">피드백</button>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 					<br><br>
 				
