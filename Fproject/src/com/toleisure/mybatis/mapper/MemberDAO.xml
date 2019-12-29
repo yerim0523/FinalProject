@@ -30,21 +30,21 @@
 		<choose> 
 			<when test="memCate1 == 0 and memCate2 == 0">
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO)
+				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_BIRTH, MEM_PIC)
 				VALUES(#{memId}, #{memPw},
-				#{memName}, #{memTel}, #{memGen}, #{memComp}, #{memIntro})
+				#{memName}, #{memTel}, #{memGen}, #{memComp}, #{memIntro}, #{memBirth}, #{memPic})
 			</when>
 			<when test="memCate2 == 0">
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO, CATE_CODE1)
+				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_BIRTH, MEM_PIC, CATE_CODE1)
 				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
-				#{memComp}, #{memIntro}, #{memCate1})
+				#{memComp}, #{memIntro}, #{memBirth}, #{memPic}, #{memCate1})
 			</when>
 			<otherwise>
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO, CATE_CODE1, CATE_CODE2)
+				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_BIRTH, MEM_PIC, CATE_CODE1, CATE_CODE2)
 				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
-				#{memComp}, #{memIntro}, #{memCate1}, #{memCate2})
+				#{memComp}, #{memIntro}, #{memBirth}, #{memPic}, #{memCate1}, #{memCate2})
 			</otherwise>
 		</choose>
 	</insert>
