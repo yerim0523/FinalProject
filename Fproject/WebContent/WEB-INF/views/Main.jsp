@@ -162,7 +162,7 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">${HotGroup.grCount }회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
             <div>
                <div class="name">
                <h5>${HotGroup.grName }</h5>
@@ -211,7 +211,7 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${NewGroup.grCate1Name } ${NewGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">${NewGroup.grCount }회차|${NewGroup.grCate1Name } ${NewGroup.grCate2Name }</span>
             <div>
                <div class="name">
                <h5>${NewGroup.grName }</h5>
@@ -308,7 +308,7 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${ClosingGroup.grCate1Name } ${ClosingGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">${ClosingGroup.grCount }회차|${ClosingGroup.grCate1Name } ${ClosingGroup.grCate2Name }</span>
             <div>
                <div class="name">
                <h5>${ClosingGroup.grName }</h5>
@@ -355,7 +355,7 @@ button.more
          </div>
          <br>
          <div>
-            <span style="font-size: 12px;">1회차|${RecommendGroup.grCate1Name } ${RecommendGroup.grCate2Name }</span>
+            <span style="font-size: 12px;">${RecommendGroup.grCount }회차|${RecommendGroup.grCate1Name } ${RecommendGroup.grCate2Name }</span>
             <div>
                <div class="name">
                <h5>${RecommendGroup.grName }</h5>
