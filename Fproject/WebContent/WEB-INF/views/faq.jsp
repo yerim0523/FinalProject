@@ -222,6 +222,9 @@ $(document).ready(function ()
 							<li class="nav-item"><a class="nav-link" href="event.action">투레저
 									이벤트</a></li>
 							<li class="nav-item"><a class="nav-link active">FAQ</a></li>
+							<c:if test="${sessionScope.mode==1}">
+							<li class="nav-item"><a class="nav-link" href="answer.action">QNA답변작성</a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
@@ -232,25 +235,6 @@ $(document).ready(function ()
 			<div class="container" align="center">
 				<div class="row">
 					<div class="col">
-						<!-- 
-				<ul class="nav nav-pills">
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">호스트신청</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">이용안내</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">회원정보</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">결제/환불</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">기타</a>
-					</li>
-				</ul>
-			 -->
 						<a class="cate" href="#" style="font-weight: bold;">전체</a> | <a
 							class="cate" href="faquse.action">이용안내</a> | <a class="cate"
 							href="faquser.action">회원정보</a> | <a class="cate"

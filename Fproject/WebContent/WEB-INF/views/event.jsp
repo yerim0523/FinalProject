@@ -105,6 +105,9 @@
 					<li class="nav-item"><a class="nav-link"href="news.action">투레저 소식</a></li>
 					<li class="nav-item"><a class="nav-link active">투레저 이벤트</a></li>
 					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a>
+					<c:if test="${sessionScope.mode==1}">
+					<li class="nav-item"><a class="nav-link" href="answer.action">QNA답변작성</a></li>
+					</c:if>
 					</li>
 				</ul>
 			</div>
@@ -145,13 +148,10 @@
 		</table>
 
 		<hr>
-		<c:if test="${!empty sessionScope.mode}">
 		<c:if test="${sessionScope.mode==1}">
-		
 			<button type="button" onclick="location='eventinsertform.action'"
 				class="btn4" style="float: right;">글쓰기</button>
 			</c:if>
-		</c:if>
 	</div>
 
 	<div class="container">

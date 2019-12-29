@@ -99,8 +99,10 @@
 					</li>
 					<li class="nav-item"><a class="nav-link active">투레저 소식</a></li>
 					<li class="nav-item"><a class="nav-link"href="event.action">투레저 이벤트</a></li>
-					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a></li>
+					<c:if test="${sessionScope.mode==1}">
+					<li class="nav-item"><a class="nav-link" href="answer.action">QNA답변작성</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
