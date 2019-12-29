@@ -616,4 +616,22 @@ public class BoardController
 		return "redirect:answer.action";
 	}
 	
+	
+	@RequestMapping(value = "/answerform.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String answerForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
+		{
+			String view = "/WEB-INF/views/AnswerForm.jsp";
+
+			session.getAttribute("member");
+
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+			
+			List<BoardDTO> answerDetail = dao.answerDetail(boardNum);
+			List<BoardDTO> answerUpdate = dao.answerUpdateForm(boardNum);
+
+			model.addAttribute("answerUpdate", answerUpdate);
+			model.addAttribute("answerDetail", answerDetail);
+			return view;
+		}
 }

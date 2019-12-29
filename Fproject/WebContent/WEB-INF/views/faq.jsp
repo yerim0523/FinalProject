@@ -317,65 +317,70 @@ $(document).ready(function ()
 		</div>
 	</div>
 
+
+
 	<div class="modal modal-center" id="QNA">
-		<div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">
-			<div class="modal-content">
-				<div class="modal-header">
-					<span style="font-size: 15pt; font-weight: bold;">나의 문의 내역</span>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body center-block">
-					<div>
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th></th>
-									<th></th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>날짜</th>
-									<th>조회수</th>
-								</tr>
-								<c:forEach var="v" items="${qnaList}" varStatus="status">
-									<tr>
-										<c:if test="${v.boardNotice eq 0}">
-											<td style="color: red;">[${v.faqName}]</td>
-										</c:if>
-										<td>${v.rNum}</td>
-										<td>
-										<c:choose>
-												<c:when test="${v.boardNotice ne 0}">
-													<a href="#"
-														onclick="location='qnadetail.action?boardNum=${v.boardNum}'"
-														style="cursor: hand;">${v.boardTitle}</a>
-												</c:when>
-												<c:when test="${v.boardNotice eq 0}">${v.boardTitle}</c:when>
-										</c:choose>
-										</td>
-										<td>${v.boardMem}</td>
-										<td>${v.boardDate}</td>
-										<td>${v.boardHits}</td>
-									</tr>
+      <div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">
+         <div class="modal-content">
+            <div class="modal-header">
+               <span style="font-size: 15pt; font-weight: bold;">나의 문의 내역</span>
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body center-block">
+               <div>
+                  <table class="table table-hover">
+                     <thead>
+                        <tr>
+                           <th></th>
+                           <th></th>
+                           <th>제목</th>
+                           <th>작성자</th>
+                           <th>날짜</th>
+                           <th>조회수</th>
+                        </tr>
+                        <c:forEach var="v" items="${qnaList}" varStatus="status">
+                           <tr>
+                                 <td style="color: red;">[${v.faqName}]</td>
+                              <td>${v.rNum}</td>
+                              <td>${v.boardTitle}</td>
+                              <td>${v.boardDate}</td>
+                              <c:choose>
+								<c:when test="${v.checkCode!=0}">
+									<td style="color: red;">답변완료</td>
+							    </c:when>
+								<c:otherwise>
+									<td style="color: blue;">답변대기</td>
+								</c:otherwise>
+								</c:choose>
+								 <td>
+								 <c:choose>
+								<c:when test="${v.checkCode!=0}">
+									<button type="button" onclick="location='answerform.action?boardNum=${v.boardNum}'" 
+									 style="cursor: hand;">답글보기</button>
+							    </c:when>
+								<c:otherwise>
+								</c:otherwise>
+								</c:choose>
+								</td>
+                           </tr>
+                        </c:forEach>
+                     </thead>
+                  </table>
+                  <hr>
+                  <button type="button" data-dismiss="modal" data-toggle="modal"
+                     data-target="#addqna" class="btn4" style="float: Right;">글쓰기</button>
+               </div>
 
-								</c:forEach>
 
-							</thead>
-						</table>
+            </div>
+         </div>
+         <div class="modal-footer"></div>
+      </div>
+   </div>
 
-						<hr>
-						<button type="button" data-dismiss="modal" data-toggle="modal"
-							data-target="#addqna" class="btn4" style="float: Right;">글쓰기</button>
-					</div>
-
-
-				</div>
-			</div>
-			<div class="modal-footer"></div>
-		</div>
-	</div>
 
 	<div class="modal modal-center" id="addqna">
 		<div class="modal-dialog modal-lg shadow-sm mt-10p modal-center">

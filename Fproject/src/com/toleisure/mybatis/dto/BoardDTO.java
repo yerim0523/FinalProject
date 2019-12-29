@@ -14,7 +14,9 @@ public class BoardDTO
 
 	
 
-	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId;
+	private String answerCont,faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId;
+
+	
 
 	
 
@@ -412,6 +414,16 @@ public class BoardDTO
 	public void setCheckCode(int checkCode)
 	{
 		this.checkCode = checkCode;
+	}
+	
+	public String getAnswerCont()
+	{
+		return answerCont;
+	}
+
+	public void setAnswerCont(String answerCont)
+	{
+		this.answerCont = answerCont;
 	}
 
 }
