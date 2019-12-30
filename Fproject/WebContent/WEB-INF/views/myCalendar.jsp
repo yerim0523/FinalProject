@@ -356,7 +356,7 @@
 	      var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
 	      legend.appendChild(entry);
 	    });
-	    this.el.appendChild(legend);
+	    this.el.appendChild(legend); 
 	  }
 
 	  Calendar.prototype.nextMonth = function() {
