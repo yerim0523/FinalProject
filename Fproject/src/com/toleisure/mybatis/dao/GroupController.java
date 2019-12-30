@@ -45,7 +45,7 @@ public class GroupController
 		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
 		System.out.println("==================");
 		
-		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode());
+		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode()); 
 		
 		model.addAttribute("groupinfo", dto2);
 		
