@@ -52,5 +52,8 @@ public interface IGroupDAO
 	// 핸드폰결제 INSERT
 	public int phonePay(GroupDTO dto);
 	
+	// 가상계좌결제 INSERT
+	public int bankPay(GroupDTO dto);
+	
 	
 }
