@@ -254,10 +254,12 @@ $(document).ready(function ()
 								<a class="card-link d-flex justify-content-start"
 									data-toggle="collapse" href="#collapse${faq.boardNum}">
 									[${faq.faqName}] ${faq.boardTitle} </a>
+								<c:if test="${sessionScope.mode==1}">
 								<button type="button" onclick="delcheck(${faq.boardNum})"
 									style="float: right;">삭제</button>
 								<button type="button" onclick="edit(${faq.boardNum})"
 									style="float: right;">수정</button>
+								</c:if>
 							</div>
 							<div id="collapse${faq.boardNum}" class="collapse"
 								data-parent="#accordion">
@@ -276,12 +278,12 @@ $(document).ready(function ()
 			</c:if>
 			</c:if>
 			
-			<c:if test="${empty sessionScope.member}">
+				<c:if test="${empty sessionScope.mode}">
 				<button type="button" data-toggle="modal" data-target="#loginNeed"
 					class="btn4" style="float: left;">1:1 문의</button>
 			</c:if>
 			
-			<c:if test="${!empty sessionScope.member}">
+			<c:if test="${sessionScope.mode==0}">
 				<button type="button" data-toggle="modal" data-target="#QNA"
 					class="btn4" style="float: left;">1:1 문의</button>
 			</c:if>

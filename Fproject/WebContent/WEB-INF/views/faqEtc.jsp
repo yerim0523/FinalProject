@@ -87,6 +87,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+$(document).ready(function ()
+		{ $('head').append('<style type="text/css">.modal .modal-body {max-height: ' + ($('body').height() * .500) + 'px;overflow-y: auto;}.modal-open .modal{overflow-y: hidden !important;}</style>'); });
+
 	$(function() {
 		function runEffect() {
 			$("#effect").toggle("blind", null, 700);
@@ -114,7 +117,38 @@
 			location="faqupdateform.action?boardNum="+boardNum;
 		
 	}
+	
+	function formCheck()
+	{
+	   var f = document.QNAInsertForm;
+	   
+	   var str = f.boardTitle.value;
+	   
+	   str = str.trim();
+	   if(!str || 5>str.length || 100<str.length)
+	   {
+	      alert("제목을 【5 ~ 100자】 내외로 입력해주세요.");
+	      f.boardTitle.focus();
+	      return;
+	   }
 
+	   
+	   str = f.boardCont.value;
+	   str = str.trim();
+	   if(!str || 5>str.length || 1000<str.length)
+	   {
+	      alert("내용을 【5 ~ 1000자】 내외로 입력해주세요.");
+	      f.boardCont.focus();
+	      return;
+	   }
+	   
+	   f.submit();
+
+	}
+	
+
+
+	
 
 </script>
 </head>
@@ -177,8 +211,10 @@
 				       [${faq.faqName}] ${faq.boardTitle}
 				        
 				      </a>
-				      <button type="button" onclick="delcheck(${faq.boardNum})" style="float: right;">삭제</button>
-				      <button type="button" onclick="edit(${faq.boardNum})"  style="float: right;">수정</button>
+				      <c:if test="${sessionScope.mode==1}">
+								<button type="button" onclick="delcheck(${faq.boardNum})"style="float: right;">삭제</button>
+								<button type="button" onclick="edit(${faq.boardNum})"style="float: right;">수정</button>
+								</c:if>
 				    </div>
 				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
 				      <div class="card-body d-flex justify-content-start" style="text-align:left;">
@@ -195,14 +231,52 @@
 				class="btn4" style="float: right;">글쓰기</button>
 			</c:if>
 			</c:if>
-	<button type="button" onclick="location='qnainsertform.action'" class="btn4" style="float: left;">1:1 문의</button>
-</div>
+	<c:if test="${empty sessionScope.member}">
+				<button type="button" data-toggle="modal" data-target="#loginNeed"
+					class="btn4" style="float: left;">1:1 문의하러 가기</button>
+			</c:if>
+			
+			<c:if test="${!empty sessionScope.member}">
+				<button type="button" onclick="location='faq.action'"
+					class="btn4" style="float: left;">1:1 문의하러 가기</button>
+			</c:if>
+		</div>
 
-</section>
+	</section>
 
-<div>
-	<c:import url="footer.jsp"></c:import>
-</div>
+	<div>
+		<c:import url="footer.jsp"></c:import>
+	</div>
+
+
+	<div class="modal modal-center fade" id="loginNeed" tabindex="-1"
+		role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+		<div class="modal-dialog modal-80size modal-center" role="document">
+			<div class="modal-content modal-80size">
+				<div class="modal-header">
+					<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body center-block">
+					<p class="text-center">로그인이 필요한 서비스입니다.</p>
+					<div class="">
+						<a href="login.action"><button type="button" class="btn_1">로그인</button></a>
+						<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+					</div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+
+
 
 </body>
 </html>

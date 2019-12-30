@@ -101,7 +101,7 @@ button.more
       </ol>
       <div class="carousel-inner">
          <div class="carousel-item active">
-            <img src="images/ma.jpg" class="d-block w-100" alt="인기호스트"
+            <img src="images/iu2.jpg" class="d-block w-100" alt="인기호스트"
                style="height: 500px;">
          </div>
          <div class="carousel-item">
@@ -109,7 +109,7 @@ button.more
                style="height: 500px;">
          </div>
          <div class="carousel-item">
-            <img src="images/iu2.jpg" class="d-block w-100" alt="인기호스트"
+            <img src="images/ma.jpg" class="d-block w-100" alt="인기호스트"
                style="height: 500px;">
          </div>
       </div>
