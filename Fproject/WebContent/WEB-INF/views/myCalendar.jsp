@@ -353,7 +353,7 @@
 	      return memo;
 	    }, []).forEach(function(e) {
 	      var parts = e.split('|');
-	      var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
+	      var entry = createElement('span', 'entry ' +  parts[1], parts[0]); 
 	      legend.appendChild(entry);
 	    });
 	    this.el.appendChild(legend); 
