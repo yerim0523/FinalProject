@@ -361,7 +361,7 @@
 
 	  Calendar.prototype.nextMonth = function() {
 		  this.current.add('months', 1);
-		  
+		   
 	    this.next = true;
 	    month = this.current;
 	    alert(month);
