@@ -1,7 +1,5 @@
 package com.toleisure.mybatis.dao;
 
-
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
@@ -12,8 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
@@ -220,6 +217,21 @@ public class GroupController
 		
 		return "redirect:main.action";
 	}
+
+	@RequestMapping(value = "/selectFeed.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String selectFeed(GroupDTO dto, Model model)
+	{
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		String isMemYn = dao.feedCheck(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMemYn = "+isMemYn);
+		System.out.println("==================");
+		
+		return isMemYn;
+	}
+	
 	
 	// 핸드폰 결제 미완성
 	/*

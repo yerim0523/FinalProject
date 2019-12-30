@@ -33,16 +33,8 @@
 		<c:import url="sidebar.jsp"></c:import>
 		
 		<div id="calendar"></div><br>
-		안녕<br>
-		<c:forEach var="myCal" items="${myCal}">
-			ngCode : ${myCal.ngCode } <br>
-			ngCode : ${myCal.ngLocation } <br>
-			grName : ${myCal.ngStart }<br>
-			grName : ${myCal.year }<br>
-			grName : ${myCal.month }<br>
-			grName : ${myCal.day }<br>
+		
 	
-		</c:forEach>
 		
 	</div>
 	
@@ -57,7 +49,7 @@
 <script type="text/javascript">
 
 !function() {
-
+	 
 	  var today = moment();
 
 	  function Calendar(selector, events) 
@@ -98,12 +90,12 @@
 	      right.addEventListener('click', function() { self.nextMonth(); });
 
 	      var left = createElement('div', 'left');
-	      left.addEventListener('click', function() { self.prevMonth(); });
+	      left.addEventListener('click', function() { self.prevMonth(); }); 
 
 	      //Append the Elements
 	      this.header.appendChild(this.title); 
 	      this.header.appendChild(right);
-	      this.header.appendChild(left);
+	      this.header.appendChild(left); 
 	      this.el.appendChild(this.header);
 	    }
 
@@ -111,12 +103,23 @@
 	  }
 
 	  Calendar.prototype.drawMonth = function() {
-	    var self = this;
-	    
+		  var self = this;
+	    var count = 0;
+	    var array = new Array();
+	    <c:forEach var="myCal" items="${myCal}" varStatus="status">
+ 			array[count] = "${myCal.day}";
+ 			count++;
+ 		  </c:forEach>  
+ 		console.log(array);
+ 		 count = 0;
+ 		 
  	    this.events.forEach(function(ev) 
  	    {
- 	     	ev.date = self.current.clone().date(15);
-//  	     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+ 	    	// 계속 반복되는 구문
+ 	    	//alert(array[count]);
+ 			ev.date = self.current.clone().date(array[count]);
+ 			count++;
+//		 ev.date = self.current.clone().date(02);
  	    });
 	    
 	    
@@ -142,7 +145,7 @@
 	        this.fowardFill();
 	        this.month.className = 'month new';
 	    }
-	  }
+	  } // end  Calendar.prototype.drawMonth
 
 	  Calendar.prototype.backFill = function() {
 	    var clone = this.current.clone();
@@ -383,11 +386,12 @@
 	}();
 
 	!function() {
+		
 	  var data = [
 		
-	    { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange', date: 25 },
- 	    { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange', date: 20 },
- 	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
+/* 	    { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange'},
+ 	    { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange'},
+ 	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' }, */
 // 	    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
 
 // 	    { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
@@ -405,7 +409,14 @@
 // 	    { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
 // 	    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
 	  ];
-
+	  var colorArray = ["yellow","orange","green","blue","black","yellow"];
+	  var count2=0;
+	  <c:forEach var="myCal" items="${myCal}">
+	  	
+	  	 var col = colorArray[count2];
+		 data.push({eventName: '${myCal.ngLocation}',calendar: '${myCal.grName}', color: col});
+		 count2++;
+	  </c:forEach>
 	  
 
 	  function addDate(ev) 
@@ -418,15 +429,7 @@
 
 	}();
 </script>
-<c:forEach var="myCal" items="${myCal}">
-			ngCode : ${myCal.ngCode } <br>
-			ngCode : ${myCal.ngLocation } <br>
-			grName : ${myCal.ngStart }<br>
-			grName : ${myCal.year }<br>
-			grName : ${myCal.month }<br>
-			grName : ${myCal.day }<br>
-			data.push("${item}");
-		</c:forEach>
+
 
 </body>
 </html>

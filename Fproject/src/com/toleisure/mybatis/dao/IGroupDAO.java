@@ -28,6 +28,9 @@ public interface IGroupDAO
 	// 메이트 ID 에 따른 현재 종료된 모임/탈퇴당한 모임 리스트 출력 (마이페이지 - 종료모임)
 	public ArrayList<GroupDTO> myEndGroup(String memId);
 	
+	// 피드백 참여했는지 여부 확인 (마이페이지 - 참여모임 - 피드백)
+	public String feedCheck(GroupDTO dto);
+	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);
 	
