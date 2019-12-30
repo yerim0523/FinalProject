@@ -234,7 +234,7 @@ public class GroupController
 	
 	
 	// 핸드폰 결제 미완성
-	/*
+	
 	@RequestMapping(value = "/phonepage.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String phonePage(MemberDTO dto, Model model, HttpSession session)
 	{
@@ -256,7 +256,28 @@ public class GroupController
 		
 		return view;
 	}
-	*/
+	
+	@RequestMapping(value = "/phonepay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String phonePay(GroupDTO dto, Model model, HttpSession session)
+	{
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCode = (int)session.getAttribute("ngCode");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		
+		dto.setNgCode(ngCode);
+		
+		System.out.println(ngCode);
+		
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.phonePay(dto);
+		
+		
+		return "redirect:main.action";
+	}
+	
 	
 	
 	
