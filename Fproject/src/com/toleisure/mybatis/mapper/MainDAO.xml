@@ -60,9 +60,13 @@
 
 	<select id="RestaurantGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-		grCate1Name, CATE2 AS grCate2Name
-		FROM FOOD_RESTAURANT_VIEW
+		SELECT A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+		     , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		FROM ALL_GROUP_VIEW A, FOOD_GROUP_VIEW C
+		WHERE A.GR_CODE = C.GR_CODE
+		GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+		     , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		ORDER BY NG_DATE DESC
 	</select>
 
 	<!-- ============================================음식점 DAO END================================================ -->
