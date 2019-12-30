@@ -83,7 +83,7 @@
 				<br><br>
 				
 					<div class="page-header">
-						<h5 style="font-weight: bold;">참여중인 모임</h5>
+						<h5 style="font-weight: bold;">종료 모임</h5>
 					</div>
 					<br>
 					<div class="row" >

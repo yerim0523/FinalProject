@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mylist.jsp</title>
+<title>myEndList.jsp</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -87,31 +87,31 @@
 					</div>
 					<br>
 					<div class="row" >
-						<c:forEach var="nowGroup" items="${nowGroup}">
+						<c:forEach var="v" items="${nowGroup}">
 						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
 							<div class="text-center">
-								<img class="image" src="<%=cp%>/images/${nowGroup.ngPic}">
+								<img class="image" src="<%=cp%>/images/${v.ngPic}">
 							</div>
 									<i id="emptyHeart" class="far fa-heart"></i>
-									<a href="#모임상세페이지?grCode=${nowGroup.ngCode }" class="justify-content-between d-flex"> 
+									<a href="#모임상세페이지?grCode=${v.ngCode }" class="justify-content-between d-flex"> 
 									<span class="color" style="text-align: left;">
-									<c:if test="${nowGroup.grCate2Name != null }">
-									<span style="font-weight: bold; font-size: 13px; color: gray;">${nowGroup.grCate1Name } | ${nowGroup.grCate2Name }</span>
+									<c:if test="${v.grCate2Name != null }">
+									<span style="font-weight: bold; font-size: 13px; color: gray;">${v.grCate1Name } | ${v.grCate2Name }</span>
 									</c:if>
-									<c:if test="${nowGroup.grCate2Name == null }">
-										${nowGroup.grCate1Name }
+									<c:if test="${v.grCate2Name == null }">
+										${v.grCate1Name }
 									</c:if>
 									</span>
-									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${nowGroup.grCount }</span>회차</span>
+									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${v.grCount }</span>회차</span>
 									</a>
-								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${nowGroup.grName }</span>
+								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${v.grName }</span>
 								<div>
-								<p class="text-right">${nowGroup.memName }</p>
+								<p class="text-right">${v.memName }</p>
 								</div>
 						</div>
 						</c:forEach>
 					</div>
-					<c:if test="${empty nowGroup }">
+					<c:if test="${empty v }">
 						<div align="center">
 							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;참여중인 모임이 존재하지 않습니다. <br><br>모임에 참여를 해주시면 이곳에 모임 리스트가 표시됩니다 ~ !</p>
 						</div>

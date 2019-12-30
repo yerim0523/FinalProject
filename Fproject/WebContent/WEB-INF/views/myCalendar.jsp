@@ -36,13 +36,12 @@
 		안녕<br>
 		<c:forEach var="myCal" items="${myCal}">
 			ngCode : ${myCal.ngCode } <br>
-			ngCode : ${myCal.ngCode } <br>
 			ngCode : ${myCal.ngLocation } <br>
 			grName : ${myCal.ngStart }<br>
 			grName : ${myCal.year }<br>
 			grName : ${myCal.month }<br>
 			grName : ${myCal.day }<br>
-			
+	
 		</c:forEach>
 		
 	</div>
@@ -238,7 +237,8 @@
 	    return classes.join(' ');
 	  }
 
-	  Calendar.prototype.openDay = function(el) {
+	  Calendar.prototype.openDay = function(el) 
+	  {
 	    var details, arrow;
 	    var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
 	    var day = this.current.clone().date(dayNumber);
@@ -280,7 +280,8 @@
 	      el.parentNode.appendChild(details);
 	    }
 
-	    var todaysEvents = this.events.reduce(function(memo, ev) {
+	    var todaysEvents = this.events.reduce(function(memo, ev) 
+	    {
 	      if(ev.date.isSame(day, 'day')) {
 	        memo.push(ev);
 	      }
@@ -383,6 +384,7 @@
 
 	!function() {
 	  var data = [
+		
 	    { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange', date: 25 },
  	    { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange', date: 20 },
  	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
@@ -406,17 +408,25 @@
 
 	  
 
-	  function addDate(ev) {
+	  function addDate(ev) 
+	  
+	  {
 	    
 	  }
 
 	  var calendar = new Calendar('#calendar', data);
 
 	}();
-
 </script>
-
-
+<c:forEach var="myCal" items="${myCal}">
+			ngCode : ${myCal.ngCode } <br>
+			ngCode : ${myCal.ngLocation } <br>
+			grName : ${myCal.ngStart }<br>
+			grName : ${myCal.year }<br>
+			grName : ${myCal.month }<br>
+			grName : ${myCal.day }<br>
+			data.push("${item}");
+		</c:forEach>
 
 </body>
 </html>

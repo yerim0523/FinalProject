@@ -408,6 +408,7 @@ public class MemberController
 		return "/WEB-INF/views/mylist.jsp"; 
 	}
 	
+	
 	@RequestMapping(value = "/endgrouplist.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String endGroup(MemberDTO dto, Model model, HttpSession session)
 	{
