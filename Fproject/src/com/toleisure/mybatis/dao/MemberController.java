@@ -392,7 +392,7 @@ public class MemberController
 	
 	
 	@RequestMapping(value = "/nowgrouplist.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String myGroup(MemberDTO dto, Model model, HttpSession session)
+	public String nowGroup(MemberDTO dto, Model model, HttpSession session)
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
@@ -405,7 +405,7 @@ public class MemberController
 		model.addAttribute("nowGroup", dao.myNowGroup(memId));
 		
 		
-		return "/WEB-INF/views/myList.jsp"; 
+		return "/WEB-INF/views/mylist.jsp"; 
 	}
 	
 	@RequestMapping(value = "/endgrouplist.action", method = {RequestMethod.POST, RequestMethod.GET})
