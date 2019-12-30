@@ -204,8 +204,10 @@
 			</c:if>
 			
 			<c:if test="${!empty sessionScope.member}">
+			<c:if test="${sessionScope.mode==0}">
 				<button type="button" onclick="location='faq.action'"
 					class="btn4" style="float: left;">1:1 문의하러 가기</button>
+			</c:if>
 			</c:if>
 		</div>
 

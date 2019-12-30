@@ -231,7 +231,7 @@ $(document).ready(function ()
 			</div>
 
 			<br>
-
+			
 			<div class="container" align="center">
 				<div class="row">
 					<div class="col">
@@ -244,8 +244,11 @@ $(document).ready(function ()
 					</div>
 				</div>
 			</div>
-
+			
+			
 			<br> <br> <br>
+			
+			
 			<div align="center">
 				<div id="accordion">
 					<c:forEach var="faq" items="${faqList}" varStatus="status">
@@ -287,10 +290,14 @@ $(document).ready(function ()
 				<button type="button" data-toggle="modal" data-target="#QNA"
 					class="btn4" style="float: left;">1:1 문의</button>
 			</c:if>
+			
+			
 		</div>
 
 	</section>
 
+
+	
 	<div>
 		<c:import url="footer.jsp"></c:import>
 	</div>
