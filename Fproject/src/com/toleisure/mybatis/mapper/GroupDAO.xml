@@ -110,8 +110,24 @@
 		WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
 		  AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE
 		  AND RQ.MEM_ID=#{memId}
+		  AND NG.NG_STARTDATE >= SYSDATE
 		ORDER BY NG_DATE DESC
 	</select>
+	
+	<!-- 현재 종료된 나(접속중인 사람)의 모임 목록 -->
+	<select id="myEndGroup" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG.NG_CODE AS ngCode, NG.NG_PIC as ngPic, G.GR_NAME as grName, C.CATE_NAME AS grCate1Name, NVL(C2.CATE_NAME,0) AS grCate2Name, M.MEM_NAME as memName, NG.NG_STARTDATE as ngStart, NVL(CNT.GR_COUNT,0) AS grCount
+		FROM GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
+		                                                                                      FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
+		                                                                                      WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE=NG.NG_CODE
+		                                                                                      GROUP BY G.GR_CODE) CNT
+		WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
+		  AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE
+		  AND RQ.MEM_ID=#{memId}
+		  AND SYSDATE > NG.NG_STARTDATE
+		ORDER BY NG_DATE DESC
+	</select>
+	
 	
 	<!-- 모임 비용 조회 -->
 	

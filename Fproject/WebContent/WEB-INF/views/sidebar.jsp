@@ -99,9 +99,9 @@ text-align: center;
 		<li><a href="infomodify.action?memId=${member.memId }"><i class="fa fa-fw fa-user"></i> 개인정보수정</a></li>
 		<li><a href="mypwmodify.action?memId=${member.memId }"><i class="fa fa-fw fa-lock"></i> 비밀번호 재설정</a></li> 
 		<li><a href="favoritegroup.action?memId=${member.memId }"><i class="fa fa-fw fa-heart"></i> 찜목록</a></li>
-		<li><a href="nowgrouplist.action""><i class="fa fa-fw fa-users"></i> 내 모임</a>
+		<li><a href="nowgrouplist.action"><i class="fa fa-fw fa-users"></i> 내 모임</a>
 			<ul>
-				<li><a href="nowgrouplist.action""> 참여 모임</a></li>
+				<li><a href="nowgrouplist.action"> 참여 모임</a></li>
 				<li><a href="endgrouplist.action"> 종료 모임</a></li>
 			</ul>
 		</li>

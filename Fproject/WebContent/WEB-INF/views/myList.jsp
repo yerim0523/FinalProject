@@ -77,35 +77,48 @@
 			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
-						<h3>내 모임 </h3>
+						<h3>> 내 모임 목록</h3>
 					</div>
 				</div>
-				<br>
+				<br><br>
 				
 					<div class="page-header">
-						<h5>참여 모임</h5>
+						<h5 style="font-weight: bold;">참여중인 모임</h5>
 					</div>
 					<br>
 					<div class="row" >
-						<c:forEach var="nowGroup" items="${nowGroup }">
-						<div class="thumbnail " style="padding: 10px;">
-							<img class="image" src="images/iu.jpg">
-							<br><br>
-							<div class="caption">
-								<span class="title">${nowGroup.grName }</span>
-								<p>ㅁㄴㅇㄹ</p>
-								<div align="center">
-									<button type="button" class="btn4" data-toggle="modal" data-target="#feedbackPopup" onclick="fn_">피드백</button>
-								</div>
+						<c:forEach var="nowGroup" items="${nowGroup}">
+						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
+							<div class="text-center">
+								<img class="image" src="<%=cp%>/images/${nowGroup.ngPic}">
 							</div>
+									<i id="emptyHeart" class="far fa-heart"></i>
+									<a href="#모임상세페이지?grCode=${nowGroup.ngCode }" class="justify-content-between d-flex"> 
+									<span class="color" style="text-align: left;">
+									<c:if test="${nowGroup.grCate2Name != null }">
+									<span style="font-weight: bold; font-size: 13px; color: gray;">${nowGroup.grCate1Name } | ${nowGroup.grCate2Name }</span>
+									</c:if>
+									<c:if test="${nowGroup.grCate2Name == null }">
+										${nowGroup.grCate1Name }
+									</c:if>
+									</span>
+									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${nowGroup.grCount }</span>회차</span>
+									</a>
+								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${nowGroup.grName }</span>
+								<div>
+								<p class="text-right">${nowGroup.memName }</p>
+								</div>
 						</div>
 						</c:forEach>
 					</div>
+					<c:if test="${empty nowGroup }">
+						<div align="center">
+							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;참여중인 모임이 존재하지 않습니다. <br><br>모임에 참여를 해주시면 이곳에 모임 리스트가 표시됩니다 ~ !</p>
+						</div>
+					</c:if>
 					<br><br>
-				
 			</div>
 		</div>
-	
 	</div>
 </div>
 </section>

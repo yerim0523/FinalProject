@@ -392,7 +392,7 @@ public class MemberController
 	
 	
 	@RequestMapping(value = "/nowgrouplist.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String nowGroup(MemberDTO dto, Model model, HttpSession session)
+	public String myGroup(MemberDTO dto, Model model, HttpSession session)
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
@@ -404,6 +404,23 @@ public class MemberController
 		
 		model.addAttribute("nowGroup", dao.myNowGroup(memId));
 		
-		return "/WEB-INF/views/mylist.jsp"; 
+		return "/WEB-INF/views/myList.jsp"; 
 	}
+	
+	@RequestMapping(value = "/endgrouplist.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String endGroup(MemberDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dto = (MemberDTO)session.getAttribute("member");
+		String memId = dto.getMemId();
+		
+		System.out.println("====== 넘어가는 아이디 : " + memId);
+		
+		model.addAttribute("endGroup", dao.myEndGroup(memId));
+		
+		return "/WEB-INF/views/myEndList.jsp"; 
+	}
+
 }
