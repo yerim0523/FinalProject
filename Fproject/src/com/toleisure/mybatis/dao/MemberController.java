@@ -404,6 +404,7 @@ public class MemberController
 		
 		model.addAttribute("nowGroup", dao.myNowGroup(memId));
 		
+		
 		return "/WEB-INF/views/myList.jsp"; 
 	}
 	
