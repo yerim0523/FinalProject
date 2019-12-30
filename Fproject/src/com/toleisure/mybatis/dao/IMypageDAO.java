@@ -21,4 +21,5 @@ public interface IMypageDAO
 	public ArrayList<GroupDTO> myCalendar(String memId); 	// 내가 가지고 있는 일정을 모두 가져오는 메소드
 	
 	public ArrayList<PayDTO> payList(String memId);		// 본인의 결제, 환불내역을 모두 가져오는 method
+	public ArrayList<GroupDTO> myNextCalendar(MemberDTO mine);
 }

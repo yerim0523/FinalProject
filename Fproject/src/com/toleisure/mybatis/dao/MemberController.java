@@ -390,7 +390,33 @@ public class MemberController
 		return view;
 	}
 	
-	
+	@RequestMapping(value="/mycalnext.action", method ={ RequestMethod.GET, RequestMethod.POST })
+	public String calNextOpen(int month,MemberDTO dto, Model model, HttpSession session)
+	{
+		System.out.println("-------1");
+		String view = "WEB-INF/views/myCalendar.jsp";
+		IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+		
+		System.out.println("-------2");
+		
+		session.getAttribute("member");
+		
+		System.out.println("-------3");
+		
+		MemberDTO mine = (MemberDTO)session.getAttribute("member");
+		mine.setMonth(month);
+		String memId = mine.getMemId();
+		
+		System.out.println("-------4");
+		System.out.println(memId);
+		
+		ArrayList<GroupDTO> list = dao.myNextCalendar(mine);
+		
+		model.addAttribute("myCal", list);
+		
+		
+		return view;
+	}
 	@RequestMapping(value = "/nowgrouplist.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String nowGroup(MemberDTO dto, Model model, HttpSession session)
 	{
