@@ -53,7 +53,7 @@
 	
 	button.btn4{
 	    width: 90px;
-    	height: 50px;
+    	height: 44px;
     	padding-left: 0;
     	padding-right: 0;
 	}
@@ -85,7 +85,7 @@
 					<div class="page-header">
 						<h5 style="font-weight: bold;">참여중인 모임</h5>
 					</div>
-					<br>
+					<br><br>
 					<div class="row" >
 						<c:forEach var="v" items="${nowGroup}">
 						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
@@ -104,14 +104,19 @@
 									</span>
 									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${v.grCount }</span>회차</span>
 									</a>
+								<div style="height: 40px;">
 								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${v.grName }</span>
+								</div>
 								<div>
 								<p class="text-right">${v.memName }</p>
+								</div>
+								<div align="center" style="margin-top: -20px;">
+									<button type="button" class="btn4" data-toggle="modal" data-target="#feedbackPopup" onclick="fn_">피드백</button>
 								</div>
 						</div>
 						</c:forEach>
 					</div>
-					<c:if test="${empty v }">
+					<c:if test="${empty nowGroup}">
 						<div align="center">
 							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;참여중인 모임이 존재하지 않습니다. <br><br>모임에 참여를 해주시면 이곳에 모임 리스트가 표시됩니다 ~ !</p>
 						</div>

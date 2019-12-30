@@ -85,7 +85,7 @@
 					<div class="page-header">
 						<h5 style="font-weight: bold;">종료 모임</h5>
 					</div>
-					<br>
+					<br><br>
 					<div class="row" >
 						<c:forEach var="endGroup" items="${endGroup}">
 						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
@@ -104,8 +104,10 @@
 									</span>
 									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${endGroup.grCount }</span>회차</span>
 									</a>
+								<div style="height: 40px;">
 								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${endGroup.grName }</span>
-								<div>
+								</div>
+								<div align="center" style="margin-top: -20px;">
 								<p class="text-right">${endGroup.memName }</p>
 								</div>
 						</div>
@@ -113,7 +115,7 @@
 					</div>
 					<c:if test="${empty endGroup }">
 						<div align="center">
-							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;참여중인 모임이 존재하지 않습니다. <br><br>모임에 참여를 해주시면 이곳에 모임 리스트가 표시됩니다 ~ !</p>
+							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;종료된 모임이 존재하지 않습니다. <br><br>현재 참여중인 모임이 종료되면 이곳에 모임 리스트가 표시됩니다 ~ !</p>
 						</div>
 					</c:if>
 					<br><br>
