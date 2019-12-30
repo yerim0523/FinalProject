@@ -59,6 +59,26 @@
 	}
 </style>
 
+<script type="text/javascript">
+	$(function() {
+		
+		$(".gomodal").click(function() {
+			alert($("#modalNg").val());
+			
+			var data = {};
+			
+		});
+		
+	});
+
+	function ngCodeSend(Code) {
+		var ngCode = Code;
+		
+		$("#modalNg").val(ngCode);
+		
+		//alert($("#modalNg").val());
+	}
+</script>
 
 </head>
 <body>
@@ -88,12 +108,12 @@
 					<br><br>
 					<div class="row" >
 						<c:forEach var="v" items="${nowGroup}">
-						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
+						<div class="thumbnail" style="padding-right: 20px; padding-bottom: 50px; max-width: 200px;">
 							<div class="text-center">
 								<img class="image" src="<%=cp%>/images/${v.ngPic}">
 							</div>
 									<i id="emptyHeart" class="far fa-heart"></i>
-									<a href="#모임상세페이지?grCode=${v.ngCode }" class="justify-content-between d-flex"> 
+									<a href="#모임상세페이지?grCode=${v.ngCode }" class="justify-content-between d-flex">
 									<span class="color" style="text-align: left;">
 									<c:if test="${v.grCate2Name != null }">
 									<span style="font-weight: bold; font-size: 13px; color: gray;">${v.grCate1Name } | ${v.grCate2Name }</span>
@@ -108,10 +128,10 @@
 								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${v.grName }</span>
 								</div>
 								<div>
-								<p class="text-right">${v.memName }</p>
+								<p class="text-right">${v.memName }&nbsp;&nbsp;&nbsp;${v.ngCode }</p>
 								</div>
 								<div align="center" style="margin-top: -20px;">
-									<button type="button" class="btn4" data-toggle="modal" data-target="#feedbackPopup" onclick="fn_">피드백</button>
+									<button type="button" class="btn4 gomodal" data-toggle="modal" data-target="#feedbackPopup" onclick="ngCodeSend(${v.ngCode})">피드백</button>
 								</div>
 						</div>
 						</c:forEach>
@@ -150,43 +170,32 @@
 					<br><br>
 					
 					<div align="center">
-					<i class="fas fa-clipboard-list fa-7x"></i>
+					<i class="fas fa-clipboard-list fa-5x"></i>
 					</div>
 					<br><br><br><br>
-					<!-- 
-					<div style="width: 400px;" align="left">
-						<ul class="fb">
-							<li>모임 내용에 알맞게 모임이 진행되었다.</li>
-								<input type="radio" name="feed" class="yes"> 예
-								<input type="radio" name="feed" class="no"> 아니요
-							<li>이번회차 모임에 정산이 정상적으로 이루어졌다.</li>
-						</ul>
-					</div>
-					 -->
 					<div class="feed">
-						<span style="font-size: 19px;"><i class="fas fa-star"></i></span> &nbsp;
+						<input type="hidden" id="modalNg">
+						<span style="font-size: 19px;"><i class="far fa-check-circle" style="color:blue; font-size: 22px;"></i></span> &nbsp;
 						<span class="text">모임 내용에 알맞게 모임이 진행되었다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<label for="yes" style="margin-left: 76px;"><input type="radio" name="feed" id="yes" value="예"> 예</label>&nbsp;&nbsp;
-							<label for="no"><input type="radio" name="feed" id="no"> 아니요</label>
+							<label for="yes" style="margin-left: 76px;">
+							<input type="radio" name="goodpro" id="goodpro" value="1"> 예</label>&nbsp;&nbsp;
+							<label for="no">
+							<input type="radio" name="goodpro" id="goodpro" value="2"> 아니요</label>
 					</div>
 					<br>
 					<div class="feed">
-						<span style="font-size: 19px;"><i class="fas fa-star"></i></span> &nbsp;
-						<span class="text">이번 회차 모임에 정산이 정상적으로 이루어졌다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<label for="yes"><input type="radio" name="feed" id="yes" value="예"> 예</label>&nbsp;&nbsp;
-							<label for="no"><input type="radio" name="feed" id="no"> 아니요</label>
+						<span style="font-size: 19px;"><i class="far fa-check-circle" style="color:blue; font-size: 22px;"></i></span> &nbsp;
+						<span class="text">이번 회차 모임에 정산이 정상적으로 이루어졌다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label for="yes"><input type="radio" name="goodcal" id="goodcal" value="1"> 예</label>&nbsp;&nbsp;
+						<label for="no"><input type="radio" name="goodcal" id="goodcal" value="2"> 아니요</label>
 					</div>
 					<br><br>
 					<div align="center">
 						<button type="button" class="btn4" value="제출">제출</button>&nbsp;
 						<button type="button" class="btn4" value="취소">취소</button>
 					</div>
-					
 				</div>
 			</section>
-        </div>
-        <div class="modal-footer border-top-0">
-        	<button type="button" class="btn" data-dismiss="modal">닫기</button>
         </div>
        
     </div>

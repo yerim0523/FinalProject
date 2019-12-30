@@ -87,10 +87,10 @@
 
 	<div>
 		<div class="left">
-			<button type="button" class="btn btn-default">맛집</button>
+			<button type="button" class="btn btn-default" style="font-weight: bold">맛집</button>
 		</div>
 		<div class="right" align="right">
-			<a href="restaurant.action">식당</a> | <a href="cafe.action">카페</a>
+			<a href="restaurant.action" style="font-weight: bold;">식당</a> | <a href="cafe.action">카페</a>
 		</div>
 	</div>
 	<br>
@@ -142,7 +142,7 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">${RestaurantGroup.grStarAvg } 회차|${RestaurantGroup.grCate1Name } ${RestaurantGroup.grCate2Name }</span>
+				<span style="font-size: 12px;">${RestaurantGroup.grCount } 회차|${RestaurantGroup.grCate1Name } ${RestaurantGroup.grCate2Name }</span>
 				<div>
 					<div class="name">
 					<h5>${RestaurantGroup.grName }</h5>
