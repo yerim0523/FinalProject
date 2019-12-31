@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.toleisure.mybatis.dto.FeedBackDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
@@ -236,17 +237,40 @@ public class GroupController
 	
 	@RequestMapping(value = "/findjoincode.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public String findJoinCode(GroupDTO dto, Model model, HttpSession session)
+	public int findJoinCode(GroupDTO dto, Model model, HttpSession session)
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		String joinCode = dao.feedJoinCode(dto);
+		int joinCode = dao.feedJoinCode(dto);
 		
 		System.out.println("==================");
 		System.out.println("==== isMemYn = "+joinCode);
 		System.out.println("==================");
 		
 		return joinCode;
+	}
+	
+	
+	@RequestMapping(value = "/feedinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String insertFeed(int joinCode, int goodPro, int goodCal, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		FeedBackDTO dto = new FeedBackDTO();
+		dto.setJoinCode(joinCode);
+		dto.setGoodPro(goodPro);
+		dto.setGoodCal(goodCal);
+		
+		System.out.println("======= " + dto.getJoinCode());
+		
+		dao.feedInsert(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== joinCode = "+dto.getJoinCode());
+		System.out.println("==================");
+		
+		return "redirect:endgrouplist.action";
 	}
 	
 	

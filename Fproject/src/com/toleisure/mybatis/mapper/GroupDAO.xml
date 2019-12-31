@@ -139,13 +139,19 @@
       WHERE RQ.RE_CODE=P.RE_CODE AND P.PAY_CODE=J.PAY_CODE
         AND RQ.NG_CODE=#{ngCode} AND RQ.MEM_ID=#{memId}
    </select>
-
+	
+	<!-- 피드백 작성한 내역이 있는지 확인 -->
    <select id="feedCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="String">
       SELECT CASE WHEN COUNT(*)=1 THEN 'Y' ELSE 'N' END
       FROM FEEDBACK F, GR_JOIN J, PAYMENT P, GR_REQUEST R
       WHERE F.JOIN_CODE=J.JOIN_CODE AND J.PAY_CODE = P.PAY_CODE AND P.RE_CODE = R.RE_CODE
         AND (R.MEM_ID = #{memId} AND R.NG_CODE = #{ngCode})
    </select>
+   
+   <!-- 피드백 insert -->
+   <insert id="feedInsert" parameterType="com.toleisure.mybatis.dto.FeedBackDTO">
+   	INSERT INTO FEEDBACK(FB_NUM, JOIN_CODE, FREPONSE_CODE2, FREPONSE_CODE) VALUES(FEEDBACKSEQ.NEXTVAL, #{joinCode}, #{goodPro}, #{goodCal});
+   </insert>
 
    
    <!-- 모임 비용 조회 -->

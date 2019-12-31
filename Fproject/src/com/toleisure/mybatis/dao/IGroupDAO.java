@@ -2,6 +2,7 @@ package com.toleisure.mybatis.dao;
 
 import java.util.ArrayList;
 
+import com.toleisure.mybatis.dto.FeedBackDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 
 public interface IGroupDAO
@@ -32,7 +33,10 @@ public interface IGroupDAO
 	public String feedCheck(GroupDTO dto);
 	
 	// JoinCode 구하기
-	public String feedJoinCode(GroupDTO dto);
+	public int feedJoinCode(GroupDTO dto);
+	
+	// 피드백 INSERT 하기
+	public int feedInsert(FeedBackDTO dto);
 	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);
