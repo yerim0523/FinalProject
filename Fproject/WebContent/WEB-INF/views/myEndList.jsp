@@ -116,9 +116,10 @@
                 , data : params
                 , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
                  , success: function(data){
+                	 alert(data);
                 	 var joinCode = data;
                 	 alert(joinCode);
-                	 location="feedinsert.action?joinCode="+joinCode+"&goodPro="+$("#goodpro").val()+"&goodCal="+$("#goodcal").val();
+                	//location="feedinsert.action?joinCode="+joinCode+"&goodPro="+$("#goodpro").val()+"&goodCal="+$("#goodcal").val();
                  }
              });
 			

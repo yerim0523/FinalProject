@@ -2,6 +2,7 @@ package com.toleisure.mybatis.dao;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -252,10 +253,14 @@ public class GroupController
 	
 	
 	@RequestMapping(value = "/feedinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String insertFeed(int joinCode, int goodPro, int goodCal, Model model, HttpSession session)
+	public String insertFeed(HttpServletRequest req, Model model, HttpSession session)
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		int joinCode = Integer.parseInt(req.getParameter("joinCode"));
+		int goodPro = Integer.parseInt(req.getParameter("goodPro"));
+		int goodCal = Integer.parseInt(req.getParameter("goodCal"));
 		
 		FeedBackDTO dto = new FeedBackDTO();
 		dto.setJoinCode(joinCode);
