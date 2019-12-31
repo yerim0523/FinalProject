@@ -1,9 +1,23 @@
+<%@page import="java.util.Random"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%!
+public static String getrndnum(int loopcount){
+  String str = "";
+  int d = 0;
+  for (int i = 1; i <= loopcount; i++){
+    Random r = new Random();
+    d = r.nextInt(9);
+    str = str + Integer.toString(d);
+  }
+  return str;
+}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,12 +80,22 @@
 
 	<table class="table" style="width: 50%;">
 		<tr>
-			<th style="text-align: center;">결제 금액</th>
-			<td>50,000원</td>
+			<th style="text-align: center;">이름</th>
+			<td style="padding: 10px;">
+				<input type="text" class="form-control" id="memName" name="memName" value="${myInfo.memName }" readonly="readonly">
+			</td>
+		</tr>
+		<tr>
+			<th style="text-align: center;">결제금액</th>
+			<td style="padding: 10px;">
+				<%-- <fmt:setLocale value="ko_KR"/><input type="text" class="form-control" value='<fmt:formatNumber value="${ngCost }"></fmt:formatNumber>' readonly="readonly"> --%>
+				<%-- <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${ngCost}" /> --%>
+				<input type="text" class="form-control" id="ngCost" name="ngCost" value="${ngCost }" readonly="readonly">
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 계좌</th>
-			<td>농협 423014-51-113408 정민하</td>
+			<td>정민하</td>
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 기한</th>

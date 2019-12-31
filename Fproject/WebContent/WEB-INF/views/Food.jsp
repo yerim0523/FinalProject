@@ -90,7 +90,7 @@
 
 	<div>
 		<div class="left">
-			<button type="button" class="btn btn-default">문화생활</button>
+			<button type="button" class="btn btn-default" style="font-weight: bold">맛집</button>
 		</div>
 		<div class="right" align="right">
 			<a href="restaurant.action">식당</a> | <a href="cafe.action">카페</a>
@@ -128,15 +128,24 @@
 				<img src="${FoodGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
-				
+				<div class="starRev">
+					
+				</div>
 				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
+					<c:if test="${FoodGroup.grStarAvg != 0.0 }">
+					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<c:if test="${FoodGroup.grStarAvg == 0.0 }">
+					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<span style="color: gray;">&nbsp;&nbsp;${FoodGroup.grStarAvg } 
+						<span style="font-size: 10pt; color: gray;">/ ${FoodGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+					</span>
 				</div>
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|${FoodGroup.grCate1Name } ${FoodGroup.grCate2Name }</span>
+				<span style="font-size: 12px;">${FoodGroup.grCount }회차|${FoodGroup.grCate1Name } ${FoodGroup.grCate2Name }</span>
 				<div>
 					<div class="name">
 					<h5>${FoodGroup.grName }</h5>

@@ -353,21 +353,30 @@
 	      return memo;
 	    }, []).forEach(function(e) {
 	      var parts = e.split('|');
-	      var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
+	      var entry = createElement('span', 'entry ' +  parts[1], parts[0]); 
 	      legend.appendChild(entry);
 	    });
-	    this.el.appendChild(legend);
+	    this.el.appendChild(legend); 
 	  }
 
 	  Calendar.prototype.nextMonth = function() {
-	    this.current.add('months', 1);
+		  this.current.add('months', 1);
+		   
 	    this.next = true;
+	    month = this.current;
+	    alert(month);
+	    var sp = month.substring(5,7);
+	    alert(sp);
+	    location="mycalnext.action?month="+month;
 	    this.draw();
 	  }
 
 	  Calendar.prototype.prevMonth = function() {
 	    this.current.subtract('months', 1);
 	    this.next = false;
+	    month = this.current;
+	    alert(month);
+	    location="mycalnext.action?month="+month;
 	    this.draw();
 	  }
 

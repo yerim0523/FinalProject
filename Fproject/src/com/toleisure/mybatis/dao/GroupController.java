@@ -45,7 +45,7 @@ public class GroupController
 		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
 		System.out.println("==================");
 		
-		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode());
+		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode()); 
 		
 		model.addAttribute("groupinfo", dto2);
 		
@@ -233,8 +233,6 @@ public class GroupController
 	}
 	
 	
-	// 핸드폰 결제 미완성
-	/*
 	@RequestMapping(value = "/phonepage.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String phonePage(MemberDTO dto, Model model, HttpSession session)
 	{
@@ -256,7 +254,71 @@ public class GroupController
 		
 		return view;
 	}
-	*/
+	
+	@RequestMapping(value = "/phonepay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String phonePay(GroupDTO dto, Model model, HttpSession session)
+	{
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCode = (int)session.getAttribute("ngCode");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		
+		dto.setNgCode(ngCode);
+		
+		System.out.println(ngCode);
+		
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.phonePay(dto);
+		
+		
+		return "redirect:main.action";
+	}
+	
+	@RequestMapping(value = "/bankpage.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String bankPage(MemberDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/BankPay.jsp";
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCost = (int)session.getAttribute("ngCost");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
+
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		model.addAttribute("ngCost", ngCost);
+		model.addAttribute("myInfo", mine);
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/bankpay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String bankPay(GroupDTO dto, Model model, HttpSession session)
+	{
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCode = (int)session.getAttribute("ngCode");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		
+		dto.setNgCode(ngCode);
+		
+		System.out.println(ngCode);
+		
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.bankPay(dto);
+		
+		
+		return "redirect:main.action";
+	}
+	
 	
 	
 	
