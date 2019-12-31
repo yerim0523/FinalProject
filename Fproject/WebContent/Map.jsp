@@ -298,7 +298,7 @@ input.img-button {
 </head>
 <body onload="initialize()">
 
-<div>
+<%-- <div>
 	<c:import url="bar.jsp"></c:import>
 </div>
 
@@ -306,7 +306,7 @@ input.img-button {
 	<div>
 		<c:import url="MeetingBar.jsp"></c:import>
 	</div>
-</section>
+</section> --%>
 
 
 <div class="container">
@@ -437,9 +437,7 @@ input.img-button {
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
-<div>
-	<c:import url="footer.jsp"></c:import>
-</div>
+
 
 </body>
 </html>
