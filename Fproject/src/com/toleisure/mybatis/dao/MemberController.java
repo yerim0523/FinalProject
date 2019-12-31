@@ -389,6 +389,27 @@ public class MemberController
 		
 		return view;
 	}
+	@RequestMapping(value = "/map.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String Map(MemberDTO dto, Model model, HttpSession session)
+	{
+		
+		 IMemberDAO dao =  sqlsession.getMapper(IMemberDAO.class);
+		 session.getAttribute("member"); 
+	
+			
+			ArrayList<GroupDTO> location = dao.map();
+			
+			model.addAttribute("location", location);
+		 /* dto = (MemberDTO)session.getAttribute("member"); String memId =
+		 * dto.getMemId();
+		 * 
+		 * System.out.println("====== 넘어가는 아이디 : " + memId);
+		 * 
+		 * model.addAttribute("endGroup", dao.myEndGroup(memId));
+		 */
+		
+		return "/WEB-INF/views/Map.jsp"; 
+	}
 	
 	@RequestMapping(value="/mycalnext.action", method ={ RequestMethod.GET, RequestMethod.POST })
 	public String calNextOpen(int month,MemberDTO dto, Model model, HttpSession session)
@@ -451,23 +472,7 @@ public class MemberController
 		return "/WEB-INF/views/myEndList.jsp"; 
 	}
 	
-	@RequestMapping(value = "/map.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String Map(MemberDTO dto, Model model, HttpSession session)
-	{
-		/*
-		 * session.getAttribute("member"); IGroupDAO dao =
-		 * sqlsession.getMapper(IGroupDAO.class);
-		 * 
-		 * dto = (MemberDTO)session.getAttribute("member"); String memId =
-		 * dto.getMemId();
-		 * 
-		 * System.out.println("====== 넘어가는 아이디 : " + memId);
-		 * 
-		 * model.addAttribute("endGroup", dao.myEndGroup(memId));
-		 */
-		
-		return "/WEB-INF/views/Map.jsp"; 
-	}
+	
 	
 	@RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String Map2(MemberDTO dto, Model model, HttpSession session)

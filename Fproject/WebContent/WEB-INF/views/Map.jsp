@@ -98,7 +98,8 @@ var x = document.getElementById("demo");
 		  var latitude = position.coords.latitude
 		  var longitude = position.coords.longitude;
 		  
-		  
+		  alert(latitude);
+		  alert(longitude);
 		  var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
 			
 		  var mapOption =
@@ -132,7 +133,7 @@ var x = document.getElementById("demo");
 			 // 다중 마커를 등록할 속성 구성
 		     positions = 
 		      [
-		         {
+		         /* {
 		            title: "제주특별자치도 제주시 첨단로 242"
 		            	,name:"안녕"
 		            
@@ -152,9 +153,15 @@ var x = document.getElementById("demo");
 		         {
 		            title: "경기도 고양시 일산서구 일중로 30"
 		           ,name:"서울특별시 마포구 테스트"
-		         }
+		         } */
 		      ];
-		      
+			 
+		     <c:forEach var="location" items="${location}">
+		  	 positions.push({title: "${location.ngLocation}",name: "${location.ngCode}"});
+		  	</c:forEach>
+		  
+		     alert(latitude);
+			  alert(longitude);
 		      // 마커 이미지
 		      imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 		      imageSize = new kakao.maps.Size(24, 35);
@@ -163,14 +170,13 @@ var x = document.getElementById("demo");
 		         
 		      for (var i=0; i<positions.length; i++)
 		        {
-					alert(positions[i].name);
 					
 				    name = positions[i].name;
 				    
-
 					geocoder.addressSearch(positions[i].title, function(re, status) 
 					{
 					
+						alert(positions[i].name)
 				    // 정상적으로 검색이 완료됐으면 
 				     if (status === kakao.maps.services.Status.OK)
 				     {
@@ -204,15 +210,31 @@ var x = document.getElementById("demo");
 					                 '    </div>' +    
 					                 '</div>'; */
 					     
+					                 var iwRemovable = true;        
 					      // 인포윈도우로 장소에 대한 설명을 표시합니다
-					      infowindow = new kakao.maps.InfoWindow
+					      var infowindow = new kakao.maps.InfoWindow
 					    ({
 					    	/*  position : coords  */
-					       content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name +'</div>'
+					       content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
+					      
 					    });
-					                 infowindow.open(map, marker);
-				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-				        // map.setCenter(coords);
+					                 
+					     // 마커에 클릭 이벤트 등록
+						 kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map,marker,infowindow));
+						 kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+					                 
+				      	 function makeOverListener(map,marker,infowindow) {
+							return function() {
+								infowindow.open(map,marker);
+							};
+						}
+				      	 
+				      	function makeOutListener(infowindow) {
+							return function() {
+								infowindow.close();
+							};
+						}
+				        
 				    
 				     }// end if
 				    
@@ -221,60 +243,35 @@ var x = document.getElementById("demo");
 		      } // end for
 		      
 		      
-		      
 		      curlatlng = new kakao.maps.LatLng(latitude, longitude);
 		        
 		         // 마커 생성
-		         var marker = new kakao.maps.Marker(
+		         var marker2 = new kakao.maps.Marker(
 		         {
 		            map: map                     // 마커 표시 지도
 		            , position: curlatlng     // 마커 표시 위치
 		            , title: "현재위치"      // 마커 표시 타이틀
 		            , image: markerImage
 		         });
-		      
-		      
-		
-
-			// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-			searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-
-			
-			
-			
-			
-			function searchAddrFromCoords(coords, callback)
-			{
-				// 좌표로 행정동 주소 정보를 요청합니다
-				geocoder.coord2RegionCode(coords.getLng(), coords.getLat(),
-						callback);
-			}
-
-			function searchDetailAddrFromCoords(coords, callback)
-			{
-				// 좌표로 법정동 상세 주소 정보를 요청합니다
-				geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-			}
-			
-			// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-			function displayCenterInfo(result, status)
-			{
-				if (status === kakao.maps.services.Status.OK)
-				{
-					var infoDiv = document.getElementById('centerAddr');
-
-					for (var i = 0; i < result.length; i++)
-					{
-						
-							infoDiv.innerHTML = result[i].address_name;
-							
-						
-					}
-				}
-			} // end displayCenterInfo 
-
-			
-			
+		     
+		         // 인포윈도우 옵션 구성
+		         var iwContent = "<div style='padding:5px;'>현재 위치</div>"
+		         var iwRemovable = true;
+		         
+		         // 인포윈도우 생성
+		         var infowindow = new kakao.maps.InfoWindow(
+		         {
+		            content: iwContent
+		            , removable: iwRemovable
+		            // 『removable』 속성을 『true』로 설정할 경우
+		            // 인포윈도우를 닫을 수 있는 버튼 활성화
+		         });
+		         
+		         // 마커에 클릭 이벤트 등록
+		         kakao.maps.event.addListener(marker2, "click", function()
+		         {
+		            infowindow.open(map, marker2);
+		         });
 			
 		}// end show position
 </script>

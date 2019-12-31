@@ -122,5 +122,10 @@
 		SET MEM_PW = #{newPw}
 		WHERE MEM_ID = #{memId}
 	</update>
+	
+	<select id="map" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT NG_LOCATION AS ngLocation,NG_CODE AS ngCode
+		FROM NOW_GROUP
+   </select>
    
 </mapper>
