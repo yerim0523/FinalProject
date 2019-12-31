@@ -99,8 +99,29 @@
 	}
 	
 	function feedSubmit() {
-		alert($("#modalNg").val(ngCode));
-		alert($("#modalNg").val(ngCode));
+		alert($("#memId").val());
+		alert($("#modalNg").val());
+		
+		if (confirm("피드백을 제출하시겠습니까 ?") == true)
+		{    
+			var params = {};
+			params.memId = $("#memId").val();
+			params.ngCode = $("#modalNg").val();
+			
+			$.ajax({
+                type : "POST"
+                , url : "findjoincode.action"
+                , data : params
+                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+                 , success: function(data){
+                    var joinCode = data;
+                 }
+             });
+			
+			location="feedinsert.action?joinCode="+joinCode;
+		}else{   //취소
+		    return;
+		}	
 	}
 </script>
 

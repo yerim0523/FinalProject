@@ -218,10 +218,11 @@ public class GroupController
 		return "redirect:main.action";
 	}
 
-	@RequestMapping(value = "/selectFeed.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/selectfeed.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public String selectFeed(GroupDTO dto, Model model)
+	public String selectFeed(GroupDTO dto, Model model, HttpSession session)
 	{
+		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		String isMemYn = dao.feedCheck(dto);
 		
@@ -230,6 +231,22 @@ public class GroupController
 		System.out.println("==================");
 		
 		return isMemYn;
+	}
+	
+	
+	@RequestMapping(value = "/findjoincode.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String findJoinCode(GroupDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		String joinCode = dao.feedJoinCode(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMemYn = "+joinCode);
+		System.out.println("==================");
+		
+		return joinCode;
 	}
 	
 	
