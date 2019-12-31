@@ -176,7 +176,7 @@ var x = document.getElementById("demo");
 					geocoder.addressSearch(positions[i].title, function(re, status) 
 					{
 					
-						alert(positions[i].name)
+						alert(name);
 				    // 정상적으로 검색이 완료됐으면 
 				     if (status === kakao.maps.services.Status.OK)
 				     {
@@ -240,6 +240,7 @@ var x = document.getElementById("demo");
 				    
 				  }); // end geocoder
 				
+				  alert(name);
 		      } // end for
 		      
 		      
