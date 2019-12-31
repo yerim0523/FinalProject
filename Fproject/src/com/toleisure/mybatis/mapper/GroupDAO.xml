@@ -60,151 +60,164 @@
    </insert>
    
 
-	<select id="grSearch" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT G.GR_CODE AS grCode, NG.NG_PIC AS ngPic,  C.CATE_NAME AS grCate1Name, C2.CATE_NAME AS grCate2Name
-     		 , G.GR_NAME AS grName, G.GR_PRE AS grPre, G.GR_NOTICE AS grNotice, M.MEM_NAME AS memName, NG.NG_DATE AS ngDate, CNT.GR_COUNT AS grCount
-		FROM TBL_GROUP G, NOW_GROUP NG, MEMBER M, CATEGORY C, CATEGORY C2, (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
-		                                                                    FROM TBL_GROUP G JOIN NOW_GROUP NG
-		                                                                        ON G.GR_CODE=NG.GR_CODE JOIN FIXED_GROUP FG
-		                                                                                ON FG.NG_CODE=NG.NG_CODE
-		                                                                    GROUP BY G.GR_CODE) CNT
-		WHERE G.GR_CODE = NG.GR_CODE AND G.MEM_ID = M.MEM_ID AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+) 
-		  AND CNT.GR_CODE = G.GR_CODE
-		  AND (G.GR_CODE, NG.NG_DATE) IN (SELECT G.GR_CODE, MAX(NG_DATE)
-		                           FROM NOW_GROUP NG, TBL_GROUP G
-		                           WHERE G.GR_CODE=NG.GR_CODE
-		                           GROUP BY G.GR_CODE)
-		  AND G.MEM_ID= #{memId}
-		ORDER BY NG_DATE DESC
-	</select>
-	
-	<select id="groupFormInfo" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_CODE AS grCode, MEM_ID AS memId, GR_NAME AS grName, GR_PRE AS grPre, GR_NOTICE AS grNotice, CATE_CODE1 AS grCate1, CATE_CODE2 AS grCate2
-		FROM TBL_GROUP
-		WHERE GR_CODE=${grCode}
-	</select>
-	
-	<!-- 찜 모임 목록 -->
-	
-	<select id="jjimGroup" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT MEM_ID AS memId, NG_CODE AS ngCode, NG_PIC AS ngPic, CATE1 AS grCate1Name, CATE2 AS grCate2Name, GR_NAME AS grName, MEM_NAME AS memName, NG_DATE AS ngDate, GR_COUNT AS grCount
-		FROM MEM_FAV_GROUP
-		WHERE MEM_ID=#{memId}
-	</select>
-	
-	<!-- 찜 호스트 목록 -->
-	
-	<select id="jjimHost" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT HF.MEM_ID AS memId, H.MEM_ID AS hostId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName
-		FROM HOST_FAVORITE HF, HOST H, MEMBER M
-		WHERE HF.HOST_CODE = H.HOST_CODE AND H.MEM_ID = M.MEM_ID AND HF.MEM_ID=#{memId}
-	</select>
-	
-	<!-- 현재 참여중인 나(접속중인 사람)의 모임 목록 -->
-	<select id="myNowGroup" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG.NG_CODE AS ngCode, NG.NG_PIC as ngPic, G.GR_NAME as grName, C.CATE_NAME AS grCate1Name, NVL(C2.CATE_NAME,0) AS grCate2Name, M.MEM_NAME as memName, NG.NG_STARTDATE as ngStart, NVL(CNT.GR_COUNT,0) AS grCount
-		FROM GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
-		                                                                                      FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
-		                                                                                      WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE=NG.NG_CODE
-		                                                                                      GROUP BY G.GR_CODE) CNT
-		WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
-		  AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE
-		  AND RQ.MEM_ID=#{memId}
-		  AND NG.NG_STARTDATE >= SYSDATE 
-		  AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID 
-		                                      FROM GR_REQUEST RQ, PAYMENT P, REFUND RF
-		                                      WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
-		ORDER BY NG_DATE DESC
-	</select>
-	
-	<!-- 현재 종료된 나(접속중인 사람)의 모임 목록 -->
-	<select id="myEndGroup" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG.NG_CODE AS ngCode, NG.NG_PIC as ngPic, G.GR_NAME as grName, C.CATE_NAME AS grCate1Name, NVL(C2.CATE_NAME,0) AS grCate2Name, M.MEM_NAME as memName, NG.NG_STARTDATE as ngStart, NVL(CNT.GR_COUNT,0) AS grCount
-		FROM GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
-		                                                                                      FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
-		                                                                                      WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE=NG.NG_CODE
-		                                                                                      GROUP BY G.GR_CODE) CNT
-		WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
-		  AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE
-		  AND RQ.MEM_ID=#{memId}
-		  AND  SYSDATE > NG.NG_STARTDATE
-		  AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID 
-		                                      FROM GR_REQUEST RQ, PAYMENT P, REFUND RF
-		                                      WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
-		ORDER BY NG_DATE DESC
-	</select>
-	
-	
-	<!-- 모임 비용 조회 -->
-	
-	<select id="cost" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-		SELECT NG_COST AS ngCost
-		FROM NOW_GROUP
-		WHERE NG_CODE = #{ngCode}
-	</select>
-	
-	<!-- GR_REQUEST 테이블 INSERT -->
-	
-	<insert id="cardPay" parameterType="com.toleisure.mybatis.dto.GroupDTO">
-		{
-			CALL
-			DECLARE
-			   requestCodeSeq INT;
-			BEGIN
-			   requestCodeSeq := GR_REQSEQ.NEXTVAL;
-			       
-			   INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
-			   VALUES(requestCodeSeq, #{ngCode}, #{memId});
-			       
-			   INSERT INTO PAYMENT(PAY_CODE, RE_CODE, PM_CODE, PAY_DETAIL)
-			   VALUES(PAYMENTSEQ.NEXTVAL, requestCodeSeq, 2, #{payDetail});
-			   
-			END
-		}
-	</insert>
-	
-	<!-- GR_REQUEST 테이블 INSERT -->
-	
-	<insert id="phonePay" parameterType="com.toleisure.mybatis.dto.GroupDTO">
-		{
-			CALL
-			DECLARE
-			   requestCodeSeq INT;
-			BEGIN
-			   requestCodeSeq := GR_REQSEQ.NEXTVAL;
-			       
-			   INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
-			   VALUES(requestCodeSeq, #{ngCode}, #{memId});
-			       
-			   INSERT INTO PAYMENT(PAY_CODE, RE_CODE, PM_CODE, PAY_DETAIL)
-			   VALUES(PAYMENTSEQ.NEXTVAL, requestCodeSeq, 1, #{payDetail});
-			   
-			END
-		}
-	
-	</insert>
-	
-	<!-- GR_REQUEST 테이블 INSERT -->
-	
-	<insert id="bankPay" parameterType="com.toleisure.mybatis.dto.GroupDTO">
-		{
-			CALL
-			DECLARE
-			   requestCodeSeq INT;
-			BEGIN
-			   requestCodeSeq := GR_REQSEQ.NEXTVAL;
-			       
-			   INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
-			   VALUES(requestCodeSeq, #{ngCode}, #{memId});
-			       
-			   INSERT INTO PAYMENT(PAY_CODE, RE_CODE, PM_CODE, PAY_DETAIL)
-			   VALUES(PAYMENTSEQ.NEXTVAL, requestCodeSeq, 3, #{payDetail});
-			   
-			END
-		}
-	
-	</insert>
-		
+   <select id="grSearch" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT G.GR_CODE AS grCode, NG.NG_PIC AS ngPic,  C.CATE_NAME AS grCate1Name, C2.CATE_NAME AS grCate2Name
+            , G.GR_NAME AS grName, G.GR_PRE AS grPre, G.GR_NOTICE AS grNotice, M.MEM_NAME AS memName, NG.NG_DATE AS ngDate, CNT.GR_COUNT AS grCount
+      FROM TBL_GROUP G, NOW_GROUP NG, MEMBER M, CATEGORY C, CATEGORY C2, (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
+                                                                          FROM TBL_GROUP G JOIN NOW_GROUP NG
+                                                                              ON G.GR_CODE=NG.GR_CODE JOIN FIXED_GROUP FG
+                                                                                      ON FG.NG_CODE=NG.NG_CODE
+                                                                          GROUP BY G.GR_CODE) CNT
+      WHERE G.GR_CODE = NG.GR_CODE AND G.MEM_ID = M.MEM_ID AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+) 
+        AND CNT.GR_CODE = G.GR_CODE
+        AND (G.GR_CODE, NG.NG_DATE) IN (SELECT G.GR_CODE, MAX(NG_DATE)
+                                 FROM NOW_GROUP NG, TBL_GROUP G
+                                 WHERE G.GR_CODE=NG.GR_CODE
+                                 GROUP BY G.GR_CODE)
+        AND G.MEM_ID= #{memId}
+      ORDER BY NG_DATE DESC
+   </select>
+   
+   <select id="groupFormInfo" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT GR_CODE AS grCode, MEM_ID AS memId, GR_NAME AS grName, GR_PRE AS grPre, GR_NOTICE AS grNotice, CATE_CODE1 AS grCate1, CATE_CODE2 AS grCate2
+      FROM TBL_GROUP
+      WHERE GR_CODE=${grCode}
+   </select>
+   
+   <!-- 찜 모임 목록 -->
+   
+   <select id="jjimGroup" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT MEM_ID AS memId, NG_CODE AS ngCode, NG_PIC AS ngPic, CATE1 AS grCate1Name, CATE2 AS grCate2Name, GR_NAME AS grName, MEM_NAME AS memName, NG_DATE AS ngDate, GR_COUNT AS grCount
+      FROM MEM_FAV_GROUP
+      WHERE MEM_ID=#{memId}
+   </select>
+   
+   <!-- 찜 호스트 목록 -->
+   
+   <select id="jjimHost" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT HF.MEM_ID AS memId, H.MEM_ID AS hostId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName
+      FROM HOST_FAVORITE HF, HOST H, MEMBER M
+      WHERE HF.HOST_CODE = H.HOST_CODE AND H.MEM_ID = M.MEM_ID AND HF.MEM_ID=#{memId}
+   </select>
+   
+   <!-- 현재 참여중인 나(접속중인 사람)의 모임 목록 -->
+   <select id="myNowGroup" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT RQ.MEM_ID AS memId, RQ.NG_CODE AS ngCode, NG.NG_PIC as ngPic, G.GR_NAME as grName, C.CATE_NAME AS grCate1Name, NVL(C2.CATE_NAME,0) AS grCate2Name, M.MEM_NAME as memName, NG.NG_STARTDATE as ngStart, NVL(CNT.GR_COUNT,0) AS grCount
+      FROM GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT NG.NG_CODE AS NG_CODE, G.GR_CODE AS GR_CODE, RANK() OVER(PARTITION BY G.GR_CODE ORDER BY NG.NG_STARTDATE) AS GR_COUNT
+                                                                                             FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
+                                                                                             WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE=NG.NG_CODE) CNT   
+      WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
+        AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE AND CNT.NG_CODE=RQ.NG_CODE
+        AND RQ.MEM_ID=#{memId}
+        AND NG.NG_STARTDATE >= SYSDATE 
+        AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID 
+                                            FROM GR_REQUEST RQ, PAYMENT P, REFUND RF
+                                            WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
+      ORDER BY NG_DATE DESC
+   </select>
+   
+   <!-- 현재 종료된 나(접속중인 사람)의 모임 목록 -->
+   <select id="myEndGroup" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT RQ.MEM_ID AS memId, RQ.NG_CODE AS ngCode, NG.NG_PIC as ngPic, G.GR_NAME as grName, C.CATE_NAME AS grCate1Name, NVL(C2.CATE_NAME,0) AS grCate2Name, M.MEM_NAME as memName, NG.NG_STARTDATE as ngStart, NVL(CNT.GR_COUNT,0) AS grCount
+      FROM GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT NG.NG_CODE AS NG_CODE, G.GR_CODE AS GR_CODE, RANK() OVER(PARTITION BY G.GR_CODE ORDER BY NG.NG_STARTDATE) AS GR_COUNT
+                                                                                             FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
+                                                                                             WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE=NG.NG_CODE) CNT   
+      WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
+        AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE AND CNT.NG_CODE=RQ.NG_CODE
+        AND RQ.MEM_ID=#{memId}
+        AND  SYSDATE > NG.NG_STARTDATE
+        AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID 
+                                            FROM GR_REQUEST RQ, PAYMENT P, REFUND RF
+                                            WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
+      ORDER BY NG_DATE DESC
+   </select>
+
+      <!-- 현재 선택한 모임에 대해 피드백을 작성하기 위한 joinCode 구하기 -->
+   <select id="">
+      SELECT JOIN_CODE
+      FROM GR_REQUEST RQ, PAYMENT P, GR_JOIN J
+      WHERE RQ.RE_CODE=P.RE_CODE AND P.PAY_CODE=J.PAY_CODE
+        AND RQ.NG_CODE=#{ngCode} AND RQ.MEM_ID=#{memId}
+   </select>
+
+   <select id="feedCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="String">
+      SELECT CASE WHEN COUNT(*)=1 THEN 'Y' ELSE 'N' END
+      FROM FEEDBACK F, GR_JOIN J, PAYMENT P, GR_REQUEST R
+      WHERE F.JOIN_CODE=J.JOIN_CODE AND J.PAY_CODE = P.PAY_CODE AND P.RE_CODE = R.RE_CODE
+        AND (R.MEM_ID = #{memId} AND R.NG_CODE = #{ngCode})
+   </select>
+
+   
+   <!-- 모임 비용 조회 -->
+   
+   <select id="cost" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      SELECT NG_COST AS ngCost
+      FROM NOW_GROUP
+      WHERE NG_CODE = #{ngCode}
+   </select>
+   
+   <!-- GR_REQUEST 테이블 INSERT -->
+   
+   <insert id="cardPay" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+      {
+         CALL
+         DECLARE
+            requestCodeSeq INT;
+         BEGIN
+            requestCodeSeq := GR_REQSEQ.NEXTVAL;
+                
+            INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
+            VALUES(requestCodeSeq, #{ngCode}, #{memId});
+                
+            INSERT INTO PAYMENT(PAY_CODE, RE_CODE, PM_CODE, PAY_DETAIL)
+            VALUES(PAYMENTSEQ.NEXTVAL, requestCodeSeq, 2, #{payDetail});
+            
+         END
+      }
+   </insert>
+   
+   <!-- GR_REQUEST 테이블 INSERT -->
+   
+   <insert id="phonePay" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+      {
+         CALL
+         DECLARE
+            requestCodeSeq INT;
+         BEGIN
+            requestCodeSeq := GR_REQSEQ.NEXTVAL;
+                
+            INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
+            VALUES(requestCodeSeq, #{ngCode}, #{memId});
+                
+            INSERT INTO PAYMENT(PAY_CODE, RE_CODE, PM_CODE, PAY_DETAIL)
+            VALUES(PAYMENTSEQ.NEXTVAL, requestCodeSeq, 1, #{payDetail});
+            
+         END
+      }
+   
+   </insert>
+   
+   <!-- GR_REQUEST 테이블 INSERT -->
+   
+   <insert id="bankPay" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+      {
+         CALL
+         DECLARE
+            requestCodeSeq INT;
+         BEGIN
+            requestCodeSeq := GR_REQSEQ.NEXTVAL;
+                
+            INSERT INTO GR_REQUEST(RE_CODE, NG_CODE, MEM_ID)
+            VALUES(requestCodeSeq, #{ngCode}, #{memId});
+                
+            INSERT INTO PAYMENT(PAY_CODE, RE_CODE, PM_CODE, PAY_DETAIL)
+            VALUES(PAYMENTSEQ.NEXTVAL, requestCodeSeq, 3, #{payDetail});
+            
+         END
+      }
+   
+   </insert>
+      
 
    <!-- 
    <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
@@ -238,6 +251,8 @@
       WHERE GR_NAME LIKE %#{검색값}%
    </select>
     -->
+
+
    
    
 

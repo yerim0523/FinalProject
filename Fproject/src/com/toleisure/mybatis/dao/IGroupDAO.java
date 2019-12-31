@@ -31,6 +31,9 @@ public interface IGroupDAO
 	// 피드백 참여했는지 여부 확인 (마이페이지 - 참여모임 - 피드백)
 	public String feedCheck(GroupDTO dto);
 	
+	// JoinCode 구하기
+	public String feedJoinCode(GroupDTO dto);
+	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);
 	
