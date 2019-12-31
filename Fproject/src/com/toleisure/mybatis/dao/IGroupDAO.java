@@ -33,7 +33,7 @@ public interface IGroupDAO
 	public String feedCheck(GroupDTO dto);
 	
 	// JoinCode 구하기
-	public int feedJoinCode(GroupDTO dto);
+	public GroupDTO feedJoinCode(GroupDTO dto);
 	
 	// 피드백 INSERT 하기
 	public int feedInsert(FeedBackDTO dto);

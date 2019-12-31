@@ -242,10 +242,11 @@ public class GroupController
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		int joinCode = dao.feedJoinCode(dto);
+		dto = dao.feedJoinCode(dto);
+		int joinCode = dto.getJoinCode();
 		
 		System.out.println("==================");
-		System.out.println("==== isMemYn = "+joinCode);
+		System.out.println("==== joinCode 는~?  "+ joinCode);
 		System.out.println("==================");
 		
 		return joinCode;
