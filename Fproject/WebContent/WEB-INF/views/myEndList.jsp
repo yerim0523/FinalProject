@@ -107,8 +107,8 @@
 			var params = {};
 			params.memId = $("#memId").val();
 			params.ngCode = $("#modalNg").val();
-			alert($("#goodpro").val());
-			alert($("#goodcal").val());
+			//alert($("#goodpro").val());
+			//alert($("#goodcal").val());
 			
 			$.ajax({
                 type : "POST"
@@ -117,6 +117,7 @@
                 , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
                  , success: function(data){
                 	 var joinCode = data;
+                	 alert(joinCode);
                 	 location="feedinsert.action?joinCode="+joinCode+"&goodPro="+$("#goodpro").val()+"&goodCal="+$("#goodcal").val();
                  }
              });
