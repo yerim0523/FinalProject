@@ -238,6 +238,7 @@
 						<span class="text">이번 회차 모임에 정산이 정상적으로 이루어졌다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label for="yes"><input type="radio" name="goodcal" id="goodcal" value="2"> 예</label>&nbsp;&nbsp;
 						<label for="no"><input type="radio" name="goodcal" id="goodcal" value="3"> 아니요</label>
+						
 					</div>
 					<br><br>
 					<div align="center">
