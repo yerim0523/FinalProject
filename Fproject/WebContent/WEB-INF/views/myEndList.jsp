@@ -59,6 +59,51 @@
 	}
 </style>
 
+<script type="text/javascript">
+	$(function() {
+		
+		$(".gomodal").click(function() {
+			//alert($("#modalNg").val());
+			
+			var params = {};
+			params.memId = $("#memId").val();
+			params.ngCode = $("#modalNg").val();
+			
+			//alert(params.memId);
+
+	         $.ajax({
+	                type : "POST"
+	                , url : "selectfeed.action"
+	                , data : params
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , success: function(data){
+	                    var isFeed = data;
+	                    if(isFeed === "Y"){
+	                       alert("이미 피드백을 작성하셨습니다.");
+	                       $('.feedback').modal('hide');
+	                    }else{
+	                       $('.feedback').modal('show');
+	                    }
+	                 }
+	             });
+		});
+		
+	});
+
+	function ngCodeSend(Code) {
+		var ngCode = Code;
+		
+		$("#modalNg").val(ngCode);
+		
+		//alert($("#modalNg").val());
+	}
+	
+	function feedSubmit() {
+		alert($("#modalNg").val(ngCode));
+		alert($("#modalNg").val(ngCode));
+	}
+</script>
+
 
 </head>
 <body>
@@ -93,7 +138,7 @@
 								<img class="image" src="<%=cp%>/images/${endGroup.ngPic}">
 							</div>
 									<i id="emptyHeart" class="far fa-heart"></i>
-									<a href="#모임상세페이지?grCode=${endGroup.ngCode }" class="justify-content-between d-flex"> 
+									<a href="#모임상세페이지?ngCode=${endGroup.ngCode }" class="justify-content-between d-flex"> 
 									<span class="color" style="text-align: left;">
 									<c:if test="${endGroup.grCate2Name != null }">
 									<span style="font-weight: bold; font-size: 13px; color: gray;">${endGroup.grCate1Name } | ${endGroup.grCate2Name }</span>
@@ -109,6 +154,11 @@
 								</div>
 								<div align="center" style="margin-top: -20px;">
 								<p class="text-right">${endGroup.memName }</p>
+								</div>
+								<div align="center" style="margin-top: -20px;">
+									<input type="hidden" name="memId" id="memId" value="${endGroup.memId }">
+									<input type="hidden" name="ngCode" id="ngCode" value="${endGroup.ngCode }">
+									<button type="button" class="btn4 gomodal" data-target="#feedbackPopup" onclick="ngCodeSend(${endGroup.ngCode})">피드백</button>
 								</div>
 						</div>
 						</c:forEach>
@@ -127,6 +177,56 @@
 
 <div>
 	<c:import url="footer.jsp"></c:import>
+</div>
+
+			
+<!-- 피드백 모달 --> 
+<div class="modal feedback" id="feedbackPopup">
+    <div class="modal-dialog modal-lg shadow-sm mt-10p">
+      <div class="modal-content">
+        <div class="modal-header">
+          <b class="font-14">피드백</b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+			<section class="course_details_area section_padding" style="padding-bottom: 0;">
+				<div class="container">
+					<div align="center">
+						<h3>모임 평가</h3>
+					</div>
+					<br><br>
+					
+					<div align="center">
+					<i class="fas fa-clipboard-list fa-5x"></i>
+					</div>
+					<br><br><br><br>
+					<div class="feed">
+						<input type="hidden" id="modalNg">
+						<span style="font-size: 19px;"><i class="far fa-check-circle" style="color:blue; font-size: 22px;"></i></span> &nbsp;
+						<span class="text">모임 내용에 알맞게 모임이 진행되었다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label for="yes" style="margin-left: 76px;">
+							<input type="radio" name="goodpro" id="goodpro" value="2"> 예</label>&nbsp;&nbsp;
+							<label for="no">
+							<input type="radio" name="goodpro" id="goodpro" value="3"> 아니요</label>
+					</div>
+					<br>
+					<div class="feed">
+						<span style="font-size: 19px;"><i class="far fa-check-circle" style="color:blue; font-size: 22px;"></i></span> &nbsp;
+						<span class="text">이번 회차 모임에 정산이 정상적으로 이루어졌다.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label for="yes"><input type="radio" name="goodcal" id="goodcal" value="2"> 예</label>&nbsp;&nbsp;
+						<label for="no"><input type="radio" name="goodcal" id="goodcal" value="3"> 아니요</label>
+					</div>
+					<br><br>
+					<div align="center">
+						<button type="button" class="btn4" value="제출" onclick="feedSubmit()">제출</button>&nbsp;
+						<button type="button" class="btn4" data-dismiss="modal">취소</button>
+					</div>
+				</div>
+			</section>
+        </div>
+       
+    </div>
+  </div>
 </div>
 
 

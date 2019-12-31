@@ -6,7 +6,7 @@ public class GroupDTO
 	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name;
 	private int grCode, grCate1, grCate2,starCode;
 
-	private int ngCode, ngMax, ngMin, ngCost, ngFavorite;
+	private int ngCode, ngMax, ngMin, ngCost, ngFavorite, joinCode;
 	private String memPic, memIntro, ngPic, ngIntro, ngMyIntro;
 
 	private String ngLocation, ngLocation1, ngLocation2;
@@ -477,6 +477,14 @@ public class GroupDTO
 	public void setPayDetail(String payDetail)
 	{
 		this.payDetail = payDetail;
+	}
+
+	public int getJoinCode() {
+		return joinCode;
+	}
+
+	public void setJoinCode(int joinCode) {
+		this.joinCode = joinCode;
 	}
 
 	
