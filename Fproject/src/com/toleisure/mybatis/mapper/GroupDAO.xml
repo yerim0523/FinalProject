@@ -150,7 +150,7 @@
    
    <!-- 피드백 insert -->
    <insert id="feedInsert" parameterType="com.toleisure.mybatis.dto.FeedBackDTO">
-   	INSERT INTO FEEDBACK(FB_NUM, JOIN_CODE, FRESPONSE_CODE2, FRESPONSE_CODE) VALUES(FEEDBACKSEQ.NEXTVAL, #{joinCode}, #{goodPro}, #{goodCal});
+   	INSERT INTO FEEDBACK(FB_NUM, JOIN_CODE, FRESPONSE_CODE2, FRESPONSE_CODE) VALUES(FEEDBACKSEQ.NEXTVAL, #{joinCode}, #{goodPro}, #{goodCal})
    </insert>
 
    

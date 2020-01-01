@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -102,24 +102,29 @@
 		//alert($("#memId").val());
 		//alert($("#modalNg").val());
 		
-		if (confirm("피드백을 제출하시겠습니까 ?") == true)
+		if (confirm("피드백을 제출하시겠습니까 ? \n제출하신 후에는 수정이 불가능합니다.") == true)
 		{    
 			var params = {};
-			params.memId = $("#memId").val();
-			params.ngCode = $("#modalNg").val();
-			//alert($("#goodpro").val());
-			//alert($("#goodcal").val());
+				params.memId = $("#memId").val();
+				params.ngCode = $("#modalNg").val();
 			
 			$.ajax({
                 type : "POST"
                 , url : "findjoincode.action"
                 , data : params
                 , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+                //, dataType:"text" // text, xml, json, script, html 등 : 서버에서 받을 데이터 형식(default - MIME 타입)
                  , success: function(data){
-                	 var joinCode = data;
-                	 alert(joinCode);
-                	//location="feedinsert.action?joinCode="+joinCode+"&goodPro="+$("#goodpro").val()+"&goodCal="+$("#goodcal").val();
+                	var joinCode = data;
+                	var goodPro = $(":input:radio[name=goodpro]:checked").val();
+                	var goodCal = $(":input:radio[name=goodcal]:checked").val();
+                	alert("피드백 작성이 완료되었습니다.");
+                	location="feedinsert.action?joinCode="+joinCode+"&goodPro="+goodPro+"&goodCal="+goodCal;
                  }
+                ,error: function(data){
+                	 var joinCode = data;
+                	alert(data);
+                }
              });
 			
 		}else{   //취소
