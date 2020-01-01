@@ -206,31 +206,6 @@ public class MemberController
 		System.out.println("=====" + m.getMemId());
 		dao.add(m);
 		
-		MultipartRequest multi = null;
-
-		req.setCharacterEncoding("utf-8");
-
-		int sizeLimit = 10 * 1024 * 1024 ; // 10MB 크기 제한
-
-		String savePath = "C:\\ToLeisure\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\images"; 
-
-		// 저장 경로 설정
-		System.out.println("savePath : " + savePath);
-
-		try{
-
-		multi=new MultipartRequest(req, savePath, sizeLimit, 
-
-		"utf-8", new DefaultFileRenamePolicy()); 
-
-		// 업로드
-
-		} catch (Exception e) {
-
-		e.printStackTrace();
-
-		} 
-		
 		return view;
 		
 	}
