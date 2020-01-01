@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.Random"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,6 +18,13 @@ public static String getrndnum(int loopcount){
   return str;
 }
 %>
+
+<%
+	String imsinum = getrndnum(6);
+	String imsinum2 = getrndnum(2);
+	String imsinum3 = getrndnum(6);
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -54,8 +62,34 @@ public static String getrndnum(int loopcount){
 	}
 </style>
 
+<script type="text/javascript">
+
+	function date()
+	{
+		var today = new Date();
+		today.setDate(today.getDate() + 3); 
+		var year = today.getFullYear();
+		var month = today.getMonth() + 1;
+		var day = today.getDate();
+		var hours = today.getHours();
+		var min = today.getMinutes();
+		
+		document.getElementById("date").innerHTML = year +  "-" +  month +  "-" + day + "   " +hours + ":" + min;	
+	}
+	
+	function bankPay()
+	{
+		f = document.bankPayForm;
+		
+		f.submit();
+		
+		alert("모임 신청이 완료되었습니다. 메인으로 이동합니다.");
+	}
+	
+</script>
+
 </head>
-<body>
+<body onload="date()">
 
 
 <div>
@@ -77,7 +111,7 @@ public static String getrndnum(int loopcount){
 <br><br>
 
 <div class="container" align="center">
-
+<form action="bankpay.action" method="post" name="bankPayForm">
 	<table class="table" style="width: 50%;">
 		<tr>
 			<th style="text-align: center;">이름</th>
@@ -95,22 +129,26 @@ public static String getrndnum(int loopcount){
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 계좌</th>
-			<td>정민하</td>
+			<td>
+				<span id="payDetail" name="paydetail"><%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %></span>&nbsp;&nbsp;&nbsp; 국민은행
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 기한</th>
-			<td>2019-12-31 11:50 pm</td>
+			<td><div id="date"></div></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<p class="warning"><i class="fas fa-exclamation fa-2x"></i>&nbsp;입금 기한 내에 입금이 정상적으로 이루어지지 않으면 모임 참가에 취소될 수 있으니 유의해 주시기 바랍니다.</p>
+			<td colspan="2" style="padding: 10px; text-align: center;">
+				<button type="button" class="btn4" onclick="bankPay()">결제하기</button>&nbsp;&nbsp;
+				<button type="button" class="btn4">취소하기</button>
 			</td>
 		</tr>
 	
 	</table>
+	<p class="warning"><i class="fas fa-exclamation fa-2x"></i>&nbsp;입금 기한 내에 입금이 정상적으로 이루어지지 않으면 모임 참가에 취소될 수 있으니 유의해 주시기 바랍니다.</p>
 	
-	<input type="button" value="확인" class="btn4">
 	<br><br><br>
+</form>
 </div>
 
 <div>
