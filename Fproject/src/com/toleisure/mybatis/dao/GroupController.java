@@ -241,7 +241,6 @@ public class GroupController
 	@ResponseBody
 	public String findJoinCode(GroupDTO dto, Model model, HttpSession session)
 	{
-		
 		System.out.println("==================");
 		System.out.println("==== getMemId 는~?  "+ dto.getMemId());
 		System.out.println("==== getNgCode 는~?  "+ dto.getNgCode());
