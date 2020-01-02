@@ -13,7 +13,7 @@ public class BoardDTO
 
 
 	
-
+	
 	private String answerCont,faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId;
 
 	
@@ -33,7 +33,63 @@ public class BoardDTO
 	
 
 	private String boardTitle, boardCont, boardMem, boardDate;
+	
+	
+	
+	
+	private String comNum, comTitle, comTont, comDate;
+	private int comHits;
 
+	
+	public String getComNum()
+	{
+		return comNum;
+	}
+
+	public void setComNum(String comNum)
+	{
+		this.comNum = comNum;
+	}
+
+	public String getComTitle()
+	{
+		return comTitle;
+	}
+
+	public void setComTitle(String comTitle)
+	{
+		this.comTitle = comTitle;
+	}
+
+	public String getComTont()
+	{
+		return comTont;
+	}
+
+	public void setComTont(String comTont)
+	{
+		this.comTont = comTont;
+	}
+
+	public String getComDate()
+	{
+		return comDate;
+	}
+
+	public void setComDate(String comDate)
+	{
+		this.comDate = comDate;
+	}
+
+	public int getComHits()
+	{
+		return comHits;
+	}
+
+	public void setComHits(int comHits)
+	{
+		this.comHits = comHits;
+	}
 	
 	public int getEventNoticeCheck()
 	{

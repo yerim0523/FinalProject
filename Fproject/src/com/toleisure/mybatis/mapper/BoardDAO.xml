@@ -393,5 +393,50 @@
         INSERT INTO QNA_ANSWER(ANSWER_CODE,QNA_CODE,ANSWER_CONTENT,ANSWER_DATE,MEM_ID)
         VALUES(ANSWERSEQ.NEXTVAL, #{boardNum}, #{boardCont}, SYSDATE,#{memId})
    </insert>
+
+	<select id="mainboardListCont" resultType="Integer">
+		SELECT COUNT(*)
+		FROM COMMUNITY
+	</select>
+	
+	<select id="mainboardList" resultMap="BoardDTO">
+		SELECT ROWNUM AS rNum, BOARDNUM, BOARDTITLE, BOARDCONT, BOARDDATE, BOARDMEM, BOARDHITS, BOARDNOTICE
+		FROM
+		(
+		    SELECT ROWNUM AS rNum, C.COM_NUM AS boardNum, C.COM_TITLE AS boardTitle, C.COM_CONT AS boardCont
+		         , TO_CHAR(C.COM_DATE, 'YYYY-MM-DD') AS boardDate, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHits, NVL(CN.CNOTICE_NUM,0) AS boardNotice
+		    FROM COMMUNITY C, COM_NOTICE CN, MEMBER M, ADMIN A
+		    WHERE C.COM_NUM = CN.COM_NUM(+)
+		      AND C.MEM_ID = M.MEM_ID
+		      AND A.MEM_ID(+) = M.MEM_ID
+            ORDER BY BOARDNOTICE DESC, BOARDDATE DESC
+              
+		)
+		WHERE RNUM BETWEEN #{startIndex} AND #{endIndex}
+		<!-- WHERE E.NUM BETWEEN #{startIndex} AND #{endIndex}  -->
+	</select>
+	
+	<select id="mainboardSelect" resultMap="BoardDTO">
+		SELECT T.*
+		FROM 
+		(        
+		    SELECT C.COM_NUM AS boardNum, C.COM_TITLE AS boardTitle, C.COM_CONT AS boardCont
+		         , C.COM_DATE AS boardDate, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHITS, NVL(CN.CNOTICE_NUM,0) AS boardNotice
+		    FROM COMMUNITY C, COM_NOTICE CN, MEMBER M, ADMIN A
+		        WHERE C.COM_NUM = CN.COM_NUM(+)
+		          AND C.MEM_ID = M.MEM_ID
+		          AND A.MEM_ID(+) = M.MEM_ID
+		)T
+		WHERE boardNum = #{boardNum}
+	</select>
+	
+	<update id="updateMainBoardHitCount" parameterType="Integer">
+		UPDATE COMMUNITY
+		SET COM_HITS = COM_HITS+1
+		WHERE COM_NUM = #{boardNum}
+	</update>
+	
+	
+	
    
 </mapper>

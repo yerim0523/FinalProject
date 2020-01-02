@@ -162,7 +162,7 @@ clear:left;
 				</ul>
 			</li>
 			<li><a href="map.action">내주변</a></li>
-			<li><a href="#" id="current">전체 게시판</a>
+			<li><a href="mainboard.action" id="current">전체 게시판</a>
 		</ul>
 	</div> 
 </div>
