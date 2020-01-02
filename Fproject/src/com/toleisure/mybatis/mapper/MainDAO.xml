@@ -135,9 +135,9 @@
 		resultType="com.toleisure.mybatis.dto.GroupDTO"
 		parameterType="com.toleisure.mybatis.dto.GroupDTO">
 
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
-		AS grCate1Name, CATE2 AS grCate2Name
-		FROM CLOSING_VIEW
+		SELECT NG_PIC AS ngPic, CATE1 AS grCate1, CATE2 AS grCate2
+			 , GR_NAME AS grName, MEM_NAME AS memName, GR_CODE AS grCode, NG_CODE AS ngCode
+		FROM CLOSING_GROUP_VIEW
 
 		<!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
 			G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
@@ -150,7 +150,7 @@
 	<select id="ClosingGroupListAll"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name, NG_CODE AS ngCode
 		FROM
 		CLOSING_GROUP_ALLVIEW
 	</select>
@@ -164,11 +164,11 @@
 			AS ngMax FROM RECOMMEND_VIEW WHERE MEM_ID = 'lee0528kr@naver.com' -->
 
 		SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS
-		memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name
+		memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name, E.NG_CODE AS ngCode 
 		FROM
 		(
 		SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS
-		memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name
+		memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name, NG.NG_CODE
 		FROM
 		MEMBER M JOIN TBL_GROUP G
 		ON M.CATE_CODE1=G.CATE_CODE1 OR M.CATE_CODE1=G.CATE_CODE2 OR
@@ -197,11 +197,11 @@
 		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX 
 			AS ngMax FROM RECOMMEND_VIEW WHERE MEM_ID = 'lee0528kr@naver.com' -->
 		SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS
-		memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name
+		memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name, E.NG_CODE AS ngCode 
 		FROM
 		(
 		SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS
-		memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name
+		memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name, NG.NG_CODE
 		FROM
 		MEMBER M JOIN TBL_GROUP G
 		ON M.CATE_CODE1=G.CATE_CODE1 OR M.CATE_CODE1=G.CATE_CODE2 OR
