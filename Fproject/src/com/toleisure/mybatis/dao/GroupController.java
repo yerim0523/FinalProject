@@ -253,6 +253,7 @@ public class GroupController
 		
 		dto2.setJoinCode(v);
 		
+		
 		System.out.println("==================");
 		System.out.println("==== joinCode 는~?  "+ dto2.getJoinCode());
 		System.out.println("==================");
