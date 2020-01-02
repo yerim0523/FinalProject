@@ -46,7 +46,10 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> ContentMember(int ngCode);
 	
 	 
-	 
-	 
+	//-- 찜 여부 확인
+	public String meetFavCheck(GroupDTO dto);
+	public String hostFavCheck(GroupDTO dto);
 	
+	//-- 찜 모임 추가
+	public void meetFavInsert(GroupDTO dto);
 }

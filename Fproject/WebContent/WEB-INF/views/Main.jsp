@@ -116,12 +116,17 @@ button.more
 		                       alert("이미 찜을 하셨습니다.");
 		                    }else{
 		                    	alert("찜을 하지 않으셨습니다.");
+		                    	
+		                    	var memId = $("#sessionInfo").val();
+		                    	var ngCode = $("#empNgCode").val();
+		                    	
+		                    	location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
 		                    }
 		                 }
 		          });
 				 
 				$(this).removeClass('far');
-				$(this).addClass('fas');
+ 				$(this).addClass('fas');
 			}
 			else
 			{
@@ -285,7 +290,7 @@ button.more
                <h5>${NewGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;"></i>
+                  <i class="far fa-heart empty_h" style="color: red;" onclick="sendNgCode(${NewGroup.ngCode })"></i>
                </div>
                <br>
             </div>

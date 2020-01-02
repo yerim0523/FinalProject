@@ -102,7 +102,7 @@
 	<select id="NewGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
 		
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM NEWEST_GROUP_VIEW 
 	</select>
 
@@ -297,6 +297,15 @@
 	</select>
 	
 	
+	<select id="meetFavCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="String">
+		SELECT CASE WHEN COUNT(*)>=1 THEN 'Y' ELSE 'N' END
+		FROM GR_FAVORITE
+		WHERE MEM_ID=#{memId} AND NG_CODE=#{ngCode}
+	</select>
+	
+	<insert id="meetFavInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO" >
+		INSERT INTO GR_FAVORITE(GF_CODE, MEM_ID, NG_CODE) VALUES(GR_FAVSEQ.NEXTVAL, #{memId}, #{ngCode})
+	</insert>
 	
 	
 </mapper>

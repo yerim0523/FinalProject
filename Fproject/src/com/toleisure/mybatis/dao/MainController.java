@@ -2,6 +2,7 @@ package com.toleisure.mybatis.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.GroupDTO;
 
@@ -252,6 +254,8 @@ public class MainController
 		String view = "/WEB-INF/views/meetingContent.jsp";
 		session.getAttribute("member");
 		
+		System.out.println("===========  " + ngCode);
+		
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 		
 		//dao.groupContent(ngCode);
@@ -282,6 +286,34 @@ public class MainController
 		return view;
 	}
 	
-	
 	// ---------------------------------------------------------- 찜 모임 여부
+	@RequestMapping(value = "/meetfavoritefind.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String favoriteMeetYN(GroupDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		String isFavYn = dao.meetFavCheck(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMemYn = "+isFavYn);
+		System.out.println("==================");
+		
+		return isFavYn;
+	}
+	
+
+	// ---------------------------------------------------------- 찜 모임 추가
+	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public void favoriteMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+	}
+	
 }
