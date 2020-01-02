@@ -3,9 +3,25 @@ package com.toleisure.mybatis.dto;
 
 public class MemberDTO
 {
-	private String memId, memPw, memName, memTel, memPic, newPw;
+	private String memId, memPw, memName, memTel, memBirth, memPic, newPw;
 	private String memGen, memComp, memIntro, memDate;
-	private int memGender, memCate1, memCate2;
+	private int memGender, memCate1, memCate2,month,year;
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
 
 	public String getMemPw()
 	{
@@ -135,6 +151,14 @@ public class MemberDTO
 	public void setNewPw(String newPw)
 	{
 		this.newPw = newPw;
+	}
+
+	public String getMemBirth() {
+		return memBirth;
+	}
+
+	public void setMemBirth(String memBirth) {
+		this.memBirth = memBirth;
 	}
 	
 }

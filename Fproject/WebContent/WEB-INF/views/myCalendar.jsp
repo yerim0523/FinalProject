@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>calendar.jsp</title>
+<title>mycalendar.jsp</title>
 <style type="text/css">
 	
 </style>
@@ -32,14 +32,15 @@
 	<div class="row">
 		<c:import url="sidebar.jsp"></c:import>
 		
-		<div id="calendar"></div>
+		<div id="calendar"></div><br>
+		
+	
+		
 	</div>
+	
 	
 </div>
 </section>
-
-
-
 
 <div>
 	<c:import url="footer.jsp"></c:import>
@@ -48,10 +49,11 @@
 <script type="text/javascript">
 
 !function() {
-
+	 
 	  var today = moment();
 
-	  function Calendar(selector, events) {
+	  function Calendar(selector, events) 
+	  {
 	    this.el = document.querySelector(selector);
 	    this.events = events;
 	    this.current = moment().date(1);
@@ -88,12 +90,12 @@
 	      right.addEventListener('click', function() { self.nextMonth(); });
 
 	      var left = createElement('div', 'left');
-	      left.addEventListener('click', function() { self.prevMonth(); });
+	      left.addEventListener('click', function() { self.prevMonth(); }); 
 
 	      //Append the Elements
 	      this.header.appendChild(this.title); 
 	      this.header.appendChild(right);
-	      this.header.appendChild(left);
+	      this.header.appendChild(left); 
 	      this.el.appendChild(this.header);
 	    }
 
@@ -101,12 +103,24 @@
 	  }
 
 	  Calendar.prototype.drawMonth = function() {
-	    var self = this;
-	    
-	    this.events.forEach(function(ev) 
-	    {
-	     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
-	    });
+		  var self = this;
+	    var count = 0;
+	    var array = new Array();
+	    <c:forEach var="myCal" items="${myCal}" varStatus="status">
+ 			array[count] = "${myCal.day}";
+ 			count++;
+ 		  </c:forEach>  
+ 		console.log(array);
+ 		 count = 0;
+ 		 
+ 	    this.events.forEach(function(ev) 
+ 	    {
+ 	    	// 계속 반복되는 구문
+ 	    	//alert(array[count]);
+ 			ev.date = self.current.clone().date(array[count]);
+ 			count++;
+//		 ev.date = self.current.clone().date(02);
+ 	    });
 	    
 	    
 	    if(this.month) {
@@ -131,7 +145,7 @@
 	        this.fowardFill();
 	        this.month.className = 'month new';
 	    }
-	  }
+	  } // end  Calendar.prototype.drawMonth
 
 	  Calendar.prototype.backFill = function() {
 	    var clone = this.current.clone();
@@ -226,7 +240,8 @@
 	    return classes.join(' ');
 	  }
 
-	  Calendar.prototype.openDay = function(el) {
+	  Calendar.prototype.openDay = function(el) 
+	  {
 	    var details, arrow;
 	    var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
 	    var day = this.current.clone().date(dayNumber);
@@ -268,7 +283,8 @@
 	      el.parentNode.appendChild(details);
 	    }
 
-	    var todaysEvents = this.events.reduce(function(memo, ev) {
+	    var todaysEvents = this.events.reduce(function(memo, ev) 
+	    {
 	      if(ev.date.isSame(day, 'day')) {
 	        memo.push(ev);
 	      }
@@ -337,21 +353,30 @@
 	      return memo;
 	    }, []).forEach(function(e) {
 	      var parts = e.split('|');
-	      var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
+	      var entry = createElement('span', 'entry ' +  parts[1], parts[0]); 
 	      legend.appendChild(entry);
 	    });
-	    this.el.appendChild(legend);
+	    this.el.appendChild(legend); 
 	  }
 
 	  Calendar.prototype.nextMonth = function() {
-	    this.current.add('months', 1);
+		  this.current.add('months', 1);
+		   
 	    this.next = true;
+	    month = this.current;
+	    alert(month);
+	    var sp = month.substring(5,7);
+	    alert(sp);
+	    location="mycalnext.action?month="+month;
 	    this.draw();
 	  }
 
 	  Calendar.prototype.prevMonth = function() {
 	    this.current.subtract('months', 1);
 	    this.next = false;
+	    month = this.current;
+	    alert(month);
+	    location="mycalnext.action?month="+month;
 	    this.draw();
 	  }
 
@@ -370,39 +395,51 @@
 	}();
 
 	!function() {
+		
 	  var data = [
-	    { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange' },
-	    { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange' },
-	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
-	    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
+		
+/* 	    { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange'},
+ 	    { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange'},
+ 	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' }, */
+// 	    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
 
-	    { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
-	    { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
-	    { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
-	    { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
+// 	    { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
+// 	    { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
+// 	    { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
+// 	    { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
 
-	    { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
-	    { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
-	    { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
-	    { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
+// 	    { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
+// 	    { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
+// 	    { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
+// 	    { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
 
-	    { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
-	    { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
-	    { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
-	    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
+// 	    { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
+// 	    { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
+// 	    { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
+// 	    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
 	  ];
-
+	  var colorArray = ["yellow","orange","green","blue","black","yellow"];
+	  var count2=0;
+	  <c:forEach var="myCal" items="${myCal}">
+	  	
+	  	 var col = colorArray[count2];
+		 data.push({eventName: '${myCal.ngLocation}',calendar: '${myCal.grName}', color: col});
+		 count2++;
+	  </c:forEach>
 	  
 
-	  function addDate(ev) {
+	  function addDate(ev) 
+	  
+	  {
 	    
+		  
 	  }
 
 	  var calendar = new Calendar('#calendar', data);
 
 	}();
-
 </script>
+
 
 </body>
 </html>

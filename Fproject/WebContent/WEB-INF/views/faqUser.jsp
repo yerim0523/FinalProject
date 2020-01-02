@@ -144,6 +144,9 @@
 					<li class="nav-item"><a class="nav-link"
 						href="event.action">투레저 이벤트</a></li>
 					<li class="nav-item"><a class="nav-link active">FAQ</a></li>
+					<c:if test="${sessionScope.mode==1}">
+					<li class="nav-item"><a class="nav-link" href="answer.action">QNA답변작성</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div> 
@@ -154,25 +157,6 @@
 	<div class="container" align="center">
 		<div class="row">
 			<div class="col">
-			<!-- 
-				<ul class="nav nav-pills">
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">호스트신청</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">이용안내</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">회원정보</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">결제/환불</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link cate" href="#">기타</a>
-					</li>
-				</ul>
-			 -->
 					<a class="cate" href="faq.action" >전체</a> |
 					<a class="cate" href="faquse.action">이용안내</a> |
 					<a class="cate" href="#" style="font-weight: bold;">회원정보</a> |
@@ -192,8 +176,12 @@
 				      <a class="card-link d-flex justify-content-start" data-toggle="collapse" href="#collapse${faq.boardNum}">
 				       [${faq.faqName}] ${faq.boardTitle}
 				      </a>
-				      <button type="button" onclick="delcheck(${faq.boardNum})" style="float: right;">삭제</button>
-				      <button type="button" onclick="edit(${faq.boardNum})"  style="float: right;">수정</button>
+				      <c:if test="${sessionScope.mode==1}">
+								<button type="button" onclick="delcheck(${faq.boardNum})"
+									style="float: right;">삭제</button>
+								<button type="button" onclick="edit(${faq.boardNum})"
+									style="float: right;">수정</button>
+								</c:if>
 				    </div>
 				    <div id="collapse${faq.boardNum}" class="collapse" data-parent="#accordion">
 				      <div class="card-body d-flex justify-content-start" style="text-align:left;">
@@ -204,15 +192,60 @@
 			</c:forEach> 
 		</div>
 	</div>
-	<button type="button" onclick="location='faqinsertform.action'" class="btn4" style="float: right;">글쓰기</button>
-	<button type="button" onclick="location='qnainsertform.action'" class="btn4" style="float: left;">1:1 문의</button>
-</div>
+	<c:if test="${!empty sessionScope.mode}">
+			<c:if test="${sessionScope.mode==1}">
+			<button type="button" onclick="location='faqinsertform.action'"
+				class="btn4" style="float: right;">글쓰기</button>
+			</c:if>
+			</c:if>
+	<c:if test="${empty sessionScope.member}">
+				<button type="button" data-toggle="modal" data-target="#loginNeed"
+					class="btn4" style="float: left;">1:1 문의하러 가기</button>
+			</c:if>
+			
+			<c:if test="${!empty sessionScope.member}">
+			<c:if test="${sessionScope.mode==0}">
+				<button type="button" onclick="location='faq.action'"
+					class="btn4" style="float: left;">1:1 문의하러 가기</button>
+			</c:if>
+			</c:if>
+		</div>
 
-</section>
+	</section>
 
-<div>
-	<c:import url="footer.jsp"></c:import>
-</div>
+	<div>
+		<c:import url="footer.jsp"></c:import>
+	</div>
+
+
+	<div class="modal modal-center fade" id="loginNeed" tabindex="-1"
+		role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+		<div class="modal-dialog modal-80size modal-center" role="document">
+			<div class="modal-content modal-80size">
+				<div class="modal-header">
+					<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body center-block">
+					<p class="text-center">로그인이 필요한 서비스입니다.</p>
+					<div class="">
+						<a href="login.action"><button type="button" class="btn_1">로그인</button></a>
+						<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+					</div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+
+
 
 </body>
 </html>

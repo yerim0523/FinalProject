@@ -1,9 +1,8 @@
 package com.toleisure.mybatis.dao;
 
-
-import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,9 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sun.xml.internal.ws.util.StringUtils;
+import com.toleisure.mybatis.dto.FeedBackDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
@@ -48,7 +48,7 @@ public class GroupController
 		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
 		System.out.println("==================");
 		
-		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode());
+		GroupDTO dto2 = dao.groupFormInfo(dto.getGrCode()); 
 		
 		model.addAttribute("groupinfo", dto2);
 		
@@ -150,5 +150,229 @@ public class GroupController
 		
 		return "WEB-INF/views/jjimList.jsp";
 	}
+	
+	@RequestMapping(value = "/pay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String payMethod(GroupDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/Pay.jsp";
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
+		
+		int ngCode = (int) session.getAttribute("ngCode");
+		
+		int ngCost = dao.cost(ngCode);
+		dto.setNgCode(ngCode);
+		
+		model.addAttribute("ngCost", ngCost);
+		session.setAttribute("ngCost", ngCost);
+		
+		System.out.println(memId);
+		System.out.println(ngCode);
+		System.out.println(ngCost);
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/cardpage.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String cardPage(MemberDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/CardPay.jsp";
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCost = (int)session.getAttribute("ngCost");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
+
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		model.addAttribute("ngCost", ngCost);
+		model.addAttribute("myInfo", mine);
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/cardpay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String cardPay(GroupDTO dto, Model model, HttpSession session)
+	{
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCode = (int)session.getAttribute("ngCode");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		
+		dto.setNgCode(ngCode);
+		
+		System.out.println(ngCode);
+		
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.cardPay(dto);
+		
+		
+		return "redirect:main.action";
+	}
+
+	@RequestMapping(value = "/selectfeed.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String selectFeed(GroupDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		String isMemYn = dao.feedCheck(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMemYn = "+isMemYn);
+		System.out.println("==================");
+		
+		return isMemYn;
+	}
+	
+	
+	@RequestMapping(value = "/findjoincode.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String findJoinCode(GroupDTO dto, Model model, HttpSession session)
+	{
+		System.out.println("==================");
+		System.out.println("==== getMemId 는~?  "+ dto.getMemId());
+		System.out.println("==== getNgCode 는~?  "+ dto.getNgCode());
+		System.out.println("==================");
+		
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		GroupDTO dto2 = dao.feedJoinCode(dto);
+		
+		String joinCode = Integer.toString(dto2.getJoinCode());
+		
+		System.out.println("==================");
+		System.out.println("==== joinCode 는~?  "+ joinCode);
+		System.out.println("==================");
+		
+		return joinCode;
+	}
+	
+	
+	@RequestMapping(value = "/feedinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String insertFeed(HttpServletRequest req, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		int joinCode = Integer.parseInt(req.getParameter("joinCode"));
+		int goodPro = Integer.parseInt(req.getParameter("goodPro"));
+		int goodCal = Integer.parseInt(req.getParameter("goodCal"));
+		
+		System.out.println(joinCode + "  " + goodPro + "  " + goodCal);
+		
+		FeedBackDTO dto = new FeedBackDTO();
+		dto.setJoinCode(joinCode);
+		dto.setGoodPro(goodPro);
+		dto.setGoodCal(goodCal);
+		
+		System.out.println("======= " + dto.getJoinCode());
+		
+		dao.feedInsert(dto);
+		
+		return "redirect:endgrouplist.action";
+	}
+	
+	
+	@RequestMapping(value = "/phonepage.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String phonePage(MemberDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/PhonePay.jsp";
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCost = (int)session.getAttribute("ngCost");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
+
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		model.addAttribute("ngCost", ngCost);
+		model.addAttribute("myInfo", mine);
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/phonepay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String phonePay(GroupDTO dto, Model model, HttpSession session)
+	{
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCode = (int)session.getAttribute("ngCode");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		
+		dto.setNgCode(ngCode);
+		
+		System.out.println(ngCode);
+		
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.phonePay(dto);
+		
+		
+		return "redirect:main.action";
+	}
+	
+	@RequestMapping(value = "/bankpage.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String bankPage(MemberDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/BankPay.jsp";
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCost = (int)session.getAttribute("ngCost");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		String memId = dto.getMemId();
+
+		IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+		
+		MemberDTO mine = dao.myInfo(dto.getMemId());
+		
+		model.addAttribute("ngCost", ngCost);
+		model.addAttribute("myInfo", mine);
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/bankpay.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String bankPay(GroupDTO dto, Model model, HttpSession session)
+	{
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		int ngCode = (int)session.getAttribute("ngCode");
+		
+		String id = mem.getMemId();
+		dto.setMemId(id);
+		
+		dto.setNgCode(ngCode);
+		
+		System.out.println(ngCode);
+		
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		dao.bankPay(dto);
+		
+		
+		return "redirect:main.action";
+	}
+	
+	
+	
 	
 }

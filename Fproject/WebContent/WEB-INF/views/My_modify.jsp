@@ -35,7 +35,7 @@ p
 		var cate1 = ${myInfo.memCate1};
 		var cate2 = ${myInfo.memCate2};
 		
-		alert(cate1 + " " + cate2);
+		//alert(cate1 + " " + cate2);
 		
 		$("input[name='memGen']:radio[value='"+ gender +"']").attr("checked","checked");
 		$("input[name='check']:checkbox[value='"+ cate1 +"']").attr("checked","checked");
@@ -145,6 +145,12 @@ p
 			{
 				temp[count] = cate[i].value;   
 				count++;
+				
+				if(count==3)
+				{
+					alert("관심 카테고리는 2개까지만 선택하실 수 있습니다.");
+					return;
+				}
 			}
 		}
 		

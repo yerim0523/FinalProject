@@ -1,9 +1,31 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Random"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%!
+public static String getrndnum(int loopcount){
+  String str = "";
+  int d = 0;
+  for (int i = 1; i <= loopcount; i++){
+    Random r = new Random();
+    d = r.nextInt(9);
+    str = str + Integer.toString(d);
+  }
+  return str;
+}
+%>
+
+<%
+	String imsinum = getrndnum(6);
+	String imsinum2 = getrndnum(2);
+	String imsinum3 = getrndnum(6);
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +35,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -41,8 +62,34 @@
 	}
 </style>
 
+<script type="text/javascript">
+
+	function date()
+	{
+		var today = new Date();
+		today.setDate(today.getDate() + 3); 
+		var year = today.getFullYear();
+		var month = today.getMonth() + 1;
+		var day = today.getDate();
+		var hours = today.getHours();
+		var min = today.getMinutes();
+		
+		document.getElementById("date").innerHTML = year +  "-" +  month +  "-" + day + "   " +hours + ":" + min;	
+	}
+	
+	function bankPay()
+	{
+		f = document.bankPayForm;
+		
+		f.submit();
+		
+		alert("모임 신청이 완료되었습니다. 메인으로 이동합니다.");
+	}
+	
+</script>
+
 </head>
-<body>
+<body onload="date()">
 
 
 <div>
@@ -64,30 +111,44 @@
 <br><br>
 
 <div class="container" align="center">
-
+<form action="bankpay.action" method="post" name="bankPayForm">
 	<table class="table" style="width: 50%;">
 		<tr>
-			<th style="text-align: center;">결제 금액</th>
-			<td>50,000원</td>
+			<th style="text-align: center;">이름</th>
+			<td style="padding: 10px;">
+				<input type="text" class="form-control" id="memName" name="memName" value="${myInfo.memName }" readonly="readonly">
+			</td>
+		</tr>
+		<tr>
+			<th style="text-align: center;">결제금액</th>
+			<td style="padding: 10px;">
+				<%-- <fmt:setLocale value="ko_KR"/><input type="text" class="form-control" value='<fmt:formatNumber value="${ngCost }"></fmt:formatNumber>' readonly="readonly"> --%>
+				<%-- <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${ngCost}" /> --%>
+				<input type="text" class="form-control" id="ngCost" name="ngCost" value="${ngCost }" readonly="readonly">
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 계좌</th>
-			<td>농협 423014-51-113408 정민하</td>
+			<td>
+				<span id="payDetail" name="paydetail"><%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %></span>&nbsp;&nbsp;&nbsp; 국민은행
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 기한</th>
-			<td>2019-12-31 11:50 pm</td>
+			<td><div id="date"></div></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<p class="warning"><i class="fas fa-exclamation fa-2x"></i>&nbsp;입금 기한 내에 입금이 정상적으로 이루어지지 않으면 모임 참가에 취소될 수 있으니 유의해 주시기 바랍니다.</p>
+			<td colspan="2" style="padding: 10px; text-align: center;">
+				<button type="button" class="btn4" onclick="bankPay()">결제하기</button>&nbsp;&nbsp;
+				<button type="button" class="btn4">취소하기</button>
 			</td>
 		</tr>
 	
 	</table>
+	<p class="warning"><i class="fas fa-exclamation fa-2x"></i>&nbsp;입금 기한 내에 입금이 정상적으로 이루어지지 않으면 모임 참가에 취소될 수 있으니 유의해 주시기 바랍니다.</p>
 	
-	<input type="button" value="확인" class="btn4">
 	<br><br><br>
+</form>
 </div>
 
 <div>

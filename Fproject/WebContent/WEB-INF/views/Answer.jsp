@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>news.jsp</title>
+<title>event.jsp</title>
 <style type="text/css">
 .pagination {
 	justify-content: center;
@@ -61,19 +61,33 @@
 </script> -->
 <script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script>
 <script>
-    $(document).ready(function(){
+/*     $(document).ready(function(){
         $("#notice_regi").on("click",function(){
             location.href="/test/noticeRegi"
         });
     });
     function fn_paging(curPage){
-    	
-    	location.href="news.action?curPage="+curPage;
-        /* location.href="/test/noticeList?curPage="+curPage; */
+         location.href="/test/noticeList?curPage="+curPage; 
+        location.href="/WEB-INF/views/noticeList?curPage="+curPage;
     }
     
     function notice_push(notice_id){
         alert(notice_id);
+    } */
+    $(function() {
+		function runEffect() {
+			$("#effect").toggle("blind", null, 700);
+		}
+		;
+
+		$("#btn_toggle").on("click", function() {
+			runEffect();
+		});
+	});
+  function fn_paging(curPage){
+    	
+    	location.href="answer.action?curPage="+curPage;
+        /* location.href="/test/noticeList?curPage="+curPage; */
     }
 </script>
 </head>
@@ -97,12 +111,13 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link" href="center.action">투레저 소개</a>
 					</li>
-					<li class="nav-item"><a class="nav-link active">투레저 소식</a></li>
-					<li class="nav-item"><a class="nav-link"href="event.action">투레저 이벤트</a></li>
-					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a></li>
+					<li class="nav-item"><a class="nav-link"href="news.action">투레저 소식</a></li>
+					<li class="nav-item"><a class="nav-link" href="event.action">투레저 이벤트</a></li>
+					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a>
 					<c:if test="${sessionScope.mode==1}">
-					<li class="nav-item"><a class="nav-link" href="answer.action">QNA답변작성</a></li>
+					<li class="nav-item"><a class="nav-link active">QNA답변작성</a></li>
 					</c:if>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -111,55 +126,70 @@
 	<br>
 	<br>
 	<br>
-
+	
+	
 	<div>
 		<table class="table table-hover">
 			<thead>
 				<tr>
+					<th>분류</th>
 					<th></th>
-					<th>글번호</th>
 					<th>제목</th>
-					<th>작성자</th>
+					<th>회원 아이디</th>
 					<th>날짜</th>
-					<th>조회수</th>
+					<th>답변여부</th>
+					<th></th>
 				</tr>
-				<c:forEach var="v" items="${newsList}" varStatus="status">
+				<c:forEach var="v" items="${answerList}" varStatus="status">
 				<tr>
+				<td style="color: red;">[${v.faqName}]</td>
+					<td>${v.rNum}</td>
+					<td>${v.boardTitle}</td>
+ 					<td>${v.boardMem}</td>
+					<td>${v.boardDate}</td>
+					
 					<c:choose>
-					<c:when test="${v.boardNotice ne 0}"><td style="color: red;">[공지]</td></c:when>
-					<c:when test="${v.boardNotice eq 0}"><td style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></c:when>
+					<c:when test="${v.checkCode!=0}">
+						<td style="color: red;">답변완료</td>
+				    </c:when>
+					<c:otherwise>
+						<td style="color: blue;">답변대기</td>
+					</c:otherwise>
 					</c:choose>
 					
-					<td>${v.rNum}</td>
-					<td><a href="#" onclick="location='newsdetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
-					<td>${v.boardMem}</td>
-					<td>${v.boardDate}</td>
-					<td>${v.boardHits}</td>
+					<td>
+					<c:choose>
+			 		<c:when test="${v.checkCode!=0}">
+					<button type="button" onclick="location='answerupdateform.action?boardNum=${v.boardNum}'" 
+					 style="float: right; color: blue;">답변수정</button>
+					</c:when>
+					  <c:otherwise>
+                              <button type="button" onclick="location='answerinsertform.action?boardNum=${v.boardNum}'" 
+					 style="float: right; color: red;">답변작성</button>
+                            </c:otherwise>
+                    </c:choose>
+                    </td>
 			    </tr>
-			  
-				</c:forEach>        
+				</c:forEach>      
             
 			</thead>
 		</table>
 
 		<hr>
-		<c:if test="${!empty sessionScope.mode}">
-			<c:if test="${sessionScope.mode==1}">
-			<button type="button" onclick="location='newsinsertform.action'"
-				class="btn4" style="float: right;">글쓰기</button>
-			</c:if>
-			</c:if>
+	
 	</div>
 
 	<div class="container">
 		<ul class="pagination">
-			<li class="page-item">
+			
 			
 			<c:if test="${paging.curPage ne 1}">
+			<li class="page-item">
 			<a class="page-link" href="#" aria-label="Previous" onClick="fn_paging(${paging.prevPage })">	
 			<span aria-hidden="true">&laquo;</span>
 			</a></li>
 			</c:if>
+			
 			<%-- ${status.index+1+(paging.curPage-1)*10} --%>
 			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
 			 	<c:choose>
@@ -187,7 +217,10 @@
                         <a href="#" onClick="fn_paging(1)">[처음]</a> 
                     <c:if test="${paging.curPage ne 1}">
                         <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
-                    </c:if>      
+                    </c:if>
+                    
+                    
+                    
                     <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
                         <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
                     </c:if>
@@ -202,7 +235,6 @@
                     총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
         </div>
 			
-			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
 </div>
 </section>
 
@@ -210,7 +242,7 @@
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
-
+ 
 
 </body>
 </html>

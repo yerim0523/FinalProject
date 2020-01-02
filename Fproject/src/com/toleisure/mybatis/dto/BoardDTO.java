@@ -9,14 +9,17 @@ public class BoardDTO
 	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
-	private int faqCate;
+	private int faqCate, checkCode;
 
 
-	private String faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId;
+	
+
+	private String answerCont,faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId;
 
 	
 
 	
+
 	private int endIndex;
 	private int startIndex;
 	private int cntPerPage;
@@ -393,5 +396,34 @@ public class BoardDTO
 		this.faqId = faqId;
 	}
 
+	public String getMemId()
+	{
+		return memId;
+	}
+
+	public void setMemId(String memId)
+	{
+		this.memId = memId;
+	}
+	
+	public int getCheckCode()
+	{
+		return checkCode;
+	}
+
+	public void setCheckCode(int checkCode)
+	{
+		this.checkCode = checkCode;
+	}
+	
+	public String getAnswerCont()
+	{
+		return answerCont;
+	}
+
+	public void setAnswerCont(String answerCont)
+	{
+		this.answerCont = answerCont;
+	}
 
 }

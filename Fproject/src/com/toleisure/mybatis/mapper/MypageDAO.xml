@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toleisure.mybatis.dao.IMypageDAO">
+
+ 
+	<!-- 세션아이디를 통해 myPage 에 정보를 띄워주기 위한 메소드 -->
+	<!-- <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
+		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_COMP AS memComp, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGen, NVL(CATE_CODE1,0) AS memCate1, NVL(CATE_CODE2,0) AS memCate2
+		FROM MEMBER
+		WHERE MEM_ID = #{memId}
+    </select>
+
+	개인정보 수정시 수행되는 메소드
+	<update id="infoUpdate" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		<choose>
+			<when test="memCate1 == 0 and memCate2 == 0">
+				UPDATE MEMBER 
+				SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}, CATE_CODE1=null, CATE_CODE2=null
+				WHERE MEM_ID=#{memId}
+			</when>
+			<when test="memCate2 == 0">
+				UPDATE MEMBER SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro}, CATE_CODE1=#{memCate1}, CATE_CODE2=null
+				WHERE MEM_ID=#{memId}
+			</when>
+			<otherwise>
+				UPDATE MEMBER SET MEM_NAME=#{memName}, MEM_TEL=#{memTel}, GEN_CODE=#{memGen}, MEM_COMP=#{memComp}, MEM_INTRO=#{memIntro},  CATE_CODE1=#{memCate1}, CATE_CODE2=#{memCate2}
+				WHERE MEM_ID=#{memId}
+			</otherwise>
+		</choose>
+	</update>
+	
+	패스워드 변경 메소드
+	<update id="updatePw" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		UPDATE MEMBER
+		SET MEM_PW = #{memPw}
+		WHERE MEM_ID = #{memId}
+    </update>
+    
+    패스워드 확인 메소드
+    <select id="pwCheck" resultType="java.lang.String">
+   		SELECT MEM_PW AS memPw
+		FROM MEMBER
+		WHERE MEM_ID = #{memId}
+    </select>
+    
+    마이페이지 패스워드 변경 메소드
+    <update id="changeMyPw" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+		UPDATE MEMBER
+		SET MEM_PW = #{newPw}
+		WHERE MEM_ID = #{memId}
+	</update>	 -->
+
+	<select id="myCalendar" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+	
+		  
+		  SELECT RQ.MEM_ID AS memId, RQ.NG_CODE AS ngCode, G.GR_NAME AS grName
+			 ,SUBSTR(NG.NG_STARTDATE,4,2) AS month, SUBSTR(NG.NG_STARTDATE,7,2) AS day
+			 ,TO_CHAR(NG.NG_STARTDATE,'YYYY-MM-DD') AS year
+			 , NG.NG_STARTDATE AS ngStart, NG.NG_ENDDATE AS ngEnd, NG.NG_LOCATION AS ngLocation
+		FROM MEMBER M, GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G
+		WHERE M.MEM_ID=RQ.MEM_ID AND RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE 
+		  AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID
+		                                       FROM GR_REQUEST RQ, PAYMENT P, REFUND RF
+		                                       WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
+		  AND RQ.MEM_ID=#{memId} 
+		  AND TO_CHAR(SYSDATE,'YYYYMM') = TO_CHAR(NG.NG_STARTDATE,'YYYYMM')
+	</select>
+	
+	
+	<select id="myNextCalendar" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+	
+		  
+		  SELECT RQ.MEM_ID AS memId, RQ.NG_CODE AS ngCode, G.GR_NAME AS grName
+			 ,SUBSTR(NG.NG_STARTDATE,4,2) AS month, SUBSTR(NG.NG_STARTDATE,7,2) AS day
+			 ,TO_CHAR(NG.NG_STARTDATE,'YYYY-MM-DD') AS year
+			 , NG.NG_STARTDATE AS ngStart, NG.NG_ENDDATE AS ngEnd, NG.NG_LOCATION AS ngLocation
+		FROM MEMBER M, GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G
+		WHERE M.MEM_ID=RQ.MEM_ID AND RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE 
+		  AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID
+		                                       FROM GR_REQUEST RQ, PAYMENT P, REFUND RF
+		                                       WHERE RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE = RF.PAY_CODE AND RQ.MEM_ID=#{memId})
+		  AND RQ.MEM_ID=#{memId} 
+		  AND #{month} = TO_CHAR(NG.NG_STARTDATE,'MM')
+	</select>
+	
+	<!-- 본인의 결제, 환불내역을 모두 가져오는 method -->
+	<!-- <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
+		SELECT payCode,.ngCode, grName, grCount, ngCost, memId, pmName, payDate, rfCode, rfDate
+		FROM PAY_REFUND_VIEW
+    </select> -->
+
+
+</mapper>

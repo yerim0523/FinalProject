@@ -1,5 +1,8 @@
 package com.toleisure.mybatis.dao;
 
+import java.util.ArrayList;
+
+import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
 public interface IMemberDAO
@@ -18,6 +21,8 @@ public interface IMemberDAO
 	
 	public String pwCheck(MemberDTO dto);		// 패스워드 확인 메소드 --
 	public int changeMyPw(MemberDTO dto);		// 마이페이지 패스워드 변경 메소드 --
+	public int adminCheck(MemberDTO login);
+	public ArrayList<GroupDTO> map();
 	
 	
 }

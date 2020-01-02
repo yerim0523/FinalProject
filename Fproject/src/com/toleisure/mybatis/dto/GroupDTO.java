@@ -6,12 +6,13 @@ public class GroupDTO
 	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name;
 	private int grCode, grCate1, grCate2,starCode;
 
-	private int ngCode, ngMax, ngMin, ngCost, ngFavorite;
+	private int ngCode, ngMax, ngMin, ngCost, ngFavorite, joinCode;
 	private String memPic, memIntro, ngPic, ngIntro, ngMyIntro;
 
 	private String ngLocation, ngLocation1, ngLocation2;
 
 	private String ngStart, ngStart1, ngStart2, ngEnd, ngEnd1, ngEnd2, ngDate;
+	private String year, month, day;
 	
 	private String reviewCont, reviewDate;
 	private double reviewStar;
@@ -19,9 +20,10 @@ public class GroupDTO
 	private String boardCont, boardDate;
 	private int boardNum;
 
-
 	private int grCount, grStarCount;
 	private double grStarAvg;
+	
+	private String payDetail;
 
 	// setter / getter 구성 (TBL_GROUP 테이블 - String)
 	public String getMemId()
@@ -441,6 +443,48 @@ public class GroupDTO
 	public void setBoardNum(int boardNum)
 	{
 		this.boardNum = boardNum;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+	
+	public String getPayDetail()
+	{
+		return payDetail;
+	}
+
+	public void setPayDetail(String payDetail)
+	{
+		this.payDetail = payDetail;
+	}
+
+	public int getJoinCode() {
+		return joinCode;
+	}
+
+	public void setJoinCode(int joinCode) {
+		this.joinCode = joinCode;
 	}
 
 	

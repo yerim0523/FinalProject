@@ -3,6 +3,8 @@
 <%
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
+   
+   
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,13 +14,9 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/member.css">
@@ -117,7 +115,7 @@
 		<div>
 			<c:import url="MeetingBar.jsp"></c:import>
 		</div>
-
+	<form action="" method="post">
 	 <c:forEach var="grcontent" items="${groupContent }">
 	 <div class="container">
 			<div class="row">
@@ -225,7 +223,7 @@
 						</c:forEach>
 						
 							<div align="right">
-							<a class="btn4" href="#"> 더보기</a>
+							<a class="btn4" href="reviewmeeting.action"> 더보기</a>
 						</div>
 
 						<div>
@@ -298,7 +296,7 @@
 							</a></li>
 
 						</ul>
-						<a class="btn4" href="Pay.jsp" style="margin-left: 30px;">모임신청하기(결제)</a>
+						<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
 					</div>
 
 					<br>
@@ -322,7 +320,7 @@
 			</div>
 		</div>
 	 </c:forEach>
-	 
+	 </form>
 	 </section>
 	 
 	 

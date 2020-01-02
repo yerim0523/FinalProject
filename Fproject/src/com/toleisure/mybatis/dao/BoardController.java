@@ -35,7 +35,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/event.action") // 이벤트 리스트 호출
+	@RequestMapping(value = "/event.action") // �씠踰ㅽ듃 由ъ뒪�듃 �샇異�
 	public String eventList(BoardDTO event, @RequestParam(defaultValue = "1") int curPage,
 			Model model, HttpSession session)
 	{
@@ -56,7 +56,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) // 이벤트 상세 목록 호출
+	@RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) // �씠踰ㅽ듃 �긽�꽭 紐⑸줉 �샇異�
 	public String eventDetail(int boardNum, int curPage, Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/eventDetail.jsp";
@@ -77,7 +77,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventinsertform.action")		// 이벤트 입력 폼 호출
+	@RequestMapping(value = "/eventinsertform.action")		// �씠踰ㅽ듃 �엯�젰 �뤌 �샇異�
 	public String eventInsertForm(HttpSession session)
 	{
 		session.getAttribute("member");
@@ -86,19 +86,18 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventinsert.action", method ={ RequestMethod.GET, RequestMethod.POST }) // 이벤트 입력 실행
+	@RequestMapping(value = "/eventinsert.action", method ={ RequestMethod.GET, RequestMethod.POST }) // �씠踰ㅽ듃 �엯�젰 �떎�뻾
 	public String eventInsert(HttpSession session, BoardDTO dto)
 	{
-		String view = "event.action";
 		session.getAttribute("member");
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		dao.eventInsert(dto);
 
-		return view;
+		return "redirect:event.action";
 	}
 
-	@RequestMapping(value = "/eventupdateform.action", method ={ RequestMethod.GET, RequestMethod.POST }) // 이벤트 수정 폼 호출
+	@RequestMapping(value = "/eventupdateform.action", method ={ RequestMethod.GET, RequestMethod.POST }) // �씠踰ㅽ듃 �닔�젙 �뤌 �샇異�
 	public String eventUpdateForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
 	{
 		String view = "/WEB-INF/views/EventUpdateForm.jsp";
@@ -114,10 +113,9 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventupdate.action", method ={ RequestMethod.GET, RequestMethod.POST })   // 이벤트 업데이트 실행
+	@RequestMapping(value = "/eventupdate.action", method ={ RequestMethod.GET, RequestMethod.POST })   // �씠踰ㅽ듃 �뾽�뜲�씠�듃 �떎�뻾
 	public String eventUpdate(HttpSession session, BoardDTO dto)
 	{
-		String view = "event.action";
 		session.getAttribute("member");
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
@@ -128,42 +126,41 @@ public class BoardController
 
 		dto.setEventNoticeCheck(result);
 
-		if (dto.getEventNoticeCheck() != 0) // 원래 공지로 되어있다면
+		if (dto.getEventNoticeCheck() != 0) // �썝�옒 怨듭�濡� �릺�뼱�엳�떎硫�
 		{
-			if (check != 0) // 또 공지로 등록이면
+			if (check != 0) // �삉 怨듭�濡� �벑濡앹씠硫�
 			{
 				dao.eventUpdate(dto);
 			}
 
-			else // 공지를 해제한다면
+			else // 怨듭�瑜� �빐�젣�븳�떎硫�
 			{
 				dao.eventUpdate(dto);
 				dao.EventNoticeDelete(dto);
 			}
-		} else // 공지가 아니었다면
+		} else // 怨듭�媛� �븘�땲�뿀�떎硫�
 		{
-			if (check != 0) // 새롭게 공지등록이면
+			if (check != 0) // �깉濡�寃� 怨듭��벑濡앹씠硫�
 			{
 				dao.eventUpdate(dto);
 				dao.InsertEventNotice(dto);
-			} else // 공지가 아니라면
+			} else // 怨듭�媛� �븘�땲�씪硫�
 			{
 				dao.eventUpdate(dto);
 			}
 		}
-		return view;
+		return "redirect:event.action";
 	}
 
-	@RequestMapping(value = "/eventdelete.action", method ={ RequestMethod.GET, RequestMethod.POST })  // 이벤트 삭제 실행
+	@RequestMapping(value = "/eventdelete.action", method ={ RequestMethod.GET, RequestMethod.POST })  // �씠踰ㅽ듃 �궘�젣 �떎�뻾
 	public String eventDelete(int boardNum, HttpSession session)
 	{
-		String view = "event.action";
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		session.getAttribute("member");
 
 		dao.eventDelete(boardNum);
 
-		return view;
+		return "redirect:event.action";
 
 	}
 
@@ -177,7 +174,7 @@ public class BoardController
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		int listCnt = dao.newsListCount();
-		PagingDTO paging = new PagingDTO(listCnt, curPage); // 총 데이터개수, 현재페이지
+		PagingDTO paging = new PagingDTO(listCnt, curPage); // 珥� �뜲�씠�꽣媛쒖닔, �쁽�옱�럹�씠吏�
 		news.setStartIndex(paging.getStartIndex());
 		news.setEndIndex(paging.getEndIndex());
 
@@ -220,13 +217,12 @@ public class BoardController
 	{ RequestMethod.GET, RequestMethod.POST })
 	public String newsInsert(HttpSession session, BoardDTO dto)
 	{
-		String view = "news.action";
 		session.getAttribute("member");
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		dao.newsInsert(dto);
 
-		return view;
+		return "redirect:news.action";
 	}
 
 	@RequestMapping(value = "/newsupdateform.action", method =
@@ -250,7 +246,6 @@ public class BoardController
 	{ RequestMethod.GET, RequestMethod.POST })
 	public String newsUpdate(HttpSession session, BoardDTO dto)
 	{
-		String view = "news.action";
 		session.getAttribute("member");
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
@@ -261,87 +256,98 @@ public class BoardController
 
 		dto.setNewsNoticeCheck(result);
 
-		if (dto.getNewsNoticeCheck() != 0) // 원래 공지로 되어있다면
+		if (dto.getNewsNoticeCheck() != 0) // �썝�옒 怨듭�濡� �릺�뼱�엳�떎硫�
 		{
-			if (check != 0) // 또 공지로 등록이면
+			if (check != 0) // �삉 怨듭�濡� �벑濡앹씠硫�
 			{
 				dao.newsUpdate(dto);
 			}
 
-			else // 공지를 해제한다면
+			else // 怨듭�瑜� �빐�젣�븳�떎硫�
 			{
 				dao.newsUpdate(dto);
 				dao.NewsNoticeDelete(dto);
 			}
-		} else // 공지가 아니었다면
+		} else // 怨듭�媛� �븘�땲�뿀�떎硫�
 		{
-			if (check != 0) // 새롭게 공지등록이면
+			if (check != 0) // �깉濡�寃� 怨듭��벑濡앹씠硫�
 			{
 				dao.newsUpdate(dto);
 				dao.InsertNewsNotice(dto);
-			} else // 공지가 아니라면
+			} else // 怨듭�媛� �븘�땲�씪硫�
 			{
 				dao.newsUpdate(dto);
 			}
 		}
-		return view;
+		return "redirect:news.action";
 	}
 
 	@RequestMapping(value = "/newsdelete.action", method =
 	{ RequestMethod.GET, RequestMethod.POST })
 	public String newsDelete(int boardNum, HttpSession session)
 	{
-		String view = "news.action";
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		session.getAttribute("member");
 
 		dao.newsDelete(boardNum);
 
-		return view;
+		return "redirect:news.action";
 
 	}
 
 	@RequestMapping(value = "/faq.action")
-	public String faqList(BoardDTO faq, @RequestParam(defaultValue = "1") int curPage,
-			Model model, HttpSession session)
+	public String faqList(BoardDTO faq,Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/faq.jsp";
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		MemberDTO dto = (MemberDTO)session.getAttribute("member");
 		
-		String id=dto.getMemId();	
-		
-		faq.setFaqId(id);
-		String faqId= faq.getFaqId();
-		System.out.println(faqId);
-		System.out.println(id);
-		
-		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
-		
-		int listCnt = dao.qnaListCount(id);
-		System.out.println(listCnt);
-		
-		PagingDTO paging = new PagingDTO(listCnt, curPage);
-		
-		
-		
-		
-		faq.setStartIndex(paging.getStartIndex());
-		faq.setEndIndex(paging.getEndIndex());
-		
-		System.out.println(paging.getStartIndex());
-		System.out.println(paging.getEndIndex());
-		
-		List<BoardDTO> faqList = dao.faqList(faq);
-		List<BoardDTO> qnaList = dao.qnaList(faqId);
+		if(dto != null)
+		{
+			String id=dto.getMemId();
+			
+			List<BoardDTO> faqList = dao.faqList(faq);
+			model.addAttribute("faqList", faqList);
+			
+			
+			int mode = (int)session.getAttribute("mode");
+			System.out.println(mode);
+			
+			faq.setFaqId(id);
+			String faqId= faq.getFaqId();
+			System.out.println(faqId);
+			System.out.println(id);
+			
+			
+			int listCnt = dao.qnaListCount(id);
+			
+			System.out.println(listCnt);
 
+			
+			
+			List<BoardDTO> qnaList = dao.qnaList(faq);
+
+			
+			
+			model.addAttribute("qnaList", qnaList);
+			model.addAttribute("listCnt", listCnt);
+		}
+		else
+		{
+			List<BoardDTO> faqList = dao.faqList(faq);
+			model.addAttribute("faqList", faqList);
+			
+			
+			view ="/WEB-INF/views/Basicfaq.jsp";
+			return view;
+		}
 		
-		model.addAttribute("faqList", faqList);
-		model.addAttribute("qnaList", qnaList);
-		model.addAttribute("listCnt", listCnt);
-		model.addAttribute("paging", paging);
-		
+
 		return view;
 	}
+	
+	
+	
 	
 	@RequestMapping(value = "/faqetc.action")
 	public String faqEtcList(@ModelAttribute("FAQ") BoardDTO faq,Model model, HttpSession session)
@@ -417,14 +423,13 @@ public class BoardController
 	{ RequestMethod.GET, RequestMethod.POST })
 	public String faqInsert(HttpSession session, BoardDTO dto)
 	{
-		String view = "faq.action";
 		session.getAttribute("member");
 
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		dao.faqInsert(dto);
 
-		return view;
+		return "redirect:faq.action";
 	}
 
 	@RequestMapping(value = "/faqupdateform.action", method =
@@ -448,28 +453,185 @@ public class BoardController
 	{ RequestMethod.GET, RequestMethod.POST })
 	public String faqUpdate(HttpSession session, BoardDTO dto)
 	{
-		String view = "faq.action";
 		session.getAttribute("member");
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		dao.faqUpdate(dto);
 
-		return view;
+		return "redirect:faq.action";
 	}
 
 	@RequestMapping(value = "/faqdelete.action", method =
 	{ RequestMethod.GET, RequestMethod.POST })
 	public String faqDelete(int boardNum, HttpSession session)
 	{
-		String view = "faq.action";
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		session.getAttribute("member");
 
 		dao.faqDelete(boardNum);
 
-		return view;
+		return "redirect:faq.action";
 
 	}
 	
+	
+	
+	
+	@RequestMapping(value = "/qnainsert.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String qnaInsert(HttpSession session, BoardDTO faq)
+		{
+			session.getAttribute("member");
+			MemberDTO dto = (MemberDTO)session.getAttribute("member");
+			
+			String id=dto.getMemId();	
+			
+			faq.setFaqId(id);
+			
+			
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
+			dao.qnaInsert(faq);
+
+			return "redirect:faq.action";
+		}
+	
+	@RequestMapping(value = "/qnadetail.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String QNADetail(HttpSession session, BoardDTO faq)
+		{
+			String view = "faq.action";
+			session.getAttribute("member");
+			MemberDTO dto = (MemberDTO)session.getAttribute("member");
+			
+			String id=dto.getMemId();	
+			faq.setFaqId(id);
+			
+			int mode = (int)session.getAttribute("mode");
+			System.out.println(mode);
+			
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+			dao.qnaInsert(faq);
+
+			return view;
+		}
+	
+	@RequestMapping(value = "/answer.action")
+	public String answerList(BoardDTO answer, @RequestParam(defaultValue = "1") int curPage,
+			Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/Answer.jsp";
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+		int listCnt = dao.answerListCount();
+		
+		PagingDTO paging = new PagingDTO(listCnt, curPage); // 珥� �뜲�씠�꽣媛쒖닔, �쁽�옱�럹�씠吏�
+		
+		answer.setStartIndex(paging.getStartIndex());
+		answer.setEndIndex(paging.getEndIndex());
+
+		List<BoardDTO> answerList = dao.answerList(answer);
+
+		model.addAttribute("answerList", answerList);
+		model.addAttribute("listCnt", listCnt);
+		model.addAttribute("paging", paging);
+		return view;
+	}
+	
+	
+	
+	@RequestMapping(value = "/answerinsertform.action", method = { RequestMethod.GET, RequestMethod.POST })// �씠踰ㅽ듃 �긽�꽭 紐⑸줉 �샇異�
+	public String answerDetailForm(int boardNum, BoardDTO dto,Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/AnswerInsertForm.jsp";
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		List<BoardDTO> answerDetail = dao.answerDetail(boardNum);
+		
+
+
+		model.addAttribute("answerDetail", answerDetail);
+		return view;
+	}
+	
+	@RequestMapping(value = "/answerinsert.action", method ={ RequestMethod.GET, RequestMethod.POST })   // �씠踰ㅽ듃 �뾽�뜲�씠�듃 �떎�뻾
+	public String answerInsert(HttpSession session, BoardDTO dto)
+	{
+		session.getAttribute("member");
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		
+		String id=mem.getMemId();	
+		
+		
+		dto.setMemId(id);
+		
+		dao.answerInsert(dto);
+		
+		return "redirect:answer.action";
+	}
+	
+	
+	@RequestMapping(value = "/answerupdateform.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String answerUpdateForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
+		{
+			String view = "/WEB-INF/views/AnswerUpdateForm.jsp";
+
+			session.getAttribute("member");
+
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+			
+			List<BoardDTO> answerDetail = dao.answerDetail(boardNum);
+			List<BoardDTO> answerUpdate = dao.answerUpdateForm(boardNum);
+
+			model.addAttribute("answerUpdate", answerUpdate);
+			model.addAttribute("answerDetail", answerDetail);
+			return view;
+		}
+	
+	
+
+	@RequestMapping(value = "/answerupdate.action", method =
+	{ RequestMethod.GET, RequestMethod.POST })
+	public String answerUpdate(HttpSession session, BoardDTO dto)
+	{
+		session.getAttribute("member");
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		MemberDTO mem = (MemberDTO)session.getAttribute("member");
+		
+		String id=mem.getMemId();	
+		
+		
+		dto.setMemId(id);
+		
+		
+		dao.answerUpdate(dto);
+
+		return "redirect:answer.action";
+	}
+	
+	
+	@RequestMapping(value = "/answerform.action", method =
+		{ RequestMethod.GET, RequestMethod.POST })
+		public String answerForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
+		{
+			String view = "/WEB-INF/views/AnswerForm.jsp";
+
+			session.getAttribute("member");
+
+			IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+			
+			List<BoardDTO> answerDetail = dao.answerDetail(boardNum);
+			List<BoardDTO> answerUpdate = dao.answerUpdateForm(boardNum);
+
+			model.addAttribute("answerUpdate", answerUpdate);
+			model.addAttribute("answerDetail", answerDetail);
+			return view;
+		}
 }

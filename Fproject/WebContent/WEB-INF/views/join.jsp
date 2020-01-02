@@ -77,11 +77,6 @@
 		var idchk = document.getElementById("idchk").value;
 		idCheckYn = "N";
 		
-		/* alert(chk1); */
-		/* alert(telCheck); */
-		/* alert(idchk); */
-		/* alert(idCheckYn); */
-		
 		if(!f.memName.value)
 		{
 			alert("이름을 입력하세요.");
@@ -164,6 +159,12 @@
 			{
 				temp[count] = cate[i].value;   
 				count++;
+				
+				if(count==3)
+				{
+					alert("관심 카테고리는 2개까지만 선택하실 수 있습니다.");
+					return;
+				}
 			}
 		}
 		
@@ -208,7 +209,6 @@
 	<div id="root">
 		<div id="wrapper">
 			<div class="routes__Body-sc-14o1w9u-0 bFLlZs">
-				<main class="routes__Main-sc-14o1w9u-1 eYSVqq">
 					<div class="RegisterPage__Container-sc-1vwt6wy-0 iexDaY">
 						<div class="sc-fYiAbW kGolec">
 							<div class="sc-krvtoX ksOaZn">
@@ -273,6 +273,13 @@
 												<label for="no">선택안함</label>
 											</div>
 										</div>
+										
+<!-- 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh"> -->
+<!-- 											<label class="sc-iyvyFf kBgtyY">생년월일</label> -->
+<!-- 											<div> -->
+<!-- 												<input type="text" class="sc-hrWEMg feokCA"	name="memBirth" id="memBirth" placeholder="ex) 19960523 "> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 											<label class="sc-iyvyFf kBgtyY">*직장</label>
@@ -306,6 +313,13 @@
       
 												
 											</div>
+											
+										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
+											<label class="sc-iyvyFf kBgtyY">프로필 사진</label>
+											<div>
+												<input type="file" class="sc-hrWEMg feokCA"	name="memPic" id="memPic">
+											</div>
+										</div>
 										
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 											<label class="sc-iyvyFf kBgtyY">소개글</label>
@@ -316,24 +330,7 @@
 										
 
 										<div>
-											<!-- 
-											<label class="sc-RefOD fvgNV"> 
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-													<path fill="#3e4042" fill-rule="evenodd" d="M 19 19 H 5 V 5 h 14 v 14 Z M 5 3 c -1.1 0 -2 0.9 -2 2 v 14 c 0 1.1 0.9 2 2 2 h 14 c 1.1 0 2 -0.9 2 -2 V 5 c 0 -1.1 -0.9 -2 -2 -2 H 5 Z" />
-												</svg>
-												<input name="agree" class="sc-iQKALj ekXzKy" type="checkbox" value="">
-												<span class="sc-bwCtUz izbsWv">
-												<a class="RegisterPage__StyledAnchor-sc-1vwt6wy-1 FDTgq"
-													href="https://docs.google.com/document/d/1QfM61dBfDRfiL_7E7dbMqSpzcJO6MF0eOEpFgnpVO10"
-													target="_blank" rel="noopener noreferrer">이용약관</a> 
-													및 
-													<a class="RegisterPage__StyledAnchor-sc-1vwt6wy-1 FDTgq"
-													href="https://docs.google.com/document/d/1VlL2MopA-EFJGQrqyKFc4Fkwvi0k1Wd069hIA5EScvQ"
-													target="_blank" rel="noopener noreferrer">개인정보 처리방침</a> 
-													동의 (필수)
-												</span>
-											</label>
-											-->										
+								
 											<input type="checkbox" id="agree" class="custom-control-input" name="agree">
 											<label class="custom-control-label" for="agree">
 												<span class="sc-bwCtUz izbsWv">
@@ -357,14 +354,12 @@
 											</button>
 										</div>
 										
-										<button type="button" onclick="test()">확인</button>
 									</form>
 
 								</div>
 							</div>
 						</div>
 					</div>
-				</main>
 			</div>
 		</div>
 	</div>

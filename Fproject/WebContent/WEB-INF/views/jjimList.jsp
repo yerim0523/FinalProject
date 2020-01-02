@@ -102,7 +102,9 @@
 									</span>
 									<span style="text-align: right; font-size: 13px; color: gray;"><span style="color: orange; font-weight: bold; ">${jjimG.grCount }</span>회차</span>
 									</a>
+								<div style="height: 50px;">
 								<span style="margin-top:10px; font-size: 18px; font-weight: bold;">${jjimG.grName }</span>
+								</div>
 								<div>
 								<p class="text-right">${jjimG.memName }</p>
 								</div>

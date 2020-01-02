@@ -16,27 +16,35 @@
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
 	</select>
+	
+	<select id="adminCheck"
+		parameterType="com.toleisure.mybatis.dto.MemberDTO"
+		resultType="Integer">
+		SELECT COUNT(*)
+		FROM ADMIN
+		WHERE MEM_ID = #{memId}
+	</select>
 
 	<insert id="add"
 		parameterType="com.toleisure.mybatis.dto.MemberDTO">
-		<choose>
+		<choose> 
 			<when test="memCate1 == 0 and memCate2 == 0">
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO)
+				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_PIC)
 				VALUES(#{memId}, #{memPw},
-				#{memName}, #{memTel}, #{memGen}, #{memComp}, #{memIntro})
+				#{memName}, #{memTel}, #{memGen}, #{memComp}, #{memIntro}, #{memPic})
 			</when>
 			<when test="memCate2 == 0">
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO, CATE_CODE1)
+				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_PIC, CATE_CODE1)
 				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
-				#{memComp}, #{memIntro}, #{memCate1})
+				#{memComp}, #{memIntro}, #{memPic}, #{memCate1})
 			</when>
 			<otherwise>
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO, CATE_CODE1, CATE_CODE2)
+				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_PIC, CATE_CODE1, CATE_CODE2)
 				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
-				#{memComp}, #{memIntro}, #{memCate1}, #{memCate2})
+				#{memComp}, #{memIntro}, #{memPic}, #{memCate1}, #{memCate2})
 			</otherwise>
 		</choose>
 	</insert>
@@ -114,5 +122,10 @@
 		SET MEM_PW = #{newPw}
 		WHERE MEM_ID = #{memId}
 	</update>
+	
+	<select id="map" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT NG_LOCATION AS ngLocation,NG_CODE AS ngCode
+		FROM NOW_GROUP
+   </select>
    
 </mapper>

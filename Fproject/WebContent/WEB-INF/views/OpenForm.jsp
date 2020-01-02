@@ -47,46 +47,19 @@
 
 <script type="text/javascript">
 
-   
 	$(document).ready(function()
 	{
 		$("#postcodify_search_button").postcodifyPopUp();
+
+		var grcode = "${groupinfo.grCode}";
+		var cate1 = "${groupinfo.grCate1}";
+		var cate2 = "${groupinfo.grCate2}";
 		
-// 		$(".fileDrop").on("dragenter dragover", function(event)
-// 		{
-// 			event.preventDefault();	// 기본효과 막음
-// 		});
-		
-// 		$(".fileDrop").on("drop", function(event)
-// 		{
-// 			event.preventDefault();
-			
-// 			// 드래그된 파일의 정보
-// 			var files = event.originalEvent.dataTransfer.files;
-			
-// 			// 첫 번째 파일
-// 			var file = files[0];
-			
-// 			// 콘솔에서 파일정보 확인
-// 			console.log(file);
-			
-// 			var formData = new FormData();
-// 			formData.append("file", file);
-			
-			
-// 			$.ajax({
-// 				type: "post",
-// 				url: "${path}/upload",
-// 				data: fromData,
-// 				dataType: "text",
-// 				processData: false,
-// 				contentType: false,
-// 				success: function()
-// 				{
-// 					alert(data);
-// 				}
-// 			});
-// 		});
+		if(grcode != "")
+		{
+			$("input[name='inlineCheckbox']:checkbox[value='"+ cate1 +"']").attr("checked","checked");
+			$("input[name='inlineCheckbox']:checkbox[value='"+ cate2 +"']").attr("checked","checked");
+		}
 	});
 
    function sample4_execDaumPostcode()
@@ -311,6 +284,7 @@
       var temp = new Array(); // 임시 배열 선언
       count = 0;            // 배열 방 컨트롤 위한 변수
       
+      
       var str1 = document.getElementById("grCate1").value;   // grCate1(hidden)의 value(현재 비어있음)
       var str2 = document.getElementById("grCate2").value;   // grCate2(hidden)의 value(현재 비어있음)
       
@@ -323,6 +297,12 @@
             temp[count] = cate[i].value;   // value 를 임시 배열에 삽입(최소1개, 최대2개)
             count++;
             //alert(temp[i]);
+            
+            if(count==3)
+            {
+            	alert("카테고리는 2개까지 선택 가능합니다.");
+            	return;
+            }
          }
       }
       
@@ -372,7 +352,13 @@
    현재 접속중인 memId : ${member.memId }
    <input type="hidden" id="memId" name="memId" value="${member.memId }">
    모임 코드 : ${groupinfo.grCode }
-   <input type="hidden" id="grCode" name="grCode" value="${groupinfo.grCode }">
+   <c:if test="${!empty groupinfo.grCode }">
+		<input type="hidden" id="grCode" name="grCode" value="${groupinfo.grCode }">
+   </c:if>
+   <c:if test="${empty groupinfo.grCode }">
+		<input type="hidden" id="grCode" name="grCode" value="0">
+   </c:if>
+   
       <div align="right">
          * 은 필수항목입니다.
       </div>
@@ -473,6 +459,7 @@
       
       <br>
       
+      <c:if test="${empty groupinfo.grCode}">
       <div class="form-inline">
          <label for="inlineCheckbox" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 카테고리</label>
          <label class="checkbox-inline">
@@ -486,6 +473,23 @@
          <label class="checkbox-inline">
          <input type="checkbox" name="inlineCheckbox" value="5">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
       </div>
+      </c:if>
+      
+      <c:if test="${!empty groupinfo.grCode}">
+      <div class="form-inline">
+         <label for="inlineCheckbox" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 카테고리</label>
+         <label class="checkbox-inline">
+         <input type="checkbox" name="inlineCheckbox" value="1" disabled="disabled">공연&nbsp;&nbsp;&nbsp;&nbsp;</label>
+         <label class="checkbox-inline">
+         <input type="checkbox" name="inlineCheckbox" value="2" disabled="disabled">전시&nbsp;&nbsp;&nbsp;&nbsp;</label>
+         <label class="checkbox-inline">
+         <input type="checkbox" name="inlineCheckbox" value="3" disabled="disabled">연극&nbsp;&nbsp;&nbsp;&nbsp;</label>
+         <label class="checkbox-inline">
+         <input type="checkbox" name="inlineCheckbox" value="4" disabled="disabled">식당&nbsp;&nbsp;&nbsp;&nbsp;</label>
+         <label class="checkbox-inline">
+         <input type="checkbox" name="inlineCheckbox" value="5" disabled="disabled">카페&nbsp;&nbsp;&nbsp;&nbsp;</label> <!-- inlineCheckbox1 변경 -->
+      </div>
+      </c:if>
       
       <input type="hidden" id="grCate1" name="grCate1" value="0">
       <input type="hidden" id="grCate2" name="grCate2" value="0"> 
@@ -563,8 +567,6 @@
    <div>
       <c:import url="footer.jsp"></c:import>
    </div>
-
-
 
 </body>
 </html>

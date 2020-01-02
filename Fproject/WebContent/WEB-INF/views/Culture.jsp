@@ -98,7 +98,7 @@
 
 	<div>
 		<div class="left">
-			<button type="button" class="btn btn-default">문화생활</button>
+			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활</button>
 		</div>
 		<div class="right" align="right">
 			<a href="exhibit.action">전시</a> | <a href="play.action">공연</a> | <a href="show.action">연극</a> 
@@ -140,13 +140,20 @@
 					
 				</div>
 				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
+					<c:if test="${CultureGroup.grStarAvg != 0.0 }">
+					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<c:if test="${CultureGroup.grStarAvg == 0.0 }">
+					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<span style="color: gray;">&nbsp;&nbsp;${CultureGroup.grStarAvg } 
+						<span style="font-size: 10pt; color: gray;">/ ${CultureGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+					</span>
 				</div>
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|</span>
+				<span style="font-size: 12px;">${CultureGroup.grCount }회차 | ${CultureGroup.grCate1Name } ${CultureGroup.grCate2Name }</span>
 				<div>
 					<div class="name">
 					<h5>${CultureGroup.grName }</h5>

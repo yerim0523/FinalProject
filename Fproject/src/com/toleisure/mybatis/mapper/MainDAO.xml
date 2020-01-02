@@ -12,9 +12,13 @@
 
 	<select id="CultureGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-		grCate1Name, CATE2 AS grCate2Name
-		FROM CULTURE_GROUP_VIEW
+		SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
+			 , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
+		FROM ALL_GROUP_VIEW A, CULTURE_GROUP_VIEW C
+		WHERE A.GR_CODE = C.GR_CODE
+		GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+     		   , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		ORDER BY A.NG_DATE DESC
 	</select>
 
 	<select id="ExhibitGroupList"
@@ -42,9 +46,13 @@
 	<!-- ============================================음식점 DAO================================================ -->
 	<select id="FoodGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-		grCate1Name, CATE2 AS grCate2Name
-		FROM FOOD_GROUP_VIEW
+		SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
+		     , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
+		FROM ALL_GROUP_VIEW A, FOOD_GROUP_VIEW C
+		WHERE A.GR_CODE = C.GR_CODE
+		GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+		       , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		ORDER BY A.NG_DATE DESC
 	</select>
 
 	<select id="CafeGroupList"
@@ -56,9 +64,13 @@
 
 	<select id="RestaurantGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-		grCate1Name, CATE2 AS grCate2Name
-		FROM FOOD_RESTAURANT_VIEW
+		SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
+			 , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
+		FROM ALL_GROUP_VIEW A, FOOD_RESTAURANT_VIEW C
+		WHERE A.GR_CODE = C.GR_CODE
+		GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+		     , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		ORDER BY A.NG_DATE DESC
 	</select>
 
 	<!-- ============================================음식점 DAO END================================================ -->
@@ -277,11 +289,8 @@
 	
 	<select id="ContentMember" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT MEM_PIC AS memPic, MEM_NAME AS memName
-		FROM GR_JOIN JO, PAYMENT PA, GR_REQUEST RE, FIXED_GROUP FI, NOW_GROUP NG, MEMBER MB
-		WHERE JO.FIX_CODE = FI.FIX_CODE
-		  AND FI.NG_CODE = NG.NG_CODE
-		  AND RE.NG_CODE = NG.NG_CODE
-		  AND JO.PAY_CODE = PA.PAY_CODE
+		FROM PAYMENT PA, GR_REQUEST RE, NOW_GROUP NG, MEMBER MB
+		WHERE RE.NG_CODE = NG.NG_CODE
 		  AND PA.RE_CODE = RE.RE_CODE
 		  AND RE.MEM_ID = MB.MEM_ID
 		  AND NG.NG_CODE = #{ngCode}	

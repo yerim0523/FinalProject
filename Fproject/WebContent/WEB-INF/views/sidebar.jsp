@@ -99,14 +99,14 @@ text-align: center;
 		<li><a href="infomodify.action?memId=${member.memId }"><i class="fa fa-fw fa-user"></i> 개인정보수정</a></li>
 		<li><a href="mypwmodify.action?memId=${member.memId }"><i class="fa fa-fw fa-lock"></i> 비밀번호 재설정</a></li> 
 		<li><a href="favoritegroup.action?memId=${member.memId }"><i class="fa fa-fw fa-heart"></i> 찜목록</a></li>
-		<li><a href="#myGroupList"><i class="fa fa-fw fa-users"></i> 내 모임</a>
+		<li><a href="nowgrouplist.action"><i class="fa fa-fw fa-users"></i> 내 모임</a>
 			<ul>
-				<li><a href="mylist.jsp"> 참여 모임</a></li>
-				<li><a href="mylistEnd.jsp"> 종료 모임</a></li>
+				<li><a href="nowgrouplist.action"> 참여 모임</a></li>
+				<li><a href="endgrouplist.action"> 종료 모임</a></li>
 			</ul>
 		</li>
 		<li><a href="mycal.action"><i class="fa fa-fw fa-calendar-alt"></i>	일정관리</a></li>
-		<li><a href="#contact"><i class="fa fa-fw fa-users-cog"></i> 모임관리</a></li>
+		<li><a href="#"><i class="fa fa-fw fa-users-cog"></i> 모임관리</a></li>
 		<li><a href="#contact"><i class="fa fa-fw fa-receipt"></i> 결제내역</a></li>
 	</ul>
 	</div>

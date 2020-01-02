@@ -129,7 +129,7 @@ function formCheck()
 							required="required" pattern=".{4,100}">
 				</td>
 				<td>
-					<input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록
+					<label><input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록</label>
 				</td>
 				
 				<input type="hidden" id="check" name="check" value="0">

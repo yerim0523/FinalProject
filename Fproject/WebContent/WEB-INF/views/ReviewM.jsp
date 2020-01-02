@@ -140,7 +140,15 @@
 </head>
 <body>
 
+<div>
+	<c:import url="bar.jsp"></c:import>
+</div>
+
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
+
+	<div>
+		<c:import url="MeetingBar.jsp"></c:import>
+	</div>
 	
 	<div class="container">
 		<br><br>
@@ -277,7 +285,9 @@
 
 </section>
 
-<br><br><br><br><br>
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
 
 
 </body>

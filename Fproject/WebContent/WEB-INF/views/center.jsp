@@ -75,10 +75,12 @@
 				<p style="font-size: 20pt;">[고객센터]</p>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link active">투레저 소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="news.action">소식</a></li>
-					<li class="nav-item"><a class="nav-link" href="event.action">이벤트</a></li>
-					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a>
-				</li>
+					<li class="nav-item"><a class="nav-link" href="news.action">투레저 소식</a></li>
+					<li class="nav-item"><a class="nav-link" href="event.action">투레저 이벤트</a></li>
+					<li class="nav-item"><a class="nav-link" href="faq.action">FAQ</a></li>
+					<c:if test="${sessionScope.mode==1}">
+					<li class="nav-item"><a class="nav-link" href="answer.action">QNA답변작성</a></li>
+					</c:if>
 				</ul>
 			</div>
 			<div align="center">
@@ -96,6 +98,7 @@
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
+
 
 
 </body>

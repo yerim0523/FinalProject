@@ -44,8 +44,16 @@ public interface IBoardDAO
 	
 	
 	public List<BoardDTO> announceList(BoardDTO announce);
-	public List<BoardDTO> qnaList(String id);
+	public List<BoardDTO> qnaList(BoardDTO dto);
 	public int qnaListCount(String id);
+	public void qnaInsert(BoardDTO dto);
+	
+	public int answerListCount();
+	public List<BoardDTO> answerList(BoardDTO answer);
+	public List<BoardDTO> answerDetail(int boardNum);
+	public void answerInsert(BoardDTO dto);
+	public List<BoardDTO> answerUpdateForm(int boardNum);
+	public void answerUpdate(BoardDTO dto);
 	
 	
 }

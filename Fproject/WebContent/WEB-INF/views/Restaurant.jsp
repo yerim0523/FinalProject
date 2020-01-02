@@ -14,13 +14,10 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="js/bootstrap.min.js"></script>
@@ -90,10 +87,10 @@
 
 	<div>
 		<div class="left">
-			<button type="button" class="btn btn-default">문화생활</button>
+			<button type="button" class="btn btn-default" style="font-weight: bold">맛집</button>
 		</div>
 		<div class="right" align="right">
-			<a href="restaurant.action">식당</a> | <a href="cafe.action">카페</a>
+			<a href="restaurant.action" style="font-weight: bold;">식당</a> | <a href="cafe.action">카페</a>
 		</div>
 	</div>
 	<br>
@@ -128,15 +125,24 @@
 				<img src="${RestaurantGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
-				
+				<div class="starRev">
+					
+				</div>
 				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
+					<c:if test="${RestaurantGroup.grStarAvg != 0.0 }">
+					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<c:if test="${RestaurantGroup.grStarAvg == 0.0 }">
+					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<span style="color: gray;">&nbsp;&nbsp;${RestaurantGroup.grStarAvg } 
+						<span style="font-size: 10pt; color: gray;">/ ${RestaurantGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+					</span>
 				</div>
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|${RestaurantGroup.grCate1Name } ${RestaurantGroup.grCate2Name }</span>
+				<span style="font-size: 12px;">${RestaurantGroup.grCount } 회차|${RestaurantGroup.grCate1Name } ${RestaurantGroup.grCate2Name }</span>
 				<div>
 					<div class="name">
 					<h5>${RestaurantGroup.grName }</h5>

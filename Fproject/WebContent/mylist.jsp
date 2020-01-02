@@ -64,16 +64,11 @@
 <body>
 
 <div>
-	<div>
-		<c:import url="bar.jsp"></c:import>
-	</div>
 </div>
 <br><br>
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div class="container">
 	<div class="row">
-		
-		<c:import url="sidebar.jsp"></c:import>
 		
 		<div class="col-md-9">
 			<div class="container" style="margin-left: 50px;">
@@ -145,9 +140,6 @@
 	</div>
 </div>
 </section>
-<div>
-	<c:import url="footer.jsp"></c:import>
-</div>
 
 </body>
 			
