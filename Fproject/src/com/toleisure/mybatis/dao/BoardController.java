@@ -636,7 +636,7 @@ public class BoardController
 		}
 	
 	@RequestMapping(value = "/mainboard.action")
-	public String mainboardList(@ModelAttribute("COMMUNITY") BoardDTO community, @RequestParam(defaultValue = "1") int curPage,
+	public String mainboardList(@ModelAttribute("MAINBOARD") BoardDTO mainboard, @RequestParam(defaultValue = "1") int curPage,
 								Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/mainboard.jsp";
@@ -646,10 +646,10 @@ public class BoardController
 		
 		int listCnt = dao.mainboardListCont();
 		PagingDTO paging = new PagingDTO(listCnt, curPage);
-		community.setStartIndex(paging.getStartIndex());
-		community.setEndIndex(paging.getEndIndex());
+		mainboard.setStartIndex(paging.getStartIndex());
+		mainboard.setEndIndex(paging.getEndIndex());
 		
-		List<BoardDTO> mainboardList = dao.mainboardList(community);
+		List<BoardDTO> mainboardList = dao.mainboardList(mainboard);
 		
 		model.addAttribute("mainboardList", mainboardList);
 		model.addAttribute("listCnt", listCnt);

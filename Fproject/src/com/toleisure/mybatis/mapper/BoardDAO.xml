@@ -400,7 +400,7 @@
 	</select>
 	
 	<select id="mainboardList" resultMap="BoardDTO">
-		SELECT ROWNUM AS rNum, BOARDNUM, BOARDTITLE, BOARDCONT, BOARDDATE, BOARDMEM, BOARDHITS, BOARDNOTICE
+		SELECT *
 		FROM
 		(
 		    SELECT ROWNUM AS rNum, C.COM_NUM AS boardNum, C.COM_TITLE AS boardTitle, C.COM_CONT AS boardCont
@@ -409,10 +409,11 @@
 		    WHERE C.COM_NUM = CN.COM_NUM(+)
 		      AND C.MEM_ID = M.MEM_ID
 		      AND A.MEM_ID(+) = M.MEM_ID
-            ORDER BY BOARDNOTICE DESC, BOARDDATE DESC
+            
               
 		)
 		WHERE RNUM BETWEEN #{startIndex} AND #{endIndex}
+		ORDER BY BOARDNOTICE DESC, BOARDDATE DESC
 		<!-- WHERE E.NUM BETWEEN #{startIndex} AND #{endIndex}  -->
 	</select>
 	
@@ -421,7 +422,7 @@
 		FROM 
 		(        
 		    SELECT C.COM_NUM AS boardNum, C.COM_TITLE AS boardTitle, C.COM_CONT AS boardCont
-		         , C.COM_DATE AS boardDate, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHITS, NVL(CN.CNOTICE_NUM,0) AS boardNotice
+		         , TO_CHAR(C.COM_DATE, 'YYYY-DD-MM') AS boardDate, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHITS, NVL(CN.CNOTICE_NUM,0) AS boardNotice
 		    FROM COMMUNITY C, COM_NOTICE CN, MEMBER M, ADMIN A
 		        WHERE C.COM_NUM = CN.COM_NUM(+)
 		          AND C.MEM_ID = M.MEM_ID
