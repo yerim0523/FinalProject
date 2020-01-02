@@ -130,7 +130,11 @@ public static String getrndnum(int loopcount){
 		<tr>
 			<th style="text-align: center;">입금 계좌</th>
 			<td>
-				<span id="payDetail" name="paydetail"><%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %></span>&nbsp;&nbsp;&nbsp; 국민은행
+				<%-- <span id="payDetail" name="paydetail"><%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %></span>&nbsp;&nbsp;&nbsp; 국민은행 --%>
+				<div class=" col-lg-9">
+				<input type="text" class="form-control input-sm" id="payDetail" name="payDetail" value="<%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %>" readonly="readonly" >
+				&nbsp;&nbsp; 국민은행
+				</div>
 			</td>
 		</tr>
 		<tr>
@@ -140,7 +144,7 @@ public static String getrndnum(int loopcount){
 		<tr>
 			<td colspan="2" style="padding: 10px; text-align: center;">
 				<button type="button" class="btn4" onclick="bankPay()">결제하기</button>&nbsp;&nbsp;
-				<button type="button" class="btn4">취소하기</button>
+				<button type="button" class="btn4" onclick="location.href='pay.action'">취소하기</button>
 			</td>
 		</tr>
 	

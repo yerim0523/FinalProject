@@ -113,7 +113,7 @@
 <br>
 
 <div class="container" align="center">
-	<form action="cardpay.action" method="post" name="cardpayForm">
+	<form action="cardpay.action" method="post" name="cardpayForm" id="cardpayForm">
 		<table>
 			<tr>
 				<th>이름</th>
@@ -146,7 +146,7 @@
 			<tr>
 				<td colspan="2" style="padding: 10px; text-align: center;">
 					<button type="button" class="btn4" onclick="cardPay()">결제하기</button>&nbsp;&nbsp;
-					<button type="button" class="btn4">취소하기</button>
+					<button type="button" class="btn4" onclick="location.href='pay.action'">취소하기</button>
 				</td>
 			</tr>
 		</table>
