@@ -18,6 +18,10 @@
 </div>
 
 <br>
+<c:forEach items="${list}" var="data">
+    ${data}<p>
+</c:forEach>
+
 
 </body>
 </html>
