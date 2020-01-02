@@ -46,7 +46,7 @@
 <script src="js/owl.carousel.min.js"></script>
 <!-- swiper js -->
 <script src="js/slick.min.js"></script>
-<script src="js/jquery.counterup.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script> 
 
 
 <!-- 스마트에디터 -->
