@@ -319,10 +319,6 @@ public class MemberController
        return "WEB-INF/views/joinTest.jsp";
    }
 
-
-
-
-
    
    @RequestMapping(value = "/memberpasswordform.action", method = RequestMethod.GET)
    public String finePassword(Model model)
