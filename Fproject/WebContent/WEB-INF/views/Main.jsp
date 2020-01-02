@@ -88,7 +88,7 @@ button.more
 <script type="text/javascript">
 	$(function()
 	{
-		$(".empty_h").click(function()
+		$(".heartIcon").click(function()
 		{
 			if($("#sessionInfo").val()==="")
 			{
@@ -96,8 +96,6 @@ button.more
 				return;
 			}
 			
-			if($(this).hasClass("far"))
-			{
 				var params = {};
 				params.memId = $("#sessionInfo").val();
 				params.ngCode = $("#empNgCode").val();
@@ -114,6 +112,7 @@ button.more
 		                    var isYn = data;
 		                    if(isYn === "Y"){
 		                       alert("이미 찜을 하셨습니다.");
+		                       return;
 		                    }else{
 		                    	alert("찜이 완료되었어용~!! ^_^");
 		                    	
@@ -124,17 +123,6 @@ button.more
 		                    }
 		                 }
 		          });
-				 
-				$(this).removeClass('far');
- 				$(this).addClass('fas');
-			}
-			else
-			{
-				//alert("하트 비우기");
-				$(this).removeClass('fas');
-				$(this).addClass('far');
-			}
-			
 		});
 		
 	});
@@ -239,8 +227,15 @@ button.more
                <h5>${HotGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode })"></i>
-                  <!-- <i class="fas fa-heart full_h" style="color: red;"></i> -->
+               	  <c:forEach var="meetFavList" items="${meetFavList }">					
+	               	  	<c:if test="${meetFavList.ngCode == HotGroup.ngCode }">
+	               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+	               	  	</c:if>
+	               	  	
+	               	  	<c:if test="${meetFavList.ngCode != HotGroup.ngCode }">
+	               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+	               	  	</c:if>
+               	  </c:forEach>
                </div>
                <br>
             </div>
@@ -290,7 +285,7 @@ button.more
                <h5>${NewGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;" onclick="sendNgCode(${NewGroup.ngCode })"></i>
+                  <i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${NewGroup.ngCode })"></i>
                </div>
                <br>
             </div>
@@ -339,7 +334,7 @@ button.more
                <h5>${HotHost.memName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;"></i>
+                  <i class="far fa-heart heartIcon" style="color: red;"></i>
                </div>
                <br>
             </div>
@@ -387,7 +382,7 @@ button.more
                <h5>${ClosingGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;"></i>
+                  <i class="far fa-heart heartIcon" style="color: red;"></i>
                </div>
                <br>
             </div>
@@ -434,7 +429,7 @@ button.more
                <h5>${RecommendGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;"></i>
+                  <i class="far fa-heart heartIcon" style="color: red;"></i>
                </div>
                <br>
             </div>

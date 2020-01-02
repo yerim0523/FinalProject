@@ -38,7 +38,6 @@ public class MainController
 		if(session.getAttribute("member")!=null)
 		{
 			dto.setMemId(sessionDto.getMemId());
-			dao.meetFavList(dto);
 		}
 		else
 		{
@@ -58,6 +57,7 @@ public class MainController
 			dto.setMemId(sessionDto.getMemId());
 		}
 		
+		model.addAttribute("meetFavList", dao.meetFavList(dto));
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
