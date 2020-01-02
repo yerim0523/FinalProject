@@ -75,22 +75,14 @@
 
 	<!-- ============================================음식점 DAO END================================================ -->
 
-	<!-- ============================================테마별 DAO================================================ -->
-	  <select id="HotGroupList" parameterType="String"
-      resultType="com.toleisure.mybatis.dto.GroupDTO"
-      >
-      SELECT GR_CODE AS grCode,NG_CODE AS ngCode,NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name,
-      CATE2 AS grCate2Name,JJIMCK AS jjimcheck
-      FROM ALL_GROUP_VIEW_JJIM
-      WHERE JJIMUSER = #{memId} or 1=1
-   </select>
-
-	<select id="HotGroupListAll"
-		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-		FROM
-		HOT_GROUP_ALLVIEW
+   <!-- ============================================테마별 DAO================================================ -->
+  <select id="HotGroupList" parameterType="String"
+		resultType="com.toleisure.mybatis.dto.GroupDTO"
+		>
+		SELECT GR_CODE AS grCode,NG_CODE AS ngCode,NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name,
+		CATE2 AS grCate2Name,JJIMCK AS jjimcheck
+		FROM ALL_GROUP_VIEW_JJIM
+		WHERE JJIMUSER = #{memId} or 1=1
 	</select>
 
 

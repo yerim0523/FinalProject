@@ -41,7 +41,7 @@ public class MainController
 		}
 		else
 		{
-			
+			dto.setMemId("aa123@naver.com");
 		}
 		
 		
