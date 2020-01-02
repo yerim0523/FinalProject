@@ -3,314 +3,304 @@
 <mapper namespace="com.toleisure.mybatis.dao.IMainDAO">
 
 
-   <select id="AllGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount
-      FROM ALL_GROUP_VIEW
-   </select>
+	<select id="AllGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+		grCate1Name, CATE2 AS grCate2Name
+		FROM ALL_GROUP_VIEW
+	</select>
 
-   <select id="CultureGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
-          , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
-      FROM ALL_GROUP_VIEW A, CULTURE_GROUP_VIEW C
-      WHERE A.GR_CODE = C.GR_CODE
-      GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
-              , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
-      ORDER BY A.NG_DATE DESC
-   </select>
+	<select id="CultureGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
+			 , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
+		FROM ALL_GROUP_VIEW A, CULTURE_GROUP_VIEW C
+		WHERE A.GR_CODE = C.GR_CODE
+		GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+     		   , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		ORDER BY A.NG_DATE DESC
+	</select>
 
-   <select id="ExhibitGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-      FROM
-      CUL_EXHIBITION_VIEW
-   </select>
+	<select id="ExhibitGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM
+		CUL_EXHIBITION_VIEW
+	</select>
 
-   <select id="PlayGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-      FROM CUL_PLAY_VIEW
-   </select>
+	<select id="PlayGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CUL_PLAY_VIEW
+	</select>
 
-   <select id="ShowGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-      FROM CUL_SHOW_VIEW
-   </select>
+	<select id="ShowGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM CUL_SHOW_VIEW
+	</select>
 
-   <!-- ============================================음식점 DAO================================================ -->
-   <select id="FoodGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
-           , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
-      FROM ALL_GROUP_VIEW A, FOOD_GROUP_VIEW C
-      WHERE A.GR_CODE = C.GR_CODE
-      GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
-             , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
-      ORDER BY A.NG_DATE DESC
-   </select>
+	<!-- ============================================음식점 DAO================================================ -->
+	<select id="FoodGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
+		     , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
+		FROM ALL_GROUP_VIEW A, FOOD_GROUP_VIEW C
+		WHERE A.GR_CODE = C.GR_CODE
+		GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+		       , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		ORDER BY A.NG_DATE DESC
+	</select>
 
-   <select id="CafeGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-      grCate1Name, CATE2 AS grCate2Name
-      FROM FOOD_CAFE_VIEW
-   </select>
+	<select id="CafeGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+		grCate1Name, CATE2 AS grCate2Name
+		FROM FOOD_CAFE_VIEW
+	</select>
 
-   <select id="RestaurantGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
-          , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
-      FROM ALL_GROUP_VIEW A, FOOD_RESTAURANT_VIEW C
-      WHERE A.GR_CODE = C.GR_CODE
-      GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
-           , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
-      ORDER BY A.NG_DATE DESC
-   </select>
+	<select id="RestaurantGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
+			 , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
+		FROM ALL_GROUP_VIEW A, FOOD_RESTAURANT_VIEW C
+		WHERE A.GR_CODE = C.GR_CODE
+		GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
+		     , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
+		ORDER BY A.NG_DATE DESC
+	</select>
 
-   <!-- ============================================음식점 DAO END================================================ -->
+	<!-- ============================================음식점 DAO END================================================ -->
 
-   <!-- ============================================테마별 DAO================================================ -->
-   <select id="HotGroupList"
+	<!-- ============================================테마별 DAO================================================ -->
+	  <select id="HotGroupList" parameterType="String"
       resultType="com.toleisure.mybatis.dto.GroupDTO"
       >
-
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
-      AS grCate1Name, CATE2 AS grCate2Name
-      FROM HOT_GROUP_VIEW
-
-      <!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
-         G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
-         JOIN GR_JOIN GJ ON FG.FIX_CODE=GJ.FIX_CODE JOIN REVIEW R ON R.JOIN_CODE=GJ.JOIN_CODE 
-         WHERE G.GR_CODE = #{starCode}; -->
+      SELECT GR_CODE AS grCode,NG_CODE AS ngCode,NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name,
+      CATE2 AS grCate2Name,JJIMCK AS jjimcheck
+      FROM ALL_GROUP_VIEW_JJIM
+      WHERE JJIMUSER = #{memId} or 1=1
    </select>
 
-   <select id="HotGroupListAll"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-      FROM
-      HOT_GROUP_ALLVIEW
-   </select>
-
-   <select id="NewGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-      FROM NEWEST_GROUP_VIEW 
-   </select>
-
-   <select id="NewGroupListAll"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
-      FROM
-      NEWEST_GROUP_ALLVIEW
+	<select id="HotGroupListAll"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM
+		HOT_GROUP_ALLVIEW
+	</select>
 
 
-   </select>
+	<select id="NewGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM NEWEST_GROUP_VIEW 
+	</select>
 
-   <select id="HotHostList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
-      memIntro
-      FROM HOT_HOST_VIEW
-
-
-   </select>
-
-   <select id="HotHostListAll"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
-      memIntro
-      FROM HOT_HOST_AllVIEW
-   </select>
-
-   <select id="ClosingGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO"
-      parameterType="com.toleisure.mybatis.dto.GroupDTO">
-
-      SELECT NG_PIC AS ngPic, CATE1 AS grCate1, CATE2 AS grCate2
-          , GR_NAME AS grName, MEM_NAME AS memName, GR_CODE AS grCode, NG_CODE AS ngCode
-      FROM CLOSING_GROUP_VIEW
-
-      <!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
-         G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
-         JOIN GR_JOIN GJ ON FG.FIX_CODE=GJ.FIX_CODE JOIN REVIEW R ON R.JOIN_CODE=GJ.JOIN_CODE 
-         WHERE G.GR_CODE = #{starCode}; -->
+	<select id="NewGroupListAll"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM
+		NEWEST_GROUP_ALLVIEW
 
 
-   </select>
+	</select>
 
-   <select id="ClosingGroupListAll"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name, NG_CODE AS ngCode
-      FROM
-      CLOSING_GROUP_ALLVIEW
-   </select>
-
-   <select id="RecommendGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO"
-      parameterType="com.toleisure.mybatis.dto.GroupDTO">
-      <!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 
-         AS grCate1Name, CATE2 AS grCate2Name FROM CLOSING_VIEW -->
-      <!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX 
-         AS ngMax FROM RECOMMEND_VIEW WHERE MEM_ID = 'lee0528kr@naver.com' -->
-
-      SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS
-      memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name, E.NG_CODE AS ngCode 
-      FROM
-      (
-      SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS
-      memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name, NG.NG_CODE
-      FROM
-      MEMBER M JOIN TBL_GROUP G
-      ON M.CATE_CODE1=G.CATE_CODE1 OR M.CATE_CODE1=G.CATE_CODE2 OR
-      M.CATE_CODE2=G.CATE_CODE1 OR M.CATE_CODE2=G.CATE_CODE2
-      JOIN CATEGORY C1
-      ON C1.CATE_CODE=G.CATE_CODE1
-      JOIN CATEGORY C2
-      ON C2.CATE_CODE=G.CATE_CODE2
-      JOIN NOW_GROUP NG
-      ON NG.GR_CODE = G.GR_CODE
-      WHERE M.MEM_ID=#{memId}
-      )E
-      WHERE 3>=ROWNUM
-
-      <!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
-         G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
-         JOIN GR_JOIN GJ ON FG.FIX_CODE=GJ.FIX_CODE JOIN REVIEW R ON R.JOIN_CODE=GJ.JOIN_CODE 
-         WHERE G.GR_CODE = #{starCode}; -->
-
-   </select>
-
-   <select id="RecommendGroupListAll"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      <!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 
-         AS grCate1Name, CATE2 AS grCate2Name FROM CLOSING_VIEW -->
-      <!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX 
-         AS ngMax FROM RECOMMEND_VIEW WHERE MEM_ID = 'lee0528kr@naver.com' -->
-      SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS
-      memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name, E.NG_CODE AS ngCode 
-      FROM
-      (
-      SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS
-      memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name, NG.NG_CODE
-      FROM
-      MEMBER M JOIN TBL_GROUP G
-      ON M.CATE_CODE1=G.CATE_CODE1 OR M.CATE_CODE1=G.CATE_CODE2 OR
-      M.CATE_CODE2=G.CATE_CODE1 OR M.CATE_CODE2=G.CATE_CODE2
-      JOIN CATEGORY C1
-      ON C1.CATE_CODE=G.CATE_CODE1
-      JOIN CATEGORY C2
-      ON C2.CATE_CODE=G.CATE_CODE2
-      JOIN NOW_GROUP NG
-      ON NG.GR_CODE = G.GR_CODE
-      WHERE M.MEM_ID=#{memId}
-      )E
-      WHERE 10>=ROWNUM
-   </select>
-
-   <!-- ============================================테마별 DAO END================================================ -->
+	<select id="HotHostList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
+		memIntro
+		FROM HOT_HOST_VIEW
 
 
-   <select id="AvgStar"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT AVG(R.REVIEW_STAR) AS REVIEW_STAR_AVG
-      FROM NOW_GROUP NG JOIN TBL_GROUP G
-      ON NG.GR_CODE = G.GR_CODE
-      JOIN FIXED_GROUP FG
-      ON NG.NG_CODE=FG.NG_CODE
-      JOIN GR_JOIN GJ
-      ON FG.FIX_CODE=GJ.FIX_CODE
-      JOIN REVIEW R
-      ON R.JOIN_CODE=GJ.JOIN_CODE
-      WHERE G.GR_CODE = #{starCode}
-   </select>
-   
-   <!-- 모임 상세 페이지 내용 -->
-   
-   <select id="groupContent" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NGCODE AS ngCode, NGPIC AS ngPic, NGFAVORITE AS ngFavorite, GRCATE1 AS grCate1, GRCATE2 AS grCate2, CATENAME1 AS grCate1Name, CATENAME2 AS grCate2Name
-        , GRNAME AS grName, MEMPIC AS memPic, MEMNAME AS memName, NGMAX AS ngMax, NGMIN AS ngMin, NGCOST AS ngCost, NGMYINTRO AS ngMyIntro
-        , TO_CHAR(NGSTART, 'YYYY-MM-DD HH24:MI') AS ngStart, TO_CHAR(NGEND, 'YYYY-MM-DD HH24:MI') AS ngEnd
-        , NGLOCATION AS ngLocation, NGINTRO AS ngIntro, NGDATE AS ngDate, GRPRE AS grPre, GRNOTICE AS grNotice
-        , MEMINTRO AS memIntro, GRCOUNT AS grCount, GRSTARAVG AS grStarAvg, GRSTARCOUNT AS grStarCount
-      FROM GROUP_DETAIL_VIEW
-      WHERE NGCODE = #{ngCode}
-   </select>
-   
-   <!-- 모임 상세 페이지 후기 -->
-   
-   <select id="ContentReview" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_NAME AS grName, MEM_PIC AS memPic, MEM_NAME AS memName, REVIEW_CONT AS reviewCont, REVIEW_STAR AS reviewStar, TO_CHAR(REVIEW_DATE, 'YYYY-MM-DD HH24:MI') AS reviewDate
-      FROM
-      (
-          SELECT GR.GR_NAME, NG.NG_CODE, ME.MEM_PIC, ME.MEM_NAME, RE.REVIEW_CONT, RE.REVIEW_STAR, RE.REVIEW_DATE
-          FROM NOW_GROUP NG JOIN TBL_GROUP GR
-          ON NG.GR_CODE = GR.GR_CODE
-              JOIN GR_REQUEST QU
-              ON QU.NG_CODE = NG.NG_CODE
-                  JOIN PAYMENT PA
-                  ON PA.RE_CODE = QU.RE_CODE
-                      JOIN GR_JOIN JO
-                      ON JO.PAY_CODE = PA.PAY_CODE
-                          JOIN REVIEW RE
-                          ON RE.JOIN_CODE = JO.JOIN_CODE
-                              JOIN MEMBER ME
-                              ON ME.MEM_ID = QU.MEM_ID
-      )
-      WHERE NG_CODE = #{ngCode}
-   </select>
-   
-   <!-- 모임 상세 페이지 방명록 -->
-   
-   <select id="ContentGBoard" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT BOARD_NUM AS boardNum, NG_CODE AS ngCode, MEM_PIC AS memPic, MEM_NAME AS memName, BOARD_CONT AS boardCont, BOARD_DATE AS boardDate
-      FROM
-      (
-          SELECT GB.BOARD_NUM, GB.NG_CODE, MB.MEM_PIC, MB.MEM_NAME, GB.BOARD_CONT, GB.BOARD_DATE
-          FROM GUESTBOARD GB JOIN NOW_GROUP NG
-          ON GB.NG_CODE = NG.NG_CODE
-              JOIN MEMBER MB
-              ON MB.MEM_ID = GB.MEM_ID
-      )   
-      WHERE NG_CODE = #{ngCode}
-   </select>
-   
-   <!-- 모임 상세 페이지 참여 인원 목록 -->
-   
-   <select id="ContentMember" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName
-      FROM PAYMENT PA, GR_REQUEST RE, NOW_GROUP NG, MEMBER MB
-      WHERE RE.NG_CODE = NG.NG_CODE
-        AND PA.RE_CODE = RE.RE_CODE
-        AND RE.MEM_ID = MB.MEM_ID
-        AND NG.NG_CODE = #{ngCode}   
-   </select>
-   
-   
-   <select id="meetFavCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="String">
-      SELECT CASE WHEN COUNT(*)>=1 THEN 'Y' ELSE 'N' END
-      FROM GR_FAVORITE
-      WHERE MEM_ID=#{memId} AND NG_CODE=#{ngCode}
-   </select>
-   
-   <select id="meetFavList" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode
-      FROM GR_FAVORITE
-      WHERE MEM_ID=#{memId}
-   </select>
-   
-   <insert id="meetFavInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO" >
-      INSERT INTO GR_FAVORITE(GF_CODE, MEM_ID, NG_CODE) VALUES(GR_FAVSEQ.NEXTVAL, #{memId}, #{ngCode})
-   </insert>
-   
-   
+	</select>
+
+	<select id="HotHostListAll"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
+		memIntro
+		FROM HOT_HOST_AllVIEW
+	</select>
+
+	<select id="ClosingGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO"
+		parameterType="com.toleisure.mybatis.dto.GroupDTO">
+
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
+		AS grCate1Name, CATE2 AS grCate2Name
+		FROM CLOSING_VIEW
+
+		<!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
+			G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
+			JOIN GR_JOIN GJ ON FG.FIX_CODE=GJ.FIX_CODE JOIN REVIEW R ON R.JOIN_CODE=GJ.JOIN_CODE 
+			WHERE G.GR_CODE = #{starCode}; -->
+
+
+	</select>
+
+	<select id="ClosingGroupListAll"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		FROM
+		CLOSING_GROUP_ALLVIEW
+	</select>
+
+	<select id="RecommendGroupList"
+		resultType="com.toleisure.mybatis.dto.GroupDTO"
+		parameterType="com.toleisure.mybatis.dto.GroupDTO">
+		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 
+			AS grCate1Name, CATE2 AS grCate2Name FROM CLOSING_VIEW -->
+		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX 
+			AS ngMax FROM RECOMMEND_VIEW WHERE MEM_ID = 'lee0528kr@naver.com' -->
+
+		SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS
+		memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name
+		FROM
+		(
+		SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS
+		memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name
+		FROM
+		MEMBER M JOIN TBL_GROUP G
+		ON M.CATE_CODE1=G.CATE_CODE1 OR M.CATE_CODE1=G.CATE_CODE2 OR
+		M.CATE_CODE2=G.CATE_CODE1 OR M.CATE_CODE2=G.CATE_CODE2
+		JOIN CATEGORY C1
+		ON C1.CATE_CODE=G.CATE_CODE1
+		JOIN CATEGORY C2
+		ON C2.CATE_CODE=G.CATE_CODE2
+		JOIN NOW_GROUP NG
+		ON NG.GR_CODE = G.GR_CODE
+		WHERE M.MEM_ID=#{memId}
+		)E
+		WHERE 3>=ROWNUM
+
+		<!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
+			G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
+			JOIN GR_JOIN GJ ON FG.FIX_CODE=GJ.FIX_CODE JOIN REVIEW R ON R.JOIN_CODE=GJ.JOIN_CODE 
+			WHERE G.GR_CODE = #{starCode}; -->
+
+	</select>
+
+	<select id="RecommendGroupListAll"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 
+			AS grCate1Name, CATE2 AS grCate2Name FROM CLOSING_VIEW -->
+		<!-- SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_ID AS memId, NG_MAX 
+			AS ngMax FROM RECOMMEND_VIEW WHERE MEM_ID = 'lee0528kr@naver.com' -->
+		SELECT E.ngPic AS ngPic,E.grName AS grName,E.memName AS
+		memName,E.grCate1Name AS grCate1Name,E.grCate2Name AS grCate2Name
+		FROM
+		(
+		SELECT NG.NG_PIC AS ngPic,G.GR_NAME AS grName,M.MEM_NAME AS
+		memName,C1.CATE_NAME AS grCate1Name,C2.CATE_NAME AS grCate2Name
+		FROM
+		MEMBER M JOIN TBL_GROUP G
+		ON M.CATE_CODE1=G.CATE_CODE1 OR M.CATE_CODE1=G.CATE_CODE2 OR
+		M.CATE_CODE2=G.CATE_CODE1 OR M.CATE_CODE2=G.CATE_CODE2
+		JOIN CATEGORY C1
+		ON C1.CATE_CODE=G.CATE_CODE1
+		JOIN CATEGORY C2
+		ON C2.CATE_CODE=G.CATE_CODE2
+		JOIN NOW_GROUP NG
+		ON NG.GR_CODE = G.GR_CODE
+		WHERE M.MEM_ID=#{memId}
+		)E
+		WHERE 10>=ROWNUM
+	</select>
+
+	<!-- ============================================테마별 DAO END================================================ -->
+
+
+	<select id="AvgStar"
+		resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT AVG(R.REVIEW_STAR) AS REVIEW_STAR_AVG
+		FROM NOW_GROUP NG JOIN TBL_GROUP G
+		ON NG.GR_CODE = G.GR_CODE
+		JOIN FIXED_GROUP FG
+		ON NG.NG_CODE=FG.NG_CODE
+		JOIN GR_JOIN GJ
+		ON FG.FIX_CODE=GJ.FIX_CODE
+		JOIN REVIEW R
+		ON R.JOIN_CODE=GJ.JOIN_CODE
+		WHERE G.GR_CODE = #{starCode}
+	</select>
+	
+	<!-- 모임 상세 페이지 내용 -->
+	
+	<select id="groupContent" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NGCODE AS ngCode, NGPIC AS ngPic, NGFAVORITE AS ngFavorite, GRCATE1 AS grCate1, GRCATE2 AS grCate2, CATENAME1 AS grCate1Name, CATENAME2 AS grCate2Name
+     	, GRNAME AS grName, MEMPIC AS memPic, MEMNAME AS memName, NGMAX AS ngMax, NGMIN AS ngMin, NGCOST AS ngCost, NGMYINTRO AS ngMyIntro
+     	, TO_CHAR(NGSTART, 'YYYY-MM-DD HH24:MI') AS ngStart, TO_CHAR(NGEND, 'YYYY-MM-DD HH24:MI') AS ngEnd
+     	, NGLOCATION AS ngLocation, NGINTRO AS ngIntro, NGDATE AS ngDate, GRPRE AS grPre, GRNOTICE AS grNotice
+     	, MEMINTRO AS memIntro, GRCOUNT AS grCount, GRSTARAVG AS grStarAvg, GRSTARCOUNT AS grStarCount
+		FROM GROUP_DETAIL_VIEW
+		WHERE NGCODE = #{ngCode}
+	</select>
+	
+	<!-- 모임 상세 페이지 후기 -->
+	
+	<select id="ContentReview" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_NAME AS grName, MEM_PIC AS memPic, MEM_NAME AS memName, REVIEW_CONT AS reviewCont, REVIEW_STAR AS reviewStar, TO_CHAR(REVIEW_DATE, 'YYYY-MM-DD HH24:MI') AS reviewDate
+		FROM
+		(
+		    SELECT GR.GR_NAME, NG.NG_CODE, ME.MEM_PIC, ME.MEM_NAME, RE.REVIEW_CONT, RE.REVIEW_STAR, RE.REVIEW_DATE
+		    FROM NOW_GROUP NG JOIN TBL_GROUP GR
+		    ON NG.GR_CODE = GR.GR_CODE
+		        JOIN GR_REQUEST QU
+		        ON QU.NG_CODE = NG.NG_CODE
+		            JOIN PAYMENT PA
+		            ON PA.RE_CODE = QU.RE_CODE
+		                JOIN GR_JOIN JO
+		                ON JO.PAY_CODE = PA.PAY_CODE
+		                    JOIN REVIEW RE
+		                    ON RE.JOIN_CODE = JO.JOIN_CODE
+		                        JOIN MEMBER ME
+		                        ON ME.MEM_ID = QU.MEM_ID
+		)
+		WHERE NG_CODE = #{ngCode}
+	</select>
+	
+	<!-- 모임 상세 페이지 방명록 -->
+	
+	<select id="ContentGBoard" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT BOARD_NUM AS boardNum, NG_CODE AS ngCode, MEM_PIC AS memPic, MEM_NAME AS memName, BOARD_CONT AS boardCont, BOARD_DATE AS boardDate
+		FROM
+		(
+		    SELECT GB.BOARD_NUM, GB.NG_CODE, MB.MEM_PIC, MB.MEM_NAME, GB.BOARD_CONT, GB.BOARD_DATE
+		    FROM GUESTBOARD GB JOIN NOW_GROUP NG
+		    ON GB.NG_CODE = NG.NG_CODE
+		        JOIN MEMBER MB
+		        ON MB.MEM_ID = GB.MEM_ID
+		)   
+		WHERE NG_CODE = #{ngCode}
+	</select>
+	
+	<!-- 모임 상세 페이지 참여 인원 목록 -->
+	
+	<select id="ContentMember" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT MEM_PIC AS memPic, MEM_NAME AS memName
+		FROM PAYMENT PA, GR_REQUEST RE, NOW_GROUP NG, MEMBER MB
+		WHERE RE.NG_CODE = NG.NG_CODE
+		  AND PA.RE_CODE = RE.RE_CODE
+		  AND RE.MEM_ID = MB.MEM_ID
+		  AND NG.NG_CODE = #{ngCode}	
+	</select>
+	
+	
+	<select id="meetFavCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="">
+		SELECT CASE WHEN COUNT(*)>=1 THEN 'Y' ELSE 'N' END
+		FROM GR_FAVORITE
+		WHERE MEM_ID=#{memId} AND NG_CODE=#{ngCode}
+	</select>
+	
+	
+</mapper>	INSERT INTO GR_FAVORITE(GF_CODE, MEM_ID, NG_CODE) VALUES(GR_FAVSEQ.NEXTVAL, #{memId}, #{ngCode})
+	</insert>
+	
+	
 </mapper>
