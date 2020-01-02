@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,6 +178,7 @@ button.more
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
             <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <input type="hidden" value="${HotGroup.ngCode }">
          <div class="caption">
          <div>
             <div class="starRev">
@@ -222,6 +227,7 @@ button.more
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
             <img src="${NewGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <%-- <input type="hidden" value="${NewGroupList.ngCode }"> --%>
          <div class="caption">
          <div>
             <div class="starRev">

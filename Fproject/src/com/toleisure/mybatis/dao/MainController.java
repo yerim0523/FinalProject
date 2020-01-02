@@ -28,7 +28,6 @@ public class MainController
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 
 		GroupDTO dto = new GroupDTO();
-		dto.setMemId("lee0528kr@naver.com");
 
 		model.addAttribute("HotGroupList", dao.HotGroupList(dto.getGrCode()));
 		model.addAttribute("NewGroupList", dao.NewGroupList(dto.getGrCode()));

@@ -78,7 +78,7 @@
 	<!-- ============================================테마별 DAO================================================ -->
 	<select id="HotGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO"
-		parameterType="com.toleisure.mybatis.dto.GroupDTO">
+		>
 
 		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
 		AS grCate1Name, CATE2 AS grCate2Name
@@ -102,13 +102,13 @@
 	<select id="NewGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
 		
-		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM NEWEST_GROUP_VIEW 
 	</select>
 
 	<select id="NewGroupListAll"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
 		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM
 		NEWEST_GROUP_ALLVIEW
@@ -136,7 +136,7 @@
 		resultType="com.toleisure.mybatis.dto.GroupDTO"
 		parameterType="com.toleisure.mybatis.dto.GroupDTO">
 
-		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
 		AS grCate1Name, CATE2 AS grCate2Name
 		FROM CLOSING_VIEW
 
@@ -150,7 +150,7 @@
 
 	<select id="ClosingGroupListAll"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
 		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM
 		CLOSING_GROUP_ALLVIEW
