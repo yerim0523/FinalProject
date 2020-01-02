@@ -15,7 +15,6 @@
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -133,7 +132,8 @@
 		<c:forEach var="PlayGroup" items="${PlayGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${PlayGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${PlayGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${PlayGroup.ngCode}'">
 			<div class="caption">
 			<div>
 				<div class="starRev">
@@ -148,7 +148,7 @@
 			<div>
 				<span style="font-size: 12px;">1회차|</span>
 				<div>
-					<div class="name">
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${PlayGroup.ngCode}'">
 					<h5>${PlayGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">

@@ -133,7 +133,8 @@
 		<c:forEach var="ShowGroup" items="${ShowGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${ShowGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${ShowGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${ShowGroup.ngCode}'">
 			<div class="caption">
 			<div>
 				<div class="starRev">
@@ -148,7 +149,7 @@
 			<div>
 				<span style="font-size: 12px;">1회차|</span>
 				<div>
-					<div class="name">
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${ShowGroup.ngCode}'">
 					<h5>${ShowGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">

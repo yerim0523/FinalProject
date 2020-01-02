@@ -16,7 +16,6 @@
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -125,7 +124,8 @@
 		<c:forEach var="FoodGroup" items="${FoodGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${FoodGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${FoodGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${FoodGroup.ngCode}'">
 			<div class="caption">
 			<div>
 				<div class="starRev">
@@ -147,7 +147,7 @@
 			<div>
 				<span style="font-size: 12px;">${FoodGroup.grCount }회차|${FoodGroup.grCate1Name } ${FoodGroup.grCate2Name }</span>
 				<div>
-					<div class="name">
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${FoodGroup.ngCode}'">
 					<h5>${FoodGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">

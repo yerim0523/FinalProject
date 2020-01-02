@@ -41,9 +41,8 @@ public class MainController
 		}
 		else
 		{
-			dto.setMemId("aa123@naver.com");
+			dto.setMemId("SYSTEM@naver.com");
 		}
-		
 		
 		System.out.println("====== " + session.getAttribute("member"));
 		

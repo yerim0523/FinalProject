@@ -15,7 +15,6 @@
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -125,10 +124,13 @@
 		<c:forEach var="ExhibitGroup" items="${ExhibitGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${ExhibitGroup.memPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${ExhibitGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
 			<div class="caption">
 			<div>
-				
+				<div class="starRev">
+					
+				</div>
 				<div>
 					<img alt="" src="images/star.png" style="width: 20px;">
 					<span> 9.5</span>
@@ -136,16 +138,17 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">${ExhibitGroup.memIntro }</span>
+				<span style="font-size: 12px;">1회차|</span>
 				<div>
-					<div class="name">
-					<h5>${ExhibitGroup.memName }</h5>
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
+					<h5>${ExhibitGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
+				<h6 style="text-align: right; font-size: 10px;">"${ExhibitGroup.memName }"</h6>
 			</div>
 			
 			</div>
