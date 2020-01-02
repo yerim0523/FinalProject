@@ -76,19 +76,14 @@
    <!-- ============================================음식점 DAO END================================================ -->
 
    <!-- ============================================테마별 DAO================================================ -->
-   <select id="HotGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO"
-      >
-
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
-      AS grCate1Name, CATE2 AS grCate2Name
-      FROM HOT_GROUP_VIEW
-
-      <!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
-         G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
-         JOIN GR_JOIN GJ ON FG.FIX_CODE=GJ.FIX_CODE JOIN REVIEW R ON R.JOIN_CODE=GJ.JOIN_CODE 
-         WHERE G.GR_CODE = #{starCode}; -->
-   </select>
+  <select id="HotGroupList" parameterType="String"
+		resultType="com.toleisure.mybatis.dto.GroupDTO"
+		>
+		SELECT GR_CODE AS grCode,NG_CODE AS ngCode,NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name,
+		CATE2 AS grCate2Name,JJIMCK AS jjimcheck
+		FROM ALL_GROUP_VIEW_JJIM
+		WHERE JJIMUSER = #{memId} or 1=1
+	</select>
 
    <select id="HotGroupListAll"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
