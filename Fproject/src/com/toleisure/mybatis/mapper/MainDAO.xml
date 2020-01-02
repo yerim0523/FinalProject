@@ -79,6 +79,13 @@
   <select id="HotGroupList" parameterType="String"
       resultType="com.toleisure.mybatis.dto.GroupDTO"
       >
+      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+      FROM HOT_GROUP_VIEW
+   </select>
+   
+  <select id="testList" parameterType="String"
+      resultType="com.toleisure.mybatis.dto.GroupDTO"
+      >
       SELECT GR_CODE AS grCode,NG_CODE AS ngCode,NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name,
       CATE2 AS grCate2Name,JJIMCK AS jjimcheck
       FROM ALL_GROUP_VIEW_JJIM
