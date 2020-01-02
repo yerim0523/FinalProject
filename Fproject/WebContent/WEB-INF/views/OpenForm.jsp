@@ -60,7 +60,7 @@
 
 		var grcode = "${groupinfo.grCode}";
 		var cate1 = "${groupinfo.grCate1}";
-		var cate2 = "${groupinfo.grCate2}";
+		var cate2 = "${groupinfo.grCate2}"; 
 		
 		if(grcode != "")
 		{
