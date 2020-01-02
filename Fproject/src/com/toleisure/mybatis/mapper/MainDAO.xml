@@ -98,7 +98,6 @@
 		HOT_GROUP_ALLVIEW
 	</select>
 
-
 	<select id="NewGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
 		
