@@ -400,7 +400,7 @@
 	</select>
 	
 	<select id="mainboardList" resultMap="BoardDTO">
-		SELECT ROWNUM AS rNum, BOARDNUM, BOARDTITLE, BOARDCONT, BOARDDATE, BOARDMEM, BOARDHITS, BOARDNOTICE
+		SELECT *
 		FROM
 		(
 		    SELECT ROWNUM AS rNum, C.COM_NUM AS boardNum, C.COM_TITLE AS boardTitle, C.COM_CONT AS boardCont

@@ -131,7 +131,7 @@
   	 
 	<div class="row">
 		<c:forEach var="ShowGroup" items="${ShowGroupList}">
-		<div class="col-sm-6 col-md-4">
+		<div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${ShowGroup.ngCode}'">
 			<div class="thumbnail">
 				<img src="${ShowGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
