@@ -50,8 +50,7 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
+   
 
 
 <!-- <script type="text/javascript">
