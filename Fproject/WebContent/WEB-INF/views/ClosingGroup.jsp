@@ -115,9 +115,10 @@
   	
 	<div class="row">
 		<c:forEach var="ClosingGroupAll" items="${ClosingGroupListAll}">
-		<div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${ClosingGroupAll.ngCode}'">
+		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${ClosingGroupAll.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${ClosingGroupAll.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${ClosingGroupAll.ngCode}'">
 			<div class="caption">
 			<div>
 				
@@ -130,7 +131,7 @@
 			<div>
 				<span style="font-size: 12px;">1회차|맛집</span>
 				<div>
-					<div class="name">
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${ClosingGroupAll.ngCode}'">
 					<h5>${ClosingGroupAll.grName }</h5>
 					</div>
 					<div class="heart" align="right">

@@ -122,9 +122,10 @@
   	
 	<div class="row">
 		<c:forEach var="CafeGroup" items="${CafeGroupList}">
-		<div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${CafeGroup.ngCode}'">
+		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${CafeGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${CafeGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${CafeGroup.ngCode}'">
 			<div class="caption">
 			<div>
 				
@@ -137,7 +138,7 @@
 			<div>
 				<span style="font-size: 12px;">1회차|${CafeGroup.grCate1Name } ${CafeGroup.grCate2Name }</span>
 				<div>
-					<div class="name">
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${CafeGroup.ngCode}'">
 					<h5>${CafeGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
