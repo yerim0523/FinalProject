@@ -49,7 +49,7 @@
 			/* fontSizeUnits: ['px', 'pt'] */
       });
       
-      if ($('#summernote').summernote('isEmpty')) {
+      if ($('#summernote').summernote('isEmpty')) { 
     	  alert('내용을 입력해주세요');
     	}
       
