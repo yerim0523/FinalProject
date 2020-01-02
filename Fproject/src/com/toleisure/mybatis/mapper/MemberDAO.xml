@@ -128,4 +128,9 @@
 		FROM NOW_GROUP
    </select>
    
+   <insert id ="fileadd" parameterType="com.toleisure.mybatis.dto.FileDTO">
+   		INSERT INTO FILEUPLOAD (FILE_NAME,FILE_SYSNAME,FILE_PATH,FILE_SIZE)
+   					VALUES     (#{file_name},#{file_sysname},#{file_path},#{file_size})
+   </insert>
+   
 </mapper>

@@ -1,6 +1,7 @@
 package com.toleisure.mybatis.dao;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.toleisure.mybatis.dto.BoardDTO;
+import com.toleisure.mybatis.dto.FileDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
@@ -275,8 +277,10 @@ public class MemberController
    @RequestMapping(value="/fileuploadtest.action", method = RequestMethod.POST)
    public String fileUploadTest(MultipartHttpServletRequest request, Model model)throws ServletException, IOException
    {
-       String rootUploadDir = "C:"+File.separator+"Upload"; // C:/Upload
-       
+	   IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+	   
+       String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; // C:/Upload
+       FileOutputStream fos = null;
        File dir = new File(rootUploadDir); 
        
        if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
@@ -305,18 +309,39 @@ public class MemberController
                System.out.println("if문 진입");
                
                try {
+					/*
+					 * byte[] fileData = mFile.getBytes(); //byte 배열을 파일/DB/네트워크 등으로 전송 fos = new
+					 * FileOutputStream(rootUploadDir); fos.write(fileData);
+					 */
+            	   
                    System.out.println("try 진입");
                    mFile.transferTo(new File(dir + File.separator + orgFileName)); // C:/Upload/testfile/sysFileName
                    list.add("원본파일명: " + orgFileName);
+                   
+               	  
+                   FileDTO test = new FileDTO();
+                   test.setFile_name(orgFileName);
+                   test.setFile_sysname(uploadFileName);
+                   test.setFile_path(rootUploadDir);
+                   test.setFile_size(mFile.getSize());
+                   dao.fileadd(test);
+                   
+                   
                }catch(Exception e){
                    list.add("파일 업로드 중 에러발생!!!");
                }
-           }//if
+				/*
+				 * finally { if(fos != null) { fos.close(); } }// finally
+				 */           }//if
        }//while
+       
+       
+       
        
        model.addAttribute("list", list);
        
        return "WEB-INF/views/joinTest.jsp";
+       
    }
 
    
