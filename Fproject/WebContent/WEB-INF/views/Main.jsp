@@ -97,8 +97,6 @@ button.more
 			
 		});
 		
-		
-		
 	});
 </script>
 
