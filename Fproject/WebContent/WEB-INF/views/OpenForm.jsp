@@ -17,6 +17,8 @@
 
 
 <!-- jquery -->
+
+									<!-- 에디터영역을 만드는 역할 -->
 <script src="js/jquery-1.12.1.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -25,6 +27,8 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/bootstrap-select.min.js"></script>
+
+
 
 <!-- 주소 검색 -->
 <!-- jQuery와 Postcodify를 로딩한다 -->
@@ -42,7 +46,10 @@
 <script src="js/owl.carousel.min.js"></script>
 <!-- swiper js -->
 <script src="js/slick.min.js"></script>
-<script src="js/jquery.counterup.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script> 
+
+
+<!-- 스마트에디터 -->
 
 
 <script type="text/javascript">
@@ -53,7 +60,7 @@
 
 		var grcode = "${groupinfo.grCode}";
 		var cate1 = "${groupinfo.grCate1}";
-		var cate2 = "${groupinfo.grCate2}";
+		var cate2 = "${groupinfo.grCate2}"; 
 		
 		if(grcode != "")
 		{
@@ -507,7 +514,7 @@
       
       <div class="form-inline">
          <label for="ngIntro" class="col-sm-2 control-label" style="font-weight: bold;">소개글</label>
-         <textarea class="form-control col-sm-5" name="ngIntro" rows="5"
+         <textarea class="form-control col-sm-5" name="ngIntro" rows="5" id="ngIntro"
                   placeholder="모임에 대한 소개글입니다!" id="ngIntro"></textarea>
       </div>
       
