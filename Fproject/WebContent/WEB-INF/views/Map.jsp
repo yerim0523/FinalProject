@@ -307,8 +307,21 @@ function showPosition(position)
 	
 	function search()
 	{
-		search = document.getElementById('search_addr').value;
+		var search = document.getElementById('search_addr').value;
+		if (circle) { // 최초 실행시에는 circle이 없을테니 예외처리를 해줍니다.
+	        circle.setMap(null);
+	    }
 		
+		if (marker) { // 최초 실행시에는 circle이 없을테니 예외처리를 해줍니다.
+	        marker.setMap(null);
+	    }
+		
+		if (circle) { // 최초 실행시에는 circle이 없을테니 예외처리를 해줍니다.
+	        circle.setMap(null);
+	    }
+		
+			    
+	    
 		geocoder.addressSearch(search, function(re, status) 
 				{
 			    // 정상적으로 검색이 완료됐으면 
@@ -319,7 +332,7 @@ function showPosition(position)
 			    	// 마커 이미지 생성
 			        
 			    	
-			         var marker = new kakao.maps.Marker
+			         marker = new kakao.maps.Marker
 			        ({
 			            map: map,
 			            position: coords,
@@ -327,7 +340,7 @@ function showPosition(position)
 			        });
 			         
 			      // 지도에 표시할 원을 생성합니다
-			 		var circle = new kakao.maps.Circle({
+			 		circle = new kakao.maps.Circle({
 			 		    center : new kakao.maps.LatLng(re[0].y, re[0].x),// 원의 중심좌표 입니다 
 			 		    radius: 5000, // 미터 단위의 원의 반지름입니다 
 			 		    strokeWeight: 5, // 선의 두께입니다 
@@ -343,14 +356,35 @@ function showPosition(position)
 			         document.getElementById('search_lat').value = re[0].y;
 			         document.getElementById('search_lng').value = re[0].x;
 			         
-			         var infowindow = new kakao.maps.InfoWindow
+			         
+			         
+			         infowindow = new kakao.maps.InfoWindow
 					    ({
 					    	/*  position : coords  */
 					       content: '<div style="width:150px;text-align:center;padding:6px;">검색위치</div>'
 					      
 					    });
-								infowindow.open(map,marker);	
+	/* 		         
+			         infowindow.close(map,marker);    
+								infowindow.open(map,marker);	 */
 				        
+								
+								 kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map,marker,infowindow));
+								 kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+							       
+								 
+						      	 function makeOverListener(map,marker,infowindow) {
+									return function() {
+										infowindow.open(map,marker);
+									};
+								}
+						      	 
+						      	function makeOutListener(infowindow) {
+									return function() {
+										infowindow.close();
+									};
+								}
+						      	
 				    	map.setCenter(coords);
 				     }// end if
 				    
@@ -400,7 +434,7 @@ function showPosition(position)
 	<div id="map" class="left" style="width: 50%; height: 350px;"></div>
 	<div class="rights" style="padding: 30px;">
 		<input type="text" id="search_addr" class="Lsearch" style="width: 300px;">&nbsp;&nbsp;
-		<button onclick="search()" class="btn4">검색</button>
+		<button  class="btn4" onclick="search()">검색</button>
 		<br><br><br>
 		
 	</div> 
