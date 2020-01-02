@@ -9,9 +9,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+
+</script>
+
 </head>
 <body>
-<form action="fileuploadtest.action" role="form" enctype="multipart/form-data" method="post">
+<form action="fileuploadtest.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
     <input type="file" name="file1"><p>
     <input type="file" name="file2"><p>
     <input type="submit" value="파일업로드">

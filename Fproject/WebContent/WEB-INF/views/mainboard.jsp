@@ -53,6 +53,25 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
 <link rel="stylesheet" href="css/button.css" >
+
+<script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#notice_regi").on("click",function(){
+            location.href="/test/noticeRegi"
+        });
+    });
+    function fn_paging(curPage){
+    	
+    	location.href="mainboard.action?curPage="+curPage;
+        /* location.href="/test/noticeList?curPage="+curPage; */
+    }
+    
+    function notice_push(notice_id){
+        alert(notice_id);
+    }
+</script>
+
 </head>
 <body>
 
@@ -80,44 +99,38 @@
 			<thead>
 				<tr>
 					<th></th>
+					<th>글번호</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>날짜</th>
 					<th>조회수</th>
 				</tr>
+				<c:forEach var="v" items="${mainboardList }" varStatus="status">
 				<tr>
-					<td style="color: red;">공지</td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
+					<c:choose>
+					<c:when test="${v.boardNotice ne 0}"><td style="color: red;">[공지]</td></c:when>
+					<c:when test="${v.boardNotice eq 0}"><td style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></c:when>
+					</c:choose>
+					
+					<td>${v.rNum}</td>
+					<td><a href="#" onclick="location='mainboarddetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
+					<td>${v.boardMem}</td>
+					<td>${v.boardDate}</td>
+					<td>${v.boardHits}</td>
 				</tr>
-				<tr>
-					<td style="color: red;">공지</td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>사이트 폐지 안내</td>
-					<td>이성조</td>
-					<td>16.08.31</td>
-					<td>377</td>
-				</tr>
+				
+				</c:forEach>
+				
 			</thead>
 		</table>
 
 		<hr>
-		<button type="button" class="btn4" style="font-weight: bold; float: right;">글쓰기</button>
+		<c:if test="${!empty sessionScope.mode}">
+			<c:if test="${sessionScope.mode==1}">
+			<button type="button" onclick="location='mainboardinsertform.action'"
+				class="btn4" style="float: right;">글쓰기</button>
+			</c:if>
+			</c:if>
 
 
 
@@ -125,18 +138,56 @@
 
 	<div class="container">
 		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+			<li class="page-item">
+			
+			<c:if test="${paging.curPage ne 1}">
+			<a class="page-link" href="#" aria-label="Previous" onClick="fn_paging(${paging.prevPage })">	
+			<span aria-hidden="true">&laquo;</span>
 			</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+			</c:if>
+			<%-- ${status.index+1+(paging.curPage-1)*10} --%>
+			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
+			 	<c:choose>
+			 		<c:when test="${pageNum eq  paging.curPage}">
+			<!-- 선택되게하기 --><li class="page-item active"><a class="page-link" onClick="fn_paging(${pageNum })"  href="#"> ${paging.curPage }</a></li>
+					</c:when>
+					  <c:otherwise>
+                               <li class="page-item"> <a class="page-link" href="#" onClick="fn_paging(${pageNum })">${pageNum }</a> </li>
+                            </c:otherwise>
+                        </c:choose>
+                        </c:forEach>
+                        
+             <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
+			<li class="page-item"><a class="page-link" href="#"aria-label="Next" onClick="fn_paging(${paging.nextPage })"> 
+			<span aria-hidden="true">&raquo;</span>
 			</a></li>
+			</c:if>
+		
 		</ul>
 	</div>
-
+	
+	<div class="greenTable outerTableFooter">
+            <div class="tableFootStyle">
+                <div class="links">
+                        <a href="#" onClick="fn_paging(1)">[처음]</a> 
+                    <c:if test="${paging.curPage ne 1}">
+                        <a href="#" onClick="fn_paging(${paging.prevPage })">[이전]</a> 
+                    </c:if>      
+                    <c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.nextPage })">[다음]</a> 
+                    </c:if>
+                    <c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt > 0}">
+                        <a href="#" onClick="fn_paging(${paging.pageCnt })">[끝]</a> 
+                    </c:if>
+                </div>
+            </div>
+        </div>
+		
+		<div>
+                    총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
+        </div>
+			
+			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
 </div>
 
 

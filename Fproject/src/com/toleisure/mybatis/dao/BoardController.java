@@ -634,4 +634,47 @@ public class BoardController
 			model.addAttribute("answerDetail", answerDetail);
 			return view;
 		}
+	
+	@RequestMapping(value = "/mainboard.action")
+	public String mainboardList(@ModelAttribute("COMMUNITY") BoardDTO community, @RequestParam(defaultValue = "1") int curPage,
+								Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/mainboard.jsp";
+		session.getAttribute("member");
+		
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		
+		int listCnt = dao.mainboardListCont();
+		PagingDTO paging = new PagingDTO(listCnt, curPage);
+		community.setStartIndex(paging.getStartIndex());
+		community.setEndIndex(paging.getEndIndex());
+		
+		List<BoardDTO> mainboardList = dao.mainboardList(community);
+		
+		model.addAttribute("mainboardList", mainboardList);
+		model.addAttribute("listCnt", listCnt);
+		model.addAttribute("paging", paging);
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/mainboarddetail.action", method = RequestMethod.GET)
+	public String mainboardDetail(int boardNum, int curPage, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/mainboardDetail.jsp";
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		int listCnt = dao.mainboardListCont();
+		
+		dao.updateMainBoardHitCount(boardNum);
+		
+		PagingDTO paging = new PagingDTO(listCnt, curPage);
+		
+		List<BoardDTO> mainboardSelect = dao.mainboardSelect(boardNum);
+		
+		model.addAttribute("mainboardSelect", mainboardSelect);
+		model.addAttribute("paging", paging);
+		
+		return view;
+	}
 }

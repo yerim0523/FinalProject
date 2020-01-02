@@ -55,5 +55,10 @@ public interface IBoardDAO
 	public List<BoardDTO> answerUpdateForm(int boardNum);
 	public void answerUpdate(BoardDTO dto);
 	
+	public int mainboardListCont();
+	public List<BoardDTO> mainboardList(BoardDTO mainboard);
+	public List<BoardDTO> mainboardSelect(int boardNum);
+	public int updateMainBoardHitCount(int boardNum);
+	
 	
 }
