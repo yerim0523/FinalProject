@@ -277,7 +277,7 @@ public class MemberController
    {
        String rootUploadDir = "C:"+File.separator+"Upload"; // C:/Upload
        
-       File dir = new File(rootUploadDir + File.separator + "testfile"); 
+       File dir = new File(rootUploadDir); 
        
        if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
            dir.mkdirs();
