@@ -223,7 +223,7 @@
 							<div class="sc-krvtoX ksOaZn">
 								<div class="sc-cbkKFq hBlXcX">
 									<h1>회원가입</h1>
-									<form action="memberinsert.action" enctype="multipart/form-data" method="post" name="memberJoinForm">
+									<form action="memberinsert.action" role="form" method="post" name="memberJoinForm" enctype="multipart/form-data" >
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 											<label class="sc-iyvyFf kBgtyY">*이름</label>
 											<div class="sc-eTuwsz cIWDpP">
