@@ -2,6 +2,7 @@ package com.toleisure.mybatis.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.GroupDTO;
+import com.toleisure.mybatis.dto.MemberDTO;
 
 @Controller
 public class MainController
@@ -29,14 +32,33 @@ public class MainController
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 
 		GroupDTO dto = new GroupDTO();
-		dto.setMemId("lee0528kr@naver.com");
-
-		model.addAttribute("HotGroupList", dao.HotGroupList(dto.getGrCode()));
-		model.addAttribute("NewGroupList", dao.NewGroupList(dto.getGrCode()));
+		MemberDTO sessionDto = (MemberDTO)session.getAttribute("member");
+		
+		
+		if(session.getAttribute("member")!=null)
+		{
+			dto.setMemId(sessionDto.getMemId());
+		}
+		else
+		{
+			dto.setMemId("lee0528kr@naver.com");
+		}
+		
+		
+		System.out.println("====== " + session.getAttribute("member"));
+		
+		model.addAttribute("HotGroupList", dao.HotGroupList());
+		model.addAttribute("NewGroupList", dao.NewGroupList());
 		model.addAttribute("HotHostList", dao.HotHostList());
-		model.addAttribute("ClosingGroupList", dao.ClosingGroupList(dto.getGrCode()));
+		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());
+		
+		if(session.getAttribute("member")!=null)
+		{
+			dto.setMemId(sessionDto.getMemId());
+		}
+		
+		model.addAttribute("meetFavList", dao.meetFavList(dto));
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
-		model.addAttribute("AvgStar", dao.AvgStar(dto.getGrCode()));
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
 		return view;
@@ -231,7 +253,7 @@ public class MainController
 	@RequestMapping(value = "/join.action", method = RequestMethod.GET)
 	public String Join(Model model)
 	{
-		String view = "WEB-INF/views/join.jsp";
+		String view = "WEB-INF/views/FileTest2.jsp";
 
 		return view;
 	}
@@ -251,6 +273,8 @@ public class MainController
 	{
 		String view = "/WEB-INF/views/meetingContent.jsp";
 		session.getAttribute("member");
+		
+		System.out.println("===========  " + ngCode);
 		
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 		
@@ -282,6 +306,36 @@ public class MainController
 		return view;
 	}
 	
-	
 	// ---------------------------------------------------------- 찜 모임 여부
+	@RequestMapping(value = "/meetfavoritefind.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String favoriteMeetYN(GroupDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		String isFavYn = dao.meetFavCheck(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMemYn = "+isFavYn);
+		System.out.println("==================");
+		
+		return isFavYn;
+	}
+	
+
+	// ---------------------------------------------------------- 찜 모임 추가
+	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:main.action";
+	}
+	
 }
