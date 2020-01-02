@@ -143,7 +143,7 @@
 			</div>
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|</span>
+				<span style="font-size: 12px;">${AllGroup.grCount }회차</span>
 				<div>
 					<div class="name">
 					<h5>${AllGroup.grName }</h5>

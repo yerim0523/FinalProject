@@ -6,7 +6,7 @@
 	<select id="AllGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-		grCate1Name, CATE2 AS grCate2Name
+		grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount
 		FROM ALL_GROUP_VIEW
 	</select>
 
@@ -108,7 +108,7 @@
 
 	<select id="NewGroupListAll"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
 		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM
 		NEWEST_GROUP_ALLVIEW
