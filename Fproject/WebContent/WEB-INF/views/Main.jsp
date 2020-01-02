@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,6 +78,11 @@ button.more
    float: right;
 }
 
+.fa-heart
+{
+	cursor: pointer;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -81,21 +90,54 @@ button.more
 	{
 		$(".empty_h").click(function()
 		{
-			$('.empty_h').removeClass('far');
-			$('.empty_h').addClass('fas');
-			$('.empty_h').addClass('full_h');
-			$('.empty_h').removeClass('empty_h');
+			if($("#sessionInfo").val()==="")
+			{
+				$('.loginNeed').modal('show');
+				return;
+			}
+			
+			if($(this).hasClass("far"))
+			{
+				var params = {};
+				params.memId = $("#sessionInfo").val();
+				params.ngCode = $("#empNgCode").val();
+				alert($("#sessionInfo").val());
+				alert($("#empNgCode").val());
+				
+				
+				 $.ajax({
+		                type : "POST"
+		                , url : "meetfavoritefind.action"
+		                , data : params
+		                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+		                 , success: function(data){
+		                    var isYn = data;
+		                    if(isYn === "Y"){
+		                       alert("이미 찜을 하셨습니다.");
+		                    }else{
+		                    	alert("찜을 하지 않으셨습니다.");
+		                    }
+		                 }
+		          });
+				 
+				$(this).removeClass('far');
+				$(this).addClass('fas');
+			}
+			else
+			{
+				//alert("하트 비우기");
+				$(this).removeClass('fas');
+				$(this).addClass('far');
+			}
+			
 		});
 		
-		
-		$(".full_h").click(function()
-		{
-			$('.full_h').removeClass('fas');
-			$('.full_h').addClass('far');
-			$('.full_h').addClass('empty_h');
-			$('.full_h').removeClass('full_h');
-		});
 	});
+	
+	function sendNgCode(data)
+	{
+		$("#empNgCode").val(data);
+	}
 </script>
 
 </head>
@@ -112,6 +154,8 @@ button.more
 </section>
 
 <div class="container">
+	<input type="hidden" id="sessionInfo" value="${sessionInfo.memId }">
+	<input type="hidden" id="empNgCode">
    
    <div id="carouselExampleIndicators" class="carousel slide"
       data-ride="carousel" align="center">
@@ -190,7 +234,7 @@ button.more
                <h5>${HotGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;"></i>
+                  <i class="far fa-heart empty_h" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode })"></i>
                   <!-- <i class="fas fa-heart full_h" style="color: red;"></i> -->
                </div>
                <br>
@@ -220,6 +264,7 @@ button.more
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
             <img src="${NewGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <%-- <input type="hidden" value="${NewGroupList.ngCode }"> --%>
          <div class="caption">
          <div>
             <div class="starRev">
@@ -240,7 +285,7 @@ button.more
                <h5>${NewGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart empty_h" style="color: red;"></i>
                </div>
                <br>
             </div>
@@ -289,7 +334,7 @@ button.more
                <h5>${HotHost.memName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart empty_h" style="color: red;"></i>
                </div>
                <br>
             </div>
@@ -337,7 +382,7 @@ button.more
                <h5>${ClosingGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart empty_h" style="color: red;"></i>
                </div>
                <br>
             </div>
@@ -384,7 +429,7 @@ button.more
                <h5>${RecommendGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart empty_h" style="color: red;"></i>
                </div>
                <br>
             </div>
@@ -404,6 +449,27 @@ button.more
 	<jsp:include page="footer.jsp"></jsp:include>
 </div>
 
+
+<!-- 로그인 모달창 -->
+<div class="modal modal-center fade loginNeed" id="loginNeed" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">로그인이 필요한 서비스입니다.</p>
+			<div class="">
+				<a href="login.action"><button type="button" class="btn_1" >로그인</button></a>
+				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+			</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>

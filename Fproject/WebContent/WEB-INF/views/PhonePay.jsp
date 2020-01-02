@@ -95,6 +95,14 @@
 	function phonePay()
 	{
 		f = document.phonepayForm;
+		var telOtp = document.getElementById("telOtp").value;
+		
+		if(!f.payDetail.value)
+		{
+			alert("휴대폰 번호를 입력해주세요.");
+			f.payDetail.focus();
+			return;
+		}
 		
 		if(telOtp == "N")
 		{
@@ -179,7 +187,7 @@
 			<tr>
 				<td colspan="2" style="padding: 10px; text-align: center;">
 					<button type="button" class="btn4" onclick="phonePay()">결제하기</button>&nbsp;&nbsp;
-					<button type="button" class="btn4">취소하기</button>
+					<button type="button" class="btn4" onclick="location.href='pay.action'">취소하기</button>
 				</td>
 
 			</tr>

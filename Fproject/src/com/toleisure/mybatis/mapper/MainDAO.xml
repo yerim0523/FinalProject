@@ -23,7 +23,7 @@
 
 	<select id="ExhibitGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
 		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM
 		CUL_EXHIBITION_VIEW
@@ -31,14 +31,14 @@
 
 	<select id="PlayGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
 		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM CUL_PLAY_VIEW
 	</select>
 
 	<select id="ShowGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
 		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM CUL_SHOW_VIEW
 	</select>
@@ -57,7 +57,7 @@
 
 	<select id="CafeGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
 		grCate1Name, CATE2 AS grCate2Name
 		FROM FOOD_CAFE_VIEW
 	</select>
@@ -78,9 +78,9 @@
 	<!-- ============================================테마별 DAO================================================ -->
 	<select id="HotGroupList"
 		resultType="com.toleisure.mybatis.dto.GroupDTO"
-		parameterType="com.toleisure.mybatis.dto.GroupDTO">
+		>
 
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1
 		AS grCate1Name, CATE2 AS grCate2Name
 		FROM HOT_GROUP_VIEW
 
@@ -92,7 +92,7 @@
 
 	<select id="HotGroupListAll"
 		resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+		SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
 		memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
 		FROM
 		HOT_GROUP_ALLVIEW
