@@ -195,9 +195,10 @@ button.more
    <div class="row">
       <c:set var="n" value="0"/>
       <c:forEach var="HotGroup" items="${HotGroupList}">
-      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
+      <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
+            	onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
          <div class="caption">
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
@@ -207,7 +208,7 @@ button.more
          <div>
             <span style="font-size: 12px;">${HotGroup.grCount }회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
             <div>
-               <div class="name">
+               <div class="name" onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
                <h5>${HotGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
@@ -244,9 +245,10 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="NewGroup" items="${NewGroupList }">
-      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
+      <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${NewGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${NewGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 500px;"
+            	onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
             <%-- <input type="hidden" value="${NewGroupList.ngCode }"> --%>
          <div class="caption">
          <div>
@@ -264,7 +266,7 @@ button.more
          <div>
             <span style="font-size: 12px;">${NewGroup.grCount }회차|${NewGroup.grCate1Name } ${NewGroup.grCate2Name }</span>
             <div>
-               <div class="name">
+               <div class="name" onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
                <h5>${NewGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
@@ -295,9 +297,10 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="HotHost" items="${HotHostList }">
-      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${HotHost.ngCode}'">
+      <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${HotHost.memPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${HotHost.memPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
+            	onclick="location.href='groupdetail.action?ngCode=${HotHost.ngCode}'">
          <div class="caption">
          <div>
             <div class="starRev">
@@ -312,7 +315,7 @@ button.more
          <div>
             <span style="font-size: 12px;">소개글		${HotHost.memIntro }</span>
             <div>
-               <div class="name">
+               <div class="name" onclick="location.href='groupdetail.action?ngCode=${HotHost.ngCode}'">
                <h5>${HotHost.memName }</h5>
                </div>
                <div class="heart" align="right">
@@ -343,9 +346,10 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="ClosingGroup" items="${ClosingGroupList }">
-      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${ClosingGroup.ngCode}'">
+      <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${ClosingGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${ClosingGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
+            	onclick="location.href='groupdetail.action?ngCode=${ClosingGroup.ngCode}'">
          <div class="caption">
          <div>
             <div class="starRev">
@@ -360,7 +364,7 @@ button.more
          <div>
             <span style="font-size: 12px;">${ClosingGroup.grCount }회차|${ClosingGroup.grCate1Name } ${ClosingGroup.grCate2Name }</span>
             <div>
-               <div class="name">
+               <div class="name" onclick="location.href='groupdetail.action?ngCode=${ClosingGroup.ngCode}'">
                <h5>${ClosingGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
@@ -390,9 +394,10 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="RecommendGroup" items="${RecommendGroupList }">
-      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${RecommendGroup.ngCode}'">
+      <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
-            <img src="${RecommendGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
+            <img src="${RecommendGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
+            	onclick="location.href='groupdetail.action?ngCode=${RecommendGroup.ngCode}'">
          <div class="caption">
          <div>
             <div class="starRev">
@@ -407,7 +412,7 @@ button.more
          <div>
             <span style="font-size: 12px;">${RecommendGroup.grCount }회차|${RecommendGroup.grCate1Name } ${RecommendGroup.grCate2Name }</span>
             <div>
-               <div class="name">
+               <div class="name" onclick="location.href='groupdetail.action?ngCode=${RecommendGroup.ngCode}'">
                <h5>${RecommendGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
