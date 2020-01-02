@@ -78,6 +78,11 @@ button.more
    float: right;
 }
 
+.fa-heart
+{
+	cursor: pointer;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -85,12 +90,38 @@ button.more
 	{
 		$(".empty_h").click(function()
 		{
+			if($("#sessionInfo").val()==="")
+			{
+				$('.loginNeed').modal('show');
+				return;
+			}
+			
 			if($(this).hasClass("far"))
 			{
-				//alert("하트 채우기");
+				var params = {};
+				params.memId = $("#sessionInfo").val();
+				params.ngCode = $("#empNgCode").val();
+				alert($("#sessionInfo").val());
+				alert($("#empNgCode").val());
+				
+				
+				 $.ajax({
+		                type : "POST"
+		                , url : "meetfavoritefind.action"
+		                , data : params
+		                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+		                 , success: function(data){
+		                    var isYn = data;
+		                    if(isYn === "Y"){
+		                       alert("이미 찜을 하셨습니다.");
+		                    }else{
+		                    	alert("찜을 하지 않으셨습니다.");
+		                    }
+		                 }
+		          });
+				 
 				$(this).removeClass('far');
 				$(this).addClass('fas');
-				
 			}
 			else
 			{
@@ -102,6 +133,11 @@ button.more
 		});
 		
 	});
+	
+	function sendNgCode(data)
+	{
+		$("#empNgCode").val(data);
+	}
 </script>
 
 </head>
@@ -118,6 +154,8 @@ button.more
 </section>
 
 <div class="container">
+	<input type="hidden" id="sessionInfo" value="${sessionInfo.memId }">
+	<input type="hidden" id="empNgCode">
    
    <div id="carouselExampleIndicators" class="carousel slide"
       data-ride="carousel" align="center">
@@ -178,7 +216,6 @@ button.more
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
             <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
-            <input type="hidden" value="${HotGroup.ngCode }">
          <div class="caption">
          <div>
             <div class="starRev">
@@ -197,7 +234,7 @@ button.more
                <h5>${HotGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart empty_h" style="color: red;"></i>
+                  <i class="far fa-heart empty_h" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode })"></i>
                   <!-- <i class="fas fa-heart full_h" style="color: red;"></i> -->
                </div>
                <br>
@@ -412,6 +449,27 @@ button.more
 	<jsp:include page="footer.jsp"></jsp:include>
 </div>
 
+
+<!-- 로그인 모달창 -->
+<div class="modal modal-center fade loginNeed" id="loginNeed" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">로그인이 필요한 서비스입니다.</p>
+			<div class="">
+				<a href="login.action"><button type="button" class="btn_1" >로그인</button></a>
+				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+			</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>

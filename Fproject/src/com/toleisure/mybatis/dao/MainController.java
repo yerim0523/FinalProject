@@ -23,11 +23,13 @@ public class MainController
 	public String HotGroupList(Model model, HttpSession session)
 	{
 		session.getAttribute("member");
+		
 		String view = "WEB-INF/views/Main.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 
 		GroupDTO dto = new GroupDTO();
+		dto.setMemId("lee0528kr@naver.com");
 
 		model.addAttribute("HotGroupList", dao.HotGroupList(dto.getGrCode()));
 		model.addAttribute("NewGroupList", dao.NewGroupList(dto.getGrCode()));
@@ -35,6 +37,7 @@ public class MainController
 		model.addAttribute("ClosingGroupList", dao.ClosingGroupList(dto.getGrCode()));
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
 		model.addAttribute("AvgStar", dao.AvgStar(dto.getGrCode()));
+		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
 		return view;
 	}
@@ -270,13 +273,14 @@ public class MainController
 	}
 	
 	// ---------------------------------------------------------- 모임 상세 페이지 ▶ 후기 더보기
-		@RequestMapping(value = "/reviewmeeting.action", method = RequestMethod.GET)
-		public String Login(Model model, HttpSession session)
-		{
-			String view = "WEB-INF/views/ReviewM.jsp";
-			session.getAttribute("member");
+	@RequestMapping(value = "/reviewmeeting.action", method = RequestMethod.GET)
+	public String Login(Model model, HttpSession session)
+	{
+		String view = "WEB-INF/views/ReviewM.jsp";
+		session.getAttribute("member");
 
-			return view;
-		}
+		return view;
+	}
 	
+	// ---------------------------------------------------------- 찜 모임 여부
 }
