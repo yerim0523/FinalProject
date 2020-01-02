@@ -8,10 +8,10 @@ import com.toleisure.mybatis.dto.GroupDTO;
 public interface IMainDAO
 {
 	// ----------------메인화면 출력 리스트들 
-	public ArrayList<GroupDTO> HotGroupList(int starCode);
-	public ArrayList<GroupDTO> NewGroupList(int starCode); 
+	public ArrayList<GroupDTO> HotGroupList();
+	public ArrayList<GroupDTO> NewGroupList(); 
 	public ArrayList<GroupDTO> HotHostList(); 
-	public ArrayList<GroupDTO> ClosingGroupList(int starCode); 
+	public ArrayList<GroupDTO> ClosingGroupList(); 
 	public ArrayList<GroupDTO> RecommendGroupList(String memId);
 	// ----------------메인화면 출력 리스트들 
 	
@@ -49,6 +49,9 @@ public interface IMainDAO
 	//-- 찜 여부 확인
 	public String meetFavCheck(GroupDTO dto);
 	public String hostFavCheck(GroupDTO dto);
+	
+	//-- 찜 목록 확인
+	public ArrayList<GroupDTO> meetFavList(GroupDTO dto); 
 	
 	//-- 찜 모임 추가
 	public void meetFavInsert(GroupDTO dto);

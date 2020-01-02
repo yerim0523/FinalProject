@@ -31,14 +31,30 @@ public class MainController
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 
 		GroupDTO dto = new GroupDTO();
+		GroupDTO sessionDto = (GroupDTO)session.getAttribute("member");
+		
+		
+		/*
+		if(session!=null)
+		{
+			dto.setMemId(session.getId());
+			dao.meetFavList(dto);
+		}
+		*/
+		
+		System.out.println("====== " + sessionDto);
+		
 		dto.setMemId("lee0528kr@naver.com");
-
-		model.addAttribute("HotGroupList", dao.HotGroupList(dto.getGrCode()));
-		model.addAttribute("NewGroupList", dao.NewGroupList(dto.getGrCode()));
+		
+		model.addAttribute("HotGroupList", dao.HotGroupList());
+		model.addAttribute("NewGroupList", dao.NewGroupList());
 		model.addAttribute("HotHostList", dao.HotHostList());
-		model.addAttribute("ClosingGroupList", dao.ClosingGroupList(dto.getGrCode()));
+		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());
+		
+		
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
-		model.addAttribute("AvgStar", dao.AvgStar(dto.getGrCode()));
+		
+		
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
 		return view;
@@ -305,7 +321,7 @@ public class MainController
 
 	// ---------------------------------------------------------- 찜 모임 추가
 	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public void favoriteMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	public String favoriteMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
@@ -314,6 +330,8 @@ public class MainController
 		System.out.println("========  " + dto.getNgCode());
 		
 		dao.meetFavInsert(dto);
+		
+		return "redirect:main.action";
 	}
 	
 }

@@ -303,6 +303,12 @@
 		WHERE MEM_ID=#{memId} AND NG_CODE=#{ngCode}
 	</select>
 	
+	<select id="meetFavList" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT NG_CODE AS ngCode
+		FROM GR_FAVORITE
+		WHERE MEM_ID=#{memId}
+	</select>
+	
 	<insert id="meetFavInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO" >
 		INSERT INTO GR_FAVORITE(GF_CODE, MEM_ID, NG_CODE) VALUES(GR_FAVSEQ.NEXTVAL, #{memId}, #{ngCode})
 	</insert>
