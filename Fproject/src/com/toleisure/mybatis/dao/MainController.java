@@ -44,7 +44,6 @@ public class MainController
 			dto.setMemId("aa123@naver.com");
 		}
 		
-		
 		System.out.println("====== " + session.getAttribute("member"));
 		
 		model.addAttribute("HotGroupList", dao.HotGroupList(dto.getMemId()));
