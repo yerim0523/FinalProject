@@ -115,7 +115,7 @@ button.more
 		                    if(isYn === "Y"){
 		                       alert("이미 찜을 하셨습니다.");
 		                    }else{
-		                    	alert("찜을 하지 않으셨습니다.");
+		                    	alert("찜이 완료되었어용~!! ^_^");
 		                    	
 		                    	var memId = $("#sessionInfo").val();
 		                    	var ngCode = $("#empNgCode").val();
