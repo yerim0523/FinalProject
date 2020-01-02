@@ -20,8 +20,7 @@
 }
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
-<script src="js/jquery-1.12.1.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -48,8 +47,6 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script> 
 <!--     <script src="js/waypoints.min.js"></script> -->
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
     
 <!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
@@ -61,10 +58,10 @@
 
 <!-- include summernote css/js-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-ko-KR.js"></script>
     
-<!--
+
 <script type="text/javascript">
 	$(document).ready(function() {
       $('#boardCont').summernote({
@@ -81,11 +78,11 @@
 	}); 
 	
 </script>
- -->    
+
     
 <script type="text/javascript">
 
-	/* 
+	 
 	$(document).ready(function() {
 	    $('#boardCont').summernote({
 	  	  
@@ -99,7 +96,7 @@
 				fontNamesIgnoreCheck: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체'],
 	    });
 	});
-   */
+   
 
 
 	function formCheck()
