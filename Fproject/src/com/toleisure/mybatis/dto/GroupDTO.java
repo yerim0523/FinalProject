@@ -20,7 +20,10 @@ public class GroupDTO
 	private String boardCont, boardDate;
 	private int boardNum;
 
-	private int grCount, grStarCount;
+	private int grCount, grStarCount,jjimcheck;
+	
+
+	
 	private double grStarAvg;
 	
 	private String payDetail;
@@ -40,7 +43,18 @@ public class GroupDTO
 	{
 		return grName; 
 	}
-  
+	
+	public int getJjimcheck()
+	{
+		return jjimcheck;
+	}
+
+	public void setJjimcheck(int jjimcheck)
+	{
+		this.jjimcheck = jjimcheck;
+	}
+
+	
 	public void setGrName(String grName)
 	{
 		this.grName = grName;

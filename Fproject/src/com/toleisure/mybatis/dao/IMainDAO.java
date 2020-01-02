@@ -8,7 +8,7 @@ import com.toleisure.mybatis.dto.GroupDTO;
 public interface IMainDAO
 {
 	// ----------------메인화면 출력 리스트들 
-	public ArrayList<GroupDTO> HotGroupList();
+	public ArrayList<GroupDTO> HotGroupList(String string);
 	public ArrayList<GroupDTO> NewGroupList(); 
 	public ArrayList<GroupDTO> HotHostList(); 
 	public ArrayList<GroupDTO> ClosingGroupList(); 

@@ -5,7 +5,17 @@ public class MemberDTO
 {
 	private String memId, memPw, memName, memTel, memBirth, memPic, newPw;
 	private String memGen, memComp, memIntro, memDate;
-	private int memGender, memCate1, memCate2,month,year;
+	private int memGender, memCate1, memCate2,month,year,check;
+
+	public int getCheck()
+	{
+		return check;
+	}
+
+	public void setCheck(int check)
+	{
+		this.check = check;
+	}
 
 	public int getMonth() {
 		return month;

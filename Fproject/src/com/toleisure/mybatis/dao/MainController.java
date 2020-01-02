@@ -41,13 +41,13 @@ public class MainController
 		}
 		else
 		{
-			dto.setMemId("lee0528kr@naver.com");
+			
 		}
 		
 		
 		System.out.println("====== " + session.getAttribute("member"));
 		
-		model.addAttribute("HotGroupList", dao.HotGroupList());
+		model.addAttribute("HotGroupList", dao.HotGroupList(dto.getMemId()));
 		model.addAttribute("NewGroupList", dao.NewGroupList());
 		model.addAttribute("HotHostList", dao.HotHostList());
 		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());

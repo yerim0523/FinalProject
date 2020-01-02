@@ -26,7 +26,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<script src="js/custom.js"></script>
+
 
 <!-- jquery plugins here-->
     <!-- jquery -->
@@ -216,7 +216,7 @@ button.more
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
-               <span>  ${HotGroup.grStarAvg}</span>
+               <span>  9.5</span>
             </div>
          </div>
          <br>
@@ -227,15 +227,14 @@ button.more
                <h5>${HotGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-               	  <c:forEach var="meetFavList" items="${meetFavList }">					
-	               	  	<c:if test="${meetFavList.ngCode == HotGroup.ngCode }">
-	               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
-	               	  	</c:if>
-	               	  	
-	               	  	<c:if test="${meetFavList.ngCode != HotGroup.ngCode }">
-	               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
-	               	  	</c:if>
-               	  </c:forEach>
+               			<c:choose>
+	               	  	<c:when test="${HotGroup.jjimcheck ne 0 }">
+	               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode })"></i>
+	               	  	</c:when>
+	               	  	<c:when test="${HotGroup.jjimcheck eq 0 }">
+	               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode })"></i>
+	               	  	</c:when>
+	               	  	</c:choose>
                </div>
                <br>
             </div>
