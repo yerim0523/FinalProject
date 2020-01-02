@@ -195,29 +195,14 @@ button.more
    <div class="row">
       <c:set var="n" value="0"/>
       <c:forEach var="HotGroup" items="${HotGroupList}">
-         <%-- 
-         <c:if test="${n==0 }">
-            <div>
-         </c:if>
-         
-         <c:if test="${n!==0 && n%3==0 }">
-            </div>
-            </div>
-         </c:if>
-          --%>
       <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
          <div class="thumbnail">
             <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
-         <div>
-            <div class="starRev">
-               
-            </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
                <span>  9.5</span>
             </div>
-         </div>
          <br>
          <div>
             <span style="font-size: 12px;">${HotGroup.grCount }회차|${HotGroup.grCate1Name } ${HotGroup.grCate2Name }</span>
