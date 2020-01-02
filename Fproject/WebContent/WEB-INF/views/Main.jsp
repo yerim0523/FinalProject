@@ -12,7 +12,6 @@
 
 <link rel="stylesheet"
    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script
    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -206,7 +205,7 @@ button.more
             </div>
          </c:if>
           --%>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
          <div class="thumbnail">
             <img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
@@ -260,7 +259,7 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="NewGroup" items="${NewGroupList }">
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
          <div class="thumbnail">
             <img src="${NewGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 500px;" >
             <%-- <input type="hidden" value="${NewGroupList.ngCode }"> --%>
@@ -312,7 +311,7 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="HotHost" items="${HotHostList }">
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${HotHost.ngCode}'">
          <div class="thumbnail">
             <img src="${HotHost.memPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
@@ -360,7 +359,7 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="ClosingGroup" items="${ClosingGroupList }">
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${ClosingGroup.ngCode}'">
          <div class="thumbnail">
             <img src="${ClosingGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
@@ -407,7 +406,7 @@ button.more
    <br><br><br>
    <div class="row">
       <c:forEach var="RecommendGroup" items="${RecommendGroupList }">
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${RecommendGroup.ngCode}'">
          <div class="thumbnail">
             <img src="${RecommendGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;" >
          <div class="caption">
