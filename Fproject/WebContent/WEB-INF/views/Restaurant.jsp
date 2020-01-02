@@ -119,9 +119,10 @@
   	
 	<div class="row">
 		<c:forEach var="RestaurantGroup" items="${RestaurantGroupList}">
-		<div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${RestaurantGroup.ngCode}'">
+		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${RestaurantGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${RestaurantGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${RestaurantGroup.ngCode}'">
 			<div class="caption">
 			<div>
 				<div class="starRev">
@@ -143,7 +144,7 @@
 			<div>
 				<span style="font-size: 12px;">${RestaurantGroup.grCount } 회차|${RestaurantGroup.grCate1Name } ${RestaurantGroup.grCate2Name }</span>
 				<div>
-					<div class="name">
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${RestaurantGroup.ngCode}'">
 					<h5>${RestaurantGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
