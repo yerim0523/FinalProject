@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.GroupDTO;
+import com.toleisure.mybatis.dto.MemberDTO;
 
 @Controller
 public class MainController
@@ -31,30 +32,33 @@ public class MainController
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 
 		GroupDTO dto = new GroupDTO();
-		GroupDTO sessionDto = (GroupDTO)session.getAttribute("member");
+		MemberDTO sessionDto = (MemberDTO)session.getAttribute("member");
 		
 		
-		/*
-		if(session!=null)
+		if(session.getAttribute("member")!=null)
 		{
-			dto.setMemId(session.getId());
+			dto.setMemId(sessionDto.getMemId());
 			dao.meetFavList(dto);
 		}
-		*/
+		else
+		{
+			dto.setMemId("lee0528kr@naver.com");
+		}
 		
-		System.out.println("====== " + sessionDto);
 		
-		dto.setMemId("lee0528kr@naver.com");
+		System.out.println("====== " + session.getAttribute("member"));
 		
 		model.addAttribute("HotGroupList", dao.HotGroupList());
 		model.addAttribute("NewGroupList", dao.NewGroupList());
 		model.addAttribute("HotHostList", dao.HotHostList());
 		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());
 		
+		if(session.getAttribute("member")!=null)
+		{
+			dto.setMemId(sessionDto.getMemId());
+		}
 		
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
-		
-		
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
 		return view;
