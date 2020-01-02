@@ -106,8 +106,6 @@
       memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
       FROM
       NEWEST_GROUP_ALLVIEW
-
-
    </select>
 
    <select id="HotHostList"
