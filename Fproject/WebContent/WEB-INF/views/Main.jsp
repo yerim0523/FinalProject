@@ -76,6 +76,28 @@ button.more
 
 </style>
 
+<script type="text/javascript">
+	$(function()
+	{
+		$(".empty_h").click(function()
+		{
+			$('.empty_h').removeClass('far');
+			$('.empty_h').addClass('fas');
+			$('.empty_h').addClass('full_h');
+			$('.empty_h').removeClass('empty_h');
+		});
+		
+		
+		$(".full_h").click(function()
+		{
+			$('.full_h').removeClass('fas');
+			$('.full_h').addClass('far');
+			$('.full_h').addClass('empty_h');
+			$('.full_h').removeClass('full_h');
+		});
+	});
+</script>
+
 </head>
 <body>
 
@@ -168,7 +190,8 @@ button.more
                <h5>${HotGroup.grName }</h5>
                </div>
                <div class="heart" align="right">
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart empty_h" style="color: red;"></i>
+                  <!-- <i class="fas fa-heart full_h" style="color: red;"></i> -->
                </div>
                <br>
             </div>

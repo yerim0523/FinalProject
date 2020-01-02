@@ -41,8 +41,6 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
     
 <style type="text/css">
 	.image
@@ -107,6 +105,9 @@
 			var params = {};
 				params.memId = $("#memId").val();
 				params.ngCode = $("#modalNg").val();
+				
+				alert($("#memId").val());
+				alert($("#modalNg").val());
 			
 			$.ajax({
                 type : "POST"

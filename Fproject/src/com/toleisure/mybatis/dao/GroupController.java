@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import com.toleisure.mybatis.dto.FeedBackDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
@@ -249,7 +248,14 @@ public class GroupController
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
-		GroupDTO dto2 = dao.feedJoinCode(dto);
+		GroupDTO dto2 = new GroupDTO();
+		int v = dao.feedJoinCode(dto);
+		
+		dto2.setJoinCode(v);
+		
+		System.out.println("==================");
+		System.out.println("==== joinCode 는~?  "+ dto2.getJoinCode());
+		System.out.println("==================");
 		
 		String joinCode = Integer.toString(dto2.getJoinCode());
 		

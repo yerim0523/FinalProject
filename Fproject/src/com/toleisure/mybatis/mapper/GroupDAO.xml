@@ -133,7 +133,7 @@
    </select>
 
       <!-- 현재 선택한 모임에 대해 피드백을 작성하기 위한 joinCode 구하기 -->
-   <select id="feedJoinCode" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   <select id="feedJoinCode" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="Integer">
       SELECT JOIN_CODE AS joinCode
       FROM GR_REQUEST RQ, PAYMENT P, GR_JOIN J
       WHERE RQ.RE_CODE=P.RE_CODE AND P.PAY_CODE=J.PAY_CODE
