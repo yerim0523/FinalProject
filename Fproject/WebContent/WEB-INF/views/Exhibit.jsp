@@ -122,9 +122,10 @@
   	
 	<div class="row">
 		<c:forEach var="ExhibitGroup" items="${ExhibitGroupList}">
-		<div class="col-sm-6 col-md-4" onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
+		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${ExhibitGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${ExhibitGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
 			<div class="caption">
 			<div>
 				<div class="starRev">
@@ -139,7 +140,7 @@
 			<div>
 				<span style="font-size: 12px;">1회차|</span>
 				<div>
-					<div class="name">
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
 					<h5>${ExhibitGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
