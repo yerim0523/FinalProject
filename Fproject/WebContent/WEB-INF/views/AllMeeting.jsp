@@ -138,8 +138,15 @@
 					
 				</div>
 				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
+					<c:if test="${AllGroup.grStarAvg != 0.0 }">
+					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<c:if test="${AllGroup.grStarAvg == 0.0 }">
+					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					</c:if>
+					<span style="color: gray;">&nbsp;&nbsp;${AllGroup.grStarAvg } 
+						<span style="font-size: 10pt; color: gray;">/ ${AllGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+					</span>
 				</div>
 			</div>
 			<br>
