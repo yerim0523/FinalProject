@@ -74,50 +74,49 @@ function fn_paging(curPage)
       
         <c:forEach var="v" items="${eventSelect }">
         <table class="table">
-        <tr>
-            <th class="success" id = "boardNum" value="${v.boardNum}">글번호</th>
-            <td>${v.boardNum}</td>
-            <th class="success" id = "boardHits" value="${v.boardHits}">조회수</th>
-            <td>${v.boardHits}</td>
-        </tr>
-           
-         
-        <tr>
-            <th class="success" id = "boardMem" value="${v.boardMem}">작성자</th>
-            <td>${v.boardMem}</td>
-            <th class="success" id = "boardDate" value="${v.boardDate}">작성일</th>
-            <td>${v.boardDate}</td>
-        </tr>
-         
-        <tr>
-            <th class="success">이메일</th>
-            <td colspan="3"> </td>
-        </tr>
-         
-        <tr>
-            <th class="success" id = "boardTitle" value="${v.boardTitle}">제목</th>
-            <td colspan="3">${v.boardTitle}</td>
-        </tr>
-         
-        <tr>
-            <th class="success" id = "boardCont" value="${v.boardCont}">글 내용</th>
-            <td colspan="3">${v.boardCont}</td>
-       </tr>
-
+	        <tr>
+	            <th class="success" id = "boardNum" value="${v.boardNum}">글번호</th>
+	            <td>${v.boardNum}</td>
+	            <th class="success" id = "boardHits" value="${v.boardHits}">조회수</th>
+	            <td>${v.boardHits}</td>
+	        </tr>
+	           
+	         
+	        <tr>
+	            <th class="success" id = "boardMem" value="${v.boardMem}">작성자</th>
+	            <td>${v.boardMem}</td>
+	            <th class="success" id = "boardDate" value="${v.boardDate}">작성일</th>
+	            <td>${v.boardDate}</td>
+	        </tr>
+	         
+	        <tr>
+	            <th class="success">이메일</th>
+	            <td colspan="3"> </td>
+	        </tr>
+	         
+	        <tr>
+	            <th class="success" id = "boardTitle" value="${v.boardTitle}">제목</th>
+	            <td colspan="3">${v.boardTitle}</td>
+	        </tr>
+	         
+	        <tr>
+	            <th class="success" id = "boardCont" value='${v.boardCont}'>글 내용</th>
+	            <td colspan="3">${v.boardCont}</td>
+	        </tr>
+	
 			<tr>
-					<td colspan="4" class="text-center">
-						
-							<input type="button" onClick="edit_paging(${v.boardNum})" class="btn4" style="background-color: #D4F4FA;" value="수정하기" >
-							<input type="button" onClick="del_event(${v.boardNum})" class="btn4" style="background-color: #eec4c4;" value="삭제하기" >
-							<input type="button" onClick="fn_paging(${paging.curPage})" class="btn4" style="background-color: #FAED7D;" value="목록보기">
-						</td>
-					</tr>
+				<td colspan="4" class="text-center">
+					<input type="button" class="btn4" style="background-color: #D4F4FA;" value="수정하기" onClick="edit_paging(${v.boardNum})" >
+					<input type="button"  class="btn4" style="background-color: #eec4c4;" value="삭제하기" onClick="del_event(${v.boardNum})">
+					<input type="button"  class="btn4" style="background-color: #FAED7D;" value="목록보기" onClick="fn_paging(${paging.curPage})">
+				</td>
+			</tr>
 
 
 
-				</table>
+		</table>
 		
-				</c:forEach>
+		</c:forEach>
     </div>
     
     </div>

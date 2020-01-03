@@ -58,7 +58,7 @@
 		alert("확인");
 	}
 </script> -->
-<script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script>
+<!-- <script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script> -->
 <script>
 /*     $(document).ready(function(){
         $("#notice_regi").on("click",function(){
