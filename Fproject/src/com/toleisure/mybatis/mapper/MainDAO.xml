@@ -6,7 +6,7 @@
    <select id="AllGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount
+      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
       FROM ALL_GROUP_VIEW
       WHERE NG_STARTDATE>SYSDATE
       ORDER BY NG_DATE DESC
@@ -26,7 +26,7 @@
    <select id="ExhibitGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
       FROM
       CUL_EXHIBITION_VIEW
    </select>
@@ -34,14 +34,14 @@
    <select id="PlayGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
       FROM CUL_PLAY_VIEW
    </select>
 
    <select id="ShowGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
+      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
       FROM CUL_SHOW_VIEW
    </select>
    
@@ -67,7 +67,7 @@
    <select id="CafeGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-      grCate1Name, CATE2 AS grCate2Name
+      grCate1Name, CATE2 AS grCate2Name, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
       FROM FOOD_CAFE_VIEW
    </select>
 
