@@ -185,7 +185,6 @@
 	
 	$(function()
 	{
-		
 		$('[type*="radio"]').change(function () {
 			var rate = $(this).val();
 			
