@@ -379,7 +379,17 @@ public class GroupController
 		return "redirect:main.action";
 	}
 	
-	
+	@RequestMapping(value = "/reviewmeeting.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String reviewMeeting(int ngCode, Model m, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		;
+		
+		m.addAttribute("reviewM", dao.reviewM(ngCode));
+		
+		return "/WEB-INF/views/ReviewM.jsp";
+	}
 	
 	
 }

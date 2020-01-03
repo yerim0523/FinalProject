@@ -52,7 +52,7 @@ public interface IMainDAO
 	public String hostFavCheck(GroupDTO dto);
 	
 	//-- 찜 목록 확인
-	public String meetFavList(GroupDTO dto); 
+	public String meetFavList(String memId); 
 	
 	//-- 찜 모임 추가
 	public void meetFavInsert(GroupDTO dto);

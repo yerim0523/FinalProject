@@ -56,7 +56,7 @@ public class MainController
 			dto.setMemId(sessionDto.getMemId());
 		}
 		
-		model.addAttribute("meetFavList", dao.meetFavList(dto));
+		//model.addAttribute("meetFavList", dao.meetFavList(dto.getMemId()));
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
@@ -293,16 +293,6 @@ public class MainController
 		
 		return view;
 		
-	}
-	
-	// ---------------------------------------------------------- 모임 상세 페이지 ▶ 후기 더보기
-	@RequestMapping(value = "/reviewmeeting.action", method = RequestMethod.GET)
-	public String Login(Model model, HttpSession session)
-	{
-		String view = "WEB-INF/views/ReviewM.jsp";
-		session.getAttribute("member");
-
-		return view;
 	}
 	
 	// ---------------------------------------------------------- 찜 모임 여부
