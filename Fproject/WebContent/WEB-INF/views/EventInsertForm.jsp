@@ -76,8 +76,13 @@
 	          maxHeight: null,             
 	          focus: true,                 
 	          fontSizes: ['4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
-			    fontNames: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
-				fontNamesIgnoreCheck: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체'],
+			  fontNames: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
+		      fontNamesIgnoreCheck: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체'],
+			  popover: {         //팝오버 설정
+					
+				  	video: [],
+	    	        air: []
+	    	  }
 	    }); 
 	}); 
    	
@@ -101,7 +106,7 @@
 	   var AnnounceResult = Announce.getAttribute("checked")
 	   var check=0;
 	   
-	   if($('input').is(":checked") == true)         // 체크 된 값만 
+	   if($('#AnnounceCheck').is(":checked") == true)         // 체크 된 값만 
 	   {
 	      check=1;
 	      //alert(temp[i]);
@@ -153,39 +158,38 @@
 	</div>
 		
 	  <form action="eventinsert.action" method="post" name="EventInsertForm" id="EventInsertForm" class="form-horizontal">	
-	<div class="container">
-		<table class="table" style="text-align: center;">
-			<tr>
-				<td>제목</td>
-				<td>
-					<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
-							required="required" pattern=".{4,100}">
-				</td>
-				<td>
-					<label><input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록</label>
-				</td>
+	  	<input type="hidden" id="check" name="check" value="0">
+		<div class="container">
+			<table class="table" style="text-align: center;">
+				<tr>
+					<td>제목</td>
+					<td>
+						<input type="text" class="form-control" id="boardTitle" placeholder="제목 입력(4-100)" name="boardTitle" maxlength="100"
+								required="required" pattern=".{4,100}">
+					</td>
+					<td>
+						<label><input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록</label>
+					</td>
+				<tr>
+					<td>내용</td>
+					<td colspan="2">
+					<textarea class="form-control" rows="5" id="boardCont" name="boardCont"
+					placeholder="내용 작성"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					
+					</td>
+					<td colspan="2">
+						<div align="right">
+							<button type="button" class="btn4 btn-info submit" onclick="formCheck()" >등록</button>
+						</div>
+					</td>
+				</tr>
 				
-				<input type="hidden" id="check" name="check" value="0">
-			<tr>
-				<td>내용</td>
-				<td colspan="2">
-				<textarea class="form-control" rows="5" id="boardCont" name="boardCont"
-				placeholder="내용 작성"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>
-				
-				</td>
-				<td colspan="2">
-					<div align="right">
-						<button type="button" class="btn4 btn-info submit" onclick="formCheck()" >등록</button>
-					</div>
-				</td>
-			</tr>
-			
-		</table>
-	</div>
+			</table>
+		</div>
 	</form>
 </div>
 
