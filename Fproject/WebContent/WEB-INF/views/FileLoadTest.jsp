@@ -26,6 +26,5 @@
 <img src ="uploads/땅콩댕댕.jpg" width="245">
 <img src ="uploads/땅콩댕댕.jpg" width="245">
 <img src ="페페.png" width="245"> --%>
-<img src ="../uploads" width="245"> 
 </body>
 </html>
