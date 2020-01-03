@@ -10,41 +10,48 @@
 <meta charset="UTF-8">
 <title>모임후기(메이트)</title>
 
+<!-- css -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.js"></script>
+<link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/button.css">
-<link rel="stylesheet" type="text/css" href="css/star.css">
+
+<!-- jquery -->
+
+<!-- 에디터영역을 만드는 역할 -->
+<script src="js/jquery-1.12.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+
+
+
+<!-- 주소 검색 -->
+<!-- jQuery와 Postcodify를 로딩한다 -->
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+
+<!-- jquery plugins here-->
+<!-- easing js -->
+<script src="<%=cp %>/js/jquery.magnific-popup.js"></script>
+<!-- swiper js -->
+<script src="js/swiper.min.js"></script>
+<!-- swiper js -->
+<script src="js/masonry.pkgd.js"></script>
+<!-- particles js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- swiper js -->
+<script src="js/slick.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script> 
 
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
-<!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    
 <style type="text/css">
 
 	.starR1{
@@ -140,8 +147,8 @@
 	.feedback-input:focus{
 		background: #fff;
 		box-shadow: 0;
-		border: 3px solid #3498db;
-		color: #3498db;
+		border: 3px solid pink;
+		color: black;
 		outline: none;
 	  padding: 13px 13px 13px 54px;
 	}
@@ -199,11 +206,23 @@
 			return;
 		}
 		
-		var cont = $("#comment").val();
-		
-		alert("별점 : " + star + "\n내용 : " + cont);
-		
-		return;
+		if(confirm("후기를 제출하시겠습니까 ? \n제출하신 후에는 수정이 불가능합니다.") == true)
+		{
+			var cont = $("#comment").val();
+			var ngCode = $("#ngCode").val();
+			var memId = $("#memId").val();
+			
+			var params = {};
+				params.memId = $("#memId").val();
+				params.ngCode = $("#ngCode").val();
+			
+			alert("별점 : " + star + "\n내용 : " + cont + "\nngCode : " + ngCode + "\nmemId : " + memId);
+			
+		}
+		else
+		{
+			return;
+		}
 	}
 	
 	
@@ -335,7 +354,7 @@
 				    <input type="hidden" name="reviewStar" id="reviewStar">
 				</fieldset>
 			<p class="text">
-		        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
+		        <textarea name="text reviewCont" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="리뷰를 작성해주세요~!"></textarea>
      	 	</p>
      	 	</form>
      	 	<div align="center">
