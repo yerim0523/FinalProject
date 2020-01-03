@@ -35,7 +35,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/event.action") // �씠踰ㅽ듃 由ъ뒪�듃 �샇異�
+	@RequestMapping(value = "/event.action") // 
 	public String eventList(BoardDTO event, @RequestParam(defaultValue = "1") int curPage,
 			Model model, HttpSession session)
 	{
@@ -56,7 +56,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) // �씠踰ㅽ듃 �긽�꽭 紐⑸줉 �샇異�
+	@RequestMapping(value = "/eventdetail.action", method = RequestMethod.GET) // 
 	public String eventDetail(int boardNum, int curPage, Model model, HttpSession session)
 	{
 		String view = "/WEB-INF/views/eventDetail.jsp";
@@ -77,7 +77,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventinsertform.action")		// �씠踰ㅽ듃 �엯�젰 �뤌 �샇異�
+	@RequestMapping(value = "/eventinsertform.action")		// 
 	public String eventInsertForm(HttpSession session)
 	{
 		session.getAttribute("member");
