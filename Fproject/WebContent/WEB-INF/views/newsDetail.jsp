@@ -40,7 +40,13 @@ function edit_paging(boardNum)
 
 function del_event(boardNum)
 {	
-	location.href="newsdelete.action?boardNum="+boardNum;
+	if (confirm("삭제하시겠습니까?")==true)
+	{
+		location.href="newsdelete.action?boardNum="+boardNum;
+	} else
+	{
+		return;
+	}
 }
 
 function fn_paging(curPage)
