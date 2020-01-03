@@ -14,30 +14,18 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+<link href="css/star.css" rel="stylesheet" type="text/css" />
 
-
-<!-- jquery -->
 
 <!-- 에디터영역을 만드는 역할 -->
 <script src="js/jquery-1.12.1.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/bootstrap-select.min.js"></script>
 
-
-
-<!-- 주소 검색 -->
-<!-- jQuery와 Postcodify를 로딩한다 -->
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-<script src="js/waypoints.min.js"></script>
-
 <!-- jquery plugins here-->
-<!-- easing js -->
-<script src="<%=cp %>/js/jquery.magnific-popup.js"></script>
 <!-- swiper js -->
 <script src="js/swiper.min.js"></script>
 <!-- swiper js -->
@@ -49,7 +37,6 @@
 <script src="js/jquery.counterup.min.js"></script> 
 
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
 <style type="text/css">
@@ -191,8 +178,37 @@
 			$("#reviewStar").val(rate);
 			
 		});
+		
+		
+		$(".goReview").click(function() {
+			//alert($("#modalNg").val());
+			
+			var params = {};
+			params.memId = $("#memId").val();
+			params.ngCode = $("#ngCode").val();
+			
+			//alert(params.memId);
+
+	         $.ajax({
+	                type : "POST"
+	                , url : "selectreview.action"
+	                , data : params
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , success: function(data){
+	                    var isReview = data;
+	                    if(isReview === "Y"){
+	                       alert("작성 권한 있음.");
+	                       $('.reviewM').modal('show');
+	                    }else{
+	                    	alert("\n\n　　　모임에 가입한적이 있는 회원들만 가능합니다~!\n　　　모임을 가입해주세요!~");
+	                       $('.reviewM').modal('hide');
+	                    }
+	                 }
+	             });
+		});
 
 	});
+	
 	
 	function formCheck()
 	{
@@ -209,14 +225,32 @@
 		if(confirm("후기를 제출하시겠습니까 ? \n제출하신 후에는 수정이 불가능합니다.") == true)
 		{
 			var cont = $("#comment").val();
+			var star = $("#reviewStar").val();
 			var ngCode = $("#ngCode").val();
 			var memId = $("#memId").val();
 			
 			var params = {};
-				params.memId = $("#memId").val();
-				params.ngCode = $("#ngCode").val();
+				params.memId = memId;
+				params.ngCode = ngCode;
 			
-			alert("별점 : " + star + "\n내용 : " + cont + "\nngCode : " + ngCode + "\nmemId : " + memId);
+				$.ajax({
+	                type : "POST"
+	                , url : "findjoincode.action"
+	                , data : params
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                //, dataType:"text" // text, xml, json, script, html 등 : 서버에서 받을 데이터 형식(default - MIME 타입)
+	                 , success: function(data){
+	                	var joinCode = data;
+	                	alert("후기 작성이 완료되었습니다.");
+	                	location="reviewinsert.action?joinCode="+joinCode+"&reviewStar="+star+"&reviewCont="+cont+"&ngCode="+ngCode;
+	                 }
+	                ,error: function(data){
+	                	 var joinCode = data;
+	                	alert(data);
+	                }
+	             });
+			
+			alert("별점 : " + star + "\n내용 : " + cont + "\nngCode : " + ngCode + "\nmemId : " + memId + " \njoinCode : " + joinCode);
 			
 		}
 		else
@@ -269,7 +303,12 @@
     	<br>    
 		
 		<div align="right">
-			<input type="button" class="btn4" value="후기 작성하기" data-toggle="modal" data-target="#reviewWrite" style="width: 200px;">
+			<c:if test="${empty sessionScope.member}">
+				<input type="button" class="btn4" value="후기 작성하기" data-toggle="modal" data-target="#loginNeed" style="width: 200px;">
+			</c:if>
+			<c:if test="${!empty sessionScope.member}">
+				<input type="button" class="btn4 goReview" value="후기 작성하기" data-toggle="modal" style="width: 200px;">
+			</c:if>
 		</div>
 		
 		<br>
@@ -330,7 +369,7 @@
 
 
 <!-- 후기작성 모달창 -->
-<div class="modal modal-center fade" id="reviewWrite" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+<div class="modal modal-center fade reviewM" id="reviewWrite" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
   <div class="modal-dialog modal-80size modal-center" role="document">
     <div class="modal-content modal-80size">
       <div class="modal-header">
@@ -355,10 +394,13 @@
 				</fieldset>
 			<p class="text">
 		        <textarea name="text reviewCont" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="리뷰를 작성해주세요~!"></textarea>
+		        <input type="hidden" name="memId" id="memId" value="${member.memId }">
+		        <input type="hidden" name="ngCode" id="ngCode" value="${ngCode }">
      	 	</p>
      	 	</form>
      	 	<div align="center">
-     	 	<button class="btn4" onclick="formCheck()">작성</button> <button class="btn4" data-dismiss="modal">취소</button>
+     	 	<button class="btn4" onclick="formCheck()">작성</button>
+     	 	<button class="btn4" data-dismiss="modal">취소</button>
      	 	</div>
       </div>
       <div class="modal-footer">
@@ -366,6 +408,30 @@
     </div>
   </div>
 </div>
+
+
+<!-- 로그인 모달창 -->
+<div class="modal modal-center fade" id="loginNeed" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">로그인이 필요한 서비스입니다.</p>
+			<div align="right">
+				<a href="login.action"><button type="button" class="btn_1" >로그인</button></a>
+				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+			</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 </html>
