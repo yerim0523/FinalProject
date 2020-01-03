@@ -104,7 +104,7 @@ public class BoardController
 
 		session.getAttribute("member");
 
-		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class); 
 
 		List<BoardDTO> eventUpdate = dao.eventSelect(boardNum);
 
