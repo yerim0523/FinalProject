@@ -327,23 +327,38 @@
 				</div>
 				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
            			<div class="starRev">
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1 on"></span>
+           			${reviewM.reviewStar }
+           			
+           			<c:if test="${reviewM.reviewStar eq 0}">
+           				<c:forEach begin="0" end="4">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			<c:if test="${reviewM.reviewStar ne 0}">
+           				<c:forEach begin="1" end="${reviewM.reviewStar/1}">
+           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           				<c:if test="${reviewM.reviewStar%1 ne 0}">
+           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:if>
+           				<c:forEach begin="1" end="${5 - reviewM.reviewStar/1}">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			
             		</div>
         		</div><br>
 				<p>${reviewM.reviewCont }</p>
 			</div>
 			</div>
 			
+			<c:if test="${empty reviewM.reviewComCont }">
+				<div class="balloon" align="left"><br>
+					<p style="font-size: 15px;"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp; 호스트가 답변을 아직 작성하지 않았어요.</p>
+				</div>
+			</c:if>
 			
+			<c:if test="${!empty reviewM.reviewComCont }">
 			<div class="balloon" align="left">
 				<img src="images/${reviewM.hostPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
@@ -356,6 +371,7 @@
 				${reviewM.reviewComCont }
 				</p>
 			</div>
+			</c:if>
 		</div>
 		<br><br>
 		</c:forEach>

@@ -252,7 +252,7 @@ public class MainController
 	@RequestMapping(value = "/join.action", method = RequestMethod.GET)
 	public String Join(Model model)
 	{
-		String view = "WEB-INF/views/join.jsp";
+		String view = "WEB-INF/views/FileTest2.jsp";
 
 		return view;
 	}
@@ -325,6 +325,21 @@ public class MainController
 		dao.meetFavInsert(dto);
 		
 		return "redirect:main.action";
+	}
+	
+	@RequestMapping(value = "/search.action", method = RequestMethod.GET)
+	public String Search(Model model,String search, HttpSession session)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/SearchResult.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+
+		List<GroupDTO> SearchResult = dao.search(search);
+		
+		model.addAttribute("SearchResult", SearchResult);
+
+		return view;
 	}
 	
 }
