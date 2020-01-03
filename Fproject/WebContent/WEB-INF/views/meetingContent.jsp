@@ -123,6 +123,7 @@
 					<div class="main_image">
 						<img class="img-fluid" src=${grcontent.ngPic }
 							style="width: 700px; height: 400px;">
+						<input type="hidden" name="grCode" value="${grcontent.grCode }">
 					</div>
 
 					<br>
@@ -223,7 +224,7 @@
 						</c:forEach>
 						
 							<div align="right">
-							<a class="btn4" href="reviewmeeting.action?ngCode=${grcontent.ngCode }"> 더보기</a>
+							<a class="btn4" href="reviewmeeting.action?grCode=${grcontent.grCode }"> 더보기</a>
 						</div>
 
 						<div>

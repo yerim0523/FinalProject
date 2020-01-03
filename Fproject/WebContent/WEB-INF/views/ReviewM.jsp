@@ -357,6 +357,7 @@
 				</p>
 			</div>
 		</div>
+		<br><br>
 		</c:forEach>
 		
 	</div>
