@@ -220,6 +220,7 @@ public class GroupController
 		return "redirect:main.action";
 	}
 
+	// 피드백 작성 여부 확인
 	@RequestMapping(value = "/selectfeed.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public String selectFeed(GroupDTO dto, Model model, HttpSession session)
@@ -227,6 +228,22 @@ public class GroupController
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		String isMemYn = dao.feedCheck(dto);
+		
+		System.out.println("==================");
+		System.out.println("==== isMemYn = "+isMemYn);
+		System.out.println("==================");
+		
+		return isMemYn;
+	}
+	
+	// 후기 작성 권한 있는지 여부 확인
+	@RequestMapping(value = "/selectreview.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String selectReview(GroupDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		String isMemYn = dao.joinCheck(dto);
 		
 		System.out.println("==================");
 		System.out.println("==== isMemYn = "+isMemYn);
@@ -292,6 +309,37 @@ public class GroupController
 		return "redirect:endgrouplist.action";
 	}
 	
+	
+
+	@RequestMapping(value = "/reviewinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String insertReview(HttpServletRequest req, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+		
+		int joinCode = Integer.parseInt(req.getParameter("joinCode"));
+		int ngCode = Integer.parseInt(req.getParameter("ngCode"));
+		double reviewStar = (double)Integer.parseInt(req.getParameter("reviewStar"));
+		String reviewCont = req.getParameter("reviewCont");
+		
+		String result = "redirect:reviewmeeting.action?ngCode="+ngCode;
+		
+		System.out.println("=========  " + joinCode);
+		
+		MemberDTO dtoS = (MemberDTO)session.getAttribute("member");
+		
+		GroupDTO dto = new GroupDTO();
+		dto.setMemId(dtoS.getMemId());
+		dto.setJoinCode(joinCode);
+		dto.setReviewCont(reviewCont);
+		dto.setReviewStar(reviewStar);
+		
+		System.out.println("======= " + dto.getJoinCode());
+		
+		dao.reviewInsert(dto);
+		
+		return result;
+	}	
 	
 	@RequestMapping(value = "/phonepage.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String phonePage(MemberDTO dto, Model model, HttpSession session)
@@ -384,12 +432,11 @@ public class GroupController
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		;
 		
 		m.addAttribute("reviewM", dao.reviewM(ngCode));
+		m.addAttribute("ngCode", ngCode);
 		
 		return "/WEB-INF/views/ReviewM.jsp";
 	}
-	
 	
 }

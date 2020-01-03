@@ -32,6 +32,9 @@ public interface IGroupDAO
 	// 피드백 참여했는지 여부 확인 (마이페이지 - 참여모임 - 피드백)
 	public String feedCheck(GroupDTO dto);
 	
+	// 후기 남길 권한 있는지 확인
+	public String joinCheck(GroupDTO dto);
+	
 	// JoinCode 구하기
 	public int feedJoinCode(GroupDTO dto);
 	
@@ -40,6 +43,9 @@ public interface IGroupDAO
 	
 	// 모임 후기 더보기 리스트 출력 (모임상세 - 후기 - 더보기)
 	public ArrayList<GroupDTO> reviewM(int ngCode);
+	
+	// 모임 후기 작성내용 등록
+	public int reviewInsert(GroupDTO dto);
 	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);

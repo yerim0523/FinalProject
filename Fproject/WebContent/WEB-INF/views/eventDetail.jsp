@@ -40,7 +40,14 @@ function edit_paging(boardNum)
 
 function del_event(boardNum)
 {	
-	location.href="eventdelete.action?boardNum="+boardNum;
+	if (confirm("삭제하시겠습니까?")==true)
+	{
+		location.href="eventdelete.action?boardNum="+boardNum;	
+	} else
+	{
+		return;
+	}
+	
 }
 
 function fn_paging(curPage)
@@ -57,67 +64,59 @@ function fn_paging(curPage)
 </div>
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
-<div class="container">
-<div class="row" style="padding: 50px 0px 20px 40px;">
-    <div class="col-xs-2 col-md-2"></div>
-    <div class="col-xs-8 col-md-8">
-    <h2 class="text-center">게시글 보기</h2><p>&nbsp;</p>
-    <div class="table table-responsive">
-      
-      
-        <c:forEach var="v" items="${eventSelect }">
-        <table class="table">
-        <tr>
-            <th class="success" id = "boardNum" value="${v.boardNum}">글번호</th>
-            <td>${v.boardNum}</td>
-            <th class="success" id = "boardHits" value="${v.boardHits}">조회수</th>
-            <td>${v.boardHits}</td>
-        </tr>
-           
-         
-        <tr>
-            <th class="success" id = "boardMem" value="${v.boardMem}">작성자</th>
-            <td>${v.boardMem}</td>
-            <th class="success" id = "boardDate" value="${v.boardDate}">작성일</th>
-            <td>${v.boardDate}</td>
-        </tr>
-         
-        <tr>
-            <th class="success">이메일</th>
-            <td colspan="3"> </td>
-        </tr>
-         
-        <tr>
-            <th class="success" id = "boardTitle" value="${v.boardTitle}">제목</th>
-            <td colspan="3">${v.boardTitle}</td>
-        </tr>
-         
-        <tr>
-            <th class="success" id = "boardCont" value="${v.boardCont}">글 내용</th>
-            <td colspan="3">${v.boardCont}</td>
-       </tr>
-
-			<tr>
-					<td colspan="4" class="text-center">
-						
-							<input type="button" onClick="edit_paging(${v.boardNum})" class="btn4" style="background-color: #D4F4FA;" value="수정하기" >
-							<input type="button" onClick="del_event(${v.boardNum})" class="btn4" style="background-color: #eec4c4;" value="삭제하기" >
-							<input type="button" onClick="fn_paging(${paging.curPage})" class="btn4" style="background-color: #FAED7D;" value="목록보기">
-						</td>
-					</tr>
-
-
-
-				</table>
-		
-				</c:forEach>
-    </div>
-    
-    </div>
-</div>
- 
- 
- </div>
+	<div class="container">
+		<div class="row" style="padding: 50px 0px 20px 40px;">
+		    <div class="col-xs-2 col-md-2"></div>
+		    <div class="col-xs-8 col-md-8">
+		    	<h2 class="text-center">게시글 보기</h2><p>&nbsp;</p>
+			    <div class="table table-responsive">
+			      
+			        <c:forEach var="v" items="${eventSelect }">
+			        <table class="table">
+				        <tr>
+				            <th class="success" id = "boardNum" value="${v.boardNum}">글번호</th>
+				            <td>${v.boardNum}</td>
+				            <th class="success" id = "boardHits" value="${v.boardHits}">조회수</th>
+				            <td>${v.boardHits}</td>
+				        </tr>
+				           
+				         
+				        <tr>
+				            <th class="success" id = "boardMem" value="${v.boardMem}">작성자</th>
+				            <td>${v.boardMem}</td>
+				            <th class="success" id = "boardDate" value="${v.boardDate}">작성일</th>
+				            <td>${v.boardDate}</td>
+				        </tr>
+				         
+				        <tr>
+				            <th class="success">이메일</th>
+				            <td colspan="3"> </td>
+				        </tr>
+				         
+				        <tr>
+				            <th class="success" id = "boardTitle" value="${v.boardTitle}">제목</th>
+				            <td colspan="3">${v.boardTitle}</td>
+				        </tr>
+				         
+				        <tr>
+				            <th class="success" id = "boardCont" value='${v.boardCont}'>글 내용</th>
+				            <td colspan="3">${v.boardCont}</td>
+				        </tr>
+				
+						<tr>
+							<td colspan="4" class="text-center">
+								<input type="button" class="btn4" style="background-color: #D4F4FA;" value="수정하기" onClick="edit_paging(${v.boardNum})" >
+								<input type="button"  class="btn4" style="background-color: #eec4c4;" value="삭제하기" onClick="del_event(${v.boardNum})">
+								<input type="button"  class="btn4" style="background-color: #FAED7D;" value="목록보기" onClick="fn_paging(${paging.curPage})">
+							</td>
+						</tr>
+					</table>
+					
+					</c:forEach>
+			    </div>
+			   </div>
+		</div>
+	</div>
 </section>
 <div>
 	<c:import url="footer.jsp"></c:import>

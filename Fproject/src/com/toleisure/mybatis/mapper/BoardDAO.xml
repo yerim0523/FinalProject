@@ -403,16 +403,16 @@
 		SELECT T.*
 	    FROM
 	    (
-	    SELECT ROWNUM AS rNum, E.boardNum AS boardNum, E.boardTitle AS boardTitle, E.boardCont AS boardCont, SUBSTR(E.boardDate,0,10) AS boardDate
-	         , E.boardMem AS boardMem, E.boardHits AS boardHits, boardNotice AS boardNotice
-			FROM(
+	    SELECT ROWNUM AS rNum, E.boardNum, E.boardTitle, E.boardCont, E.boardDate, E.boardMem, E.boardHits, boardNotice
+			FROM
+			(
 					    SELECT C.COM_NUM AS boardNum, C.COM_TITLE AS boardTitle, C.COM_CONT AS boardCont
-					         , TO_CHAR(C.COM_DATE, 'YYYY-MM-DD HH24:MI:SS') AS boardDate, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHits, NVL(CN.CNOTICE_NUM,0) AS boardNotice
+					         , TO_CHAR(C.COM_DATE, 'YYYY-MM-DD') AS boardDate, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHits, NVL(CN.CNOTICE_NUM,0) AS boardNotice
 					    FROM COMMUNITY C, COM_NOTICE CN, MEMBER M, ADMIN A
 					    WHERE C.COM_NUM = CN.COM_NUM(+)
 					      AND C.MEM_ID = M.MEM_ID
 					      AND A.MEM_ID(+) = M.MEM_ID
-			            ORDER BY BOARDNOTICE DESC, boardDate DESC
+			            ORDER BY boardDate DESC, BOARDNOTICE DESC
 			)E
 	    )T
 		WHERE rNum BETWEEN #{startIndex} AND #{endIndex}
@@ -423,7 +423,7 @@
 		FROM 
 		(        
 		    SELECT C.COM_NUM AS boardNum, C.COM_TITLE AS boardTitle, C.COM_CONT AS boardCont
-		         , TO_CHAR(C.COM_DATE, 'YYYY-MM-DD') AS boardDate, M.MEM_ID AS memId, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHITS, NVL(CN.CNOTICE_NUM,0) AS boardNotice
+		         , TO_CHAR(C.COM_DATE, 'YYYY-MM-DD') AS boardDate, M.MEM_NAME AS boardMem, C.COM_HITS AS boardHITS, NVL(CN.CNOTICE_NUM,0) AS boardNotice
 		    FROM COMMUNITY C, COM_NOTICE CN, MEMBER M, ADMIN A
 		        WHERE C.COM_NUM = CN.COM_NUM(+)
 		          AND C.MEM_ID = M.MEM_ID
@@ -439,62 +439,7 @@
 		WHERE COM_NUM = #{boardNum}
 	</update>
 	
-	<insert id="mainboardInsert" parameterType="com.toleisure.mybatis.dto.BoardDTO">
-		{CALL
-         DECLARE
-            boardCodeSeq INT;
-         BEGIN
-            boardCodeSeq := COMMUNITYSEQ.NEXTVAL;
-  
-             INSERT INTO COMMUNITY(COM_NUM,MEM_ID,COM_TITLE,COM_CONT,COM_DATE,COM_HITS)
-            VALUES(boardCodeSeq,#{boardMem}, #{boardTitle}, #{boardCont} ,SYSDATE,0);
-            
-            <choose>
-               <when test='check!= 0'>
-                  INSERT INTO COM_NOTICE
-                     (CNOTICE_NUM, COM_NUM,ADMIN_CODE)
-                  VALUES
-                     (COM_NOTSEQ.NEXTVAL,boardCodeSeq,1);
-               </when>
-               <otherwise>
-                 
-               </otherwise>
-            </choose>
-      END
-      }
-	</insert>
 	
-	<update id ="mainboardUpdate" parameterType="com.toleisure.mybatis.dto.BoardDTO">
-        UPDATE COMMUNITY
-        SET COM_TITLE=#{boardTitle}, COM_CONT=#{boardCont}
-		WHERE COM_NUM = #{boardNum}           	           		           
-   </update>
 	
-	<delete id="mainboardDelete" >
-        DELETE 
-        FROM COMMUNITY
-        WHERE COM_NUM = #{boardNum}
-    </delete>
-    
-   <select id ="mainboardNoticeCheck" resultType="Integer">
-		SELECT  COUNT(*)
-        FROM COM_NOTICE
-        WHERE COM_NUM=#{boardNum}
-   </select>
-   
-   <delete id="mainboardNoticeDelete" >
-        DELETE 
-        FROM COM_NOTICE
-        WHERE COM_NUM = #{boardNum}
-    </delete>
-    
-    <insert id ="InsertMainboardNotice">
-    	          INSERT INTO COM_NOTICE
-                     (CNOTICE_NUM, COM_NUM,ADMIN_CODE)
-                  VALUES
-                     (COM_NOTSEQ.NEXTVAL,#{boardNum},1)
-    </insert>
-   
-    
    
 </mapper>

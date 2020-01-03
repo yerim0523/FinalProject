@@ -119,11 +119,11 @@
    <!-- 현재 종료된 나(접속중인 사람)의 모임 목록 -->
    <select id="myEndGroup" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT RQ.MEM_ID AS memId, RQ.NG_CODE AS ngCode, NG.NG_PIC as ngPic, G.GR_NAME as grName, C.CATE_NAME AS grCate1Name, NVL(C2.CATE_NAME,0) AS grCate2Name, M.MEM_NAME as memName, NG.NG_STARTDATE as ngStart, NVL(CNT.GR_COUNT,0) AS grCount
-      FROM GR_REQUEST RQ, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT NG.NG_CODE AS NG_CODE, G.GR_CODE AS GR_CODE, RANK() OVER(PARTITION BY G.GR_CODE ORDER BY NG.NG_STARTDATE) AS GR_COUNT
+      FROM GR_REQUEST RQ, GR_JOIN J, PAYMENT P, NOW_GROUP NG, TBL_GROUP G, CATEGORY C, CATEGORY C2, MEMBER M, (SELECT NG.NG_CODE AS NG_CODE, G.GR_CODE AS GR_CODE, RANK() OVER(PARTITION BY G.GR_CODE ORDER BY NG.NG_STARTDATE) AS GR_COUNT
                                                                                              FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
                                                                                              WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE=NG.NG_CODE) CNT   
       WHERE RQ.NG_CODE=NG.NG_CODE AND NG.GR_CODE=G.GR_CODE AND G.CATE_CODE1 = C.CATE_CODE AND G.CATE_CODE2 = C2.CATE_CODE(+)
-        AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE AND CNT.NG_CODE=RQ.NG_CODE
+        AND G.MEM_ID=M.MEM_ID AND CNT.GR_CODE(+) = G.GR_CODE AND CNT.NG_CODE=RQ.NG_CODE AND P.RE_CODE=RQ.RE_CODE AND P.PAY_CODE=J.PAY_CODE
         AND RQ.MEM_ID=#{memId}
         AND  SYSDATE > NG.NG_STARTDATE
         AND (RQ.NG_CODE, RQ.MEM_ID) NOT IN (SELECT RQ.NG_CODE, RQ.MEM_ID 
@@ -146,6 +146,14 @@
       FROM FEEDBACK F, GR_JOIN J, PAYMENT P, GR_REQUEST R
       WHERE F.JOIN_CODE=J.JOIN_CODE AND J.PAY_CODE = P.PAY_CODE AND P.RE_CODE = R.RE_CODE
         AND (R.MEM_ID = #{memId} AND R.NG_CODE = #{ngCode})
+   </select>
+	
+	<!-- ngCode 에 가입되어 있는지 확인 -->
+   <select id="joinCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="String">
+      SELECT CASE WHEN COUNT(*)=1 THEN 'Y' ELSE 'N' END
+		FROM GR_REQUEST RQ, PAYMENT P, GR_JOIN J
+		WHERE RQ.RE_CODE=P.RE_CODE AND P.PAY_CODE=J.PAY_CODE
+		AND RQ.NG_CODE=#{ngCode} AND RQ.MEM_ID=#{memId}
    </select>
    
    <!-- 피드백 insert -->
@@ -225,21 +233,26 @@
    </insert>
    
    <select id="reviewM" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
-   	SELECT F.NG_CODE AS ngCode, R.REVIEW_CONT AS reviewCont, R.REVIEW_STAR AS reviewStar, R.REVIEW_DATE AS reviewDate
-   		 , RC.RCOMMENT_CONT AS reviewComCont, RC.RCOMMENT_DATE AS reviewComDate
-	     , M.MEM_ID AS memId, M.MEM_NAME AS memName, M.MEM_PIC AS memPic, H.MEM_ID AS hostId, H.MEM_NAME AS hostName, H.MEM_PIC AS hostPic
-	FROM REVIEW R JOIN GR_JOIN J ON R.JOIN_CODE=J.JOIN_CODE
-	    JOIN FIXED_GROUP F ON J.FIX_CODE=F.FIX_CODE
-	    JOIN PAYMENT P ON J.PAY_CODE=P.PAY_CODE
-	    JOIN GR_REQUEST Q ON P.RE_CODE=Q.RE_CODE
-	    JOIN NOW_GROUP N ON F.NG_CODE=N.NG_CODE
-	    JOIN TBL_GROUP T ON N.GR_CODE=T.GR_CODE
-	    JOIN MEMBER M ON Q.MEM_ID=M.MEM_ID
-	    JOIN MEMBER H ON T.MEM_ID=H.MEM_ID
-	    LEFT JOIN REV_COMMENT RC ON R.REVIEW_NUM=RC.REVIEW_NUM
-	WHERE NG_CODE=#{ngCode}
-	ORDER BY R.REVIEW_DATE DESC
+	   	SELECT F.NG_CODE AS ngCode, J.JOIN_CODE AS joinCode, R.REVIEW_CONT AS reviewCont, R.REVIEW_STAR AS reviewStar, R.REVIEW_DATE AS reviewDate
+	   		 , RC.RCOMMENT_CONT AS reviewComCont, RC.RCOMMENT_DATE AS reviewComDate
+		     , M.MEM_ID AS memId, M.MEM_NAME AS memName, M.MEM_PIC AS memPic, H.MEM_ID AS hostId, H.MEM_NAME AS hostName, H.MEM_PIC AS hostPic
+		FROM REVIEW R JOIN GR_JOIN J ON R.JOIN_CODE=J.JOIN_CODE
+		    JOIN FIXED_GROUP F ON J.FIX_CODE=F.FIX_CODE
+		    JOIN PAYMENT P ON J.PAY_CODE=P.PAY_CODE
+		    JOIN GR_REQUEST Q ON P.RE_CODE=Q.RE_CODE
+		    JOIN NOW_GROUP N ON F.NG_CODE=N.NG_CODE
+		    JOIN TBL_GROUP T ON N.GR_CODE=T.GR_CODE
+		    JOIN MEMBER M ON Q.MEM_ID=M.MEM_ID
+		    JOIN MEMBER H ON T.MEM_ID=H.MEM_ID
+		    LEFT JOIN REV_COMMENT RC ON R.REVIEW_NUM=RC.REVIEW_NUM
+		WHERE NG_CODE=#{ngCode}
+		ORDER BY R.REVIEW_DATE DESC
    </select>
+   
+   <insert id="reviewInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+   		INSERT INTO REVIEW(REVIEW_NUM, JOIN_CODE, REVIEW_CONT, REVIEW_STAR)
+		VALUES(REVIEWSEQ.NEXTVAL, #{joinCode}, #{reviewCont}, #{reviewStar})
+   </insert>
       
 
    <!-- 

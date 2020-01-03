@@ -96,13 +96,13 @@
 </section>
 
 
-<div class="container">
+<div class="container"> 
 	<div>
 		<div align="left" class="left">
 			<button type="button" class="btn btn-default">전체모임목록</button>
 		</div>
 		
-		<div align="right" >
+		<div align="right" > 
 			<label class="radio-inline">
 				<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="종료모임">종료 모임도 볼래요!
 			</label>

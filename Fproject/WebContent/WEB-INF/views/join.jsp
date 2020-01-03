@@ -39,7 +39,7 @@
 		});
 	});
 	
-	/* $("#memPic").change(function(){
+	/*  $("#memPic").change(function(){
 		   if(this.files && this.files[0]) {
 		    var reader = new FileReader;
 		    reader.onload = function(data) {
@@ -47,7 +47,7 @@
 		    }
 		    reader.readAsDataURL(this.files[0]);
 		   }
-		  }); */
+		  });  */
 	
 	function sms()
 	{
@@ -336,14 +336,9 @@
 										 <input type="file" class="sc-hrWEMg feokCA"	id="memPic" name="memPic" />
 										 <div class="select_img"><img src="" /></div>
 								
-										 <%=request.getRealPath("/") %>
 										</div>
 								
-										<form action="fileuploadtest.action" enctype="multipart/form-data" method="post">
-										    <input type="file" name="file1"><p>
-										    <input type="file" name="file2"><p>
-										    <input type="submit" value="파일업로드">
-										</form>
+										
 										
 
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">

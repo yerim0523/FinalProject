@@ -252,7 +252,7 @@ public class MainController
 	@RequestMapping(value = "/join.action", method = RequestMethod.GET)
 	public String Join(Model model)
 	{
-		String view = "WEB-INF/views/FileTest2.jsp";
+		String view = "WEB-INF/views/join.jsp";
 
 		return view;
 	}
