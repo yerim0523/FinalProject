@@ -228,7 +228,6 @@
 
    <!-- ============================================테마별 DAO END================================================ -->
 
-
    <select id="AvgStar"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT AVG(R.REVIEW_STAR) AS REVIEW_STAR_AVG
