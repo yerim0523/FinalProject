@@ -384,12 +384,11 @@ public class GroupController
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		;
 		
 		m.addAttribute("reviewM", dao.reviewM(ngCode));
+		m.addAttribute("ngCode", ngCode);
 		
 		return "/WEB-INF/views/ReviewM.jsp";
 	}
-	
 	
 }
