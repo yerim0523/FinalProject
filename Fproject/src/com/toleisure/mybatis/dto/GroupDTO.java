@@ -3,7 +3,7 @@ package com.toleisure.mybatis.dto;
 public class GroupDTO
 {
 
-	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name;
+	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name,search;
 	private String hostId, hostName, hostPic, reviewComCont, reviewComDate;
 	private int grCode, grCate1, grCate2,starCode;
 
@@ -550,6 +550,16 @@ public class GroupDTO
 	public void setReviewComCont(String reviewComCont)
 	{
 		this.reviewComCont = reviewComCont;
+	}
+
+	public String getSearch()
+	{
+		return search;
+	}
+
+	public void setSearch(String search)
+	{
+		this.search = search;
 	}
 
 	

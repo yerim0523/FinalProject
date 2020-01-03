@@ -255,41 +255,4 @@
    </insert>
       
 
-   <!-- 
-   <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_NAME
-      FROM NOW_GROUP
-      WHERE GR_NAME LIKE %#{검색값}%
-   </select>
-   
-   <select id="grSearch" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_NAME
-      FROM NOW_GROUP
-      WHERE GR_NAME LIKE %#{검색값}%
-   </select>
-   
-   
-   <select id="searchGroup" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_NAME
-      FROM NOW_GROUP
-      WHERE GR_NAME LIKE %#{검색값}%
-   </select>
-   
-   <select id="searchHost" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_NAME
-      FROM NOW_GROUP
-      WHERE GR_NAME LIKE %#{검색값}%
-   </select>
-   
-   <select id="searchMood" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_NAME
-      FROM NOW_GROUP
-      WHERE GR_NAME LIKE %#{검색값}%
-   </select>
-    -->
-
-
-   
-   
-
 </mapper>

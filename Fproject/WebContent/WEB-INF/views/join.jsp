@@ -39,15 +39,7 @@
 		});
 	});
 	
-	/*  $("#memPic").change(function(){
-		   if(this.files && this.files[0]) {
-		    var reader = new FileReader;
-		    reader.onload = function(data) {
-		     $(".select_img img").attr("src", data.target.result).width(500);        
-		    }
-		    reader.readAsDataURL(this.files[0]);
-		   }
-		  });  */
+	
 	
 	function sms()
 	{
@@ -331,13 +323,34 @@
 										</div> -->
 										
 										
-										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
+									
+										
+										<form action="fileuploadtest.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
+										    
+										    <input type="submit" value="파일업로드">
+											
+												<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 										 <label class="sc-iyvyFf kBgtyY">프로필 사진</label>
-										 <input type="file" class="sc-hrWEMg feokCA"	id="memPic" name="memPic" />
+										 <input type="file" class="sc-hrWEMg feokCA" id="memPic" name="file" />
 										 <div class="select_img"><img src="" /></div>
 								
 										</div>
-								
+
+										<script>
+										
+										  $("#memPic").change(function(){
+											   if(this.files && this.files[0]) {
+											    var reader = new FileReader;
+											    reader.onload = function(data) {
+											     $(".select_img img").attr("src", data.target.result).width(500);        
+											    }
+											    reader.readAsDataURL(this.files[0]);
+											   }
+											  });  
+										  
+										</script>
+										
+										</form>
 										
 										
 

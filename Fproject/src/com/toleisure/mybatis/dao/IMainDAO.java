@@ -56,4 +56,7 @@ public interface IMainDAO
 	
 	//-- 찜 모임 추가
 	public void meetFavInsert(GroupDTO dto);
+	
+	//-- 검색 기능
+	public ArrayList<GroupDTO> search(String searchval);
 }

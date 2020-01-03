@@ -320,5 +320,13 @@
       INSERT INTO GR_FAVORITE(GF_CODE, MEM_ID, NG_CODE) VALUES(GR_FAVSEQ.NEXTVAL, #{memId}, #{ngCode})
    </insert>
    
+   <select id="search"  parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+	SELECT GR_CODE AS grCode,NG_PIC AS ngPic,CATE1 as grCate1Name,CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name,GR_NAME as grName,MEM_NAME as hostName
+			,GR_COUNT as grCount,STAR_AVG AS grStarAvg,STAR_COUNT as grStarCount,MEM_ID as hostId,NG_CODE as ngCode,NG_STARTDATE as ngStart,FAVOR as ngFavorite
+	FROM  ALL_GROUP_VIEW
+	WHERE CATE1 LIKE '%' || #{search} || '%' OR CATE2 LIKE '%' || #{search} || '%' OR GR_NAME LIKE '%' || #{search} || '%' OR MEM_NAME LIKE '%' || #{search} || '%'
+	ORDER BY NG_DATE
+   </select>
+   
    
 </mapper>

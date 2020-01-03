@@ -105,6 +105,21 @@
 
 </style>
 
+<script>
+
+function search(){
+	
+	search = document.getElementById('searchval').value;
+	
+	
+	
+	location.href="search.action?search="+search;
+    /* location.href="/test/noticeList?curPage="+curPage; */
+}
+
+</script>
+
+
 
 </head>
 <body>
@@ -133,12 +148,12 @@
 									<form action="#">
 										<div class="form-group">
 											<div class="input-group mb-3 nav-item">
-												<input type="text" class="form-control"
+												<input type="text" id="searchval" class="form-control"
 													style="height: 50px;" placeholder='검색하세요'
 													onfocus="this.placeholder = ''"
 													onblur="this.placeholder = '검색하세요'">
 												<div class="input-group-append">
-													<button class="btn btn_1" type="button"
+													<button onclick="search()"class="btn btn_1" type="button"
 														style="margin-left: 0px;">
 														<span style="color: black;"><i
 															class="fas fa-search"></i></span>
