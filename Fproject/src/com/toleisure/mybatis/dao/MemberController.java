@@ -328,7 +328,7 @@ public class MemberController
                    
                    list.add("원본파일명: " + orgFileName);
                    
-                   uploadFileName ="이성조"+sysFileName+".jpg";
+                   uploadFileName =orgFileName+sysFileName+".jpg";
                    mFile.transferTo(new File(dir + File.separator + uploadFileName)); // C:/Upload/testfile/sysFileName
                    FileDTO test = new FileDTO();
                    test.setFile_name(orgFileName);
