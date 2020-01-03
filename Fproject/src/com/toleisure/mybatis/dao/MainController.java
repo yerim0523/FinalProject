@@ -295,16 +295,6 @@ public class MainController
 		
 	}
 	
-	// ---------------------------------------------------------- 모임 상세 페이지 ▶ 후기 더보기
-	@RequestMapping(value = "/reviewmeeting.action", method = RequestMethod.GET)
-	public String Login(Model model, HttpSession session)
-	{
-		String view = "WEB-INF/views/ReviewM.jsp";
-		session.getAttribute("member");
-
-		return view;
-	}
-	
 	// ---------------------------------------------------------- 찜 모임 여부
 	@RequestMapping(value = "/meetfavoritefind.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
