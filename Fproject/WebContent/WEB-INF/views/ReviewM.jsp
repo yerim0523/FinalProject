@@ -10,44 +10,48 @@
 <meta charset="UTF-8">
 <title>모임후기(메이트)</title>
 
+<!-- css -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+
+
+<!-- jquery -->
+
+<!-- 에디터영역을 만드는 역할 -->
+<script src="js/jquery-1.12.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.min.js"></script>
-<script type="js/bootstrap.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/button.css">
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<!-- 주소 검색 -->
+<!-- jQuery와 Postcodify를 로딩한다 -->
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+
+<!-- jquery plugins here-->
+<!-- easing js -->
+<script src="<%=cp %>/js/jquery.magnific-popup.js"></script>
+<!-- swiper js -->
+<script src="js/swiper.min.js"></script>
+<!-- swiper js -->
+<script src="js/masonry.pkgd.js"></script>
+<!-- particles js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- swiper js -->
+<script src="js/slick.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script> 
+
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<script src="js/custom.js"></script>
 
-<!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    
 <style type="text/css">
 
 	.starR1{
@@ -69,14 +73,11 @@
 	    cursor: pointer;
 	}
 	
-	.starR1.on{background-position:0 0;}
-	.starR2.on{background-position:-15px 0;}
-	
 	.balloon {  
 		 position:relative; 
 		 padding: 20px;
 		 margin: 20px;
-		 width: 800px; 
+		 width: 700px; 
 		 background: #eec4c4; 
 		 border-radius: 10px;
 	}
@@ -96,16 +97,17 @@
 	{
 	  border: 1px solid gray;
 	  border-radius: 30px;
-	  padding: 20px;
+	  padding: 30px;
 	  margin: 10px;
 	  align-self: center;
-	  width: 800px;
+	  width: 700px;
 	}
 	
 	.review p, .balloon p
 	{
 		font-weight: bold;
 		font-size: 11pt;
+		padding-left: 20px;
 		color: #333333;
 	}
 	
@@ -113,6 +115,7 @@
 	{
 		font-weight: bold;
 		font-size: 13pt;
+		padding-left: 20px;
 		color: #333333;
 	}
 	
@@ -123,17 +126,105 @@
 		color: gray;
 	}
 	
+	.feedback-input {
+		color: black;
+		font-family: Helvetica, Arial, sans-serif;
+	  font-weight:500;
+		font-size: 15px;
+		border-radius: 0;
+		line-height: 22px;
+		background-color: #fbfbfb;
+		padding: 13px 13px 13px 54px;
+		margin-bottom: 10px;
+		width:100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+	  border: 1 solid gray;
+	}
+	
+	.feedback-input:focus{
+		background: #fff;
+		box-shadow: 0;
+		border: 3px solid pink;
+		color: black;
+		outline: none;
+	  padding: 13px 13px 13px 54px;
+	}
+	
+	.focused{
+		color:#30aed6;
+		border:#30aed6 solid 3px;
+	}
+	
+	#comment{
+		background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+		background-size: 30px 30px;
+		background-position: 11px 8px;
+		background-repeat: no-repeat;
+	}
+	
+	textarea {
+	    width: 100%;
+	    height: 150px;
+	    line-height: 150%;
+	    resize:vertical;
+	}
+	
+	
+	div.modal-body.center-block {
+	  display: block;
+	  margin-left: 20px;
+	  margin-right: 20px;
+	}
+
 </style>
 
 <script type="text/javascript">
-
-	$('.starRev span').click(function()
+	
+	$(function()
 	{
-		alert("확인");
-		$(this).parent().children('span').removeClass('on');
-		$(this).addClass('on').prevAll('span').addClass('on');
-		return false;
+		$('[type*="radio"]').change(function () {
+			var rate = $(this).val();
+			
+			$("#reviewStar").val(rate);
+			
+		});
+
 	});
+	
+	function formCheck()
+	{
+		//alert("폼체크합니다^^");
+
+		var star = $("#reviewStar").val();
+		
+		if(star=="")
+		{
+			alert("후기작성 시, 별점은 꼭 선택하셔야 합니다.");
+			return;
+		}
+		
+		if(confirm("후기를 제출하시겠습니까 ? \n제출하신 후에는 수정이 불가능합니다.") == true)
+		{
+			var cont = $("#comment").val();
+			var ngCode = $("#ngCode").val();
+			var memId = $("#memId").val();
+			
+			var params = {};
+				params.memId = $("#memId").val();
+				params.ngCode = $("#ngCode").val();
+			
+			alert("별점 : " + star + "\n내용 : " + cont + "\nngCode : " + ngCode + "\nmemId : " + memId);
+			
+		}
+		else
+		{
+			return;
+		}
+	}
+	
 	
 </script>
 
@@ -178,24 +269,24 @@
     	<br>    
 		
 		<div align="right">
-			<input type="button" class="btn4" value="후기 작성하기" style="width: 200px;">
+			<input type="button" class="btn4" value="후기 작성하기" data-toggle="modal" data-target="#reviewWrite" style="width: 200px;">
 		</div>
 		
 		<br>
 		
+		<br>
+		
+		<c:forEach var="reviewM" items="${reviewM }">
 		<div align="center">
 			<div class="review" align="left">
 			<div align="left">
-				<img src="images/me.png" class="rounded-circle"
-						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp;
-				<a class="name">백호진</a>
+				<img src="images/${reviewM.memPic }" class="rounded-circle"
+						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
+				<a class="name">${reviewM.memName }</a>
 				<div style="float: right;">
 					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
 				</div>
 				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
-					<div class="d-flex align-items-center groupCnt">
-					3회차 참여 &nbsp;
-					</div>
            			<div class="starRev">
 		            <span class="starR2"></span>
 		            <span class="starR1"></span>
@@ -208,78 +299,26 @@
 		            <span class="starR2"></span>
 		            <span class="starR1 on"></span>
             		</div>
-        		</div>
-				<br><br>
-				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.</p>
+        		</div><br>
+				<p>${reviewM.reviewCont }</p>
 			</div>
 			</div>
 			
 			
 			<div class="balloon" align="left">
-				<img src="images/me.png" class="rounded-circle"
+				<img src="images/${reviewM.hostPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
-				<a class="name">백호진</a>
+				<a class="name">${reviewM.hostName }</a>
 				<div style="float: right;">
 					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
 				</div>
 				<br><br>
 				<p>
-				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용.
-				</p> 
-			</div>
-		</div>
-		
-		<br>
-		
-		<div align="center">
-			<div class="review" align="left">
-			<div align="left">
-				<img src="images/me.png" class="rounded-circle"
-						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
-				<a class="name">백호진</a>
-				<div style="float: right;">
-					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
-				</div>
-				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
-					<div class="d-flex align-items-center groupCnt">
-					2회차 참여 &nbsp;
-					</div>
-           			<div class="starRev">
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1 on"></span>
-            		</div>
-        		</div>
-				<br><br>
-				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.</p>
-			</div>
-			</div>
-			
-			
-			<div class="balloon" align="left">
-				<img src="images/me.png" class="rounded-circle"
-						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
-				<a class="name">백호진</a>
-				<div style="float: right;">
-					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
-				</div>
-				<br><br>
-				<p>
-				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 
+				${reviewM.reviewComCont }
 				</p>
 			</div>
 		</div>
+		</c:forEach>
 		
 	</div>
 
@@ -289,6 +328,44 @@
 	<c:import url="footer.jsp"></c:import>
 </div>
 
+
+<!-- 후기작성 모달창 -->
+<div class="modal modal-center fade" id="reviewWrite" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">후기 작성하기</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">후기로 남기고 싶은 글을 작성해주세요~!</p>
+			<form action="reviewmeetinsert.action" method="post" name="reviewForm" id="reviewForm">
+				<fieldset class="rating">
+				    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+				    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+				    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+				    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+				    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+				    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+				    <input type="hidden" name="reviewStar" id="reviewStar">
+				</fieldset>
+			<p class="text">
+		        <textarea name="text reviewCont" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="리뷰를 작성해주세요~!"></textarea>
+     	 	</p>
+     	 	</form>
+     	 	<div align="center">
+     	 	<button class="btn4" onclick="formCheck()">작성</button> <button class="btn4" data-dismiss="modal">취소</button>
+     	 	</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

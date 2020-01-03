@@ -223,6 +223,28 @@
       }
    
    </insert>
+   
+   <select id="reviewM" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+	   	SELECT F.NG_CODE AS ngCode, J.JOIN_CODE AS joinCode, R.REVIEW_CONT AS reviewCont, R.REVIEW_STAR AS reviewStar, R.REVIEW_DATE AS reviewDate
+	   		 , RC.RCOMMENT_CONT AS reviewComCont, RC.RCOMMENT_DATE AS reviewComDate
+		     , M.MEM_ID AS memId, M.MEM_NAME AS memName, M.MEM_PIC AS memPic, H.MEM_ID AS hostId, H.MEM_NAME AS hostName, H.MEM_PIC AS hostPic
+		FROM REVIEW R JOIN GR_JOIN J ON R.JOIN_CODE=J.JOIN_CODE
+		    JOIN FIXED_GROUP F ON J.FIX_CODE=F.FIX_CODE
+		    JOIN PAYMENT P ON J.PAY_CODE=P.PAY_CODE
+		    JOIN GR_REQUEST Q ON P.RE_CODE=Q.RE_CODE
+		    JOIN NOW_GROUP N ON F.NG_CODE=N.NG_CODE
+		    JOIN TBL_GROUP T ON N.GR_CODE=T.GR_CODE
+		    JOIN MEMBER M ON Q.MEM_ID=M.MEM_ID
+		    JOIN MEMBER H ON T.MEM_ID=H.MEM_ID
+		    LEFT JOIN REV_COMMENT RC ON R.REVIEW_NUM=RC.REVIEW_NUM
+		WHERE NG_CODE=#{ngCode}
+		ORDER BY R.REVIEW_DATE DESC
+   </select>
+   
+   <insert id="reviewInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+   		INSERT INTO REVIEW(REVIEW_NUM, JOIN_CODE, REVIEW_CONT, REVIEW_STAR)
+		VALUES(REVIEWSEQ.NEXTVAL, #{joinCode}, #{reviewCont}, #{reviewStar})
+   </insert>
       
 
    <!-- 

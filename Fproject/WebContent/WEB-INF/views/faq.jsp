@@ -361,6 +361,8 @@ $(document).ready(function ()
 							    </c:when>
 								<c:otherwise>
 									<td style="color: blue;">답변대기</td>
+									<button type="button" onclick="">수정</button>
+									<button type="button" onclick="">삭제</button>
 								</c:otherwise>
 								</c:choose>
 								 <td>

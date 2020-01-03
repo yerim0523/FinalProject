@@ -71,7 +71,7 @@ function fn_paging(curPage)
         <c:forEach var="v" items="${mainboardSelect }"> 
         <table class="table">
         <tr>
-            <th class="success" id = "boardNum" value="${v.boardNum}">글번호</th>
+            <th class="success" id = "rNum" value="${v.boardNum}">글번호</th>
             <td>${v.boardNum}</td>
             <th class="success" id = "boardHits" value="${v.boardHits}">조회수</th>
             <td>${v.boardHits}</td>

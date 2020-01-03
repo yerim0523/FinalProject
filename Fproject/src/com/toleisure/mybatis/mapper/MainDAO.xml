@@ -9,7 +9,7 @@
       grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount
       FROM ALL_GROUP_VIEW
       WHERE NG_STARTDATE>SYSDATE
-     ORDER BY NG_DATE DESC
+      ORDER BY NG_DATE DESC
    </select>
 
    <select id="CultureGroupList"

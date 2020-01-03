@@ -4,6 +4,7 @@ public class GroupDTO
 {
 
 	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name;
+	private String hostId, hostName, hostPic, reviewComCont, reviewComDate;
 	private int grCode, grCate1, grCate2,starCode;
 
 	private int ngCode, ngMax, ngMin, ngCost, ngFavorite, joinCode;
@@ -499,6 +500,56 @@ public class GroupDTO
 
 	public void setJoinCode(int joinCode) {
 		this.joinCode = joinCode;
+	}
+
+	public String getHostName()
+	{
+		return hostName;
+	}
+
+	public void setHostName(String hostName)
+	{
+		this.hostName = hostName;
+	}
+
+	public String getHostId()
+	{
+		return hostId;
+	}
+
+	public void setHostId(String hostId)
+	{
+		this.hostId = hostId;
+	}
+
+	public String getHostPic()
+	{
+		return hostPic;
+	}
+
+	public void setHostPic(String hostPic)
+	{
+		this.hostPic = hostPic;
+	}
+
+	public String getReviewComDate()
+	{
+		return reviewComDate;
+	}
+
+	public void setReviewComDate(String reviewComDate)
+	{
+		this.reviewComDate = reviewComDate;
+	}
+
+	public String getReviewComCont()
+	{
+		return reviewComCont;
+	}
+
+	public void setReviewComCont(String reviewComCont)
+	{
+		this.reviewComCont = reviewComCont;
 	}
 
 	

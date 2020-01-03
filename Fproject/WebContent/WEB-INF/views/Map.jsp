@@ -219,7 +219,7 @@ input.img-button {
 						var infowindow = new kakao.maps.InfoWindow(
 						{
 							/*  position : coords  */
-							content : positions[j].name
+							content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+positions[j].name+"</div>"
 
 						});
 
@@ -268,23 +268,18 @@ input.img-button {
 		});
 
 		// 인포윈도우 옵션 구성
-		var iwContent = "<div style='padding:5px;'>현재 위치</div>"
-		var iwRemovable = true;
+		var iwContent = "<div style='width:150px;text-align:center;padding:6px 0;'>현재 위치</div>"
 
 		// 인포윈도우 생성
 		var infowindow = new kakao.maps.InfoWindow(
 		{
 			content : iwContent,
-			removable : iwRemovable
 		// 『removable』 속성을 『true』로 설정할 경우
 		// 인포윈도우를 닫을 수 있는 버튼 활성화
 		});
 
-		// 마커에 클릭 이벤트 등록
-		kakao.maps.event.addListener(marker2, "click", function()
-		{
 			infowindow.open(map, marker2);
-		});
+	
 
 		searchDetailAddrFromCoords(curlatlng, function(result, status)
 		{
@@ -311,6 +306,7 @@ input.img-button {
 
 		geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
 	}
+	
 
 	function search()
 	{
@@ -330,8 +326,7 @@ input.img-button {
 			circle.setMap(null);
 		}
 
-		geocoder
-				.addressSearch(
+		geocoder.addressSearch(
 						search,
 						function(re, status)
 						{

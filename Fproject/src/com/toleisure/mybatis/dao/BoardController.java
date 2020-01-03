@@ -666,6 +666,8 @@ public class BoardController
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 		int listCnt = dao.mainboardListCont();
 		
+		System.out.println(boardNum);
+		
 		dao.updateMainBoardHitCount(boardNum);
 		
 		PagingDTO paging = new PagingDTO(listCnt, curPage);

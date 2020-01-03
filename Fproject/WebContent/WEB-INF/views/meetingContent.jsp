@@ -223,7 +223,7 @@
 						</c:forEach>
 						
 							<div align="right">
-							<a class="btn4" href="reviewmeeting.action"> 더보기</a>
+							<a class="btn4" href="reviewmeeting.action?ngCode=${grcontent.ngCode }"> 더보기</a>
 						</div>
 
 						<div>

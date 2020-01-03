@@ -38,6 +38,12 @@ public interface IGroupDAO
 	// 피드백 INSERT 하기
 	public int feedInsert(FeedBackDTO dto);
 	
+	// 모임 후기 더보기 리스트 출력 (모임상세 - 후기 - 더보기)
+	public ArrayList<GroupDTO> reviewM(int ngCode);
+	
+	// 모임 후기 작성내용 등록
+	public String reviewInsert(GroupDTO dto);
+	
 	// 모임 정보 DELETE 메소드 구현 (관리자만 가능)
 	public int removeGroup(int grCode);
 	
