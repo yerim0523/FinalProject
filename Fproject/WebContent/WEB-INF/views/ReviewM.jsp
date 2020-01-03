@@ -11,21 +11,18 @@
 <title>모임후기(메이트)</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/button.css">
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/star.css">
+
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<script src="js/custom.js"></script>
 
 <!-- jquery plugins here-->
     <!-- jquery -->
@@ -68,9 +65,6 @@
 	    text-indent: -9999px;
 	    cursor: pointer;
 	}
-	
-	.starR1.on{background-position:0 0;}
-	.starR2.on{background-position:-15px 0;}
 	
 	.balloon {  
 		 position:relative; 
@@ -125,17 +119,93 @@
 		color: gray;
 	}
 	
+	.feedback-input {
+		color: black;
+		font-family: Helvetica, Arial, sans-serif;
+	  font-weight:500;
+		font-size: 15px;
+		border-radius: 0;
+		line-height: 22px;
+		background-color: #fbfbfb;
+		padding: 13px 13px 13px 54px;
+		margin-bottom: 10px;
+		width:100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+	  border: 1 solid gray;
+	}
+	
+	.feedback-input:focus{
+		background: #fff;
+		box-shadow: 0;
+		border: 3px solid #3498db;
+		color: #3498db;
+		outline: none;
+	  padding: 13px 13px 13px 54px;
+	}
+	
+	.focused{
+		color:#30aed6;
+		border:#30aed6 solid 3px;
+	}
+	
+	#comment{
+		background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+		background-size: 30px 30px;
+		background-position: 11px 8px;
+		background-repeat: no-repeat;
+	}
+	
+	textarea {
+	    width: 100%;
+	    height: 150px;
+	    line-height: 150%;
+	    resize:vertical;
+	}
+	
+	
+	div.modal-body.center-block {
+	  display: block;
+	  margin-left: 20px;
+	  margin-right: 20px;
+	}
+
 </style>
 
 <script type="text/javascript">
-
-	$('.starRev span').click(function()
+	
+	$(function()
 	{
-		alert("확인");
-		$(this).parent().children('span').removeClass('on');
-		$(this).addClass('on').prevAll('span').addClass('on');
-		return false;
+		$('[type*="radio"]').change(function () {
+			var rate = $(this).val();
+			
+			$("#reviewStar").val(rate);
+			
+		});
+
 	});
+	
+	function formCheck()
+	{
+		//alert("폼체크합니다^^");
+
+		var star = $("#reviewStar").val();
+		
+		if(star=="")
+		{
+			alert("후기작성 시, 별점은 꼭 선택하셔야 합니다.");
+			return;
+		}
+		
+		var cont = $("#comment").val();
+		
+		alert("별점 : " + star + "\n내용 : " + cont);
+		
+		return;
+	}
+	
 	
 </script>
 
@@ -180,7 +250,7 @@
     	<br>    
 		
 		<div align="right">
-			<input type="button" class="btn4" value="후기 작성하기" style="width: 200px;">
+			<input type="button" class="btn4" value="후기 작성하기" data-toggle="modal" data-target="#reviewWrite" style="width: 200px;">
 		</div>
 		
 		<br>
@@ -240,6 +310,43 @@
 </div>
 
 
+<!-- 후기작성 모달창 -->
+<div class="modal modal-center fade" id="reviewWrite" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">후기 작성하기</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">후기로 남기고 싶은 글을 작성해주세요~!</p>
+			<form action="reviewmeetinsert.action" method="post" name="reviewForm" id="reviewForm">
+				<fieldset class="rating">
+				    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+				    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+				    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+				    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+				    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+				    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+				    <input type="hidden" name="reviewStar" id="reviewStar">
+				</fieldset>
+			<p class="text">
+		        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
+     	 	</p>
+     	 	</form>
+     	 	<div align="center">
+     	 	<button class="btn4" onclick="formCheck()">작성</button> <button class="btn4" data-dismiss="modal">취소</button>
+     	 	</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>
