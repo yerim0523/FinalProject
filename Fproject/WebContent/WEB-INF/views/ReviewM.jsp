@@ -327,6 +327,7 @@
 				</div>
 				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
            			<div class="starRev">
+           			${reviewM.reviewStar }
 		            <span class="starR2"></span>
 		            <span class="starR1"></span>
 		            <span class="starR2"></span>
@@ -343,7 +344,13 @@
 			</div>
 			</div>
 			
+			<c:if test="${empty reviewM.reviewComCont }">
+				<div class="balloon" align="left"><br>
+					<p style="font-size: 15px;"><i class="fas fa-thumbtack"></i>&nbsp;&nbsp;&nbsp; 호스트가 답변을 아직 작성하지 않았어요.</p>
+				</div>
+			</c:if>
 			
+			<c:if test="${!empty reviewM.reviewComCont }">
 			<div class="balloon" align="left">
 				<img src="images/${reviewM.hostPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
@@ -356,6 +363,7 @@
 				${reviewM.reviewComCont }
 				</p>
 			</div>
+			</c:if>
 		</div>
 		<br><br>
 		</c:forEach>
