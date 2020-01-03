@@ -76,7 +76,7 @@
 		 position:relative; 
 		 padding: 20px;
 		 margin: 20px;
-		 width: 800px; 
+		 width: 700px; 
 		 background: #eec4c4; 
 		 border-radius: 10px;
 	}
@@ -96,16 +96,17 @@
 	{
 	  border: 1px solid gray;
 	  border-radius: 30px;
-	  padding: 20px;
+	  padding: 30px;
 	  margin: 10px;
 	  align-self: center;
-	  width: 800px;
+	  width: 700px;
 	}
 	
 	.review p, .balloon p
 	{
 		font-weight: bold;
 		font-size: 11pt;
+		padding-left: 20px;
 		color: #333333;
 	}
 	
@@ -113,6 +114,7 @@
 	{
 		font-weight: bold;
 		font-size: 13pt;
+		padding-left: 20px;
 		color: #333333;
 	}
 	
@@ -183,69 +185,19 @@
 		
 		<br>
 		
-		<div align="center">
-			<div class="review" align="left">
-			<div align="left">
-				<img src="images/me.png" class="rounded-circle"
-						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp;
-				<a class="name">백호진</a>
-				<div style="float: right;">
-					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
-				</div>
-				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
-					<div class="d-flex align-items-center groupCnt">
-					3회차 참여 &nbsp;
-					</div>
-           			<div class="starRev">
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1"></span>
-		            <span class="starR2"></span>
-		            <span class="starR1 on"></span>
-            		</div>
-        		</div>
-				<br><br>
-				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.</p>
-			</div>
-			</div>
-			
-			
-			<div class="balloon" align="left">
-				<img src="images/me.png" class="rounded-circle"
-						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
-				<a class="name">백호진</a>
-				<div style="float: right;">
-					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
-				</div>
-				<br><br>
-				<p>
-				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용.
-				</p> 
-			</div>
-		</div>
-		
 		<br>
 		
+		<c:forEach var="reviewM" items="${reviewM }">
 		<div align="center">
 			<div class="review" align="left">
 			<div align="left">
-				<img src="images/me.png" class="rounded-circle"
+				<img src="images/${reviewM.memPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
-				<a class="name">백호진</a>
+				<a class="name">${reviewM.memName }</a>
 				<div style="float: right;">
 					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
 				</div>
 				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
-					<div class="d-flex align-items-center groupCnt">
-					2회차 참여 &nbsp;
-					</div>
            			<div class="starRev">
 		            <span class="starR2"></span>
 		            <span class="starR1"></span>
@@ -258,28 +210,26 @@
 		            <span class="starR2"></span>
 		            <span class="starR1 on"></span>
             		</div>
-        		</div>
-				<br><br>
-				<p>메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용. 메이트가 남기는 후기입니당. 
-				즐거웠어용.메이트가 남기는 후기입니당. 즐거웠어용.</p>
+        		</div><br>
+				<p>${reviewM.reviewCont }</p>
 			</div>
 			</div>
 			
 			
 			<div class="balloon" align="left">
-				<img src="images/me.png" class="rounded-circle"
+				<img src="images/${reviewM.hostPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
-				<a class="name">백호진</a>
+				<a class="name">${reviewM.hostName }</a>
 				<div style="float: right;">
 					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
 				</div>
 				<br><br>
 				<p>
-				감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 감사해용. 
+				${reviewM.reviewComCont }
 				</p>
 			</div>
 		</div>
+		</c:forEach>
 		
 	</div>
 
@@ -288,6 +238,8 @@
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
+
+
 
 
 </body>
