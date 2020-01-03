@@ -8,9 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
@@ -279,7 +281,10 @@ public class MemberController
    {
 	   IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
 	   
-       String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; // C:/Upload
+      /* String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; */
+	   
+	   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
+	   
        FileOutputStream fos = null;
        File dir = new File(rootUploadDir); 
        
@@ -293,7 +298,7 @@ public class MemberController
        String uploadFileName;
        MultipartFile mFile = null;
        String orgFileName = ""; //진짜 파일명
-       
+       String sysFileName = ""; //변환된 파일명
        ArrayList<String> list = new ArrayList<String>();
        
        while(iterator.hasNext()) {
@@ -315,10 +320,16 @@ public class MemberController
 					 */
             	   
                    System.out.println("try 진입");
-                   mFile.transferTo(new File(dir + File.separator + orgFileName)); // C:/Upload/testfile/sysFileName
+                   
+                   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-" + fileLoop);
+                   Calendar calendar = Calendar.getInstance();
+                   sysFileName = simpleDateFormat.format(calendar.getTime()); //sysFileName: 날짜-fileLoop번호
+                   
+                   
                    list.add("원본파일명: " + orgFileName);
                    
-               	  
+                   uploadFileName ="이성조"+sysFileName+".jpg";
+                   mFile.transferTo(new File(dir + File.separator + uploadFileName)); // C:/Upload/testfile/sysFileName
                    FileDTO test = new FileDTO();
                    test.setFile_name(orgFileName);
                    test.setFile_sysname(uploadFileName);
@@ -343,6 +354,24 @@ public class MemberController
        return "WEB-INF/views/joinTest.jsp";
        
    }
+   
+   
+   @RequestMapping(value = "fileloadtest.action", method = RequestMethod.GET)
+   public String getPic(String file_sysname,Model model, HttpServletRequest request) {
+       System.out.println("파일로드테스트 진입");
+       
+       IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+       List<FileDTO> filelist = dao.findFile(file_sysname);
+       
+
+		
+       model.addAttribute("filelist",filelist);
+       System.out.println("파일로드테스트 나감");
+       return "WEB-INF/views/FileLoadTest.jsp";
+   }
+
+
+  
 
    
    @RequestMapping(value = "/memberpasswordform.action", method = RequestMethod.GET)

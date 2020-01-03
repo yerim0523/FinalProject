@@ -23,5 +23,12 @@
 </c:forEach>
 
 
+<%-- <img src="<c:url value='fileloadtest.action?file_sysname=file1'/>" width="550" />
+ --%>
+
+	<button type="button" onclick="location='fileloadtest.action?file_sysname=file1'"
+				class="btn4" style="float: right;">이미지불러오기테스트</button>
+
+
 </body>
 </html>

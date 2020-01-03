@@ -1,6 +1,7 @@
 package com.toleisure.mybatis.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.toleisure.mybatis.dto.FileDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
@@ -25,6 +26,7 @@ public interface IMemberDAO
 	public int adminCheck(MemberDTO login);
 	public ArrayList<GroupDTO> map();
 	public void fileadd(FileDTO test);
+	public List<FileDTO> findFile(String file_sysname);
 	
 	
 }

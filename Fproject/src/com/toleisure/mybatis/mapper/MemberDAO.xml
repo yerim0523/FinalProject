@@ -133,4 +133,8 @@
    					VALUES     (#{file_name},#{file_sysname},#{file_path},#{file_size})
    </insert>
    
+   <select id="findFile" parameterType="java.lang.String" resultType="com.toleisure.mybatis.dto.FileDTO">
+   		SELECT FILE_NAME AS file_name,FILE_SYSNAME AS file_sysname,FILE_PATH AS file_path
+		FROM FILEUPLOAD
+   </select>
 </mapper>
