@@ -679,4 +679,91 @@ public class BoardController
 		
 		return view;
 	}
+	
+	@RequestMapping(value = "/mainboardinsertform.action")
+	public String mainboardInsertForm()
+	{
+		String view = "/WEB-INF/views/mainboardInsertForm.jsp";
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "/mainboardinsert.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String mainboardInsert(HttpSession session, BoardDTO dto)
+	{
+		session.getAttribute("member");
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		
+		dao.mainboardInsert(dto);
+		
+		return "redirect:mainboard.action";
+	}
+	
+	@RequestMapping(value = "/mainboarddelete.action", method ={ RequestMethod.GET, RequestMethod.POST })
+	public String mainboardDelete(int boardNum, HttpSession session)
+	{
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		session.getAttribute("member");
+
+		dao.mainboardDelete(boardNum);
+
+		return "redirect:mainboard.action";
+
+	} 
+	
+	@RequestMapping(value = "/mainboardupdateform.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String mainboardUpdateForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
+	{
+		String view = "/WEB-INF/views/mainboardUpdateForm.jsp";
+
+		session.getAttribute("member");
+
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+		List<BoardDTO> mainboardUpdate = dao.mainboardSelect(boardNum);
+
+		model.addAttribute("mainboardUpdate", mainboardUpdate);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/mainboardupdate.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String mainboardUpdate(HttpSession session, BoardDTO dto)
+	{
+		session.getAttribute("member");
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+
+		int boardNum = dto.getBoardNum();
+		System.out.println(boardNum);
+
+		int result = dao.mainboardNoticeCheck(boardNum);
+		int check = dto.getCheck();
+
+		dto.setMainboardNoticeCheck(result);
+
+		if (dto.getMainboardNoticeCheck() != 0) 
+		{
+			if (check != 0)
+			{
+				dao.mainboardUpdate(dto);
+			}
+
+			else 
+			{
+				dao.mainboardUpdate(dto);
+				dao.mainboardNoticeDelete(dto);
+			}
+		} else 
+		{
+			if (check != 0) 
+			{
+				dao.mainboardUpdate(dto);
+				dao.InsertMainboardNotice(dto);
+			} else 
+			{
+				dao.mainboardUpdate(dto);
+			}
+		}
+		return "redirect:mainboard.action";
+	}
 }

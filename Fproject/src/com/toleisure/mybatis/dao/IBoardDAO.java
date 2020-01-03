@@ -59,7 +59,12 @@ public interface IBoardDAO
 	public List<BoardDTO> mainboardList(BoardDTO mainboard);
 	public List<BoardDTO> mainboardSelect(int boardNum);
 	public int updateMainBoardHitCount(int boardNum);
-	/* public int mainboardInsert(BoardDTO board); */
+	public int mainboardInsert(BoardDTO board);
+	public int mainboardDelete(int boardNum);
+	public int mainboardUpdate(BoardDTO board);
+	public int mainboardNoticeCheck(int boardNum);
+	public void mainboardNoticeDelete(BoardDTO dto);
+	public void InsertMainboardNotice(BoardDTO dto);
 	
 	
 }

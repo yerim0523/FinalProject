@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -85,6 +86,7 @@
 </div>
 </section>
 
+
 <br><br><br>
 
 <div id="menu" class="container">
@@ -115,7 +117,9 @@
 					<td>${v.rNum}</td>
 					<td><a href="#" onclick="location='mainboarddetail.action?boardNum=${v.boardNum}&curPage=${paging.curPage}'" style="cursor:hand;">${v.boardTitle} </a></td>
 					<td>${v.boardMem}</td>
-					<td>${v.boardDate}</td>
+					<%-- <td><fmt:formatDate value="${v.boardDate }" pattern="yyyy-mm-dd"/></td> --%>
+					<td> ${v.boardDate} </td>
+					<%-- <td><fmt:parseDate value="${v.boardDate }" var="parseDate" pattern="yyyyMMdd"/> </td> --%>
 					<td>${v.boardHits}</td>
 				</tr>
 				

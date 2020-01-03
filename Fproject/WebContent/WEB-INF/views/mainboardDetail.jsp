@@ -33,21 +33,32 @@
 
  
 <script type="text/javascript">
-/* 
-function edit_paging(boardNum)
-{	  
-	  location.href="mainboardupdateform.action?boardNum="+boardNum;
-}
 
-function del_event(boardNum)
-{	
-	location.href="mainboarddelete.action?boardNum="+boardNum;
-}
- */
-function fn_paging(curPage)
-{	
-	location.href="mainboard.action?curPage="+curPage;
-}
+	
+	function edit_paging(boardNum)
+	{	  
+		location.href="mainboardupdateform.action?boardNum="+boardNum;
+	}
+	
+	
+	function del_event(boardNum)
+	{	
+		if(confirm("정말 삭제하시겠습니까?") == true)
+		{
+			location.href="mainboarddelete.action?boardNum="+boardNum;
+		}
+		
+		else
+		{
+			return;
+		}
+		
+	}
+	
+	function fn_paging(curPage)
+	{	
+		location.href="mainboard.action?curPage="+curPage;
+	}
 
 </script>
 
@@ -66,7 +77,6 @@ function fn_paging(curPage)
     <div class="col-xs-8 col-md-8">
     <h2 class="text-center">게시글 보기</h2><p>&nbsp;</p>
     <div class="table table-responsive">
-      
       
         <c:forEach var="v" items="${mainboardSelect }"> 
         <table class="table">
@@ -98,9 +108,12 @@ function fn_paging(curPage)
 
 			<tr>
 					<td colspan="4" class="text-center">
-						
-							<input type="button" <%-- onClick="edit_paging(${v.boardNum})"  --%>class="btn4" style="background-color: #D4F4FA;" value="수정하기" >
-							<input type="button" <%-- onClick="del_event(${v.boardNum})"  --%>class="btn4" style="background-color: #eec4c4;" value="삭제하기" >
+					<c:if test="${!empty sessionScope.mode}">
+						<c:if test="${sessionScope.member.memId == v.memId }">
+							<input type="button" onClick="edit_paging(${v.boardNum})" class="btn4" style="background-color: #D4F4FA;" value="수정하기" >
+							<input type="button" onClick="del_event(${v.boardNum})" class="btn4" style="background-color: #eec4c4;" value="삭제하기" >
+						</c:if>
+					</c:if>
 							<input type="button" onClick="fn_paging(${paging.curPage})" class="btn4" style="background-color: #FAED7D;" value="목록보기">
 						</td>
 					</tr>

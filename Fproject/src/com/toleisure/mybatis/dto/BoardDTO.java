@@ -6,6 +6,7 @@ public class BoardDTO
 
 	private int eventNoticeCheck=0;
 	private int newsNoticeCheck=0;
+	private int mainboardNoticeCheck=0;
 	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
@@ -481,5 +482,17 @@ public class BoardDTO
 	{
 		this.answerCont = answerCont;
 	}
+
+	public int getMainboardNoticeCheck()
+	{
+		return mainboardNoticeCheck;
+	}
+
+	public void setMainboardNoticeCheck(int mainboardNoticeCheck)
+	{
+		this.mainboardNoticeCheck = mainboardNoticeCheck;
+	}
+	
+
 
 }

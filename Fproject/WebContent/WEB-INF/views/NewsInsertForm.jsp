@@ -130,7 +130,8 @@ function formCheck()
 				<td>
 					<label><input type="checkbox" name = "AnnounceCheck" id="AnnounceCheck">공지로 등록</label>
 				</td>
-				
+			
+			</tr>
 				<input type="hidden" id="check" name="check" value="0">
 			<tr>
 				<td>내용</td>
@@ -153,6 +154,10 @@ function formCheck()
 		</table>
 	</div>
 	</form>
+</div>
+
+<div>
+	<c:import url="footer.jsp"></c:import>
 </div>
 
 </body>
