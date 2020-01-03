@@ -8,6 +8,8 @@
       SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
       grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount
       FROM ALL_GROUP_VIEW
+      WHERE NG_STARTDATE>SYSDATE
+     ORDER BY NG_DATE DESC
    </select>
 
    <select id="CultureGroupList"
@@ -42,6 +44,13 @@
       memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
       FROM CUL_SHOW_VIEW
    </select>
+   
+   <!-- 필터 → 종료모임도 볼래요 -->
+   
+   <!-- 필터 → 참여가능한 모임만 볼래요 -->
+   
+   
+   
 
    <!-- ============================================음식점 DAO================================================ -->
    <select id="FoodGroupList"
