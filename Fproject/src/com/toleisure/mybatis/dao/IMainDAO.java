@@ -21,7 +21,7 @@ public interface IMainDAO
 	
 	
 	//-- 문화 출력 리스트----------------
-	public ArrayList<GroupDTO> CultureGroupList();
+	public ArrayList<GroupDTO> CultureGroupList(int ordercheck);
 	public ArrayList<GroupDTO> ExhibitGroupList();
 	public ArrayList<GroupDTO> PlayGroupList();
 	public ArrayList<GroupDTO> ShowGroupList();

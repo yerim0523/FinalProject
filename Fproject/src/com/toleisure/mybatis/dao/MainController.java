@@ -1,5 +1,6 @@
 package com.toleisure.mybatis.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.GroupDTO;
@@ -79,14 +81,18 @@ public class MainController
 
 	// -----------------------------------문화생활 모임-------------------
 	@RequestMapping(value = "/culture.action", method = RequestMethod.GET)
-	public String Culture(Model model, HttpSession session)
+	public String Culture(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
 	{
 		session.getAttribute("member");
 		String view = "WEB-INF/views/Culture.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-
-		model.addAttribute("CultureGroupList", dao.CultureGroupList());
+			
+		GroupDTO dto = new GroupDTO();
+		
+		ArrayList<GroupDTO> CultureGroupList=dao.CultureGroupList(ordercheck);
+		
+		model.addAttribute("CultureGroupList",CultureGroupList );
 
 		return view;
 	}
