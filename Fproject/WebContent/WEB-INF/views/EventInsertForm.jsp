@@ -117,6 +117,8 @@
 	   }
 	   document.getElementById("check").value=check;
 	   
+	   alert($('textarea').val($('#boardCont').summernote('code')));
+
 	   f.submit();
 	
 	}

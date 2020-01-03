@@ -96,7 +96,7 @@
 </section>
 
 
-<div class="container">
+<div class="container"> 
 	<div>
 		<div align="left" class="left">
 			<button type="button" class="btn btn-default">전체모임목록</button>
