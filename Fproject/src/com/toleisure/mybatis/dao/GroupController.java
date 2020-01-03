@@ -428,13 +428,13 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/reviewmeeting.action", method = {RequestMethod.POST, RequestMethod.GET})
-	public String reviewMeeting(int ngCode, Model m, HttpSession session)
+	public String reviewMeeting(int grCode, Model m, HttpSession session)
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
-		m.addAttribute("reviewM", dao.reviewM(ngCode));
-		m.addAttribute("ngCode", ngCode);
+		m.addAttribute("reviewM", dao.reviewM(grCode));
+		m.addAttribute("grCode", grCode);
 		
 		return "/WEB-INF/views/ReviewM.jsp";
 	}
