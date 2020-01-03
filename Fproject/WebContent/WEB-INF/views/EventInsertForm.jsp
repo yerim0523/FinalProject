@@ -142,9 +142,9 @@
 </div>
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
-<div>
-	<c:import url="MeetingBar.jsp"></c:import>
-</div>
+	<div>
+		<c:import url="MeetingBar.jsp"></c:import>
+	</div>
 </section>
 
 <div class="container">
