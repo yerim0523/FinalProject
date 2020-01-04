@@ -12,24 +12,22 @@
 <title>testest.jsp</title>
 
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/member.css">
-<link rel="stylesheet" href="css/button.css" >
-<script src="js/bootstrap.js"></script>
-<script src="js/bootstrap-select.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script type="js/bootstrap.min.js"></script>
+<script type="js/bootstrap.js"></script>
 
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="css/meetingContent.css">
 
-<!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
+
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
@@ -43,6 +41,8 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
     <!-- custom js -->
     
 <style type="text/css">
@@ -103,7 +103,18 @@
 <script type="text/javascript">
 	$(function() {
 		$(".board").slice(0, 1).show(); // 최초 1개 선택
+		
+		if($(".board:hidden").length == 0){ // 숨겨진 DIV가 있는지 체크
+			$("#load").css("display", "none");
+			$(".addTo").prepend("<p style='font-size: 15px;'><i class='fas fa-thumbtack'></i>&nbsp;&nbsp;&nbsp;표시할 방명록이 존재하지 않습니다.</p>");
+		}
+		
 		$(".review").slice(0, 1).show(); // 최초 1개 선택
+		
+		if($(".review:hidden").length == 0){ // 숨겨진 DIV가 있는지 체크
+			$(".addReview").prepend("<p style='font-size: 15px;'><i class='fas fa-thumbtack'></i>&nbsp;&nbsp;&nbsp;표시할 후기가 존재하지 않습니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;후기를 작성하시려면 아래 버튼을 눌러주세요~!</p>");
+		}
+		
 		$("#load").click(function(e){ // Load More를 위한 클릭 이벤트e
 			e.preventDefault();
 			$(".board:hidden").slice(0, 1).show(); // 숨김 설정된 다음 1개를 선택하여 표시
@@ -134,8 +145,36 @@
 				<div class="col-lg-8 course_details_left">
 					<div class="main_image">
 						<img class="img-fluid" src=${grcontent.ngPic }
-							style="width: 700px; height: 400px;">
+							style="width: 100%; height: 400px;">
 						<input type="hidden" name="grCode" value="${grcontent.grCode }">
+						<br>
+						<div class="d-flex justify-content-between" style="margin-top: 5px;">
+							<div>
+								<i class="fas fa-heart heartIcon" style="color: red;"></i>
+								&nbsp;5
+								&nbsp;&nbsp;
+	           					<i class="fas fa-share-alt" style="font-size: 20px; color: gray;"></i>
+	           				</div>
+							<div>
+								<c:if test="${grcontent.grStarAvg eq 0}">
+			           				<c:forEach begin="0" end="4">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>
+			           			<c:if test="${grcontent.grStarAvg ne 0}">
+			           				<c:forEach begin="1" end="${grcontent.grStarAvg/1}">
+			           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           				<c:if test="${grcontent.grStarAvg%1 ne 0}">
+			           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:if>
+			           				<c:forEach begin="1" end="${5 - grcontent.grStarAvg/1}">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>&nbsp;
+	           					<span>${grcontent.grStarAvg } / ${grcontent.grStarCount } 명</span>
+	           				</div>
+	           			</div>
 					</div>
 
 					<br>
@@ -148,29 +187,34 @@
 
 					<div class="content_wrapper">
 						<h4 class="title_top" id="introduce">모임소개</h4>
+						<br>
 						<div class="content">
 							${grcontent.ngIntro }
 						</div>
 
 						<h4 class="title" id="note">유의사항</h4>
+						<br>
 						<div class="content">
 							${grcontent.grNotice }
 						</div>
 
 						<h4 class="title" id="host">호스트소개</h4>
+						<br>
 							<div class="content">
-								<span class="page" style="font-size: 15pt;">프로필</span>
-								<br> <br>
+							<br>
 									<div class="d-flex justify-content-center h-100">
 										<div class="image_outer_container">
-											<div class="green_icon"></div>
 											<div class="image_inner_container">
-												<img src="${grcontent.memPic }" class="rounded-circle" style="width: 150px; height: 200px; margin-right: 50px;">
+												<img src="<%=cp %>/images/me.png" class="rounded-circle" style="vertical-align: middle; width: 150px; height: 150px; margin-right: 50px;">
 											</div>
 										</div>
-										<div>
-											<input type="text" value="${grcontent.memName }" readonly="readonly"> <br> <br>
-											<textarea rows="3" cols="50" readonly="readonly">${grcontent.memIntro }</textarea>
+										<div style="border: 1px solid lightgray; border-radius: 30px; width: 450px;">
+											<div style="margin:20px; ">
+												<span style="font-size: 20px; font-weight: bold;">${grcontent.memName }</span> 
+											</div>
+											<div style="margin:20px; ">
+												${grcontent.memIntro }<br>
+											</div>
 										</div>
 									</div>
 							</div>
@@ -178,30 +222,8 @@
 							<div class="left">
 								<h4 class="title" id="after">후기</h4>
 							</div>
+							<br>
 						</div>
-						<%-- 
-						<div class="content">
-							<table class="table table-bordered">
-								<c:forEach var="review" items="${contentReview }">
-									<tr>
-										<td>
-											<img src="images/me.png" class="rounded-circle"	style="width: 50px; height: 50px;">&nbsp;&nbsp;
-											${review.memName }
-										</td>
-										<td>
-											${review.reviewCont }
-										</td>
-										<td>
-											${review.reviewStar }
-										</td>
-										<td>
-											${review.reviewDate }
-										</td>
-									</tr>
-								</c:forEach>
-							</table>
-						</div>
-						 --%>
 						<c:forEach var="review" items="${contentReview }">
 						<div class="review" align="left">
 							<div align="left">
@@ -215,16 +237,22 @@
 										${review.reviewStar }&nbsp;
 									</div>
 									<div class="starRev">
-										<span class="starR2"></span> 
-										<span class="starR1"></span>
-										<span class="starR2"></span> 
-										<span class="starR1"></span> 
-										<span class="starR2"></span> 
-										<span class="starR1"></span> 
-										<span class="starR2"></span> 
-										<span class="starR1"></span> 
-										<span class="starR2"></span> 
-										<span class="starR1 on"></span>
+										<c:if test="${review.reviewStar eq 0}">
+					           				<c:forEach begin="0" end="4">
+					           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					           				</c:forEach>
+					           			</c:if>
+					           			<c:if test="${review.reviewStar ne 0}">
+					           				<c:forEach begin="1" end="${review.reviewStar/1}">
+					           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					           				</c:forEach>
+					           				<c:if test="${review.reviewStar%1 ne 0}">
+					           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					           				</c:if>
+					           				<c:forEach begin="1" end="${5 - review.reviewStar/1}">
+					           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+					           				</c:forEach>
+					           			</c:if>
 									</div>
 								</div>
 								<br><br>
@@ -235,14 +263,15 @@
 						</div>
 						</c:forEach>
 						
-							<div align="right">
-							<a class="btn4" href="reviewmeeting.action?grCode=${grcontent.grCode }"> 더보기</a>
+							<div class="addReview">
+							<a class="btn4" href="reviewmeeting.action?grCode=${grcontent.grCode }"  style="color:white; width: 100%; height: 50px; text-align: center;">후기 작성하기 / 전체 후기 보러가기</a>
 						</div>
 
 						<div>
 							<div class="left">
 								<h4 class="title" id="bang">방명록</h4>
 							</div>
+							<br>
 						</div>
 						<c:forEach var="board" items="${contentGBoard }">
 						<div class="board review" id="board" align="left">
@@ -259,7 +288,7 @@
 							</div>
 						</div>
 						</c:forEach>
-						<div align="right">
+						<div class="addTo">
 							<a class="btn4" id="load" style="width: 100%; height: 50px; text-align: center;">더보기</a>
 						</div>
 
@@ -267,6 +296,7 @@
 							<div class="left">
 								<h4 class="title" id="refund">환불정책</h4>
 							</div>
+							<br>
 						</div>
 						<div class="content">
 							<span>
