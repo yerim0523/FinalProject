@@ -15,17 +15,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/member.css">
 <link rel="stylesheet" href="css/button.css" >
-<script type="js/bootstrap.min.js"></script>
-<script type="js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/meetingContent.css">
@@ -35,8 +30,6 @@
     <script src="js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
     <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
@@ -51,7 +44,6 @@
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
-    <script src="js/custom.js"></script>
     
 <style type="text/css">
 
@@ -100,8 +92,28 @@
 		font-size: 13pt;
 		color: #333333;
 	}
+	
+	.board, .review
+	{
+		display: none;
+	}
 
 </style>
+
+<script type="text/javascript">
+	$(function() {
+		$(".board").slice(0, 1).show(); // 최초 1개 선택
+		$(".review").slice(0, 1).show(); // 최초 1개 선택
+		$("#load").click(function(e){ // Load More를 위한 클릭 이벤트e
+			e.preventDefault();
+			$(".board:hidden").slice(0, 1).show(); // 숨김 설정된 다음 1개를 선택하여 표시
+			if($(".board:hidden").length == 0){ // 숨겨진 DIV가 있는지 체크
+				$("#load").css("display", "none");
+			}
+		});
+	});
+	
+</script>
 
 
 </head>
@@ -233,7 +245,7 @@
 							</div>
 						</div>
 						<c:forEach var="board" items="${contentGBoard }">
-						<div class="review" align="left">
+						<div class="board review" id="board" align="left">
 							<div align="left">
 								<img src="${board.memPic }" class="rounded-circle"	style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 								<a class="name">${board.memName }</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 9pt;">${board.boardDate }</span>
@@ -248,7 +260,7 @@
 						</div>
 						</c:forEach>
 						<div align="right">
-							<a class="btn4" href="#"> 더보기</a>
+							<a class="btn4" id="load" style="width: 100%; height: 50px; text-align: center;">더보기</a>
 						</div>
 
 						<div>
