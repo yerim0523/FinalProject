@@ -163,7 +163,7 @@
   	
   	 
 	<div class="row">
-		<c:forEach var="CultureGroup" items="${PlayGroupList}">
+		<c:forEach var="CultureGroup" items="${PlayCloseGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
 				<img src="${CultureGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
