@@ -100,45 +100,7 @@
 	    }); 
 	}); 
 
-	function formCheck()
-	{
-	   var f = document.EventInsertForm;
-	   var str = f.boardTitle.value;
-	   var max,min;
-	   
-	   str = str.trim();
-	   if(!str || 5>str.length || 100<str.length)
-	   {
-	      alert("제목을 【4 ~ 100자】 내외로 입력해주세요.");
-	      f.boardTitle.focus();
-	      return;
-	   }
-	   
-	   var Announce = document.getElementById('AnnounceCheck');
-	   var AnnounceResult = Announce.getAttribute("checked")
-	   var check=0;
-	   
-	   if($('#AnnounceCheck').is(":checked") == true)         // 체크 된 값만 
-	   {
-	      check=1;
-	      //alert(temp[i]);
-	   }
-	   
-	   str = f.boardCont.value;
-	   str = str.trim();
-	   if(!str || 5>str.length || 1000<str.length)
-	   {
-	      alert("내용을 【4 ~ 1000자】 내외로 입력해주세요.");
-	      f.boardCont.focus();
-	      return;
-	   }
-	   document.getElementById("check").value=check;
-	   
-	   alert($('textarea').val($('#boardCont').summernote('code')));
-
-	   f.submit();
 	
-	}
 </script>
 
 </head>
@@ -168,7 +130,7 @@
 	
 	<div align="right">
 		<label class="check-inline">
-			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='cultureclose.action'" value="종료모임">종료 모임도 볼래요!
+			<input type="checkbox" name="inlineRadioOptions" checked="checked" id="inlineCheck1" onclick="location='culture.action'" value="종료모임">종료 모임도 볼래요!
 		</label>
 		<label class="check-inline">
 		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" onclick="location='cultureable.action'"value="참여모임">참여 가능한 모임만 볼래요!
@@ -181,9 +143,9 @@
 		      정렬 기준
 		    </button>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-		      <a class="dropdown-item" onclick="location='culture.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
-		      <a class="dropdown-item" onclick="location='culture.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
-		      <a class="dropdown-item" onclick="location='culture.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
+		      <a class="dropdown-item" onclick="location='cultureclose.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
+		      <a class="dropdown-item" onclick="location='cultureclose.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
+		      <a class="dropdown-item" onclick="location='cultureclose.action?ordercheck=3'" style="cursor:pointer;">평가순</a>
 		    </div>
 	  	</div>
   	</div>
@@ -191,7 +153,7 @@
   	
   	 
 	<div class="row">
-		<c:forEach var="CultureGroup" items="${CultureGroupList}">
+		<c:forEach var="CultureGroup" items="${CultureCloseGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
 				<img src="${CultureGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"

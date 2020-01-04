@@ -59,4 +59,5 @@ public interface IMainDAO
 	
 	//-- 검색 기능
 	public ArrayList<GroupDTO> search(String searchval);
+	public ArrayList<GroupDTO> CultureCloseGroupList(int ordercheck);
 }

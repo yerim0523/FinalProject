@@ -112,9 +112,9 @@
 		      정렬 기준
 		    </button>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-		      <a class="dropdown-item" href="#">최신순</a>
-		      <a class="dropdown-item" href="#">인기순</a>
-		      <a class="dropdown-item" href="#">평가순</a>
+		      <a class="dropdown-item" onclick="location='cafe.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
+		      <a class="dropdown-item" onclick="location='cafe.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
+		      <a class="dropdown-item" onclick="location='cafe.action?ordercheck=3'" style="cursor:pointer;">평가순</a>
 		    </div>
 	  	</div>
   	</div>

@@ -96,6 +96,40 @@ public class MainController
 
 		return view;
 	}
+	
+	@RequestMapping(value = "/cultureclose.action", method = RequestMethod.GET)
+	public String CultureClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/CultureClose.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+			
+	
+		ArrayList<GroupDTO> CultureCloseGroupList=dao.CultureCloseGroupList(ordercheck);
+		
+		model.addAttribute("CultureCloseGroupList",CultureCloseGroupList );
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/cultureable.action", method = RequestMethod.GET)
+	public String CultureAble(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/Culture.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+			
+		
+		ArrayList<GroupDTO> CultureGroupList=dao.CultureGroupList(ordercheck);
+		
+		model.addAttribute("CultureGroupList",CultureGroupList );
+
+		return view;
+	}
+	
+	
 
 	@RequestMapping(value = "/exhibit.action", method = RequestMethod.GET)
 	public String Exhibit(Model model, HttpSession session)

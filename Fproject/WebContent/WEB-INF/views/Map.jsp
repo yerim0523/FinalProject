@@ -212,46 +212,48 @@ input.img-button {
 								                 '    </div>' +    
 								                 '</div>'; */
 
-					var iwRemovable = true;
-					// 인포윈도우로 장소에 대한 설명을 표시합니다
-					for (var j = 0; j < positions.length; j++)
-					{
-						var infowindow = new kakao.maps.InfoWindow(
-						{
-							/*  position : coords  */
-							content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+positions[j].name+"</div>"
 
-						});
+								         		// 인포윈도우로 장소에 대한 설명을 표시합니다
+								         		for (var j = 0; j < positions.length; j++)
+								         		{
+								         			var infowindow = new kakao.maps.InfoWindow(
+								         			{
+								         				/*  position : coords  */
+								         				content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+positions[j].name+"</div>"
 
-						// 마커에 클릭 이벤트 등록
-						kakao.maps.event.addListener(marker, 'mouseover',
-								makeOverListener(map, marker, infowindow));
-						kakao.maps.event.addListener(marker, 'mouseout',
-								makeOutListener(infowindow));
+								         			});
 
-						function makeOverListener(map, marker, infowindow)
-						{
-							return function()
-							{
-								infowindow.open(map, marker);
-							};
-						}
+								         			// 마커에 클릭 이벤트 등록
+								         			kakao.maps.event.addListener(marker, 'mouseover',
+								         					makeOverListener(map, marker, infowindow));
+								         			kakao.maps.event.addListener(marker, 'mouseout',
+								         					makeOutListener(infowindow));
 
-						function makeOutListener(infowindow)
-						{
-							return function()
-							{
-								infowindow.close();
-							};
-						}
+								         			function makeOverListener(map, marker, infowindow)
+								         			{
+								         				return function()
+								         				{
+								         					infowindow.open(map, marker);
+								         				};
+								         			}
 
-					}// end for(j)
+								         			function makeOutListener(infowindow)
+								         			{
+								         				return function()
+								         				{
+								         					infowindow.close();
+								         				};
+								         			}
+
+								         		}// end for(j)
 
 				}// end if
 
 			}); // end geocoder
 
 		} // end for
+		
+			
 
 		curlatlng = new kakao.maps.LatLng(latitude, longitude);
 
@@ -271,14 +273,14 @@ input.img-button {
 		var iwContent = "<div style='width:150px;text-align:center;padding:6px 0;'>현재 위치</div>"
 
 		// 인포윈도우 생성
-		var infowindow = new kakao.maps.InfoWindow(
+		var infowindow2 = new kakao.maps.InfoWindow(
 		{
 			content : iwContent,
 		// 『removable』 속성을 『true』로 설정할 경우
 		// 인포윈도우를 닫을 수 있는 버튼 활성화
 		});
 
-			infowindow.open(map, marker2);
+			infowindow2.open(map, marker2);
 	
 
 		searchDetailAddrFromCoords(curlatlng, function(result, status)
@@ -308,6 +310,7 @@ input.img-button {
 	}
 	
 
+	
 	function search()
 	{
 		var search = document.getElementById('search_addr').value;
