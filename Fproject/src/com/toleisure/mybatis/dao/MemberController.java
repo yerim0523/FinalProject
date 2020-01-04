@@ -284,6 +284,7 @@ public class MemberController
       /* String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; */
 	   
 	   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
+	   String rootUploadDir2 = "C:\\Users\\이예림\\git\\ToLeisure\\Fproject\\WebContent\\uploads";
 	   
        FileOutputStream fos = null;
        File dir = new File(rootUploadDir); 
