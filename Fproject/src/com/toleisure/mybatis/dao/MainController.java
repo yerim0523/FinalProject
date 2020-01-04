@@ -227,14 +227,47 @@ public class MainController
 	}
 	
 	@RequestMapping(value = "/show.action", method = RequestMethod.GET)
-	public String Performance(Model model, HttpSession session)
+	public String Show(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
 	{
 		session.getAttribute("member");
 		String view = "WEB-INF/views/Show.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 ArrayList<GroupDTO> ShowGroupList=dao.ShowGroupList(ordercheck);
+		model.addAttribute("ShowGroupList", ShowGroupList);
 
-		model.addAttribute("ShowGroupList", dao.ShowGroupList());
+		return view;
+	}
+	
+	@RequestMapping(value = "/showable.action", method = RequestMethod.GET)
+	public String ShowAble(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/ShowAble.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 
+		 ArrayList<GroupDTO> ShowAbleGroupList=dao.ShowAbleGroupList(ordercheck);
+			model.addAttribute("ShowAbleGroupList", ShowAbleGroupList);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/showclose.action", method = RequestMethod.GET)
+	public String ShowClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/ShowClose.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 ArrayList<GroupDTO> ShowCloseGroupList=dao.ShowCloseGroupList(ordercheck);
+			model.addAttribute("ShowCloseGroupList", ShowCloseGroupList);
 
 		return view;
 	}

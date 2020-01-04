@@ -130,7 +130,7 @@
 	
 	<div align="right">
 		<label class="check-inline">
-			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='showclose.action'" value="종료모임">종료 모임도 볼래요!
+			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" checked="checked"onclick="location='show.action'" value="종료모임">종료 모임도 볼래요!
 		</label>
 		<label class="check-inline">
 		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" onclick="location='showable.action'"value="참여모임">참여 가능한 모임만 볼래요!
@@ -153,9 +153,9 @@
 	    		</c:when>
 		    </c:choose>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-		      <a class="dropdown-item" onclick="location='show.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
-		      <a class="dropdown-item" onclick="location='show.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
-		      <a class="dropdown-item" onclick="location='show.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
+		      <a class="dropdown-item" onclick="location='showclose.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
+		      <a class="dropdown-item" onclick="location='showclose.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
+		      <a class="dropdown-item" onclick="location='showclose.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
 		    </div>
 	  	</div>
   	</div>
@@ -163,7 +163,7 @@
   	
   	 
 	<div class="row">
-		<c:forEach var="CultureGroup" items="${ShowGroupList}">
+		<c:forEach var="CultureGroup" items="${ShowCloseGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
 				<img src="${CultureGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"

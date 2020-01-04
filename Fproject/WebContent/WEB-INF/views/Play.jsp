@@ -124,13 +124,13 @@
 			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활</button>
 		</div>
 		<div class="right" align="right">
-			<a href="exhibit.action">전시</a> | <a style="font-weight:bold;" href="play.action">공연</a> | <a href="show.action">연극</a> 
+			<a href="exhibit.action">전시</a> | <a href="show.action">공연</a> | <a style="font-weight:bold;">연극</a>
 		</div>
 	</div>
 	
 	<div align="right">
 		<label class="check-inline">
-			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='palyclose.action'" value="종료모임">종료 모임도 볼래요!
+			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='playclose.action'" value="종료모임">종료 모임도 볼래요!
 		</label>
 		<label class="check-inline">
 		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" onclick="location='playable.action'"value="참여모임">참여 가능한 모임만 볼래요!

@@ -124,7 +124,7 @@
 			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활 > 전시</button>
 		</div>
 		<div class="right" align="right">
-			<a style="font-weight: bold;" href="exhibit.action">전시</a> | <a href="show.action">공연</a> | <a href="play.action">연극</a> 
+			<a style="font-weight: bold;">전시</a> | <a href="show.action">공연</a> | <a href="play.action">연극</a> 
 		</div>
 	</div>
 	
