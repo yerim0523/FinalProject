@@ -121,41 +121,44 @@
 
 	<div>
 		<div class="left">
-			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활</button>
+			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활 > 전시</button>
 		</div>
 		<div class="right" align="right">
-			<a href="exhibit.action">전시</a> | <a style="font-weight:bold;" href="play.action">공연</a> | <a href="show.action">연극</a> 
+			<a style="font-weight: bold;" href="exhibit.action">전시</a> | <a href="show.action">공연</a> | <a href="play.action">연극</a> 
 		</div>
 	</div>
 	
 	<div align="right">
 		<label class="check-inline">
-			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='palyclose.action'" value="종료모임">종료 모임도 볼래요!
+			<input type="checkbox" name="inlineRadioOptions"  id="inlineCheck1" onclick="location='exhibitclose.action'" value="종료모임">종료 모임도 볼래요!
 		</label>
 		<label class="check-inline">
-		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" onclick="location='playable.action'"value="참여모임">참여 가능한 모임만 볼래요!
+		  	<input type="checkbox" name="inlineRadioOptions" checked="checked" id="inlineCheck2" onclick="location='exhibit.action'"value="참여모임">참여 가능한 모임만 볼래요!
 		</label>
 	</div>
 	
 	<div align="right">
 	    <div class="btn-group" role="group">
-		    <c:choose>
+	    	<c:choose>
 	    		<c:when test="${sessionScope.ordercheck==1}">
-	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최신순</button>
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    		 최신순</button>
 	    		</c:when>
 		   		
 		   		<c:when test="${sessionScope.ordercheck==2}">
-	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">인기순</button>
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    		 인기순</button>
 	    		</c:when>
 	    		
 	    		<c:when test="${sessionScope.ordercheck==3}">
-	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">별점순</button>
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    		 별점순</button>
 	    		</c:when>
 		    </c:choose>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-		      <a class="dropdown-item" onclick="location='play.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
-		      <a class="dropdown-item" onclick="location='play.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
-		      <a class="dropdown-item" onclick="location='play.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
+		      <a class="dropdown-item" onclick="location='exhibitable.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
+		      <a class="dropdown-item" onclick="location='exhibitable.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
+		      <a class="dropdown-item" onclick="location='exhibitable.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
 		    </div>
 	  	</div>
   	</div>
@@ -163,55 +166,51 @@
   	
   	 
 	<div class="row">
-		<c:forEach var="CultureGroup" items="${PlayGroupList}">
+		<c:forEach var="ExhibitGroup" items="${ExhibitAbleGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${CultureGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
-					onclick="location.href='groupdetail.action?ngCode=${CultureGroup.ngCode}'">
+				<img src="${ExhibitGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
 			<div class="caption">
 			<div>
 				<div class="starRev">
 					
 				</div>
 				<div style="text-align: right;">
-					<c:if test="${CultureGroup.grStarAvg eq 0}">
+					<c:if test="${ExhibitGroup.grStarAvg eq 0}">
            				<c:forEach begin="0" end="4">
            					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:forEach>
            			</c:if>
-           			<c:if test="${CultureGroup.grStarAvg ne 0}">
-           				<c:forEach begin="1" end="${CultureGroup.grStarAvg/1}">
+           			<c:if test="${ExhibitGroup.grStarAvg ne 0}">
+           				<c:forEach begin="1" end="${ExhibitGroup.grStarAvg/1}">
            					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:forEach>
-           				<c:if test="${CultureGroup.grStarAvg%1 ne 0}">
+           				<c:if test="${ExhibitGroup.grStarAvg%1 ne 0}">
            					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:if>
-           				<c:forEach begin="1" end="${5 - CultureGroup.grStarAvg/1}">
+           				<c:forEach begin="1" end="${5 - ExhibitGroup.grStarAvg/1}">
            					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:forEach>
            			</c:if>
-					<span style="color: gray;">&nbsp;&nbsp;${CultureGroup.grStarAvg } 
-						<span style="font-size: 10pt; color: gray;">/ ${CultureGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+					<span style="color: gray;">&nbsp;&nbsp;${ExhibitGroup.grStarAvg } 
+						<span style="font-size: 10pt; color: gray;">/ ${ExhibitGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
 					</span>
 				</div>
 			</div>
 			<br>
 			<div>
-				
-				<span style="font-size: 12px;">${CultureGroup.grCount }회차 | ${CultureGroup.grCate1Name } ${CultureGroup.grCate2Name }</span>
-				
+				<span style="font-size: 12px;">${ExhibitGroup.grCount }회차 | ${ExhibitGroup.grCate1Name } ${ExhibitGroup.grCate2Name }</span>
 				<div>
-					<div class="name" onclick="location.href='groupdetail.action?ngCode=${CultureGroup.ngCode}'">
-					<h5>${CultureGroup.grName }</h5>
-					
-					
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
+					<h5>${ExhibitGroup.grName }</h5>
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">"${CultureGroup.memName }"</h6>
+				<h6 style="text-align: right; font-size: 10px;">"${ExhibitGroup.memName }"</h6>
 			</div>
 			
 			</div>

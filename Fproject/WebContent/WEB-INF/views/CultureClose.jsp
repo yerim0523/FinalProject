@@ -124,7 +124,7 @@
 			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활</button>
 		</div>
 		<div class="right" align="right">
-			<a href="exhibit.action">전시</a> | <a href="play.action">공연</a> | <a href="show.action">연극</a> 
+			<a href="exhibit.action">전시</a> | <a href="show.action">공연</a> | <a href="play.action">연극</a> 
 		</div>
 	</div>
 	
@@ -139,13 +139,23 @@
 	
 	<div align="right">
 	    <div class="btn-group" role="group">
-		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      정렬 기준
-		    </button>
+	    	<c:choose>
+	    		<c:when test="${sessionScope.ordercheck==1}">
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최신순</button>
+	    		</c:when>
+		   		
+		   		<c:when test="${sessionScope.ordercheck==2}">
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">인기순</button>
+	    		</c:when>
+	    		
+	    		<c:when test="${sessionScope.ordercheck==3}">
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">별점순</button>
+	    		</c:when>
+		    </c:choose>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
 		      <a class="dropdown-item" onclick="location='cultureclose.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
 		      <a class="dropdown-item" onclick="location='cultureclose.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
-		      <a class="dropdown-item" onclick="location='cultureclose.action?ordercheck=3'" style="cursor:pointer;">평가순</a>
+		      <a class="dropdown-item" onclick="location='cultureclose.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
 		    </div>
 	  	</div>
   	</div>
@@ -163,13 +173,23 @@
 				<div class="starRev">
 					
 				</div>
-				<div>
-					<c:if test="${CultureGroup.grStarAvg != 0.0 }">
-					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-					</c:if>
-					<c:if test="${CultureGroup.grStarAvg == 0.0 }">
-					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-					</c:if>
+				<div style="text-align: right;">
+					<c:if test="${CultureGroup.grStarAvg eq 0}">
+           				<c:forEach begin="0" end="4">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			<c:if test="${CultureGroup.grStarAvg ne 0}">
+           				<c:forEach begin="1" end="${CultureGroup.grStarAvg/1}">
+           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           				<c:if test="${CultureGroup.grStarAvg%1 ne 0}">
+           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:if>
+           				<c:forEach begin="1" end="${5 - CultureGroup.grStarAvg/1}">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
 					<span style="color: gray;">&nbsp;&nbsp;${CultureGroup.grStarAvg } 
 						<span style="font-size: 10pt; color: gray;">/ ${CultureGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
 					</span>

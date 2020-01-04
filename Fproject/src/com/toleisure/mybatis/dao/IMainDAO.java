@@ -22,7 +22,7 @@ public interface IMainDAO
 	
 	//-- 문화 출력 리스트----------------
 	public ArrayList<GroupDTO> CultureGroupList(int ordercheck);
-	public ArrayList<GroupDTO> ExhibitGroupList();
+	public ArrayList<GroupDTO> ExhibitGroupList(int ordercheck);
 	public ArrayList<GroupDTO> PlayGroupList();
 	public ArrayList<GroupDTO> ShowGroupList();
 	
@@ -41,12 +41,11 @@ public interface IMainDAO
 	 
 	//-- 모임 상세 페이지 내용
 	public ArrayList<GroupDTO> groupContent(int ngCode);
-	public int jjimCount(int ngCode);
 	public List<GroupDTO> groupContent(GroupDTO dto);
 	public ArrayList<GroupDTO> ContentReview(int ngCode);
 	public ArrayList<GroupDTO> ContentGBoard(int ngCode);
 	public ArrayList<GroupDTO> ContentMember(int ngCode);
-	
+	public int jjimCount(int ngCode);
 	 
 	//-- 찜 여부 확인
 	public String meetFavCheck(GroupDTO dto);
@@ -61,4 +60,10 @@ public interface IMainDAO
 	//-- 검색 기능
 	public ArrayList<GroupDTO> search(String searchval);
 	public ArrayList<GroupDTO> CultureCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> CultureAbleGroupList(int ordercheck);
+	public ArrayList<GroupDTO> ExhibitAbleGroupList(int ordercheck);
+	public ArrayList<GroupDTO> ExhibitCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> PlayGroupList(int ordercheck);
+	public ArrayList<GroupDTO> PlayCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> PlayAbleGroupList(int ordercheck);
 }

@@ -87,9 +87,9 @@ public class MainController
 		String view = "WEB-INF/views/Culture.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
 			
-		GroupDTO dto = new GroupDTO();
-		
+	
 		ArrayList<GroupDTO> CultureGroupList=dao.CultureGroupList(ordercheck);
 		
 		model.addAttribute("CultureGroupList",CultureGroupList );
@@ -104,7 +104,7 @@ public class MainController
 		String view = "WEB-INF/views/CultureClose.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-			
+		 session.setAttribute("ordercheck", ordercheck);
 	
 		ArrayList<GroupDTO> CultureCloseGroupList=dao.CultureCloseGroupList(ordercheck);
 		
@@ -114,36 +114,118 @@ public class MainController
 	}
 	
 	@RequestMapping(value = "/cultureable.action", method = RequestMethod.GET)
-	public String CultureAble(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	public String CultureAble(Model model,HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
 	{
 		session.getAttribute("member");
-		String view = "WEB-INF/views/Culture.jsp";
-
+		String view = "WEB-INF/views/CultureAble.jsp";
+		 session.setAttribute("ordercheck", ordercheck);
+		 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 			
 		
-		ArrayList<GroupDTO> CultureGroupList=dao.CultureGroupList(ordercheck);
+		ArrayList<GroupDTO> CultureAbleGroupList=dao.CultureAbleGroupList(ordercheck);
 		
-		model.addAttribute("CultureGroupList",CultureGroupList );
-
+		model.addAttribute("CultureAbleGroupList",CultureAbleGroupList );
+		
 		return view;
 	}
 	
-	
-
 	@RequestMapping(value = "/exhibit.action", method = RequestMethod.GET)
-	public String Exhibit(Model model, HttpSession session)
+	public String Exhibit(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
 	{
 		session.getAttribute("member");
 		String view = "WEB-INF/views/Exhibit.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 ArrayList<GroupDTO> ExhibitGroupList=dao.ExhibitGroupList(ordercheck);
+		model.addAttribute("ExhibitGroupList", ExhibitGroupList);
 
-		model.addAttribute("ExhibitGroupList", dao.ExhibitGroupList());
+		return view;
+	}
+	
+	@RequestMapping(value = "/exhibitclose.action", method = RequestMethod.GET)
+	public String ExhibitClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/ExhibitClose.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 ArrayList<GroupDTO> ExhibitCloseGroupList=dao.ExhibitCloseGroupList(ordercheck);
+			model.addAttribute("ExhibitCloseGroupList", ExhibitCloseGroupList);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/exhibitable.action", method = RequestMethod.GET)
+	public String ExhibitAble(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/ExhibitAble.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 
+		 ArrayList<GroupDTO> ExhibitAbleGroupList=dao.ExhibitAbleGroupList(ordercheck);
+			model.addAttribute("ExhibitAbleGroupList", ExhibitAbleGroupList);
 
 		return view;
 	}
 
+	
+	
+	
+	
+	@RequestMapping(value = "/play.action", method = RequestMethod.GET)
+	public String Play(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/Play.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 ArrayList<GroupDTO> PlayGroupList=dao.PlayGroupList(ordercheck);
+		model.addAttribute("PlayGroupList", PlayGroupList);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/playable.action", method = RequestMethod.GET)
+	public String PlayAble(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/PlayAble.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 
+		 ArrayList<GroupDTO> PlayAbleGroupList=dao.PlayAbleGroupList(ordercheck);
+			model.addAttribute("PlayAbleGroupList", PlayAbleGroupList);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/playclose.action", method = RequestMethod.GET)
+	public String PlayClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/PlayClose.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		 session.setAttribute("ordercheck", ordercheck);
+		 ArrayList<GroupDTO> PlayCloseGroupList=dao.PlayCloseGroupList(ordercheck);
+			model.addAttribute("PlayCloseGroupList", PlayCloseGroupList);
+
+		return view;
+	}
+	
 	@RequestMapping(value = "/show.action", method = RequestMethod.GET)
 	public String Performance(Model model, HttpSession session)
 	{
@@ -157,18 +239,7 @@ public class MainController
 		return view;
 	}
 
-	@RequestMapping(value = "/play.action", method = RequestMethod.GET)
-	public String Play(Model model, HttpSession session)
-	{
-		session.getAttribute("member");
-		String view = "WEB-INF/views/Play.jsp";
-
-		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-
-		model.addAttribute("PlayGroupList", dao.PlayGroupList());
-
-		return view;
-	}
+	
 
 	// -----------------------------------맛집모임-------------------
 	@RequestMapping(value = "/food.action", method = RequestMethod.GET)
@@ -307,35 +378,35 @@ public class MainController
 	}
 	
 	// ---------------------------------------------------------- 모임 상세 페이지 내용
-	@RequestMapping(value = "/groupdetail.action", method = {RequestMethod.GET,RequestMethod.POST})
-	public String GroupContent(int ngCode, GroupDTO dto, Model model, HttpSession session)
-	{
-		String view = "/WEB-INF/views/meetingContent.jsp";
-		session.getAttribute("member");
-		
-		System.out.println("===========  " + ngCode);
-		
-		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-		
-		//dao.groupContent(ngCode);
-		
-		List<GroupDTO> groupContent = dao.groupContent(ngCode);
-		int jjimCount = dao.jjimCount(ngCode);
-		List<GroupDTO> contentReview = dao.ContentReview(ngCode);
-		List<GroupDTO> contentGBoard = dao.ContentGBoard(ngCode);
-		List<GroupDTO> contentMember = dao.ContentMember(ngCode);
-		
-		model.addAttribute("groupContent", groupContent);
-		model.addAttribute("jjimCount", jjimCount);
-		model.addAttribute("contentReview", contentReview);
-		model.addAttribute("contentGBoard", contentGBoard);
-		model.addAttribute("contentMember", contentMember);
-		
-		session.setAttribute("ngCode", dto.getNgCode());
-		
-		return view;
-		
-	}
+	   @RequestMapping(value = "/groupdetail.action", method = {RequestMethod.GET,RequestMethod.POST})
+	   public String GroupContent(int ngCode, GroupDTO dto, Model model, HttpSession session)
+	   {
+	      String view = "/WEB-INF/views/meetingContent.jsp";
+	      session.getAttribute("member");
+	      
+	      System.out.println("===========  " + ngCode);
+	      
+	      IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+	      
+	      //dao.groupContent(ngCode);
+	      
+	      List<GroupDTO> groupContent = dao.groupContent(ngCode);
+	      int jjimCount = dao.jjimCount(ngCode);
+	      List<GroupDTO> contentReview = dao.ContentReview(ngCode);
+	      List<GroupDTO> contentGBoard = dao.ContentGBoard(ngCode);
+	      List<GroupDTO> contentMember = dao.ContentMember(ngCode);
+	      
+	      model.addAttribute("groupContent", groupContent);
+	      model.addAttribute("jjimCount", jjimCount);
+	      model.addAttribute("contentReview", contentReview);
+	      model.addAttribute("contentGBoard", contentGBoard);
+	      model.addAttribute("contentMember", contentMember);
+	      
+	      session.setAttribute("ngCode", dto.getNgCode());
+	      
+	      return view;
+	      
+	   }
 	
 	// ---------------------------------------------------------- 찜 모임 여부
 	@RequestMapping(value = "/meetfavoritefind.action", method = {RequestMethod.POST,RequestMethod.GET})

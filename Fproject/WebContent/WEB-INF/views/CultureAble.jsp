@@ -123,23 +123,25 @@
 		<div class="left">
 			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활</button>
 		</div>
+		
 		<div class="right" align="right">
-			<a href="exhibit.action">전시</a> | <a style="font-weight:bold;" href="play.action">공연</a> | <a href="show.action">연극</a> 
+			<a href="exhibit.action">전시</a> | <a href="show.action">공연</a> | <a href="play.action">연극</a> 
 		</div>
+		
 	</div>
 	
 	<div align="right">
 		<label class="check-inline">
-			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='palyclose.action'" value="종료모임">종료 모임도 볼래요!
+			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='cultureclose.action'" value="종료모임">종료 모임도 볼래요!
 		</label>
 		<label class="check-inline">
-		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" onclick="location='playable.action'"value="참여모임">참여 가능한 모임만 볼래요!
+		  	<input type="checkbox" name="inlineRadioOptions" checked="checked" id="inlineCheck2" onclick="location='culture.action'"value="참여모임">참여 가능한 모임만 볼래요!
 		</label>
 	</div>
 	
 	<div align="right">
 	    <div class="btn-group" role="group">
-		    <c:choose>
+		   <c:choose>
 	    		<c:when test="${sessionScope.ordercheck==1}">
 	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최신순</button>
 	    		</c:when>
@@ -153,9 +155,9 @@
 	    		</c:when>
 		    </c:choose>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-		      <a class="dropdown-item" onclick="location='play.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
-		      <a class="dropdown-item" onclick="location='play.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
-		      <a class="dropdown-item" onclick="location='play.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
+		      <a class="dropdown-item" onclick="location='cultureable.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
+		      <a class="dropdown-item" onclick="location='cultureable.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
+		      <a class="dropdown-item" onclick="location='cultureable.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
 		    </div>
 	  	</div>
   	</div>
@@ -163,7 +165,7 @@
   	
   	 
 	<div class="row">
-		<c:forEach var="CultureGroup" items="${PlayGroupList}">
+		<c:forEach var="CultureGroup" items="${CultureAbleGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
 				<img src="${CultureGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
@@ -197,14 +199,10 @@
 			</div>
 			<br>
 			<div>
-				
 				<span style="font-size: 12px;">${CultureGroup.grCount }회차 | ${CultureGroup.grCate1Name } ${CultureGroup.grCate2Name }</span>
-				
 				<div>
 					<div class="name" onclick="location.href='groupdetail.action?ngCode=${CultureGroup.ngCode}'">
 					<h5>${CultureGroup.grName }</h5>
-					
-					
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>

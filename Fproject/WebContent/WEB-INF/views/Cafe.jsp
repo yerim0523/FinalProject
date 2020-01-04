@@ -98,23 +98,35 @@
 	<br>
 	<div align="right">
 		<label class="check-inline">
-			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" value="종료모임">종료 모임도 볼래요!
+			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='cafeclose.action'" value="종료모임">종료 모임도 볼래요!
 		</label>
 		<label class="check-inline">
-		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" value="참여모임">참여 가능한 모임만 볼래요!
+		  	<input type="checkbox" name="inlineRadioOptions" id="inlineCheck2" onclick="location='cafeable.action'"value="참여모임">참여 가능한 모임만 볼래요!
 		</label>
 	</div>
 	
 	<div align="right">
-		
 	    <div class="btn-group" role="group">
-		    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      정렬 기준
-		    </button>
+		    <c:choose>
+	    		<c:when test="${sessionScope.ordercheck==1}">
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" 
+	    		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최신순</button>
+	    		</c:when>
+		   		
+		   		<c:when test="${sessionScope.ordercheck==2}">
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" 
+	    		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">인기순</button>
+	    		</c:when>
+	    		
+	    		<c:when test="${sessionScope.ordercheck==3}">
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" 
+	    		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">별점순</button>
+	    		</c:when>
+		    </c:choose>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
 		      <a class="dropdown-item" onclick="location='cafe.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
 		      <a class="dropdown-item" onclick="location='cafe.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
-		      <a class="dropdown-item" onclick="location='cafe.action?ordercheck=3'" style="cursor:pointer;">평가순</a>
+		      <a class="dropdown-item" onclick="location='cafe.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
 		    </div>
 	  	</div>
   	</div>
@@ -127,13 +139,34 @@
 				<img src="${CafeGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
 					onclick="location.href='groupdetail.action?ngCode=${CafeGroup.ngCode}'">
 			<div class="caption">
+			
 			<div>
-				
-				<div>
-					<img alt="" src="images/star.png" style="width: 20px;">
-					<span> 9.5</span>
+				<div class="starRev">
+					
+				</div>
+				<div style="text-align: right;">
+					<c:if test="${CultureGroup.grStarAvg eq 0}">
+           				<c:forEach begin="0" end="4">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			<c:if test="${CultureGroup.grStarAvg ne 0}">
+           				<c:forEach begin="1" end="${CultureGroup.grStarAvg/1}">
+           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           				<c:if test="${CultureGroup.grStarAvg%1 ne 0}">
+           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:if>
+           				<c:forEach begin="1" end="${5 - CultureGroup.grStarAvg/1}">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+					<span style="color: gray;">&nbsp;&nbsp;${CultureGroup.grStarAvg } 
+						<span style="font-size: 10pt; color: gray;">/ ${CultureGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+					</span>
 				</div>
 			</div>
+			
 			<br>
 			<div>
 				<span style="font-size: 12px;">1회차|${CafeGroup.grCate1Name } ${CafeGroup.grCate2Name }</span>
