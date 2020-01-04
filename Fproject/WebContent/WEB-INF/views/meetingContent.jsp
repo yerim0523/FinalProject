@@ -97,6 +97,15 @@
 	{
 		display: none;
 	}
+	
+	.bookmarkbar a
+	{
+		letter-spacing: 1px;
+		color: gray;
+		font-family: 맑은고딕;
+		font-weight: bold;
+		font-size: 17px;
+	}
 
 </style>
 
@@ -178,11 +187,12 @@
 					</div>
 
 					<br>
-					<br>
-					<div align="center">
-						<a href="#introduce">모임소개</a> | <a href="#note">유의사항</a> | <a
-							href="#host">호스트소개</a> | <a href="#after">후기</a> | <a
-							href="#bang">방명록</a> | <a href="#refund">환불정책</a>
+					<div align="center" class="bookmarkbar">
+						<a>|</a>&nbsp;&nbsp;<a href="#introduce">모임소개</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;
+						<a href="#note">유의사항</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;
+						<a href="#host">호스트소개</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;
+						<a href="#after">후기</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;
+						<a href="#bang">방명록</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href="#refund">환불정책</a>&nbsp;&nbsp;<a>|</a>
 					</div>
 
 					<div class="content_wrapper">
