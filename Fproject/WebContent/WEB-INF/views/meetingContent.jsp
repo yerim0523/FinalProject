@@ -160,7 +160,7 @@
 						<div class="d-flex justify-content-between" style="margin-top: 5px;">
 							<div>
 								<i class="fas fa-heart heartIcon" style="color: red;"></i>
-								&nbsp;5
+								&nbsp;${jjimCount }
 								&nbsp;&nbsp;
 	           					<i class="fas fa-share-alt" style="font-size: 20px; color: gray;"></i>
 	           				</div>
