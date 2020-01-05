@@ -10,12 +10,13 @@
 <meta charset="UTF-8">
 <title>Food.jsp</title>
 
-<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -30,8 +31,11 @@
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
-<!-- jquery plugins here-->
+
     
+    
+    <!-- jquery plugins here-->
+   
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
@@ -47,6 +51,7 @@
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+
 
 <style>
 
@@ -71,11 +76,12 @@
     
 </style>
 
+
 </head>
 <body>
 
-<div class="header">
-	<jsp:include page="bar.jsp"></jsp:include>
+<div>
+	<c:import url="bar.jsp"></c:import>
 </div>
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
@@ -89,13 +95,13 @@
 
 	<div>
 		<div class="left">
-			<button type="button" class="btn btn-default">문화생활</button>
+			<button type="button" class="btn btn-default" style="font-weight: bold;">맛집 > 카페</button>
 		</div>
 		<div class="right" align="right">
-			<a href="restaurant.action">식당</a> | <a href="cafe.action">카페</a>
+			<a href="restaurant.action">식당</a> | <a style="font-weight: bold;">카페</a>
 		</div>
 	</div>
-	<br>
+	
 	<div align="right">
 		<label class="check-inline">
 			<input type="checkbox" name="inlineRadioOptions" id="inlineCheck1" onclick="location='cafeclose.action'" value="종료모임">종료 모임도 볼래요!
@@ -107,20 +113,17 @@
 	
 	<div align="right">
 	    <div class="btn-group" role="group">
-		    <c:choose>
+		   <c:choose>
 	    		<c:when test="${sessionScope.ordercheck==1}">
-	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" 
-	    		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최신순</button>
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최신순</button>
 	    		</c:when>
 		   		
 		   		<c:when test="${sessionScope.ordercheck==2}">
-	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" 
-	    		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">인기순</button>
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">인기순</button>
 	    		</c:when>
 	    		
 	    		<c:when test="${sessionScope.ordercheck==3}">
-	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" 
-	    		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">별점순</button>
+	    		 <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">별점순</button>
 	    		</c:when>
 		    </c:choose>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
@@ -132,66 +135,70 @@
   	</div>
   	<br><br><br>
   	
+  	 
 	<div class="row">
-		<c:forEach var="CafeGroup" items="${CafeGroupList}">
+		<c:forEach var="FoodGroup" items="${CafeGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${CafeGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
-					onclick="location.href='groupdetail.action?ngCode=${CafeGroup.ngCode}'">
+				<img src="${FoodGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+					onclick="location.href='groupdetail.action?ngCode=${FoodGroup.ngCode}'">
 			<div class="caption">
-			
 			<div>
 				<div class="starRev">
 					
 				</div>
 				<div style="text-align: right;">
-					<c:if test="${CultureGroup.grStarAvg eq 0}">
+					<c:if test="${FoodGroup.grStarAvg eq 0}">
            				<c:forEach begin="0" end="4">
            					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:forEach>
            			</c:if>
-           			<c:if test="${CultureGroup.grStarAvg ne 0}">
-           				<c:forEach begin="1" end="${CultureGroup.grStarAvg/1}">
+           			<c:if test="${FoodGroup.grStarAvg ne 0}">
+           				<c:forEach begin="1" end="${FoodGroup.grStarAvg/1}">
            					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:forEach>
-           				<c:if test="${CultureGroup.grStarAvg%1 ne 0}">
+           				<c:if test="${FoodGroup.grStarAvg%1 ne 0}">
            					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:if>
-           				<c:forEach begin="1" end="${5 - CultureGroup.grStarAvg/1}">
+           				<c:forEach begin="1" end="${5 - FoodGroup.grStarAvg/1}">
            					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:forEach>
            			</c:if>
-					<span style="color: gray;">&nbsp;&nbsp;${CultureGroup.grStarAvg } 
-						<span style="font-size: 10pt; color: gray;">/ ${CultureGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+					<span style="color: gray;">&nbsp;&nbsp;${FoodGroup.grStarAvg } 
+						<span style="font-size: 10pt; color: gray;">/ ${FoodGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
 					</span>
 				</div>
 			</div>
-			
 			<br>
 			<div>
-				<span style="font-size: 12px;">1회차|${CafeGroup.grCate1Name } ${CafeGroup.grCate2Name }</span>
+				
+				<span style="font-size: 12px;">${FoodGroup.grCount }회차 | ${FoodGroup.grCate1Name } ${FoodGroup.grCate2Name }</span>
+				
 				<div>
-					<div class="name" onclick="location.href='groupdetail.action?ngCode=${CafeGroup.ngCode}'">
-					<h5>${CafeGroup.grName }</h5>
+					<div class="name" onclick="location.href='groupdetail.action?ngCode=${FoodGroup.ngCode}'">
+					<h5>${CultureGroup.grName }</h5>
+					
+					
 					</div>
 					<div class="heart" align="right">
 						<i class="far fa-heart"></i>
 					</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">${CafeGroup.memName }</h6>
+				<h6 style="text-align: right; font-size: 10px;">"${FoodGroup.memName }"</h6>
 			</div>
 			
 			</div>
 			</div>
 		</div>
-		</c:forEach>
+		</c:forEach>	
+		
 		
   	
 </div>
 
 </div>
- 
+
 <div>
    <c:import url="footer.jsp"></c:import>
 </div>

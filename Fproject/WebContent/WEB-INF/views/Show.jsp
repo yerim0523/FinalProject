@@ -8,13 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Culture.jsp</title>
+<title>Show.jsp</title>
 
-<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -29,16 +31,11 @@
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
-<!-- jquery plugins here-->
-   <!--   안씀 
-    <script src="js/jquery-1.12.1.min.js"></script>
-    popper js
-    <script src="js/popper.min.js"></script>
-    bootstrap js
-    <script src="js/bootstrap.min.js"></script> -->
+
     
     
-    
+    <!-- jquery plugins here-->
+   
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
@@ -54,6 +51,7 @@
     <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+
 
 <style>
 
@@ -78,31 +76,6 @@
     
 </style>
 
-<script type="text/javascript">
-
-	 
-	$(document).ready(function() {
-	    $('#boardCont').summernote({
-	  	  
-				lang: 'ko-KR',
-	          height: 300,                 
-	          minHeight: null,             
-	          maxHeight: null,             
-	          focus: true,                 
-	          fontSizes: ['4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
-			  fontNames: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
-		      fontNamesIgnoreCheck: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체'],
-			  popover: {         //팝오버 설정
-					
-				  	video: [],
-	    	        air: []
-	    	  }
-	    }); 
-	}); 
-
-	
-</script>
-
 </head>
 <body>
 
@@ -121,7 +94,7 @@
 
 	<div>
 		<div class="left">
-			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활</button>
+			<button type="button" class="btn btn-default" style="font-weight: bold;">문화생활 > 공연</button>
 		</div>
 		<div class="right" align="right">
 			<a href="exhibit.action">전시</a> | <a style="font-weight:bold;">공연</a> | <a href="play.action">연극</a> 

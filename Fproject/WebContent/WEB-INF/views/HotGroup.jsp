@@ -102,7 +102,7 @@
 			<button type="button" class="btn btn-default">테마별 > 인기모임</button>
 		</div>
 		<div class="right" align="right"> 
-			<a href="theme.action">인기모임</a> | <a href="newgroup.action">신규모임</a> | <a href="hothost.action">인기호스트</a> 
+			<a style="font-weight: bold;">인기모임</a> | <a href="newgroup.action">신규모임</a> | <a href="hothost.action">인기호스트</a> 
 			| <a href="closing.action">마감임박</a> | <a href="recommend.action">추천모임</a>
 		</div>
 	</div>

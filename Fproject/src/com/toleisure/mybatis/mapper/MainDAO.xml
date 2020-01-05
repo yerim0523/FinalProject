@@ -335,35 +335,242 @@
    
 
    <!-- ============================================음식점 DAO================================================ -->
-   <select id="FoodGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
-           , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
-      FROM ALL_GROUP_VIEW A, FOOD_GROUP_VIEW C
-      WHERE A.GR_CODE = C.GR_CODE
-      GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
-             , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
-      ORDER BY A.NG_DATE DESC
+   <select  id="FoodGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE > SYSDATE
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE > SYSDATE
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE > SYSDATE
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+    <select  id="FoodCloseGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페')
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페')
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페')
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+    <select  id="FoodAbleGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
    </select>
 
-   <select id="CafeGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-      grCate1Name, CATE2 AS grCate2Name, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
-      FROM FOOD_CAFE_VIEW
+
+
+	<select  id="RestaurantGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당') AND NG_STARTDATE > SYSDATE
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당') AND NG_STARTDATE > SYSDATE
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당') AND NG_STARTDATE > SYSDATE
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+    <select  id="RestaurantCloseGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당')
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당')
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당')
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+    <select  id="RestaurantAbleGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('식당') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
    </select>
 
-   <select id="RestaurantGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT A.NG_PIC AS ngPic, A.GR_NAME AS grName, A.CATE1 AS grCate1Name, CASE WHEN A.CATE2='0' THEN '' ELSE A.CATE2 END AS grCate2Name
-          , A.MEM_NAME AS memName, A.GR_COUNT AS grCount, A.STAR_AVG AS grStarAvg, A.STAR_COUNT AS grStarCount, A.NG_CODE AS ngCode
-      FROM ALL_GROUP_VIEW A, FOOD_RESTAURANT_VIEW C
-      WHERE A.GR_CODE = C.GR_CODE
-      GROUP BY A.GR_CODE, A.NG_PIC, A.CATE1, A.CATE2, A.GR_NAME, A.MEM_NAME, A.NG_DATE, A.GR_COUNT, A.STAR_AVG, A.STAR_COUNT, A.MEM_ID
-           , A.NG_CODE, A.NG_STARTDATE, A.FAVOR
-      ORDER BY A.NG_DATE DESC
-   </select>
 
+	<select  id="CafeGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페') AND NG_STARTDATE > SYSDATE
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페') AND NG_STARTDATE > SYSDATE
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페') AND NG_STARTDATE > SYSDATE
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+    <select  id="CafeCloseGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페')
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페')
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페')
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+    <select  id="CafeAbleGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+            <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
+			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
+				  	FROM ALL_GROUP_VIEW
+					WHERE CATE1 IN ('카페') AND NG_STARTDATE-2 > SYSDATE
+					ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
    <!-- ============================================음식점 DAO END================================================ -->
 
    <!-- ============================================테마별 DAO================================================ -->

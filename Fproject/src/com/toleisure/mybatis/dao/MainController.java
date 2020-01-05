@@ -276,41 +276,152 @@ public class MainController
 
 	// -----------------------------------맛집모임-------------------
 	@RequestMapping(value = "/food.action", method = RequestMethod.GET)
-	public String Food(Model model, HttpSession session)
+	public String Food(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
 	{
 		session.getAttribute("member");
 		String view = "WEB-INF/views/Food.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+			
+	
+		ArrayList<GroupDTO> FoodGroupList=dao.FoodGroupList(ordercheck);
+		
+		model.addAttribute("FoodGroupList",FoodGroupList );
 
-		model.addAttribute("FoodGroupList", dao.FoodGroupList());
+		return view;
+	}
+	
+	@RequestMapping(value = "/foodclose.action", method = RequestMethod.GET)
+	public String FoodClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/FoodClose.jsp";
 
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+	
+		ArrayList<GroupDTO> FoodCloseGroupList=dao.FoodCloseGroupList(ordercheck);
+		
+		model.addAttribute("FoodCloseGroupList",FoodCloseGroupList);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/foodable.action", method = RequestMethod.GET)
+	public String FoodAble(Model model,HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/FoodAble.jsp";
+		 session.setAttribute("ordercheck", ordercheck);
+		 
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+			
+		
+		ArrayList<GroupDTO> FoodAbleGroupList=dao.FoodAbleGroupList(ordercheck);
+		
+		model.addAttribute("FoodAbleGroupList",FoodAbleGroupList );
+		
 		return view;
 	}
 
 	@RequestMapping(value = "/restaurant.action", method = RequestMethod.GET)
-	public String restraunt(Model model, HttpSession session)
+	public String Restaurant(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
 	{
 		session.getAttribute("member");
 		String view = "WEB-INF/views/Restaurant.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+			
+	
+		ArrayList<GroupDTO> RestaurantGroupList=dao.RestaurantGroupList(ordercheck);
+		
+		model.addAttribute("RestaurantGroupList",RestaurantGroupList );
 
-		model.addAttribute("RestaurantGroupList", dao.RestaurantGroupList());
+		return view;
+	}
+	
+	@RequestMapping(value = "/restaurantclose.action", method = RequestMethod.GET)
+	public String RestaurantClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/RestaurantClose.jsp";
 
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+	
+		ArrayList<GroupDTO> RestaurantCloseGroupList=dao.RestaurantCloseGroupList(ordercheck);
+		
+		model.addAttribute("RestaurantCloseGroupList",RestaurantCloseGroupList);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/restaurantable.action", method = RequestMethod.GET)
+	public String RestaurantAble(Model model,HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/RestaurantAble.jsp";
+		 session.setAttribute("ordercheck", ordercheck);
+		 
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+			
+		
+		ArrayList<GroupDTO> RestaurantAbleGroupList=dao.RestaurantAbleGroupList(ordercheck);
+		
+		model.addAttribute("RestaurantAbleGroupList",RestaurantAbleGroupList );
+		
 		return view;
 	}
 
 	@RequestMapping(value = "/cafe.action", method = RequestMethod.GET)
-	public String Cafe(Model model, HttpSession session)
+	public String Cafe(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
 	{
 		session.getAttribute("member");
 		String view = "WEB-INF/views/Cafe.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+			
+	
+		ArrayList<GroupDTO> CafeGroupList=dao.CafeGroupList(ordercheck);
+		
+		model.addAttribute("CafeGroupList",CafeGroupList );
 
-		model.addAttribute("CafeGroupList", dao.CafeGroupList());
+		return view;
+	}
+	
+	@RequestMapping(value = "/cafeclose.action", method = RequestMethod.GET)
+	public String CafeClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/CafeClose.jsp";
 
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+	
+		ArrayList<GroupDTO> CafeCloseGroupList=dao.CafeCloseGroupList(ordercheck);
+		
+		model.addAttribute("CafeCloseGroupList",CafeCloseGroupList);
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/cafeable.action", method = RequestMethod.GET)
+	public String CafeAble(Model model,HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/CafeAble.jsp";
+		 session.setAttribute("ordercheck", ordercheck);
+		 
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+			
+		
+		ArrayList<GroupDTO> CafeAbleGroupList=dao.CafeAbleGroupList(ordercheck);
+		
+		model.addAttribute("CafeAbleGroupList",CafeAbleGroupList );
+		
 		return view;
 	}
 

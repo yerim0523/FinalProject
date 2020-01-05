@@ -102,7 +102,7 @@
 		</div>
 		<div class="right" align="right"> 
 			<a href="theme.action">인기모임</a> | <a href="newgroup.action">신규모임</a> | <a href="hothost.action">인기호스트</a> 
-			| <a href="closing.action">마감임박</a> | <a href="recommend.action">추천모임</a>
+			| <a style="font-weight: bold;">마감임박</a> | <a href="recommend.action">추천모임</a>
 		</div>
 	</div>
 	<br>

@@ -27,9 +27,9 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> ShowGroupList(int ordercheck);
 	
 	//-- 맛집 출력 리스트----------------
-	public ArrayList<GroupDTO> FoodGroupList();
-	public ArrayList<GroupDTO> RestaurantGroupList();
-	public ArrayList<GroupDTO> CafeGroupList();
+	public ArrayList<GroupDTO> FoodGroupList(int ordercheck);
+	public ArrayList<GroupDTO> RestaurantGroupList(int ordercheck);
+	public ArrayList<GroupDTO> CafeGroupList(int ordercheck);
 	
 	//-- 테마별 출력 리스트 ---------------------
 	public ArrayList<GroupDTO> HotGroupListAll();
@@ -68,4 +68,10 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> PlayAbleGroupList(int ordercheck);
 	public ArrayList<GroupDTO> ShowAbleGroupList(int ordercheck);
 	public ArrayList<GroupDTO> ShowCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> FoodCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> FoodAbleGroupList(int ordercheck);
+	public ArrayList<GroupDTO> RestaurantAbleGroupList(int ordercheck);
+	public ArrayList<GroupDTO> RestaurantCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> CafeAbleGroupList(int ordercheck);
+	public ArrayList<GroupDTO> CafeCloseGroupList(int ordercheck);
 }

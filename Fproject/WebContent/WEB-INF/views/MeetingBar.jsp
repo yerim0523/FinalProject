@@ -133,8 +133,8 @@ clear:left;
 			<li><a href="culture.action" id="current">문화생활</a>
 				<ul>
 					<li><a href="exhibit.action">전시</a></li>
-					<li><a href="play.action">연극</a></li>
 					<li><a href="show.action">공연</a></li>
+					<li><a href="play.action">연극</a></li>
 				</ul>
 			</li>
 			<li><a href="food.action" id="current">맛집</a>

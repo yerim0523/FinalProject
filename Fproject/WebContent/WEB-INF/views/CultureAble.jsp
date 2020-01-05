@@ -8,11 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Culture.jsp</title>
+<title>CultureAble.jsp</title>
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script
@@ -78,30 +78,6 @@
     
 </style>
 
-<script type="text/javascript">
-
-	 
-	$(document).ready(function() {
-	    $('#boardCont').summernote({
-	  	  
-				lang: 'ko-KR',
-	          height: 300,                 
-	          minHeight: null,             
-	          maxHeight: null,             
-	          focus: true,                 
-	          fontSizes: ['4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
-			  fontNames: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
-		      fontNamesIgnoreCheck: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체'],
-			  popover: {         //팝오버 설정
-					
-				  	video: [],
-	    	        air: []
-	    	  }
-	    }); 
-	}); 
-
-	
-</script>
 
 </head>
 <body>
