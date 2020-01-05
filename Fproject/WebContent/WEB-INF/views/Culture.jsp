@@ -48,7 +48,6 @@
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
 
@@ -127,9 +126,9 @@
 	    		</c:when>
 		    </c:choose>
 		    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-		      <a class="dropdown-item" onclick="location='cultureable.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
-		      <a class="dropdown-item" onclick="location='cultureable.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
-		      <a class="dropdown-item" onclick="location='cultureable.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
+		      <a class="dropdown-item" onclick="location='culture.action?ordercheck=1'" style="cursor:pointer;">최신순</a>
+		      <a class="dropdown-item" onclick="location='culture.action?ordercheck=2'" style="cursor:pointer;">인기순</a>
+		      <a class="dropdown-item" onclick="location='culture.action?ordercheck=3'" style="cursor:pointer;">별점순</a>
 		    </div>
 	  	</div>
   	</div>
