@@ -195,6 +195,7 @@ function search(){
 		</div>
 	</header>
 
+
 <!-- 로그인 모달창 -->
 <div class="modal modal-center fade" id="loginNeed" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
   <div class="modal-dialog modal-80size modal-center" role="document">
