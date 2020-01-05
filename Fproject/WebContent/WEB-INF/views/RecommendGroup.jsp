@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Theme.jsp</title>
-
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
 

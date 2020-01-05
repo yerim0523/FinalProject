@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Food.jsp</title>
 
-
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">

@@ -17,6 +17,8 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
+
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
@@ -160,7 +162,7 @@
            					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:forEach>
            				<c:if test="${ExhibitGroup.grStarAvg%1 ne 0}">
-           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           		            <i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
            				</c:if>
            				<c:forEach begin="1" end="${5 - ExhibitGroup.grStarAvg/1}">
            					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
