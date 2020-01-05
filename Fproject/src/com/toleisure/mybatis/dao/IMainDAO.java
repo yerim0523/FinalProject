@@ -24,7 +24,7 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> CultureGroupList(int ordercheck);
 	public ArrayList<GroupDTO> ExhibitGroupList(int ordercheck);
 	public ArrayList<GroupDTO> PlayGroupList();
-	public ArrayList<GroupDTO> ShowGroupList();
+	public ArrayList<GroupDTO> ShowGroupList(int ordercheck);
 	
 	//-- 맛집 출력 리스트----------------
 	public ArrayList<GroupDTO> FoodGroupList();
@@ -66,4 +66,6 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> PlayGroupList(int ordercheck);
 	public ArrayList<GroupDTO> PlayCloseGroupList(int ordercheck);
 	public ArrayList<GroupDTO> PlayAbleGroupList(int ordercheck);
+	public ArrayList<GroupDTO> ShowAbleGroupList(int ordercheck);
+	public ArrayList<GroupDTO> ShowCloseGroupList(int ordercheck);
 }
