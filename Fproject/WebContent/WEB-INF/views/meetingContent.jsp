@@ -1,10 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
-   
-   
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -334,13 +333,13 @@
 									<p>모임명</p> <span class="color">${grcontent.grName }</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>가격</p> <span>${grcontent.ngCost }원</span>
+									<p>가격</p> <span><fmt:formatNumber value="${grcontent.ngCost }" pattern="#,###,###"/>원</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>최소인원수</p> <span>${grcontent.ngMin }명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>최대인원수</p> <span>${grcontent.ngMax }명</span>
+									<p>인원수<span style="font-size: 13pt;"><p>(최소인원 : ${grcontent.ngMin }명)</p></span></p><span>/${grcontent.ngMax }명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>모임날짜</p> <span>${grcontent.ngStart }<br> ~ ${grcontent.ngEnd }</span>

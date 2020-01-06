@@ -71,5 +71,10 @@ public interface IGroupDAO
 	// 가상계좌결제 INSERT
 	public int bankPay(GroupDTO dto);
 	
+	// 모임에 참여중인 메이트 가져오기
+	
+	
+	// 모임에 신청한 메이트 수 가져오기
+	
 	
 }
