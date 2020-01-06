@@ -80,6 +80,14 @@ public static String getrndnum(int loopcount){
 	function bankPay()
 	{
 		f = document.bankPayForm;
+		var payDetail = f.payDetail.value;
+		payDetail = payDetail.trim();
+		if(!payDetail)
+		{
+		   alert("환불받을 계좌를 입력해주세요.");
+		   f.payDetail.focus();
+		   return;
+		}
 		
 		f.submit();
 		
@@ -122,24 +130,27 @@ public static String getrndnum(int loopcount){
 		<tr>
 			<th style="text-align: center;">결제금액</th>
 			<td style="padding: 10px;">
-				<%-- <fmt:setLocale value="ko_KR"/><input type="text" class="form-control" value='<fmt:formatNumber value="${ngCost }"></fmt:formatNumber>' readonly="readonly"> --%>
-				<%-- <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${ngCost}" /> --%>
 				<input type="text" class="form-control" id="ngCost" name="ngCost" value="${ngCost }" readonly="readonly">
 			</td>
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 계좌</th>
 			<td>
-				<%-- <span id="payDetail" name="paydetail"><%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %></span>&nbsp;&nbsp;&nbsp; 국민은행 --%>
 				<div class=" col-lg-9">
-				<input type="text" class="form-control input-sm" id="payDetail" name="payDetail" value="<%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %>" readonly="readonly" >
-				&nbsp;&nbsp; 국민은행
+				<input type="text" class="form-control input-sm" id="account" name="account" value="<%=imsinum %>-<%=imsinum2 %>-<%=imsinum3 %>" readonly="readonly" >
+				&nbsp; 국민은행	&nbsp;&nbsp; 예금주 : 백호진
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<th style="text-align: center;">입금 기한</th>
 			<td><div id="date"></div></td>
+		</tr>
+		<tr>
+			<th style="text-align: center;">환불 계좌</th>
+			<td style="padding: 10px;">
+				<input type="text" class="form-control" id="payDetail" name="payDetail" value="" placeholder="환불 시 환불받을 계좌를 입력하세요.">
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="padding: 10px; text-align: center;">
