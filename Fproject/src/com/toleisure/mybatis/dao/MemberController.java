@@ -296,7 +296,7 @@ public class MemberController
        Iterator<String> iterator = request.getFileNames(); //업로드된 파일정보 수집(2개 - file1,file2)
        
        int fileLoop = 0;
-       String uploadFileName;
+       String uploadFileName; 
        MultipartFile mFile = null;
        String orgFileName = ""; //진짜 파일명
        String sysFileName = ""; //변환된 파일명
