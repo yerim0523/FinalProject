@@ -539,6 +539,21 @@ public class MemberController
    }
    
    
+   @RequestMapping(value = "/meetmanage.action", method = {RequestMethod.POST, RequestMethod.GET})
+   public String meetManage(MemberDTO dto, Model model, HttpSession session)
+   {
+	   session.getAttribute("member");
+	   IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
+	   
+	   dto = (MemberDTO)session.getAttribute("member");
+	   String memId = dto.getMemId();
+	   
+	   System.out.println("====== 넘어가는 ID :  " + memId);
+	   
+	   return "/WEB-INF/views/meetingManage.jsp"; 
+   }
+   
+   
    
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String Map2(MemberDTO dto, Model model, HttpSession session)
