@@ -309,20 +309,9 @@
 														<input type="checkbox" name="inlineCheckbox" value="5"> 카페
 													</label>
 												</div>
-												
 												<input type="hidden" id="memCate1" name="memCate1" value="0">
       											<input type="hidden" id="memCate2" name="memCate2" value="0"> 
-      
-												
 											</div>
-											
-										<!-- <div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
-											<label class="sc-iyvyFf kBgtyY">프로필 사진</label>
-											<div>
-												<input type="file" class="sc-hrWEMg feokCA"	name="memPic" id="memPic">
-											</div>
-										</div> -->
-										
 										 <div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 										 <label class="sc-iyvyFf kBgtyY">프로필 사진</label>
 										 <input type="file" class="sc-hrWEMg feokCA" id="memPic" name="file"><p>

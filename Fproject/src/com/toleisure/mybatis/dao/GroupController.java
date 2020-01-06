@@ -1,7 +1,13 @@
 package com.toleisure.mybatis.dao;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,8 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.toleisure.mybatis.dto.FeedBackDTO;
+import com.toleisure.mybatis.dto.FileDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
@@ -55,16 +64,14 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session) throws IllegalStateException, IOException
+	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session,MultipartHttpServletRequest request) throws ServletException,IllegalStateException, IOException
 	{
-		//String view = "redirect:main.action";
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		
 		System.out.println("==================");
 		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
 		System.out.println("==================");
-		
 		if(dto.getGrCode()!=0)
 		{
 			System.out.println("기존모임생성");
@@ -81,7 +88,59 @@ public class GroupController
 			System.out.println("==== 현재 들어간 모임코드 =  " + dto.getGrCode());
 			System.out.println("==================");
 		}
-		
+
+	      IMemberDAO dao2 = sqlsession.getMapper(IMemberDAO.class);
+		   
+		   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
+		   
+	       File dir = new File(rootUploadDir); 
+	       
+	       if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
+	           dir.mkdirs();
+	       }
+	       
+	       Iterator<String> iterator = request.getFileNames(); //업로드된 파일정보 수집(2개 - file1,file2)
+	       
+	       int fileLoop = 0;
+	       String uploadFileName; 
+	       MultipartFile mFile = null;
+	       String orgFileName = ""; //진짜 파일명
+	       String sysFileName = ""; //변환된 파일명
+	       ArrayList<String> list = new ArrayList<String>();
+	       
+	       while(iterator.hasNext()) {
+	           fileLoop++;
+	           
+	           uploadFileName = iterator.next();
+	           mFile = request.getFile(uploadFileName);
+	           
+	           orgFileName = mFile.getOriginalFilename();    
+	           System.out.println(orgFileName);
+	           
+	           if(orgFileName != null && orgFileName.length() != 0) { //sysFileName 생성
+	               System.out.println("if문 진입");
+	               
+	               try {
+	                   System.out.println("try 진입");
+	                   
+	                   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-" + fileLoop);
+	                   Calendar calendar = Calendar.getInstance();
+	                   sysFileName = simpleDateFormat.format(calendar.getTime()); //sysFileName: 날짜-fileLoop번호
+	                   
+	                   list.add("원본파일명: " + orgFileName);
+	                   
+	                   uploadFileName =orgFileName+sysFileName+".jpg";
+	                   mFile.transferTo(new File(dir + File.separator + uploadFileName)); // C:/Upload/testfile/sysFileName
+	              
+	                   dto.setNgPic(uploadFileName);
+	                   
+	               }catch(Exception e){
+	                   list.add("파일 업로드 중 에러발생!!!");
+	               }
+					/*
+					 * finally { if(fos != null) { fos.close(); } }// finally
+					 */           }//if
+	       }//while
 		//return view;
 		return "redirect:main.action";
 	}

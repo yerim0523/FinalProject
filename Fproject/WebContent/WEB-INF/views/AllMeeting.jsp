@@ -130,7 +130,7 @@
 		<c:forEach var="AllGroup" items="${AllGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${AllGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+				<img src="uploads/${AllGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
 					onclick="location.href='groupdetail.action?ngCode=${AllGroup.ngCode}'">
 			<div class="caption">
 			<div>

@@ -355,7 +355,7 @@
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">
    
-   <form action="groupinsert.action" method="post" name="groupForm" id="groupForm" class="form-horizontal" >
+   <form action="groupinsert.action" method="post" enctype="multipart/form-data" name="groupForm" id="groupForm" class="form-horizontal" >
    현재 접속중인 memId : ${member.memId }
    <input type="hidden" id="memId" name="memId" value="${member.memId }">
    모임 코드 : ${groupinfo.grCode }
@@ -507,7 +507,20 @@
       <div class="form-inline">
          <label for="ngPic" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 대표이미지</label>
             <!-- <input type="file" name="ngPic" class="form-control" id="titleImg" value="title.img"> -->
-            <input type="file" name="ngPic" class="form-control fileDrop" id="ngPic">
+            <input type="file" name="ngPic" class="form-control fileDrop" id="ngPic"><p>
+										 <div class="select_img"><img src="" /></div>
+										</div>
+										<script>
+										  $("#ngPic").change(function(){
+											   if(this.files && this.files[0]) {
+											    var reader = new FileReader;
+											    reader.onload = function(data) {
+											     $(".select_img img").attr("src", data.target.result).width(500);        
+											    }
+											    reader.readAsDataURL(this.files[0]);
+											   }
+											  });  
+										</script>
       </div>
       
       <br>
@@ -565,9 +578,10 @@
       
       <br><br><br><br>
       
-   </form>
-   
+  
+     </form>
    </div>
+  
    </section>
    
    

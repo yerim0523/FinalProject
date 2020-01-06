@@ -84,7 +84,7 @@
 			<div class="d-flex justify-content-center h-100 left">
 				<div class="image_outer_container d-flex align-items-center">
 					<div class="image_inner_container">
-						<img class="img-rounded"" src="${myInfo.memPic }" width="200px" height="150px">
+						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px">
 					</div>
 				</div>
 				<div class="container right" style="width: 70%;">

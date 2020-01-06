@@ -262,7 +262,7 @@ public class MemberController
                    test.setFile_path(rootUploadDir);
                    test.setFile_size(mFile.getSize());
                    dao.fileadd(test);
-                   m.setMemPic(orgFileName);
+                   m.setMemPic(uploadFileName);
                    
                }catch(Exception e){
                    list.add("파일 업로드 중 에러발생!!!");
