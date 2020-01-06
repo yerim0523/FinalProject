@@ -159,7 +159,7 @@ public static String getrndnum(int loopcount){
 			</td>
 		</tr>
 	
-	</table>
+	</table> 
 	<p class="warning"><i class="fas fa-exclamation fa-2x"></i>&nbsp;입금 기한 내에 입금이 정상적으로 이루어지지 않으면 모임 참가에 취소될 수 있으니 유의해 주시기 바랍니다.</p>
 	
 	<br><br><br>
