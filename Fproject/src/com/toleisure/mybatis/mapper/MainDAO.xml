@@ -576,7 +576,7 @@
    <!-- ============================================테마별 DAO================================================ -->
   <select id="HotGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-    	   , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+    	   , memName, grCount, grStarAvg, grStarCount
       FROM HOT_GROUP_VIEW
    </select>
    
@@ -589,22 +589,21 @@
 
    <select id="HotGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-     , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+    	   , memName, grCount, grStarAvg, grStarCount
       FROM HOT_GROUP_ALLVIEW
    </select>
 
    <select id="NewGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-     , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+    	   , memName, grCount, grStarAvg, grStarCount
       FROM NEWEST_GROUP_VIEW 
    </select>
 
    <select id="NewGroupListAll"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-     , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
-      FROM
-      NEWEST_GROUP_ALLVIEW
+     	   , memName, grCount, grStarAvg, grStarCount
+      FROM NEWEST_GROUP_ALLVIEW
    </select>
 
    <select id="HotHostList" resultType="com.toleisure.mybatis.dto.GroupDTO">
@@ -619,13 +618,13 @@
 
    <select id="ClosingGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-     	   , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+     	   , memName, grCount, grStarAvg, grStarCount
       FROM CLOSING_GROUP_VIEW
    </select>
 
    <select id="ClosingGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-    	   , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+    	   , memName, grCount, grStarAvg, grStarCount
       FROM CLOSING_GROUP_ALLVIEW
    </select>
 
