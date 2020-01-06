@@ -199,7 +199,7 @@ button.more {
 			<c:forEach var="HotGroup" items="${HotGroupList}">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<img src="${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
+					<img src="uploads/${HotGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
 						onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
 					<div class="caption">
 						<div>
@@ -264,7 +264,7 @@ button.more {
 			<c:forEach var="NewGroup" items="${NewGroupList }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img src="${NewGroup.ngPic }" alt="썸네일" class="img-responsive"
+						<img src="uploads/${NewGroup.ngPic }" alt="썸네일" class="img-responsive"
 							style="width: 500px;"
 							onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
 						<%-- <input type="hidden" value="${NewGroupList.ngCode }"> --%>
@@ -320,7 +320,7 @@ button.more {
 			<c:forEach var="HotHost" items="${HotHostList }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img src="${HotHost.memPic}" alt="썸네일" class="img-responsive"
+						<img src="uploads/${HotHost.memPic}" alt="썸네일" class="img-responsive"
 							style="width: 500px;"
 							onclick="location.href='groupdetail.action?ngCode=${HotHost.ngCode}'">
 						<div class="caption">
@@ -373,7 +373,7 @@ button.more {
 			<c:forEach var="ClosingGroup" items="${ClosingGroupList}">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img src="${ClosingGroup.ngPic}" alt="썸네일" class="img-responsive"
+						<img src="uploads/${ClosingGroup.ngPic}" alt="썸네일" class="img-responsive"
 							style="width: 500px;"
 							onclick="location.href='groupdetail.action?ngCode=${ClosingGroup.ngCode}'">
 						<div class="caption">
@@ -425,7 +425,7 @@ button.more {
 			<c:forEach var="RecommendGroup" items="${RecommendGroupList}">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img src="${RecommendGroup.ngPic}" alt="썸네일"
+						<img src="uploads/${RecommendGroup.ngPic}" alt="썸네일"
 							class="img-responsive" style="width: 500px;"
 							onclick="location.href='groupdetail.action?ngCode=${RecommendGroup.ngCode}'">
 						<div class="caption">

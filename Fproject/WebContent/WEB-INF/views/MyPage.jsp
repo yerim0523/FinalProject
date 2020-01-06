@@ -86,7 +86,9 @@
 					<div class="image_inner_container">
 						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px">
 					</div>
+					
 				</div>
+				<i class="fas fa-camera"></i>
 				<div class="container right" style="width: 70%;">
 					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니당ㅎㅎ</p>
 					<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">

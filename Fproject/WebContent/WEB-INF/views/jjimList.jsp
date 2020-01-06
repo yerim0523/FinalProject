@@ -86,7 +86,7 @@
 						<c:forEach var="jjimG" items="${jjimGroup}">
 						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
 							<div class="text-center">
-								<img class="image" src="<%=cp%>/images/${jjimG.ngPic}">
+								<img class="image" src="uploads/${jjimG.ngPic}">
 							</div>
 <!-- 									<i id="emptyHeart" class="far fa-heart"></i> -->
 <!-- 									<i id="fullHeart" class="fas fa-heart"></i> -->

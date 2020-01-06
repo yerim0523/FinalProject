@@ -141,7 +141,7 @@
 		<c:forEach var="ExhibitGroup" items="${ExhibitAbleGroupList}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${ExhibitGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+				<img src="uploads/${ExhibitGroup.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
 					onclick="location.href='groupdetail.action?ngCode=${ExhibitGroup.ngCode}'">
 			<div class="caption">
 			<div>

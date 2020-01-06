@@ -89,7 +89,7 @@
 						<c:forEach var="v" items="${nowGroup}">
 						<div class="thumbnail" style="padding-right: 20px; padding-bottom: 50px; max-width: 200px;">
 							<div class="text-center">
-								<img class="image" src="<%=cp%>/images/${v.ngPic}">
+								<img class="image" src="uploads/${v.ngPic}">
 							</div>
 									<i id="emptyHeart" class="far fa-heart"></i>
 									<a href="#모임상세페이지?ngCode=${v.ngCode }" class="justify-content-between d-flex">

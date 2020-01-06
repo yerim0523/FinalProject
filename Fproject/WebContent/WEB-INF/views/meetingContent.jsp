@@ -362,7 +362,7 @@
 						<c:forEach var="member" items="${contentMember }">
 						
 						<div align="left">
-							<img src="${member.memPic }" 
+							<img src="uploads/${member.memPic }" 
 								style="object-fit:cover; width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; ${member.memName }
 						</div>
 						<br>

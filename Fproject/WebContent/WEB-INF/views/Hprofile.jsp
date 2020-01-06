@@ -124,7 +124,7 @@
 		         <div class="image_outer_container">
 		            <div class="green_icon"></div>
 		            <div class="image_inner_container">
-		               <img src="images/me.png">
+		               <img src="uploads/${member.memPic}">
 		            </div>
 		         </div>
 		         <div class="container right" style="width: 50%;">
@@ -183,7 +183,7 @@
 		<c:forEach var="group" items="${group}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${group.ngPic }" alt="썸네일" class="img-responsive">
+				<img src="uploads/${group.ngPic }" alt="썸네일" class="img-responsive">
 				<div class="caption">
 					<div>
 						<div class="starRev">

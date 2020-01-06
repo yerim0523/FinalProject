@@ -118,7 +118,7 @@
 		<c:forEach var="HotHostAll" items="${HotHostListAll}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${HotHostAll.memPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="uploads/${HotHostAll.memPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
 			<div class="caption">
 			<div>
 				

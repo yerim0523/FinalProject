@@ -118,7 +118,7 @@
 		<c:forEach var="HotGroupAll" items="${HotGroupListAll}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${HotGroupAll.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+				<img src="uploads/${HotGroupAll.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
 					onclick="location.href='groupdetail.action?ngCode=${HotGroupAll.ngCode}'">
 			<div class="caption">
 			<div>
