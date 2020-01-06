@@ -86,7 +86,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventinsert.action", method ={ RequestMethod.GET, RequestMethod.POST }) // �씠踰ㅽ듃 �엯�젰 �떎�뻾
+	@RequestMapping(value = "/eventinsert.action", method ={ RequestMethod.GET, RequestMethod.POST }) // 
 	public String eventInsert(HttpSession session, BoardDTO dto)
 	{
 		session.getAttribute("member");
@@ -97,7 +97,7 @@ public class BoardController
 		return "redirect:event.action";
 	}
 
-	@RequestMapping(value = "/eventupdateform.action", method ={ RequestMethod.GET, RequestMethod.POST }) // �씠踰ㅽ듃 �닔�젙 �뤌 �샇異�
+	@RequestMapping(value = "/eventupdateform.action", method ={ RequestMethod.GET, RequestMethod.POST }) // 
 	public String eventUpdateForm(int boardNum, HttpSession session, BoardDTO dto, Model model)
 	{
 		String view = "/WEB-INF/views/EventUpdateForm.jsp";
@@ -113,7 +113,7 @@ public class BoardController
 		return view;
 	}
 
-	@RequestMapping(value = "/eventupdate.action", method ={ RequestMethod.GET, RequestMethod.POST })   // �씠踰ㅽ듃 �뾽�뜲�씠�듃 �떎�뻾
+	@RequestMapping(value = "/eventupdate.action", method ={ RequestMethod.GET, RequestMethod.POST })   //
 	public String eventUpdate(HttpSession session, BoardDTO dto)
 	{
 		session.getAttribute("member");
@@ -126,9 +126,9 @@ public class BoardController
 
 		dto.setEventNoticeCheck(result);
 
-		if (dto.getEventNoticeCheck() != 0) // �썝�옒 怨듭�濡� �릺�뼱�엳�떎硫�
+		if (dto.getEventNoticeCheck() != 0) // 
 		{
-			if (check != 0) // �삉 怨듭�濡� �벑濡앹씠硫�
+			if (check != 0) //
 			{
 				dao.eventUpdate(dto);
 			}
@@ -152,7 +152,7 @@ public class BoardController
 		return "redirect:event.action";
 	}
 
-	@RequestMapping(value = "/eventdelete.action", method ={ RequestMethod.GET, RequestMethod.POST })  // �씠踰ㅽ듃 �궘�젣 �떎�뻾
+	@RequestMapping(value = "/eventdelete.action", method ={ RequestMethod.GET, RequestMethod.POST })  // 
 	public String eventDelete(int boardNum, HttpSession session)
 	{
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
@@ -174,7 +174,7 @@ public class BoardController
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
 
 		int listCnt = dao.newsListCount();
-		PagingDTO paging = new PagingDTO(listCnt, curPage); // 珥� �뜲�씠�꽣媛쒖닔, �쁽�옱�럹�씠吏�
+		PagingDTO paging = new PagingDTO(listCnt, curPage); // 
 		news.setStartIndex(paging.getStartIndex());
 		news.setEndIndex(paging.getEndIndex());
 
@@ -256,25 +256,25 @@ public class BoardController
 
 		dto.setNewsNoticeCheck(result);
 
-		if (dto.getNewsNoticeCheck() != 0) // �썝�옒 怨듭�濡� �릺�뼱�엳�떎硫�
+		if (dto.getNewsNoticeCheck() != 0) // 
 		{
-			if (check != 0) // �삉 怨듭�濡� �벑濡앹씠硫�
+			if (check != 0) // 
 			{
 				dao.newsUpdate(dto);
 			}
 
-			else // 怨듭�瑜� �빐�젣�븳�떎硫�
+			else // 
 			{
 				dao.newsUpdate(dto);
 				dao.NewsNoticeDelete(dto);
 			}
-		} else // 怨듭�媛� �븘�땲�뿀�떎硫�
+		} else // 
 		{
-			if (check != 0) // �깉濡�寃� 怨듭��벑濡앹씠硫�
+			if (check != 0) // 
 			{
 				dao.newsUpdate(dto);
 				dao.InsertNewsNotice(dto);
-			} else // 怨듭�媛� �븘�땲�씪硫�
+			} else // 
 			{
 				dao.newsUpdate(dto);
 			}
