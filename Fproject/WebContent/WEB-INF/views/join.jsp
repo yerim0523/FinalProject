@@ -228,6 +228,7 @@
 											<div class="sc-eTuwsz cIWDpP">
 												<input name="memId" id="memId" class="sc-hrWEMg feokCA" type="email" placeholder="example@naver.com" value="" autocomplete="off" style="width: 70%">&nbsp;&nbsp;
 												<input type="hidden" id="idchk" name="idchk" value="N">
+												
 												<button type="button" name="idCheck" class="btn4 idcheck" style="height: 45px; width: 25%; padding: 0px;">중복확인</button>
 											</div>
 										</div>
@@ -322,16 +323,9 @@
 											</div>
 										</div> -->
 										
-										
-									
-										
-										<form action="fileuploadtest.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
-										    
-										    <input type="submit" value="파일업로드">
-											
-												<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
+										 <div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 										 <label class="sc-iyvyFf kBgtyY">프로필 사진</label>
-										 <input type="file" class="sc-hrWEMg feokCA" id="memPic" name="file" />
+										 <input type="file" class="sc-hrWEMg feokCA" id="memPic" name="file"><p>
 										 <div class="select_img"><img src="" /></div>
 								
 										</div>
@@ -350,7 +344,6 @@
 										  
 										</script>
 										
-										</form>
 										
 										
 

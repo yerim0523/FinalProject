@@ -574,7 +574,7 @@
    <!-- ============================================음식점 DAO END================================================ -->
 
    <!-- ============================================테마별 DAO================================================ -->
-  <select id="HotGroupList" parameterType="String"
+  <select id="HotGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO"
       >
       SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name
@@ -615,29 +615,29 @@
 
    <select id="HotHostList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
+      memIntro
       FROM HOT_HOST_VIEW
-
-
    </select>
 
    <select id="HotHostListAll"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
+      memIntro
       FROM HOT_HOST_AllVIEW
    </select>
 
    <select id="ClosingGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-     	   , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+      SELECT NG_PIC AS ngPic, CATE1 AS grCate1, CATE2 AS grCate2
+          , GR_NAME AS grName, MEM_NAME AS memName, GR_CODE AS grCode, NG_CODE AS ngCode
       FROM CLOSING_GROUP_VIEW
    </select>
 
    <select id="ClosingGroupListAll"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-    	   , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+      SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
+      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name, NG_CODE AS ngCode
       FROM CLOSING_GROUP_ALLVIEW
    </select>
 

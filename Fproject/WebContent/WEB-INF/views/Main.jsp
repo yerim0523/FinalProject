@@ -345,7 +345,7 @@ button.more
    </div>
    <br><br><br>
    <div class="row">
-      <c:forEach var="ClosingGroup" items="${ClosingGroupList }">
+      <c:forEach var="ClosingGroup" items="${ClosingGroupList}">
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
             <img src="${ClosingGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
@@ -353,7 +353,6 @@ button.more
          <div class="caption">
          <div>
             <div class="starRev">
-               
             </div>
             <div>
                <img alt="" src="images/star.png" style="width: 20px;">
@@ -393,7 +392,7 @@ button.more
    </div>
    <br><br><br>
    <div class="row">
-      <c:forEach var="RecommendGroup" items="${RecommendGroupList }">
+      <c:forEach var="RecommendGroup" items="${RecommendGroupList}">
       <div class="col-sm-6 col-md-4">
          <div class="thumbnail">
             <img src="${RecommendGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
