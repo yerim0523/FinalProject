@@ -173,8 +173,7 @@
 				<tr>
 					<td>내용</td>
 					<td colspan="2">
-					<textarea class="form-control" rows="5" id="boardCont" name="boardCont"
-					placeholder="내용 작성"></textarea>
+					<textarea class="form-control" rows="5" id="boardCont" name="boardCont" placeholder="내용 작성"></textarea>
 					</td>
 				</tr>
 				<tr>
