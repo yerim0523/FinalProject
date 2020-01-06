@@ -205,7 +205,7 @@ button.more {
 						<div>
 							<div class="starRev">
 								
-							</div>
+							</div> 
 							<div style="text-align: right;">
 								<c:if test="${HotGroup.grStarAvg eq 0}">
 			           				<c:forEach begin="0" end="4">
