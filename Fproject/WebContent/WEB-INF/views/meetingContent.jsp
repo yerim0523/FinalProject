@@ -347,7 +347,7 @@
 
 						</ul>
 						<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
-					</div>
+					</div> 
 
 					<br>
 					<br>
