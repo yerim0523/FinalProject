@@ -27,6 +27,7 @@ public interface IMemberDAO
 	public ArrayList<GroupDTO> map();
 	public void fileadd(FileDTO test);
 	public List<FileDTO> findFile(String file_sysname);
+	public void PictureUpdate(MemberDTO sessionDto);
 	
 	
 }

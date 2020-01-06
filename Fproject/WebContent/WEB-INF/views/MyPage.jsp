@@ -85,11 +85,22 @@
 				<div class="image_outer_container d-flex align-items-center">
 					<div class="image_inner_container">
 						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px">
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<form action="fileuploadtest.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
+    					<button type="submit" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></button>
+    					<input type="file" name="file" id="file" style="display: none;"/>     
+
+						</form>
+					
+					
 					</div>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<br />
+					
 				</div>
-				<div>
-				</div>
+				
 				<div class="container right" style="width: 70%;">
+				
 					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니당ㅎㅎ</p>
 					<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">
 						<br>
@@ -133,6 +144,8 @@
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
+
+
 
 
 
