@@ -483,7 +483,7 @@ public class GroupController
 		dao.bankPay(dto);
 		
 		
-		return "redirect:main.action";
+		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
 	}
 	
 	@RequestMapping(value = "/reviewmeeting.action", method = {RequestMethod.POST, RequestMethod.GET})

@@ -161,7 +161,9 @@ input.img-button {
 			name : "${location.ngCode}"
 		});
 		</c:forEach>
-
+		keyArray = [];
+		markerArray = [];
+		infoWinArray = [];
 		alert(latitude);
 		alert(longitude);
 		// 마커 이미지
@@ -173,79 +175,129 @@ input.img-button {
 		for (var i = 0; i < positions.length; i++)
 		{
 
-			name = positions[i].name;
-
+			//name = positions[i].name;
+			//alert(positions[i].name);
+			key = positions[i].name;
+			keyArray.push(key);
+			
 			geocoder.addressSearch(positions[i].title, function(re, status)
 			{
 
 				// 정상적으로 검색이 완료됐으면 
 				if (status === kakao.maps.services.Status.OK)
 				{
+					
+					
 					mark = new kakao.maps.LatLng(re[0].y, re[0].x);
 					// 마커 이미지 생성
 					markerImage = new kakao.maps.MarkerImage(imageSrc,
 							imageSize);
-
+					/*
 					marker = new kakao.maps.Marker(
 					{
 						map : map,
 						position : mark,
 						image : markerImage
 					});
+					*/
+					markerArray[key] = new kakao.maps.Marker(
+					{
+						map : map,
+						position : mark,
+						image : markerImage,
+						clickable: true
+					});
+					
+					infoWinArray[key] = new kakao.maps.InfoWindow(
+					{
+						position : mark,
+						removable : true,
+						zIndex: 1,
+						content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+ this.key +"</div>"
+					});
+					marker = markerArray[this.key];
+					infowindow = infoWinArray[this.key];
+					markerArray[key].key = key;
+					infoWinArray[key].iwContent = key;
+					/*
+					kakao.maps.event.addListener(map, 'click', function() { //지도 누르면 infowindow 종료
+			            if(selectedInfo!=null){
+			                selectedInfo.close();
+			                selectedInfo = null;
+			            }    
+			        });
+					selectedInfo = infoWinArray[this.key];
+		            selectedInfo.key = this.key;
+		            infoWinArray[this.key].setContent(infoWinArray[this.key].iwContent);
+		            infoWinArray[this.key].open(map,this); 
+					alert(selectedInfo);
+		            
+					kakao.maps.event.addListener(markerArray[key], 'click', function(){   // 마커 위에 인포윈도우를 표시합니다
+			            if(selectedInfo != null){ //그전 infowindow 종료
+			                selectedInfo.close();
+			                selectedInfo = null;
+			            } 
+					});
+					*/
+					kakao.maps.event.addListener(marker, 'mouseover',
+         					makeOverListener(map, marker, infowindow));
+         			kakao.maps.event.addListener(marker, 'mouseout',
+         					makeOutListener(infowindow));
 
-					/* 			     var content = '<div class="wrap">' + 
-								                 '    <div class="info">' + 
-								                 '        <div class="title">' + 
-								                 '            카카오 스페이스닷원' + 
-								                 '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-								                 '        </div>' + 
-								                 '        <div class="body">' + 
-								                 '            <div class="img">' +
-								                 '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-								                 '           </div>' + 
-								                 '            <div class="desc">' + 
-								                 '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-								                 '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-								                 '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
-								                 '            </div>' + 
-								                 '        </div>' + 
-								                 '    </div>' +    
-								                 '</div>'; */
+         			function makeOverListener(map, marker, infowindow)
+         			{
+         				return function()
+         				{
+         					infowindow.open(map, marker);
+         				};
+         			}
 
+         			function makeOutListener(infowindow)
+         			{
+         				return function()
+         				{
+         					infowindow.close();
+         				};
+         			}
+					
+			            
+			        
 
-								         		// 인포윈도우로 장소에 대한 설명을 표시합니다
-								         		for (var j = 0; j < positions.length; j++)
-								         		{
-								         			var infowindow = new kakao.maps.InfoWindow(
-								         			{
-								         				/*  position : coords  */
-								         				content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+positions[j].name+"</div>"
+				/*
+         		// 인포윈도우로 장소에 대한 설명을 표시합니다
+         		for (var j = 0; j < positions.length; j++)
+         		{
+         			var infowindow = new kakao.maps.InfoWindow(
+         			{
+         				//  position : coords  
+         				content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+this.name+"</div>"
 
-								         			});
+         			});
 
-								         			// 마커에 클릭 이벤트 등록
-								         			kakao.maps.event.addListener(marker, 'mouseover',
-								         					makeOverListener(map, marker, infowindow));
-								         			kakao.maps.event.addListener(marker, 'mouseout',
-								         					makeOutListener(infowindow));
+         			// 마커에 클릭 이벤트 등록
+         			kakao.maps.event.addListener(marker, 'mouseover',
+         					makeOverListener(map, marker, infowindow));
+         			kakao.maps.event.addListener(marker, 'mouseout',
+         					makeOutListener(infowindow));
 
-								         			function makeOverListener(map, marker, infowindow)
-								         			{
-								         				return function()
-								         				{
-								         					infowindow.open(map, marker);
-								         				};
-								         			}
+         			function makeOverListener(map, marker, infowindow)
+         			{
+         				return function()
+         				{
+         					infowindow.open(map, marker);
+         				};
+         			}
 
-								         			function makeOutListener(infowindow)
-								         			{
-								         				return function()
-								         				{
-								         					infowindow.close();
-								         				};
-								         			}
+         			function makeOutListener(infowindow)
+         			{
+         				return function()
+         				{
+         					infowindow.close();
+         				};
+         			}
 
-								         		}// end for(j)
+         		}// end for(j)
+         		*/
 
 				}// end if
 

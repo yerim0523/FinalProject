@@ -20,22 +20,32 @@
 		{
 			var params = {};
 			params.memId = $("#memId").val();
+			var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 			
-			$.ajax({
-				type : "POST"
-				, url : "idCheck.action"
-				, data : params
-				, contentType :"application/x-www-form-urlencoded; charset=UTF-8"
-				, success: function(data){
-					idCheckYn = data;
-					if(idCheckYn === "Y"){
-						alert("이미 존재하는 아이디입니다.");
-					}else{
-						alert("사용 가능한 아이디입니다.");
-						$("#idchk").val("Y");
+			if(regEmail.test($("#memId").val()))
+			{
+				$.ajax({
+					type : "POST"
+					, url : "idCheck.action"
+					, data : params
+					, contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+					, success: function(data){
+						idCheckYn = data;
+						if(idCheckYn === "Y"){
+							alert("이미 존재하는 아이디입니다.");
+						}else{
+							alert("사용 가능한 아이디입니다.");
+							$("#idchk").val("Y");
+						}
 					}
-				}
-			});
+				});
+			}
+			else
+			{
+				alert("이메일 주소가 유효하지 않습니다.");
+				$("#memId").focus();
+			}
+			
 		});
 	});
 	
@@ -43,6 +53,14 @@
 	
 	function sms()
 	{
+		var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+		
+		if(!regExp.test($('#memTel').val()))
+		{
+			alert("잘못된 전화번호입니다.");
+			return;
+		}
+		
 		result = Math.floor(Math.random() * 1000000) + 100000;
 		if (result > 1000000)
 		{
@@ -250,7 +268,7 @@
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 											<label class="sc-iyvyFf kBgtyY">*휴대폰 번호</label>
 											<div class="sc-eTuwsz cIWDpP">
-												<input name="memTel" class="sc-hrWEMg feokCA" type="text"
+												<input id="memTel" name="memTel" class="sc-hrWEMg feokCA" type="text"
 														placeholder="-를 포함한 휴대폰 번호를 입력해주세요" value="" autocomplete="off" style="width: 70%;">&nbsp;&nbsp;
 												<button type="button" name="num" class="btn4" style="height: 45px; width: 25%; padding: 0px;" onclick="sms()">인증번호</button>
 												<input type="hidden" id="telOtp" name="telOtp" value="N">
