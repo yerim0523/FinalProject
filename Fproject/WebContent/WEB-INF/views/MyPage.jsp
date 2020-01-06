@@ -86,9 +86,9 @@
 					<div class="image_inner_container">
 						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px">
 					</div>
-					
 				</div>
-				<i class="fas fa-camera"></i>
+				<div>
+				</div>
 				<div class="container right" style="width: 70%;">
 					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니당ㅎㅎ</p>
 					<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">
@@ -121,7 +121,7 @@
 					<div class="a_content">
 						<div class="box"><a href="nowgrouplist.action"><span style="color: black;"><i class="fas fa-users fa-7x"></i><br><br><p class="menu">내 모임</p></span></a></div>
 						<div class="box"><a href="mycal.action"><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">일정관리</p></span></a></div>
-						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">모임관리</p></span></a></div>
+						<div class="box"><a href="meetmanage.action"><span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">모임관리</p></span></a></div>
 						<div class="box"><a href=""><span style="color: black;"><i class="fas fa-receipt fa-7x"></i><br><br><p class="menu">결제내역</p></span></a></div>
 					</div>
 				</div>
