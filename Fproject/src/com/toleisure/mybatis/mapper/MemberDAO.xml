@@ -70,7 +70,7 @@
    </select>
    
    <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
-		SELECT MEM_ID AS memId, MEM_PW AS memPw, MEM_NAME AS memName, MEM_COMP AS memComp, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGen, NVL(CATE_CODE1,0) AS memCate1, NVL(CATE_CODE2,0) AS memCate2
+		SELECT MEM_ID AS memId, MEM_PW AS memPw,MEM_PIC AS memPic,MEM_NAME AS memName, MEM_COMP AS memComp, MEM_INTRO AS memIntro, MEM_TEL AS memTel, GEN_CODE AS memGen, NVL(CATE_CODE1,0) AS memCate1, NVL(CATE_CODE2,0) AS memCate2
 		FROM MEMBER
 		WHERE MEM_ID = #{memId}
    </select>

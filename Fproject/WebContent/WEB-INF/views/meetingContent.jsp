@@ -13,10 +13,8 @@
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="js/bootstrap.min.js"></script>
@@ -153,7 +151,7 @@
 			<div class="row">
 				<div class="col-lg-8 course_details_left">
 					<div class="main_image">
-						<img class="img-fluid" src=${grcontent.ngPic }
+						<img class="img-fluid" src="uploads/${grcontent.ngPic }"
 							style="width: 100%; height: 400px;">
 						<input type="hidden" name="grCode" value="${grcontent.grCode }">
 						<br>
@@ -215,7 +213,7 @@
 									<div class="d-flex justify-content-center h-100">
 										<div class="image_outer_container">
 											<div class="image_inner_container">
-												<img src="<%=cp %>/images/me.png" class="rounded-circle" style="vertical-align: middle; width: 150px; height: 150px; margin-right: 50px;">
+												<img src="uploads/${grcontent.memPic }" class="rounded-circle" style="vertical-align: middle; width: 150px; height: 150px; margin-right: 50px;">
 											</div>
 										</div>
 										<div style="border: 1px solid lightgray; border-radius: 30px; width: 450px;">
@@ -362,9 +360,10 @@
 							<hr>
 						</div>
 						<c:forEach var="member" items="${contentMember }">
+						
 						<div align="left">
-							<img src="${member.memPic }" class="rounded-circle"
-								style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; ${member.memName }
+							<img src="${member.memPic }" 
+								style="object-fit:cover; width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; ${member.memName }
 						</div>
 						<br>
 						</c:forEach>
