@@ -615,8 +615,7 @@
 
    <select id="HotHostList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
-      memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
       FROM HOT_HOST_VIEW
 
 
@@ -624,33 +623,22 @@
 
    <select id="HotHostListAll"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS
-      memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
       FROM HOT_HOST_AllVIEW
    </select>
 
    <select id="ClosingGroupList"
-      resultType="com.toleisure.mybatis.dto.GroupDTO"
-      parameterType="com.toleisure.mybatis.dto.GroupDTO">
-
-      SELECT NG_PIC AS ngPic, CATE1 AS grCate1, CATE2 AS grCate2
-          , GR_NAME AS grName, MEM_NAME AS memName, GR_CODE AS grCode, NG_CODE AS ngCode
+      resultType="com.toleisure.mybatis.dto.GroupDTO">
+      SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
+     	   , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
       FROM CLOSING_GROUP_VIEW
-
-      <!-- SELECT AVG(R.REVIEW_STAR) AS grStarAvg FROM NOW_GROUP NG JOIN TBL_GROUP 
-         G ON NG.GR_CODE = G.GR_CODE JOIN FIXED_GROUP FG ON NG.NG_CODE=FG.NG_CODE 
-         JOIN GR_JOIN GJ ON FG.FIX_CODE=GJ.FIX_CODE JOIN REVIEW R ON R.JOIN_CODE=GJ.JOIN_CODE 
-         WHERE G.GR_CODE = #{starCode}; -->
-
-
    </select>
 
    <select id="ClosingGroupListAll"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS
-      memName, CATE1 AS grCate1Name, CATE2 AS grCate2Name, NG_CODE AS ngCode
-      FROM
-      CLOSING_GROUP_ALLVIEW
+      SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
+    	   , memName, grCount, grStarAvg, grStarCount, ngStartdate, grFavor
+      FROM CLOSING_GROUP_ALLVIEW
    </select>
 
    <select id="RecommendGroupList"
