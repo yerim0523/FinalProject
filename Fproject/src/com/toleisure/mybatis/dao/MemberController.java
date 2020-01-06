@@ -201,92 +201,17 @@ public class MemberController
       return idCheckYn;
    }
    
-   @RequestMapping(value = "/memberinsertForm.action", method = RequestMethod.GET)
-   public String memberInsert(Model model)
-   {
-      String view = "WEB-INF/views/join.jsp";
-      
-      return view;
-   }
-   
    @RequestMapping(value = "/memberinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-   public String memberinsert(MemberDTO m, MultipartHttpServletRequest request)
+   public String memberinsert(MemberDTO m, MultipartHttpServletRequest request) throws ServletException, IOException
    {
-      String view = "WEB-INF/views/joinTest.jsp";
+      String view = "redirect:main.action";
       
-      String rootUploadDir = "C:"+File.separator+"uploads"; // C:/Upload
-      
-      File dir = new File(rootUploadDir); 
-      
-      if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
-          dir.mkdirs();
-      }
-      
-      Iterator<String> iterator = request.getFileNames(); //업로드된 파일정보 수집(2개 - file1,file2)
-      
-      int fileLoop = 0;
-      String uploadFileName;
-      MultipartFile mFile = null;
-      String orgFileName = ""; //진짜 파일명
-      String sysFileName = ""; //변환된 파일명
-
-      
-      
-      String memPic = "";
-      while(iterator.hasNext()) {
-          fileLoop++;
-          
-          uploadFileName = iterator.next();
-          mFile = request.getFile(uploadFileName);
-          
-          orgFileName = mFile.getOriginalFilename();    
-          System.out.println(orgFileName);
-          
-          
-          if(orgFileName != null && orgFileName.length() != 0) { //sysFileName 생성
-              System.out.println("if문 진입");
-              SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-" + fileLoop);
-              Calendar calendar = Calendar.getInstance();
-              sysFileName = simpleDateFormat.format(calendar.getTime()); //sysFileName: 날짜-fileLoop번호
-              
-              
-              try {
-                  System.out.println("try 진입");
-                  mFile.transferTo(new File(dir + File.separator + sysFileName)); // C:/Upload/testfile/sysFileName
-					/* list.add("원본파일명: " + orgFileName + ", 시스템파일명: " + sysFileName); */
-                  memPic="원본파일명: " + orgFileName + ", 시스템파일명: " + sysFileName;
-                  m.setMemPic(memPic);
-              }catch(Exception e){
-                 memPic="파일 업로드 중 에러발생!!!";
-                 m.setMemPic(memPic);
-              }
-          }//end if
-      }//end while
-     
-     
-
-
-
       IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-      
-      System.out.println("=====" + m.getMemId());
-      dao.add(m);
-      
-      return view;
-      
-   }
-   
-   @RequestMapping(value="/fileuploadtest.action", method = RequestMethod.POST)
-   public String fileUploadTest(MultipartHttpServletRequest request, Model model)throws ServletException, IOException
-   {
-	   IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-	   
       /* String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; */
 	   
 	   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
 	   String rootUploadDir2 = "C:\\Users\\이예림\\git\\ToLeisure\\Fproject\\WebContent\\uploads";
 	   
-       FileOutputStream fos = null;
        File dir = new File(rootUploadDir); 
        
        if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
@@ -337,7 +262,7 @@ public class MemberController
                    test.setFile_path(rootUploadDir);
                    test.setFile_size(mFile.getSize());
                    dao.fileadd(test);
-                   
+                   m.setMemPic(orgFileName);
                    
                }catch(Exception e){
                    list.add("파일 업로드 중 에러발생!!!");
@@ -348,14 +273,15 @@ public class MemberController
        }//while
        
        
+
        
-       
-       model.addAttribute("list", list);
-       
-       return "WEB-INF/views/joinTest.jsp";
-       
+       System.out.println("=====" + m.getMemPic());
+      System.out.println("=====" + m.getMemId());
+      dao.add(m);
+      
+      return view;
+      
    }
-   
    
    @RequestMapping(value = "fileloadtest.action", method = RequestMethod.GET)
    public String getPic(String file_sysname,Model model, HttpServletRequest request) {
