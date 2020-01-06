@@ -173,6 +173,76 @@ public class MemberController
       return "/WEB-INF/views/MyPage.jsp";
    }
    
+   @RequestMapping(value = "/pictureupdate.action", method = {RequestMethod.POST,RequestMethod.GET})
+   public String PictureUpdate(MemberDTO m, HttpSession session,MultipartHttpServletRequest request) throws ServletException, IOException
+   {
+      String view = "redirect:mypage.action";
+      
+      IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
+	   
+	   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
+	   
+       File dir = new File(rootUploadDir); 
+       
+       if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
+           dir.mkdirs();
+       }
+        
+       String memId= (String)session.getAttribute("member");
+       Iterator<String> iterator = request.getFileNames();
+       m.setMemId(memId);
+       
+       
+       
+       int fileLoop = 0;
+       String uploadFileName; 
+       MultipartFile mFile = null;
+       String orgFileName = ""; //진짜 파일명
+       String sysFileName = ""; //변환된 파일명
+       ArrayList<String> list = new ArrayList<String>();
+       
+       while(iterator.hasNext()) {
+           fileLoop++;
+           
+           uploadFileName = iterator.next();
+           mFile = request.getFile(uploadFileName);
+           
+           orgFileName = mFile.getOriginalFilename();    
+           System.out.println(orgFileName);
+           
+           if(orgFileName != null && orgFileName.length() != 0) { //sysFileName 생성
+               System.out.println("if문 진입");
+               
+               try {
+					
+            	   
+                   System.out.println("try 진입");
+                   
+                   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-" + fileLoop);
+                   Calendar calendar = Calendar.getInstance();
+                   sysFileName = simpleDateFormat.format(calendar.getTime()); //sysFileName: 날짜-fileLoop번호
+                   
+                   
+                   list.add("원본파일명: " + orgFileName);
+                   
+                   uploadFileName =orgFileName+sysFileName+".jpg";
+                   mFile.transferTo(new File(dir + File.separator + uploadFileName)); // C:/Upload/testfile/sysFileName
+                 
+                   m.setMemPic(uploadFileName);
+                   
+               }catch(Exception e){
+                   list.add("파일 업로드 중 에러발생!!!");
+               }
+			       }
+       }//while
+       
+       
+       dao.PictureUpdate(m);
+      
+      return view;
+      
+   }
+   
    @RequestMapping(value = "/infomodify.action", method = {RequestMethod.POST,RequestMethod.GET})
    public String myPageModify(MemberDTO dto, Model model, HttpSession session)
    {
@@ -550,9 +620,10 @@ public class MemberController
 	   
 	   System.out.println("====== 넘어가는 ID :  " + memId);
 	   
+	   model.addAttribute("memId", memId);
+	   
 	   return "/WEB-INF/views/meetingManage.jsp"; 
    }
-   
    
    
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})

@@ -76,15 +76,11 @@
 			<div class="container" style="margin-left: 50px;">
 				<div class="page-header">
 					<div>
-						<h3>> 내 모임 목록</h3>
+						<h3>> 모임 관리</h3>
+						<hr>
 					</div>
 				</div>
 				<br><br>
-				
-					<div class="page-header">
-						<h5 style="font-weight: bold;">참여중인 모임</h5>
-					</div>
-					<br><br>
 					<div class="row" >
 						<c:forEach var="v" items="${nowGroup}">
 						<div class="thumbnail" style="padding-right: 20px; padding-bottom: 50px; max-width: 200px;">

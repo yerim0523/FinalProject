@@ -99,6 +99,12 @@
 		</choose>
 	</update>
 	
+	<update id="PictureUpdate" parameterType="com.toleisure.mybatis.dto.MemberDTO">
+				UPDATE MEMBER 
+				SET MEM_PIC=#{memPic}
+				WHERE MEM_ID=#{memId}
+	</update>
+	
 	<select id="selectPmp" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="String">
    		SELECT CASE WHEN COUNT(*) >= 1 THEN 'Y' ELSE 'N' END AS ISPMP
 		FROM MEMBER
