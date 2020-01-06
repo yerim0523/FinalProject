@@ -550,6 +550,8 @@ public class MemberController
 	   
 	   System.out.println("====== 넘어가는 ID :  " + memId);
 	   
+	   model.addAttribute("memId", memId);
+	   
 	   return "/WEB-INF/views/meetingManage.jsp"; 
    }
    
