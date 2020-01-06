@@ -556,7 +556,6 @@ public class MemberController
    }
    
    
-   
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String Map2(MemberDTO dto, Model model, HttpSession session)
    {
