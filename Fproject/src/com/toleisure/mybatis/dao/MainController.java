@@ -48,10 +48,12 @@ public class MainController
 		
 		System.out.println("====== " + session.getAttribute("member"));
 		
-		model.addAttribute("HotGroupList", dao.testList(dto.getMemId()));
-		model.addAttribute("NewGroupList", dao.NewGroupList());
-		model.addAttribute("HotHostList", dao.HotHostList());
-		model.addAttribute("ClosingGroupList", dao.ClosingGroupList());
+	
+		 model.addAttribute("HotGroupList", dao.testList(dto.getMemId()));
+		 model.addAttribute("NewGroupList", dao.NewGroupList());
+		  model.addAttribute("HotHostList", dao.HotHostList());
+		 model.addAttribute("ClosingGroupList", dao.ClosingGroupList());
+		 
 		
 		if(session.getAttribute("member")!=null)
 		{
