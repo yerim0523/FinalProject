@@ -47,19 +47,13 @@ public class ProfileController
 	} 
 	
 	// 더보기 클릭 → 해당 회원의 전체 모임 히스토리 페이지로 이동
-	@RequestMapping(value = "/allHistory.action", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/allhistory.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String allHistory(Model model, MemberDTO dto, GroupDTO gdto, HttpSession session)
 	{
 		session.getAttribute("member2");
 		String view = "WEB-INF/views/MemHistory.jsp";
 		
 		IProfileDAO dao = sqlsession.getMapper(IProfileDAO.class); 
-		
-		// dto 정보에 아무것도 없기 때문에.. 직접 set 해줌 → 추후 수정 필요
-		
-		dto.setMemId("wag2397@gmail.com"); 
-		gdto.setMemId("wag2397@gmail.com");
-		
 		
 		// 해당 메이트 이름
 		model.addAttribute("member", dao.memInfo(dto));

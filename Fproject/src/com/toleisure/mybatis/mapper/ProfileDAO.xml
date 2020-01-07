@@ -15,7 +15,7 @@
 	
 	
 	<select id="memInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
-		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+		SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_ID AS memId
 		FROM MEMBER_VIEW
 		WHERE MEM_ID = #{memId}
 	</select>
@@ -23,10 +23,10 @@
 	
    <select id="grHistory" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT E.NG_PIC AS ngPic, E.CATE1 AS grCate1Name, CASE WHEN E.CATE2='0' THEN '' ELSE E.CATE2 END AS grCate2Name, E.GR_NAME AS grName, E.MEM_NAME AS memName
-			 ,E.GR_COUNT AS grCount, E.STAR_AVG AS grStarAvg, E.STAR_COUNT AS grStarCount
+     	      ,E.GR_COUNT AS grCount, E.STAR_AVG AS grStarAvg, E.STAR_COUNT AS grStarCount, MEM_ID AS memId, GR_CODE AS grCode, NG_CODE AS ngCode
 		FROM
 		(
-		SELECT NG_PIC, CATE1, CATE2, GR_NAME, MEM_NAME, GR_COUNT, STAR_AVG, STAR_COUNT
+		SELECT NG_PIC, CATE1, CATE2, GR_NAME, MEM_NAME, GR_COUNT, STAR_AVG, STAR_COUNT, MEM_ID, GR_CODE, NG_CODE
 		FROM ALL_GROUP_VIEW
 		WHERE MEM_ID = #{memId}
 		)E
@@ -35,7 +35,7 @@
    
    <select id="allHistory" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT NG_PIC AS ngPic, GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name, MEM_NAME AS memName
-			 , GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			 , GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount, MEM_ID AS memId, GR_CODE AS grCode, NG_CODE AS ngCode
 		FROM ALL_GROUP_VIEW
 		WHERE MEM_ID = #{memId} 
 		ORDER BY NG_DATE DESC

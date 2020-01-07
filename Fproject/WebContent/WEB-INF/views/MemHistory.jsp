@@ -111,26 +111,39 @@
 		<c:forEach var="group" items="${group}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" >
+				<img src="${group.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;" 
+					 onclick="location.href='groupdetail.action?ngCode=${group.ngCode}'">
 				<div class="caption">
 					<div>
 						<div class="starRev">
 						</div>
-						<div>
-							<c:if test="${group.grStarAvg != 0.0 }">
-							<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-							</c:if>
-							<c:if test="${group.grStarAvg == 0.0 }">
-							<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-							</c:if>
-							<span> ${group.grStarAvg } / ${group.grStarCount }</span>
+						<div style="text-align: right;">
+							<c:if test="${group.grStarAvg eq 0}">
+		           				<c:forEach begin="0" end="4">
+		           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+		           				</c:forEach>
+		           			</c:if>
+		           			<c:if test="${group.grStarAvg ne 0}">
+		           				<c:forEach begin="1" end="${group.grStarAvg/1}">
+		           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+		           				</c:forEach>
+		           				<c:if test="${group.grStarAvg%1 ne 0}">
+		           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+		           				</c:if>
+		           				<c:forEach begin="1" end="${5 - group.grStarAvg/1}">
+		           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+		           				</c:forEach>
+		           			</c:if>
+							<span style="color: gray;">&nbsp;&nbsp;${group.grStarAvg } 
+								<span style="font-size: 10pt; color: gray;">/ ${group.grStarCount }<span style="font-size: 8pt;">명</span></span>
+							</span>
 						</div>
 					</div>
 					<br>
 					<div>
 						<span style="font-size: 12px;">${group.grCount }회차 | ${group.grCate1Name } ${group.grCate2Name }</span>
 						<div>
-							<div class="name">
+							<div class="name" onclick="location.href='groupdetail.action?ngCode=${group.ngCode}'">
 							<h5>${group.grName }</h5>
 							</div>
 							<div class="heart" align="right">
@@ -138,7 +151,7 @@
 							</div>
 							<br>
 						</div>
-						<h6 style="text-align: right; font-size: 10px;">"${group.memName }"</h6>
+						<h6 style="text-align: right; font-size: 15px;">${group.memName }</h6>
 					</div>
 				
 				</div><!-- end div.caption -->
