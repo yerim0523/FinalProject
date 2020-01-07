@@ -491,9 +491,10 @@ public class GroupController
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-		
+		System.out.println(grCode);
 		m.addAttribute("reviewM", dao.reviewM(grCode));
 		m.addAttribute("grCode", grCode);
+		
 		
 		return "/WEB-INF/views/ReviewM.jsp";
 	}
