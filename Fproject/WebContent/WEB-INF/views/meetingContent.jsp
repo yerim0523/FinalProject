@@ -363,7 +363,7 @@
 						
 						<div align="left">
 							<img src="uploads/${joinMem.memPic }" 
-								style="object-fit:cover; width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; ${joinMem.memName }
+								style="object-fit:cover; width: 50px; height: 50px;" onclick="location.href='profile.action?memId=${joinMem.memId}'"> &nbsp;&nbsp;&nbsp; ${joinMem.memName }
 						</div>
 						<br>
 						</c:forEach>
