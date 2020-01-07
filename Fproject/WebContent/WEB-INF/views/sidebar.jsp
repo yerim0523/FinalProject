@@ -107,7 +107,7 @@ text-align: center;
 		</li>
 		<li><a href="mycal.action"><i class="fa fa-fw fa-calendar-alt"></i>	일정관리</a></li>
 		<li><a href="meetmanage.action"><i class="fa fa-fw fa-users-cog"></i> 모임관리</a></li>
-		<li><a href="#contact"><i class="fa fa-fw fa-receipt"></i> 결제내역</a></li>
+		<li><a href="mypaypage.action"><i class="fa fa-fw fa-receipt"></i> 결제내역</a></li>
 	</ul>
 	</div>
 </div>

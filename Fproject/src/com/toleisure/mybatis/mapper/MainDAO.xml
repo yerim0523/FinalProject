@@ -600,12 +600,12 @@
    </select>
 
    <select id="HotHostList" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_ID AS memId
       FROM HOT_HOST_VIEW
    </select>
 
    <select id="HotHostListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_ID AS memId
       FROM HOT_HOST_AllVIEW
    </select>
 
