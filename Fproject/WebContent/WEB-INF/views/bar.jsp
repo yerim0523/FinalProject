@@ -35,7 +35,6 @@
 <link rel="stylesheet" href="css/join.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style type="text/css">
 .container {
 	padding-right: 15px; 
