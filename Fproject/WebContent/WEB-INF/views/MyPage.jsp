@@ -85,13 +85,26 @@
 				<div class="image_outer_container d-flex align-items-center">
 					<div class="image_inner_container">
 						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px">
+										</div>
+									
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<form action="fileuploadtest.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
-    					<button type="submit" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></button>
+						<form action="pictureupdate.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
+    					<button type="button" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></button>
     					<input type="file" name="file" id="file" style="display: none;"/>     
-
+						<button type="submit">적용</button>
 						</form>
-					
+							
+							<script>
+										  $("#file").change(function(){
+											   if(this.files && this.files[0]) {
+											    var reader = new FileReader;
+											    reader.onload = function(data) {
+											     $(".img-rounded").attr("src", data.target.result).width(500);        
+											    }
+											    reader.readAsDataURL(this.files[0]);
+											   }
+											  });  
+							</script>
 					
 					</div>
 					&nbsp;&nbsp;&nbsp;&nbsp;

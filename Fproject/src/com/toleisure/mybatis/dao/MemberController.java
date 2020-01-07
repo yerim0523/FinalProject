@@ -173,13 +173,19 @@ public class MemberController
       return "/WEB-INF/views/MyPage.jsp";
    }
    
+   
+   
+   
    @RequestMapping(value = "/pictureupdate.action", method = {RequestMethod.POST,RequestMethod.GET})
    public String PictureUpdate(MemberDTO m, HttpSession session,MultipartHttpServletRequest request) throws ServletException, IOException
    {
-      String view = "redirect:mypage.action";
+      String view = "redirect:main.action";
       
       IMemberDAO dao = sqlsession.getMapper(IMemberDAO.class);
-	   
+      MemberDTO mine = (MemberDTO)session.getAttribute("member");
+      
+
+      
 	   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
 	   
        File dir = new File(rootUploadDir); 
@@ -188,9 +194,11 @@ public class MemberController
            dir.mkdirs();
        }
         
-       String memId= (String)session.getAttribute("member");
        Iterator<String> iterator = request.getFileNames();
-       m.setMemId(memId);
+       
+       System.out.println(mine.getMemId());
+       
+       
        
        
        
@@ -228,7 +236,8 @@ public class MemberController
                    uploadFileName =orgFileName+sysFileName+".jpg";
                    mFile.transferTo(new File(dir + File.separator + uploadFileName)); // C:/Upload/testfile/sysFileName
                  
-                   m.setMemPic(uploadFileName);
+                   mine.setMemPic(uploadFileName);
+                   System.out.println(uploadFileName);
                    
                }catch(Exception e){
                    list.add("파일 업로드 중 에러발생!!!");
@@ -236,8 +245,9 @@ public class MemberController
 			       }
        }//while
        
+       System.out.println(mine.getMemPic());
        
-       dao.PictureUpdate(m);
+       dao.PictureUpdate(mine);
       
       return view;
       
