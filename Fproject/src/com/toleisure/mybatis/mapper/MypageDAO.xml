@@ -83,6 +83,46 @@
 		  AND #{month} = TO_CHAR(NG.NG_STARTDATE,'MM')
 	</select>
 	
+	<!-- 호스트가 관리중인 grCode 목록 가져오기 (차트) -->
+	<select id="hostMeetFind" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT GR_CODE AS grCode
+		FROM HOST H, TBL_GROUP T
+		WHERE H.MEM_ID=T.MEM_ID
+		  AND H.MEM_ID=#{memId}
+	</select>
+	
+	<select id="genderChart" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT T.grCode AS grCode, T.성별 AS grGender, COUNT(T.성별) AS genCount
+		FROM
+		(
+		    SELECT N.GR_CODE AS grCode, CASE WHEN GEN_CODE=1 THEN '남자' WHEN GEN_CODE=2 THEN '여자' ELSE '알수없음' END AS 성별
+		    FROM GR_REQUEST RQ, MEMBER M, NOW_GROUP N
+		    WHERE RQ.MEM_ID=M.MEM_ID AND RQ.NG_CODE=N.NG_CODE
+		)T
+		WHERE grCode=#{grCode}
+		GROUP BY T.grCode, T.성별
+		ORDER BY T.grCode	
+	</select>
+	
+	<select id="ageChart" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+		SELECT T.grCode AS grCode, T.나이 AS grAge, COUNT(T.나이) AS ageCount
+		FROM
+		(
+		    SELECT N.GR_CODE AS grCode, CASE WHEN (TO_NUMBER(SUBSTR(SYSDATE, 0, 4))-TO_NUMBER(SUBSTR(M.MEM_BIRTH, 0, 4))) BETWEEN 10 AND 19 THEN 10 
+		                                     WHEN (TO_NUMBER(SUBSTR(SYSDATE, 0, 4))-TO_NUMBER(SUBSTR(M.MEM_BIRTH, 0, 4))) BETWEEN 20 AND 29 THEN 20 
+		                                     WHEN (TO_NUMBER(SUBSTR(SYSDATE, 0, 4))-TO_NUMBER(SUBSTR(M.MEM_BIRTH, 0, 4))) BETWEEN 30 AND 39 THEN 30 
+		                                     WHEN (TO_NUMBER(SUBSTR(SYSDATE, 0, 4))-TO_NUMBER(SUBSTR(M.MEM_BIRTH, 0, 4))) BETWEEN 40 AND 49 THEN 40 
+		                                     WHEN (TO_NUMBER(SUBSTR(SYSDATE, 0, 4))-TO_NUMBER(SUBSTR(M.MEM_BIRTH, 0, 4))) BETWEEN 50 AND 59 THEN 50 
+		                                     ELSE 0 END  AS 나이
+		        FROM GR_REQUEST RQ, MEMBER M, NOW_GROUP N
+		        WHERE RQ.MEM_ID=M.MEM_ID AND RQ.NG_CODE=N.NG_CODE
+		)T
+		WHERE grCode=#{grCode}
+		GROUP BY T.grCode, T.나이
+		ORDER BY T.grCode	
+	</select>
+	
+	
 	<!-- 본인의 결제, 환불내역을 모두 가져오는 method -->
 	<!-- <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
 		SELECT payCode,.ngCode, grName, grCount, ngCost, memId, pmName, payDate, rfCode, rfDate
