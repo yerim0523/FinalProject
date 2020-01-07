@@ -46,23 +46,56 @@
     <script src="js/custom.js"></script>
 
 <script type="text/javascript" src="<%=cp%>/js/highcharts.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/series-label.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/exporting.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/export-data.js"></script>
     
 <style type="text/css">
-	.image
-	{
+	.image {
 		width: 170px;
 		height: 150px;
 	}
 	
-	button.btn4{
-	    width: 90px;
-    	height: 44px;
-    	padding-left: 0;
-    	padding-right: 0;
+	button.btn4 {
+		width: 90px;
+		height: 44px;
+		padding-left: 0;
+		padding-right: 0;
 	}
+	
+	.modal-dialog.modal-80size {
+	  width: 50%;
+	  height: 50%;
+	  margin: 0;
+	  padding: 0;
+	}
+	
+	.modal-content.modal-80size {
+	  min-height: 40%;
+	}
+	
+	.modal.modal-center {
+	  text-align: center;
+	}
+	
+	@media screen and (min-width: 500px) {
+	  .modal.modal-center:before {
+	    display: inline-block;
+	    vertical-align: middle;
+	    content: " ";
+	    height: 100%;
+	  }
+	}
+	
+	.modal-dialog.modal-center {
+	  display: inline-block;
+	  text-align: left;
+	  vertical-align: middle;
+	}
+	
+	.center-block {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+
 </style>
 
 <script type="text/javascript">
@@ -71,15 +104,48 @@
 	{
 		$("#charShow").click(function()
 		{
-			
-			
 			Highcharts.chart('chartSpace', {
 			    chart: {
 			        plotShadow: false,
 			        type: 'pie'
 			    },
 			    title: {
-			        text: 'TIOBE Index for December, 2019'
+			        text: '1'
+			    },
+			    tooltip: {
+			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			    },
+			    series: [{
+			        name: 'Language',
+			        colorByPoint: true,
+			        data: [{
+			            name: 'Java',
+			            y: 17.25,
+			            sliced: true,
+			            selected: true
+			        }, {
+			            name: 'C',
+			            y: 16.08
+			        }, {
+			            name: 'Python',
+			            y: 10.30
+			        }, {
+			            name: 'C++',
+			            y: 6.19
+			        }, {
+			            name: 'C#',
+			            y: 4.80
+			        }]
+			    }]
+			});
+			
+			Highcharts.chart('chartSpace2', {
+			    chart: {
+			        plotShadow: false,
+			        type: 'pie'
+			    },
+			    title: {
+			        text: '2'
 			    },
 			    tooltip: {
 			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
@@ -114,57 +180,55 @@
 			        }, {
 			            name: 'C#',
 			            y: 4.80
-			        }, {
-			            name: 'Visual Basic .NET',
-			            y: 4.74
-			        }, {
-			            name: 'JavaScript',
-			            y: 2.09
-			        }, {
-			            name: 'PHP',
-			            y: 2.04
-			        }, {
-			            name: 'SQL',
-			            y: 1.84
-			        }, {
-			            name: 'Swift',
-			            y: 1.49
-			        }, {
-			            name: 'Ruby',
-			            y: 1.31
-			        }, {
-			            name: 'Delphi/Object Pascal',
-			            y: 1.28
-			        }, {
-			            name: 'Objective-C',
-			            y: 1.20
-			        }, {
-			            name: 'Assembly language',
-			            y: 1.06
-			        }, {
-			            name: 'Go',
-			            y: 0.99
-			        }, {
-			            name: 'R',
-			            y: 0.99
-			        }, {
-			            name: 'MATLAB',
-			            y: 0.98
-			        }, {
-			            name: 'D',
-			            y: 0.93
-			        }, {
-			            name: 'Visual Basic',
-			            y: 0.92
-			        }, {
-			            name: 'Perl',
-			            y: 0.89
-			        }, {
-			            name: 'Others',
-			            y: 22.63
 			        }]
 			    }]
 			});
+			
+			Highcharts.chart('chartSpace3', {
+			    chart: {
+			        plotShadow: false,
+			        type: 'pie'
+			    },
+			    title: {
+			        text: '3'
+			    },
+			    tooltip: {
+			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			    },
+			    plotOptions: {
+			        pie: {
+			            allowPointSelect: true,
+			            cursor: 'pointer',
+			            dataLabels: {
+			                enabled: true,
+			                format: '<b>{point.name}</b>: {point.percentage:.2f} %'
+			            }
+			        }
+			    },
+			    series: [{
+			        name: 'Language',
+			        colorByPoint: true,
+			        data: [{
+			            name: 'Java',
+			            y: 17.25,
+			            sliced: true,
+			            selected: true
+			        }, {
+			            name: 'C',
+			            y: 16.08
+			        }, {
+			            name: 'Python',
+			            y: 10.30
+			        }, {
+			            name: 'C++',
+			            y: 6.19
+			        }, {
+			            name: 'C#',
+			            y: 4.80
+			        }]
+			    }]
+			});
+
 
 		});
 	});
@@ -201,8 +265,17 @@
 					</c:if>
 					
 					<c:if test="${!empty sessionScope.member}">
-					<button type="button" id="charShow">차트보기</button>
-					<div id="chartSpace"></div>
+					<div>
+						<button class="btn4" type="button" data-toggle="modal" data-target="#charFind" style="width: 130px;">모임선택하기</button>
+						<button class="btn4" type="button" id="charShow" style="width: 130px;">차트보기</button>
+						<br><br>
+						<h4>성별 통계</h4>
+						<div class="row">
+							<div id="chartSpace" style="width: 250px;"></div>
+							<div id="chartSpace2" style="width: 250px;"></div>
+							<div id="chartSpace3" style="width: 250px;"></div>
+						</div>
+					</div>
 					</c:if>
 					
 					<br><br>
@@ -214,6 +287,28 @@
 
 <div>
 	<c:import url="footer.jsp"></c:import>
+</div>
+
+
+<!-- 차트 확인할 모임 선택(최대 3개) -->
+<div class="modal modal-center fade" id="charFind" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+  <div class="modal-dialog modal-80size modal-center" role="document">
+    <div class="modal-content modal-80size">
+      <div class="modal-header">
+      	<span style="font-size: 15pt; font-weight: bold;">~ 통계 모임 선택 ~</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body center-block">
+			<p class="text-center">통계를 확인할 모임을 선택해주세요.</p>
+			<div class="">
+				
+				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+			</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
 </div>
 
 

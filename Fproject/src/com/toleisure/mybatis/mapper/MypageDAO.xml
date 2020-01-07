@@ -85,7 +85,7 @@
 	
 	<!-- 호스트가 관리중인 grCode 목록 가져오기 (차트) -->
 	<select id="hostMeetFind" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_CODE AS grCode
+		SELECT GR_CODE AS grCode, GR_NAME AS grName
 		FROM HOST H, TBL_GROUP T
 		WHERE H.MEM_ID=T.MEM_ID
 		  AND H.MEM_ID=#{memId}
