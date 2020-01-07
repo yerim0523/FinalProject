@@ -122,6 +122,29 @@
 		ORDER BY T.grCode	
 	</select>
 	
+	<!-- 본인 결제내역 페이지 -->
+	<select id="payList" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.PayDTO">
+		SELECT ROWNUM AS rNum, E.payCode AS payCode, E.ngCode AS ngCode
+			 , E.grName AS grName, E.grCount AS grCount, E.ngCost AS ngCost, E.memId AS memId
+			 , E.pmName AS pmName, E.pmDetail AS pmDetail, TO_CHAR(E.payDate, 'YYYY-MM-DD HH24:MI') AS payDate
+			 , NVL(E.rfCode,0) AS rfCode, NVL(TO_CHAR(E.rfDate, 'YYYYMMDD'),0) AS rfDate
+		FROM
+		(
+		SELECT P.PAY_CODE AS payCode, NG.NG_CODE AS ngCode, G.GR_NAME AS grName, NVL(CNT.GR_COUNT,0) AS grCount, NG.NG_COST AS ngCost, M.MEM_ID AS memId
+		     , PM.PM_NAME AS pmName, P.PAY_DETAIL AS pmDetail, P.PAY_DATE AS payDate, RF.RF_CODE AS rfCode, RF.RF_DATE AS rfDate
+		FROM NOW_GROUP NG, GR_REQUEST R, PAYMENT P, MEMBER M, TBL_GROUP G, REFUND RF
+		                                                  , (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
+		                                                     FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
+		                                                     WHERE G.GR_CODE=NG.GR_CODE AND FG.NG_CODE(+)=NG.NG_CODE
+		                                                     GROUP BY G.GR_CODE) CNT
+		   , PAY_METHOD PM
+		WHERE M.MEM_ID = #{memId} AND NG.NG_CODE = R.NG_CODE AND R.RE_CODE = P.RE_CODE AND R.MEM_ID = M.MEM_ID AND NG.GR_CODE = CNT.GR_CODE AND NG.GR_CODE = G.GR_CODE AND P.PAY_CODE = RF.PAY_CODE(+)
+		      AND PM.PM_CODE = P.PM_CODE AND P.PAY_CODE > 0
+		ORDER BY P.PAY_DATE 
+		)E
+		ORDER BY RNUM DESC
+	</select>
+	
 	<!-- 본인의 결제, 환불내역을 모두 가져오는 method -->
 	<!-- <select id="myInfo" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.MemberDTO">
 		SELECT payCode,.ngCode, grName, grCount, ngCost, memId, pmName, payDate, rfCode, rfDate

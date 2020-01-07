@@ -7,8 +7,8 @@ package com.toleisure.mybatis.dto;
 
 public class PayDTO
 {
-	private int payCode, ngCode, grCount, ngCost, rfCode;
-	private String memId, grName, pmName, payDate, rfDate;
+	private int payCode, ngCode, grCount, ngCost, rfCode, rNum;
+	private String memId, grName, pmName, pmDetail, payDate, rfDate;
 	
  	// getter / setter 구성
 	public int getPayCode()
@@ -92,6 +92,22 @@ public class PayDTO
 	public void setRfDate(String rfDate)
 	{
 		this.rfDate = rfDate;
+	}
+	public int getrNum()
+	{
+		return rNum;
+	}
+	public void setrNum(int rNum)
+	{
+		this.rNum = rNum;
+	}
+	public String getPmDetail()
+	{
+		return pmDetail;
+	}
+	public void setPmDetail(String pmDetail)
+	{
+		this.pmDetail = pmDetail;
 	}
 	
 	
