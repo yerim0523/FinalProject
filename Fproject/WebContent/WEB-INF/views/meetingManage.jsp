@@ -99,139 +99,154 @@
 </style>
 
 <script type="text/javascript">
-
+	
+	var grCodeList = new Array();
+	
 	$(function()
 	{
-		$("#charShow").click(function()
-		{
-			Highcharts.chart('chartSpace', {
-			    chart: {
-			        plotShadow: false,
-			        type: 'pie'
-			    },
-			    title: {
-			        text: '1'
-			    },
-			    tooltip: {
-			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-			    },
-			    series: [{
-			        name: 'Language',
-			        colorByPoint: true,
-			        data: [{
-			            name: 'Java',
-			            y: 17.25,
-			            sliced: true,
-			            selected: true
-			        }, {
-			            name: 'C',
-			            y: 16.08
-			        }, {
-			            name: 'Python',
-			            y: 10.30
-			        }, {
-			            name: 'C++',
-			            y: 6.19
-			        }, {
-			            name: 'C#',
-			            y: 4.80
-			        }]
-			    }]
-			});
-			
-			Highcharts.chart('chartSpace2', {
-			    chart: {
-			        plotShadow: false,
-			        type: 'pie'
-			    },
-			    title: {
-			        text: '2'
-			    },
-			    tooltip: {
-			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-			    },
-			    plotOptions: {
-			        pie: {
-			            allowPointSelect: true,
-			            cursor: 'pointer',
-			            dataLabels: {
-			                enabled: true,
-			                format: '<b>{point.name}</b>: {point.percentage:.2f} %'
-			            }
-			        }
-			    },
-			    series: [{
-			        name: 'Language',
-			        colorByPoint: true,
-			        data: [{
-			            name: 'Java',
-			            y: 17.25,
-			            sliced: true,
-			            selected: true
-			        }, {
-			            name: 'C',
-			            y: 16.08
-			        }, {
-			            name: 'Python',
-			            y: 10.30
-			        }, {
-			            name: 'C++',
-			            y: 6.19
-			        }, {
-			            name: 'C#',
-			            y: 4.80
-			        }]
-			    }]
-			});
-			
-			Highcharts.chart('chartSpace3', {
-			    chart: {
-			        plotShadow: false,
-			        type: 'pie'
-			    },
-			    title: {
-			        text: '3'
-			    },
-			    tooltip: {
-			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-			    },
-			    plotOptions: {
-			        pie: {
-			            allowPointSelect: true,
-			            cursor: 'pointer',
-			            dataLabels: {
-			                enabled: true,
-			                format: '<b>{point.name}</b>: {point.percentage:.2f} %'
-			            }
-			        }
-			    },
-			    series: [{
-			        name: 'Language',
-			        colorByPoint: true,
-			        data: [{
-			            name: 'Java',
-			            y: 17.25,
-			            sliced: true,
-			            selected: true
-			        }, {
-			            name: 'C',
-			            y: 16.08
-			        }, {
-			            name: 'Python',
-			            y: 10.30
-			        }, {
-			            name: 'C++',
-			            y: 6.19
-			        }, {
-			            name: 'C#',
-			            y: 4.80
-			        }]
-			    }]
-			});
-
-
-		});
+		
 	});
+	
+	function formCheck()
+	{
+		//alert("확인");
+		var grCode = document.getElementsByName("grList");
+		$('#chartFind').modal("hide");
+		$(".modal-backdrop").remove(); 
+		if($("input:checkbox[name='grList']").is(":checked")==false)
+		{
+			alert("모임을 최소 한 개는 선택해주셔야 합니다.");
+			return;
+		}
+
+		count = 0; // 배열 방 컨트롤 위한 변수
+		
+		for (var i = 0; i < grCode.length; i++)
+		{
+			if (grCode[i].checked == true) // 체크 된 값만 
+			{
+				grCodeList.push(grCode[i].value); // value 를 임시 배열에 삽입(최소1개, 최대2개)
+				alert(grCodeList[count]);
+				count++;
+
+				if (count == 4)
+				{
+					alert("통계 표시 모임은 3개까지 선택 가능합니다.");
+					return;
+				}
+			}
+		}
+		
+		$("#grCode1").val(grCodeList[0]);
+		$("#grCode2").val(grCodeList[1]);
+		$("#grCode3").val(grCodeList[2]);
+		
+		var params = {};
+		params.grCode1 = $("#grCode1").val();
+		params.grCode2 = $("#grCode2").val();
+		params.grCode3 = $("#grCode3").val();
+		
+		//alert(params.grCode1);
+		//alert(params.grCode2);
+		//alert(params.grCode3);
+		
+		// ★★★
+		for (var i = 0; i < 3; i++)
+		{
+			$("#genderSpace"+(i+1)).empty();
+			$("#ageSpace"+(i+1)).empty();
+		}
+		
+		for(var i=0; i<grCodeList.length; i++)
+		{
+			showGenderChart(grCodeList[i], i+1);
+			showAgeChart(grCodeList[i], i+1);
+		}
+		
+		grCodeList = new Array();
+		$("#grCode1").val(null);
+		$("#grCode2").val(null);
+		$("#grCode3").val(null);
+	}
+	function showGenderChart(grCode, num)
+	{
+		
+			Highcharts.chart('genderSpace'+num, {
+			    chart: {
+			        plotShadow: false,
+			        type: 'pie'
+			    },
+			    title: {
+			        text: grCode
+			    },
+			    tooltip: {
+			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			    },
+			    series: [{
+			        name: 'Language',
+			        colorByPoint: true,
+			        data: [{
+			            name: 'Java',
+			            y: 17.25,
+			            sliced: true,
+			            selected: true
+			        }, {
+			            name: 'C',
+			            y: 16.08
+			        }, {
+			            name: 'Python',
+			            y: 10.30
+			        }, {
+			            name: 'C++',
+			            y: 6.19
+			        }, {
+			            name: 'C#',
+			            y: 4.80
+			        }]
+			    }]
+			});
+	}
+	
+
+	function showAgeChart(grCode, num)
+	{
+		
+			Highcharts.chart('ageSpace'+num, {
+			    chart: {
+			        plotShadow: false,
+			        type: 'pie'
+			    },
+			    title: {
+			        text: grCode
+			    },
+			    tooltip: {
+			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			    },
+			    series: [{
+			        name: 'Language',
+			        colorByPoint: true,
+			        data: [{
+			            name: 'Java',
+			            y: 17.25,
+			            sliced: true,
+			            selected: true
+			        }, {
+			            name: 'C',
+			            y: 16.08
+			        }, {
+			            name: 'Python',
+			            y: 10.30
+			        }, {
+			            name: 'C++',
+			            y: 6.19
+			        }, {
+			            name: 'C#',
+			            y: 4.80
+			        }]
+			    }]
+			});
+
+	}
 	
 </script>
 
@@ -266,14 +281,20 @@
 					
 					<c:if test="${!empty sessionScope.member}">
 					<div>
-						<button class="btn4" type="button" data-toggle="modal" data-target="#charFind" style="width: 130px;">모임선택하기</button>
-						<button class="btn4" type="button" id="charShow" style="width: 130px;">차트보기</button>
+						<button class="btn4" type="button" data-toggle="modal" data-target="#chartFind" style="width: 130px;">모임선택하기</button>
 						<br><br>
 						<h4>성별 통계</h4>
 						<div class="row">
-							<div id="chartSpace" style="width: 250px;"></div>
-							<div id="chartSpace2" style="width: 250px;"></div>
-							<div id="chartSpace3" style="width: 250px;"></div>
+							<div id="genderSpace1" style="width: 250px;"></div>
+							<div id="genderSpace2" style="width: 250px;"></div>
+							<div id="genderSpace3" style="width: 250px;"></div>
+						</div>
+						<br><br>
+						<h4>연령별 통계</h4>
+						<div class="row">
+							<div id="ageSpace1" style="width: 250px;"></div>
+							<div id="ageSpace2" style="width: 250px;"></div>
+							<div id="ageSpace3" style="width: 250px;"></div>
 						</div>
 					</div>
 					</c:if>
@@ -291,7 +312,7 @@
 
 
 <!-- 차트 확인할 모임 선택(최대 3개) -->
-<div class="modal modal-center fade" id="charFind" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+<div class="chartFind modal modal-center fade" id="chartFind" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
   <div class="modal-dialog modal-80size modal-center" role="document">
     <div class="modal-content modal-80size">
       <div class="modal-header">
@@ -300,15 +321,17 @@
       </div>
       <div class="modal-body center-block">
 			<p class="text-center">통계를 확인할 모임을 선택해주세요.</p>
-			<div class="">
+			<div>
 				<c:forEach var="grList" items="${grCodeList }">
-					<input type="radio" name="grList" value="${grList.grCode }">&nbsp;&nbsp;${grList.grName }<br>
+					<input type="checkbox" id="grList" name="grList" value="${grList.grCode }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${grList.grName }<br>
 				</c:forEach>
 				<br><br>
+				<button class="btn4" type="button" id="charShow" onclick="formCheck()" style="width: 130px;">차트보기</button>&nbsp;
 				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+				<input type="hidden" id="grCode1">
+				<input type="hidden" id="grCode2">
+				<input type="hidden" id="grCode3">
 			</div>
-      </div>
-      <div class="modal-footer">
       </div>
     </div>
   </div>
