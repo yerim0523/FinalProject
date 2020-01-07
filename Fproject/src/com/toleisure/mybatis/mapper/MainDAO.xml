@@ -580,13 +580,6 @@
       FROM HOT_GROUP_VIEW
    </select>
    
-  <select id="testList" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_CODE AS grCode,NG_CODE AS ngCode,NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name,
-      CATE2 AS grCate2Name,JJIMCK AS jjimcheck
-      FROM ALL_GROUP_VIEW_JJIM
-      WHERE JJIMUSER = #{memId} or 1=1
-   </select>
-
    <select id="HotGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
     	   , memName, grCount, grStarAvg, grStarCount

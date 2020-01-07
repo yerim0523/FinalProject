@@ -49,9 +49,9 @@ public class MainController
 		System.out.println("====== " + session.getAttribute("member"));
 		
 	
-		 model.addAttribute("HotGroupList", dao.testList(dto.getMemId()));
+		 model.addAttribute("HotGroupList", dao.HotGroupList());
 		 model.addAttribute("NewGroupList", dao.NewGroupList());
-		  model.addAttribute("HotHostList", dao.HotHostList());
+		 model.addAttribute("HotHostList", dao.HotHostList());
 		 model.addAttribute("ClosingGroupList", dao.ClosingGroupList());
 		 
 		
