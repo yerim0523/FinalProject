@@ -97,7 +97,7 @@
 	    					<button type="button" class="filecheck" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></button>
 	    					<!-- <div onclick=document.all.file.click(); align="right"><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></div> -->
 	    					<input type="file" name="file" id="file" style="display: none;"/>     
-							<button type="submit"  class="filecheck" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-check fa-lg"></i></span></button>
+							<button type="submit"  class="filecheck"><span style="text-align:right; color: pink;"><i class="fas fa-check fa-lg"></i></span></button>
 						</div>
 						</form>
 					</div>
