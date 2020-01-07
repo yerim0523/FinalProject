@@ -50,6 +50,12 @@
 	font-size: 30px;
 	text-align: center;
 }
+.filecheck
+{
+	border: 0px;
+	background-color: white;
+	
+}
 
 
 </style>
@@ -81,25 +87,28 @@
 			<div class="col-md-10">
 				<div class="container">
 				<br><br>
-			<div class="d-flex justify-content-center h-100 left">
-				<div class="image_outer_container d-flex align-items-center">
+				<div class="row">
+			<div class="col-md-3">
+				<div>
 					<div class="image_inner_container">
-						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px">
-										</div>
-									
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px" style="margin-bottom: 10px;">
 						<form action="pictureupdate.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
-    					<button type="button" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></button>
-    					<input type="file" name="file" id="file" style="display: none;"/>     
-						<button type="submit">적용</button>
+						<div align="right">
+	    					<button type="button" class="filecheck" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></button>
+	    					<!-- <div onclick=document.all.file.click(); align="right"><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></div> -->
+	    					<input type="file" name="file" id="file" style="display: none;"/>     
+							<button type="submit"  class="filecheck" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-check fa-lg"></i></span></button>
+						</div>
 						</form>
+					</div>
+				</div>
 							
 							<script>
 										  $("#file").change(function(){
 											   if(this.files && this.files[0]) {
 											    var reader = new FileReader;
 											    reader.onload = function(data) {
-											     $(".img-rounded").attr("src", data.target.result).width(500);        
+											     $(".img-rounded").attr("src", data.target.result);        
 											    }
 											    reader.readAsDataURL(this.files[0]);
 											   }
@@ -110,9 +119,9 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<br />
 					
-				</div>
 				
-				<div class="container right" style="width: 70%;">
+				
+				<div class="col-md-7" style="width: 70%;">
 				
 					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니당ㅎㅎ</p>
 					<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">
@@ -121,6 +130,7 @@
 						<br>
 						&nbsp;
 					</div>
+				</div>
 				</div>
 			</div>
 		</div>
