@@ -530,28 +530,28 @@ public class MainController
 	      String view = "/WEB-INF/views/meetingContent.jsp";
 	      session.getAttribute("member");
 	      
-	      System.out.println("===========  " + ngCode);
+	      System.out.println("===========  ngCode : " + ngCode);
 	      
 	      IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-	      
-	      //dao.groupContent(ngCode);
+	      IGroupDAO gdao = sqlsession.getMapper(IGroupDAO.class);
 	      
 	      List<GroupDTO> groupContent = dao.groupContent(ngCode);
 	      int jjimCount = dao.jjimCount(ngCode);
 	      List<GroupDTO> contentReview = dao.ContentReview(ngCode);
 	      List<GroupDTO> contentGBoard = dao.ContentGBoard(ngCode);
 	      List<GroupDTO> contentMember = dao.ContentMember(ngCode);
+	      ArrayList<MemberDTO> joinMember = gdao.joinMember(ngCode);
 	      
 	      model.addAttribute("groupContent", groupContent);
 	      model.addAttribute("jjimCount", jjimCount);
 	      model.addAttribute("contentReview", contentReview);
 	      model.addAttribute("contentGBoard", contentGBoard);
 	      model.addAttribute("contentMember", contentMember);
+	      model.addAttribute("joinMember", joinMember);
 	      
 	      session.setAttribute("ngCode", dto.getNgCode());
 	      
 	      return view;
-	      
 	   }
 	
 	// ---------------------------------------------------------- 찜 모임 여부
