@@ -630,7 +630,7 @@ public class MemberController
       
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       ArrayList<GroupDTO> grCodeList = dao.hostMeetFind(memId);
-      model.addAttribute("grCodeList", grCodeList);
+      model.addAttribute("grCodeList", grCodeList); 
       
       return "/WEB-INF/views/meetingManage.jsp"; 
    }
