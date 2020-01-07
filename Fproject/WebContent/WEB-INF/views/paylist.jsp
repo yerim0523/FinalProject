@@ -135,7 +135,7 @@
 	</div>
 	</div>
 </div>
-<br><br><br><br>
+<br><br><br><br> 
 <div>
    <c:import url="footer.jsp"></c:import>
 </div>
