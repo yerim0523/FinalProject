@@ -308,7 +308,7 @@
 						</div>
 						<div class="content">
 							<span>
-									환불은 모임시작전에 참가취소를 하시면 100% 환불이 가능합니다.<br>
+									환불은 결제 마감일 전에 참가취소를 하시면 100% 환불이 가능합니다.<br>
 									그 이후로는 환불이 불가능하니 신중하게 생각해주세요!
 							</span>
 						</div>
@@ -359,11 +359,11 @@
 							</a>
 							<hr>
 						</div>
-						<c:forEach var="member" items="${contentMember }">
+						<c:forEach var="joinMem" items="${joinMember }">
 						
 						<div align="left">
-							<img src="uploads/${member.memPic }" 
-								style="object-fit:cover; width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; ${member.memName }
+							<img src="uploads/${joinMem.memPic }" 
+								style="object-fit:cover; width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; ${joinMem.memName }
 						</div>
 						<br>
 						</c:forEach>

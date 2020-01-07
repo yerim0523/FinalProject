@@ -29,13 +29,15 @@ public class ProfileController
 	@RequestMapping(value = "/profile.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String profile(Model model, MemberDTO dto, GroupDTO gdto, HttpSession session)
 	{
+		session.getAttribute("member2");
 		String view = "WEB-INF/views/Hprofile.jsp";
 		
 		IProfileDAO dao = sqlsession.getMapper(IProfileDAO.class); 
 		
 		// dto 정보에 아무것도 없기 때문에.. 직접 set 해줌 → 추후 수정 필요
-		dto.setMemId("wag2397@gmail.com");
-		gdto.setMemId("wag2397@gmail.com");
+		/*
+		dto.setMemId("wag2397@gmail.com"); gdto.setMemId("wag2397@gmail.com");
+		*/
 		
 		// 프로필 - 회원 정보 
 		model.addAttribute("member", dao.memInfo(dto));

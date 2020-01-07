@@ -102,7 +102,7 @@
         </tr>
          
         <tr>
-            <th class="success" id = "boardCont" value="${v.boardCont}">글 내용</th>
+            <th class="success" id = "boardCont" value='${v.boardCont}'>글 내용</th>
             <td colspan="3">${v.boardCont}</td>
        </tr>
 

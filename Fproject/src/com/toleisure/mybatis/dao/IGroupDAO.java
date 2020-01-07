@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.toleisure.mybatis.dto.FeedBackDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
+import com.toleisure.mybatis.dto.MemberDTO;
 
 public interface IGroupDAO
 {
@@ -72,7 +73,7 @@ public interface IGroupDAO
 	public int bankPay(GroupDTO dto);
 	
 	// 모임에 참여중인 메이트 가져오기
-	
+	public ArrayList<MemberDTO> joinMember(int ngCode);
 	
 	// 모임에 신청한 메이트 수 가져오기
 	

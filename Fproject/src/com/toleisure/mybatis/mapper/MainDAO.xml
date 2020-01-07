@@ -18,21 +18,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화') AND NG_STARTDATE > SYSDATE
+					WHERE CATE1 IN ('전시', '연극', '공연') AND NG_STARTDATE > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화') AND NG_STARTDATE > SYSDATE
+					WHERE CATE1 IN ('전시', '연극', '공연') AND NG_STARTDATE > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화') AND NG_STARTDATE > SYSDATE
+					WHERE CATE1 IN ('전시', '연극', '공연') AND NG_STARTDATE > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -44,21 +44,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화')
+					WHERE CATE1 IN ('전시', '연극', '공연')
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화')
+					WHERE CATE1 IN ('전시', '연극', '공연')
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화')
+					WHERE CATE1 IN ('전시', '연극', '공연')
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -70,21 +70,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화') AND NG_STARTDATE-2 > SYSDATE
+					WHERE CATE1 IN ('전시', '연극', '공연') AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화') AND NG_STARTDATE-2 > SYSDATE
+					WHERE CATE1 IN ('전시', '연극', '공연') AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시', '연극', '문화') AND NG_STARTDATE-2 > SYSDATE
+					WHERE CATE1 IN ('전시', '연극', '공연') AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -96,21 +96,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('전시') OR CATE2 IN ('전시')) AND NG_STARTDATE > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('전시') OR CATE2 IN ('전시')) AND NG_STARTDATE > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('전시') OR CATE2 IN ('전시')) AND NG_STARTDATE > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -122,21 +122,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시')
+					WHERE CATE1 IN ('전시') OR CATE2 IN ('전시') 
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시')
+					WHERE CATE1 IN ('전시') OR CATE2 IN ('전시') 
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시')
+					WHERE CATE1 IN ('전시') OR CATE2 IN ('전시') 
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -148,21 +148,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('전시') OR CATE2 IN ('전시')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('전시') OR CATE2 IN ('전시')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('전시') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('전시') OR CATE2 IN ('전시')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -253,21 +253,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극') AND NG_STARTDATE > SYSDATE
+					WHERE CATE1 IN ('연극') OR CATE2 IN ('연극') AND NG_STARTDATE > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극') AND NG_STARTDATE > SYSDATE
+					WHERE CATE1 IN ('연극') OR CATE2 IN ('연극') AND NG_STARTDATE > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극') AND NG_STARTDATE > SYSDATE
+					WHERE CATE1 IN ('연극') OR CATE2 IN ('연극') AND NG_STARTDATE > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -279,21 +279,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극')
+					WHERE CATE1 IN ('연극') OR CATE2 IN ('연극') 
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극')
+					WHERE CATE1 IN ('연극') OR CATE2 IN ('연극') 
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극')
+					WHERE CATE1 IN ('연극') OR CATE2 IN ('연극') 
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -305,21 +305,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('연극') OR CATE2 IN ('연극')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('연극') OR CATE2 IN ('연극')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('연극') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('연극') OR CATE2 IN ('연극')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -341,21 +341,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -367,21 +367,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페')
+					WHERE CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페')
+					WHERE CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페')
+					WHERE CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -393,21 +393,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당','카페') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -421,21 +421,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('식당','카페') OR CATE2 IN ('식당','카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -447,21 +447,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당')
+					WHERE CATE1 IN ('식당') OR CATE2 IN ('식당')
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당')
+					WHERE CATE1 IN ('식당') OR CATE2 IN ('식당')
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당')
+					WHERE CATE1 IN ('식당') OR CATE2 IN ('식당')
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -473,21 +473,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('식당') OR CATE2 IN ('식당')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('식당') OR CATE2 IN ('식당')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('식당') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('식당') OR CATE2 IN ('식당')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -500,21 +500,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('카페') OR CATE2 IN ('카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('카페') OR CATE2 IN ('카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페') AND NG_STARTDATE > SYSDATE
+					WHERE (CATE1 IN ('카페') OR CATE2 IN ('카페')) AND NG_STARTDATE > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -526,21 +526,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페')
+					WHERE CATE1 IN ('카페') OR CATE2 IN ('카페')
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페')
+					WHERE CATE1 IN ('카페') OR CATE2 IN ('카페')
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페')
+					WHERE CATE1 IN ('카페') OR CATE2 IN ('카페')
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -552,21 +552,21 @@
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('카페') OR CATE2 IN ('카페')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY NG_DATE DESC
                </when>
                <when test='ordercheck==2'>
                   SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('카페') OR CATE2 IN ('카페')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY FAVOR DESC
                </when>
                <otherwise>
                  SELECT NG_PIC AS ngPic,GR_NAME AS grName, CATE1 AS grCate1Name, CASE WHEN CATE2='0' THEN '' ELSE CATE2 END AS grCate2Name
 			          , MEM_NAME AS memName, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount,NG_CODE AS ngCode
 				  	FROM ALL_GROUP_VIEW
-					WHERE CATE1 IN ('카페') AND NG_STARTDATE-2 > SYSDATE
+					WHERE (CATE1 IN ('카페') OR CATE2 IN ('카페')) AND NG_STARTDATE-2 > SYSDATE
 					ORDER BY STAR_AVG DESC
                </otherwise>
             </choose>
@@ -576,17 +576,10 @@
    <!-- ============================================테마별 DAO================================================ -->
   <select id="HotGroupList" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
-    	   , memName, grCount, grStarAvg, grStarCount
+    	   , memName, grCount, grStarAvg, grStarCount 
       FROM HOT_GROUP_VIEW
    </select>
    
-  <select id="testList" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_CODE AS grCode,NG_CODE AS ngCode,NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS grCate1Name,
-      CATE2 AS grCate2Name,JJIMCK AS jjimcheck
-      FROM ALL_GROUP_VIEW_JJIM
-      WHERE JJIMUSER = #{memId} or 1=1
-   </select>
-
    <select id="HotGroupListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
       SELECT grCode, ngCode, ngPic, grName, grCate1Name, CASE WHEN grCate2Name='0' THEN '' ELSE grCate2Name END AS grCate2Name
     	   , memName, grCount, grStarAvg, grStarCount
@@ -607,12 +600,12 @@
    </select>
 
    <select id="HotHostList" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_ID AS memId
       FROM HOT_HOST_VIEW
    </select>
 
    <select id="HotHostListAll" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro
+      SELECT MEM_PIC AS memPic, MEM_NAME AS memName, MEM_INTRO AS memIntro, MEM_ID AS memId
       FROM HOT_HOST_AllVIEW
    </select>
 
@@ -712,22 +705,25 @@
    <!-- 모임 상세 페이지 후기 -->
    
    <select id="ContentReview" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT GR_NAME AS grName, MEM_PIC AS memPic, MEM_NAME AS memName, REVIEW_CONT AS reviewCont, REVIEW_STAR AS reviewStar, TO_CHAR(REVIEW_DATE, 'YYYY-MM-DD HH24:MI') AS reviewDate
+       SELECT GR_NAME AS grName,GR_CODE AS grCode, MEM_PIC AS memPic, MEM_NAME AS memName,NG_CODE AS ngCode,  
+        REVIEW_CONT AS reviewCont, REVIEW_STAR AS reviewStar, TO_CHAR(REVIEW_DATE, 'YYYY-MM-DD HH24:MI') AS reviewDate
       FROM
       (
-          SELECT GR.GR_NAME, NG.NG_CODE, ME.MEM_PIC, ME.MEM_NAME, RE.REVIEW_CONT, RE.REVIEW_STAR, RE.REVIEW_DATE
-          FROM NOW_GROUP NG JOIN TBL_GROUP GR
-          ON NG.GR_CODE = GR.GR_CODE
-              JOIN GR_REQUEST QU
-              ON QU.NG_CODE = NG.NG_CODE
-                  JOIN PAYMENT PA
-                  ON PA.RE_CODE = QU.RE_CODE
-                      JOIN GR_JOIN JO
-                      ON JO.PAY_CODE = PA.PAY_CODE
-                          JOIN REVIEW RE
-                          ON RE.JOIN_CODE = JO.JOIN_CODE
-                              JOIN MEMBER ME
-                              ON ME.MEM_ID = QU.MEM_ID
+          SELECT ME.MEM_NAME,ME.MEM_ID,ME.MEM_PIC,JO.JOIN_CODE,FX.FIX_CODE,GR.GR_CODE,GR.GR_NAME, NG.NG_CODE,RE.REVIEW_CONT, RE.REVIEW_STAR, RE.REVIEW_DATE
+          FROM REVIEW RE JOIN GR_JOIN JO
+          ON RE.JOIN_CODE = JO.JOIN_CODE
+              JOIN FIXED_GROUP FX
+              ON JO.FIX_CODE = FX.FIX_CODE
+                  JOIN NOW_GROUP NG
+                  ON FX.NG_CODE = NG.NG_CODE
+                      JOIN TBL_GROUP GR
+                      ON NG.GR_CODE = GR.GR_CODE
+                        JOIN PAYMENT P
+                         ON P.PAY_CODE = JO.PAY_CODE 
+                             JOIN GR_REQUEST RQ
+                             ON RQ.RE_CODE = P.RE_CODE
+                                JOIN MEMBER ME
+                                ON ME.MEM_ID = RQ.MEM_ID
       )
       WHERE NG_CODE = #{ngCode}
    </select>

@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<script src = "https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet" href="css/button.css">
 <link rel="stylesheet" href="css/join.css">
 <link rel="stylesheet" href="css/bootstrap.css">

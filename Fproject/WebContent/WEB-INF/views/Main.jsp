@@ -320,9 +320,9 @@ button.more {
 			<c:forEach var="HotHost" items="${HotHostList }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img src="uploads/${HotHost.memPic}" alt="썸네일" class="img-responsive"
+						<img src="uploads/${HotHost.memPic}" alt="썸네일" class="img-rounded"
 							style="width: 500px;"
-							onclick="location.href='groupdetail.action?ngCode=${HotHost.ngCode}'">
+							onclick="location.href='profile.action?memId=${HotHost.memId}'">
 						<div class="caption">
 							<div>
 								<div class="starRev"></div>
@@ -337,7 +337,7 @@ button.more {
 								<span style="font-size: 12px;">소개글 ${HotHost.memIntro }</span>
 								<div>
 									<div class="name"
-										onclick="location.href='groupdetail.action?ngCode=${HotHost.ngCode}'">
+										onclick="location.href='profile.action?memId=${HotHost.memId}'">
 										<h5>${HotHost.memName }</h5>
 									</div>
 									<div class="heart" align="right">
