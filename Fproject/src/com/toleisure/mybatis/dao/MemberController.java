@@ -621,20 +621,6 @@ public class MemberController
    @RequestMapping(value = "/meetmanage.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String meetManage(MemberDTO dto, Model model, HttpSession session)
    {
-<<<<<<< HEAD
-      session.getAttribute("member");
-      
-      dto = (MemberDTO)session.getAttribute("member");
-      String memId = dto.getMemId();
-      
-      System.out.println("====== 넘어가는 ID :  " + memId);
-      
-      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
-      ArrayList<GroupDTO> grCodeList = dao.hostMeetFind(memId);
-      model.addAttribute("grCodeList", grCodeList);
-      
-      return "/WEB-INF/views/meetingManage.jsp"; 
-=======
 	   session.getAttribute("member");
 	   
 	   dto = (MemberDTO)session.getAttribute("member");
@@ -647,7 +633,6 @@ public class MemberController
 	   model.addAttribute("grCodeList", grCodeList);
 	   
 	   return "/WEB-INF/views/meetingManage.jsp"; 
->>>>>>> branch 'master' of https://github.com/lee0528kr/FinalProject.git
    }
    
    

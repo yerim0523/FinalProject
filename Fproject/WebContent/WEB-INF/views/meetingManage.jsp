@@ -301,7 +301,10 @@
       <div class="modal-body center-block">
 			<p class="text-center">통계를 확인할 모임을 선택해주세요.</p>
 			<div class="">
-				
+				<c:forEach var="grList" items="${grCodeList }">
+					<input type="radio" name="grList" value="${grList.grCode }">&nbsp;&nbsp;${grList.grName }<br>
+				</c:forEach>
+				<br><br>
 				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
 			</div>
       </div>
