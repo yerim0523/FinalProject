@@ -363,7 +363,7 @@ input.img-button {
 	
 
 	
-	function search()
+	function searchAddr()
 	{
 		var search = document.getElementById('search_addr').value;
 		if (circle)
@@ -507,7 +507,7 @@ input.img-button {
 		</div>
 		<div class="rights" style="padding: 30px;">
 			<input type="text" id="search_addr" class="Lsearch" style="width: 300px;">&nbsp;&nbsp;
-			<button type="button" class="btn4" onclick="search()">검색</button>
+			<button type="button" class="btn4" onclick="searchAddr()">검색</button>
 			<br>
 			<br>
 			<br>
