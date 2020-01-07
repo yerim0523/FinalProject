@@ -176,7 +176,7 @@
 				
 				<div>
 					<div class="name" onclick="location.href='groupdetail.action?ngCode=${FoodGroup.ngCode}'">
-					<h5>${CultureGroup.grName }</h5>
+					<h5>${FoodGroup.grName }</h5>
 					
 					
 					</div>

@@ -319,7 +319,7 @@
 		<div align="center">
 			<div class="review" align="left">
 			<div align="left">
-				<img src="images/${reviewM.memPic }" class="rounded-circle"
+				<img src="uploads/${reviewM.memPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 				<a class="name">${reviewM.memName }</a>
 				<div style="float: right;">
