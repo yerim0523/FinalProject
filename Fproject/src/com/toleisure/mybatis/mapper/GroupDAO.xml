@@ -263,6 +263,16 @@
 		      AND RQ.MEM_ID = M.MEM_ID
    
    </select>
+   
+   <select id="joinMemberCnt" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT COUNT(*) AS memCount
+		FROM GR_REQUEST RQ, PAYMENT P, MEMBER M
+		WHERE RQ.NG_CODE = #{ngCode} AND RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE NOT IN (SELECT RF_CODE
+		                                                                        FROM REFUND R, PAYMENT P
+		                                                                        WHERE R.PAY_CODE = P.PAY_CODE)
+		      AND RQ.MEM_ID = M.MEM_ID
+   
+   </select>
       
 
 </mapper>

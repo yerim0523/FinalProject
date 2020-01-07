@@ -548,6 +548,8 @@ public class MainController
 	      model.addAttribute("contentGBoard", contentGBoard);
 	      model.addAttribute("contentMember", contentMember);
 	      model.addAttribute("joinMember", joinMember);
+	      model.addAttribute("joinMemberCnt", gdao.joinMemberCnt(ngCode));
+	      
 	      
 	      session.setAttribute("ngCode", dto.getNgCode());
 	      

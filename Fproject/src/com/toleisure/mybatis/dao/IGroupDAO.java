@@ -76,6 +76,6 @@ public interface IGroupDAO
 	public ArrayList<MemberDTO> joinMember(int ngCode);
 	
 	// 모임에 신청한 메이트 수 가져오기
-	
+	public GroupDTO joinMemberCnt(int ngCode);
 	
 }

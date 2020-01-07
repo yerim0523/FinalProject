@@ -331,7 +331,7 @@
 							<span class="color" style="text-align: right;">${grcontent.grCount }회차</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>모임명</p> <span class="color">${grcontent.grName }</span>
+									<p>모임명</p> <span class="color" style="font-weight: bold;">${grcontent.grName }</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>가격</p> <span><fmt:formatNumber value="${grcontent.ngCost }" pattern="#,###,###"/>원</span>
@@ -340,7 +340,8 @@
 									<p>최소인원수</p> <span>${grcontent.ngMin }명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>인원수<span style="font-size: 13pt;"><p>(최소인원 : ${grcontent.ngMin }명)</p></span></p><span>/${grcontent.ngMax }명</span>
+									<p>인원수<span style="font-size: 13pt;"><p>(최소인원 : ${grcontent.ngMin }명)</p></span></p>
+									<span>${joinMemberCnt.memCount } / ${grcontent.ngMax }명</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
 									<p>모임날짜</p> <span>${grcontent.ngStart }<br> ~ ${grcontent.ngEnd }</span>

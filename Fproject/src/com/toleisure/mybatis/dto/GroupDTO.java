@@ -21,14 +21,12 @@ public class GroupDTO
 	private String boardCont, boardDate;
 	private int boardNum;
 
-	private int grCount, grStarCount,jjimcheck;
-	
-
-	
+	private int grCount, grStarCount,jjimcheck, memCount;
 	private double grStarAvg;
 	
 	private String payDetail;
 
+	
 	// setter / getter 구성 (TBL_GROUP 테이블 - String)
 	public String getMemId()
 	{
@@ -434,7 +432,6 @@ public class GroupDTO
 	{
 		return boardCont;
 	}
-
 	public void setBoardCont(String boardCont)
 	{
 		this.boardCont = boardCont;
@@ -444,7 +441,6 @@ public class GroupDTO
 	{
 		return boardDate;
 	}
-
 	public void setBoardDate(String boardDate)
 	{
 		this.boardDate = boardDate;
@@ -454,7 +450,6 @@ public class GroupDTO
 	{
 		return boardNum;
 	}
-
 	public void setBoardNum(int boardNum)
 	{
 		this.boardNum = boardNum;
@@ -463,7 +458,6 @@ public class GroupDTO
 	public String getYear() {
 		return year;
 	}
-
 	public void setYear(String year) {
 		this.year = year;
 	}
@@ -471,7 +465,6 @@ public class GroupDTO
 	public String getMonth() {
 		return month;
 	}
-
 	public void setMonth(String month) {
 		this.month = month;
 	}
@@ -479,7 +472,6 @@ public class GroupDTO
 	public String getDay() {
 		return day;
 	}
-
 	public void setDay(String day) {
 		this.day = day;
 	}
@@ -488,7 +480,6 @@ public class GroupDTO
 	{
 		return payDetail;
 	}
-
 	public void setPayDetail(String payDetail)
 	{
 		this.payDetail = payDetail;
@@ -497,7 +488,6 @@ public class GroupDTO
 	public int getJoinCode() {
 		return joinCode;
 	}
-
 	public void setJoinCode(int joinCode) {
 		this.joinCode = joinCode;
 	}
@@ -506,7 +496,6 @@ public class GroupDTO
 	{
 		return hostName;
 	}
-
 	public void setHostName(String hostName)
 	{
 		this.hostName = hostName;
@@ -516,7 +505,6 @@ public class GroupDTO
 	{
 		return hostId;
 	}
-
 	public void setHostId(String hostId)
 	{
 		this.hostId = hostId;
@@ -526,7 +514,6 @@ public class GroupDTO
 	{
 		return hostPic;
 	}
-
 	public void setHostPic(String hostPic)
 	{
 		this.hostPic = hostPic;
@@ -536,7 +523,6 @@ public class GroupDTO
 	{
 		return reviewComDate;
 	}
-
 	public void setReviewComDate(String reviewComDate)
 	{
 		this.reviewComDate = reviewComDate;
@@ -546,7 +532,6 @@ public class GroupDTO
 	{
 		return reviewComCont;
 	}
-
 	public void setReviewComCont(String reviewComCont)
 	{
 		this.reviewComCont = reviewComCont;
@@ -556,10 +541,18 @@ public class GroupDTO
 	{
 		return search;
 	}
-
 	public void setSearch(String search)
 	{
 		this.search = search;
+	}
+	
+	public int getMemCount()
+	{
+		return memCount;
+	}
+	public void setMemCount(int memCount)
+	{
+		this.memCount = memCount;
 	}
 
 	
