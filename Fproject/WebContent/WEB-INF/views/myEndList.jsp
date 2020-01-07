@@ -164,7 +164,7 @@
 						<c:forEach var="endGroup" items="${endGroup}">
 						<div class="thumbnail" style="padding-right: 20px; max-width: 200px;">
 							<div class="text-center">
-								<img class="image" src="<%=cp%>/images/${endGroup.ngPic}">
+								<img class="image" src="uploads/${endGroup.ngPic}">
 							</div>
 									<i id="emptyHeart" class="far fa-heart"></i>
 									<a href="#모임상세페이지?ngCode=${endGroup.ngCode }" class="justify-content-between d-flex"> 

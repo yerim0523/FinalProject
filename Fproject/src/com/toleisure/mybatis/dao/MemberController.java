@@ -290,9 +290,8 @@ public class MemberController
       /* String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; */
 	   
 	   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
-	   String rootUploadDir2 = "C:\\Users\\이예림\\git\\ToLeisure\\Fproject\\WebContent\\uploads";
-	   
-       File dir = new File(rootUploadDir); 
+       
+	   File dir = new File(rootUploadDir); 
        
        if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
            dir.mkdirs();
@@ -622,18 +621,20 @@ public class MemberController
    @RequestMapping(value = "/meetmanage.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String meetManage(MemberDTO dto, Model model, HttpSession session)
    {
-	   session.getAttribute("member");
-	   IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-	   
-	   dto = (MemberDTO)session.getAttribute("member");
-	   String memId = dto.getMemId();
-	   
-	   System.out.println("====== 넘어가는 ID :  " + memId);
-	   
-	   model.addAttribute("memId", memId);
-	   
-	   return "/WEB-INF/views/meetingManage.jsp"; 
+      session.getAttribute("member");
+      
+      dto = (MemberDTO)session.getAttribute("member");
+      String memId = dto.getMemId();
+      
+      System.out.println("====== 넘어가는 ID :  " + memId);
+      
+      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+      ArrayList<GroupDTO> grCodeList = dao.hostMeetFind(memId);
+      model.addAttribute("grCodeList", grCodeList);
+      
+      return "/WEB-INF/views/meetingManage.jsp"; 
    }
+   
    
    
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})

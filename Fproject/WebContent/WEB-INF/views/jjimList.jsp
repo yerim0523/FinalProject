@@ -127,7 +127,7 @@
 					<div class="row">
 						<c:forEach var="jjimH" items="${jjimHost }">
 						<div class="host" style="padding-right: 20px;">
-							<img src="<%=cp%>/images/${jjimH.memPic}" class="rounded-circle" ><br>
+							<img src="uploads/${jjimH.memPic}" class="rounded-circle" ><br>
 							<i class="far fa-heart"></i>
 							${jjimH.memName }
 						</div>

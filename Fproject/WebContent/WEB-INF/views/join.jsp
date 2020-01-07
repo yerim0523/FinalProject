@@ -210,6 +210,7 @@
 				if(count==3)
 				{
 					alert("관심 카테고리는 2개까지만 선택하실 수 있습니다.");
+					f.memCate1.focus();
 					return;
 				}
 			}
@@ -236,6 +237,32 @@
 			alert("약관에 동의해주세요.");
 			return;
 		}
+		var membirth = document.getElementById("memBirth").value;
+		var year = membirth.substr(0,4);
+		var month = membirth.substr(4,2);
+		var day = membirth.substr(6,2);
+		
+		var today = new Date();
+	    var yyyy = today.getFullYear();
+	      
+		if(year>yyyy-20)
+			{
+			 alert("성인만 가입하실수 있습니다.");
+			 return;
+			}
+		if(month>12)
+		{
+		 alert("생년월일을 확인해주세요.");
+		 return;
+		}
+		
+		if(day>31)
+		{
+		 alert("생년월일을 확인해주세요.");
+		 return;
+		}
+		var realbirth =year +"-"+month+"-"+day;
+		document.getElementById("memBirth").value = realbirth;
 		
 		f.submit();
 	}
@@ -322,12 +349,12 @@
 											</div>
 										</div>
 										
-<!-- 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh"> -->
-<!-- 											<label class="sc-iyvyFf kBgtyY">생년월일</label> -->
-<!-- 											<div> -->
-<!-- 												<input type="text" class="sc-hrWEMg feokCA"	name="memBirth" id="memBirth" placeholder="ex) 19960523 "> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
+ 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh"> 
+											<label class="sc-iyvyFf kBgtyY">생년월일</label>
+											<div>
+												<input type="text" maxlength="8" class="sc-hrWEMg feokCA"	name="memBirth" id="memBirth" placeholder="ex) 19960523 ">
+ 											</div> 
+										</div> 
 
 										<div class="sc-hwwEjo jzndrT RegisterPage__StyledFormGroup-sc-1vwt6wy-2 hGLglh">
 											<label class="sc-iyvyFf kBgtyY">*직장</label>

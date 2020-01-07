@@ -29,22 +29,22 @@
 		parameterType="com.toleisure.mybatis.dto.MemberDTO">
 		<choose> 
 			<when test="memCate1 == 0 and memCate2 == 0">
-				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_PIC)
+				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME,MEM_TEL,
+				GEN_CODE, MEM_COMP,MEM_BIRTH,MEM_INTRO, MEM_PIC)
 				VALUES(#{memId}, #{memPw},
-				#{memName}, #{memTel}, #{memGen}, #{memComp}, #{memIntro}, #{memPic})
+				#{memName}, #{memTel}, #{memGen}, #{memComp},#{memBirth} ,#{memIntro}, #{memPic})
 			</when>
 			<when test="memCate2 == 0">
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_PIC, CATE_CODE1)
+				GEN_CODE, MEM_COMP,MEM_BIRTH, MEM_INTRO, MEM_PIC, CATE_CODE1)
 				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
-				#{memComp}, #{memIntro}, #{memPic}, #{memCate1})
+				#{memComp},#{memBirth}, #{memIntro}, #{memPic}, #{memCate1})
 			</when>
 			<otherwise>
 				INSERT INTO MEMBER(MEM_ID, MEM_PW, MEM_NAME, MEM_TEL,
-				GEN_CODE, MEM_COMP, MEM_INTRO, MEM_PIC, CATE_CODE1, CATE_CODE2)
+				GEN_CODE, MEM_COMP,MEM_BIRTH, MEM_INTRO, MEM_PIC, CATE_CODE1, CATE_CODE2)
 				VALUES(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memGen},
-				#{memComp}, #{memIntro}, #{memPic}, #{memCate1}, #{memCate2})
+				#{memComp},#{memBirth}, #{memIntro}, #{memPic}, #{memCate1}, #{memCate2})
 			</otherwise>
 		</choose>
 	</insert>
