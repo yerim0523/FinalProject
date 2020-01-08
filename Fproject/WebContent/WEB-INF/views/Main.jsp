@@ -213,7 +213,7 @@ button.more {
 			           				</c:forEach>
 			           			</c:if>
 			           			<c:if test="${HotGroup.grStarAvg ne 0}">
-			           				<c:forEach begin="1" end="${CultureGroup.grStarAvg/1}">
+			           				<c:forEach begin="1" end="${HotGroup.grStarAvg/1}">
 			           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
 			           				</c:forEach>
 			           				<c:if test="${HotGroup.grStarAvg%1 ne 0}">
@@ -235,6 +235,20 @@ button.more {
 								<div class="name" onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
 									<h5>${HotGroup.grName }</h5>
 								</div>
+								<c:forEach var="meetFavList" items="${meetFavList }">					
+			               	  	<c:if test="${meetFavList.ngCode == HotGroup.ngCode }">
+			               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+			               	  	</c:if>
+		
+			               	  	<c:if test="${meetFavList.ngCode != HotGroup.ngCode }">
+			               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+			               	  	</c:if>
+		               	 		 </c:forEach>
+		               	 		 
+		               	 		 
+								<div class="heart" align="right">
+										<i class="far fa-heart heartIcon" style="color: red;"></i>
+									</div>
 								<br>
 							</div>
 							<h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
@@ -262,41 +276,51 @@ button.more {
 		<br>
 		<div class="row">
 			<c:forEach var="NewGroup" items="${NewGroupList }">
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="uploads/${NewGroup.ngPic }" alt="썸네일" class="img-responsive"
-							style="width: 500px;"
-							onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
-						<%-- <input type="hidden" value="${NewGroupList.ngCode }"> --%>
-						<div class="caption">
-							<div>
-								<div class="starRev"></div>
-								<div>
-									<img alt="" src="images/star.png" style="width: 20px;"> <span>
-										${NewGroup.grStarAvg}</span>
-
-								</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="uploads/${NewGroup.ngPic}" alt="썸네일" class="img-responsive" style="width: 500px;"
+						onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
+					<div class="caption">
+						<div>
+							<div class="starRev">
+								
+							</div> 
+							<div style="text-align: right;">
+								<c:if test="${NewGroup.grStarAvg eq 0}">
+			           				<c:forEach begin="0" end="4">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>
+			           			<c:if test="${NewGroup.grStarAvg ne 0}">
+			           				<c:forEach begin="1" end="${NewGroup.grStarAvg/1}">
+			           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           				<c:if test="${NewGroup.grStarAvg%1 ne 0}">
+			           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415;font-size: 20px;"></i>
+			           				</c:if>
+			           				<c:forEach begin="1" end="${5 - NewGroup.grStarAvg/1}">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>
+								<span style="color: gray;">&nbsp;&nbsp;${NewGroup.grStarAvg } 
+									<span style="font-size: 10pt; color: gray;">/ ${NewGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+								</span>
 							</div>
-							<br>
+						</div>
+						<br>
+						<div>
+							<span style="font-size: 12px;">${NewGroup.grCount }회차|${NewGroup.grCate1Name } ${NewGroup.grCate2Name }</span>
 							<div>
-								<span style="font-size: 12px;">${NewGroup.grCount }회차|${NewGroup.grCate1Name }
-									${NewGroup.grCate2Name }</span>
-								<div>
-									<div class="name"
-										onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
-										<h5>${NewGroup.grName }</h5>
-									</div>
-									<div class="heart" align="right">
-										<i class="far fa-heart heartIcon" style="color: red;"
-											onclick="sendNgCode(${NewGroup.ngCode })"></i>
-									</div>
-									<br>
+								<div class="name" onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
+									<h5>${NewGroup.grName }</h5>
 								</div>
-								<h6 style="text-align: right; font-size: 10px;">${NewGroup.memName}</h6>
+								<br>
 							</div>
+							<h6 style="text-align: right; font-size: 10px;">${NewGroup.memName}</h6>
 						</div>
 					</div>
 				</div>
+			</div>
 			</c:forEach>
 
 		</div>

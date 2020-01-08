@@ -130,7 +130,7 @@
 		<c:forEach var="SearchResult" items="${SearchResult}">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="${SearchResult.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
+				<img src="uploads/${SearchResult.ngPic }" alt="썸네일" class="img-responsive" style="width: 100%;"
 					onclick="location.href='groupdetail.action?ngCode=${SearchResult.ngCode}'">
 			<div class="caption">
 			<div>
@@ -138,12 +138,22 @@
 					
 				</div>
 				<div>
-					<c:if test="${SearchResult.grStarAvg != 0.0 }">
-					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-					</c:if>
-					<c:if test="${SearchResult.grStarAvg == 0.0 }">
-					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-					</c:if>
+					<c:if test="${SearchResult.grStarAvg eq 0}">
+           				<c:forEach begin="0" end="4">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			<c:if test="${SearchResult.grStarAvg ne 0}">
+           				<c:forEach begin="1" end="${SearchResult.grStarAvg/1}">
+           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           				<c:if test="${SearchResult.grStarAvg%1 ne 0}">
+           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:if>
+           				<c:forEach begin="1" end="${5 - SearchResult.grStarAvg/1}">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
 					<span style="color: gray;">&nbsp;&nbsp;${SearchResult.grStarAvg } 
 						<span style="font-size: 10pt; color: gray;">/ ${SearchResult.grStarCount }<span style="font-size: 8pt;">명</span></span>
 					</span>

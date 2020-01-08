@@ -148,12 +148,22 @@
 					
 				</div>
 				<div>
-					<c:if test="${AllGroup.grStarAvg != 0.0 }">
-					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-					</c:if>
-					<c:if test="${AllGroup.grStarAvg == 0.0 }">
-					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
-					</c:if>
+					<c:if test="${AllGroup.grStarAvg eq 0}">
+           				<c:forEach begin="0" end="4">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			<c:if test="${AllGroup.grStarAvg ne 0}">
+           				<c:forEach begin="1" end="${AllGroup.grStarAvg/1}">
+           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           				<c:if test="${AllGroup.grStarAvg%1 ne 0}">
+           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:if>
+           				<c:forEach begin="1" end="${5 - AllGroup.grStarAvg/1}">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
 					<span style="color: gray;">&nbsp;&nbsp;${AllGroup.grStarAvg } 
 						<span style="font-size: 10pt; color: gray;">/ ${AllGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
 					</span>
