@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.toleisure.mybatis.dto.BoardDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
@@ -60,8 +61,9 @@ public class MainController
 			dto.setMemId(sessionDto.getMemId());
 		}
 		
+		List<BoardDTO> meetFavList = dao.meetFavList(dto.getMemId());
 		
-		model.addAttribute("meetFavList", dao.meetFavList(dto.getMemId()));
+		model.addAttribute("meetFavList", meetFavList);
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
@@ -622,6 +624,23 @@ public class MainController
 		
 		return "redirect:main.action";
 	}
+	// ---------------------------------------------------------- 찜 모임 삭제
+	@RequestMapping(value = "/meetfavoritedelete.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteMeetDelete(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("삭제합니다");
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavDelete(dto);
+		
+		return "redirect:main.action";
+	}
+	
+	
 	
 	@RequestMapping(value = "/search.action", method = RequestMethod.GET)
 	public String Search(Model model,String search, HttpSession session)
