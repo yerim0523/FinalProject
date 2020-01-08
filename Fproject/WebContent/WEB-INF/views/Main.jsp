@@ -235,20 +235,18 @@ button.more {
 								<div class="name" onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
 									<h5>${HotGroup.grName }</h5>
 								</div>
-								<c:forEach var="meetFavList" items="${meetFavList }">					
-			               	  	<c:if test="${meetFavList.ngCode == HotGroup.ngCode }">
-			               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
-			               	  	</c:if>
-		
-			               	  	<c:if test="${meetFavList.ngCode != HotGroup.ngCode }">
-			               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
-			               	  	</c:if>
-		               	 		 </c:forEach>
-		               	 		 
-		               	 		 
 								<div class="heart" align="right">
-										<i class="far fa-heart heartIcon" style="color: red;"></i>
-									</div>
+					               	  	<c:if test="${meetFavList.ngCode == HotGroup.ngCode }">
+					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+					               	  	</c:if>
+				
+					               	  	<c:if test="${meetFavList.ngCode != HotGroup.ngCode }">
+					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+					               	  	</c:if>
+		               	 		 
+		               	 		 </div>
+		               	 		 
+								
 								<br>
 							</div>
 							<h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
