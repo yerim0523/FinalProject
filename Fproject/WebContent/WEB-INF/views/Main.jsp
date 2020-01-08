@@ -197,7 +197,7 @@ button.more {
 			<c:if test="${empty HotGroupList }">
 				<div align="center">
 					<br><br>
-					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기모임이 존재하지 않습니다. <br><br>(※ 인기모임 : 회원들이 찜한 개수에 따라 기준 이상이 되면 표시됩니다.)</p>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 인기모임 : 회원들이 찜한 개수에 따라 기준 이상이 되면 표시됩니다.)</p>
 					<br><br>
 				</div>
 			</c:if>
@@ -279,7 +279,7 @@ button.more {
 			<c:if test="${empty NewGroupList }">
 				<div align="center">
 					<br><br>
-					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 신규모임이 존재하지 않습니다. <br><br>(※ 새로 개설되는 모임이 표시됩니다.)</p>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 신규모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 새로 개설되는 모임이 표시됩니다.)</p>
 					<br><br>
 				</div>
 			</c:if>
@@ -350,7 +350,7 @@ button.more {
 			<c:if test="${empty HotHostList }">
 				<div align="center">
 					<br><br>
-					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기 호스트가 존재하지 않습니다. <br><br>(※ 인기호스트 기준은 : )</p>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기 호스트가 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 인기호스트 기준은 : )</p>
 					<br><br>
 				</div>
 			</c:if>
@@ -408,7 +408,7 @@ button.more {
 			<c:if test="${empty ClosingGroupList }">
 				<div align="center">
 					<br><br>
-					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 마감임박 모임이 존재하지 않습니다. <br><br>(※ 신청 마감이 ¨1주일 전 ~ 하루 전¨ 인 모임이 표시됩니다.)</p>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 마감임박 모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 신청 마감이 ¨1주일 전 ~ 하루 전¨ 인 모임이 표시됩니다.)</p>
 					<br><br>
 				</div>
 			</c:if>
@@ -484,7 +484,7 @@ button.more {
 			<c:if test="${empty RecommendGroupList }">
 				<div align="center">
 					<br><br>
-					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 회원님의 추천 모임이 존재하지 않습니다. <br><br>(※ 모임을 ¨찜¨ 하시면 그에 맞춰 모임이 표시됩니다.)</p>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 회원님의 추천 모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 모임을 ¨찜¨ 하시면 그에 맞춰 모임이 표시됩니다.)</p>
 					<br><br>
 				</div>
 			</c:if>
