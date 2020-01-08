@@ -74,4 +74,6 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> RestaurantCloseGroupList(int ordercheck);
 	public ArrayList<GroupDTO> CafeAbleGroupList(int ordercheck);
 	public ArrayList<GroupDTO> CafeCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> AllCloseGroupList(int ordercheck);
+	public ArrayList<GroupDTO> AllAbleGroupList(int ordercheck);
 }

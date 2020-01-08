@@ -80,6 +80,40 @@ public class MainController
 
 		return view;
 	}
+	
+	@RequestMapping(value = "/allclose.action", method = RequestMethod.GET)
+	public String AllMeetingClose(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/AllMeetingClose.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+			
+	
+		ArrayList<GroupDTO> AllCloseGroupList=dao.AllCloseGroupList(ordercheck);
+		
+		model.addAttribute("AllCloseGroupList",AllCloseGroupList );
+
+		return view;
+	}
+	
+	@RequestMapping(value = "/allable.action", method = RequestMethod.GET)
+	public String AllMeetingAble(Model model, HttpSession session,@RequestParam(defaultValue = "1") int ordercheck)
+	{
+		session.getAttribute("member");
+		String view = "WEB-INF/views/AllMeetingAble.jsp";
+
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		 session.setAttribute("ordercheck", ordercheck);
+			
+	
+		ArrayList<GroupDTO> AllAbleGroupList=dao.AllAbleGroupList(ordercheck);
+		
+		model.addAttribute("AllAbleGroupList",AllAbleGroupList );
+
+		return view;
+	}
 
 	// -----------------------------------문화생활 모임-------------------
 	@RequestMapping(value = "/culture.action", method = RequestMethod.GET)

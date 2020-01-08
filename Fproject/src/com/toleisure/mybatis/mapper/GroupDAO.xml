@@ -233,20 +233,27 @@
    </insert>
    
    <select id="reviewM" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
-	   	SELECT F.NG_CODE AS ngCode, J.JOIN_CODE AS joinCode, R.REVIEW_CONT AS reviewCont, R.REVIEW_STAR AS reviewStar, R.REVIEW_DATE AS reviewDate
-	   		 , RC.RCOMMENT_CONT AS reviewComCont, RC.RCOMMENT_DATE AS reviewComDate
-		     , M.MEM_ID AS memId, M.MEM_NAME AS memName, M.MEM_PIC AS memPic, H.MEM_ID AS hostId, H.MEM_NAME AS hostName, H.MEM_PIC AS hostPic
-		FROM REVIEW R JOIN GR_JOIN J ON R.JOIN_CODE=J.JOIN_CODE
-		    JOIN FIXED_GROUP F ON J.FIX_CODE=F.FIX_CODE
-		    JOIN PAYMENT P ON J.PAY_CODE=P.PAY_CODE
-		    JOIN GR_REQUEST Q ON P.RE_CODE=Q.RE_CODE
-		    JOIN NOW_GROUP N ON F.NG_CODE=N.NG_CODE
-		    JOIN TBL_GROUP T ON N.GR_CODE=T.GR_CODE
-		    JOIN MEMBER M ON Q.MEM_ID=M.MEM_ID
-		    JOIN MEMBER H ON T.MEM_ID=H.MEM_ID
-		    LEFT JOIN REV_COMMENT RC ON R.REVIEW_NUM=RC.REVIEW_NUM
-		WHERE N.GR_CODE=#{grCode}
-		ORDER BY R.REVIEW_DATE DESC
+	   	SELECT GR_NAME AS grName,GR_CODE AS grCode, MEM_PIC AS memPic, MEM_NAME AS memName,NG_CODE AS ngCode,  
+        REVIEW_CONT AS reviewCont, REVIEW_STAR AS reviewStar, TO_CHAR(REVIEW_DATE, 'YYYY-MM-DD HH24:MI') AS reviewDate
+      FROM
+      (
+          SELECT ME.MEM_NAME,ME.MEM_ID,ME.MEM_PIC,JO.JOIN_CODE,FX.FIX_CODE,GR.GR_CODE,GR.GR_NAME, NG.NG_CODE,RE.REVIEW_CONT, RE.REVIEW_STAR, RE.REVIEW_DATE
+          FROM REVIEW RE JOIN GR_JOIN JO
+          ON RE.JOIN_CODE = JO.JOIN_CODE
+              JOIN FIXED_GROUP FX
+              ON JO.FIX_CODE = FX.FIX_CODE
+                  JOIN NOW_GROUP NG
+                  ON FX.NG_CODE = NG.NG_CODE
+                      JOIN TBL_GROUP GR
+                      ON NG.GR_CODE = GR.GR_CODE
+                        JOIN PAYMENT P
+                         ON P.PAY_CODE = JO.PAY_CODE 
+                             JOIN GR_REQUEST RQ
+                             ON RQ.RE_CODE = P.RE_CODE
+                                JOIN MEMBER ME
+                                ON ME.MEM_ID = RQ.MEM_ID
+      )
+      WHERE gr_CODE = #{grCode}
    </select>
    
    <insert id="reviewInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO">
@@ -273,6 +280,31 @@
 		      AND RQ.MEM_ID = M.MEM_ID
    
    </select>
-      
+    
+    <select id ="TotalPeople" parameterType="Integer" resultType="java.lang.Integer">
+    		SELECT COUNT(*) AS TOTALPEOPLE
+			FROM NOW_GROUP NG JOIN TBL_GROUP G
+			ON NG.GR_CODE = G.GR_CODE
+			    JOIN FIXED_GROUP FG
+			    ON NG.NG_CODE=FG.NG_CODE
+			        JOIN GR_JOIN GJ
+			        ON FG.FIX_CODE=GJ.FIX_CODE
+			            JOIN REVIEW R
+			            ON R.JOIN_CODE=GJ.JOIN_CODE
+			WHERE G.GR_CODE=#{grCode}
+    </select>
+    
+    <select id ="AvgStar" parameterType="Integer" resultType="double">
+    		SELECT AVG(R.REVIEW_STAR) AS REVIEW_STAR_AVG
+			FROM NOW_GROUP NG JOIN TBL_GROUP G
+			ON NG.GR_CODE = G.GR_CODE
+			    JOIN FIXED_GROUP FG
+			    ON NG.NG_CODE=FG.NG_CODE
+			        JOIN GR_JOIN GJ
+			        ON FG.FIX_CODE=GJ.FIX_CODE
+			            JOIN REVIEW R
+			            ON R.JOIN_CODE=GJ.JOIN_CODE
+			WHERE G.GR_CODE=#{grCode}
+    </select>
 
 </mapper>

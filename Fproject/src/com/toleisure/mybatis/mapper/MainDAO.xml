@@ -5,11 +5,80 @@
 
    <select id="AllGroupList"
       resultType="com.toleisure.mybatis.dto.GroupDTO">
-      SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
-      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
-      FROM ALL_GROUP_VIEW
-      WHERE NG_STARTDATE>SYSDATE
-      ORDER BY NG_DATE DESC
+      <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      WHERE NG_STARTDATE>SYSDATE
+			      ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      WHERE NG_STARTDATE>SYSDATE
+			      ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      WHERE NG_STARTDATE>SYSDATE
+			      ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+   <select id="AllCloseGroupList"
+      resultType="com.toleisure.mybatis.dto.GroupDTO">
+      <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
+   </select>
+   
+   <select id="AllAbleGroupList"
+      resultType="com.toleisure.mybatis.dto.GroupDTO">
+      <choose>
+               <when test='ordercheck==1'>
+                  SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      WHERE NG_STARTDATE-2 > SYSDATE
+			      ORDER BY NG_DATE DESC
+               </when>
+               <when test='ordercheck==2'>
+                  SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      WHERE NG_STARTDATE-2 > SYSDATE
+			      ORDER BY FAVOR DESC
+               </when>
+               <otherwise>
+                 SELECT NG_CODE AS ngCode, NG_PIC AS ngPic, GR_NAME AS grName, MEM_NAME AS memName, CATE1 AS
+			      grCate1Name, CATE2 AS grCate2Name, GR_COUNT AS grCount, STAR_AVG AS grStarAvg, STAR_COUNT AS grStarCount
+			      FROM ALL_GROUP_VIEW
+			      WHERE NG_STARTDATE-2 > SYSDATE
+			      ORDER BY STAR_AVG DESC
+               </otherwise>
+            </choose>
    </select>
    
     <select  id="CultureGroupList" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">

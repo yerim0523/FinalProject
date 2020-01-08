@@ -492,6 +492,11 @@ public class GroupController
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
 		System.out.println(grCode);
+		double avgstar =dao.AvgStar(grCode);
+		int totalpeople=dao.TotalPeople(grCode);
+		
+		m.addAttribute("AvgStar",avgstar);
+		m.addAttribute("TotalPeople",totalpeople);
 		m.addAttribute("reviewM", dao.reviewM(grCode));
 		m.addAttribute("grCode", grCode);
 		

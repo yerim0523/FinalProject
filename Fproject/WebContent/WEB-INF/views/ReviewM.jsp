@@ -283,21 +283,30 @@
 		</div>
 		
 		<div class="col-12 d-flex">
-        <div class="col-11 p-0 d-flex align-items-center justify-content-end">
-           <div class="starRev">
-              <span class="starR2"></span>
-              <span class="starR1"></span>
-              <span class="starR2"></span>
-              <span class="starR1"></span>
-              <span class="starR2"></span>
-              <span class="starR1"></span>
-              <span class="starR2"></span>
-              <span class="starR1"></span>
-              <span class="starR2"></span>
-              <span class="starR1 on"></span>
-            </div>
-        </div>
-        <div class="col-2 p-0 d-flex align-items-center justify-content-start">&nbsp;&nbsp;<span style="font-weight: bold;">4.74 / 56 명</span></div>
+        <div class="col-12 p-0 d-flex align-items-center justify-content-end">
+           			<div class="starRev">
+           			${AvgStar} 
+           			
+           			<c:if test="${AvgStar eq 0}">
+           				<c:forEach begin="0" end="4">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			<c:if test="${AvgStar ne 0}">
+           				<c:forEach begin="1" end="${AvgStar/1}">
+           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           				<c:if test="${AvgStar%1 ne 0}">
+           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:if>
+           				<c:forEach begin="1" end="${5 - AvgStar/1}">
+           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+           				</c:forEach>
+           			</c:if>
+           			
+            		</div>
+        		</div>
+        <div class="col-2 p-0 d-flex align-items-center justify-content-start">&nbsp;&nbsp;<span style="font-weight: bold;">${AvgStar} /${TotalPeople}  명</span></div>
     	</div>
     	
     	<br>    
@@ -315,7 +324,7 @@
 		
 		<br>
 		
-		<c:forEach var="reviewM" items="${reviewM }">
+		<c:forEach var="reviewM" items="${reviewM}">
 		<div align="center">
 			<div class="review" align="left">
 			<div align="left">
