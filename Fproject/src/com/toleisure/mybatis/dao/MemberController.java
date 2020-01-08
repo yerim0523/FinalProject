@@ -17,10 +17,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.toleisure.mybatis.dto.BoardDTO;
@@ -643,11 +647,15 @@ public class MemberController
 
    @ResponseBody
    @SuppressWarnings("unchecked")
-   @RequestMapping(value = "/genderfind.action" ,method = {RequestMethod.POST, RequestMethod.GET},headers="application/json; charset=UTF-8")
-   public  JSONObject genderChartInfo(@RequestParam int grCode ,HttpServletRequest request)
+   @RequestMapping(value = "/genderfind.action" ,method = {RequestMethod.GET,RequestMethod.POST})
+   public  String genderChartInfo(int grCode,HttpServletRequest request) throws JsonProcessingException
    {     
+	  System.out.println(grCode);
 	   JSONObject jsonObject1 = new JSONObject();
+	   JSONArray jsonarray = new JSONArray();
 	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+	      ObjectMapper mapper = new ObjectMapper();
+	      
 	      
 	      GroupDTO dto = dao.genderChart(grCode);
 	      
@@ -669,10 +677,15 @@ public class MemberController
 	      jsonObject1.put("women", dto.getWomen());
 	      jsonObject1.put("unk", dto.getUnknown());
 	      
+	      jsonarray.add(jsonObject1);
 	      
-	      System.out.println(retVal);
+	      String str = mapper.writeValueAsString(jsonarray); //jsonObject1
+	    		  
+	      System.out.println(jsonObject1);
+	      System.out.println(jsonarray);
+	      System.out.println(str);
 	      
-	      return jsonObject1; 
+	      return str; 
    }
   
    
