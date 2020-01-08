@@ -24,7 +24,7 @@ public interface IMypageDAO
 	public ArrayList<GroupDTO> myNextCalendar(MemberDTO mine);
 	
 	public ArrayList<GroupDTO> hostMeetFind(String memId);		// 현재 호스트가 관리중인 모임의 grCode 가져오는 메소드
-	public ArrayList<GroupDTO> genderChart(GroupDTO dto);		// 호스트가 관리중인 grCode 의 성별 별 인원 수 가져오는 메소드
+	public GroupDTO genderChart(GroupDTO dto);					// 호스트가 관리중인 grCode 의 성별 별 인원 수 가져오는 메소드
 	public ArrayList<GroupDTO> ageChart(GroupDTO dto);			// 호스트가 관리중인 grCode 의 나이 별 인원 수 가져오는 메소드
 	public ArrayList<PayDTO> payList(String memId);				// 마이페이지 결제 내역 
 }
