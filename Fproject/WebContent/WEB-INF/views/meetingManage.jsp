@@ -165,16 +165,14 @@
 			alert(params[0]); // grCode 51
 			
 			 $.ajax({
-				  url : "genderfind.action" 
-				 ,dataType  :"int",
-					 type : "post"
-	                ,data : {  "grCode" : params[0]
-	                			}
-	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
-	                 , complete: function(retVal){
+				  url : "genderfind.action?grCode="+params[0]
+				 ,dataType  :"json",
+					 type : "GET"
+	                , contentType :"application/json; charset=UTF-8"
+	                 , complete: function(jsonObject1){
 	                	 
-		                    alert(retVal);
-		                    alert(retVal.men);
+		                    alert(jsonObject1);
+		                    alert(jsonObject1.men);
 	                 }
 	               
 	             });

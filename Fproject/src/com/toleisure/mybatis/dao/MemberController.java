@@ -640,40 +640,44 @@ public class MemberController
       return "/WEB-INF/views/meetingManage.jsp"; 
    }
    
+
+   @ResponseBody
    @SuppressWarnings("unchecked")
-   @RequestMapping(value = "/genderfind.action",produces="application/json; charset=UTF-8",method = {RequestMethod.POST, RequestMethod.GET})
-   public @ResponseBody Object genderChartInfo(HttpServletRequest request)
-   {
-	  String grCode = request.getParameter("grCode");
-	  
-	  JSONObject jsonObject1 = new JSONObject();
-      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
-      
-      GroupDTO dto = dao.genderChart(grCode);
-      
-      System.out.println("grCode--------------"+dto.getGrCode());
-      System.out.println("men--------------"+dto.getMen());
-      System.out.println("women--------------"+dto.getWomen());
-      System.out.println("unk--------------"+dto.getUnknown());
-      
-      
-      Map<String, Object> retVal = new HashMap<String, Object>();
-      
-      retVal.put("grCode", dto.getGrCode());
-      retVal.put("men", dto.getMen());
-      retVal.put("women", dto.getWomen());
-      retVal.put("unk", dto.getUnknown());
-      
-      jsonObject1.put("grCode", dto.getGrCode());
-      jsonObject1.put("men", dto.getMen());
-      jsonObject1.put("women", dto.getWomen());
-      jsonObject1.put("unk", dto.getUnknown());
-      
-      
-      System.out.println(retVal);
-      return retVal; 
+   @RequestMapping(value = "/genderfind.action" ,method = {RequestMethod.POST, RequestMethod.GET},headers="application/json; charset=UTF-8")
+   public  JSONObject genderChartInfo(@RequestParam int grCode ,HttpServletRequest request)
+   {     
+	   JSONObject jsonObject1 = new JSONObject();
+	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+	      
+	      GroupDTO dto = dao.genderChart(grCode);
+	      
+	      System.out.println("grCode--------------"+dto.getGrCode());
+	      System.out.println("men--------------"+dto.getMen());
+	      System.out.println("women--------------"+dto.getWomen());
+	      System.out.println("unk--------------"+dto.getUnknown());
+	      
+	      
+	      Map<String, Object> retVal = new HashMap<String, Object>();
+	      
+	      retVal.put("grCode", dto.getGrCode());
+	      retVal.put("men", dto.getMen());
+	      retVal.put("women", dto.getWomen());
+	      retVal.put("unk", dto.getUnknown());
+	      
+	      jsonObject1.put("grCode", dto.getGrCode());
+	      jsonObject1.put("men", dto.getMen());
+	      jsonObject1.put("women", dto.getWomen());
+	      jsonObject1.put("unk", dto.getUnknown());
+	      
+	      
+	      System.out.println(retVal);
+	      
+	      return jsonObject1; 
    }
   
+   
+
+   
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String Map2(MemberDTO dto, Model model, HttpSession session)
    {
