@@ -142,7 +142,7 @@
    function formCheck()
    {
       //alert("함수 호출 확인");
-      var f = document.groupForm;
+      f = document.groupForm;
       //alert(f);
       str = f.ngCost.value;
       var max,min;
@@ -355,7 +355,7 @@
    <section class="course_details_area section_padding" style="padding-bottom: 0;">
    <div class="container">
    
-   <form action="groupinsert.action" method="post" enctype="multipart/form-data" name="groupForm" id="groupForm" class="form-horizontal" >
+   <form action="groupinsert.action" role="form" method="post" enctype="multipart/form-data" name="groupForm">
    현재 접속중인 memId : ${member.memId }
    <input type="hidden" id="memId" name="memId" value="${member.memId }">
    모임 코드 : ${groupinfo.grCode }
@@ -507,7 +507,7 @@
       <div class="form-inline">
          <label for="ngPic" class="col-sm-2 control-label" style="font-weight: bold;"><p style="color:red;">*</p> 대표이미지</label>
             <!-- <input type="file" name="ngPic" class="form-control" id="titleImg" value="title.img"> -->
-            <input type="file" name="ngPic" class="form-control fileDrop" id="ngPic"><p>
+            <input type="file" name="file" class="form-control fileDrop" id="ngPic"><p>
 										 <div class="select_img"><img src="" /></div>
 										</div>
 										<script>
@@ -515,7 +515,7 @@
 											   if(this.files && this.files[0]) {
 											    var reader = new FileReader;
 											    reader.onload = function(data) {
-											     $(".select_img img").attr("src", data.target.result).width(500);        
+											     $(".select_img img").attr("src", data.target.result);        
 											    }
 											    reader.readAsDataURL(this.files[0]);
 											   }
@@ -579,9 +579,9 @@
       <br><br><br><br>
       
   
-     </form>
+     
    </div>
-  
+  </form>
    </section>
    
    

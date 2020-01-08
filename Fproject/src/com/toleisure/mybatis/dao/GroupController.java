@@ -64,7 +64,7 @@ public class GroupController
 	}
 	
 	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session,MultipartHttpServletRequest request) throws ServletException,IllegalStateException, IOException
+	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session,MultipartHttpServletRequest request) throws ServletException, IOException
 	{
 		session.getAttribute("member");
 		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
@@ -72,28 +72,14 @@ public class GroupController
 		System.out.println("==================");
 		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
 		System.out.println("==================");
-		if(dto.getGrCode()!=0)
-		{
-			System.out.println("기존모임생성");
-			dao.addGroup(dto);
-			System.out.println("==================");
-			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
-			System.out.println("==================");
-		}
-		else if(dto.getGrCode()==0)
-		{
-			System.out.println("신규모임생성");
-			dao.newGroup(dto);
-			System.out.println("==================");
-			System.out.println("==== 현재 들어간 모임코드 =  " + dto.getGrCode());
-			System.out.println("==================");
-		}
+		
 
-	      IMemberDAO dao2 = sqlsession.getMapper(IMemberDAO.class);
+		IMemberDAO dao2 = sqlsession.getMapper(IMemberDAO.class);
+	      /* String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; */
 		   
 		   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
-		   
-	       File dir = new File(rootUploadDir); 
+	       
+		   File dir = new File(rootUploadDir); 
 	       
 	       if(!dir.exists()) { //업로드 디렉토리가 존재하지 않으면 생성
 	           dir.mkdirs();
@@ -121,17 +107,23 @@ public class GroupController
 	               System.out.println("if문 진입");
 	               
 	               try {
+						/*
+						 * byte[] fileData = mFile.getBytes(); //byte 배열을 파일/DB/네트워크 등으로 전송 fos = new
+						 * FileOutputStream(rootUploadDir); fos.write(fileData);
+						 */
+	            	   
 	                   System.out.println("try 진입");
 	                   
 	                   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-" + fileLoop);
 	                   Calendar calendar = Calendar.getInstance();
 	                   sysFileName = simpleDateFormat.format(calendar.getTime()); //sysFileName: 날짜-fileLoop번호
 	                   
+	                   
 	                   list.add("원본파일명: " + orgFileName);
 	                   
 	                   uploadFileName =orgFileName+sysFileName+".jpg";
 	                   mFile.transferTo(new File(dir + File.separator + uploadFileName)); // C:/Upload/testfile/sysFileName
-	              
+	             
 	                   dto.setNgPic(uploadFileName);
 	                   
 	               }catch(Exception e){
@@ -141,42 +133,26 @@ public class GroupController
 					 * finally { if(fos != null) { fos.close(); } }// finally
 					 */           }//if
 	       }//while
-		//return view;
+	       
+	       if(dto.getGrCode()!=0)
+			{
+				System.out.println("기존모임생성");
+				dao.addGroup(dto);
+				System.out.println("==================");
+				System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
+				System.out.println("==================");
+			}
+			else if(dto.getGrCode()==0)
+			{
+				System.out.println("신규모임생성");
+				dao.newGroup(dto);
+				System.out.println("==================");
+				System.out.println("==== 현재 들어간 모임코드 =  " + dto.getGrCode());
+				System.out.println("==================");
+			}
+	       
 		return "redirect:main.action";
 	}
-	
-//	
-//	@RequestMapping(value = "/groupinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
-//	public String groupInsertForm(GroupDTO dto, Model model, HttpSession session, @RequestParam("ngPic") MultipartFile file) throws IllegalStateException, IOException
-//	{
-//		//String view = "redirect:main.action";
-//		session.getAttribute("member");
-//		IGroupDAO dao = sqlsession.getMapper(IGroupDAO.class);
-//		String root = session.getServletContext().getRealPath("/");
-//		String savePath = root + File.separator + "image";
-//		
-//		if(dto.getGrCode()!=0)
-//		{
-//			dao.addGroup(dto);
-//			System.out.println("==================");
-//			System.out.println("==== 현재 들어간 모임코드   = " + dto.getGrCode());
-//			System.out.println("==================");
-//		}
-//		else if(dto.getGrCode()==0)
-//		{
-//			dao.newGroup(dto);
-//			System.out.println("==================");
-//			System.out.println("==== 현재 들어간 모임코드 = " + dto.getGrCode());
-//			System.out.println("==================");
-//		}
-//		
-//		File uploadFile = new File(savePath);
-//		file.transferTo(uploadFile);
-//		model.addAttribute("filename", file.getOriginalFilename());
-//		
-//		//return view;
-//		return "WEB-INF/views/result.jsp";
-//	}
 	
 	@RequestMapping(value = "/mygrouplist.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String myGroupList(MemberDTO dto, Model m, HttpSession session)
