@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -80,6 +81,13 @@ button.more {
 <script type="text/javascript">
 	$(function()
 	{
+		//alert(${fn:length(meetFavList)});
+		var favlist = ${meetFavList};
+		for (var i = 0; i < ${fn:length(meetFavList)}; i++)
+		{
+			listNgCode = ${favlist[i].ngCode};
+			alert(listNgCode);
+		}
 		
 		$(".heartIcon").click(function()
 		{
@@ -143,7 +151,7 @@ button.more {
 	<div class="container">
 		<input type="hidden" id="sessionInfo" value="${sessionInfo.memId }">
 		<input type="hidden" id="empNgCode">
-
+		
 		<div id="carouselExampleIndicators" class="carousel slide"
 			data-ride="carousel" align="center">
 			<ol class="carousel-indicators">
@@ -239,13 +247,15 @@ button.more {
 									<h5>${HotGroup.grName }</h5>
 								</div>
 								<div class="heart" align="right">
-					               	  	<c:if test="${52 eq HotGroup.ngCode }">
-					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i>
-					               	  	</c:if>
+					               	  <i class="fa-heart heartIcon" id="hotGroupHeart" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode})"></i>
+<%-- 					               	  	<c:if test="${52 eq HotGroup.ngCode }"> --%>
+<!-- 					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i> -->
+<%-- 					               	  	</c:if> --%>
 				
-					               	  	<c:if test="${52 ne HotGroup.ngCode }">
-					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i>
-					               	  	</c:if>
+<%-- 					               	  	<c:if test="${52 ne HotGroup.ngCode }"> --%>
+<!-- 					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i> -->
+<%-- 					               	  	</c:if> --%>
+					               	  	
 		               	 		 </div>
 		               	 		 
 								
