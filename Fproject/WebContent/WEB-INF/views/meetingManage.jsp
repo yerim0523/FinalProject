@@ -188,7 +188,6 @@
 		grCodeList = new Array();
 	}
 	
-	
 	function showGenderChart(grCode, num)
 	{
 			Highcharts.chart('genderSpace'+num, {
