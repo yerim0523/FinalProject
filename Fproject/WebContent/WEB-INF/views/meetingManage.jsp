@@ -162,12 +162,12 @@
 		
 		//alert(params.length);
 		
-			alert(params[i]);
+			alert(params[0]);
 			
 			 $.ajax({
 	                type : "GET"
 	                , url : "genderfind.action?grCode="+params[0]
-	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                , contentType :"application/json; charset=UTF-8"
 	                 , success: function(data){
 		                    console.log(data.grCode);
 		                    console.log(data.men);

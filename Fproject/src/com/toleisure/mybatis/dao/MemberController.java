@@ -34,6 +34,8 @@ import com.toleisure.mybatis.dto.FileDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
+import netscape.javascript.JSObject;
+
 
 
 @Controller
@@ -636,7 +638,7 @@ public class MemberController
    }
    
 
-   @RequestMapping(value = "/genderfind.action", method = RequestMethod.GET)
+   @RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
    @ResponseBody
    public GroupDTO genderChartInfo(HttpServletRequest request)
    {
