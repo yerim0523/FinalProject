@@ -126,7 +126,7 @@
 			if (grCode[i].checked == true) // 체크 된 값만 
 			{
 				grCodeList.push(grCode[i].value); // value 를 임시 배열에 삽입(최소1개, 최대2개)
-				alert(grCodeList[count]);
+				//alert(grCodeList[count]); 
 				count++;
 
 				if (count == 4)
@@ -141,10 +141,26 @@
 		$("#grCode2").val(grCodeList[1]);
 		$("#grCode3").val(grCodeList[2]);
 		
-		var params = {};
-		params.grCode1 = $("#grCode1").val();
-		params.grCode2 = $("#grCode2").val();
-		params.grCode3 = $("#grCode3").val();
+		var params = [];
+		var grCode1 = $("#grCode1").val();
+		var grCode2 = $("#grCode2").val();
+		var grCode3 = $("#grCode3").val();
+		
+		if (grCode1!="")
+		{
+			params.push(grCode1);
+		}
+		if (grCode2!="")
+		{
+			params.push(grCode2);
+		}
+		if (grCode3!="")
+		{
+			params.push(grCode3);
+		}
+		
+		alert(params);
+		
 		
 		
 		// ★★★
@@ -154,17 +170,28 @@
 			$("#ageSpace"+(i+1)).empty();
 		}
 		
-		for(var i=0; i<grCodeList.length; i++)
+		//alert(params.length);
+		
+		for(var i=0; i<params.length; i++)
 		{
+			alert(params[i]);
+			
 			 $.ajax({
 	                type : "POST"
 	                , url : "genderfind.action"
-	                , data : params[i+1]
+	                , data : 87
 	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
 	                 , success: function(data){
+	                	 
 	                    alert(data.grCode);
-	                    return;
+	                    alert(data.men);
+	                    alert(data.women);
+	                    alert(data.unknown);
+	                    
 	                 }
+					, error:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			       }
 	             });
 			
 			showGenderChart(grCodeList[i], i+1);

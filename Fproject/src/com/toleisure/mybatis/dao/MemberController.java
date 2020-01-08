@@ -640,13 +640,17 @@ public class MemberController
    @ResponseBody
    public GroupDTO genderChartInfo(int grCode, HttpSession session)
    {
+	   System.out.println(grCode);
+	   
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       
-      GroupDTO dto = new GroupDTO();
-      dto.setGrCode(grCode);
       
-      dto = dao.genderChart(dto);
       
+      GroupDTO dto = dao.genderChart(grCode);
+      System.out.println("grCode--------------"+dto.getGrCode());
+      System.out.println("men--------------"+dto.getMen());
+      System.out.println("women--------------"+dto.getWomen());
+      System.out.println("unk--------------"+dto.getUnknown());
       return dto; 
    }
   
