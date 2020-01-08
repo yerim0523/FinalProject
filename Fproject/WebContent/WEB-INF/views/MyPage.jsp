@@ -87,91 +87,107 @@
 			<div class="col-md-10">
 				<div class="container">
 				<br><br>
-				<div class="row">
-			<div class="col-md-3">
-				<div>
-					<div class="image_inner_container">
-						<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px" style="margin-bottom: 10px;">
-						<form action="pictureupdate.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
-						<div align="right">
-	    					<button type="button" class="filecheck" onclick=document.all.file.click();><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></button>
-	    					<!-- <div onclick=document.all.file.click(); align="right"><span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span></div> -->
-	    					<input type="file" name="file" id="file" style="display: none;"/>     
-							<button type="submit"  class="filecheck"><span style="text-align:right; color: pink;"><i class="fas fa-check fa-lg"></i></span></button>
-						</div>
-						</form>
-					</div>
-				</div>
-							
-							<script>
+					<div class="row">
+						<div class="col-md-3">
+							<div>
+								<div class="image_inner_container">
+									<img class="img-rounded" src="uploads/${myInfo.memPic}" width="200px" height="150px" style="margin-bottom: 10px;">
+									<form action="pictureupdate.action" role="form" name="fileForm" id="fileForm" enctype="multipart/form-data" method="post">
+									<div align="right">
+				    					<button type="button" class="filecheck" onclick=document.all.file.click();>
+				    						<span style="text-align:right; color: pink;"><i class="fas fa-camera fa-lg"></i></span>
+				    					</button>
+				    					<input type="file" name="file" id="file" style="display: none;"/>     
+										<button type="submit"  class="filecheck">
+											<span style="text-align:right; color: pink;"><i class="fas fa-check fa-lg"></i></span>
+										</button>
+									</div>
+									</form>
+								</div>
+							</div>
+									<script>
 										  $("#file").change(function(){
 											   if(this.files && this.files[0]) {
-											    var reader = new FileReader;
-											    reader.onload = function(data) {
-											     $(".img-rounded").attr("src", data.target.result);        
-											    }
-											    reader.readAsDataURL(this.files[0]);
+											    	var reader = new FileReader;
+											    	reader.onload = function(data) {
+											     		$(".img-rounded").attr("src", data.target.result);        
+											   		}
+											   reader.readAsDataURL(this.files[0]);
 											   }
-											  });  
-							</script>
-					
+										   });  
+									</script>
+						</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<br />
+				
+						<div class="col-md-7" style="width: 70%;">
+							<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니당ㅎㅎ</p>
+							<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">
+								<br>
+								${myInfo.memIntro }
+								<br>
+								&nbsp;
+							</div>
+						</div>
+					</div><!-- end div.row -->
+				</div><!-- end div.container -->
+			</div><!-- end div.col-md-10 -->
+		</div><!-- end div.row -->
+	</div><!-- end div.container -->
+		
+	<br><br>
+		
+	<div class="container" align="center">
+		<div class="a_layer">
+			<div class="a_layer_inner">
+				<div class="a_content">
+					<div class="box">
+						<a href="infomodify.action?memId=${member.memId }">
+							<span style="color: black;"><i class="fas fa-user fa-7x"></i><br><br><p class="menu">개인정보수정</p></span>
+						</a>
 					</div>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<br />
-					
-				
-				
-				<div class="col-md-7" style="width: 70%;">
-				
-					<p style="font-weight: bold; font-size:20pt; font-family: 맑은고딕;">" ${myInfo.memName } " 님의 마이페이지 입니당ㅎㅎ</p>
-					<div style="font-size:16pt; font-weight:bold; border-left: 2px solid #336699; max-width: 100%; padding-left: 20px;">
-						<br>
-						${myInfo.memIntro }
-						<br>
-						&nbsp;
+					<div class="box">
+						<a href="mypwmodify.action?memId=${member.memId }">
+							<span style="color: black;"><i class="fas fa-lock fa-7x"></i><br><br><p class="menu">비밀번호 재설정</p></span>
+						</a>
 					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-				
-			</div>
-			
-		</div>
-		
-		
-		
-		<br><br>
-		
-		<div class="container" align="center">
-			<div class="a_layer">
-				<div class="a_layer_inner">
-					<div class="a_content">
-						<div class="box"><a href="infomodify.action?memId=${member.memId }"><span style="color: black;"><i class="fas fa-user fa-7x"></i><br><br><p class="menu">개인정보수정</p></span></a></div>
-						<div class="box"><a href="mypwmodify.action?memId=${member.memId }"><span style="color: black;"><i class="fas fa-lock fa-7x"></i><br><br><p class="menu">비밀번호 재설정</p></span></a></div>
-						<div class="box"><a href="favoritegroup.action?memId=${member.memId }"><span style="color: black;"><i class="fas fa-heart fa-7x"></i><br><br><p class="menu">찜목록</p></span></a></div>
-					</div>
-					<br>
-					<div class="a_content">
-						<div class="box"><a href="nowgrouplist.action"><span style="color: black;"><i class="fas fa-users fa-7x"></i><br><br><p class="menu">내 모임</p></span></a></div>
-						<div class="box"><a href="mycal.action"><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">일정관리</p></span></a></div>
-						<div class="box"><a href="meetmanage.action"><span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">모임관리</p></span></a></div>
-						<div class="box"><a href="mypaypage.action"><span style="color: black;"><i class="fas fa-receipt fa-7x"></i><br><br><p class="menu">결제내역</p></span></a></div>
+					<div class="box">
+						<a href="favoritegroup.action?memId=${member.memId }">
+							<span style="color: black;"><i class="fas fa-heart fa-7x"></i><br><br><p class="menu">찜목록</p></span>
+						</a>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+				<br>
+				<div class="a_content">
+					<div class="box">
+						<a href="nowgrouplist.action">
+							<span style="color: black;"><i class="fas fa-users fa-7x"></i><br><br><p class="menu">내 모임</p></span>
+						</a>
+					</div>
+					<div class="box">
+						<a href="mycal.action"
+							><span style="color: black;"><i class="far fa-calendar-alt fa-7x"></i><br><br><p class="menu">일정관리</p></span>
+						</a>
+					</div>
+					<div class="box">
+						<a href="meetmanage.action">
+							<span style="color: black;"><i class="fas fa-users-cog fa-7x"></i><br><br><p class="menu">모임관리</p></span>
+						</a>
+					</div>
+					<div class="box">
+						<a href="mypaypage.action">
+							<span style="color: black;"><i class="fas fa-receipt fa-7x"></i><br><br><p class="menu">결제내역</p></span>
+						</a>
+					</div>
+				</div>
+			</div><!-- end div.a_layer_inner -->
+		</div><!-- end div.a_layer -->
+	</div><!-- end div.container -->
 </section>
 
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
-
-
-
-
-
 
 </body>
 </html>
