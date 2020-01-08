@@ -100,7 +100,7 @@
 
 <script type="text/javascript">
 	
-	var grCodeList = new Array();
+	grCodeList = new Array();
 	
 	$(function()
 	{
@@ -177,12 +177,13 @@
 			alert(params[i]);
 			
 			 $.ajax({
-	                type : "POST"
-	                , url : "genderfind.action"
-	                , data : 87
+	                type : "GET"
+	                , url : "genderfind.action?grCode="+params[i]
 	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
 	                 , success: function(data){
-	                	 
+	                	
+	                	if(data:undefined)
+	                		{}
 	                    alert(data.grCode);
 	                    alert(data.men);
 	                    alert(data.women);

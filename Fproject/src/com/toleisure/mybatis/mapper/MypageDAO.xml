@@ -85,10 +85,10 @@
 	
 	<!-- 호스트가 관리중인 grCode 목록 가져오기 (차트) -->
 	<select id="hostMeetFind" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT GR_CODE AS grCode, GR_NAME AS grName
-		FROM HOST H, TBL_GROUP T
-		WHERE H.MEM_ID=T.MEM_ID
-		  AND H.MEM_ID=#{memId}
+		  SELECT DISTINCT(T.GR_CODE) AS grCode, GR_NAME AS grName
+      FROM HOST H, TBL_GROUP T, NOW_GROUP N, FIXED_GROUP F
+      WHERE H.MEM_ID=T.MEM_ID AND T.GR_CODE=N.GR_CODE AND N.NG_CODE=F.NG_CODE
+        AND H.MEM_ID=#{memId}
 	</select>
 	
 	<!-- grCode 에 따른 성별, 인원 수 가져오기 -->
