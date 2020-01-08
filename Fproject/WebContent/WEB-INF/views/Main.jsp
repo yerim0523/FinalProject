@@ -194,6 +194,14 @@ button.more {
 		<br>
 		<div class="row">
 			<c:set var="n" value="0" />
+			<c:if test="${empty HotGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기모임이 존재하지 않습니다. <br><br>(※ 인기모임 : 회원들이 찜한 개수에 따라 기준 이상이 되면 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty HotGroupList }">
 			<c:forEach var="HotGroup" items="${HotGroupList}">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -249,6 +257,7 @@ button.more {
 				</div>
 			</div>
 			</c:forEach>
+			</c:if>
 		</div>
 
 		<br> <br> <br>
@@ -267,6 +276,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty NewGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 신규모임이 존재하지 않습니다. <br><br>(※ 새로 개설되는 모임이 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty NewGroupList }">
 			<c:forEach var="NewGroup" items="${NewGroupList }">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -311,7 +328,7 @@ button.more {
 				</div>
 			</div>
 			</c:forEach>
-
+			</c:if>
 		</div>
 		<br> <br> <br>
 		<div class="left">
@@ -330,6 +347,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty HotHostList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기 호스트가 존재하지 않습니다. <br><br>(※ 인기호스트 기준은 : )</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty HotHostList }">
 			<c:forEach var="HotHost" items="${HotHostList }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
@@ -361,6 +386,7 @@ button.more {
 						</div>
 					</div>
 			</c:forEach>
+			</c:if>
 		</div>
 
 		<br> <br> <br>
@@ -379,6 +405,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty ClosingGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 마감임박 모임이 존재하지 않습니다. <br><br>(※ 신청 마감이 ¨1주일 전 ~ 하루 전¨ 인 모임이 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty ClosingGroupList }">
 			<c:forEach var="ClosingGroup" items="${ClosingGroupList}">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
@@ -430,7 +464,7 @@ button.more {
 					</div>
 				</div>
 			</c:forEach>
-
+			</c:if>
 		</div>
 		<br> <br> <br>
 		<div class="left">
@@ -447,6 +481,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty RecommendGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 회원님의 추천 모임이 존재하지 않습니다. <br><br>(※ 모임을 ¨찜¨ 하시면 그에 맞춰 모임이 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty RecommendGroupList }">
 			<c:forEach var="RecommendGroup" items="${RecommendGroupList}">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
@@ -482,7 +524,7 @@ button.more {
 					</div>
 				</div>
 			</c:forEach>
-
+			</c:if>
 		</div>
 
 	</div>
