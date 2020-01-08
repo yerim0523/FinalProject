@@ -27,4 +27,5 @@ public interface IMypageDAO
 	public GroupDTO genderChart(String grCode);					// 호스트가 관리중인 grCode 의 성별 별 인원 수 가져오는 메소드
 	public ArrayList<GroupDTO> ageChart(GroupDTO dto);			// 호스트가 관리중인 grCode 의 나이 별 인원 수 가져오는 메소드
 	public ArrayList<PayDTO> payList(String memId);				// 마이페이지 결제 내역 
+	public GroupDTO genderChart(int grCode);
 }

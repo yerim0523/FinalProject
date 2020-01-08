@@ -165,15 +165,16 @@
 			alert(params[0]); // grCode 51
 			
 			 $.ajax({
-				  url : "genderfind.action?grCode="+params[0]
-				 ,dataType  :"json",
-					 type : "GET"
-	                , contentType :"application/json; charset=UTF-8"
-	                 , complete: function(jsonObject1){
-	                	 
-		                    alert(jsonObject1);
-		                    alert(jsonObject1.men);
-	                 }
+				  url : "genderfind.action?grCode=51"
+					,type : "get"
+	                , contentType :"application/json; charset=UTF-8" //application/json; , application/text; 똑같이 성공
+	                 , success: function(data){
+	                	 	alert("성공?");
+	                	 	alert(data);
+	                	 	alert(JSON.parse(data));
+	                	 	alert(data.men);
+		                    console.log(data);
+	                 } 
 	               
 	             });
 			
