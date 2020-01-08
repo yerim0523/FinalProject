@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+   request.setCharacterEncoding("UTF-8");
+   String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -16,11 +16,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+   href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+   src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+   src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script type="js/bootstrap.min.js"></script>
@@ -54,33 +54,33 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
 <script type="text/javascript">
-	
+   
 </script>
 
 </head>
 <body>
 
 <div>
-	<c:import url="bar.jsp"></c:import>
+   <c:import url="bar.jsp"></c:import>
 </div>
 
 <br><br>
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 
 <div class="container">
-	<div class="row">
-	<c:import url="sidebar.jsp"></c:import>
-	<div class="col-md-9">
-	<div class="container" style="margin-left: 50px;">
-				<div class="page-header">
-					<div>
-						<h3>> 寃곗젣 �궡�뿭</h3>
-					</div>
-				</div>
-	</div>
+   <div class="row">
+   <c:import url="sidebar.jsp"></c:import>
+   <div class="col-md-9">
+   <div class="container" style="margin-left: 50px;">
+            <div class="page-header">
+               <div>
+                  <h3>> 결제 내역</h3>
+               </div>
+            </div>
+   </div>
 
-	<div class="col-md-4" >
-	<div class="input-group" style="margin-left: 660px;">
+   <div class="col-md-4" >
+   <div class="input-group" style="margin-left: 660px;">
       <input type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" >Go!</button>
@@ -89,50 +89,50 @@
     </div>
     <br>
 
-	<table class="table" style="margin-left: 50px;">
-		<tr class="active">
-			<th>NUM</th>
-			<th>紐⑥엫紐�</th>
-			<th>寃곗젣�궇吏�</th>
-			<th>寃곗젣諛⑸쾿</th>
-			<th>寃곗젣湲덉븸</th>
-			<th>鍮꾧퀬</th>			
-		</tr>
-		<c:forEach var="list" items="${payList}">
-		<tr class="success" id="paycontent">
-			<td>${list.rNum }</td>
-			<td>${list.grName }</td>
-			<td>${list.payDate }</td>
-			<td>${list.pmName }</td>
-			<td><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${list.ngCost }"/> </td>	
-			<td>
-				<c:if test="${list.rfCode != 0 }">
-				<span style="color: red;">�솚遺�</span>
-				</c:if>
-			</td>
-		</tr>
-		<tr>
-			<td>${list.pmDetail }</td>
-		</tr>
-		</c:forEach>
-	</table>
-	<br><br><br>
-	<div style="margin-left: 350px;">
-		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-			</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
-		</ul>
-	</div>
+   <table class="table" style="margin-left: 50px;">
+      <tr class="active">
+         <th>NUM</th>
+         <th>모임명</th>
+         <th>결제날짜</th>
+         <th>결제방법</th>
+         <th>결제금액</th>
+         <th>비고</th>         
+      </tr>
+      <c:forEach var="list" items="${payList}">
+      <tr class="success" id="paycontent">
+         <td>${list.rNum }</td>
+         <td>${list.grName }</td>
+         <td>${list.payDate }</td>
+         <td>${list.pmName }</td>
+         <td><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${list.ngCost }"/> </td>   
+         <td>
+            <c:if test="${list.rfCode != 0 }">
+            <span style="color: red;">환불</span>
+            </c:if>
+         </td>
+      </tr>
+      <tr>
+         <td>${list.pmDetail }</td>
+      </tr>
+      </c:forEach>
+   </table>
+   <br><br><br>
+   <div style="margin-left: 350px;">
+      <ul class="pagination">
+         <li class="page-item"><a class="page-link" href="#"
+            aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+         </a></li>
+         <li class="page-item"><a class="page-link" href="#">1</a></li>
+         <li class="page-item"><a class="page-link" href="#">2</a></li>
+         <li class="page-item"><a class="page-link" href="#">3</a></li>
+         <li class="page-item"><a class="page-link" href="#"
+            aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+         </a></li>
+      </ul>
+   </div>
 
-	</div>
-	</div>
+   </div>
+   </div>
 </div>
 <br><br><br><br> 
 <div>
