@@ -92,11 +92,11 @@
 	</select>
 	
 	<!-- grCode 에 따른 성별, 인원 수 가져오기 -->
-	<select id="genderChart" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
+	<select id="genderChart" parameterType="String" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT T.grCode AS grCode,T.men AS men,T.women AS women,T.unknown AS unknown
 		FROM
 		(
-		    SELECT N.GR_CODE AS Grcode, COUNT(CASE WHEN  GEN_CODE=1 THEN 0 END) men, COUNT(CASE WHEN  GEN_CODE=2 then 0 end) WOMEN,
+		    SELECT N.GR_CODE AS grCode, COUNT(CASE WHEN  GEN_CODE=1 THEN 0 END) men, COUNT(CASE WHEN  GEN_CODE=2 then 0 end) WOMEN,
                                         COUNT(CASE WHEN  GEN_CODE=3 THEN 0 END) AS unknown
 		    FROM GR_REQUEST RQ, MEMBER M, NOW_GROUP N
 		    WHERE RQ.MEM_ID=M.MEM_ID AND RQ.NG_CODE=N.NG_CODE AND N.GR_CODE=#{grCode}

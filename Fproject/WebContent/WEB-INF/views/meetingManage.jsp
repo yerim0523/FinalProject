@@ -162,22 +162,21 @@
 		
 		//alert(params.length);
 		
-			alert(params[0]);
+			alert(params[0]); // grCode 51
 			
 			 $.ajax({
-	                type : "GET"
-	                , url : "genderfind.action?grCode="+params[0]
-			 		
-	                , contentType :"application/json;"
-	                 , success: function(data){
-		                    console.log(data);
+				  url : "genderfind.action" 
+				 ,dataType  :"int",
+					 type : "post"
+	                ,data : {  "grCode" : params[0]
+	                			}
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , complete: function(retVal){
+	                	 
+		                    alert(retVal);
+		                    alert(retVal.men);
 	                 }
-	                ,error:function(request, error) {
-
-		        		alert("fail");
-		        		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-	        		}
+	               
 	             });
 			
 			showGenderChart(params[0], 1);

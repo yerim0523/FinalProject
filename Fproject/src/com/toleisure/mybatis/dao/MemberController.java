@@ -36,7 +36,9 @@ import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
 import netscape.javascript.JSObject;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -638,14 +640,12 @@ public class MemberController
       return "/WEB-INF/views/meetingManage.jsp"; 
    }
    
-
    @SuppressWarnings("unchecked")
-@RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
-   @ResponseBody
-   public JSONObject genderChartInfo(HttpServletRequest request)
+   @RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
+   public @ResponseBody Object genderChartInfo(HttpServletRequest request)
    {
-	  int grCode = Integer.parseInt(request.getParameter("grCode"));
-	   
+	  String grCode = request.getParameter("grCode");
+	  
 	  JSONObject jsonObject1 = new JSONObject();
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       
@@ -656,13 +656,19 @@ public class MemberController
       System.out.println("women--------------"+dto.getWomen());
       System.out.println("unk--------------"+dto.getUnknown());
       
-      jsonObject1.put("grCode", dto.getGrCode());
-      jsonObject1.put("men", dto.getMen());
-      jsonObject1.put("women", dto.getWomen());
-      jsonObject1.put("unk", dto.getUnknown());
       
-      System.out.println(jsonObject1);
-      return jsonObject1; 
+      Map<String, Object> retVal = new HashMap<String, Object>();
+      
+      retVal.put("grCode", dto.getGrCode());
+      retVal.put("men", dto.getMen());
+      retVal.put("women", dto.getWomen());
+      retVal.put("unk", dto.getUnknown());
+      
+      jsonObject1.put("grCode", dto.getGrCode());
+      
+      
+      System.out.println(retVal);
+      return retVal; 
    }
   
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
