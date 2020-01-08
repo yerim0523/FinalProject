@@ -77,4 +77,5 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> CafeCloseGroupList(int ordercheck);
 	public ArrayList<GroupDTO> AllCloseGroupList(int ordercheck);
 	public ArrayList<GroupDTO> AllAbleGroupList(int ordercheck);
+	public void meetFavDelete(GroupDTO dto);
 }

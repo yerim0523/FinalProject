@@ -11,41 +11,32 @@
 <meta charset="UTF-8">
 <title>main.jsp</title>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-
-
-<!-- jquery plugins here-->
-<!-- jquery -->
-<!-- popper js -->
-<script src="js/popper.min.js"></script>
-<!-- bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- easing js -->
-<script src="js/jquery.magnific-popup.js"></script>
-<!-- swiper js -->
-<script src="js/swiper.min.js"></script>
-<!-- swiper js -->
-<script src="js/masonry.pkgd.js"></script>
-<!-- particles js -->
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<!-- swiper js -->
-<script src="js/slick.min.js"></script>
-<script src="js/jquery.counterup.min.js"></script>
-<!-- custom js -->
-<script src="js/custom.js"></script>
+    <!-- jquery plugins here-->
+    <!-- jquery -->
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- easing js -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
 
 <style type="text/css">
 .img-responsive {
@@ -83,6 +74,7 @@ button.more {
 	{
 		var count = 0;
 		array = new Array();
+		
 		  <c:forEach var="jjim" items="${meetFavList}" varStatus="status">
 			array[count]="${jjim.ngCode}";
 			count++;
@@ -92,13 +84,16 @@ button.more {
 		{
 			listNgCode = array[i];
 			alert(listNgCode);
-			$('#hotGroupHeart'+listNgCode).removeClass('far ');
-			$('#hotGroupHeart'+listNgCode).addClass('fas ');
+			$('#hotGroupHeart'+listNgCode).removeClass('far');
+			$('#hotGroupHeart'+listNgCode).addClass('fas');
 		}
 		
+		alert("클릭진입안함");
 		
-		$(".heartIcon").click(function()
+		$(".heart").click(function()
 		{
+			alert("클릭진입 함");
+			
 			if($("#sessionInfo").val()==="")
 			{
 				$('.loginNeed').modal('show');
@@ -120,8 +115,12 @@ button.more {
 		                 , success: function(data){
 		                    var isYn = data;
 		                    if(isYn === "Y"){
-		                       alert("이미 찜을 하셨습니다.");
-		                       return;
+		                    	var memId = $("#sessionInfo").val();
+		                    	var ngCode = $("#empNgCode").val();
+		                    	
+		                       location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
+		                       alert("찜이 해제되었습니다!");
+		                       
 		                    }else{
 		                    	alert("찜이 완료되었어용~!! ^_^");
 		                    	
@@ -256,14 +255,6 @@ button.more {
 								</div>
 								<div class="heart" align="right">
 					               	  <i class="far fa-heart heartIcon" id="hotGroupHeart${HotGroup.ngCode}" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode})"></i>
-<%-- 					               	  	<c:if test="${52 eq HotGroup.ngCode }"> --%>
-<!-- 					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i> -->
-<%-- 					               	  	</c:if> --%>
-				
-<%-- 					               	  	<c:if test="${52 ne HotGroup.ngCode }"> --%>
-<!-- 					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i> -->
-<%-- 					               	  	</c:if> --%>
-					               	  	
 		               	 		 </div>
 		               	 		 
 								
