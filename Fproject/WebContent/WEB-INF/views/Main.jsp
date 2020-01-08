@@ -18,18 +18,15 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
 
 <!-- jquery plugins here-->
 <!-- jquery -->
-<script src="js/jquery-1.12.1.min.js"></script>
 <!-- popper js -->
 <script src="js/popper.min.js"></script>
 <!-- bootstrap js -->
@@ -83,6 +80,7 @@ button.more {
 <script type="text/javascript">
 	$(function()
 	{
+		
 		$(".heartIcon").click(function()
 		{
 			if($("#sessionInfo").val()==="")
@@ -203,9 +201,6 @@ button.more {
 						onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
 					<div class="caption">
 						<div>
-							<div class="starRev">
-								
-							</div> 
 							<div style="text-align: right;">
 								<c:if test="${HotGroup.grStarAvg eq 0}">
 			           				<c:forEach begin="0" end="4">
@@ -236,14 +231,13 @@ button.more {
 									<h5>${HotGroup.grName }</h5>
 								</div>
 								<div class="heart" align="right">
-					               	  	<c:if test="${meetFavList.ngCode == HotGroup.ngCode }">
-					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+					               	  	<c:if test="${52 eq HotGroup.ngCode }">
+					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i>
 					               	  	</c:if>
 				
-					               	  	<c:if test="${meetFavList.ngCode != HotGroup.ngCode }">
-					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
+					               	  	<c:if test="${52 ne HotGroup.ngCode }">
+					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i>
 					               	  	</c:if>
-		               	 		 
 		               	 		 </div>
 		               	 		 
 								
@@ -280,9 +274,6 @@ button.more {
 						onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
 					<div class="caption">
 						<div>
-							<div class="starRev">
-								
-							</div> 
 							<div style="text-align: right;">
 								<c:if test="${NewGroup.grStarAvg eq 0}">
 			           				<c:forEach begin="0" end="4">
@@ -347,9 +338,6 @@ button.more {
 							onclick="location.href='profile.action?memId=${HotHost.memId}'">
 						<div class="caption">
 							<div>
-								<div class="starRev"></div>
-
-								<div>
 									<img alt="" src="images/star.png" style="width: 20px;"> <span>
 										9.5</span>
 								</div>
@@ -372,7 +360,6 @@ button.more {
 
 						</div>
 					</div>
-				</div>
 			</c:forEach>
 		</div>
 
@@ -400,11 +387,27 @@ button.more {
 							onclick="location.href='groupdetail.action?ngCode=${ClosingGroup.ngCode}'">
 						<div class="caption">
 							<div>
-								<div class="starRev"></div>
-								<div>
-									<img alt="" src="images/star.png" style="width: 20px;"> <span>
-										${ClosingGroup.grStarAvg}</span>
-								</div>
+								<div style="text-align: right;">
+								<c:if test="${ClosingGroup.grStarAvg eq 0}">
+			           				<c:forEach begin="0" end="4">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>
+			           			<c:if test="${ClosingGroup.grStarAvg ne 0}">
+			           				<c:forEach begin="1" end="${ClosingGroup.grStarAvg/1}">
+			           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           				<c:if test="${ClosingGroup.grStarAvg%1 ne 0}">
+			           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415;font-size: 20px;"></i>
+			           				</c:if>
+			           				<c:forEach begin="1" end="${5 - ClosingGroup.grStarAvg/1}">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>
+								<span style="color: gray;">&nbsp;&nbsp;${ClosingGroup.grStarAvg } 
+									<span style="font-size: 10pt; color: gray;">/ ${ClosingGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+								</span>
+							</div>
 							</div>
 							<br>
 							<div>
