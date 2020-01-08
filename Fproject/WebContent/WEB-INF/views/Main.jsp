@@ -90,7 +90,7 @@ button.more {
 		
 		alert("클릭진입안함");
 		
-		$(".heartIcon").click(function()
+		$(".heart").click(function()
 		{
 			alert("클릭진입 함");
 			
@@ -115,12 +115,11 @@ button.more {
 		                 , success: function(data){
 		                    var isYn = data;
 		                    if(isYn === "Y"){
-		                       alert("찜되어있음!");
 		                    	var memId = $("#sessionInfo").val();
 		                    	var ngCode = $("#empNgCode").val();
 		                    	
 		                       location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
-		                       alert("찜이 해제되었습니다");
+		                       alert("찜이 해제되었습니다!");
 		                       
 		                    }else{
 		                    	alert("찜이 완료되었어용~!! ^_^");
