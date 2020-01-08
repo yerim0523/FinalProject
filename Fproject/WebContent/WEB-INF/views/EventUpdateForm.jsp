@@ -47,7 +47,6 @@
     <script src="js/jquery.counterup.min.js"></script> 
 <!--     <script src="js/waypoints.min.js"></script> -->
 	<!-- custom js -->
-    <script src="js/custom.js"></script>
     
 <!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">

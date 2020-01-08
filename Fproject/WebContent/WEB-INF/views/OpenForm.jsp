@@ -18,7 +18,6 @@
 
 <!-- jquery -->
 
-									<!-- 에디터영역을 만드는 역할 -->
 <script src="js/jquery-1.12.1.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -48,12 +47,62 @@
 <script src="js/slick.min.js"></script>
 <script src="js/jquery.counterup.min.js"></script> 
 
+<!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
 
-<!-- 스마트에디터 -->
+<!-- include summernote css/js-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-ko-KR.js"></script>
 
 
 <script type="text/javascript">
 
+	$(document).ready(function() {
+	    $('#ngIntro').summernote({
+	  	  
+				lang: 'ko-KR',
+	          height: 300,                 
+	          minHeight: null,             
+	          maxHeight: null,             
+	          focus: true,                 
+	          fontSizes: ['4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
+			  fontNames: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
+		      fontNamesIgnoreCheck: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체'],
+			  popover: {         //팝오버 설정
+					
+				  	video: [],
+	    	        air: []
+	    	  }
+	    }); 
+	}); 
+	
+	
+	$(document).ready(function() {
+	    $('#ngMyIntro').summernote({
+	  	  
+			  lang: 'ko-KR',
+	          height: 200,                 
+	          minHeight: null,             
+	          maxHeight: null,             
+	          focus: true,                 
+	          fontSizes: ['4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '18', '24', '36', '48' , '64', '82', '150'],
+			  fontNames: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
+		      fontNamesIgnoreCheck: ['나눔고딕코딩', '맑은고딕', '굴림', '궁서체'],
+			  popover: {         //팝오버 설정
+					
+				  	video: [],
+	    	        air: []
+	    	  }
+	    }); 
+	}); 
+	
+	
 	$(document).ready(function()
 	{
 		$("#postcodify_search_button").postcodifyPopUp();
@@ -527,16 +576,30 @@
       
       <div class="form-inline">
          <label for="ngIntro" class="col-sm-2 control-label" style="font-weight: bold;">소개글</label>
+         <c:if test="${empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" name="ngIntro" rows="5" id="ngIntro"
                   placeholder="모임에 대한 소개글입니다!" id="ngIntro"></textarea>
+		</c:if>
+		<c:if test="${!empty groupinfo.grCode}">
+         <textarea class="form-control col-sm-5" name="ngIntro" rows="5" id="ngIntro"
+                  placeholder="모임에 대한 소개글입니다!" id="ngIntro">${groupinfo.ngIntro }</textarea>
+		</c:if>
+         
       </div>
       
       <br>
 
       <div class="form-inline">
          <label for="ngMyIntro" class="col-sm-2 control-label" style="font-weight: bold;">본인소개</label>
+         <c:if test="${empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" name="ngMyIntro" rows="5"
                   placeholder="호스트님의 소개를 입력해주세요!" id="ngMyIntro"></textarea>
+		</c:if>
+		<c:if test="${!empty groupinfo.grCode}">
+         <textarea class="form-control col-sm-5" name="ngMyIntro" rows="5"
+                  placeholder="호스트님의 소개를 입력해주세요!" id="ngMyIntro">${groupinfo.ngMyIntro }</textarea>
+		</c:if>
+         
       </div>
       
       <br>
@@ -545,7 +608,7 @@
          <label for="grPre" class="col-sm-2 control-label" style="font-weight: bold;">준비물</label>
          <c:if test="${empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" rows="5" name="grPre"
-                  placeholder="모임에 대한 준비물입니다!" id="grPre">ㄴㅇㄹ</textarea>
+                  placeholder="모임에 대한 준비물입니다!" id="grPre"></textarea>
 		</c:if>
 		<c:if test="${!empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" rows="5" name="grPre"
@@ -559,7 +622,7 @@
          <label for="grNotice" class="col-sm-2 control-label" style="font-weight: bold;">유의사항</label>
          <c:if test="${empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" rows="5" name="grNotice"
-                  placeholder="모임에 대한 유의사항입니다!" id="grNotice">ㅁㄴㅇㄹ</textarea>
+                  placeholder="모임에 대한 유의사항입니다!" id="grNotice"></textarea>
          </c:if>
          <c:if test="${!empty groupinfo.grCode}">
          <textarea class="form-control col-sm-5" rows="5" name="grNotice"
