@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,8 @@ import com.toleisure.mybatis.dto.BoardDTO;
 import com.toleisure.mybatis.dto.FileDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
+
+import netscape.javascript.JSObject;
 
 
 
@@ -636,12 +639,14 @@ public class MemberController
    }
    
 
-   @RequestMapping(value = "/genderfind.action", method = RequestMethod.GET)
+   @SuppressWarnings("unchecked")
+@RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
    @ResponseBody
-   public GroupDTO genderChartInfo(HttpServletRequest request)
+   public JSONObject genderChartInfo(HttpServletRequest request)
    {
 	  int grCode = Integer.parseInt(request.getParameter("grCode"));
 	   
+	  JSONObject jsonObject1 = new JSONObject();
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       
       GroupDTO dto = dao.genderChart(grCode);
@@ -651,7 +656,13 @@ public class MemberController
       System.out.println("women--------------"+dto.getWomen());
       System.out.println("unk--------------"+dto.getUnknown());
       
-      return dto; 
+      jsonObject1.put("grCode", dto.getGrCode());
+      jsonObject1.put("men", dto.getMen());
+      jsonObject1.put("women", dto.getWomen());
+      jsonObject1.put("unk", dto.getUnknown());
+      
+      System.out.println(jsonObject1);
+      return jsonObject1; 
    }
   
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
