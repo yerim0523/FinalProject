@@ -458,7 +458,7 @@ button.more {
 										${RecommendGroup.grStarAvg}</span>
 								</div>
 							</div>
-							<br>
+							<br> 
 							<div>
 								<span style="font-size: 12px;">${RecommendGroup.grCount }회차|${RecommendGroup.grCate1Name }
 									${RecommendGroup.grCate2Name }</span>
