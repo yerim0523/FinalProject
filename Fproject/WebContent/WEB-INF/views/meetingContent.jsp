@@ -218,6 +218,7 @@
 		if(cateVal == 0)
 		{
 			alert("신고 사유를 선택해주세요.");
+			return;
 		}
 		
 		if(cateVal == 1 || cateVal == 2 || cateVal == 3 || cateVal == 4)
@@ -492,7 +493,7 @@
 	<div class="modal modal-center fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog modal-80size modal-center" role="document">
-			<form action="reviewInsert.action" method="post" name="reviewForm">
+			<form action="reportinsert.action" method="post" name="reviewForm">
 			<div class="modal-content modal-80size">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel">후기 신고</h4>

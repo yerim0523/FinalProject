@@ -767,7 +767,7 @@ public class BoardController
 		return "redirect:mainboard.action";
 	}
 	
-	@RequestMapping(value = "/reviewInsert.action", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/reportinsert.action", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reviewReport(BoardDTO dto, Model model, HttpSession session)
 	{
 		session.getAttribute("member");
@@ -778,5 +778,22 @@ public class BoardController
 		dao.reviewReport(dto); 
 		
 		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
+	}
+	
+	@RequestMapping(value = "/allreportinsert.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String allReviewReport(BoardDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		
+		int ngCode = (int)session.getAttribute("ngCode");
+		int grCode = (int)session.getAttribute("grCode"); 
+		dto.setNgCode(ngCode);
+		dto.setGrCode(grCode);
+		
+		dao.reviewReport(dto); 
+		
+		return "redirect:reviewmeeting.action?grCode="+dto.getGrCode();
 	}
 }
