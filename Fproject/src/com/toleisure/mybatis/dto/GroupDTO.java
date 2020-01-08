@@ -24,6 +24,9 @@ public class GroupDTO
 	private int grCount, grStarCount,jjimcheck, memCount;
 	private double grStarAvg;
 	
+	private String grGender, grAge;
+	private int genCount, ageCount;
+	
 	private String payDetail;
 
 	
@@ -553,6 +556,46 @@ public class GroupDTO
 	public void setMemCount(int memCount)
 	{
 		this.memCount = memCount;
+	}
+
+	public String getGrGender()
+	{
+		return grGender;
+	}
+
+	public void setGrGender(String grGender)
+	{
+		this.grGender = grGender;
+	}
+
+	public String getGrAge()
+	{
+		return grAge;
+	}
+
+	public void setGrAge(String grAge)
+	{
+		this.grAge = grAge;
+	}
+
+	public int getGenCount()
+	{
+		return genCount;
+	}
+
+	public void setGenCount(int genCount)
+	{
+		this.genCount = genCount;
+	}
+
+	public int getAgeCount()
+	{
+		return ageCount;
+	}
+
+	public void setAgeCount(int ageCount)
+	{
+		this.ageCount = ageCount;
 	}
 
 	

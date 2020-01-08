@@ -146,9 +146,6 @@
 		params.grCode2 = $("#grCode2").val();
 		params.grCode3 = $("#grCode3").val();
 		
-		//alert(params.grCode1);
-		//alert(params.grCode2);
-		//alert(params.grCode3);
 		
 		// ★★★
 		for (var i = 0; i < 3; i++)
@@ -159,6 +156,17 @@
 		
 		for(var i=0; i<grCodeList.length; i++)
 		{
+			 $.ajax({
+	                type : "POST"
+	                , url : "genderfind.action"
+	                , data : params[i+1]
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , success: function(data){
+	                    alert(data.grCode);
+	                    return;
+	                 }
+	             });
+			
 			showGenderChart(grCodeList[i], i+1);
 			showAgeChart(grCodeList[i], i+1);
 		}

@@ -635,6 +635,21 @@ public class MemberController
       return "/WEB-INF/views/meetingManage.jsp"; 
    }
    
+
+   @RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
+   @ResponseBody
+   public GroupDTO genderChartInfo(int grCode, HttpSession session)
+   {
+      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+      
+      GroupDTO dto = new GroupDTO();
+      dto.setGrCode(grCode);
+      
+      dto = dao.genderChart(dto);
+      
+      return dto; 
+   }
+  
    
    
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})

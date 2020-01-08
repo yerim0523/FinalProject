@@ -91,6 +91,7 @@
 		  AND H.MEM_ID=#{memId}
 	</select>
 	
+	<!-- grCode 에 따른 성별, 인원 수 가져오기 -->
 	<select id="genderChart" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT T.grCode AS grCode, T.성별 AS grGender, COUNT(T.성별) AS genCount
 		FROM
@@ -104,6 +105,7 @@
 		ORDER BY T.grCode	
 	</select>
 	
+	<!-- grCode 에 따른 나잇대 별 인원 수 가져오기 -->
 	<select id="ageChart" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT T.grCode AS grCode, T.나이 AS grAge, COUNT(T.나이) AS ageCount
 		FROM
