@@ -107,7 +107,6 @@ clear:left;
 .dmenu
 {
 	justify-content: center;
-	
 }
 
 

@@ -16,15 +16,6 @@
         <result property="answerCont" column="answerCont"/>
     </resultMap> 
     
-  <!-- <resultMap id="BoardDTO" type="com.toleisure.mybatis.dto.BoardDTO">  resultMap id는 하나밖에못씀
-        <result property="faqNum" column="faqNum"/>
-        <result property="faqTitle" column="faqTitle"/>
-        <result property="faqCont" column="faqCont"/>
-        <result property="faqDate" column="faqDate"/>
-        <result property="faqMem" column="faqMem"/>
-    </resultMap> -->
-    
-    
     <select id="eventListCount" resultType="Integer">
         SELECT COUNT(*)
         FROM EVENT_POST_VIEW
