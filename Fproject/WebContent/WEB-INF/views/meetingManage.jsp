@@ -172,10 +172,14 @@
 		}
 		
 		grCodeList = new Array();
+		
 		$("#grCode1").val(null);
 		$("#grCode2").val(null);
 		$("#grCode3").val(null);
 	}
+	
+	
+	
 	function showGenderChart(grCode, num)
 	{
 			Highcharts.chart('genderSpace'+num, {

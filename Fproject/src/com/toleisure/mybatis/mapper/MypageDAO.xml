@@ -93,16 +93,15 @@
 	
 	<!-- grCode 에 따른 성별, 인원 수 가져오기 -->
 	<select id="genderChart" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
-		SELECT T.grCode AS grCode, T.성별 AS grGender, COUNT(T.성별) AS genCount
+	SELECT T.grCode AS grCode ,T.남자인원수 AS men,T.여자인원수 AS women,T.알수없음 AS unknown
 		FROM
 		(
-		    SELECT N.GR_CODE AS grCode, CASE WHEN GEN_CODE=1 THEN '남자' WHEN GEN_CODE=2 THEN '여자' ELSE '알수없음' END AS 성별
+		    SELECT N.GR_CODE AS grCode, count(case when  GEN_CODE=1 then '남자' end) 남자인원수, count(case when  GEN_CODE=2 then '여자' end) 여자인원수,
+                                        count(case when  GEN_CODE=3 then '알수없음' end) as 알수없음
 		    FROM GR_REQUEST RQ, MEMBER M, NOW_GROUP N
-		    WHERE RQ.MEM_ID=M.MEM_ID AND RQ.NG_CODE=N.NG_CODE
+		    WHERE RQ.MEM_ID=M.MEM_ID AND RQ.NG_CODE=N.NG_CODE AND N.GR_CODE=#{grCode}
+            group by gr_code
 		)T
-		WHERE grCode=#{grCode}
-		GROUP BY T.grCode, T.성별
-		ORDER BY T.grCode	
 	</select>
 	
 	<!-- grCode 에 따른 나잇대 별 인원 수 가져오기 -->

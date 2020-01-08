@@ -60,7 +60,7 @@ public class MainController
 			dto.setMemId(sessionDto.getMemId());
 		}
 		
-		model.addAttribute("meetFavList", dao.meetFavList(dto.getMemId()));
+		//model.addAttribute("meetFavList", dao.meetFavList(dto.getMemId()));
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		
