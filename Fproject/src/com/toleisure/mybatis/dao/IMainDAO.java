@@ -3,6 +3,7 @@ package com.toleisure.mybatis.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.toleisure.mybatis.dto.BoardDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 
 public interface IMainDAO
@@ -52,7 +53,7 @@ public interface IMainDAO
 	public String hostFavCheck(GroupDTO dto);
 	
 	//-- 찜 목록 확인
-	public ArrayList<GroupDTO> meetFavList(String memId); 
+	public List<BoardDTO> meetFavList(String memId); 
 	
 	//-- 찜 모임 추가
 	public void meetFavInsert(GroupDTO dto);
