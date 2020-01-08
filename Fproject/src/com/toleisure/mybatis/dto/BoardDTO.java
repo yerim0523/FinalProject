@@ -10,7 +10,7 @@ public class BoardDTO
 	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
-	private int faqCate, checkCode, repCate, ngCode;
+	private int faqCate, checkCode, repCate, ngCode, grCode;
 
 
 	
@@ -521,6 +521,16 @@ public class BoardDTO
 	public void setNgCode(int ngCode)
 	{
 		this.ngCode = ngCode;
+	}
+
+	public int getGrCode()
+	{
+		return grCode;
+	}
+
+	public void setGrCode(int grCode)
+	{
+		this.grCode = grCode;
 	}
 	
 	

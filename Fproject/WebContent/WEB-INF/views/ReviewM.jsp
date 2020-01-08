@@ -165,6 +165,56 @@
 	  margin-left: 20px;
 	  margin-right: 20px;
 	}
+	
+	.siren {
+	border: 0px;
+	background-color: white;
+	padding: 0px;
+}
+
+.modal-dialog.modal-80size {
+  width: 80%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content.modal-80size {
+  height: auto;
+  min-height: 80%;
+}
+
+.modal.modal-center {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal.modal-center:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog.modal-center {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle; 
+}
+
+.reporttext
+{
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	font-size: 1rem;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
 
 </style>
 
@@ -259,6 +309,40 @@
 		}
 	}
 	
+	function report()
+	{
+		var reportId = document.getElementById("reportId").value;
+		var reviewNum = document.getElementById("reviewNum1").value;
+		
+		document.getElementById("reportId").value = reportId;
+		document.getElementById("reviewNum").value = reviewNum;
+	}
+	
+	function reviewReport()
+	{
+		f = document.reviewForm;
+		
+		var repCateSel = document.getElementById("repCateSel");
+		//alert(repCateSel.options[repCateSel.selectedIndex].value);
+		var cateVal = repCateSel.options[repCateSel.selectedIndex].value;
+		
+		if(cateVal == 0)
+		{
+			alert("신고 사유를 선택해주세요.");
+			return;
+		}
+		
+		if(cateVal == 1 || cateVal == 2 || cateVal == 3 || cateVal == 4)
+		{
+			document.getElementById("repCate").value = cateVal;
+			f.submit();
+		}
+		
+		
+		
+		
+	}
+	
 	
 </script>
 
@@ -331,9 +415,15 @@
 				<img src="uploads/${reviewM.memPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 				<a class="name">${reviewM.memName }</a>
+				<form action="allreportpage.action" method="post">
 				<div style="float: right;">
-					<img src="<%=cp%>/images/siren.png" style="width: 30px; height: 30px;">
+					<button type="button" class="siren" data-toggle="modal" data-target="#myModal" onclick="report()">
+						<img src="<%=cp%>/images/siren.png"	style="width: 30px; height: 30px;">									
+					</button>
+					<input type="text" name="memId" id="memId" value="${reviewM.memId }">
+					<input type="text" name="reviewNum" id="reviewNum" value="${reviewM.reviewNum }">
 				</div>
+				</form>
 				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
            			<div class="starRev">
            			${reviewM.reviewStar }
@@ -457,7 +547,40 @@
   </div>
 </div>
 
-
-
+<!-- 
+<div class="modal modal-center fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-80size modal-center" role="document">
+		<form action="allreportinsert.action" method="post" name="reviewForm">
+		<div class="modal-content modal-80size">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">후기 신고</h4>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				신고 ID : <input type="text" class="reporttext" id="reportId" name="reportId" value="" readonly="readonly"><br><br>
+				<input type="text" id="reviewNum" name="reviewNum" value="">
+				신고 사유 :
+				<select id="repCateSel" name="repCateSel" class="reporttext" style="width: 300px;">
+					<option id="repCateSel" value="0">선택</option>
+					<option id="repCateSel" value="1">욕설</option>
+					<option id="repCateSel" value="2">광고</option>
+					<option id="repCateSel" value="3">타인비하</option>
+					<option id="repCateSel" value="4">기타</option>
+				</select>
+				<input type="text" id="repCate" name="repCate" value="">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn4" onclick="reviewReport()">신고</button> 
+				<button type="button" class="btn4" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+ -->
 </body>
 </html>

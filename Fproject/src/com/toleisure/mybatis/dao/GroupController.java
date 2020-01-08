@@ -476,6 +476,8 @@ public class GroupController
 		m.addAttribute("reviewM", dao.reviewM(grCode));
 		m.addAttribute("grCode", grCode);
 		
+		session.setAttribute("grCode", grCode);
+		
 		
 		return "/WEB-INF/views/ReviewM.jsp";
 	}
