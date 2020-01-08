@@ -661,6 +661,7 @@ public class MemberController
       jsonObject1.put("women", dto.getWomen());
       jsonObject1.put("unk", dto.getUnknown());
       
+      System.out.println(jsonObject1);
       return jsonObject1; 
    }
   

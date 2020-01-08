@@ -167,12 +167,10 @@
 			 $.ajax({
 	                type : "GET"
 	                , url : "genderfind.action?grCode="+params[0]
-	                , contentType :"application/json; charset=UTF-8"
+			 		
+	                , contentType :"application/json;"
 	                 , success: function(data){
-		                    console.log(data.grCode);
-		                    console.log(data.men);
-		                    console.log(data.women);
-		                    console.log(data.unk);
+		                    console.log(data);
 	                 }
 	                ,error:function(request, error) {
 
