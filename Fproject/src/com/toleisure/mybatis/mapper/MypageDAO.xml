@@ -92,7 +92,7 @@
 	</select>
 	
 	<!-- grCode 에 따른 성별, 인원 수 가져오기 -->
-	<select id="genderChart" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+	<select id="genderChart" parameterType="Integer" resultType="com.toleisure.mybatis.dto.GroupDTO">
 		SELECT T.grCode AS grCode,T.men AS men,T.women AS women,T.unknown AS unknown
 		FROM
 		(
