@@ -10,7 +10,7 @@ public class BoardDTO
 	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
-	private int faqCate, checkCode, repCate;
+	private int faqCate, checkCode, repCate, ngCode;
 
 
 	
@@ -511,6 +511,16 @@ public class BoardDTO
 	public void setReviewNum(String reviewNum)
 	{
 		this.reviewNum = reviewNum;
+	}
+
+	public int getNgCode()
+	{
+		return ngCode;
+	}
+
+	public void setNgCode(int ngCode)
+	{
+		this.ngCode = ngCode;
 	}
 	
 	

@@ -772,9 +772,11 @@ public class BoardController
 	{
 		session.getAttribute("member");
 		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		int ngCode = (int)session.getAttribute("ngCode");
+		dto.setNgCode(ngCode);
 		
 		dao.reviewReport(dto);
 		
-		return "redirect:main.action";
+		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
 	}
 }
