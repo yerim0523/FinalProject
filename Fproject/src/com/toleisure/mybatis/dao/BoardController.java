@@ -775,7 +775,7 @@ public class BoardController
 		int ngCode = (int)session.getAttribute("ngCode");
 		dto.setNgCode(ngCode);
 		
-		dao.reviewReport(dto);
+		dao.reviewReport(dto); 
 		
 		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
 	}
