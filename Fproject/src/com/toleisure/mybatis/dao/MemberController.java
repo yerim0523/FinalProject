@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -639,14 +640,15 @@ public class MemberController
    }
    
 
+   @ResponseBody
    @SuppressWarnings("unchecked")
 @RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
-   @ResponseBody
    public JSONObject genderChartInfo(HttpServletRequest request)
    {
 	  int grCode = Integer.parseInt(request.getParameter("grCode"));
 	   
 	  JSONObject jsonObject1 = new JSONObject();
+	  JSONArray jsonarray = new JSONArray();
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       
       GroupDTO dto = dao.genderChart(grCode);
@@ -662,6 +664,8 @@ public class MemberController
       jsonObject1.put("unk", dto.getUnknown());
       
       System.out.println(jsonObject1);
+      jsonarray.add(jsonObject1);
+      System.out.println(jsonarray);
       return jsonObject1; 
    }
   

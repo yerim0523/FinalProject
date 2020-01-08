@@ -167,17 +167,17 @@
 			 $.ajax({
 	                type : "GET"
 	                , url : "genderfind.action?grCode="+params[0]
-			 		
-	                , contentType :"application/json;"
+			 		, dataType : "json"
+			 		, contentType :"application/json; charset=UTF-8"
 	                 , success: function(data){
 		                    console.log(data);
 	                 }
-	                ,error:function(request, error) {
-
-		        		alert("fail");
-		        		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-	        		}
+	                ,complete : function (data) {
+	                	alert("컴플리트");
+	                	alert(data);
+	                	alert(data["men"]);
+	                	
+					}
 	             });
 			
 			showGenderChart(params[0], 1);
