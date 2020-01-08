@@ -481,7 +481,7 @@
             <option id="ngEnd2" value="140000">14:00</option>
             <option id="ngEnd2" value="150000">15:00</option>
             <option id="ngEnd2" value="160000">16:00</option>
-            <option id="ngEnd2" value="170000">17:00</option>
+            <option id="ngEnd2" value="170000">17:00</option> 
             <option id="ngEnd2" value="180000">18:00</option>
             <option id="ngEnd2" value="190000">19:00</option>
             <option id="ngEnd2" value="200000">20:00</option>
