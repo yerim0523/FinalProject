@@ -10,25 +10,20 @@
 <meta charset="UTF-8">
 <title>myEndList.jsp</title>
 
+<script type="text/javascript" src="<%=cp%>/js/highcharts.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/button.css" >
-<script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
     <!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
     <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
     <!-- easing js -->
     <script src="js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
@@ -41,11 +36,6 @@
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-
-<script type="text/javascript" src="<%=cp%>/js/highcharts.js"></script>
     
 <style type="text/css">
 	.image {
@@ -100,7 +90,7 @@
 
 <script type="text/javascript">
 	
-	var grCodeList = new Array();
+	grCodeList = new Array();
 	
 	$(function()
 	{
@@ -126,7 +116,7 @@
 			if (grCode[i].checked == true) // 체크 된 값만 
 			{
 				grCodeList.push(grCode[i].value); // value 를 임시 배열에 삽입(최소1개, 최대2개)
-				alert(grCodeList[count]);
+				//alert(grCodeList[count]); 
 				count++;
 
 				if (count == 4)
@@ -141,10 +131,26 @@
 		$("#grCode2").val(grCodeList[1]);
 		$("#grCode3").val(grCodeList[2]);
 		
-		var params = {};
-		params.grCode1 = $("#grCode1").val();
-		params.grCode2 = $("#grCode2").val();
-		params.grCode3 = $("#grCode3").val();
+		var params = new Array();
+		var grCode1 = $("#grCode1").val();
+		var grCode2 = $("#grCode2").val();
+		var grCode3 = $("#grCode3").val();
+		
+		if (grCode1!="")
+		{
+			params.push(grCode1);
+		}
+		if (grCode2!="")
+		{
+			params.push(grCode2);
+		}
+		if (grCode3!="")
+		{
+			params.push(grCode3);
+		}
+		
+		alert(params);
+		
 		
 		
 		// ★★★
@@ -154,16 +160,22 @@
 			$("#ageSpace"+(i+1)).empty();
 		}
 		
-		for(var i=0; i<grCodeList.length; i++)
+		//alert(params.length);
+		
+		for(var i=0; i<params.length; i++)
 		{
+			alert(params[i]);
+			
 			 $.ajax({
-	                type : "POST"
-	                , url : "genderfind.action"
-	                , data : params[i+1]
+	                type : "GET"
+	                , url : "genderfind.action?grCode="+params[i]
 	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                , dataType : "json"
 	                 , success: function(data){
-	                    alert(data.grCode);
-	                    return;
+		                    console.log(data.grCode);
+		                    console.log(data.men);
+		                    console.log(data.women);
+		                    console.log(data.unknown);
 	                 }
 	             });
 			
@@ -172,10 +184,14 @@
 		}
 		
 		grCodeList = new Array();
+		
 		$("#grCode1").val(null);
 		$("#grCode2").val(null);
 		$("#grCode3").val(null);
 	}
+	
+	
+	
 	function showGenderChart(grCode, num)
 	{
 			Highcharts.chart('genderSpace'+num, {
@@ -333,7 +349,7 @@
 					<input type="checkbox" id="grList" name="grList" value="${grList.grCode }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${grList.grName }<br>
 				</c:forEach>
 				<br><br>
-				<button class="btn4" type="button" id="charShow" onclick="formCheck()" style="width: 130px;">차트보기</button>&nbsp;
+				<button class="btn4" onclick="formCheck()" style="width: 130px;">차트보기</button>&nbsp;
 				<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
 				<input type="hidden" id="grCode1">
 				<input type="hidden" id="grCode2">

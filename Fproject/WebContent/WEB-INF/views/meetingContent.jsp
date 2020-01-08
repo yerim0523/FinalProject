@@ -468,8 +468,10 @@
 						<c:forEach var="joinMem" items="${joinMember }">
 						
 						<div align="left">
-							<img src="uploads/${joinMem.memPic }" 
-								style="object-fit:cover; width: 50px; height: 50px;" onclick="location.href='profile.action?memId=${joinMem.memId}'"> &nbsp;&nbsp;&nbsp; ${joinMem.memName }
+							<img src="uploads/${joinMem.memPic }" class="rounded-circle"
+								style="object-fit:cover; width: 50px; height: 50px; cursor: pointer;" onclick="location.href='profile.action?memId=${joinMem.memId}'">
+								 &nbsp;&nbsp;&nbsp; 
+							<span style="cursor: pointer; color: black;" onclick="location.href='profile.action?memId=${joinMem.memId}'">${joinMem.memName }</span>
 						</div>
 						<br>
 						</c:forEach>

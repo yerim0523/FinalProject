@@ -640,18 +640,20 @@ public class MemberController
    @ResponseBody
    public GroupDTO genderChartInfo(int grCode, HttpSession session)
    {
+	   System.out.println(grCode);
+	   
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       
-      GroupDTO dto = new GroupDTO();
-      dto.setGrCode(grCode);
+      GroupDTO dto = dao.genderChart(grCode);
       
-      dto = dao.genderChart(dto);
+      System.out.println("grCode--------------"+dto.getGrCode());
+      System.out.println("men--------------"+dto.getMen());
+      System.out.println("women--------------"+dto.getWomen());
+      System.out.println("unk--------------"+dto.getUnknown());
       
       return dto; 
    }
   
-   
-   
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String Map2(MemberDTO dto, Model model, HttpSession session)
    {

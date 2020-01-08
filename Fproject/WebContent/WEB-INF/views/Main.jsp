@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -18,18 +19,15 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.min.js"></script>
 <script type="js/bootstrap.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
 
 <!-- jquery plugins here-->
 <!-- jquery -->
-<script src="js/jquery-1.12.1.min.js"></script>
 <!-- popper js -->
 <script src="js/popper.min.js"></script>
 <!-- bootstrap js -->
@@ -83,6 +81,14 @@ button.more {
 <script type="text/javascript">
 	$(function()
 	{
+		//alert(${fn:length(meetFavList)});
+		var favlist = ${meetFavList};
+		for (var i = 0; i < ${fn:length(meetFavList)}; i++)
+		{
+			listNgCode = ${favlist[i].ngCode};
+			alert(listNgCode);
+		}
+		
 		$(".heartIcon").click(function()
 		{
 			if($("#sessionInfo").val()==="")
@@ -145,7 +151,7 @@ button.more {
 	<div class="container">
 		<input type="hidden" id="sessionInfo" value="${sessionInfo.memId }">
 		<input type="hidden" id="empNgCode">
-
+		
 		<div id="carouselExampleIndicators" class="carousel slide"
 			data-ride="carousel" align="center">
 			<ol class="carousel-indicators">
@@ -196,6 +202,14 @@ button.more {
 		<br>
 		<div class="row">
 			<c:set var="n" value="0" />
+			<c:if test="${empty HotGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 인기모임 : 회원들이 찜한 개수에 따라 기준 이상이 되면 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty HotGroupList }">
 			<c:forEach var="HotGroup" items="${HotGroupList}">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -203,9 +217,6 @@ button.more {
 						onclick="location.href='groupdetail.action?ngCode=${HotGroup.ngCode}'">
 					<div class="caption">
 						<div>
-							<div class="starRev">
-								
-							</div> 
 							<div style="text-align: right;">
 								<c:if test="${HotGroup.grStarAvg eq 0}">
 			           				<c:forEach begin="0" end="4">
@@ -236,14 +247,15 @@ button.more {
 									<h5>${HotGroup.grName }</h5>
 								</div>
 								<div class="heart" align="right">
-					               	  	<c:if test="${meetFavList.ngCode == HotGroup.ngCode }">
-					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
-					               	  	</c:if>
+					               	  <i class="fa-heart heartIcon" id="hotGroupHeart" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode})"></i>
+<%-- 					               	  	<c:if test="${52 eq HotGroup.ngCode }"> --%>
+<!-- 					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i> -->
+<%-- 					               	  	</c:if> --%>
 				
-					               	  	<c:if test="${meetFavList.ngCode != HotGroup.ngCode }">
-					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(${meetFavList.ngCode })"></i>
-					               	  	</c:if>
-		               	 		 
+<%-- 					               	  	<c:if test="${52 ne HotGroup.ngCode }"> --%>
+<!-- 					               	  		<i class="far fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i> -->
+<%-- 					               	  	</c:if> --%>
+					               	  	
 		               	 		 </div>
 		               	 		 
 								
@@ -255,6 +267,7 @@ button.more {
 				</div>
 			</div>
 			</c:forEach>
+			</c:if>
 		</div>
 
 		<br> <br> <br>
@@ -273,6 +286,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty NewGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 신규모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 새로 개설되는 모임이 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty NewGroupList }">
 			<c:forEach var="NewGroup" items="${NewGroupList }">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
@@ -280,9 +301,6 @@ button.more {
 						onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
 					<div class="caption">
 						<div>
-							<div class="starRev">
-								
-							</div> 
 							<div style="text-align: right;">
 								<c:if test="${NewGroup.grStarAvg eq 0}">
 			           				<c:forEach begin="0" end="4">
@@ -320,7 +338,7 @@ button.more {
 				</div>
 			</div>
 			</c:forEach>
-
+			</c:if>
 		</div>
 		<br> <br> <br>
 		<div class="left">
@@ -339,6 +357,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty HotHostList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기 호스트가 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 인기호스트 기준은 : )</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty HotHostList }">
 			<c:forEach var="HotHost" items="${HotHostList }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
@@ -347,9 +373,6 @@ button.more {
 							onclick="location.href='profile.action?memId=${HotHost.memId}'">
 						<div class="caption">
 							<div>
-								<div class="starRev"></div>
-
-								<div>
 									<img alt="" src="images/star.png" style="width: 20px;"> <span>
 										9.5</span>
 								</div>
@@ -372,8 +395,8 @@ button.more {
 
 						</div>
 					</div>
-				</div>
 			</c:forEach>
+			</c:if>
 		</div>
 
 		<br> <br> <br>
@@ -392,6 +415,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty ClosingGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 마감임박 모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 신청 마감이 ¨1주일 전 ~ 하루 전¨ 인 모임이 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty ClosingGroupList }">
 			<c:forEach var="ClosingGroup" items="${ClosingGroupList}">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
@@ -400,11 +431,27 @@ button.more {
 							onclick="location.href='groupdetail.action?ngCode=${ClosingGroup.ngCode}'">
 						<div class="caption">
 							<div>
-								<div class="starRev"></div>
-								<div>
-									<img alt="" src="images/star.png" style="width: 20px;"> <span>
-										${ClosingGroup.grStarAvg}</span>
-								</div>
+								<div style="text-align: right;">
+								<c:if test="${ClosingGroup.grStarAvg eq 0}">
+			           				<c:forEach begin="0" end="4">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>
+			           			<c:if test="${ClosingGroup.grStarAvg ne 0}">
+			           				<c:forEach begin="1" end="${ClosingGroup.grStarAvg/1}">
+			           					<i class="fas fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           				<c:if test="${ClosingGroup.grStarAvg%1 ne 0}">
+			           					<i class="fas fa-star-half-alt" style="width: 20px; color: #FAE415;font-size: 20px;"></i>
+			           				</c:if>
+			           				<c:forEach begin="1" end="${5 - ClosingGroup.grStarAvg/1}">
+			           					<i class="far fa-star" style="width: 20px; color: #FAE415; font-size: 20px;"></i>
+			           				</c:forEach>
+			           			</c:if>
+								<span style="color: gray;">&nbsp;&nbsp;${ClosingGroup.grStarAvg } 
+									<span style="font-size: 10pt; color: gray;">/ ${ClosingGroup.grStarCount }<span style="font-size: 8pt;">명</span></span>
+								</span>
+							</div>
 							</div>
 							<br>
 							<div>
@@ -427,7 +474,7 @@ button.more {
 					</div>
 				</div>
 			</c:forEach>
-
+			</c:if>
 		</div>
 		<br> <br> <br>
 		<div class="left">
@@ -444,6 +491,14 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
+			<c:if test="${empty RecommendGroupList }">
+				<div align="center">
+					<br><br>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 회원님의 추천 모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 모임을 ¨찜¨ 하시면 그에 맞춰 모임이 표시됩니다.)</p>
+					<br><br>
+				</div>
+			</c:if>
+			<c:if test="${!empty RecommendGroupList }">
 			<c:forEach var="RecommendGroup" items="${RecommendGroupList}">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
@@ -479,7 +534,7 @@ button.more {
 					</div>
 				</div>
 			</c:forEach>
-
+			</c:if>
 		</div>
 
 	</div>

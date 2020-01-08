@@ -5,7 +5,9 @@ public class GroupDTO
 
 	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name,search;
 	private String hostId, hostName, hostPic, reviewComCont, reviewComDate;
-	private int grCode, grCate1, grCate2,starCode;
+	private int men,women,unknown,grCode, grCate1, grCate2,starCode;
+
+	
 
 	private int ngCode, ngMax, ngMin, ngCost, ngFavorite, joinCode;
 	private String memPic, memIntro, ngPic, ngIntro, ngMyIntro;
@@ -87,7 +89,35 @@ public class GroupDTO
 	{
 		return grCode;
 	}
+	public int getMen()
+	{
+		return men;
+	}
 
+	public void setMen(int men)
+	{
+		this.men = men;
+	}
+
+	public int getWomen()
+	{
+		return women;
+	}
+
+	public void setWomen(int women)
+	{
+		this.women = women;
+	}
+
+	public int getUnknown()
+	{
+		return unknown;
+	}
+
+	public void setUnknown(int unknown)
+	{
+		this.unknown = unknown;
+	}
 	public void setGrCode(int grCode)
 	{
 		this.grCode = grCode;
