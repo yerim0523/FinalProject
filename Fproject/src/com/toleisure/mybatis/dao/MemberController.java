@@ -636,11 +636,11 @@ public class MemberController
    }
    
 
-   @RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
+   @RequestMapping(value = "/genderfind.action", method = RequestMethod.GET)
    @ResponseBody
-   public GroupDTO genderChartInfo(int grCode, HttpSession session)
+   public GroupDTO genderChartInfo(HttpServletRequest request)
    {
-	   System.out.println(grCode);
+	  int grCode = Integer.parseInt(request.getParameter("grCode"));
 	   
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       

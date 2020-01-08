@@ -149,7 +149,7 @@
 			params.push(grCode3);
 		}
 		
-		alert(params);
+		//alert(params);
 		
 		
 		
@@ -162,32 +162,30 @@
 		
 		//alert(params.length);
 		
-		for(var i=0; i<params.length; i++)
-		{
 			alert(params[i]);
 			
 			 $.ajax({
 	                type : "GET"
-	                , url : "genderfind.action?grCode="+params[i]
+	                , url : "genderfind.action?grCode="+params[0]
 	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
-	                , dataType : "json"
 	                 , success: function(data){
 		                    console.log(data.grCode);
 		                    console.log(data.men);
 		                    console.log(data.women);
 		                    console.log(data.unknown);
 	                 }
+	                ,error:function(request, error) {
+
+		        		alert("fail");
+		        		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+	        		}
 	             });
 			
-			showGenderChart(grCodeList[i], i+1);
-			showAgeChart(grCodeList[i], i+1);
-		}
+			showGenderChart(params[0], 1);
+			showAgeChart(params[0], 1);
 		
 		grCodeList = new Array();
-		
-		$("#grCode1").val(null);
-		$("#grCode2").val(null);
-		$("#grCode3").val(null);
 	}
 	
 	
@@ -209,22 +207,16 @@
 			        name: 'Language',
 			        colorByPoint: true,
 			        data: [{
-			            name: 'Java',
-			            y: 17.25,
+			            name: '남자',
+			            y: 8,
 			            sliced: true,
 			            selected: true
 			        }, {
-			            name: 'C',
-			            y: 16.08
+			            name: '여자',
+			            y: 5
 			        }, {
-			            name: 'Python',
-			            y: 10.30
-			        }, {
-			            name: 'C++',
-			            y: 6.19
-			        }, {
-			            name: 'C#',
-			            y: 4.80
+			            name: '알수없음',
+			            y: 2
 			        }]
 			    }]
 			});
@@ -249,22 +241,25 @@
 			        name: 'Language',
 			        colorByPoint: true,
 			        data: [{
-			            name: 'Java',
-			            y: 17.25,
+			            name: '10대',
+			            y: 3,
 			            sliced: true,
 			            selected: true
 			        }, {
-			            name: 'C',
-			            y: 16.08
+			            name: '20대',
+			            y: 5
 			        }, {
-			            name: 'Python',
-			            y: 10.30
+			            name: '30대',
+			            y: 3
 			        }, {
-			            name: 'C++',
-			            y: 6.19
+			            name: '40대',
+			            y: 1
 			        }, {
-			            name: 'C#',
-			            y: 4.80
+			            name: '50대',
+			            y: 2
+			        }, {
+			            name: '기타',
+			            y: 1
 			        }]
 			    }]
 			});
