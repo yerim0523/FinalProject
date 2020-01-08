@@ -47,6 +47,7 @@ padding:0px 25px;
 text-align:center;
 text-decoration:none;
 width: 100%;
+font-weight: bold;
 }
 
 .dropmenu li a:hover, .dropmenu ul li:hover a{
@@ -54,16 +55,23 @@ color:black;
 text-decoration:none;
 }
 
+
+.dropmenu ul li:hover
+{
+	background:#f6f6f6;
+	opacity: 1;
+}
+
 .dropmenu li ul{
-background: #D4F4FA;
 display:none; 
 height:100px;
 border:0px;
 position:absolute;
-width:150px;
 z-index:200;
-/*top:1em;
-/*left:0;*/
+}
+
+.dropmenu li ul a{
+	font-weight: bold;
 }
 
 .dropmenu li:hover ul{
@@ -76,7 +84,7 @@ display:block;
 float:none;
 margin:0px;
 padding:0px;
-width:150px;
+width:170px;
 text-align: center;
 }
 
@@ -89,8 +97,9 @@ display:block;
 height:50px;
 font-size:14px;
 margin:0px;
-padding:0px 10px 0px 10px;
+padding:0px 10px 10px 10px;
 text-align:center;
+vertical-align: middle;
 }
 
 .dropmenu li ul a:hover, .dropmenu li ul li:hover a{
@@ -98,6 +107,7 @@ background: rgb(171,171,171);
 border:0px;
 color:black;
 text-decoration:none;
+opacity: 3;
 }
 
 .dropmenu p{
@@ -108,7 +118,6 @@ clear:left;
 {
 	justify-content: center;
 }
-
 
 </style>
 
@@ -125,8 +134,6 @@ clear:left;
 <div class="container">
 	<div class="dropmenu">
 		<ul class="dmenu">
-
-		<!-- 	<li><a href="AllMeeting.jsp">전체</a></li> -->
 			<li><a href="all.action">전체</a></li>
 
 			<li><a href="culture.action" id="current">문화생활</a>
@@ -156,6 +163,7 @@ clear:left;
 		</ul>
 	</div> 
 </div>
+<br><br>
 
 </body>
 </html>
