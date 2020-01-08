@@ -172,7 +172,7 @@
 		                    console.log(data.grCode);
 		                    console.log(data.men);
 		                    console.log(data.women);
-		                    console.log(data.unknown);
+		                    console.log(data.unk);
 	                 }
 	                ,error:function(request, error) {
 
