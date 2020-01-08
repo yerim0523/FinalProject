@@ -81,13 +81,21 @@ button.more {
 <script type="text/javascript">
 	$(function()
 	{
-		//alert(${fn:length(meetFavList)});
-		var favlist = ${meetFavList};
-		for (var i = 0; i < ${fn:length(meetFavList)}; i++)
+		var count = 0;
+		array = new Array();
+		  <c:forEach var="jjim" items="${meetFavList}" varStatus="status">
+			array[count]="${jjim.ngCode}";
+			count++;
+		  </c:forEach>  
+		
+		for (var i = 0; i <array.length; i++)
 		{
-			listNgCode = ${favlist[i].ngCode};
+			listNgCode = array[i];
 			alert(listNgCode);
+			$('#hotGroupHeart'+listNgCode).removeClass('far ');
+			$('#hotGroupHeart'+listNgCode).addClass('fas ');
 		}
+		
 		
 		$(".heartIcon").click(function()
 		{
@@ -247,7 +255,7 @@ button.more {
 									<h5>${HotGroup.grName }</h5>
 								</div>
 								<div class="heart" align="right">
-					               	  <i class="fa-heart heartIcon" id="hotGroupHeart" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode})"></i>
+					               	  <i class="far fa-heart heartIcon" id="hotGroupHeart${HotGroup.ngCode}" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode})"></i>
 <%-- 					               	  	<c:if test="${52 eq HotGroup.ngCode }"> --%>
 <!-- 					               	  		<i class="fas fa-heart heartIcon" style="color: red;" onclick="sendNgCode(52)"></i> -->
 <%-- 					               	  	</c:if> --%>

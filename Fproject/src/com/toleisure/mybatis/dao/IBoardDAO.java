@@ -66,5 +66,7 @@ public interface IBoardDAO
 	public void mainboardNoticeDelete(BoardDTO dto);
 	public void InsertMainboardNotice(BoardDTO dto);
 	
+	public int reviewReport(BoardDTO dto);
+	
 	
 }

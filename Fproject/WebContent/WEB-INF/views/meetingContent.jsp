@@ -24,6 +24,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/button.css">
 
 
     <!-- easing js -->
@@ -34,7 +35,6 @@
     <script src="js/masonry.pkgd.js"></script>
     <!-- particles js -->
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
@@ -42,94 +42,195 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
     <!-- custom js -->
-    
-<style type="text/css">
+<script src="https://code.jquery.com/jquery-latest.js"></script>
 
-.starR1{
-	    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
-	    background-size: auto 100%;
-	    width: 15px;
-	    height: 30px;
-	    float: right;
-	    text-indent: -9999px;
-	    cursor: pointer;
-	}
-	.starR2{
-	    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
-	    background-size: auto 100%;
-	    width: 15px;
-	    height: 30px;
-	    float: right;
-	    text-indent: -9999px;
-	    cursor: pointer;
-	}
-	
-	.starR1.on{background-position:0 0;}
-	.starR2.on{background-position:-15px 0;}
-	
-	.review
-	{
-	  border: 1px solid gray;
-	  border-radius: 30px;
-	  padding: 20px;
-	  margin: 10px;
-	  align-self: center;
-	  width: 720px;
-	}
-	
-	.review p, .balloon p
-	{
-		font-weight: bold;
-		font-size: 11pt;
-		color: #333333;
-	}
-	
-	.review a, .balloon a
-	{
-		font-weight: bold;
-		font-size: 13pt;
-		color: #333333;
-	}
-	
-	.board, .review
-	{
-		display: none;
-	}
-	
-	.bookmarkbar a
-	{
-		letter-spacing: 1px;
-		color: gray;
-		font-family: 맑은고딕;
-		font-weight: bold;
-		font-size: 17px;
-	}
+<style type="text/css">
+.starR1 {
+	background:
+		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+		no-repeat -52px 0;
+	background-size: auto 100%;
+	width: 15px;
+	height: 30px;
+	float: right;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+
+.starR2 {
+	background:
+		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+		no-repeat right 0;
+	background-size: auto 100%;
+	width: 15px;
+	height: 30px;
+	float: right;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+
+.starR1.on {
+	background-position: 0 0;
+}
+
+.starR2.on {
+	background-position: -15px 0;
+}
+
+.review {
+	border: 1px solid gray;
+	border-radius: 30px;
+	padding: 20px;
+	margin: 10px;
+	align-self: center;
+	width: 720px;
+}
+
+.review p, .balloon p {
+	font-weight: bold;
+	font-size: 11pt;
+	color: #333333;
+}
+
+.review a, .balloon a {
+	font-weight: bold;
+	font-size: 13pt;
+	color: #333333;
+}
+
+.board, .review {
+	display: none;
+}
+
+.bookmarkbar a {
+	letter-spacing: 1px;
+	color: gray;
+	font-family: 맑은고딕;
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.siren {
+	border: 0px;
+	background-color: white;
+	padding: 0px;
+}
+
+.modal-dialog.modal-80size {
+  width: 80%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content.modal-80size {
+  height: auto;
+  min-height: 80%;
+}
+
+.modal.modal-center {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal.modal-center:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog.modal-center {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle; 
+}
+
+.reporttext
+{
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	font-size: 1rem;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
 
 </style>
 
 <script type="text/javascript">
-	$(function() {
+
+	$(function()
+	{
 		$(".board").slice(0, 1).show(); // 최초 1개 선택
-		
-		if($(".board:hidden").length == 0){ // 숨겨진 DIV가 있는지 체크
+
+		if ($(".board:hidden").length == 0)
+		{ // 숨겨진 DIV가 있는지 체크
 			$("#load").css("display", "none");
-			$(".addTo").prepend("<p style='font-size: 15px;'><i class='fas fa-thumbtack'></i>&nbsp;&nbsp;&nbsp;표시할 방명록이 존재하지 않습니다.</p>");
+			$(".addTo")
+					.prepend(
+							"<p style='font-size: 15px;'><i class='fas fa-thumbtack'></i>&nbsp;&nbsp;&nbsp;표시할 방명록이 존재하지 않습니다.</p>");
 		}
-		
+
 		$(".review").slice(0, 1).show(); // 최초 1개 선택
-		
-		if($(".review:hidden").length == 0){ // 숨겨진 DIV가 있는지 체크
-			$(".addReview").prepend("<p style='font-size: 15px;'><i class='fas fa-thumbtack'></i>&nbsp;&nbsp;&nbsp;표시할 후기가 존재하지 않습니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;후기를 작성하시려면 아래 버튼을 눌러주세요~!</p>");
+
+		if ($(".review:hidden").length == 0)
+		{ // 숨겨진 DIV가 있는지 체크
+			$(".addReview")
+					.prepend(
+							"<p style='font-size: 15px;'><i class='fas fa-thumbtack'></i>&nbsp;&nbsp;&nbsp;표시할 후기가 존재하지 않습니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;후기를 작성하시려면 아래 버튼을 눌러주세요~!</p>");
 		}
-		
-		$("#load").click(function(e){ // Load More를 위한 클릭 이벤트e
+
+		$("#load").click(function(e)
+		{ // Load More를 위한 클릭 이벤트e
 			e.preventDefault();
 			$(".board:hidden").slice(0, 1).show(); // 숨김 설정된 다음 1개를 선택하여 표시
-			if($(".board:hidden").length == 0){ // 숨겨진 DIV가 있는지 체크
+			if ($(".board:hidden").length == 0)
+			{ // 숨겨진 DIV가 있는지 체크
 				$("#load").css("display", "none");
 			}
 		});
 	});
+	
+	
+	function report()
+	{
+		var memId = document.getElementById("reportId").value;
+		var reviewNum = document.getElementById("reviewNum1").value;
+		
+		document.getElementById("memId").value = memId;
+		document.getElementById("reviewNum").value = reviewNum;
+	}
+	
+	function reviewReport()
+	{
+		f = document.reviewForm;
+		
+		var repCateSel = document.getElementById("repCateSel");
+		//alert(repCateSel.options[repCateSel.selectedIndex].value);
+		var cateVal = repCateSel.options[repCateSel.selectedIndex].value;
+		
+		if(cateVal == 0)
+		{
+			alert("신고 사유를 선택해주세요.");
+		}
+		
+		if(cateVal == 1 || cateVal == 2 || cateVal == 3 || cateVal == 4)
+		{
+			document.getElementById("repCate").value = cateVal;
+			f.submit();
+		}
+		
+		
+		
+		
+	}
+	
 	
 </script>
 
@@ -238,7 +339,11 @@
 								<img src="${review.memPic }" class="rounded-circle"	style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 								<a class="name">${review.memName }</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 9pt;">${review.reviewDate }</span>
 								<div style="float: right;">
-									<img src="<%=cp%>/images/siren.png"	style="width: 30px; height: 30px;">
+									<button type="button" class="siren" data-toggle="modal" data-target="#myModal" onclick="report()">
+										<img src="<%=cp%>/images/siren.png"	style="width: 30px; height: 30px;">									
+									</button>
+									<input type="hidden" name="reportId" id="reportId" value="${review.memId }">
+									<input type="hidden" name="reviewNum1" id="reviewNum1" value="${review.reviewNum }">
 								</div>
 								<div class="col-12 p-0 d-flex align-items-center justify-content-end">
 									<div class="d-flex align-items-center groupCnt">
@@ -378,13 +483,47 @@
 	 </form>
 	 </section>
 	 
-	 
-	 
-	 
 	
 	<div>
 		<c:import url="footer.jsp"></c:import>
 	</div>
-	
+
+	<!-- Modal -->
+	<div class="modal modal-center fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-80size modal-center" role="document">
+			<form action="reviewInsert.action" method="post" name="reviewForm">
+			<div class="modal-content modal-80size">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">후기 신고</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					신고 ID : <input type="text" class="reporttext" id="memId" name="memId" value="" readonly="readonly"><br><br>
+					<input type="hidden" id="reviewNum" name="reviewNum" value="">
+					신고 사유 :
+					<select id="repCateSel" name="repCateSel" class="reporttext" style="width: 300px;">
+						<option id="repCateSel" value="0">선택</option>
+						<option id="repCateSel" value="1">욕설</option>
+						<option id="repCateSel" value="2">광고</option>
+						<option id="repCateSel" value="3">타인비하</option>
+						<option id="repCateSel" value="4">기타</option>
+					</select>
+					<input type="hidden" id="repCate" name="repCate" value="">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn4" onclick="reviewReport()">신고</button> 
+					<button type="button" class="btn4" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+
+
+
 </body>
 </html>

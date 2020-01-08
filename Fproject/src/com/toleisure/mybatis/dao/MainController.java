@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.toleisure.mybatis.dto.BoardDTO;
 import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
@@ -60,8 +61,9 @@ public class MainController
 			dto.setMemId(sessionDto.getMemId());
 		}
 		
+		List<BoardDTO> meetFavList = dao.meetFavList(dto.getMemId());
 		
-		model.addAttribute("meetFavList", dao.meetFavList(dto.getMemId()));
+		model.addAttribute("meetFavList", meetFavList);
 		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
 		model.addAttribute("sessionInfo", session.getAttribute("member"));
 		

@@ -295,7 +295,7 @@
     </select>
     
     <select id ="AvgStar" parameterType="Integer" resultType="double">
-    		SELECT AVG(R.REVIEW_STAR) AS REVIEW_STAR_AVG
+    		SELECT NVL(AVG(R.REVIEW_STAR), 0) AS REVIEW_STAR_AVG
 			FROM NOW_GROUP NG JOIN TBL_GROUP G
 			ON NG.GR_CODE = G.GR_CODE
 			    JOIN FIXED_GROUP FG

@@ -21,7 +21,7 @@ public class GroupDTO
 	private double reviewStar;
 	
 	private String boardCont, boardDate;
-	private int boardNum;
+	private int boardNum, reviewNum;
 
 	private int grCount, grStarCount,jjimcheck, memCount;
 	private double grStarAvg;
@@ -628,5 +628,15 @@ public class GroupDTO
 		this.ageCount = ageCount;
 	}
 
+	public int getReviewNum()
+	{
+		return reviewNum;
+	}
+
+	public void setReviewNum(int reviewNum)
+	{
+		this.reviewNum = reviewNum;
+	}
+	
 	
 }
