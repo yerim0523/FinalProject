@@ -515,7 +515,7 @@
 					<input type="hidden" id="repCate" name="repCate" value="">
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn4" onclick="reviewReport()">신고</button>
+					<button type="button" class="btn4" onclick="reviewReport()">신고</button> 
 					<button type="button" class="btn4" data-dismiss="modal">닫기</button>
 				</div>
 			</div>
