@@ -122,7 +122,7 @@
 		         <div class="image_outer_container">
 		            <div class="green_icon"></div>
 		            <div class="image_inner_container">
-		               <div class="rounded-circle"><img src="uploads/${member.memPic}"></div>
+		               <img class="rounded-circle" src="uploads/${member.memPic}">
 		            </div>
 		         </div>
 		         <div class="container right" style="width: 50%;">
