@@ -641,7 +641,7 @@ public class MemberController
    }
    
    @SuppressWarnings("unchecked")
-   @RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
+   @RequestMapping(value = "/genderfind.action",produces="application/json; charset=UTF-8",method = {RequestMethod.POST, RequestMethod.GET})
    public @ResponseBody Object genderChartInfo(HttpServletRequest request)
    {
 	  String grCode = request.getParameter("grCode");
@@ -665,6 +665,9 @@ public class MemberController
       retVal.put("unk", dto.getUnknown());
       
       jsonObject1.put("grCode", dto.getGrCode());
+      jsonObject1.put("men", dto.getMen());
+      jsonObject1.put("women", dto.getWomen());
+      jsonObject1.put("unk", dto.getUnknown());
       
       
       System.out.println(retVal);
