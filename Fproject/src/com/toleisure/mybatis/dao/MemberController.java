@@ -644,17 +644,12 @@ public class MemberController
 	   
       IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
       
-      
-      
       GroupDTO dto = dao.genderChart(grCode);
-     
       
       System.out.println("grCode--------------"+dto.getGrCode());
       System.out.println("men--------------"+dto.getMen());
       System.out.println("women--------------"+dto.getWomen());
       System.out.println("unk--------------"+dto.getUnknown());
-      
-      
       
       return dto; 
    }
