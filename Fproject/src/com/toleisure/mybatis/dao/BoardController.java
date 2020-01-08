@@ -766,4 +766,15 @@ public class BoardController
 		}
 		return "redirect:mainboard.action";
 	}
+	
+	@RequestMapping(value = "/reviewInsert.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String reviewReport(BoardDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IBoardDAO dao = sqlsession.getMapper(IBoardDAO.class);
+		
+		dao.reviewReport(dto);
+		
+		return "redirect:main.action";
+	}
 }

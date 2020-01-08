@@ -484,6 +484,11 @@
                      (CNOTICE_NUM, COM_NUM,ADMIN_CODE)
                   VALUES
                      (COM_NOTSEQ.NEXTVAL,#{boardNum},1)
+    </insert>
+    
+    <insert id="reviewReport" parameterType="com.toleisure.mybatis.dto.BoardDTO">
+    	INSERT INTO REV_REPORT(RREPORT_NUM, REVIEW_NUM, MEM_ID, REP_CODE)
+		VALUES(REV_REPSEQ.NEXTVAL, #{reviewNum}, #{memId}, #{repCate})
     </insert>	
 	
 	

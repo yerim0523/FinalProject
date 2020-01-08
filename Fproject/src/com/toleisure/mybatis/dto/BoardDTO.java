@@ -10,12 +10,12 @@ public class BoardDTO
 	
 	private String newsNum, newsTitle, newsCont, newsMem, newsDate, memPwd;
 
-	private int faqCate, checkCode;
+	private int faqCate, checkCode, repCate;
 
 
 	
 	
-	private String answerCont,faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId;
+	private String answerCont,faqNum, faqName,faqTitle, faqCont, faqDate, faqMem , faqId,memId, reviewNum;
 
 	
 
@@ -492,6 +492,28 @@ public class BoardDTO
 	{
 		this.mainboardNoticeCheck = mainboardNoticeCheck;
 	}
+
+	public int getRepCate()
+	{
+		return repCate;
+	}
+
+	public void setRepCate(int repCate)
+	{
+		this.repCate = repCate;
+	}
+
+	public String getReviewNum()
+	{
+		return reviewNum;
+	}
+
+	public void setReviewNum(String reviewNum)
+	{
+		this.reviewNum = reviewNum;
+	}
+	
+	
 	
 
 
