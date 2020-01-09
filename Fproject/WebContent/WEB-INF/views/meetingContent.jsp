@@ -460,7 +460,7 @@
 									<%-- <span style="font-size: 13pt;">(최소인원 : ${grcontent.ngMin }명)</span> --%>
 							</a><div align="right"><span style="font-size: 10pt;">(최소인원 : ${grcontent.ngMin }명)</span></div></li>
 
-						</ul>
+						</ul> 
 						<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
 					</div> 
 
