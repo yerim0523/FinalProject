@@ -511,7 +511,7 @@ public class MainController
 	}
 
 	// ----------------------------------------------------인기호스트
-	@RequestMapping(value = "/hothost.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/hothost.action", method = RequestMethod.GET) 
 	public String HotHost(Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/HotHost.jsp";
