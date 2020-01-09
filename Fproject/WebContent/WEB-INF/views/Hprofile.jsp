@@ -149,7 +149,7 @@
 	<div>
 		<div>
 			<h4>호스트후기</h4>
-			<div class="starRev" align="right">
+			<div class="starRev" align="right"> 
 				<h6>평점 : 9.6</h6>
 				<span class="starR on"></span>
 				<span class="starR"></span>
