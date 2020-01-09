@@ -132,7 +132,7 @@
 		            <%-- <input type="text" class="form-control" value="${member.memName }" disabled="disabled" style="background-color: white;"> --%>
 		            <br><br><br>
 		            <span style="color: orange; font-size: 15px; font-weight: bold;">메이트 소개</span><br>
-		            <textarea rows="3" cols="10" class="form-control" disabled="disabled" style="background-color: white;">
+		            <textarea rows="3" cols="10" class="form-control" disabled="disabled" style="background-color: white; text-align: left;">
 		            	${member.memIntro }</textarea>
 		         </div>
 		      </div>
