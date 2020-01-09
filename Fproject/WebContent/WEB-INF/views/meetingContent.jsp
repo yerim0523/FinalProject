@@ -447,15 +447,18 @@
 									<p>가격</p> <span><fmt:formatNumber value="${grcontent.ngCost }" pattern="#,###,###"/>원</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>최소인원수</p> <span>${grcontent.ngMin }명</span>
-							</a></li>
-							<li><a class="justify-content-between d-flex">
-									<p>인원수<span style="font-size: 13pt;"><p>(최소인원 : ${grcontent.ngMin }명)</p></span></p>
-									<span>${joinMemberCnt.memCount } / ${grcontent.ngMax }명</span>
-							</a></li>
-							<li><a class="justify-content-between d-flex">
 									<p>모임날짜</p> <span>${grcontent.ngStart }<br> ~ ${grcontent.ngEnd }</span>
 							</a></li>
+							<%-- 
+							<li><a class="justify-content-between d-flex">
+									<p>최소인원수</p> <span>${grcontent.ngMin }명</span>
+							</a></li>
+							 --%>
+							<li><a class="justify-content-between d-flex">
+									<p>인원수</p> 
+									<span>${joinMemberCnt.memCount } / ${grcontent.ngMax }명</span>
+									<%-- <span style="font-size: 13pt;">(최소인원 : ${grcontent.ngMin }명)</span> --%>
+							</a><div align="right"><span style="font-size: 10pt;">(최소인원 : ${grcontent.ngMin }명)</span></div></li>
 
 						</ul>
 						<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
