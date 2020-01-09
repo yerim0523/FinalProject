@@ -42,11 +42,10 @@ color:black;
 display:block;
 line-height:70px;
 margin:0px;
-margin-right: 75px;
 padding:0px 25px;
 text-align:center;
 text-decoration:none;
-width: 100%;
+width: 180px;
 font-weight: bold;
 }
 
@@ -84,7 +83,8 @@ display:block;
 float:none;
 margin:0px;
 padding:0px;
-width:170px;
+width:180px;
+height: 50px;
 text-align: center;
 }
 
@@ -108,6 +108,7 @@ border:0px;
 color:black;
 text-decoration:none;
 opacity: 3;
+height: 50px;
 }
 
 .dropmenu p{
@@ -117,6 +118,11 @@ clear:left;
 .dmenu
 {
 	justify-content: center;
+}
+
+.culture a
+{
+	width: 197px;
 }
 
 </style>
@@ -138,9 +144,9 @@ clear:left;
 
 			<li><a href="culture.action" id="current">문화생활</a>
 				<ul>
-					<li><a href="exhibit.action">전시</a></li>
-					<li><a href="show.action">공연</a></li>
-					<li><a href="play.action">연극</a></li>
+					<li class="culture"><a href="exhibit.action">전시</a></li>
+					<li class="culture"><a href="show.action">공연</a></li>
+					<li class="culture"><a href="play.action">연극</a></li>
 				</ul>
 			</li>
 			<li><a href="food.action" id="current">맛집</a>
