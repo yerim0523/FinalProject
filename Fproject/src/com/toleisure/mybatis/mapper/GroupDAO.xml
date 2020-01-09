@@ -261,15 +261,6 @@
 		VALUES(REVIEWSEQ.NEXTVAL, #{joinCode}, #{reviewCont}, #{reviewStar})
    </insert>
    
-   <select id="joinMember" parameterType="Integer" resultType="com.toleisure.mybatis.dto.MemberDTO">
-   		SELECT M.MEM_ID AS memId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName, P.PAY_CODE AS payCode
-		FROM GR_REQUEST RQ, PAYMENT P, MEMBER M
-		WHERE RQ.NG_CODE = #{ngCode} AND RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE NOT IN (SELECT RF_CODE
-		                                                                        FROM REFUND R, PAYMENT P
-		                                                                        WHERE R.PAY_CODE = P.PAY_CODE)
-		      AND RQ.MEM_ID = M.MEM_ID
-   
-   </select>
    
    <select id="joinMember" parameterType="Integer" resultType="com.toleisure.mybatis.dto.MemberDTO">
    		SELECT M.MEM_ID AS memId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName, P.PAY_CODE AS payCode
