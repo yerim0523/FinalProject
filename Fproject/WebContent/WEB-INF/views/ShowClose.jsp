@@ -83,7 +83,7 @@
 
 <div>
 	<jsp:include page="TopButton.jsp"></jsp:include>
-</div>
+</div> 
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
 <div>
