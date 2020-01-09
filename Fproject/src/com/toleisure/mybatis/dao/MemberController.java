@@ -701,19 +701,19 @@ public class MemberController
 	      GroupDTO dto = dao.ageChart(grCode);
 	      
 	      System.out.println("oneCnt--------------"+dto.getOneCnt());
-	      System.out.println("TwoCnt--------------"+dto.getTwoCnt());
-	      System.out.println("ThrCnt--------------"+dto.getThrCnt());
-	      System.out.println("FourCnt--------------"+dto.getFourCnt());
-	      System.out.println("Etc--------------"+dto.getEtc());
+	      System.out.println("twoCnt--------------"+dto.getTwoCnt());
+	      System.out.println("thrCnt--------------"+dto.getThrCnt());
+	      System.out.println("fourCnt--------------"+dto.getFourCnt());
+	      System.out.println("etc--------------"+dto.getEtc());
 	      
 	      
 	      Map<String, Object> retVal = new HashMap<String, Object>();
 	      
 	      retVal.put("oneCnt", dto.getOneCnt());
-	      retVal.put("TwoCnt", dto.getTwoCnt());
-	      retVal.put("ThrCnt", dto.getThrCnt());
-	      retVal.put("FourCnt", dto.getFourCnt());
-	      retVal.put("Etc", dto.getEtc());
+	      retVal.put("twoCnt", dto.getTwoCnt());
+	      retVal.put("thrCnt", dto.getThrCnt());
+	      retVal.put("fourCnt", dto.getFourCnt());
+	      retVal.put("etc", dto.getEtc());
 	      
 	      jsonarray.add(dto.getGrCode());
 	      

@@ -165,6 +165,7 @@
 			//alert(params[0]); // grCode 51
 			var grCode = params[0];
 			var genderList = new Array();
+			var ageList = new Array();
 			
 			for (var i = 0; i < params.length; i++)
 			{
@@ -192,8 +193,38 @@
 		                	 	
 		                 } 
 		        });
+				 
+				 
+				 $.ajax({
+					  url : "agefind.action?grCode="+params[i]
+						,type : "get"
+						, async:false
+						, dataType : "json"
+		                , contentType :"application/json; charset=UTF-8"
+		                 , success: function(data){
+		                	 	alert("성공~~~!!");
+		                	 	ageList = new Array();
+		                	 	
+		                	 	//alert(data);
+		                	 	console.log(JSON.stringify(data));
+		                	 	console.log("data.grCode : " + data.grCode);
+		                	 	console.log("data.oneCnt : " + data.oneCnt);
+		                	 	console.log("data.twoCnt : " + data.twoCnt);
+		                	 	console.log("data.thrCnt : " + data.thrCnt);
+		                	 	console.log("data.fourCnt : " + data.fourCnt);
+		                	 	console.log("data.etc : " + data.etc);
+		                	 	
+		                	 	ageList[0] = data.oneCnt;		                	 	
+		                	 	ageList[1] = data.twoCnt;		                	 	
+		                	 	ageList[2] = data.thrCnt;		                	 	
+		                	 	ageList[3] = data.fourCnt;		                	 	
+		                	 	ageList[4] = data.etc;		                	 	
+		                 } 
+		        });
+				 
+				 
 				 showGenderChart(params[i], i+1, genderList[0], genderList[1], genderList[2]);
-	 			showAgeChart(params[i], i+1);
+				 showAgeChart(params[i], i+1, ageList[0], ageList[1], ageList[2], ageList[3], ageList[4]);
 				 
 			}
 			
@@ -203,8 +234,6 @@
 	
 	function showGenderChart(grCode, num, men, women, unk)
 	{
-		alert(men);
-		
 			Highcharts.chart('genderSpace'+num, {
 			    chart: {
 			        plotShadow: false,
@@ -231,11 +260,11 @@
 			        }]
 			    }]
 			});
-			
+		grCodeList = new Array();
 	}
 	
 
-	function showAgeChart(grCode, num)
+	function showAgeChart(grCode, num, one, two, thr, four, etc)
 	{
 		
 			Highcharts.chart('ageSpace'+num, {
@@ -254,26 +283,22 @@
 			        colorByPoint: true,
 			        data: [{
 			            name: '10대',
-			            y: 3,
+			            y: Number(one),
 			        }, {
 			            name: '20대',
-			            y: 5
+			            y: Number(two)
 			        }, {
 			            name: '30대',
-			            y: 3
+			            y: Number(thr)
 			        }, {
 			            name: '40대',
-			            y: 1
-			        }, {
-			            name: '50대',
-			            y: 2
+			            y: Number(four)
 			        }, {
 			            name: '기타',
-			            y: 1
+			            y: Number(etc)
 			        }]
 			    }]
 			});
-
 	}
 	
 </script>
