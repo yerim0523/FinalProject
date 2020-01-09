@@ -27,7 +27,8 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/bootstrap-select.min.js"></script>
 
-
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b06299aedd9f29b60afd90850c8308ed&libraries=services,clusterer,drawing"></script>
 
 <!-- 주소 검색 -->
 <!-- jQuery와 Postcodify를 로딩한다 -->
@@ -337,6 +338,20 @@
          return;
       }
       
+      
+      geocoder.addressSearch(f.ngLocation1.value, function(re, status)
+  			{
+
+  				// 정상적으로 검색이 완료됐으면 
+  				if (status === kakao.maps.services.Status.OK)
+  				{
+  					document.getElementById("xlocation").value=re[0].x;
+  					document.getElementById("ylocation").value=re[0].y;
+  					
+  				}// end if
+
+  			}); // end geocoder
+      
       var temp = new Array(); // 임시 배열 선언
       count = 0;            // 배열 방 컨트롤 위한 변수
       
@@ -512,7 +527,8 @@
          <label for="ngLocation2" class="col-sm-2 control-label" style="font-weight: bold;">상세주소</label>
          <input type="text" id="sample4_detailAddress" name="ngLocation2" class="form-control" placeholder="상세주소" style="width: 700px;">
       </div>
-      
+      <input type="hidden" id="xlocation" name="xlocation" value="0">
+      <input type="hidden" id="ylocation" name="ylocation" value="0">
       <br>
       
       <c:if test="${empty groupinfo.grCode}">

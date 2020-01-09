@@ -12,15 +12,15 @@
             <choose>
                <when test='grCate2 != 0'>
                   INSERT INTO TBL_GROUP
-                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2)
+                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2,XLOCATION,YLOCATION)
                   VALUES
-                     (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{grCate2});
+                     (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{grCate2},#{xlocation},#{ylocation});
                </when>
                <otherwise>
                   INSERT INTO TBL_GROUP
-                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
+                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1,XLOCATION,YLOCATION)
                    VALUES
-                      (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1});
+                      (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{xlocation},#{ylocation});
                </otherwise>
             </choose>
             
@@ -262,7 +262,7 @@
    </insert>
    
    <select id="joinMember" parameterType="Integer" resultType="com.toleisure.mybatis.dto.MemberDTO">
-   		SELECT M.MEM_ID AS memId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName
+   		SELECT M.MEM_ID AS memId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName, P.PAY_CODE AS payCode
 		FROM GR_REQUEST RQ, PAYMENT P, MEMBER M
 		WHERE RQ.NG_CODE = #{ngCode} AND RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE NOT IN (SELECT RF_CODE
 		                                                                        FROM REFUND R, PAYMENT P
