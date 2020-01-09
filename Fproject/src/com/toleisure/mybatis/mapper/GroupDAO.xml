@@ -254,7 +254,7 @@
                                 ON ME.MEM_ID = RQ.MEM_ID
       )
       WHERE gr_CODE = #{grCode}
-   </select>
+   </select> 
    
    <insert id="reviewInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO">
    		INSERT INTO REVIEW(REVIEW_NUM, JOIN_CODE, REVIEW_CONT, REVIEW_STAR)
