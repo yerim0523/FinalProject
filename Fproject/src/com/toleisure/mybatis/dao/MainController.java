@@ -775,6 +775,21 @@ public class MainController
 		return "redirect:main.action";
 	}
 	
+	@RequestMapping(value = "/meetfavoritealldelete.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteAllMeetDelete(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("삭제합니다");
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavDelete(dto);
+		
+		return "redirect:all.action";
+	}
+	
 	
 	
 	@RequestMapping(value = "/search.action", method = RequestMethod.GET)
