@@ -89,7 +89,7 @@
 	.starR.on{background-position:0 0;}
 	
 	img{max-width: 100%; height: auto;}
-
+	
 </style>
 
 
@@ -110,10 +110,10 @@
 <br><br><br>
 
 <div class="container">
-	<div class="row">
-      <div class="col-md-2" align="left">
+	<div class="col-md-2" align="left">
          <span class="page">프로필</span>
       </div>
+	<div class="row">
       <div class="col-md-10">
          <div class="container">
          <br><br>
@@ -126,10 +126,14 @@
 		         </div>
 		         <div class="container right" style="width: 50%;">
 		            <!-- ProfileController 에서 넘겨준 member(MemberDTO 타입) 를 이용해 변수값 꺼내 쓰기 -->
-		            <br><br>
-		            <input type="text" class="form-control" value="${member.memName }">
-		            <br><br>
-		            <textarea rows="3" cols="10" class="form-control">${member.memIntro }</textarea>
+		            <br>
+		            <span style="color: orange; font-size: 15px; font-weight: bold;">메이트</span>
+		           	 &nbsp;&nbsp;<span style="font-size: 20px; font-weight: bold;">${member.memName }</span>
+		            <%-- <input type="text" class="form-control" value="${member.memName }" disabled="disabled" style="background-color: white;"> --%>
+		            <br><br><br>
+		            <span style="color: orange; font-size: 15px; font-weight: bold;">메이트 소개</span><br>
+		            <textarea rows="3" cols="10" class="form-control" disabled="disabled" style="background-color: white;">
+		            	${member.memIntro }</textarea>
 		         </div>
 		      </div>
   		 </div><!-- end div.container -->
@@ -145,7 +149,7 @@
 	<div>
 		<div>
 			<h4>호스트후기</h4>
-			<div class="starRev" align="right">
+			<div class="starRev" align="right"> 
 				<h6>평점 : 9.6</h6>
 				<span class="starR on"></span>
 				<span class="starR"></span>
