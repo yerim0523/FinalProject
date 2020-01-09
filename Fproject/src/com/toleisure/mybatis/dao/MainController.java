@@ -652,7 +652,7 @@ public class MainController
 		
 		dao.meetFavInsert(dto);
 		
-		return "redirect:all.action";
+		return "redirect:all.action"; 
 	}
 	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoriteCulMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
