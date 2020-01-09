@@ -697,7 +697,6 @@ public class MemberController
 	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
 	      ObjectMapper mapper = new ObjectMapper();
 	      
-	      
 	      GroupDTO dto = dao.ageChart(grCode);
 	      
 	      System.out.println("oneCnt--------------"+dto.getOneCnt());
