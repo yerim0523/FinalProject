@@ -27,8 +27,6 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/bootstrap-select.min.js"></script>
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b06299aedd9f29b60afd90850c8308ed&libraries=services,clusterer,drawing"></script>
 
 <!-- 주소 검색 -->
 <!-- jQuery와 Postcodify를 로딩한다 -->
@@ -62,8 +60,9 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-ko-KR.js"></script>
 
 
-<script type="text/javascript">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b06299aedd9f29b60afd90850c8308ed&libraries=services,clusterer,drawing"></script>
 
+<script type="text/javascript">
 	$(document).ready(function() {
 	    $('#ngIntro').summernote({
 	  	  
@@ -337,11 +336,12 @@
          alert("정확한 주소를 입력하세요.");
          return;
       }
-      
-      
-      geocoder.addressSearch(f.ngLocation1.value, function(re, status)
+      geocoder = new kakao.maps.services.Geocoder();
+      //alert(str);
+      geocoder.addressSearch(str, function(re, status)
   			{
-
+				//alert(re[0].x);
+				//alert(re[0].y);
   				// 정상적으로 검색이 완료됐으면 
   				if (status === kakao.maps.services.Status.OK)
   				{
@@ -516,7 +516,7 @@
       </div>
       <div class="form-inline">
          <label for="ngLocation1" class="col-sm-2 control-label" style="font-weight: bold;">도로명주소</label>
-         <input type="text" id="sample4_roadAddress" name="ngLocation1" class="form-control" placeholder="도로명주소" style="width: 700px;"readonly>
+         <input type="text" id="sample4_roadAddress" id="ngLocation1" name="ngLocation1" class="form-control" placeholder="도로명주소" style="width: 700px;"readonly>
       </div>
       <div class="form-inline">
          <label for="name" class="col-sm-2 control-label" style="font-weight: bold;">지번주소</label>

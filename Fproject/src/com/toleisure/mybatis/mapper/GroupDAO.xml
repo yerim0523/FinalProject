@@ -12,15 +12,15 @@
             <choose>
                <when test='grCate2 != 0'>
                   INSERT INTO TBL_GROUP
-                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2,XLOCATION,YLOCATION)
+                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1, CATE_CODE2)
                   VALUES
-                     (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{grCate2},#{xlocation},#{ylocation});
+                     (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{grCate2});
                </when>
                <otherwise>
                   INSERT INTO TBL_GROUP
-                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1,XLOCATION,YLOCATION)
+                     (GR_CODE, MEM_ID, GR_NAME, GR_PRE, GR_NOTICE, CATE_CODE1)
                    VALUES
-                      (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1},#{xlocation},#{ylocation});
+                      (grCodeSeq, #{memId}, #{grName}, #{grPre}, #{grNotice}, #{grCate1});
                </otherwise>
             </choose>
             
@@ -30,12 +30,12 @@
                , NG_PIC
                , NG_MAX
                , NG_MIN,
-            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO)
+            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO,XLOCATION,YLOCATION)
             VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, #{ngPic}, #{ngMax}, #{ngMin}
             , TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
             TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
             , #{ngCost}, #{ngLocation1}||#{ngLocation2}
-            , #{ngIntro}, #{ngMyIntro});
+            , #{ngIntro}, #{ngMyIntro},#{xlocation},#{ylocation});
       END
       }
    </insert>
@@ -49,12 +49,12 @@
                , NG_PIC
                , NG_MAX
                , NG_MIN,
-            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO)
+            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO,XLOCATION,YLOCATION)
             VALUES(NOW_GROUPSEQ.NEXTVAL, #{grCode}, #{ngPic}, #{ngMax}, #{ngMin}
             , TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
             TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
             , #{ngCost}, #{ngLocation1}||#{ngLocation2}
-            , #{ngIntro}, #{ngMyIntro});
+            , #{ngIntro}, #{ngMyIntro},#{xlocation},#{ylocation});
       END
       }
    </insert>
