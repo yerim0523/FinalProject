@@ -120,12 +120,13 @@
 		      <div class="d-flex justify-content-center h-100 left">
 		         <div class="image_outer_container">
 		            <div class="green_icon"></div>
-		            <div class="image_inner_container">
-		               <img class="rounded-circle" src="uploads/${member.memPic}" style="width: 500px; height: 300px;">
+		            <div class="image_inner_container" align="left">
+		               <img class="rounded-circle" src="uploads/${member.memPic}" style="width: 250px; height: 250px;">
 		            </div>
 		         </div>
 		         <div class="container right" style="width: 50%;">
 		            <!-- ProfileController 에서 넘겨준 member(MemberDTO 타입) 를 이용해 변수값 꺼내 쓰기 -->
+		            <br><br>
 		            <input type="text" class="form-control" value="${member.memName }">
 		            <br><br>
 		            <textarea rows="3" cols="10" class="form-control">${member.memIntro }</textarea>
@@ -137,14 +138,13 @@
       
    </div><!-- end div.row -->
 </div><!-- end div.container -->
+<br>
 <hr>
-
+<br>
 <div class="container">
 	<div>
 		<div>
-			<div class="host">
-				<h4>호스트후기</h4><br>
-			</div>
+			<h4>호스트후기</h4>
 			<div class="starRev" align="right">
 				<h6>평점 : 9.6</h6>
 				<span class="starR on"></span>

@@ -780,8 +780,16 @@ public class BoardController
 		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
 	}
 	
-	@RequestMapping(value = "/allreportinsert.action", method = {RequestMethod.GET, RequestMethod.POST})
-	public String allReviewReport(BoardDTO dto, Model model, HttpSession session)
+	@RequestMapping(value = "/allreportpage.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String allReportPage(BoardDTO dto, Model model, HttpSession session)
+	{
+		String view = "/WEB-INF/views/ReviewReport.jsp";
+		
+		return view;
+	}
+	
+	@RequestMapping(value = "allreportinsert.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String allReportInsert(BoardDTO dto, Model model, HttpSession session)
 	{
 		session.getAttribute("member");
 		
@@ -792,7 +800,7 @@ public class BoardController
 		dto.setNgCode(ngCode);
 		dto.setGrCode(grCode);
 		
-		dao.reviewReport(dto); 
+		dao.reviewReport(dto);
 		
 		return "redirect:reviewmeeting.action?grCode="+dto.getGrCode();
 	}
