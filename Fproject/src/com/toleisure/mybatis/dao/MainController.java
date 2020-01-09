@@ -694,7 +694,7 @@ public class MainController
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 		
 		System.out.println("========  " + dto.getMemId());
-		System.out.println("========  " + dto.getNgCode());
+		System.out.println("========  " + dto.getNgCode()); 
 		
 		dao.meetFavInsert(dto);
 		
