@@ -383,7 +383,7 @@ button.more {
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
 						<img src="uploads/${HotHost.memPic}" alt="썸네일" class="img-rounded"
-							style="width: 500px;"
+							style="width: 500px; height: 200px;"
 							onclick="location.href='profile.action?memId=${HotHost.memId}'">
 						<div class="caption">
 							<div>

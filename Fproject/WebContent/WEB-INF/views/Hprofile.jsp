@@ -75,7 +75,6 @@
 		display: inline-block;
 		text-indent: -9999px;
 		cursor: pointer;
-		/* float: right; */
 		box-sizing: border-box;
 	}
 
@@ -122,7 +121,7 @@
 		         <div class="image_outer_container">
 		            <div class="green_icon"></div>
 		            <div class="image_inner_container">
-		               <img class="rounded-circle" src="uploads/${member.memPic}">
+		               <img class="rounded-circle" src="uploads/${member.memPic}" style="width: 500px; height: 300px;">
 		            </div>
 		         </div>
 		         <div class="container right" style="width: 50%;">
