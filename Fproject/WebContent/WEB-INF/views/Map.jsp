@@ -34,7 +34,6 @@
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
 
 
 <link rel="stylesheet"
@@ -95,7 +94,19 @@ input.img-button {
 	border-radius: .25rem;
 	height: 50px;
 }
+
 </style>
+    <style>
+    .overlay_info {border-radius: 6px; margin-bottom: 12px; float:left;position: relative; border: 1px solid #ccc; border-bottom: 2px solid #ddd;background-color:#fff;}
+    .overlay_info:nth-of-type(n) {border:0; box-shadow: 0px 1px 2px #888;}
+    .overlay_info a {display: block; background: #d95050; background: #d95050 url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center; text-decoration: none; color: #fff; padding:12px 36px 12px 14px; font-size: 14px; border-radius: 6px 6px 0 0}
+    .overlay_info a strong {background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_icon.png) no-repeat; padding-left: 27px;}
+    .overlay_info .desc {padding:14px;position: relative; min-width: 300px; height: 100px}
+    .overlay_info img {vertical-align: top;}
+    .overlay_info .address {font-size: 12px; color: #333; position: absolute; left: 80px; right: 14px; top: 24px; white-space: normal}
+    .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 22px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
+</style>
+
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b06299aedd9f29b60afd90850c8308ed&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript">
@@ -151,178 +162,87 @@ input.img-button {
 
 		// 다중 마커를 등록할 속성 구성
 		positions = [
-		/* {
-		   title: "제주특별자치도 제주시 첨단로 242"
-		   	,name:"안녕"
+		 {
+
 		   
-		}, 
-		{
-		   title: "제주특별자치도 제주시 애월읍 광령리 1417"
-		   	,name:"안녕"
-		}, 
-		{
-		   title: "서울특별시 마포구 서교동 447-5 풍성빌딩 2,3,4층"
-		   	,name:"안녕못해"
-		}, 
-		{
-		   title: "서울특별시 마포구 동교동 159-8"
-		   	,name:"안녕"
-		},
-		{
-		   title: "경기도 고양시 일산서구 일중로 30"
-		  ,name:"서울특별시 마포구 테스트"
-		} */
+		}
 		];
 
-		<c:forEach var="location" items="${location}">
+		 <c:forEach var="location" items="${location}">
 		positions.push(
 		{
-			title : "${location.ngLocation}",
-			name : "${location.ngCode}"
+			ngCode :"${location.ngCode}",
+			title : "${location.grName}",
+			loc : "${location.ngLocation}",
+			realxlocation : "${location.ylocation}",//"126.75066908491476",
+			realylocation : "${location.xlocation}" // "35.xxxxxxxxxxx"
 		});
-		</c:forEach>
-		keyArray = [];
-		markerArray = [];
-		infoWinArray = [];
+		</c:forEach> 
+		
 		alert(latitude);
 		alert(longitude);
-		// 마커 이미지
-		imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-		imageSize = new kakao.maps.Size(24, 35);
+		
 
-		markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
 		for (var i = 0; i < positions.length; i++)
 		{
 
-			//name = positions[i].name;
-			//alert(positions[i].name);
-			key = positions[i].name;
-			keyArray.push(key);
-			
-			geocoder.addressSearch(positions[i].title, function(re, status)
-			{
+			//alert(positions[i].title);	
+			//alert(positions[i].ylocation);	
+					curlatlng = new kakao.maps.LatLng(latitude, longitude);
 
-				// 정상적으로 검색이 완료됐으면 
-				if (status === kakao.maps.services.Status.OK)
-				{
+		
+					yloc = positions[i].realylocation;
+					xloc = positions[i].realxlocation;
 					
 					
-					mark = new kakao.maps.LatLng(re[0].y, re[0].x);
+					mark = new kakao.maps.LatLng(yloc,xloc);
 					// 마커 이미지 생성
-					markerImage = new kakao.maps.MarkerImage(imageSrc,
-							imageSize);
-					/*
+					imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+					imageSize = new kakao.maps.Size(24, 35);
+					// 마커 이미지
+					markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize);
+					
 					marker = new kakao.maps.Marker(
 					{
 						map : map,
 						position : mark,
 						image : markerImage
 					});
-					*/
-					markerArray[key] = new kakao.maps.Marker(
-					{
-						map : map,
-						position : mark,
-						image : markerImage,
-						clickable: true
-					});
 					
-					infoWinArray[key] = new kakao.maps.InfoWindow(
-					{
-						position : mark,
-						removable : true,
-						zIndex: 1,
-						content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+ this.key +"</div>"
-					});
-					marker = markerArray[this.key];
-					infowindow = infoWinArray[this.key];
-					markerArray[key].key = key;
-					infoWinArray[key].iwContent = key;
-					/*
-					kakao.maps.event.addListener(map, 'click', function() { //지도 누르면 infowindow 종료
-			            if(selectedInfo!=null){
-			                selectedInfo.close();
-			                selectedInfo = null;
-			            }    
-			        });
-					selectedInfo = infoWinArray[this.key];
-		            selectedInfo.key = this.key;
-		            infoWinArray[this.key].setContent(infoWinArray[this.key].iwContent);
-		            infoWinArray[this.key].open(map,this); 
-					alert(selectedInfo);
-		            
-					kakao.maps.event.addListener(markerArray[key], 'click', function(){   // 마커 위에 인포윈도우를 표시합니다
-			            if(selectedInfo != null){ //그전 infowindow 종료
-			                selectedInfo.close();
-			                selectedInfo = null;
-			            } 
-					});
-					*/
-					kakao.maps.event.addListener(marker, 'mouseover',
-         					makeOverListener(map, marker, infowindow));
-         			kakao.maps.event.addListener(marker, 'mouseout',
-         					makeOutListener(infowindow));
+				
+	         	  // 인포윈도우로 장소에 대한 설명을 표시합니다
+	         	
+	         		var content = '<div class="overlay_info">';
+	        		content += '    <a href="#" onclick='+"location='groupdetail.action?ngCode='"+positions[i].ngCode +'<strong>'+positions[i].title+'</strong></a>';
+	        		content += '    <div class="desc">';
+	        		content += '        <img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
+	        		content += '        <span class="address">'+positions[i].loc+'</span>';
+	        		content += '    </div>';
+	        		content += '</div>';
+	        		iwRemoveable = true;
+	        		
+	         			 infowindow = new kakao.maps.InfoWindow(
+	         			{
+	         				//position : coords  
+	         				content : content,
+	         				removable : iwRemoveable
+	         			});
+	         			kakao.maps.event.addListener(marker, 'click',
+	         					makeClickListener(map, marker, infowindow));
+	         		
+	         	
+	         		
+	         			 function makeClickListener(map, marker, infowindow)
+	                     {
+	                        return function()
+	                        {
+	                           infowindow.open(map, marker);
+	                        };
+	                     }
 
-         			function makeOverListener(map, marker, infowindow)
-         			{
-         				return function()
-         				{
-         					infowindow.open(map, marker);
-         				};
-         			}
 
-         			function makeOutListener(infowindow)
-         			{
-         				return function()
-         				{
-         					infowindow.close();
-         				};
-         			}
-					
-			            
-			        
-
-				/*
-         		// 인포윈도우로 장소에 대한 설명을 표시합니다
-         		for (var j = 0; j < positions.length; j++)
-         		{
-         			var infowindow = new kakao.maps.InfoWindow(
-         			{
-         				//  position : coords  
-         				content : "<div style='width:150px;text-align:center;padding:6px 0;'>"+this.name+"</div>"
-
-         			});
-
-         			// 마커에 클릭 이벤트 등록
-         			kakao.maps.event.addListener(marker, 'mouseover',
-         					makeOverListener(map, marker, infowindow));
-         			kakao.maps.event.addListener(marker, 'mouseout',
-         					makeOutListener(infowindow));
-
-         			function makeOverListener(map, marker, infowindow)
-         			{
-         				return function()
-         				{
-         					infowindow.open(map, marker);
-         				};
-         			}
-
-         			function makeOutListener(infowindow)
-         			{
-         				return function()
-         				{
-         					infowindow.close();
-         				};
-         			}
-
-         		}// end for(j)
-         		*/
-
-				}// end if
-
-			}); // end geocoder
-
+	         		
 		} // end for
 		
 			
@@ -344,6 +264,8 @@ input.img-button {
 		// 인포윈도우 옵션 구성
 		var iwContent = "<div style='width:150px;text-align:center;padding:6px 0;'>현재 위치</div>"
 
+	    
+		
 		// 인포윈도우 생성
 		var infowindow2 = new kakao.maps.InfoWindow(
 		{
@@ -352,7 +274,7 @@ input.img-button {
 		// 인포윈도우를 닫을 수 있는 버튼 활성화
 		});
 
-			infowindow2.open(map, marker2);
+		infowindow2.open(map, marker2);
 	
 
 		searchDetailAddrFromCoords(curlatlng, function(result, status)
@@ -408,8 +330,7 @@ input.img-button {
 							// 정상적으로 검색이 완료됐으면 
 							if (status === kakao.maps.services.Status.OK)
 							{
-								var coords = new kakao.maps.LatLng(re[0].y,
-										re[0].x);
+								var coords = new kakao.maps.LatLng(re[0].y,re[0].x);
 
 								// 마커 이미지 생성
 

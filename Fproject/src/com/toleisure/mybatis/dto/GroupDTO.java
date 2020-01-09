@@ -6,13 +6,6 @@ public class GroupDTO
 	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name,search;
 	private String hostId, hostName, hostPic, reviewComCont, reviewComDate;
 	private int men,women,unknown,grCode, grCate1, grCate2,starCode,payCode;
-	public int getPayCode() {
-		return payCode;
-	}
-
-	public void setPayCode(int payCode) {
-		this.payCode = payCode;
-	}
 
 	private int oneCnt, twoCnt, thrCnt, fourCnt, etc;
 	
@@ -52,6 +45,15 @@ public class GroupDTO
 	{
 		this.memId = memId;
 	}
+	
+	public int getPayCode() {
+		return payCode;
+	}
+
+	public void setPayCode(int payCode) {
+		this.payCode = payCode;
+	}
+
 	public double getXlocation() {
 		return xlocation;
 	}
