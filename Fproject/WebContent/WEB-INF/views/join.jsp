@@ -264,6 +264,8 @@
 		var realbirth =year +"-"+month+"-"+day;
 		document.getElementById("memBirth").value = realbirth;
 		
+		alert("회원가입이 완료되었습니다. 반가워요 메이트님!^-^")
+		
 		f.submit();
 	}
 	

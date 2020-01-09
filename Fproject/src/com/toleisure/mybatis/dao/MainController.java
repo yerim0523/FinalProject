@@ -641,7 +641,7 @@ public class MainController
 		
 		return "redirect:main.action";
 	}
-	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/meetfavoriteallinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoriteAllMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
@@ -654,7 +654,7 @@ public class MainController
 		
 		return "redirect:all.action"; 
 	}
-	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/meetfavoriteculinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoriteCulMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
@@ -666,7 +666,7 @@ public class MainController
 		dao.meetFavInsert(dto);
 		
 		return "redirect:culture.action";
-	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	}@RequestMapping(value = "/meetfavoriteexhibitinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoriteExhibitMeetExhiInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
@@ -678,7 +678,7 @@ public class MainController
 		dao.meetFavInsert(dto);
 		
 		return "redirect:exhibition.action";
-	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	}@RequestMapping(value = "/meetfavoriteshowinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoriteShowMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
@@ -690,7 +690,7 @@ public class MainController
 		dao.meetFavInsert(dto);
 		
 		return "redirect:show.action";
-	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	}@RequestMapping(value = "/meetfavoriteplayinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoritePlayMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
@@ -702,7 +702,7 @@ public class MainController
 		dao.meetFavInsert(dto);
 		
 		return "redirect:play.action";
-	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	}@RequestMapping(value = "/meetfavoritefoodinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoriteFoodMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
@@ -714,7 +714,7 @@ public class MainController
 		dao.meetFavInsert(dto);
 		
 		return "redirect:food.action";
-	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	}@RequestMapping(value = "/meetfavoriteresinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String favoriteResMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
 	{
 		session.getAttribute("member");
