@@ -162,30 +162,49 @@
 		
 		//alert(params.length);
 		
-			alert(params[0]); // grCode 51
+			//alert(params[0]); // grCode 51
+			var grCode = params[0];
+			var genderList = new Array();
 			
-			 $.ajax({
-				  url : "genderfind.action?grCode=51"
-					,type : "get"
-	                , contentType :"application/json; charset=UTF-8" //application/json; , application/text; 똑같이 성공
-	                 , success: function(data){
-	                	 	alert("성공?");
-	                	 	alert(data);
-	                	 	alert(JSON.parse(data));
-	                	 	alert(data.men);
-		                    console.log(data);
-	                 } 
-	               
-	             });
+			for (var i = 0; i < params.length; i++)
+			{
+				 $.ajax({
+					  url : "genderfind.action?grCode="+params[i]
+						,type : "get"
+						, async:false
+						, dataType : "json"
+		                , contentType :"application/json; charset=UTF-8" //application/json; , application/text; 똑같이 성공
+		                 , success: function(data){
+		                	 	alert("성공?");
+		                	 	genderList = new Array();
+		                	 	
+		                	 	//alert(data);
+		                	 	console.log(JSON.stringify(data));
+		                	 	console.log("data.grCode : " + data.grCode);
+		                	 	console.log("data.men : " + data.men);
+		                	 	genderList[0] = data.men;
+		                	 	
+		                	 	console.log("data.women : " + data.women);
+		                	 	genderList[1] = data.women;
+		                	 	
+		                	 	console.log("data.unk : " + data.unk);
+		                	 	genderList[2] = data.unk;
+		                	 	
+		                 } 
+		        });
+				 showGenderChart(params[i], i+1, genderList[0], genderList[1], genderList[2]);
+	 			showAgeChart(params[i], i+1);
+				 
+			}
 			
-			showGenderChart(params[0], 1);
-			showAgeChart(params[0], 1);
-		
+			
 		grCodeList = new Array();
 	}
 	
-	function showGenderChart(grCode, num)
+	function showGenderChart(grCode, num, men, women, unk)
 	{
+		alert(men);
+		
 			Highcharts.chart('genderSpace'+num, {
 			    chart: {
 			        plotShadow: false,
@@ -198,22 +217,21 @@
 			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
 			    },
 			    series: [{
-			        name: 'Language',
-			        colorByPoint: true,
+			        name: '성별',
+			        colors: ['#0066ff', '#ff9999', '#000000'],
 			        data: [{
 			            name: '남자',
-			            y: 8,
-			            sliced: true,
-			            selected: true
+			            y: Number(men)
 			        }, {
 			            name: '여자',
-			            y: 5
+			            y: Number(women)
 			        }, {
 			            name: '알수없음',
-			            y: 2
+			            y: Number(unk)
 			        }]
 			    }]
 			});
+			
 	}
 	
 
@@ -232,13 +250,11 @@
 			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
 			    },
 			    series: [{
-			        name: 'Language',
+			        name: '나이',
 			        colorByPoint: true,
 			        data: [{
 			            name: '10대',
 			            y: 3,
-			            sliced: true,
-			            selected: true
 			        }, {
 			            name: '20대',
 			            y: 5
@@ -343,6 +359,9 @@
 				<input type="hidden" id="grCode1">
 				<input type="hidden" id="grCode2">
 				<input type="hidden" id="grCode3">
+				<input type="hidden" id="men">
+				<input type="hidden" id="women">
+				<input type="hidden" id="unk">
 			</div>
       </div>
     </div>

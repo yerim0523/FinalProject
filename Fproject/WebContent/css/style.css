@@ -3,7 +3,7 @@
 /* line 2, E:/172 Etrain Education/172_Etrain_Education_html/sass/_extends.scss */
 .btn_1, .btn_2:hover, .main_menu .navbar-toggler:after, .banner_part .banner_text .btn_1, .feature_part .single_feature:hover span {
   /* background-image: linear-gradient(to left, #ee390f 0%, #f9b700 51%, #ee390f 100%); */
-  background-color: #5cb196;
+  background-color: #ff666b;
 }
 
 /* line 6, E:/172 Etrain Education/172_Etrain_Education_html/sass/_extends.scss */
@@ -2207,7 +2207,7 @@ ul {
 
 /* line 51, E:/172 Etrain Education/172_Etrain_Education_html/sass/_menu.scss */
 .main_menu .main-menu-item ul .btn_1 {
-  background-color: #5cb196;
+  background-color: #ff666b;
   font-size: 15px;
   font-weight: bold;
   padding: 11.5px 33px;
