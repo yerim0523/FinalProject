@@ -96,55 +96,55 @@ button.more {
 				return;
 			}
 			
-				var params = {};
-				params.memId = $("#sessionInfo").val();
-				params.ngCode = $("#empNgCode").val();
-				/* alert($("#sessionInfo").val());
-				alert($("#empNgCode").val()); */
-				
-				 $.ajax({
-		                type : "POST"
-		                , url : "meetfavoritefind.action"
-		                , data : params
-		                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
-		                 , success: function(data){
-		                    var isYn = data;
-		                    if(isYn === "Y")
-		                    {
-		                    	var memId = $("#sessionInfo").val();
-		                    	var ngCode = $("#empNgCode").val();
-		                    	
-		                    	if (!isNaN(ngCode))
-								{
-		                    		location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
-								}
-		                    	/* 
-		                    	else if (isNaN(ngCode)) 
-		                    	{
-		                    		location = "hostfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
-								}
-		                    	 */
-		                       alert("찜이 해제되었습니다!");
-		                       
-		                    }else
-		                    {
-		                    	var memId = $("#sessionInfo").val();
-		                    	var ngCode = $("#empNgCode").val();
-		                    	
-		                    	if (!isNaN(ngCode))
-								{
-		                    		location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
-								}
-		                    	/* 
-		                    	else if (isNaN(ngCode)) 
-		                    	{
-		                    		location = "hostfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
-								}
-		                    	 */
-		                    	alert("찜이 완료되었어용~!! ^_^");
-		                    }
-		                 }
-		          });
+			var params = {};
+			params.memId = $("#sessionInfo").val();
+			params.ngCode = $("#empNgCode").val();
+			/* alert($("#sessionInfo").val());
+			alert($("#empNgCode").val()); */
+			
+			 $.ajax({
+	                type : "POST"
+	                , url : "meetfavoritefind.action"
+	                , data : params
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , success: function(data){
+	                    var isYn = data;
+	                    if(isYn === "Y")
+	                    {
+	                    	var memId = $("#sessionInfo").val();
+	                    	var ngCode = $("#empNgCode").val();
+	                    	
+	                    	if (!isNaN(ngCode))
+							{
+	                    		location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	/* 
+	                    	else if (isNaN(ngCode)) 
+	                    	{
+	                    		location = "hostfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	 */
+	                       alert("찜이 해제되었습니다!");
+	                       
+	                    }else
+	                    {
+	                    	var memId = $("#sessionInfo").val();
+	                    	var ngCode = $("#empNgCode").val();
+	                    	
+	                    	if (!isNaN(ngCode))
+							{
+	                    		location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	/* 
+	                    	else if (isNaN(ngCode)) 
+	                    	{
+	                    		location = "hostfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	 */
+	                    	alert("찜이 완료되었어용~!! ^_^");
+	                    }
+	                 }
+	          });
 		});
 		
 	});

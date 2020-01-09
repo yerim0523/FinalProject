@@ -10,24 +10,32 @@
 <meta charset="UTF-8">
 <title>AllMeeting.jsp</title>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<script type="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/button.css" >
 <script type="js/bootstrap.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- jquery plugins here-->
+    <!-- jquery -->
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- easing js -->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
 
 <!-- jquery plugins here-->
    
@@ -43,7 +51,6 @@
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
 
@@ -66,21 +73,75 @@
 		float: ri
 	}
 	
-	/* div.name
-   {
-        width: 50%;
-        float: left;
-        box-sizing: border-box;
-        
-    }
-    div.heart
-    {
-    	width: 50%;
-    	float: right;
-    	box-sizing: border-box;
-    } */
+	.fa-heart {
+	cursor: pointer;
+	}
     
 </style>
+
+<script type="text/javascript">
+	$(function()
+	{
+		var count = 0;
+		array = new Array();
+		
+		  <c:forEach var="jjim" items="${meetFavList}" varStatus="status">
+			array[count]="${jjim.ngCode}";
+			count++;
+		  </c:forEach>  
+		
+		for (var i = 0; i <array.length; i++)
+		{
+			listNgCode = array[i];
+			/* alert(listNgCode); */
+			$('#groupHeart'+listNgCode).removeClass('far');
+			$('#groupHeart'+listNgCode).addClass('fas');
+		}
+		
+		$(".heart").click(function()
+		{
+			if($("#sessionInfo").val()==="")
+			{
+				$('.loginNeed').modal('show');
+				return;
+			}
+			var params = {};
+			params.memId = $("#sessionInfo").val();
+			params.ngCode = $("#empNgCode").val();
+			
+			 $.ajax({
+	                type : "POST"
+	                , url : "meetfavoritefind.action"
+	                , data : params
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , success: function(data){
+	                    var isYn = data;
+	                    if(isYn === "Y")
+	                    {
+	                    	var memId = $("#sessionInfo").val();
+	                    	var ngCode = $("#empNgCode").val();
+	                    	
+	                    	location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
+	                        alert("찜이 해제되었습니다!");
+	                       
+	                    }else
+	                    {
+	                    	var memId = $("#sessionInfo").val();
+	                    	var ngCode = $("#empNgCode").val();
+	                    	
+	                    	location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
+	                    	alert("찜이 완료되었어용~!! ^_^");
+	                    }
+	                 }
+	          });
+		});
+	});
+	
+	function sendNgCode(data)
+	{
+		$("#empNgCode").val(data);
+	}
+</script>
 
 </head>
 <body>
@@ -90,13 +151,15 @@
 </div>
 
 <section class="course_details_area section_padding" style="padding-bottom: 0;">
-<div>
-	<c:import url="MeetingBar.jsp"></c:import>
-</div>
+	<div>
+		<c:import url="MeetingBar.jsp"></c:import>
+	</div>
 </section>
 
 
-<div class="container"> 
+<div class="container">
+	<input type="hidden" id="sessionInfo" value="${sessionInfo.memId }">
+	<input type="hidden" id="empNgCode"> 
 	<div>
 		<div align="left" class="left">
 			<button type="button" class="btn btn-default">전체모임목록</button>
@@ -178,11 +241,11 @@
 					<input type="hidden" value="${AllGroup.ngCode }">
 					</div>
 					<div class="heart" align="right">
-						<i class="far fa-heart"></i>
-					</div>
+               	   		 <i class="far fa-heart heartIcon" id="groupHeart${AllGroup.ngCode}" style="color: red;" onclick="sendNgCode(${AllGroup.ngCode})"></i>
+            	 	</div>
 					<br>
 				</div>
-				<h6 style="text-align: right; font-size: 10px;">"${AllGroup.memName }"</h6>
+				<h6 style="text-align: right; font-size: 13px;">${AllGroup.memName }</h6>
 			</div>
 			
 			</div>
@@ -190,18 +253,35 @@
 			<%-- <div>ngCode = ${AllGroup.ngCode}</div> --%>
 		</div>
 		</c:forEach>
-		
-			
-		
-		
-  	
+	</div><!-- end div.row -->
 </div>
-
-</div>
-
 <div>
    <c:import url="footer.jsp"></c:import>
 </div>
+
+	<!-- 로그인 모달창 -->
+	<div class="modal modal-center fade loginNeed" id="loginNeed"
+		tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+		<div class="modal-dialog modal-80size modal-center" role="document">
+			<div class="modal-content modal-80size">
+				<div class="modal-header">
+					<span style="font-size: 15pt; font-weight: bold;">※ 로그인 경고 ※</span>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body center-block">
+					<p class="text-center">로그인이 필요한 서비스입니다.</p>
+					<div class="">
+						<a href="login.action"><button type="button" class="btn_1">로그인</button></a>
+						<button type="button" class="btn_1" data-dismiss="modal">닫기</button>
+					</div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
