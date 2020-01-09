@@ -589,7 +589,6 @@ public class MainController
 	      IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 	      IGroupDAO gdao = sqlsession.getMapper(IGroupDAO.class);
 	      
-	      
 	      if (session.getAttribute("member")!=null)
 	      {
 	    	  String id = mem.getMemId();
@@ -607,13 +606,16 @@ public class MainController
 	      System.out.println("===========  ngCode : " + ngCode);
 	      
 	      
+	      int grCode = gdao.getGrCode(ngCode);
+	      dto.setGrCode(grCode);
+	      
 	      List<GroupDTO> groupContent = dao.groupContent(ngCode);
+	      
 	      int jjimCount = dao.jjimCount(ngCode);
-	      List<GroupDTO> contentReview = dao.ContentReview(ngCode);
+	      List<GroupDTO> contentReview = dao.ContentReview(dto.getGrCode());
 	      List<GroupDTO> contentGBoard = dao.ContentGBoard(ngCode);
 	      List<GroupDTO> contentMember = dao.ContentMember(ngCode);
 	      ArrayList<MemberDTO> joinMember = gdao.joinMember(ngCode);
-	      
 	      
 	      
 	      model.addAttribute("groupContent", groupContent);

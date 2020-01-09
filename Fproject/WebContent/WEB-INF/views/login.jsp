@@ -36,12 +36,10 @@
 					var isMember = data;
 					if (isMember === "Y")
 					{
-						alert("일치하는 정보가 있음!");
 						$("#error").hide();
 						form.submit();
 					} else
 					{
-						alert("일치하는 정보가 없음!!");
 						$("#error").show();
 						return;
 					}

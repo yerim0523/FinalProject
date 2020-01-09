@@ -37,7 +37,6 @@
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
     
 
 <script type="text/javascript">
@@ -162,7 +161,7 @@
 		if(!f.memGen.value)
 		{
 			alert("성별을 선택해주세요.");
-			f.memGen.focus();
+			//f.memGen.male.focus();
 			return;
 		}
 		
