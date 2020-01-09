@@ -6,7 +6,7 @@ public class GroupDTO
 	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name,search;
 	private String hostId, hostName, hostPic, reviewComCont, reviewComDate;
 	private int men,women,unknown,grCode, grCate1, grCate2,starCode;
-
+	private int oneCnt, twoCnt, thrCnt, fourCnt, etc;
 	
 
 	private int ngCode, ngMax, ngMin, ngCost, ngFavorite, joinCode;
@@ -636,6 +636,56 @@ public class GroupDTO
 	public void setReviewNum(int reviewNum)
 	{
 		this.reviewNum = reviewNum;
+	}
+
+	public int getOneCnt()
+	{
+		return oneCnt;
+	}
+
+	public void setOneCnt(int oneCnt)
+	{
+		this.oneCnt = oneCnt;
+	}
+
+	public int getTwoCnt()
+	{
+		return twoCnt;
+	}
+
+	public void setTwoCnt(int twoCnt)
+	{
+		this.twoCnt = twoCnt;
+	}
+
+	public int getThrCnt()
+	{
+		return thrCnt;
+	}
+
+	public void setThrCnt(int thrCnt)
+	{
+		this.thrCnt = thrCnt;
+	}
+
+	public int getFourCnt()
+	{
+		return fourCnt;
+	}
+
+	public void setFourCnt(int fourCnt)
+	{
+		this.fourCnt = fourCnt;
+	}
+
+	public int getEtc()
+	{
+		return etc;
+	}
+
+	public void setEtc(int etc)
+	{
+		this.etc = etc;
 	}
 	
 	

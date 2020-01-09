@@ -651,7 +651,6 @@ public class MemberController
    public  String genderChartInfo(int grCode,HttpServletRequest request) throws JsonProcessingException
    {     
 	  System.out.println(grCode);
-	   JSONObject jsonObject1 = new JSONObject();
 	   JSONArray jsonarray = new JSONArray();
 	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
 	      ObjectMapper mapper = new ObjectMapper();
@@ -672,16 +671,55 @@ public class MemberController
 	      retVal.put("women", dto.getWomen());
 	      retVal.put("unk", dto.getUnknown());
 	      
-	      jsonObject1.put("grCode", dto.getGrCode());
-	      jsonObject1.put("men", dto.getMen());
-	      jsonObject1.put("women", dto.getWomen());
-	      jsonObject1.put("unk", dto.getUnknown());
+	      jsonarray.add(dto.getGrCode());
+	      jsonarray.add(dto.getMen());
+	      jsonarray.add(dto.getWomen());
+	      jsonarray.add(dto.getUnknown());
 	      
-	      jsonarray.add(jsonObject1);
-	      
-	      String str = mapper.writeValueAsString(jsonarray); //jsonObject1
+	      String str = mapper.writeValueAsString(retVal); //retVal
 	    		  
-	      System.out.println(jsonObject1);
+	      System.out.println(retVal.get("grCode"));
+	      System.out.println(jsonarray);
+	      System.out.println(str);
+	      
+	      return str; 
+   }
+  
+   
+
+   @ResponseBody
+   @SuppressWarnings("unchecked")
+   @RequestMapping(value = "/agefind.action" ,method = {RequestMethod.GET,RequestMethod.POST})
+   public  String ageChartInfo(int grCode,HttpServletRequest request) throws JsonProcessingException
+   {     
+	  System.out.println(grCode);
+	   JSONArray jsonarray = new JSONArray();
+	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+	      
+	      GroupDTO dto = dao.ageChart(grCode);
+	      
+	      System.out.println("oneCnt--------------"+dto.getOneCnt());
+	      System.out.println("TwoCnt--------------"+dto.getTwoCnt());
+	      System.out.println("ThrCnt--------------"+dto.getThrCnt());
+	      System.out.println("FourCnt--------------"+dto.getFourCnt());
+	      System.out.println("Etc--------------"+dto.getEtc());
+	      
+	      
+	      Map<String, Object> retVal = new HashMap<String, Object>();
+	      
+	      retVal.put("oneCnt", dto.getOneCnt());
+	      retVal.put("TwoCnt", dto.getTwoCnt());
+	      retVal.put("ThrCnt", dto.getThrCnt());
+	      retVal.put("FourCnt", dto.getFourCnt());
+	      retVal.put("Etc", dto.getEtc());
+	      
+	      jsonarray.add(dto.getGrCode());
+	      
+	      String str = mapper.writeValueAsString(retVal); //retVal
+	    		  
+	      System.out.println(retVal.get("grCode"));
 	      System.out.println(jsonarray);
 	      System.out.println(str);
 	      
