@@ -822,6 +822,11 @@
         AND RE.MEM_ID = MB.MEM_ID
         AND NG.NG_CODE = #{ngCode}   
    </select>
+
+	<insert id="refundInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO">
+		INSERT INTO REFUND(RF_CODE, PAY_CODE)
+		VALUES(REFUNDSEQ.NEXTVAL, #{payCode});
+	</insert>
    
    
    <select id="meetFavCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="String">

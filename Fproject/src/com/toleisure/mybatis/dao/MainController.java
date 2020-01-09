@@ -585,15 +585,26 @@ public class MainController
 	      session.getAttribute("member");
 	      MemberDTO mem = (MemberDTO)session.getAttribute("member");
 	      
-	      String id = mem.getMemId();
-	      dto.setMemId(id);
+	      IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+	      IGroupDAO gdao = sqlsession.getMapper(IGroupDAO.class);
 	      
 	      
+	      if (session.getAttribute("member")!=null)
+	      {
+	    	  String id = mem.getMemId();
+		      dto.setMemId(id);
+		      
+		      ArrayList<GroupDTO> joinCheck = gdao.myjoinCheck(dto);
+		      model.addAttribute("joinCheck", joinCheck);
+		      model.addAttribute("memId", dto.getMemId());
+	      }
+	      else
+	      {
+	    	  model.addAttribute("joinCheck", null);
+	      }
 	      
 	      System.out.println("===========  ngCode : " + ngCode);
 	      
-	      IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-	      IGroupDAO gdao = sqlsession.getMapper(IGroupDAO.class);
 	      
 	      List<GroupDTO> groupContent = dao.groupContent(ngCode);
 	      int jjimCount = dao.jjimCount(ngCode);
@@ -601,7 +612,7 @@ public class MainController
 	      List<GroupDTO> contentGBoard = dao.ContentGBoard(ngCode);
 	      List<GroupDTO> contentMember = dao.ContentMember(ngCode);
 	      ArrayList<MemberDTO> joinMember = gdao.joinMember(ngCode);
-	      int joinCheck = gdao.myjoinCheck(dto);
+	      
 	      
 	      
 	      model.addAttribute("groupContent", groupContent);
@@ -611,14 +622,25 @@ public class MainController
 	      model.addAttribute("contentMember", contentMember);
 	      model.addAttribute("joinMember", joinMember);
 	      model.addAttribute("joinMemberCnt", gdao.joinMemberCnt(ngCode));
-	      model.addAttribute("joinCheck", joinCheck);
+	     
 	      
 	      
 	      session.setAttribute("ngCode", dto.getNgCode());
 	      
 	      return view;
 	   }
-	
+	   
+	//----------------------------------------------------------- 모임취소(환불 신청)
+	@RequestMapping(value = "/refund.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String refundInsert(GroupDTO dto, Model model, HttpSession session)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		dao.refundInsert(dto);
+		
+		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
+	}
 	// ---------------------------------------------------------- 찜 모임 여부
 	@RequestMapping(value = "/meetfavoritefind.action", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody

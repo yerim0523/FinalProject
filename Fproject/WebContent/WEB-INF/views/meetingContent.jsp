@@ -226,10 +226,20 @@
 			document.getElementById("repCate").value = cateVal;
 			f.submit();
 		}
+	}
+	
+	function refund()
+	{
+		f = document.refundForm;
 		
-		
-		
-		
+		if(confirm("정말 모임신청을 취소하시겠습니까?") == true)
+		{
+			f.submit();
+		}
+		else
+		{
+			return;
+		}
 	}
 	
 	
@@ -429,7 +439,8 @@
 						 -->
 					</div>
 				</div>
-
+				
+				
 				<div class="col-lg-4 right-contents">
 					<div class="sidebar_top">
 						<ul>
@@ -460,9 +471,33 @@
 									<%-- <span style="font-size: 13pt;">(최소인원 : ${grcontent.ngMin }명)</span> --%>
 							</a><div align="right"><span style="font-size: 10pt;">(최소인원 : ${grcontent.ngMin }명)</span></div></li>
 
-						</ul> 
-						<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
+						</ul>
+						
+						 
+						<c:if test="${empty memId }">
+							<!--  -->
+							<a class="btn4" href="login.action" style="margin-left: 30px;">로그인하기</a>
+						</c:if>
+						<c:if test="${!empty memId }">
+							<c:if test="${empty joinCheck}">
+								<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
+							</c:if>
+							
+							<c:forEach var="joinCheck" items="${joinCheck }">
+							<c:if test="${joinCheck.memCount ne 0 }">
+								
+								<form action="refund.action" method="post" name="refundForm">
+								<button class="btn4" onclick="refund()" style="margin-left: 30px;">모임신청취소(환불)</button>
+								<input type="text" id="payCode" name="payCode" value="${joinCheck.payCode }">
+								</form>
+								
+								
+							</c:if>
+							</c:forEach>
+						</c:if>
+						
 					</div> 
+					
 
 					<br>
 					<br>
@@ -480,11 +515,13 @@
 								style="object-fit:cover; width: 50px; height: 50px; cursor: pointer;" onclick="location.href='profile.action?memId=${joinMem.memId}'">
 								 &nbsp;&nbsp;&nbsp; 
 							<span style="cursor: pointer; color: black;" onclick="location.href='profile.action?memId=${joinMem.memId}'">${joinMem.memName }</span>
+							<input type="hidden" id="payCode" name="payCode" value="${joinMem.payCode }">
 						</div>
 						<br>
 						</c:forEach>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	 </c:forEach>

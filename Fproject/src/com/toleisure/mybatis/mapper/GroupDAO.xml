@@ -271,14 +271,25 @@
    
    </select>
    
-   <select id="myjoinCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="Integer">
-   		SELECT COUNT(*) AS memCount
+   <select id="joinMember" parameterType="Integer" resultType="com.toleisure.mybatis.dto.MemberDTO">
+   		SELECT M.MEM_ID AS memId, M.MEM_PIC AS memPic, M.MEM_NAME AS memName, P.PAY_CODE AS payCode
+		FROM GR_REQUEST RQ, PAYMENT P, MEMBER M
+		WHERE RQ.NG_CODE = #{ngCode} AND RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE NOT IN (SELECT RF_CODE
+		                                                                        FROM REFUND R, PAYMENT P
+		                                                                        WHERE R.PAY_CODE = P.PAY_CODE)
+		      AND RQ.MEM_ID = M.MEM_ID
+   
+   </select>
+   
+   <select id="myjoinCheck" parameterType="com.toleisure.mybatis.dto.GroupDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
+   		SELECT COUNT(*) AS memCount, P.PAY_CODE AS payCode
 		FROM GR_REQUEST RQ, PAYMENT P, MEMBER M
 		WHERE RQ.NG_CODE = #{ngCode} AND RQ.RE_CODE = P.RE_CODE AND P.PAY_CODE NOT IN (SELECT RF_CODE
 		                                                                        FROM REFUND R, PAYMENT P
 		                                                                        WHERE R.PAY_CODE = P.PAY_CODE)
 		      AND RQ.MEM_ID = M.MEM_ID
 		      AND M.MEM_ID = #{memId}
+		GROUP BY P.PAY_CODE
    
    </select>
    
@@ -291,19 +302,6 @@
 		      AND RQ.MEM_ID = M.MEM_ID
    
    </select>
-    
-    <select id ="TotalPeople" parameterType="Integer" resultType="java.lang.Integer">
-    		SELECT COUNT(*) AS TOTALPEOPLE
-			FROM NOW_GROUP NG JOIN TBL_GROUP G
-			ON NG.GR_CODE = G.GR_CODE
-			    JOIN FIXED_GROUP FG
-			    ON NG.NG_CODE=FG.NG_CODE
-			        JOIN GR_JOIN GJ
-			        ON FG.FIX_CODE=GJ.FIX_CODE
-			            JOIN REVIEW R
-			            ON R.JOIN_CODE=GJ.JOIN_CODE
-			WHERE G.GR_CODE=#{grCode}
-    </select>
     
     <select id ="AvgStar" parameterType="Integer" resultType="double">
     		SELECT NVL(AVG(R.REVIEW_STAR), 0) AS REVIEW_STAR_AVG

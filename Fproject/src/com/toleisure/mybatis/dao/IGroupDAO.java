@@ -79,7 +79,7 @@ public interface IGroupDAO
 	public GroupDTO joinMemberCnt(int ngCode);
 	
 	// 현재 로그인 한 회원이 신청한 모임인지 확인
-	public int myjoinCheck(GroupDTO dto);
+	public ArrayList<GroupDTO> myjoinCheck(GroupDTO dto);
 	
 	public double AvgStar(int grCode);
 	public int TotalPeople(int grCode);

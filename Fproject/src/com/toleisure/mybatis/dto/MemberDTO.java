@@ -5,7 +5,7 @@ public class MemberDTO
 {
 	private String memId, memPw, memName, memTel, memBirth, memPic, newPw;
 	private String memGen, memComp, memIntro, memDate;
-	private int memGender, memCate1, memCate2,month,year,check;
+	private int memGender, memCate1, memCate2,month,year,check, payCode;
 
 	public int getCheck()
 	{
@@ -170,5 +170,17 @@ public class MemberDTO
 	public void setMemBirth(String memBirth) {
 		this.memBirth = memBirth;
 	}
+
+	public int getPayCode()
+	{
+		return payCode;
+	}
+
+	public void setPayCode(int payCode)
+	{
+		this.payCode = payCode;
+	}
+	
+	
 	
 }

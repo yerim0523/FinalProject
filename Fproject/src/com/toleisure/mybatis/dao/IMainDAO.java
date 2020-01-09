@@ -47,6 +47,9 @@ public interface IMainDAO
 	public ArrayList<GroupDTO> ContentGBoard(int ngCode);
 	public ArrayList<GroupDTO> ContentMember(int ngCode);
 	public int jjimCount(int ngCode);
+	
+	//-- 모임 신청 취소 (환불)
+	public int refundInsert(GroupDTO dto);
 	 
 	//-- 찜 여부 확인
 	public String meetFavCheck(GroupDTO dto);
