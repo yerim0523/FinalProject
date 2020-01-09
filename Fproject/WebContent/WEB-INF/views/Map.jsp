@@ -214,7 +214,7 @@ input.img-button {
 	         	  // 인포윈도우로 장소에 대한 설명을 표시합니다
 	         	
 	         		var content = '<div class="overlay_info">';
-	        		content += '    <a href="#" onclick='+"location='groupdetail.action?ngCode='"+positions[i].ngCode +'<strong>'+positions[i].title+'</strong></a>';
+	        		content += '    <a href="#" onclick='+"location='groupdetail.action?ngCode='"+ positions[i].ngCode +'<strong>'+positions[i].title+'</strong></a>';
 	        		content += '    <div class="desc">';
 	        		content += '        <img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
 	        		content += '        <span class="address">'+positions[i].loc+'</span>';
