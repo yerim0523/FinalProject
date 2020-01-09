@@ -17,10 +17,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.ibatis.session.SqlSession;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.toleisure.mybatis.dto.BoardDTO;
@@ -36,7 +40,9 @@ import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
 import netscape.javascript.JSObject;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -639,32 +645,52 @@ public class MemberController
    }
    
 
-   @SuppressWarnings("unchecked")
-@RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
    @ResponseBody
-   public JSONObject genderChartInfo(HttpServletRequest request)
-   {
-	  int grCode = Integer.parseInt(request.getParameter("grCode"));
-	   
-	  JSONObject jsonObject1 = new JSONObject();
-      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
-      
-      GroupDTO dto = dao.genderChart(grCode);
-      
-      System.out.println("grCode--------------"+dto.getGrCode());
-      System.out.println("men--------------"+dto.getMen());
-      System.out.println("women--------------"+dto.getWomen());
-      System.out.println("unk--------------"+dto.getUnknown());
-      
-      jsonObject1.put("grCode", dto.getGrCode());
-      jsonObject1.put("men", dto.getMen());
-      jsonObject1.put("women", dto.getWomen());
-      jsonObject1.put("unk", dto.getUnknown());
-      
-      System.out.println(jsonObject1);
-      return jsonObject1; 
+   @SuppressWarnings("unchecked")
+   @RequestMapping(value = "/genderfind.action" ,method = {RequestMethod.GET,RequestMethod.POST})
+   public  String genderChartInfo(int grCode,HttpServletRequest request) throws JsonProcessingException
+   {     
+	  System.out.println(grCode);
+	   JSONObject jsonObject1 = new JSONObject();
+	   JSONArray jsonarray = new JSONArray();
+	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+	      
+	      GroupDTO dto = dao.genderChart(grCode);
+	      
+	      System.out.println("grCode--------------"+dto.getGrCode());
+	      System.out.println("men--------------"+dto.getMen());
+	      System.out.println("women--------------"+dto.getWomen());
+	      System.out.println("unk--------------"+dto.getUnknown());
+	      
+	      
+	      Map<String, Object> retVal = new HashMap<String, Object>();
+	      
+	      retVal.put("grCode", dto.getGrCode());
+	      retVal.put("men", dto.getMen());
+	      retVal.put("women", dto.getWomen());
+	      retVal.put("unk", dto.getUnknown());
+	      
+	      jsonObject1.put("grCode", dto.getGrCode());
+	      jsonObject1.put("men", dto.getMen());
+	      jsonObject1.put("women", dto.getWomen());
+	      jsonObject1.put("unk", dto.getUnknown());
+	      
+	      jsonarray.add(jsonObject1);
+	      
+	      String str = mapper.writeValueAsString(jsonarray); //jsonObject1
+	    		  
+	      System.out.println(jsonObject1);
+	      System.out.println(jsonarray);
+	      System.out.println(str);
+	      
+	      return str; 
    }
   
+   
+
+   
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String Map2(MemberDTO dto, Model model, HttpSession session)
    {

@@ -162,22 +162,20 @@
 		
 		//alert(params.length);
 		
-			alert(params[0]);
+			alert(params[0]); // grCode 51
 			
 			 $.ajax({
-	                type : "GET"
-	                , url : "genderfind.action?grCode="+params[0]
-			 		
-	                , contentType :"application/json;"
+				  url : "genderfind.action?grCode=51"
+					,type : "get"
+	                , contentType :"application/json; charset=UTF-8" //application/json; , application/text; 똑같이 성공
 	                 , success: function(data){
+	                	 	alert("성공?");
+	                	 	alert(data);
+	                	 	alert(JSON.parse(data));
+	                	 	alert(data.men);
 		                    console.log(data);
-	                 }
-	                ,error:function(request, error) {
-
-		        		alert("fail");
-		        		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-	        		}
+	                 } 
+	               
 	             });
 			
 			showGenderChart(params[0], 1);
