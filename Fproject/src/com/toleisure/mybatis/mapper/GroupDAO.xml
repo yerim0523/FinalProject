@@ -57,7 +57,7 @@
             , #{ngIntro}, #{ngMyIntro},#{xlocation},#{ylocation});
       END
       }
-   </insert>
+   </insert> 
    
 
    <select id="grSearch" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.GroupDTO">
