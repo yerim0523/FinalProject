@@ -126,13 +126,13 @@
 	<!-- 본인 결제내역 페이지 -->
 	<select id="payList" parameterType="com.toleisure.mybatis.dto.MemberDTO" resultType="com.toleisure.mybatis.dto.PayDTO">
 		SELECT ROWNUM AS rNum, E.payCode AS payCode, E.ngCode AS ngCode
-			 , E.grName AS grName, E.grCount AS grCount, E.ngCost AS ngCost, E.memId AS memId
+			 , E.grName AS grName, E.grCount AS grCount, E.ngCost AS ngCost, E.memId AS memId, E.memName AS memName
 			 , E.pmName AS pmName, E.pmDetail AS pmDetail, TO_CHAR(E.payDate, 'YYYY-MM-DD HH24:MI') AS payDate
-			 , NVL(E.rfCode,0) AS rfCode, NVL(TO_CHAR(E.rfDate, 'YYYYMMDD'),0) AS rfDate
+			 , NVL(E.rfCode,0) AS rfCode, E.rfDate AS rfDate
 		FROM
 		(
-		SELECT P.PAY_CODE AS payCode, NG.NG_CODE AS ngCode, G.GR_NAME AS grName, NVL(CNT.GR_COUNT,0) AS grCount, NG.NG_COST AS ngCost, M.MEM_ID AS memId
-		     , PM.PM_NAME AS pmName, P.PAY_DETAIL AS pmDetail, P.PAY_DATE AS payDate, RF.RF_CODE AS rfCode, RF.RF_DATE AS rfDate
+		SELECT P.PAY_CODE AS payCode, NG.NG_CODE AS ngCode, G.GR_NAME AS grName, NVL(CNT.GR_COUNT,0) AS grCount, NG.NG_COST AS ngCost, M.MEM_ID AS memId, M.MEM_NAME AS memName
+		     , PM.PM_NAME AS pmName, P.PAY_DETAIL AS pmDetail, P.PAY_DATE AS payDate, RF.RF_CODE AS rfCode, NVL(TO_CHAR(RF.RF_DATE, 'YYYY-MM-DD'),0) AS rfDate
 		FROM NOW_GROUP NG, GR_REQUEST R, PAYMENT P, MEMBER M, TBL_GROUP G, REFUND RF
 		                                                  , (SELECT G.GR_CODE AS GR_CODE, COUNT(*) AS GR_COUNT
 		                                                     FROM TBL_GROUP G, NOW_GROUP NG, FIXED_GROUP FG
