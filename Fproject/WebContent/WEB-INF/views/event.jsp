@@ -60,20 +60,6 @@
 </script> -->
 <!-- <script type="text/javascript" src="/test/resources/js/jquery-3.3.1.min.js"></script> -->
 <script>
-/*     $(document).ready(function(){
-        $("#notice_regi").on("click",function(){
-            location.href="/test/noticeRegi"
-        });
-    });
-    function fn_paging(curPage){
-         location.href="/test/noticeList?curPage="+curPage; 
-        location.href="/WEB-INF/views/noticeList?curPage="+curPage;
-    }
-    
-    function notice_push(notice_id){
-        alert(notice_id);
-    } */
- 
   function fn_paging(curPage){
     	
     	location.href="event.action?curPage="+curPage;

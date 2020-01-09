@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toleisure.mybatis.dto.BoardDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
-import com.toleisure.mybatis.dto.NoticeVo;
 import com.toleisure.mybatis.dto.PagingDTO;
 
 @Controller
