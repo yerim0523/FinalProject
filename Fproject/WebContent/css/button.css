@@ -1,5 +1,11 @@
- .btn4 {
-  background-color: #5cb196;
+.btn4 {
+  background-color: #ff666b;
+  font-size: 14px;
+  padding: 11.5px 33px;
+}
+
+.btn10 {
+  background-color: #ff666b;
   font-size: 14px;
   padding: 11.5px 33px;
 }

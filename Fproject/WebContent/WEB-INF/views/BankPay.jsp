@@ -149,7 +149,8 @@ public static String getrndnum(int loopcount){
 		<tr>
 			<th style="text-align: center;">환불 계좌</th>
 			<td style="padding: 10px;">
-				<input type="text" class="form-control" id="payDetail" name="payDetail" value="" placeholder="환불 시 환불받을 계좌를 입력하세요.">
+				<input type="text" class="form-control" id="payDetail" name="payDetail" value="" placeholder="환불 시 환불받을 계좌를 입력하세요." onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+
 			</td>
 		</tr>
 		<tr>

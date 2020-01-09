@@ -162,31 +162,77 @@
 		
 		//alert(params.length);
 		
-			alert(params[0]);
+			//alert(params[0]); // grCode 51
+			var grCode = params[0];
+			var genderList = new Array();
+			var ageList = new Array();
 			
-			 $.ajax({
-	                type : "GET"
-	                , url : "genderfind.action?grCode="+params[0]
-			 		, dataType : "json"
-			 		, contentType :"application/json; charset=UTF-8"
-	                 , success: function(data){
-		                    console.log(data);
-	                 }
-	                ,complete : function (data) {
-	                	alert("컴플리트");
-	                	alert(data);
-	                	alert(data["men"]);
-	                	
-					}
-	             });
+			for (var i = 0; i < params.length; i++)
+			{
+				 $.ajax({
+					  url : "genderfind.action?grCode="+params[i]
+						,type : "get"
+						, async:false
+						, dataType : "json"
+		                , contentType :"application/json; charset=UTF-8" //application/json; , application/text; 똑같이 성공
+		                 , success: function(data){
+		                	 	alert("성공?");
+		                	 	genderList = new Array();
+		                	 	
+		                	 	//alert(data);
+		                	 	console.log(JSON.stringify(data));
+		                	 	console.log("data.grCode : " + data.grCode);
+		                	 	console.log("data.men : " + data.men);
+		                	 	genderList[0] = data.men;
+		                	 	
+		                	 	console.log("data.women : " + data.women);
+		                	 	genderList[1] = data.women;
+		                	 	
+		                	 	console.log("data.unk : " + data.unk);
+		                	 	genderList[2] = data.unk;
+		                	 	
+		                 } 
+		        });
+				 
+				 
+				 $.ajax({
+					  url : "agefind.action?grCode="+params[i]
+						,type : "get"
+						, async:false
+						, dataType : "json"
+		                , contentType :"application/json; charset=UTF-8"
+		                 , success: function(data){
+		                	 	alert("성공~~~!!");
+		                	 	ageList = new Array();
+		                	 	
+		                	 	//alert(data);
+		                	 	console.log(JSON.stringify(data));
+		                	 	console.log("data.grCode : " + data.grCode);
+		                	 	console.log("data.oneCnt : " + data.oneCnt);
+		                	 	console.log("data.twoCnt : " + data.twoCnt);
+		                	 	console.log("data.thrCnt : " + data.thrCnt);
+		                	 	console.log("data.fourCnt : " + data.fourCnt);
+		                	 	console.log("data.etc : " + data.etc);
+		                	 	
+		                	 	ageList[0] = data.oneCnt;		                	 	
+		                	 	ageList[1] = data.twoCnt;		                	 	
+		                	 	ageList[2] = data.thrCnt;		                	 	
+		                	 	ageList[3] = data.fourCnt;		                	 	
+		                	 	ageList[4] = data.etc;		                	 	
+		                 } 
+		        });
+				 
+				 
+				 showGenderChart(params[i], i+1, genderList[0], genderList[1], genderList[2]);
+				 showAgeChart(params[i], i+1, ageList[0], ageList[1], ageList[2], ageList[3], ageList[4]);
+				 
+			}
 			
-			showGenderChart(params[0], 1);
-			showAgeChart(params[0], 1);
-		
+			
 		grCodeList = new Array();
 	}
 	
-	function showGenderChart(grCode, num)
+	function showGenderChart(grCode, num, men, women, unk)
 	{
 			Highcharts.chart('genderSpace'+num, {
 			    chart: {
@@ -200,26 +246,25 @@
 			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
 			    },
 			    series: [{
-			        name: 'Language',
-			        colorByPoint: true,
+			        name: '성별',
+			        colors: ['#0066ff', '#ff9999', '#000000'],
 			        data: [{
 			            name: '남자',
-			            y: 8,
-			            sliced: true,
-			            selected: true
+			            y: Number(men)
 			        }, {
 			            name: '여자',
-			            y: 5
+			            y: Number(women)
 			        }, {
 			            name: '알수없음',
-			            y: 2
+			            y: Number(unk)
 			        }]
 			    }]
 			});
+		grCodeList = new Array();
 	}
 	
 
-	function showAgeChart(grCode, num)
+	function showAgeChart(grCode, num, one, two, thr, four, etc)
 	{
 		
 			Highcharts.chart('ageSpace'+num, {
@@ -234,32 +279,26 @@
 			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
 			    },
 			    series: [{
-			        name: 'Language',
+			        name: '나이',
 			        colorByPoint: true,
 			        data: [{
 			            name: '10대',
-			            y: 3,
-			            sliced: true,
-			            selected: true
+			            y: Number(one),
 			        }, {
 			            name: '20대',
-			            y: 5
+			            y: Number(two)
 			        }, {
 			            name: '30대',
-			            y: 3
+			            y: Number(thr)
 			        }, {
 			            name: '40대',
-			            y: 1
-			        }, {
-			            name: '50대',
-			            y: 2
+			            y: Number(four)
 			        }, {
 			            name: '기타',
-			            y: 1
+			            y: Number(etc)
 			        }]
 			    }]
 			});
-
 	}
 	
 </script>
@@ -345,6 +384,9 @@
 				<input type="hidden" id="grCode1">
 				<input type="hidden" id="grCode2">
 				<input type="hidden" id="grCode3">
+				<input type="hidden" id="men">
+				<input type="hidden" id="women">
+				<input type="hidden" id="unk">
 			</div>
       </div>
     </div>

@@ -118,6 +118,10 @@
 	<br>
 
 	<div>
+		<div align="right">
+            <span style="font-size: 15px;">전체 게시글 : ${paging.listCnt } / 전체 페이지 : ${paging.pageCnt }</span>
+        </div>
+        <br>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -206,16 +210,16 @@
         </div>
          
         <div>
-                    총 게시글 수 : ${paging.listCnt } /    총 페이지 수 : ${paging.pageCnt } / 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt }
+                    <%-- 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt } --%>
         </div>
 			
-			  <input type="button" onclick="notice_push(${v.boardMem})" value="전송">
+			  <%-- <input type="button" onclick="notice_push(${v.boardMem})" value="전송"> --%>
 </div>
 </section>
 
 
 <div>
-	<c:import url="footer.jsp"></c:import>
+	<c:import url="footer.jsp"></c:import> 
 </div>
  
 

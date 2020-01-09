@@ -72,12 +72,30 @@ public class MainController
 
 	// -----------------------------------전체 모임 출력-------------------
 	@RequestMapping(value = "/all.action", method = RequestMethod.GET)
-	public String AllMeeting(Model model, HttpSession session)
+	public String AllMeeting(Model model, HttpSession session, MemberDTO dto)
 	{
 		session.getAttribute("member");
 		String view = "WEB-INF/views/AllMeeting.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		MemberDTO sessionDto = (MemberDTO)session.getAttribute("member");
+		
+		if(session.getAttribute("member")!=null)
+		{
+			dto.setMemId(sessionDto.getMemId());
+		}
+		else
+		{
+			dto.setMemId("SYSTEM@naver.com");
+		}
+		
+		System.out.println("====== all : " + session.getAttribute("member"));
+		
+		List<BoardDTO> meetFavList = dao.meetFavList(dto.getMemId());
+		
+		model.addAttribute("meetFavList", meetFavList);
+		model.addAttribute("RecommendGroupList", dao.RecommendGroupList(dto.getMemId()));
+		model.addAttribute("sessionInfo", session.getAttribute("member"));
 
 		model.addAttribute("AllGroupList", dao.AllGroupList());
 
@@ -91,8 +109,7 @@ public class MainController
 		String view = "WEB-INF/views/AllMeetingClose.jsp";
 
 		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
-		 session.setAttribute("ordercheck", ordercheck);
-			
+		session.setAttribute("ordercheck", ordercheck);
 	
 		ArrayList<GroupDTO> AllCloseGroupList=dao.AllCloseGroupList(ordercheck);
 		
@@ -494,7 +511,7 @@ public class MainController
 	}
 
 	// ----------------------------------------------------인기호스트
-	@RequestMapping(value = "/hothost.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/hothost.action", method = RequestMethod.GET) 
 	public String HotHost(Model model, HttpSession session)
 	{
 		String view = "WEB-INF/views/HotHost.jsp";
@@ -623,6 +640,92 @@ public class MainController
 		dao.meetFavInsert(dto);
 		
 		return "redirect:main.action";
+	}
+	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteAllMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:all.action"; 
+	}
+	@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteCulMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:culture.action";
+	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteExhibitMeetExhiInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:exhibition.action";
+	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteShowMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:show.action";
+	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoritePlayMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:play.action";
+	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteFoodMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:food.action";
+	}@RequestMapping(value = "/meetfavoriteinsert.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteResMeetInsert(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavInsert(dto);
+		
+		return "redirect:restaurant.action";
 	}
 	// ---------------------------------------------------------- 찜 모임 삭제
 	@RequestMapping(value = "/meetfavoritedelete.action", method = {RequestMethod.POST,RequestMethod.GET})

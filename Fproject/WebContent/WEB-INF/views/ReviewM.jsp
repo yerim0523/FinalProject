@@ -309,39 +309,7 @@
 		}
 	}
 	
-	function report()
-	{
-		var reportId = document.getElementById("reportId").value;
-		var reviewNum = document.getElementById("reviewNum1").value;
-		
-		document.getElementById("reportId").value = reportId;
-		document.getElementById("reviewNum").value = reviewNum;
-	}
 	
-	function reviewReport()
-	{
-		f = document.reviewForm;
-		
-		var repCateSel = document.getElementById("repCateSel");
-		//alert(repCateSel.options[repCateSel.selectedIndex].value);
-		var cateVal = repCateSel.options[repCateSel.selectedIndex].value;
-		
-		if(cateVal == 0)
-		{
-			alert("신고 사유를 선택해주세요.");
-			return;
-		}
-		
-		if(cateVal == 1 || cateVal == 2 || cateVal == 3 || cateVal == 4)
-		{
-			document.getElementById("repCate").value = cateVal;
-			f.submit();
-		}
-		
-		
-		
-		
-	}
 	
 	
 </script>
@@ -411,19 +379,22 @@
 		<c:forEach var="reviewM" items="${reviewM}">
 		<div align="center">
 			<div class="review" align="left">
+			<form action="allreportpage.action" method="post">
 			<div align="left">
 				<img src="uploads/${reviewM.memPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
 				<a class="name">${reviewM.memName }</a>
-				<form action="allreportpage.action" method="post">
+				<input type="hidden" id="memName" name="memName" value="${reviewM.memName }">
+				
 				<div style="float: right;">
-					<button type="button" class="siren" data-toggle="modal" data-target="#myModal" onclick="report()">
+					<button type="submit" class="siren">
+					<!-- data-toggle="modal" data-target="#myModal" onclick="report()" -->
 						<img src="<%=cp%>/images/siren.png"	style="width: 30px; height: 30px;">									
 					</button>
-					<input type="text" name="memId" id="memId" value="${reviewM.memId }">
-					<input type="text" name="reviewNum" id="reviewNum" value="${reviewM.reviewNum }">
+					<input type="hidden" name="reportId" id="reportId" value="${reviewM.memId }">
+					<input type="hidden" name="reviewNum" id="reviewNum" value="${reviewM.reviewNum }">
 				</div>
-				</form>
+				
 				<div class="col-12 p-0 d-flex align-items-center justify-content-end">
            			<div class="starRev">
            			${reviewM.reviewStar }
@@ -448,6 +419,8 @@
             		</div>
         		</div><br>
 				<p>${reviewM.reviewCont }</p>
+				<input type="hidden" id="reviewCont" name="reviewCont" value="${reviewM.reviewCont }">
+			</form>
 			</div>
 			</div>
 			
@@ -581,6 +554,6 @@
 		</form>
 	</div>
 </div>
- -->
+-->
 </body>
 </html>

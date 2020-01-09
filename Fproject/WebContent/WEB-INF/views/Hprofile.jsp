@@ -75,7 +75,6 @@
 		display: inline-block;
 		text-indent: -9999px;
 		cursor: pointer;
-		/* float: right; */
 		box-sizing: border-box;
 	}
 
@@ -90,7 +89,7 @@
 	.starR.on{background-position:0 0;}
 	
 	img{max-width: 100%; height: auto;}
-
+	
 </style>
 
 
@@ -111,25 +110,30 @@
 <br><br><br>
 
 <div class="container">
-	<div class="row">
-      <div class="col-md-2" align="left">
+	<div class="col-md-2" align="left">
          <span class="page">프로필</span>
       </div>
+	<div class="row">
       <div class="col-md-10">
          <div class="container">
          <br><br>
 		      <div class="d-flex justify-content-center h-100 left">
 		         <div class="image_outer_container">
 		            <div class="green_icon"></div>
-		            <div class="image_inner_container">
-		               <img class="rounded-circle" src="uploads/${member.memPic}">
+		            <div class="image_inner_container" align="left">
+		               <img class="rounded-circle" src="uploads/${member.memPic}" style="width: 250px; height: 250px;">
 		            </div>
 		         </div>
 		         <div class="container right" style="width: 50%;">
 		            <!-- ProfileController 에서 넘겨준 member(MemberDTO 타입) 를 이용해 변수값 꺼내 쓰기 -->
-		            <input type="text" class="form-control" value="${member.memName }">
-		            <br><br>
-		            <textarea rows="3" cols="10" class="form-control">${member.memIntro }</textarea>
+		            <br>
+		            <span style="color: orange; font-size: 15px; font-weight: bold;">메이트</span>
+		           	 &nbsp;&nbsp;<span style="font-size: 20px; font-weight: bold;">${member.memName }</span>
+		            <%-- <input type="text" class="form-control" value="${member.memName }" disabled="disabled" style="background-color: white;"> --%>
+		            <br><br><br>
+		            <span style="color: orange; font-size: 15px; font-weight: bold;">메이트 소개</span><br>
+		            <textarea rows="3" cols="10" class="form-control" disabled="disabled" style="background-color: white; text-align: left;">
+		            	${member.memIntro }</textarea>
 		         </div>
 		      </div>
   		 </div><!-- end div.container -->
@@ -138,15 +142,14 @@
       
    </div><!-- end div.row -->
 </div><!-- end div.container -->
+<br>
 <hr>
-
+<br>
 <div class="container">
 	<div>
 		<div>
-			<div class="host">
-				<h4>호스트후기</h4><br>
-			</div>
-			<div class="starRev" align="right">
+			<h4>호스트후기</h4>
+			<div class="starRev" align="right"> 
 				<h6>평점 : 9.6</h6>
 				<span class="starR on"></span>
 				<span class="starR"></span>

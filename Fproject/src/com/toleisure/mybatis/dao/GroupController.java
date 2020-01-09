@@ -252,7 +252,7 @@ public class GroupController
 		dao.cardPay(dto);
 		
 		
-		return "redirect:main.action";
+		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
 	}
 
 	// 피드백 작성 여부 확인
@@ -416,7 +416,7 @@ public class GroupController
 		dao.phonePay(dto);
 		
 		
-		return "redirect:main.action";
+		return "redirect:groupdetail.action?ngCode="+dto.getNgCode();
 	}
 	
 	@RequestMapping(value = "/bankpage.action", method = {RequestMethod.POST, RequestMethod.GET})

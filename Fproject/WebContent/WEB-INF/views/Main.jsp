@@ -83,54 +83,68 @@ button.more {
 		for (var i = 0; i <array.length; i++)
 		{
 			listNgCode = array[i];
-			alert(listNgCode);
-			$('#hotGroupHeart'+listNgCode).removeClass('far');
-			$('#hotGroupHeart'+listNgCode).addClass('fas');
+			/* alert(listNgCode); */
+			$('#groupHeart'+listNgCode).removeClass('far');
+			$('#groupHeart'+listNgCode).addClass('fas');
 		}
-		
-		alert("클릭진입안함");
 		
 		$(".heart").click(function()
 		{
-			alert("클릭진입 함");
-			
 			if($("#sessionInfo").val()==="")
 			{
 				$('.loginNeed').modal('show');
 				return;
 			}
 			
-				var params = {};
-				params.memId = $("#sessionInfo").val();
-				params.ngCode = $("#empNgCode").val();
-				alert($("#sessionInfo").val());
-				alert($("#empNgCode").val());
-				
-				
-				 $.ajax({
-		                type : "POST"
-		                , url : "meetfavoritefind.action"
-		                , data : params
-		                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
-		                 , success: function(data){
-		                    var isYn = data;
-		                    if(isYn === "Y"){
-		                    	var memId = $("#sessionInfo").val();
-		                    	var ngCode = $("#empNgCode").val();
-		                    	
-		                       location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
-		                       alert("찜이 해제되었습니다!");
-		                       
-		                    }else{
-		                    	alert("찜이 완료되었어용~!! ^_^");
-		                    	
-		                    	var memId = $("#sessionInfo").val();
-		                    	var ngCode = $("#empNgCode").val();
-		                    	
-		                    	location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
-		                    }
-		                 }
-		          });
+			var params = {};
+			params.memId = $("#sessionInfo").val();
+			params.ngCode = $("#empNgCode").val();
+			/* alert($("#sessionInfo").val());
+			alert($("#empNgCode").val()); */
+			
+			 $.ajax({
+	                type : "POST"
+	                , url : "meetfavoritefind.action"
+	                , data : params
+	                , contentType :"application/x-www-form-urlencoded; charset=UTF-8"
+	                 , success: function(data){
+	                    var isYn = data;
+	                    if(isYn === "Y")
+	                    {
+	                    	var memId = $("#sessionInfo").val();
+	                    	var ngCode = $("#empNgCode").val();
+	                    	
+	                    	if (!isNaN(ngCode))
+							{
+	                    		location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	/* 
+	                    	else if (isNaN(ngCode)) 
+	                    	{
+	                    		location = "hostfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	 */
+	                       alert("찜이 해제되었습니다!");
+	                       
+	                    }else
+	                    {
+	                    	var memId = $("#sessionInfo").val();
+	                    	var ngCode = $("#empNgCode").val();
+	                    	
+	                    	if (!isNaN(ngCode))
+							{
+	                    		location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	/* 
+	                    	else if (isNaN(ngCode)) 
+	                    	{
+	                    		location = "hostfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
+							}
+	                    	 */
+	                    	alert("찜이 완료되었어용~!! ^_^");
+	                    }
+	                 }
+	          });
 		});
 		
 	});
@@ -146,6 +160,10 @@ button.more {
 
 	<div>
 		<jsp:include page="bar.jsp"></jsp:include>
+	</div>
+	
+	<div>
+		<jsp:include page="TopButton.jsp"></jsp:include>
 	</div>
 
 	<section class="course_details_area section_padding"
@@ -254,13 +272,11 @@ button.more {
 									<h5>${HotGroup.grName }</h5>
 								</div>
 								<div class="heart" align="right">
-					               	  <i class="far fa-heart heartIcon" id="hotGroupHeart${HotGroup.ngCode}" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode})"></i>
+					               	  <i class="far fa-heart heartIcon" id="groupHeart${HotGroup.ngCode}" style="color: red;" onclick="sendNgCode(${HotGroup.ngCode})"></i>
 		               	 		 </div>
-		               	 		 
-								
 								<br>
 							</div>
-							<h6 style="text-align: right; font-size: 10px;">${HotGroup.memName}</h6>
+							<h6 style="text-align: right; font-size: 13px;">${HotGroup.memName}</h6>
 						</div>
 					</div>
 				</div>
@@ -329,9 +345,12 @@ button.more {
 								<div class="name" onclick="location.href='groupdetail.action?ngCode=${NewGroup.ngCode}'">
 									<h5>${NewGroup.grName }</h5>
 								</div>
-								<br>
+								<div class="heart" align="right">
+					               	  <i class="far fa-heart heartIcon" id="groupHeart${NewGroup.ngCode}" style="color: red;" onclick="sendNgCode(${NewGroup.ngCode})"></i>
+		               	 		</div>
+		               	 		<br>
 							</div>
-							<h6 style="text-align: right; font-size: 10px;">${NewGroup.memName}</h6>
+							<h6 style="text-align: right; font-size: 13px;">${NewGroup.memName}</h6>
 						</div>
 					</div>
 				</div>
@@ -368,7 +387,7 @@ button.more {
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
 						<img src="uploads/${HotHost.memPic}" alt="썸네일" class="img-rounded"
-							style="width: 500px;"
+							style="width: 500px; height: 200px;"
 							onclick="location.href='profile.action?memId=${HotHost.memId}'">
 						<div class="caption">
 							<div>
@@ -385,8 +404,8 @@ button.more {
 										<h5>${HotHost.memName }</h5>
 									</div>
 									<div class="heart" align="right">
-										<i class="far fa-heart heartIcon" style="color: red;"></i>
-									</div>
+					               	  <i class="far fa-heart heartIcon" id="groupHeart${HotHost.memId}" style="color: red;" onclick="sendNgCode(${HotHost.memId})"></i>
+		               	 			</div>
 									<br>
 								</div>
 
@@ -462,11 +481,11 @@ button.more {
 										<h5>${ClosingGroup.grName }</h5>
 									</div>
 									<div class="heart" align="right">
-										<i class="far fa-heart heartIcon" style="color: red;"></i>
-									</div>
+					               	  <i class="far fa-heart heartIcon" id="groupHeart${ClosingGroup.ngCode}" style="color: red;" onclick="sendNgCode(${ClosingGroup.ngCode})"></i>
+		               	 			</div>
 									<br>
 								</div>
-								<h6 style="text-align: right; font-size: 10px;">${ClosingGroup.memName}</h6>
+								<h6 style="text-align: right; font-size: 13px;">${ClosingGroup.memName}</h6>
 							</div>
 
 						</div>
@@ -522,11 +541,11 @@ button.more {
 										<h5>${RecommendGroup.grName }</h5>
 									</div>
 									<div class="heart" align="right">
-										<i class="far fa-heart heartIcon" style="color: red;"></i>
-									</div>
+					               	  <i class="far fa-heart heartIcon" id="groupHeart${RecommendGroup.ngCode}" style="color: red;" onclick="sendNgCode(${RecommendGroup.ngCode})"></i>
+		               	 			</div>
 									<br>
 								</div>
-								<h6 style="text-align: right; font-size: 10px;">${RecommendGroup.memName}</h6>
+								<h6 style="text-align: right; font-size: 13px;">${RecommendGroup.memName}</h6>
 							</div>
 
 						</div>

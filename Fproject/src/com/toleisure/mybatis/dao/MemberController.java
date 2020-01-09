@@ -22,6 +22,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.toleisure.mybatis.dto.BoardDTO;
@@ -37,7 +40,9 @@ import com.toleisure.mybatis.dto.GroupDTO;
 import com.toleisure.mybatis.dto.MemberDTO;
 
 import netscape.javascript.JSObject;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -642,33 +647,87 @@ public class MemberController
 
    @ResponseBody
    @SuppressWarnings("unchecked")
-@RequestMapping(value = "/genderfind.action", method = {RequestMethod.POST, RequestMethod.GET})
-   public JSONObject genderChartInfo(HttpServletRequest request)
-   {
-	  int grCode = Integer.parseInt(request.getParameter("grCode"));
-	   
-	  JSONObject jsonObject1 = new JSONObject();
-	  JSONArray jsonarray = new JSONArray();
-      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
-      
-      GroupDTO dto = dao.genderChart(grCode);
-      
-      System.out.println("grCode--------------"+dto.getGrCode());
-      System.out.println("men--------------"+dto.getMen());
-      System.out.println("women--------------"+dto.getWomen());
-      System.out.println("unk--------------"+dto.getUnknown());
-      
-      jsonObject1.put("grCode", dto.getGrCode());
-      jsonObject1.put("men", dto.getMen());
-      jsonObject1.put("women", dto.getWomen());
-      jsonObject1.put("unk", dto.getUnknown());
-      
-      System.out.println(jsonObject1);
-      jsonarray.add(jsonObject1);
-      System.out.println(jsonarray);
-      return jsonObject1; 
+   @RequestMapping(value = "/genderfind.action" ,method = {RequestMethod.GET,RequestMethod.POST})
+   public  String genderChartInfo(int grCode,HttpServletRequest request) throws JsonProcessingException
+   {     
+	  System.out.println(grCode);
+	   JSONArray jsonarray = new JSONArray();
+	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+	      
+	      GroupDTO dto = dao.genderChart(grCode);
+	      
+	      System.out.println("grCode--------------"+dto.getGrCode());
+	      System.out.println("men--------------"+dto.getMen());
+	      System.out.println("women--------------"+dto.getWomen());
+	      System.out.println("unk--------------"+dto.getUnknown());
+	      
+	      
+	      Map<String, Object> retVal = new HashMap<String, Object>();
+	      
+	      retVal.put("grCode", dto.getGrCode());
+	      retVal.put("men", dto.getMen());
+	      retVal.put("women", dto.getWomen());
+	      retVal.put("unk", dto.getUnknown());
+	      
+	      jsonarray.add(dto.getGrCode());
+	      jsonarray.add(dto.getMen());
+	      jsonarray.add(dto.getWomen());
+	      jsonarray.add(dto.getUnknown());
+	      
+	      String str = mapper.writeValueAsString(retVal); //retVal
+	    		  
+	      System.out.println(retVal.get("grCode"));
+	      System.out.println(jsonarray);
+	      System.out.println(str);
+	      
+	      return str; 
    }
   
+   
+
+   @ResponseBody
+   @SuppressWarnings("unchecked")
+   @RequestMapping(value = "/agefind.action" ,method = {RequestMethod.GET,RequestMethod.POST})
+   public  String ageChartInfo(int grCode,HttpServletRequest request) throws JsonProcessingException
+   {     
+	  System.out.println(grCode);
+	   JSONArray jsonarray = new JSONArray();
+	      IMypageDAO dao = sqlsession.getMapper(IMypageDAO.class);
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+	      GroupDTO dto = dao.ageChart(grCode);
+	      
+	      System.out.println("oneCnt--------------"+dto.getOneCnt());
+	      System.out.println("twoCnt--------------"+dto.getTwoCnt());
+	      System.out.println("thrCnt--------------"+dto.getThrCnt());
+	      System.out.println("fourCnt--------------"+dto.getFourCnt());
+	      System.out.println("etc--------------"+dto.getEtc());
+	      
+	      
+	      Map<String, Object> retVal = new HashMap<String, Object>();
+	      
+	      retVal.put("oneCnt", dto.getOneCnt());
+	      retVal.put("twoCnt", dto.getTwoCnt());
+	      retVal.put("thrCnt", dto.getThrCnt());
+	      retVal.put("fourCnt", dto.getFourCnt());
+	      retVal.put("etc", dto.getEtc());
+	      
+	      jsonarray.add(dto.getGrCode());
+	      
+	      String str = mapper.writeValueAsString(retVal); //retVal
+	    		  
+	      System.out.println(retVal.get("grCode"));
+	      System.out.println(jsonarray);
+	      System.out.println(str);
+	      
+	      return str; 
+   }
+  
+   
+
+   
    @RequestMapping(value = "/map2.action", method = {RequestMethod.POST, RequestMethod.GET})
    public String Map2(MemberDTO dto, Model model, HttpSession session)
    {
