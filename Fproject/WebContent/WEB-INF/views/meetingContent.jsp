@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>testest.jsp</title>
+<title>meetingContent.jsp</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -35,6 +35,7 @@
     <script src="js/masonry.pkgd.js"></script>
     <!-- particles js -->
     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/jquery.nice-select.min.js"></script>
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
@@ -475,19 +476,19 @@
 						
 						 
 						<c:if test="${empty memId }">
-							<!--  -->
 							<a class="btn4" href="login.action" style="margin-left: 30px;">로그인하기</a>
 						</c:if>
+						
 						<c:if test="${!empty memId }">
 							<c:if test="${empty joinCheck}">
-								<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
+								<a class="btn4" href="pay.action" style="margin-left: 30px;">신청하기(결제)</a>
 							</c:if>
 							
 							<c:forEach var="joinCheck" items="${joinCheck }">
 							<c:if test="${joinCheck.memCount ne 0 }">
 								
 								<form action="refund.action" method="post" name="refundForm">
-								<button class="btn4" onclick="refund()" style="margin-left: 30px;">모임신청취소(환불)</button>
+								<button class="btn4" onclick="refund()" style="margin-left: 30px;">신청취소(환불)</button>
 								<input type="text" id="payCode" name="payCode" value="${joinCheck.payCode }">
 								</form>
 								

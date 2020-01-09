@@ -345,9 +345,9 @@ $(document).ready(function ()
                            <th></th>
                            <th></th>
                            <th>제목</th>
-                           <th>작성자</th>
                            <th>날짜</th>
-                           <th>조회수</th>
+                           <th>답변여부</th>
+                           <th></th>
                         </tr>
                         <c:forEach var="v" items="${qnaList}" varStatus="status">
                            <tr>
@@ -361,8 +361,6 @@ $(document).ready(function ()
 							    </c:when>
 								<c:otherwise>
 									<td style="color: blue;">답변대기</td>
-									<button type="button" onclick="">수정</button>
-									<button type="button" onclick="">삭제</button>
 								</c:otherwise>
 								</c:choose>
 								 <td>

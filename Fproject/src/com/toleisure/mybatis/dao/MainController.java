@@ -90,6 +90,7 @@ public class MainController
 		}
 		
 		System.out.println("====== all : " + session.getAttribute("member"));
+		System.out.println("====== all : " + dto.getMemId());
 		
 		List<BoardDTO> meetFavList = dao.meetFavList(dto.getMemId());
 		

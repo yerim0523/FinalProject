@@ -152,7 +152,7 @@
 			<button type="button" onclick="location='newsinsertform.action'"
 				class="btn4" style="float: right;">글쓰기</button>
 			</c:if>
-			</c:if>
+		</c:if>
 	</div>
 
 	<div class="container">
@@ -160,9 +160,9 @@
 			<li class="page-item">
 			
 			<c:if test="${paging.curPage ne 1}">
-			<a class="page-link" href="#" aria-label="Previous" onClick="fn_paging(${paging.prevPage })">	
-			<span aria-hidden="true">&laquo;</span>
-			</a></li>
+				<a class="page-link" href="#" aria-label="Previous" onClick="fn_paging(${paging.prevPage })">	
+				<span aria-hidden="true">&laquo;</span>
+				</a></li>
 			</c:if>
 			<%-- ${status.index+1+(paging.curPage-1)*10} --%>
 			 <c:forEach var="pageNum" begin="${paging.startPage }" end="${paging.endPage }">
@@ -185,7 +185,7 @@
 		</ul>
 	</div>
 	
-	<div class="greenTable outerTableFooter">
+	<%-- <div class="greenTable outerTableFooter">
             <div class="tableFootStyle">
                 <div class="links">
                         <a href="#" onClick="fn_paging(1)">[처음]</a> 
@@ -200,7 +200,7 @@
                     </c:if>
                 </div>
             </div>
-        </div>
+        </div> --%>
          
         <div>
                     <%-- 현재 페이지 : ${paging.curPage } / 현재 블럭 : ${paging.curRange } / 총 블럭 수 : ${paging.rangeCnt } --%>
