@@ -161,6 +161,10 @@ button.more {
 	<div>
 		<jsp:include page="bar.jsp"></jsp:include>
 	</div>
+	
+	<div>
+		<jsp:include page="TopButton.jsp"></jsp:include>
+	</div>
 
 	<section class="course_details_area section_padding"
 		style="padding-bottom: 0;">
@@ -383,7 +387,7 @@ button.more {
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
 						<img src="uploads/${HotHost.memPic}" alt="썸네일" class="img-rounded"
-							style="width: 500px;"
+							style="width: 500px; height: 200px;"
 							onclick="location.href='profile.action?memId=${HotHost.memId}'">
 						<div class="caption">
 							<div>
