@@ -78,6 +78,9 @@ public interface IGroupDAO
 	// 모임에 신청한 메이트 수 가져오기
 	public GroupDTO joinMemberCnt(int ngCode);
 	
+	// 현재 로그인 한 회원이 신청한 모임인지 확인
+	public int myjoinCheck(GroupDTO dto);
+	
 	public double AvgStar(int grCode);
 	public int TotalPeople(int grCode);
 	

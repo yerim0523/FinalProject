@@ -705,7 +705,6 @@ public class MemberController
 	      System.out.println("fourCnt--------------"+dto.getFourCnt());
 	      System.out.println("etc--------------"+dto.getEtc());
 	      
-	      
 	      Map<String, Object> retVal = new HashMap<String, Object>();
 	      
 	      retVal.put("oneCnt", dto.getOneCnt());

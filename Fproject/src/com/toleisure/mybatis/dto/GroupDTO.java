@@ -5,7 +5,15 @@ public class GroupDTO
 
 	private String memId, memName, grName, grPre, grNotice, grPic, grCate1Name, grCate2Name,search;
 	private String hostId, hostName, hostPic, reviewComCont, reviewComDate;
-	private int men,women,unknown,grCode, grCate1, grCate2,starCode;
+	private int men,women,unknown,grCode, grCate1, grCate2,starCode,payCode;
+	public int getPayCode() {
+		return payCode;
+	}
+
+	public void setPayCode(int payCode) {
+		this.payCode = payCode;
+	}
+
 	private int oneCnt, twoCnt, thrCnt, fourCnt, etc;
 	
 
@@ -24,8 +32,10 @@ public class GroupDTO
 	private int boardNum, reviewNum;
 
 	private int grCount, grStarCount,jjimcheck, memCount;
-	private double grStarAvg;
+	private double grStarAvg,xlocation,ylocation;
 	
+	
+
 	private String grGender, grAge;
 	private int genCount, ageCount;
 	
@@ -42,7 +52,21 @@ public class GroupDTO
 	{
 		this.memId = memId;
 	}
+	public double getXlocation() {
+		return xlocation;
+	}
 
+	public void setXlocation(double xlocation) {
+		this.xlocation = xlocation;
+	}
+
+	public double getYlocation() {
+		return ylocation;
+	}
+
+	public void setYlocation(double ylocation) {
+		this.ylocation = ylocation;
+	}
 	public String getGrName()
 	{
 		return grName; 

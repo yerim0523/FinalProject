@@ -130,7 +130,7 @@ function search(){
 				<div class="col-lg-12">
 					<nav class="navbar navbar-expand-lg navbar-light navigationBar">
 						<a class="navbar-brand" href="main.action"> <img
-							src="images/reallogo.jpg" alt="logo" class="logoBox">
+							src="images/logo2.jpg" width="190px;" style="margin-left: 170px;" alt="logo" class="logoBox">
 						</a>
 						<button class="navbar-toggler" type="button"
 							data-toggle="collapse" data-target="#navbarSupportedContent"

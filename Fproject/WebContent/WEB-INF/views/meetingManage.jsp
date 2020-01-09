@@ -276,15 +276,12 @@
 			        text: grCode
 			    },
 			    tooltip: {
-			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			        pointFormat: '{series.name}: <b>{point.percentage:.2f}% ({series.y}명)</b>'
 			    },
 			    series: [{
 			        name: '나이',
 			        colorByPoint: true,
 			        data: [{
-			            name: '10대',
-			            y: Number(one),
-			        }, {
 			            name: '20대',
 			            y: Number(two)
 			        }, {
