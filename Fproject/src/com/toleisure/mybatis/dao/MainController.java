@@ -583,6 +583,12 @@ public class MainController
 	   {
 	      String view = "/WEB-INF/views/meetingContent.jsp";
 	      session.getAttribute("member");
+	      MemberDTO mem = (MemberDTO)session.getAttribute("member");
+	      
+	      String id = mem.getMemId();
+	      dto.setMemId(id);
+	      
+	      
 	      
 	      System.out.println("===========  ngCode : " + ngCode);
 	      
@@ -595,6 +601,8 @@ public class MainController
 	      List<GroupDTO> contentGBoard = dao.ContentGBoard(ngCode);
 	      List<GroupDTO> contentMember = dao.ContentMember(ngCode);
 	      ArrayList<MemberDTO> joinMember = gdao.joinMember(ngCode);
+	      int joinCheck = gdao.myjoinCheck(dto);
+	      
 	      
 	      model.addAttribute("groupContent", groupContent);
 	      model.addAttribute("jjimCount", jjimCount);
@@ -603,6 +611,7 @@ public class MainController
 	      model.addAttribute("contentMember", contentMember);
 	      model.addAttribute("joinMember", joinMember);
 	      model.addAttribute("joinMemberCnt", gdao.joinMemberCnt(ngCode));
+	      model.addAttribute("joinCheck", joinCheck);
 	      
 	      
 	      session.setAttribute("ngCode", dto.getNgCode());
