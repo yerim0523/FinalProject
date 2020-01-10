@@ -420,9 +420,7 @@
    <div class="container">
    
    <form action="groupinsert.action" role="form" method="post" enctype="multipart/form-data" name="groupForm">
-   현재 접속중인 memId : ${member.memId }
    <input type="hidden" id="memId" name="memId" value="${member.memId }">
-   모임 코드 : ${groupinfo.grCode }
    <c:if test="${!empty groupinfo.grCode }">
 		<input type="hidden" id="grCode" name="grCode" value="${groupinfo.grCode }">
    </c:if>

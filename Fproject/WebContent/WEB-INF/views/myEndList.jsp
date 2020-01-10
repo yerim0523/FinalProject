@@ -166,8 +166,8 @@
 							<div class="text-center">
 								<img class="image" src="uploads/${endGroup.ngPic}">
 							</div>
-									<i id="emptyHeart" class="far fa-heart"></i>
-									<a href="#모임상세페이지?ngCode=${endGroup.ngCode }" class="justify-content-between d-flex"> 
+								<div onclick="location.href='groupdetail.action?ngCode=${endGroup.ngCode}'" style="cursor: pointer;">
+									<a href="groupdetail.action?ngCode=${endGroup.ngCode }" class="justify-content-between d-flex"> 
 									<span class="color" style="text-align: left;">
 									<c:if test="${endGroup.grCate2Name != null }">
 									<span style="font-weight: bold; font-size: 13px; color: gray;">${endGroup.grCate1Name } | ${endGroup.grCate2Name }</span>
@@ -188,6 +188,7 @@
 									<input type="hidden" name="memId" id="memId" value="${endGroup.memId }">
 									<input type="hidden" name="ngCode" id="ngCode" value="${endGroup.ngCode }">
 									<button type="button" class="btn4 gomodal" data-target="#feedbackPopup" onclick="ngCodeSend(${endGroup.ngCode})">피드백</button>
+								</div>
 								</div>
 						</div>
 						</c:forEach>

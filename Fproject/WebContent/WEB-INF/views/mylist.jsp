@@ -91,8 +91,8 @@
 							<div class="text-center">
 								<img class="image" src="uploads/${v.ngPic}">
 							</div>
-									<i id="emptyHeart" class="far fa-heart"></i>
-									<a href="#모임상세페이지?ngCode=${v.ngCode }" class="justify-content-between d-flex">
+								<div onclick="location.href='groupdetail.action?ngCode=${v.ngCode}'" style="cursor: pointer;">
+									<a class="justify-content-between d-flex">
 									<span class="color" style="text-align: left;">
 									<c:if test="${v.grCate2Name != null }">
 									<span style="font-weight: bold; font-size: 13px; color: gray;">${v.grCate1Name } | ${v.grCate2Name }</span>
@@ -108,6 +108,7 @@
 								</div>
 								<div>
 								<p class="text-right">${v.memName }&nbsp;&nbsp;&nbsp;${v.ngCode }</p>
+								</div>
 								</div>
 						</div>
 						</c:forEach>
@@ -127,8 +128,6 @@
 <div>
 	<c:import url="footer.jsp"></c:import>
 </div>
-
-
 
 
 
