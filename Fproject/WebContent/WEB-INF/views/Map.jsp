@@ -11,7 +11,8 @@
 <title>Map.jsp</title>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98220758bcb9383ae8a259f3cf5bfecf&libraries=services,clusterer,drawing"></script>
 <!--  추가한거 -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -107,8 +108,7 @@ input.img-button {
     .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 22px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
 </style>
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b06299aedd9f29b60afd90850c8308ed&libraries=services,clusterer,drawing"></script>
+
 <script type="text/javascript">
 	var x = document.getElementById("demo");
 
@@ -214,7 +214,7 @@ input.img-button {
 	         		var content = '<div class="overlay_info">';
 	        		content += '    <a href="#" onclick='+'groupdetail(' + positions[i].ngCode +')'  +'<strong>'+positions[i].title+'</strong></a>';
 	        		content += '    <div class="desc">';
-	        		content += '        <img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
+	        		content += '        <img src="uploads/'+positions[i].ngPic+'" alt=""'+'style="width:60px; height: 100%;"'    +'>';
 	        		content += '        <span class="address">'+positions[i].loc+'</span>';
 	        		content += '    </div>';
 	        		content += '</div>';

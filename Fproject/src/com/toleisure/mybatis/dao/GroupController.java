@@ -72,10 +72,8 @@ public class GroupController
 		System.out.println("==================");
 		System.out.println("==== dto.getGrCode = " + dto.getGrCode());
 		System.out.println("==================");
-		
 
 		IMemberDAO dao2 = sqlsession.getMapper(IMemberDAO.class);
-	      /* String rootUploadDir = "C:\\Users\\SIST171\\git\\FinalProject\\Fproject\\WebContent\\uploads"; */
 		   
 		   String rootUploadDir = "C:\\Final\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Fproject\\uploads";
 	       
@@ -106,18 +104,12 @@ public class GroupController
 	           if(orgFileName != null && orgFileName.length() != 0) { //sysFileName 생성
 	               System.out.println("if문 진입");
 	               
-	               try {
-						/*
-						 * byte[] fileData = mFile.getBytes(); //byte 배열을 파일/DB/네트워크 등으로 전송 fos = new
-						 * FileOutputStream(rootUploadDir); fos.write(fileData);
-						 */
-	            	   
+	               try { 
 	                   System.out.println("try 진입");
 	                   
 	                   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-" + fileLoop);
 	                   Calendar calendar = Calendar.getInstance();
 	                   sysFileName = simpleDateFormat.format(calendar.getTime()); //sysFileName: 날짜-fileLoop번호
-	                   
 	                   
 	                   list.add("원본파일명: " + orgFileName);
 	                   
@@ -129,9 +121,7 @@ public class GroupController
 	               }catch(Exception e){
 	                   list.add("파일 업로드 중 에러발생!!!");
 	               }
-					/*
-					 * finally { if(fos != null) { fos.close(); } }// finally
-					 */           }//if
+					          }//if
 	       }//while
 	       
 	       if(dto.getGrCode()!=0)
