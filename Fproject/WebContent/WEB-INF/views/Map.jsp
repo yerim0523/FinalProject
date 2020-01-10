@@ -108,7 +108,7 @@ input.img-button {
     .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 22px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
 </style>
 
-
+ 
 <script type="text/javascript">
 	var x = document.getElementById("demo");
 
