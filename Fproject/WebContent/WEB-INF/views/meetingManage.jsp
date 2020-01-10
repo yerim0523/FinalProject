@@ -182,6 +182,7 @@
 		                	 	//alert(data);
 		                	 	console.log(JSON.stringify(data));
 		                	 	console.log("data.grCode : " + data.grCode);
+		                	 	console.log("data.grName : " + data.grName);
 		                	 	console.log("data.men : " + data.men);
 		                	 	genderList[0] = data.men;
 		                	 	
@@ -190,10 +191,9 @@
 		                	 	
 		                	 	console.log("data.unk : " + data.unk);
 		                	 	genderList[2] = data.unk;
-		                	 	
+		                	 	genderList[3] = data.grName;
 		                 } 
 		        });
-				 
 				 
 				 $.ajax({
 					  url : "agefind.action?grCode="+params[i]
@@ -208,6 +208,7 @@
 		                	 	//alert(data);
 		                	 	console.log(JSON.stringify(data));
 		                	 	console.log("data.grCode : " + data.grCode);
+		                	 	console.log("data.grName : " + data.grName);
 		                	 	console.log("data.oneCnt : " + data.oneCnt);
 		                	 	console.log("data.twoCnt : " + data.twoCnt);
 		                	 	console.log("data.thrCnt : " + data.thrCnt);
@@ -219,12 +220,13 @@
 		                	 	ageList[2] = data.thrCnt;		                	 	
 		                	 	ageList[3] = data.fourCnt;		                	 	
 		                	 	ageList[4] = data.etc;		                	 	
+		                	 	ageList[5] = data.grName;		                	 	
 		                 } 
 		        });
 				 
 				 
-				 showGenderChart(params[i], i+1, genderList[0], genderList[1], genderList[2]);
-				 showAgeChart(params[i], i+1, ageList[0], ageList[1], ageList[2], ageList[3], ageList[4]);
+				 showGenderChart(params[i], i+1, genderList[0], genderList[1], genderList[2], genderList[3]);
+				 showAgeChart(params[i], i+1, ageList[0], ageList[1], ageList[2], ageList[3], ageList[4], ageList[5]);
 				 
 			}
 			
@@ -232,7 +234,7 @@
 		grCodeList = new Array();
 	}
 	
-	function showGenderChart(grCode, num, men, women, unk)
+	function showGenderChart(grCode, num, men, women, unk, name)
 	{
 			Highcharts.chart('genderSpace'+num, {
 			    chart: {
@@ -240,7 +242,7 @@
 			        type: 'pie'
 			    },
 			    title: {
-			        text: grCode
+			        text: name
 			    },
 			    tooltip: {
 			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
@@ -264,7 +266,7 @@
 	}
 	
 
-	function showAgeChart(grCode, num, one, two, thr, four, etc)
+	function showAgeChart(grCode, num, one, two, thr, four, etc, name)
 	{
 		
 			Highcharts.chart('ageSpace'+num, {
@@ -273,7 +275,7 @@
 			        type: 'pie'
 			    },
 			    title: {
-			        text: grCode
+			        text: name
 			    },
 			    tooltip: {
 			        pointFormat: '{series.name}: <b>{point.percentage:.2f}% ({series.y}명)</b>'

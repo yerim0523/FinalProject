@@ -36,11 +36,11 @@
 					var isMember = data;
 					if (isMember === "Y")
 					{
-						alert("일치하는 정보가 있음!");
+						//alert("일치하는 정보가 있음!");
 						form.submit();
 					} else
 					{
-						alert("일치하는 정보가 없음!!");
+						//alert("일치하는 정보가 없음!!");
 						return;
 					}
 				}

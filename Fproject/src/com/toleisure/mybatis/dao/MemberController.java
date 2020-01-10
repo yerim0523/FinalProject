@@ -659,6 +659,7 @@ public class MemberController
 	      GroupDTO dto = dao.genderChart(grCode);
 	      
 	      System.out.println("grCode--------------"+dto.getGrCode());
+	      System.out.println("grName--------------"+dto.getGrName());
 	      System.out.println("men--------------"+dto.getMen());
 	      System.out.println("women--------------"+dto.getWomen());
 	      System.out.println("unk--------------"+dto.getUnknown());
@@ -667,11 +668,13 @@ public class MemberController
 	      Map<String, Object> retVal = new HashMap<String, Object>();
 	      
 	      retVal.put("grCode", dto.getGrCode());
+	      retVal.put("grName", dto.getGrName());
 	      retVal.put("men", dto.getMen());
 	      retVal.put("women", dto.getWomen());
 	      retVal.put("unk", dto.getUnknown());
 	      
 	      jsonarray.add(dto.getGrCode());
+	      jsonarray.add(dto.getGrName());
 	      jsonarray.add(dto.getMen());
 	      jsonarray.add(dto.getWomen());
 	      jsonarray.add(dto.getUnknown());
@@ -700,6 +703,7 @@ public class MemberController
 	      GroupDTO dto = dao.ageChart(grCode);
 	      
 	      System.out.println("oneCnt--------------"+dto.getOneCnt());
+	      System.out.println("grName--------------"+dto.getGrName());
 	      System.out.println("twoCnt--------------"+dto.getTwoCnt());
 	      System.out.println("thrCnt--------------"+dto.getThrCnt());
 	      System.out.println("fourCnt--------------"+dto.getFourCnt());
@@ -708,6 +712,7 @@ public class MemberController
 	      Map<String, Object> retVal = new HashMap<String, Object>();
 	      
 	      retVal.put("oneCnt", dto.getOneCnt());
+	      retVal.put("grName", dto.getGrName());
 	      retVal.put("twoCnt", dto.getTwoCnt());
 	      retVal.put("thrCnt", dto.getThrCnt());
 	      retVal.put("fourCnt", dto.getFourCnt());
