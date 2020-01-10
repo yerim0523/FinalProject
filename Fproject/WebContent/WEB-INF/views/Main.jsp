@@ -372,7 +372,7 @@ button.more {
 			<c:forEach var="HotHost" items="${HotHostList }">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<img src="uploads/${HotHost.memPic}" alt="썸네일" class="img-rounded"
+						<img src="uploads/${HotHost.memPic}"  alt="썸네일"  class="rounded-circle"
 							style="width: 500px; height: 200px;"
 							onclick="location.href='profile.action?memId=${HotHost.memId}'">
 						<div class="caption">
