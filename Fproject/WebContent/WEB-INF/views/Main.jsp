@@ -99,8 +99,6 @@ button.more {
 			var params = {};
 			params.memId = $("#sessionInfo").val();
 			params.ngCode = $("#empNgCode").val();
-			/* alert($("#sessionInfo").val());
-			alert($("#empNgCode").val()); */
 			
 			 $.ajax({
 	                type : "POST"
@@ -118,12 +116,6 @@ button.more {
 							{
 	                    		location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
 							}
-	                    	/* 
-	                    	else if (isNaN(ngCode)) 
-	                    	{
-	                    		location = "hostfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
-							}
-	                    	 */
 	                       alert("찜이 해제되었습니다!");
 	                       
 	                    }else
@@ -135,12 +127,6 @@ button.more {
 							{
 	                    		location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
 							}
-	                    	/* 
-	                    	else if (isNaN(ngCode)) 
-	                    	{
-	                    		location = "hostfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
-							}
-	                    	 */
 	                    	alert("찜이 완료되었어용~!! ^_^");
 	                    }
 	                 }
@@ -226,11 +212,12 @@ button.more {
 		<br>
 		<br>
 		<div class="row">
-			<c:set var="n" value="0" />
 			<c:if test="${empty HotGroupList }">
 				<div align="center">
 					<br><br>
-					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;현재 인기모임이 존재하지 않습니다. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 인기모임 : 회원들이 찜한 개수에 따라 기준 이상이 되면 표시됩니다.)</p>
+					<p class="text-center" style="font-size: 15px; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>
+					&nbsp;&nbsp;현재 인기모임이 존재하지 않습니다. 
+					<br><br>&nbsp;&nbsp;&nbsp;&nbsp;(※ 인기모임 : 회원들이 찜한 개수에 따라 기준 이상이 되면 표시됩니다.)</p>
 					<br><br>
 				</div>
 			</c:if>

@@ -92,11 +92,6 @@
 	
 	grCodeList = new Array();
 	
-	$(function()
-	{
-		
-	});
-	
 	function formCheck()
 	{
 		//alert("확인");
@@ -149,10 +144,6 @@
 			params.push(grCode3);
 		}
 		
-		//alert(params);
-		
-		
-		
 		// ★★★
 		for (var i = 0; i < 3; i++)
 		{
@@ -160,72 +151,53 @@
 			$("#ageSpace"+(i+1)).empty();
 		}
 		
-		//alert(params.length);
 		
-			//alert(params[0]); // grCode 51
-			var grCode = params[0];
-			var genderList = new Array();
-			var ageList = new Array();
-			
-			for (var i = 0; i < params.length; i++)
-			{
-				 $.ajax({
-					  url : "genderfind.action?grCode="+params[i]
-						,type : "get"
-						, async:false
-						, dataType : "json"
-		                , contentType :"application/json; charset=UTF-8" //application/json; , application/text; 똑같이 성공
-		                 , success: function(data){
-		                	 	alert("성공?");
-		                	 	genderList = new Array();
-		                	 	
-		                	 	//alert(data);
-		                	 	console.log(JSON.stringify(data));
-		                	 	console.log("data.grCode : " + data.grCode);
-		                	 	console.log("data.grName : " + data.grName);
-		                	 	console.log("data.men : " + data.men);
-		                	 	console.log("data.women : " + data.women);
-		                	 	console.log("data.unk : " + data.unk);
-		                	 	
-		                	 	genderList[0] = data.men;
-		                	 	genderList[1] = data.women;
-		                	 	genderList[2] = data.unk;
-		                 } 
-		        });
-				 
-				 $.ajax({
-					  url : "agefind.action?grCode="+params[i]
-						,type : "get"
-						, async:false
-						, dataType : "json"
-		                , contentType :"application/json; charset=UTF-8"
-		                 , success: function(data){
-		                	 	alert("성공~~~!!");
-		                	 	ageList = new Array();
-		                	 	
-		                	 	//alert(data);
-		                	 	console.log(JSON.stringify(data));
-		                	 	console.log("data.grCode : " + data.grCode);
-		                	 	console.log("data.grName : " + data.grName);
-		                	 	console.log("data.oneCnt : " + data.oneCnt);
-		                	 	console.log("data.twoCnt : " + data.twoCnt);
-		                	 	console.log("data.thrCnt : " + data.thrCnt);
-		                	 	console.log("data.fourCnt : " + data.fourCnt);
-		                	 	console.log("data.etc : " + data.etc);
-		                	 	
-		                	 	ageList[0] = data.oneCnt;		                	 	
-		                	 	ageList[1] = data.twoCnt;		                	 	
-		                	 	ageList[2] = data.thrCnt;		                	 	
-		                	 	ageList[3] = data.fourCnt;		                	 	
-		                	 	ageList[4] = data.etc;		                	 	
-		                 } 
-		        });
-				 
-				 
-				 showGenderChart(params[i], i+1, genderList[0], genderList[1], genderList[2]);
-				 showAgeChart(params[i], i+1, ageList[0], ageList[1], ageList[2], ageList[3], ageList[4]);
-				 
-			}
+		//alert(params[0]); // grCode 51
+		var grCode = params[0];
+		var genderList = new Array();
+		var ageList = new Array();
+		
+		for (var i = 0; i < params.length; i++)
+		{
+			 $.ajax({
+				  url : "genderfind.action?grCode="+params[i]
+					,type : "get"
+					, async:false
+					, dataType : "json"
+			            , contentType :"application/json; charset=UTF-8" //application/json; , application/text; 똑같이 성공
+			             , success: function(data){
+			            	 	//alert("성공?");
+			            	 	genderList = new Array();
+			            	 	
+			            	 	genderList[0] = data.men;
+			            	 	genderList[1] = data.women;
+			            	 	genderList[2] = data.unk;
+			             } 
+			    });
+			 
+			 $.ajax({
+				  url : "agefind.action?grCode="+params[i]
+					,type : "get"
+					, async:false
+					, dataType : "json"
+			            , contentType :"application/json; charset=UTF-8"
+			             , success: function(data){
+			            	 	//alert("성공~~~!!");
+			            	 	ageList = new Array();
+			            	 	
+			            	 	ageList[0] = data.oneCnt;		                	 	
+			            	 	ageList[1] = data.twoCnt;		                	 	
+			            	 	ageList[2] = data.thrCnt;		                	 	
+			            	 	ageList[3] = data.fourCnt;		                	 	
+			            	 	ageList[4] = data.etc;		                	 	
+			             } 
+			    });
+			 
+			 
+			 showGenderChart(params[i], i+1, genderList[0], genderList[1], genderList[2]);
+			 showAgeChart(params[i], i+1, ageList[0], ageList[1], ageList[2], ageList[3], ageList[4]);
+			 
+		}
 			
 			
 		grCodeList = new Array();
@@ -275,7 +247,7 @@
 			        text: grCode
 			    },
 			    tooltip: {
-			        pointFormat: '{series.name}: <b>{point.percentage:.2f}% ({series.y}명)</b>'
+			        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
 			    },
 			    series: [{
 			        name: '나이',
@@ -322,13 +294,14 @@
 				</div>
 				<br><br>
 
-					<c:if test="${empty sessionScope.member}">
+					<c:if test="${empty grCodeList}">
 						<div align="center">
-							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;관리중인 모임이 존재하지 않습니다. <br><br>모임 확정 개설된 이력이 있으면 이곳에 표시됩니다 ~ !</p>
+							<p class="text-center" style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbtack"></i>&nbsp;&nbsp;관리중인 모임이 존재하지 않습니다.
+							<br><br>모임 확정 개설된 이력이 있으면 이곳에 표시됩니다 ~ !</p>
 						</div>
 					</c:if>
 					
-					<c:if test="${!empty sessionScope.member}">
+					<c:if test="${!empty grCodeList}">
 					<div>
 						<button class="btn4" type="button" data-toggle="modal" data-target="#chartFind" style="width: 130px;">모임선택하기</button>
 						<br><br>
