@@ -185,14 +185,14 @@ button.more {
 				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
-			<div class="carousel-inner">
+			<div class="carousel-inner" style="cursor: pointer;">
 				<div class="carousel-item active">
 					<img src="images/iu2.jpg" class="d-block w-100" alt="인기호스트"
-						style="height: 500px;">
+						style="height: 500px;" onclick="location.href='groupdetail.action?ngCode=58'">
 				</div>
 				<div class="carousel-item">
 					<img src="images/gd.jpg" class="d-block w-100" alt="인기호스트"
-						style="height: 500px;">
+						style="height: 500px;" onclick="location.href='groupdetail.action?ngCode=95'">
 				</div>
 				<div class="carousel-item">
 					<img src="images/ma.jpg" class="d-block w-100" alt="인기호스트"
