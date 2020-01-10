@@ -90,6 +90,7 @@
 		{
 			document.getElementById("repCate").value = cateVal;
 			f.submit();
+			alert("신고가 완료되었습니다.");
 		}
 
 	}
