@@ -290,7 +290,6 @@ button.more {
 			<a href="">신규모임</a> <br>
 		</div>
 		<div class="right">
-
 			<form action='newgroup.action'>
 				<button type="submit" name="action" value="더보기" class="btn4 more"
 					style="float: right;">더보기</button>
