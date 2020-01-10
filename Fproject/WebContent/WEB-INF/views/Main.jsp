@@ -375,7 +375,7 @@ button.more {
 						<img src="uploads/${HotHost.memPic}"  alt="썸네일"  class="rounded-circle"
 							style="width: 500px; height: 200px;"
 							onclick="location.href='profile.action?memId=${HotHost.memId}'">
-						<div class="caption">
+						<div class="caption"> 
 							<div>
 									<img alt="" src="images/star.png" style="width: 20px;"> <span>
 										9.5</span>
