@@ -238,7 +238,7 @@
       FROM
       (
           SELECT RE.REVIEW_NUM, ME.MEM_NAME,ME.MEM_ID,ME.MEM_PIC,JO.JOIN_CODE,FX.FIX_CODE,GR.GR_CODE,GR.GR_NAME, NG.NG_CODE,RE.REVIEW_CONT, RE.REVIEW_STAR, RE.REVIEW_DATE
-          FROM REVIEW RE JOIN GR_JOIN JO
+          FROM REVIEW RE JOIN GR_JOIN JO 
           ON RE.JOIN_CODE = JO.JOIN_CODE
               JOIN FIXED_GROUP FX
               ON JO.FIX_CODE = FX.FIX_CODE
@@ -254,6 +254,7 @@
                                 ON ME.MEM_ID = RQ.MEM_ID
       )
       WHERE gr_CODE = #{grCode}
+      ORDER BY REVIEW_DATE DESC
    </select> 
    
    <insert id="reviewInsert" parameterType="com.toleisure.mybatis.dto.GroupDTO">
@@ -305,6 +306,27 @@
 			            JOIN REVIEW R
 			            ON R.JOIN_CODE=GJ.JOIN_CODE
 			WHERE G.GR_CODE=#{grCode}
+    </select>
+    
+    
+    <select id ="TotalPeople" parameterType="Integer" resultType="java.lang.Integer">
+          SELECT COUNT(*) AS TOTALPEOPLE
+         FROM NOW_GROUP NG JOIN TBL_GROUP G
+         ON NG.GR_CODE = G.GR_CODE
+             JOIN FIXED_GROUP FG
+             ON NG.NG_CODE=FG.NG_CODE
+                 JOIN GR_JOIN GJ
+                 ON FG.FIX_CODE=GJ.FIX_CODE
+                     JOIN REVIEW R
+                     ON R.JOIN_CODE=GJ.JOIN_CODE
+         WHERE G.GR_CODE=#{grCode}
+    </select>
+    
+    
+    <select id ="getGrCode" parameterType="Integer" resultType="java.lang.Integer">
+         SELECT G.GR_CODE
+		 FROM TBL_GROUP G, NOW_GROUP N
+		 WHERE G.GR_CODE = N.GR_CODE AND N.NG_CODE = ${ngCode}
     </select>
 
 </mapper>

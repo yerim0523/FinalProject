@@ -131,9 +131,7 @@ footer .sc-bold {
 					</div>
 				</div>
 				<div id="lastContentDiv">
-					<!-- <p class="sc-normal">상품에 대하여 배송 교환 반품 민원 AS등 은 2교시에서 처리하여 모든
-						책임은 2교시에 있습니다.</p> -->
-					<p class="sc-normal">Copyright © 2019 2gyosi All rights
+					<p class="sc-normal">Copyright © 2020 ToLeisure
 						reserved</p>
 				</div>
 			</div>

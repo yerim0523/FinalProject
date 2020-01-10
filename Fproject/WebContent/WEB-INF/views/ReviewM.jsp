@@ -383,7 +383,7 @@
 			<div align="left">
 				<img src="uploads/${reviewM.memPic }" class="rounded-circle"
 						style="width: 50px; height: 50px;"> &nbsp;&nbsp;&nbsp; 
-				<a class="name">${reviewM.memName }</a>
+				<a class="name">${reviewM.memName }</a>&nbsp;&nbsp;&nbsp;<span style="font-size: 9pt;">${reviewM.reviewDate }</span>
 				<input type="hidden" id="memName" name="memName" value="${reviewM.memName }">
 				
 				<div style="float: right;">

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>testest.jsp</title>
+<title>meetingContent.jsp</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -35,6 +35,7 @@
     <script src="js/masonry.pkgd.js"></script>
     <!-- particles js -->
     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/jquery.nice-select.min.js"></script>
     <!-- swiper js -->
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
@@ -234,6 +235,7 @@
 		
 		if(confirm("정말 모임신청을 취소하시겠습니까?") == true)
 		{
+			//alert("신청취소 / 환불이 완료되었습니다!");
 			f.submit();
 		}
 		else
@@ -455,10 +457,10 @@
 									<p>모임명</p> <span class="color" style="font-weight: bold;">${grcontent.grName }</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>가격</p> <span><fmt:formatNumber value="${grcontent.ngCost }" pattern="#,###,###"/>원</span>
+									<p>가격</p> <span style="color: black;"><fmt:formatNumber value="${grcontent.ngCost }" pattern="#,###,###"/>원</span>
 							</a></li>
 							<li><a class="justify-content-between d-flex">
-									<p>모임날짜</p> <span>${grcontent.ngStart }<br> ~ ${grcontent.ngEnd }</span>
+									<p>모임날짜</p> <span style="color: black;">${grcontent.ngStart }<br> ~ ${grcontent.ngEnd }</span>
 							</a></li>
 							<%-- 
 							<li><a class="justify-content-between d-flex">
@@ -467,7 +469,7 @@
 							 --%>
 							<li><a class="justify-content-between d-flex">
 									<p>인원수</p> 
-									<span>${joinMemberCnt.memCount } / ${grcontent.ngMax }명</span>
+									<span style="color: black;">${joinMemberCnt.memCount } / ${grcontent.ngMax }명</span>
 									<%-- <span style="font-size: 13pt;">(최소인원 : ${grcontent.ngMin }명)</span> --%>
 							</a><div align="right"><span style="font-size: 10pt;">(최소인원 : ${grcontent.ngMin }명)</span></div></li>
 
@@ -475,20 +477,19 @@
 						
 						 
 						<c:if test="${empty memId }">
-							<!--  -->
 							<a class="btn4" href="login.action" style="margin-left: 30px;">로그인하기</a>
 						</c:if>
+						
 						<c:if test="${!empty memId }">
 							<c:if test="${empty joinCheck}">
-								<a class="btn4" href="pay.action" style="margin-left: 30px;">모임신청하기(결제)</a>
+								<a class="btn4" href="pay.action" style="margin-left: 30px;">신청하기(결제)</a>
 							</c:if>
 							
 							<c:forEach var="joinCheck" items="${joinCheck }">
 							<c:if test="${joinCheck.memCount ne 0 }">
 								
 								<form action="refund.action" method="post" name="refundForm">
-								<button class="btn4" onclick="refund()" style="margin-left: 30px;">모임신청취소(환불)</button>
-								<input type="text" id="payCode" name="payCode" value="${joinCheck.payCode }">
+								<button class="btn4" onclick="refund()" style="margin-left: 30px;">신청취소(환불)</button>
 								</form>
 								
 								

@@ -37,22 +37,22 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
 
-<!-- jquery plugins here-->
-   
-    <!-- easing js -->
+ <!-- jquery plugins here -->
+<!--   
+    easing js
     <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
+    swiper js
     <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
+    swiper js
     <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
+    particles js
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
-    <!-- swiper js -->
+    swiper js
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
+    custom js
+    <script src="js/custom.js"></script> -->
 
 <style type="text/css">
 	
@@ -122,7 +122,7 @@
 	                    	var memId = $("#sessionInfo").val();
 	                    	var ngCode = $("#empNgCode").val();
 	                    	
-	                    	location = "meetfavoritedelete.action?memId="+memId+"&ngCode="+ngCode;
+	                    	location = "meetfavoritealldelete.action?memId="+memId+"&ngCode="+ngCode;
 	                        alert("찜이 해제되었습니다!");
 	                       
 	                    }else
@@ -130,7 +130,7 @@
 	                    	var memId = $("#sessionInfo").val();
 	                    	var ngCode = $("#empNgCode").val();
 	                    	
-	                    	location = "meetfavoriteinsert.action?memId="+memId+"&ngCode="+ngCode;
+	                    	location = "meetfavoriteallinsert.action?memId="+memId+"&ngCode="+ngCode;
 	                    	alert("찜이 완료되었어용~!! ^_^");
 	                    }
 	                 }

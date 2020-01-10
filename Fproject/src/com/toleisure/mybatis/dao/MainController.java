@@ -90,6 +90,7 @@ public class MainController
 		}
 		
 		System.out.println("====== all : " + session.getAttribute("member"));
+		System.out.println("====== all : " + dto.getMemId());
 		
 		List<BoardDTO> meetFavList = dao.meetFavList(dto.getMemId());
 		
@@ -588,7 +589,6 @@ public class MainController
 	      IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
 	      IGroupDAO gdao = sqlsession.getMapper(IGroupDAO.class);
 	      
-	      
 	      if (session.getAttribute("member")!=null)
 	      {
 	    	  String id = mem.getMemId();
@@ -606,13 +606,16 @@ public class MainController
 	      System.out.println("===========  ngCode : " + ngCode);
 	      
 	      
+	      int grCode = gdao.getGrCode(ngCode);
+	      dto.setGrCode(grCode);
+	      
 	      List<GroupDTO> groupContent = dao.groupContent(ngCode);
+	      
 	      int jjimCount = dao.jjimCount(ngCode);
-	      List<GroupDTO> contentReview = dao.ContentReview(ngCode);
+	      List<GroupDTO> contentReview = dao.ContentReview(dto.getGrCode());
 	      List<GroupDTO> contentGBoard = dao.ContentGBoard(ngCode);
 	      List<GroupDTO> contentMember = dao.ContentMember(ngCode);
 	      ArrayList<MemberDTO> joinMember = gdao.joinMember(ngCode);
-	      
 	      
 	      
 	      model.addAttribute("groupContent", groupContent);
@@ -772,6 +775,21 @@ public class MainController
 		dao.meetFavDelete(dto);
 		
 		return "redirect:main.action";
+	}
+	
+	@RequestMapping(value = "/meetfavoritealldelete.action", method = {RequestMethod.POST,RequestMethod.GET})
+	public String favoriteAllMeetDelete(GroupDTO dto, Model model, HttpSession session, HttpServletRequest request)
+	{
+		session.getAttribute("member");
+		IMainDAO dao = sqlsession.getMapper(IMainDAO.class);
+		
+		System.out.println("삭제합니다");
+		System.out.println("========  " + dto.getMemId());
+		System.out.println("========  " + dto.getNgCode());
+		
+		dao.meetFavDelete(dto);
+		
+		return "redirect:all.action";
 	}
 	
 	

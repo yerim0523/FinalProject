@@ -794,7 +794,7 @@
                                 JOIN MEMBER ME
                                 ON ME.MEM_ID = RQ.MEM_ID
       )
-      WHERE NG_CODE = #{ngCode}
+      WHERE GR_CODE = #{ngCode}
    </select>
    
    <!-- 모임 상세 페이지 방명록 -->

@@ -161,7 +161,7 @@ button.more {
 	<div>
 		<jsp:include page="bar.jsp"></jsp:include>
 	</div>
-	
+	 
 	<div>
 		<jsp:include page="TopButton.jsp"></jsp:include>
 	</div>

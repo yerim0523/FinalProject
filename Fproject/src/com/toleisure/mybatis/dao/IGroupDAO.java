@@ -84,4 +84,7 @@ public interface IGroupDAO
 	public double AvgStar(int grCode);
 	public int TotalPeople(int grCode);
 	
+	// ngCode 이용해 grCode 얻어오기
+	public Integer getGrCode(int ngCode);
+	
 }

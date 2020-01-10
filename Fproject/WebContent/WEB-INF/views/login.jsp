@@ -36,11 +36,11 @@
 					var isMember = data;
 					if (isMember === "Y")
 					{
-						//alert("일치하는 정보가 있음!");
+						$("#error").hide();
 						form.submit();
 					} else
 					{
-						//alert("일치하는 정보가 없음!!");
+						$("#error").show();
 						return;
 					}
 				}
@@ -104,6 +104,10 @@
 										<input name="memPw" id="memPw" class="sc-hrWEMg feokCA"
 											type="password" placeholder="********" value=""
 											autocomplete="off">
+									</div>
+									<div id="error" style="display: none;" align="left">
+										<span style="font-size: 13px; color: red; font-style: italic;">
+											아이디 또는 비밀번호를 확인해주세요.</span>
 									</div>
 								</div>
 								<div>
