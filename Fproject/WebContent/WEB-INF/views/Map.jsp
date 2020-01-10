@@ -102,7 +102,7 @@ input.img-button {
     .overlay_info:nth-of-type(n) {border:0; box-shadow: 0px 1px 2px #888;}
     .overlay_info a {display: block; background: #d95050; background: #d95050 url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center; text-decoration: none; color: #fff; padding:12px 36px 12px 14px; font-size: 14px; border-radius: 6px 6px 0 0}
     .overlay_info a strong {background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_icon.png) no-repeat; padding-left: 27px;}
-    .overlay_info .desc {padding:14px;position: relative; min-width: 300px; height: 120px}
+    .overlay_info .desc {padding:14px;position: relative; min-width: 300px; height: 90px}
     .overlay_info img {vertical-align: top;}
     .overlay_info .address {font-size: 12px; color: #333; position: absolute; left: 80px; right: 14px; top: 24px; white-space: normal}
     .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 22px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
@@ -214,7 +214,8 @@ input.img-button {
 	         		var content = '<div class="overlay_info">';
 	        		content += '    <a href="#" onclick='+'groupdetail(' + positions[i].ngCode +')'  +'<strong>'+positions[i].title+'</strong></a>';
 	        		content += '    <div class="desc">';
-	        		content += '        <img src="uploads/'+positions[i].ngPic+'" alt=""'+'style="width:60px; height: 100%;"'    +'>';
+	        		/* content += '        <img src="uploads/'+positions[i].ngPic+'" alt=""'+'style="width:60px; height: 100%;"'    +'>'; */
+	        		content += ' 			<img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
 	        		content += '        <span class="address">'+positions[i].loc+'</span>';
 	        		content += '    </div>';
 	        		content += '</div>';
