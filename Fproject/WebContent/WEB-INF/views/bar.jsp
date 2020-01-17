@@ -180,7 +180,7 @@ function search(){
                         <li class="nav-item"><a class="nav-link"
                            href="center.action">고객센터</a></li>
                         <li class="d-none d-lg-block nav-item">
-							<c:if test="${empty sessionScope.member}">
+				<c:if test="${empty sessionScope.member}">
                         	<a class="btn_1" href="login.action" style="color: black;">로그인</a>
                         	</c:if>
                         	<c:if test="${!empty sessionScope.member}">
