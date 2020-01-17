@@ -24,39 +24,26 @@
                </otherwise>
             </choose>
             
-            INSERT INTO NOW_GROUP
-               (NG_CODE
-               , GR_CODE
-               , NG_PIC
-               , NG_MAX
-               , NG_MIN,
-            NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO,XLOCATION,YLOCATION)
+            INSERT INTO NOW_GROUP (NG_CODE, GR_CODE, NG_PIC, NG_MAX, NG_MIN,
+           	NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO,XLOCATION,YLOCATION)
             VALUES(NOW_GROUPSEQ.NEXTVAL, grCodeSeq, #{ngPic}, #{ngMax}, #{ngMin}
-            , TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
-            TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
-            , #{ngCost}, #{ngLocation1}||#{ngLocation2}
-            , #{ngIntro}, #{ngMyIntro},#{xlocation},#{ylocation});
+            	, TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
+            	TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
+            	, #{ngCost}, #{ngLocation1}||#{ngLocation2}
+            	, #{ngIntro}, #{ngMyIntro},#{xlocation},#{ylocation});
       END
       }
    </insert>
    
    
       <insert parameterType="com.toleisure.mybatis.dto.GroupDTO" id="addGroup">
-      {CALL
-         BEGIN
-            INSERT INTO NOW_GROUP(NG_CODE
-               , GR_CODE
-               , NG_PIC
-               , NG_MAX
-               , NG_MIN,
+            INSERT INTO NOW_GROUP(NG_CODE, GR_CODE, NG_PIC, NG_MAX, NG_MIN,
             NG_STARTDATE, NG_ENDDATE, NG_COST, NG_LOCATION, NG_INTRO, NG_MYINTRO,XLOCATION,YLOCATION)
             VALUES(NOW_GROUPSEQ.NEXTVAL, #{grCode}, #{ngPic}, #{ngMax}, #{ngMin}
             , TO_DATE(#{ngStart1}||#{ngStart2}, 'YY-MM-DD HH24:MI:SS'),
             TO_DATE(#{ngEnd1}||#{ngEnd2}, 'YY-MM-DD HH24:MI:SS')
             , #{ngCost}, #{ngLocation1}||#{ngLocation2}
-            , #{ngIntro}, #{ngMyIntro},#{xlocation},#{ylocation});
-      END
-      }
+            , #{ngIntro}, #{ngMyIntro},#{xlocation},#{ylocation})
    </insert> 
    
 
